@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lyx.undergraduatejob.dao.IUserDao">
+
+<!--  <insert id=""></insert>-->
+<!--<update id=""></update>-->
+<!--<delete id=""></delete>-->
+<!--  <select id=""></select>-->
+
+  <resultMap id="userMap" type="users">
+    <id property="userid" column="userid" javaType="java.lang.Integer"></id>
+    <result property="username" column="username" javaType="java.lang.String"></result>
+    <result property="userpwd" column="userpwd" javaType="java.lang.String"></result>
+    <result property="sex" column="sex" javaType="java.lang.String"></result>
+    <result property="age" column="age" javaType="java.lang.Integer"></result>
+    <result property="birthday" column="birthday" javaType="java.util.Date"></result>
+    <result property="address" column="address" javaType="java.lang.String"></result>
+    <result property="photo" column="photo" javaType="java.lang.String"></result>
+  </resultMap>
+
+
+  <sql id="Base_Column_List">
+    USERID,<include refid="Base_Column_List_noPK"/>
+  </sql>
+
+  <sql id="Base_Column_List_noPK">
+    USERNAME, USERPWD, AGE, SEX, ADDRESS, birthday,photo
+  </sql>
+
+
+  <sql id="select_body">
+    select
+    <include refid="Base_Column_List"/>
+    from tb_users
+  </sql>
+
+
+
+
+  <select id="query" resultMap="userMap">
+   <include refid="select_body"/>
+    <where>
+      <if test="username != null">
+        and username like #{username}
+      </if>
+      <if test="sex != null">
+        and sex = #{sex}
+      </if>
+      <if test="address != null">
+        and address like #{address}
+      </if>
+    </where>
+  </select>
+
+
+  <update id="update">
+    update tb_users
+    <set>
+      <if test="username != null">
+        USERNAME = #{username},
+      </if>
+
+      <if test="userpwd != null">
+        USERPWD = #{userpwd},
+      </if>
+      <if test="age != null">
+        AGE = #{age},
+      </if>
+      <if test="sex != null">
+        SEX = #{sex},
+      </if>
+      <if test="address != null">
+        ADDRESS = #{address},
+      </if>
+      <if test="birthday != null">
+        birthday = #{birthday},
+      </if>
+      <if test="photo != null">
+        photo = #{photo},
+      </if>
+
+
+    </set>
+    where USERID = #{userid}
+  </update>
+
+
+  <insert id="insert" parameterType="com.lyx.undergraduatejob.pojo.Users">
+
+    <selectKey keyProperty="userid" resultType="java.lang.Integer" order="AFTER">
+        select LAST_INSERT_ID()
+    </selectKey>
+    insert into tb_users
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="username != null">
+        USERNAME,
+      </if>
+
+      <if test="userpwd != null">
+        USERPWD,
+      </if>
+      <if test="age != null">
+        AGE,
+      </if>
+      <if test="sex != null">
+        SEX,
+      </if>
+      <if test="address != null">
+        ADDRESS,
+      </if>
+      <if test="birthday != null">
+        birthday,
+      </if>
+      <if test="photo != null">
+        photo,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="username != null">
+        #{username},
+      </if>
+
+      <if test="userpwd != null">
+        #{userpwd},
+      </if>
+      <if test="age != null">
+        #{age},
+      </if>
+      <if test="sex != null">
+        #{sex},
+      </if>
+      <if test="address != null">
+        #{address},
+      </if>
+      <if test="birthday != null">
+        #{birthday},
+      </if>
+      <if test="photo != null">
+        #{photo},
+      </if>
+    </trim>
+  </insert>
+
+
+
+</mapper>
