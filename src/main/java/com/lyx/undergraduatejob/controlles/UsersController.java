@@ -5,7 +5,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 
 @Controller
-@RequestMapping("")
 public class UsersController {
 
     @RequestMapping("about_us")
