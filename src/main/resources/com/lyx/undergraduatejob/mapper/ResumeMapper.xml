@@ -1,0 +1,575 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lyx.undergraduatejob.mapper.ResumeMapper">
+  <resultMap id="BaseResultMap" type="com.lyx.undergraduatejob.pojo.Resume">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="age" jdbcType="INTEGER" property="age" />
+    <result column="gender" jdbcType="INTEGER" property="gender" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="graduate_school" jdbcType="VARCHAR" property="graduateSchool" />
+    <result column="specialty" jdbcType="VARCHAR" property="specialty" />
+    <result column="eaucation" jdbcType="VARCHAR" property="eaucation" />
+    <result column="job" jdbcType="VARCHAR" property="job" />
+    <result column="job_type" jdbcType="VARCHAR" property="jobType" />
+    <result column="salary" jdbcType="INTEGER" property="salary" />
+    <result column="job_address" jdbcType="VARCHAR" property="jobAddress" />
+    <result column="part_full" jdbcType="INTEGER" property="partFull" />
+    <result column="free_time" jdbcType="VARCHAR" property="freeTime" />
+    <result column="self_introduction" jdbcType="VARCHAR" property="selfIntroduction" />
+    <result column="push_time" jdbcType="TIMESTAMP" property="pushTime" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="aul_status" jdbcType="INTEGER" property="aulStatus" />
+    <result column="resume_url" jdbcType="VARCHAR" property="resumeUrl" />
+    <result column="skill1" jdbcType="VARCHAR" property="skill1" />
+    <result column="skill2" jdbcType="VARCHAR" property="skill2" />
+    <result column="skill3" jdbcType="VARCHAR" property="skill3" />
+    <result column="skill4" jdbcType="VARCHAR" property="skill4" />
+    <result column="work_experience" jdbcType="INTEGER" property="workExperience" />
+    <result column="resume_vip" jdbcType="INTEGER" property="resumeVip" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, user_id, name, age, gender, phone, email, graduate_school, specialty, eaucation, 
+    job, job_type, salary, job_address, part_full, free_time, self_introduction, push_time, 
+    status, aul_status, resume_url, skill1, skill2, skill3, skill4, work_experience, 
+    resume_vip, create_time
+  </sql>
+  <select id="selectByExample" parameterType="com.lyx.undergraduatejob.pojo.ResumeExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from resume
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from resume
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from resume
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.lyx.undergraduatejob.pojo.ResumeExample">
+    delete from resume
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.lyx.undergraduatejob.pojo.Resume">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into resume (user_id, name, age, 
+      gender, phone, email, 
+      graduate_school, specialty, eaucation, 
+      job, job_type, salary, 
+      job_address, part_full, free_time, 
+      self_introduction, push_time, status, 
+      aul_status, resume_url, skill1, 
+      skill2, skill3, skill4, 
+      work_experience, resume_vip, create_time
+      )
+    values (#{userId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}, 
+      #{gender,jdbcType=INTEGER}, #{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{graduateSchool,jdbcType=VARCHAR}, #{specialty,jdbcType=VARCHAR}, #{eaucation,jdbcType=VARCHAR}, 
+      #{job,jdbcType=VARCHAR}, #{jobType,jdbcType=VARCHAR}, #{salary,jdbcType=INTEGER}, 
+      #{jobAddress,jdbcType=VARCHAR}, #{partFull,jdbcType=INTEGER}, #{freeTime,jdbcType=VARCHAR}, 
+      #{selfIntroduction,jdbcType=VARCHAR}, #{pushTime,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER}, 
+      #{aulStatus,jdbcType=INTEGER}, #{resumeUrl,jdbcType=VARCHAR}, #{skill1,jdbcType=VARCHAR}, 
+      #{skill2,jdbcType=VARCHAR}, #{skill3,jdbcType=VARCHAR}, #{skill4,jdbcType=VARCHAR}, 
+      #{workExperience,jdbcType=INTEGER}, #{resumeVip,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.lyx.undergraduatejob.pojo.Resume">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into resume
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="age != null">
+        age,
+      </if>
+      <if test="gender != null">
+        gender,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="graduateSchool != null">
+        graduate_school,
+      </if>
+      <if test="specialty != null">
+        specialty,
+      </if>
+      <if test="eaucation != null">
+        eaucation,
+      </if>
+      <if test="job != null">
+        job,
+      </if>
+      <if test="jobType != null">
+        job_type,
+      </if>
+      <if test="salary != null">
+        salary,
+      </if>
+      <if test="jobAddress != null">
+        job_address,
+      </if>
+      <if test="partFull != null">
+        part_full,
+      </if>
+      <if test="freeTime != null">
+        free_time,
+      </if>
+      <if test="selfIntroduction != null">
+        self_introduction,
+      </if>
+      <if test="pushTime != null">
+        push_time,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="aulStatus != null">
+        aul_status,
+      </if>
+      <if test="resumeUrl != null">
+        resume_url,
+      </if>
+      <if test="skill1 != null">
+        skill1,
+      </if>
+      <if test="skill2 != null">
+        skill2,
+      </if>
+      <if test="skill3 != null">
+        skill3,
+      </if>
+      <if test="skill4 != null">
+        skill4,
+      </if>
+      <if test="workExperience != null">
+        work_experience,
+      </if>
+      <if test="resumeVip != null">
+        resume_vip,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null">
+        #{age,jdbcType=INTEGER},
+      </if>
+      <if test="gender != null">
+        #{gender,jdbcType=INTEGER},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="graduateSchool != null">
+        #{graduateSchool,jdbcType=VARCHAR},
+      </if>
+      <if test="specialty != null">
+        #{specialty,jdbcType=VARCHAR},
+      </if>
+      <if test="eaucation != null">
+        #{eaucation,jdbcType=VARCHAR},
+      </if>
+      <if test="job != null">
+        #{job,jdbcType=VARCHAR},
+      </if>
+      <if test="jobType != null">
+        #{jobType,jdbcType=VARCHAR},
+      </if>
+      <if test="salary != null">
+        #{salary,jdbcType=INTEGER},
+      </if>
+      <if test="jobAddress != null">
+        #{jobAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="partFull != null">
+        #{partFull,jdbcType=INTEGER},
+      </if>
+      <if test="freeTime != null">
+        #{freeTime,jdbcType=VARCHAR},
+      </if>
+      <if test="selfIntroduction != null">
+        #{selfIntroduction,jdbcType=VARCHAR},
+      </if>
+      <if test="pushTime != null">
+        #{pushTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="aulStatus != null">
+        #{aulStatus,jdbcType=INTEGER},
+      </if>
+      <if test="resumeUrl != null">
+        #{resumeUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="skill1 != null">
+        #{skill1,jdbcType=VARCHAR},
+      </if>
+      <if test="skill2 != null">
+        #{skill2,jdbcType=VARCHAR},
+      </if>
+      <if test="skill3 != null">
+        #{skill3,jdbcType=VARCHAR},
+      </if>
+      <if test="skill4 != null">
+        #{skill4,jdbcType=VARCHAR},
+      </if>
+      <if test="workExperience != null">
+        #{workExperience,jdbcType=INTEGER},
+      </if>
+      <if test="resumeVip != null">
+        #{resumeVip,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.lyx.undergraduatejob.pojo.ResumeExample" resultType="java.lang.Long">
+    select count(*) from resume
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update resume
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.userId != null">
+        user_id = #{record.userId,jdbcType=INTEGER},
+      </if>
+      <if test="record.name != null">
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.age != null">
+        age = #{record.age,jdbcType=INTEGER},
+      </if>
+      <if test="record.gender != null">
+        gender = #{record.gender,jdbcType=INTEGER},
+      </if>
+      <if test="record.phone != null">
+        phone = #{record.phone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.email != null">
+        email = #{record.email,jdbcType=VARCHAR},
+      </if>
+      <if test="record.graduateSchool != null">
+        graduate_school = #{record.graduateSchool,jdbcType=VARCHAR},
+      </if>
+      <if test="record.specialty != null">
+        specialty = #{record.specialty,jdbcType=VARCHAR},
+      </if>
+      <if test="record.eaucation != null">
+        eaucation = #{record.eaucation,jdbcType=VARCHAR},
+      </if>
+      <if test="record.job != null">
+        job = #{record.job,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jobType != null">
+        job_type = #{record.jobType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.salary != null">
+        salary = #{record.salary,jdbcType=INTEGER},
+      </if>
+      <if test="record.jobAddress != null">
+        job_address = #{record.jobAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.partFull != null">
+        part_full = #{record.partFull,jdbcType=INTEGER},
+      </if>
+      <if test="record.freeTime != null">
+        free_time = #{record.freeTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.selfIntroduction != null">
+        self_introduction = #{record.selfIntroduction,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pushTime != null">
+        push_time = #{record.pushTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.aulStatus != null">
+        aul_status = #{record.aulStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.resumeUrl != null">
+        resume_url = #{record.resumeUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.skill1 != null">
+        skill1 = #{record.skill1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.skill2 != null">
+        skill2 = #{record.skill2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.skill3 != null">
+        skill3 = #{record.skill3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.skill4 != null">
+        skill4 = #{record.skill4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.workExperience != null">
+        work_experience = #{record.workExperience,jdbcType=INTEGER},
+      </if>
+      <if test="record.resumeVip != null">
+        resume_vip = #{record.resumeVip,jdbcType=INTEGER},
+      </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update resume
+    set id = #{record.id,jdbcType=INTEGER},
+      user_id = #{record.userId,jdbcType=INTEGER},
+      name = #{record.name,jdbcType=VARCHAR},
+      age = #{record.age,jdbcType=INTEGER},
+      gender = #{record.gender,jdbcType=INTEGER},
+      phone = #{record.phone,jdbcType=VARCHAR},
+      email = #{record.email,jdbcType=VARCHAR},
+      graduate_school = #{record.graduateSchool,jdbcType=VARCHAR},
+      specialty = #{record.specialty,jdbcType=VARCHAR},
+      eaucation = #{record.eaucation,jdbcType=VARCHAR},
+      job = #{record.job,jdbcType=VARCHAR},
+      job_type = #{record.jobType,jdbcType=VARCHAR},
+      salary = #{record.salary,jdbcType=INTEGER},
+      job_address = #{record.jobAddress,jdbcType=VARCHAR},
+      part_full = #{record.partFull,jdbcType=INTEGER},
+      free_time = #{record.freeTime,jdbcType=VARCHAR},
+      self_introduction = #{record.selfIntroduction,jdbcType=VARCHAR},
+      push_time = #{record.pushTime,jdbcType=TIMESTAMP},
+      status = #{record.status,jdbcType=INTEGER},
+      aul_status = #{record.aulStatus,jdbcType=INTEGER},
+      resume_url = #{record.resumeUrl,jdbcType=VARCHAR},
+      skill1 = #{record.skill1,jdbcType=VARCHAR},
+      skill2 = #{record.skill2,jdbcType=VARCHAR},
+      skill3 = #{record.skill3,jdbcType=VARCHAR},
+      skill4 = #{record.skill4,jdbcType=VARCHAR},
+      work_experience = #{record.workExperience,jdbcType=INTEGER},
+      resume_vip = #{record.resumeVip,jdbcType=INTEGER},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lyx.undergraduatejob.pojo.Resume">
+    update resume
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null">
+        age = #{age,jdbcType=INTEGER},
+      </if>
+      <if test="gender != null">
+        gender = #{gender,jdbcType=INTEGER},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="graduateSchool != null">
+        graduate_school = #{graduateSchool,jdbcType=VARCHAR},
+      </if>
+      <if test="specialty != null">
+        specialty = #{specialty,jdbcType=VARCHAR},
+      </if>
+      <if test="eaucation != null">
+        eaucation = #{eaucation,jdbcType=VARCHAR},
+      </if>
+      <if test="job != null">
+        job = #{job,jdbcType=VARCHAR},
+      </if>
+      <if test="jobType != null">
+        job_type = #{jobType,jdbcType=VARCHAR},
+      </if>
+      <if test="salary != null">
+        salary = #{salary,jdbcType=INTEGER},
+      </if>
+      <if test="jobAddress != null">
+        job_address = #{jobAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="partFull != null">
+        part_full = #{partFull,jdbcType=INTEGER},
+      </if>
+      <if test="freeTime != null">
+        free_time = #{freeTime,jdbcType=VARCHAR},
+      </if>
+      <if test="selfIntroduction != null">
+        self_introduction = #{selfIntroduction,jdbcType=VARCHAR},
+      </if>
+      <if test="pushTime != null">
+        push_time = #{pushTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="aulStatus != null">
+        aul_status = #{aulStatus,jdbcType=INTEGER},
+      </if>
+      <if test="resumeUrl != null">
+        resume_url = #{resumeUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="skill1 != null">
+        skill1 = #{skill1,jdbcType=VARCHAR},
+      </if>
+      <if test="skill2 != null">
+        skill2 = #{skill2,jdbcType=VARCHAR},
+      </if>
+      <if test="skill3 != null">
+        skill3 = #{skill3,jdbcType=VARCHAR},
+      </if>
+      <if test="skill4 != null">
+        skill4 = #{skill4,jdbcType=VARCHAR},
+      </if>
+      <if test="workExperience != null">
+        work_experience = #{workExperience,jdbcType=INTEGER},
+      </if>
+      <if test="resumeVip != null">
+        resume_vip = #{resumeVip,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lyx.undergraduatejob.pojo.Resume">
+    update resume
+    set user_id = #{userId,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
+      age = #{age,jdbcType=INTEGER},
+      gender = #{gender,jdbcType=INTEGER},
+      phone = #{phone,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      graduate_school = #{graduateSchool,jdbcType=VARCHAR},
+      specialty = #{specialty,jdbcType=VARCHAR},
+      eaucation = #{eaucation,jdbcType=VARCHAR},
+      job = #{job,jdbcType=VARCHAR},
+      job_type = #{jobType,jdbcType=VARCHAR},
+      salary = #{salary,jdbcType=INTEGER},
+      job_address = #{jobAddress,jdbcType=VARCHAR},
+      part_full = #{partFull,jdbcType=INTEGER},
+      free_time = #{freeTime,jdbcType=VARCHAR},
+      self_introduction = #{selfIntroduction,jdbcType=VARCHAR},
+      push_time = #{pushTime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=INTEGER},
+      aul_status = #{aulStatus,jdbcType=INTEGER},
+      resume_url = #{resumeUrl,jdbcType=VARCHAR},
+      skill1 = #{skill1,jdbcType=VARCHAR},
+      skill2 = #{skill2,jdbcType=VARCHAR},
+      skill3 = #{skill3,jdbcType=VARCHAR},
+      skill4 = #{skill4,jdbcType=VARCHAR},
+      work_experience = #{workExperience,jdbcType=INTEGER},
+      resume_vip = #{resumeVip,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,35 @@
+server:
+    port: 8080
+
+spring:
+    datasource:
+        url: jdbc:mysql://localhost:3306/expressage?useUnicode=true
+        username: lyx
+        password: 123
+    mail:
+        host: smtp.163.com
+        username: 18216308307@163.com
+        password: m4gewo
+        default-encoding: UTF-8
+        properties:
+            mail:
+                smtp:
+                    auth: true
+                    starttls:
+                        enable: true
+                        required: true
+    thymeleaf:
+        mode: HTML
+        encoding: UTF-8
+        servlet:
+            content-type: text/html
+        cache: false
+        suffix: .html
+        prefix: classpath:/templates/
+
+
+
+want:
+    mail:
+        senderName: want-conpany
+
