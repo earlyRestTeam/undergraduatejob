@@ -17,7 +17,7 @@
     <result column="part_full" jdbcType="INTEGER" property="partFull" />
     <result column="salary" jdbcType="INTEGER" property="salary" />
     <result column="close_type" jdbcType="INTEGER" property="closeType" />
-    <result column="eaucation_demand" jdbcType="INTEGER" property="eaucationDemand" />
+    <result column="education" jdbcType="INTEGER" property="education" />
     <result column="work_years" jdbcType="INTEGER" property="workYears" />
     <result column="work_address" jdbcType="VARCHAR" property="workAddress" />
     <result column="detailed_address" jdbcType="VARCHAR" property="detailedAddress" />
@@ -88,9 +88,9 @@
   </sql>
   <sql id="Base_Column_List">
     id, status, aul_status, job_title, company_id, job_name, job_desc, job_type, contacts, 
-    contacts_phone, email, need_num, part_full, salary, close_type, eaucation_demand, 
-    work_years, work_address, detailed_address, receive_num, collect_num, visit_num, 
-    job_vip, push_time, create_time
+    contacts_phone, email, need_num, part_full, salary, close_type, education, work_years, 
+    work_address, detailed_address, receive_num, collect_num, visit_num, job_vip, push_time, 
+    create_time
   </sql>
   <select id="selectByExample" parameterType="com.lyx.undergraduatejob.pojo.JobExample" resultMap="BaseResultMap">
     select
@@ -130,7 +130,7 @@
       company_id, job_name, job_desc, 
       job_type, contacts, contacts_phone, 
       email, need_num, part_full, 
-      salary, close_type, eaucation_demand, 
+      salary, close_type, education, 
       work_years, work_address, detailed_address, 
       receive_num, collect_num, visit_num, 
       job_vip, push_time, create_time
@@ -139,7 +139,7 @@
       #{companyId,jdbcType=INTEGER}, #{jobName,jdbcType=VARCHAR}, #{jobDesc,jdbcType=VARCHAR}, 
       #{jobType,jdbcType=VARCHAR}, #{contacts,jdbcType=VARCHAR}, #{contactsPhone,jdbcType=VARCHAR}, 
       #{email,jdbcType=VARCHAR}, #{needNum,jdbcType=INTEGER}, #{partFull,jdbcType=INTEGER}, 
-      #{salary,jdbcType=INTEGER}, #{closeType,jdbcType=INTEGER}, #{eaucationDemand,jdbcType=INTEGER}, 
+      #{salary,jdbcType=INTEGER}, #{closeType,jdbcType=INTEGER}, #{education,jdbcType=INTEGER}, 
       #{workYears,jdbcType=INTEGER}, #{workAddress,jdbcType=VARCHAR}, #{detailedAddress,jdbcType=VARCHAR}, 
       #{receiveNum,jdbcType=INTEGER}, #{collectNum,jdbcType=INTEGER}, #{visitNum,jdbcType=INTEGER}, 
       #{jobVip,jdbcType=INTEGER}, #{pushTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP}
@@ -193,8 +193,8 @@
       <if test="closeType != null">
         close_type,
       </if>
-      <if test="eaucationDemand != null">
-        eaucation_demand,
+      <if test="education != null">
+        education,
       </if>
       <if test="workYears != null">
         work_years,
@@ -267,8 +267,8 @@
       <if test="closeType != null">
         #{closeType,jdbcType=INTEGER},
       </if>
-      <if test="eaucationDemand != null">
-        #{eaucationDemand,jdbcType=INTEGER},
+      <if test="education != null">
+        #{education,jdbcType=INTEGER},
       </if>
       <if test="workYears != null">
         #{workYears,jdbcType=INTEGER},
@@ -353,8 +353,8 @@
       <if test="record.closeType != null">
         close_type = #{record.closeType,jdbcType=INTEGER},
       </if>
-      <if test="record.eaucationDemand != null">
-        eaucation_demand = #{record.eaucationDemand,jdbcType=INTEGER},
+      <if test="record.education != null">
+        education = #{record.education,jdbcType=INTEGER},
       </if>
       <if test="record.workYears != null">
         work_years = #{record.workYears,jdbcType=INTEGER},
@@ -405,7 +405,7 @@
       part_full = #{record.partFull,jdbcType=INTEGER},
       salary = #{record.salary,jdbcType=INTEGER},
       close_type = #{record.closeType,jdbcType=INTEGER},
-      eaucation_demand = #{record.eaucationDemand,jdbcType=INTEGER},
+      education = #{record.education,jdbcType=INTEGER},
       work_years = #{record.workYears,jdbcType=INTEGER},
       work_address = #{record.workAddress,jdbcType=VARCHAR},
       detailed_address = #{record.detailedAddress,jdbcType=VARCHAR},
@@ -464,8 +464,8 @@
       <if test="closeType != null">
         close_type = #{closeType,jdbcType=INTEGER},
       </if>
-      <if test="eaucationDemand != null">
-        eaucation_demand = #{eaucationDemand,jdbcType=INTEGER},
+      <if test="education != null">
+        education = #{education,jdbcType=INTEGER},
       </if>
       <if test="workYears != null">
         work_years = #{workYears,jdbcType=INTEGER},
@@ -513,7 +513,7 @@
       part_full = #{partFull,jdbcType=INTEGER},
       salary = #{salary,jdbcType=INTEGER},
       close_type = #{closeType,jdbcType=INTEGER},
-      eaucation_demand = #{eaucationDemand,jdbcType=INTEGER},
+      education = #{education,jdbcType=INTEGER},
       work_years = #{workYears,jdbcType=INTEGER},
       work_address = #{workAddress,jdbcType=VARCHAR},
       detailed_address = #{detailedAddress,jdbcType=VARCHAR},

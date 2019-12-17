@@ -1075,63 +1075,63 @@ public class JobExample {
             return (Criteria) this;
         }
 
-        public Criteria andEaucationDemandIsNull() {
-            addCriterion("eaucation_demand is null");
+        public Criteria andEducationIsNull() {
+            addCriterion("education is null");
             return (Criteria) this;
         }
 
-        public Criteria andEaucationDemandIsNotNull() {
-            addCriterion("eaucation_demand is not null");
+        public Criteria andEducationIsNotNull() {
+            addCriterion("education is not null");
             return (Criteria) this;
         }
 
-        public Criteria andEaucationDemandEqualTo(Integer value) {
-            addCriterion("eaucation_demand =", value, "eaucationDemand");
+        public Criteria andEducationEqualTo(Integer value) {
+            addCriterion("education =", value, "education");
             return (Criteria) this;
         }
 
-        public Criteria andEaucationDemandNotEqualTo(Integer value) {
-            addCriterion("eaucation_demand <>", value, "eaucationDemand");
+        public Criteria andEducationNotEqualTo(Integer value) {
+            addCriterion("education <>", value, "education");
             return (Criteria) this;
         }
 
-        public Criteria andEaucationDemandGreaterThan(Integer value) {
-            addCriterion("eaucation_demand >", value, "eaucationDemand");
+        public Criteria andEducationGreaterThan(Integer value) {
+            addCriterion("education >", value, "education");
             return (Criteria) this;
         }
 
-        public Criteria andEaucationDemandGreaterThanOrEqualTo(Integer value) {
-            addCriterion("eaucation_demand >=", value, "eaucationDemand");
+        public Criteria andEducationGreaterThanOrEqualTo(Integer value) {
+            addCriterion("education >=", value, "education");
             return (Criteria) this;
         }
 
-        public Criteria andEaucationDemandLessThan(Integer value) {
-            addCriterion("eaucation_demand <", value, "eaucationDemand");
+        public Criteria andEducationLessThan(Integer value) {
+            addCriterion("education <", value, "education");
             return (Criteria) this;
         }
 
-        public Criteria andEaucationDemandLessThanOrEqualTo(Integer value) {
-            addCriterion("eaucation_demand <=", value, "eaucationDemand");
+        public Criteria andEducationLessThanOrEqualTo(Integer value) {
+            addCriterion("education <=", value, "education");
             return (Criteria) this;
         }
 
-        public Criteria andEaucationDemandIn(List<Integer> values) {
-            addCriterion("eaucation_demand in", values, "eaucationDemand");
+        public Criteria andEducationIn(List<Integer> values) {
+            addCriterion("education in", values, "education");
             return (Criteria) this;
         }
 
-        public Criteria andEaucationDemandNotIn(List<Integer> values) {
-            addCriterion("eaucation_demand not in", values, "eaucationDemand");
+        public Criteria andEducationNotIn(List<Integer> values) {
+            addCriterion("education not in", values, "education");
             return (Criteria) this;
         }
 
-        public Criteria andEaucationDemandBetween(Integer value1, Integer value2) {
-            addCriterion("eaucation_demand between", value1, value2, "eaucationDemand");
+        public Criteria andEducationBetween(Integer value1, Integer value2) {
+            addCriterion("education between", value1, value2, "education");
             return (Criteria) this;
         }
 
-        public Criteria andEaucationDemandNotBetween(Integer value1, Integer value2) {
-            addCriterion("eaucation_demand not between", value1, value2, "eaucationDemand");
+        public Criteria andEducationNotBetween(Integer value1, Integer value2) {
+            addCriterion("education not between", value1, value2, "education");
             return (Criteria) this;
         }
 

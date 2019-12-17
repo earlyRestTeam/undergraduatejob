@@ -11,7 +11,7 @@
     <result column="email" jdbcType="VARCHAR" property="email" />
     <result column="graduate_school" jdbcType="VARCHAR" property="graduateSchool" />
     <result column="specialty" jdbcType="VARCHAR" property="specialty" />
-    <result column="eaucation" jdbcType="VARCHAR" property="eaucation" />
+    <result column="education" jdbcType="VARCHAR" property="education" />
     <result column="job" jdbcType="VARCHAR" property="job" />
     <result column="job_type" jdbcType="VARCHAR" property="jobType" />
     <result column="salary" jdbcType="INTEGER" property="salary" />
@@ -90,7 +90,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, user_id, name, age, gender, phone, email, graduate_school, specialty, eaucation, 
+    id, user_id, name, age, gender, phone, email, graduate_school, specialty, education, 
     job, job_type, salary, job_address, part_full, free_time, self_introduction, push_time, 
     status, aul_status, resume_url, skill1, skill2, skill3, skill4, work_experience, 
     resume_vip, create_time
@@ -131,7 +131,7 @@
     </selectKey>
     insert into resume (user_id, name, age, 
       gender, phone, email, 
-      graduate_school, specialty, eaucation, 
+      graduate_school, specialty, education, 
       job, job_type, salary, 
       job_address, part_full, free_time, 
       self_introduction, push_time, status, 
@@ -141,7 +141,7 @@
       )
     values (#{userId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}, 
       #{gender,jdbcType=INTEGER}, #{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
-      #{graduateSchool,jdbcType=VARCHAR}, #{specialty,jdbcType=VARCHAR}, #{eaucation,jdbcType=VARCHAR}, 
+      #{graduateSchool,jdbcType=VARCHAR}, #{specialty,jdbcType=VARCHAR}, #{education,jdbcType=VARCHAR}, 
       #{job,jdbcType=VARCHAR}, #{jobType,jdbcType=VARCHAR}, #{salary,jdbcType=INTEGER}, 
       #{jobAddress,jdbcType=VARCHAR}, #{partFull,jdbcType=INTEGER}, #{freeTime,jdbcType=VARCHAR}, 
       #{selfIntroduction,jdbcType=VARCHAR}, #{pushTime,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER}, 
@@ -180,8 +180,8 @@
       <if test="specialty != null">
         specialty,
       </if>
-      <if test="eaucation != null">
-        eaucation,
+      <if test="education != null">
+        education,
       </if>
       <if test="job != null">
         job,
@@ -263,8 +263,8 @@
       <if test="specialty != null">
         #{specialty,jdbcType=VARCHAR},
       </if>
-      <if test="eaucation != null">
-        #{eaucation,jdbcType=VARCHAR},
+      <if test="education != null">
+        #{education,jdbcType=VARCHAR},
       </if>
       <if test="job != null">
         #{job,jdbcType=VARCHAR},
@@ -358,8 +358,8 @@
       <if test="record.specialty != null">
         specialty = #{record.specialty,jdbcType=VARCHAR},
       </if>
-      <if test="record.eaucation != null">
-        eaucation = #{record.eaucation,jdbcType=VARCHAR},
+      <if test="record.education != null">
+        education = #{record.education,jdbcType=VARCHAR},
       </if>
       <if test="record.job != null">
         job = #{record.job,jdbcType=VARCHAR},
@@ -431,7 +431,7 @@
       email = #{record.email,jdbcType=VARCHAR},
       graduate_school = #{record.graduateSchool,jdbcType=VARCHAR},
       specialty = #{record.specialty,jdbcType=VARCHAR},
-      eaucation = #{record.eaucation,jdbcType=VARCHAR},
+      education = #{record.education,jdbcType=VARCHAR},
       job = #{record.job,jdbcType=VARCHAR},
       job_type = #{record.jobType,jdbcType=VARCHAR},
       salary = #{record.salary,jdbcType=INTEGER},
@@ -481,8 +481,8 @@
       <if test="specialty != null">
         specialty = #{specialty,jdbcType=VARCHAR},
       </if>
-      <if test="eaucation != null">
-        eaucation = #{eaucation,jdbcType=VARCHAR},
+      <if test="education != null">
+        education = #{education,jdbcType=VARCHAR},
       </if>
       <if test="job != null">
         job = #{job,jdbcType=VARCHAR},
@@ -551,7 +551,7 @@
       email = #{email,jdbcType=VARCHAR},
       graduate_school = #{graduateSchool,jdbcType=VARCHAR},
       specialty = #{specialty,jdbcType=VARCHAR},
-      eaucation = #{eaucation,jdbcType=VARCHAR},
+      education = #{education,jdbcType=VARCHAR},
       job = #{job,jdbcType=VARCHAR},
       job_type = #{jobType,jdbcType=VARCHAR},
       salary = #{salary,jdbcType=INTEGER},

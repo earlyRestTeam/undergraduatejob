@@ -895,73 +895,73 @@ public class CompanyExample {
             return (Criteria) this;
         }
 
-        public Criteria andWelfaleIsNull() {
-            addCriterion("welfale is null");
+        public Criteria andWelfareIsNull() {
+            addCriterion("welfare is null");
             return (Criteria) this;
         }
 
-        public Criteria andWelfaleIsNotNull() {
-            addCriterion("welfale is not null");
+        public Criteria andWelfareIsNotNull() {
+            addCriterion("welfare is not null");
             return (Criteria) this;
         }
 
-        public Criteria andWelfaleEqualTo(String value) {
-            addCriterion("welfale =", value, "welfale");
+        public Criteria andWelfareEqualTo(String value) {
+            addCriterion("welfare =", value, "welfare");
             return (Criteria) this;
         }
 
-        public Criteria andWelfaleNotEqualTo(String value) {
-            addCriterion("welfale <>", value, "welfale");
+        public Criteria andWelfareNotEqualTo(String value) {
+            addCriterion("welfare <>", value, "welfare");
             return (Criteria) this;
         }
 
-        public Criteria andWelfaleGreaterThan(String value) {
-            addCriterion("welfale >", value, "welfale");
+        public Criteria andWelfareGreaterThan(String value) {
+            addCriterion("welfare >", value, "welfare");
             return (Criteria) this;
         }
 
-        public Criteria andWelfaleGreaterThanOrEqualTo(String value) {
-            addCriterion("welfale >=", value, "welfale");
+        public Criteria andWelfareGreaterThanOrEqualTo(String value) {
+            addCriterion("welfare >=", value, "welfare");
             return (Criteria) this;
         }
 
-        public Criteria andWelfaleLessThan(String value) {
-            addCriterion("welfale <", value, "welfale");
+        public Criteria andWelfareLessThan(String value) {
+            addCriterion("welfare <", value, "welfare");
             return (Criteria) this;
         }
 
-        public Criteria andWelfaleLessThanOrEqualTo(String value) {
-            addCriterion("welfale <=", value, "welfale");
+        public Criteria andWelfareLessThanOrEqualTo(String value) {
+            addCriterion("welfare <=", value, "welfare");
             return (Criteria) this;
         }
 
-        public Criteria andWelfaleLike(String value) {
-            addCriterion("welfale like", value, "welfale");
+        public Criteria andWelfareLike(String value) {
+            addCriterion("welfare like", value, "welfare");
             return (Criteria) this;
         }
 
-        public Criteria andWelfaleNotLike(String value) {
-            addCriterion("welfale not like", value, "welfale");
+        public Criteria andWelfareNotLike(String value) {
+            addCriterion("welfare not like", value, "welfare");
             return (Criteria) this;
         }
 
-        public Criteria andWelfaleIn(List<String> values) {
-            addCriterion("welfale in", values, "welfale");
+        public Criteria andWelfareIn(List<String> values) {
+            addCriterion("welfare in", values, "welfare");
             return (Criteria) this;
         }
 
-        public Criteria andWelfaleNotIn(List<String> values) {
-            addCriterion("welfale not in", values, "welfale");
+        public Criteria andWelfareNotIn(List<String> values) {
+            addCriterion("welfare not in", values, "welfare");
             return (Criteria) this;
         }
 
-        public Criteria andWelfaleBetween(String value1, String value2) {
-            addCriterion("welfale between", value1, value2, "welfale");
+        public Criteria andWelfareBetween(String value1, String value2) {
+            addCriterion("welfare between", value1, value2, "welfare");
             return (Criteria) this;
         }
 
-        public Criteria andWelfaleNotBetween(String value1, String value2) {
-            addCriterion("welfale not between", value1, value2, "welfale");
+        public Criteria andWelfareNotBetween(String value1, String value2) {
+            addCriterion("welfare not between", value1, value2, "welfare");
             return (Criteria) this;
         }
 

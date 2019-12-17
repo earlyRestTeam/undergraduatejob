@@ -22,7 +22,7 @@ public class Resume implements Serializable {
 
     private String specialty;
 
-    private String eaucation;
+    private String education;
 
     private String job;
 
@@ -134,12 +134,12 @@ public class Resume implements Serializable {
         this.specialty = specialty;
     }
 
-    public String getEaucation() {
-        return eaucation;
+    public String getEducation() {
+        return education;
     }
 
-    public void setEaucation(String eaucation) {
-        this.eaucation = eaucation;
+    public void setEducation(String education) {
+        this.education = education;
     }
 
     public String getJob() {
@@ -301,7 +301,7 @@ public class Resume implements Serializable {
         sb.append(", email=").append(email);
         sb.append(", graduateSchool=").append(graduateSchool);
         sb.append(", specialty=").append(specialty);
-        sb.append(", eaucation=").append(eaucation);
+        sb.append(", education=").append(education);
         sb.append(", job=").append(job);
         sb.append(", jobType=").append(jobType);
         sb.append(", salary=").append(salary);

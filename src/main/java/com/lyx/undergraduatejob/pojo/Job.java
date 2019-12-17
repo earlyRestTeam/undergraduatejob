@@ -34,7 +34,7 @@ public class Job implements Serializable {
 
     private Integer closeType;
 
-    private Integer eaucationDemand;
+    private Integer education;
 
     private Integer workYears;
 
@@ -176,12 +176,12 @@ public class Job implements Serializable {
         this.closeType = closeType;
     }
 
-    public Integer getEaucationDemand() {
-        return eaucationDemand;
+    public Integer getEducation() {
+        return education;
     }
 
-    public void setEaucationDemand(Integer eaucationDemand) {
-        this.eaucationDemand = eaucationDemand;
+    public void setEducation(Integer education) {
+        this.education = education;
     }
 
     public Integer getWorkYears() {
@@ -277,7 +277,7 @@ public class Job implements Serializable {
         sb.append(", partFull=").append(partFull);
         sb.append(", salary=").append(salary);
         sb.append(", closeType=").append(closeType);
-        sb.append(", eaucationDemand=").append(eaucationDemand);
+        sb.append(", education=").append(education);
         sb.append(", workYears=").append(workYears);
         sb.append(", workAddress=").append(workAddress);
         sb.append(", detailedAddress=").append(detailedAddress);

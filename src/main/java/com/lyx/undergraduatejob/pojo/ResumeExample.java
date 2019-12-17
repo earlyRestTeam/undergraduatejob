@@ -695,73 +695,73 @@ public class ResumeExample {
             return (Criteria) this;
         }
 
-        public Criteria andEaucationIsNull() {
-            addCriterion("eaucation is null");
+        public Criteria andEducationIsNull() {
+            addCriterion("education is null");
             return (Criteria) this;
         }
 
-        public Criteria andEaucationIsNotNull() {
-            addCriterion("eaucation is not null");
+        public Criteria andEducationIsNotNull() {
+            addCriterion("education is not null");
             return (Criteria) this;
         }
 
-        public Criteria andEaucationEqualTo(String value) {
-            addCriterion("eaucation =", value, "eaucation");
+        public Criteria andEducationEqualTo(String value) {
+            addCriterion("education =", value, "education");
             return (Criteria) this;
         }
 
-        public Criteria andEaucationNotEqualTo(String value) {
-            addCriterion("eaucation <>", value, "eaucation");
+        public Criteria andEducationNotEqualTo(String value) {
+            addCriterion("education <>", value, "education");
             return (Criteria) this;
         }
 
-        public Criteria andEaucationGreaterThan(String value) {
-            addCriterion("eaucation >", value, "eaucation");
+        public Criteria andEducationGreaterThan(String value) {
+            addCriterion("education >", value, "education");
             return (Criteria) this;
         }
 
-        public Criteria andEaucationGreaterThanOrEqualTo(String value) {
-            addCriterion("eaucation >=", value, "eaucation");
+        public Criteria andEducationGreaterThanOrEqualTo(String value) {
+            addCriterion("education >=", value, "education");
             return (Criteria) this;
         }
 
-        public Criteria andEaucationLessThan(String value) {
-            addCriterion("eaucation <", value, "eaucation");
+        public Criteria andEducationLessThan(String value) {
+            addCriterion("education <", value, "education");
             return (Criteria) this;
         }
 
-        public Criteria andEaucationLessThanOrEqualTo(String value) {
-            addCriterion("eaucation <=", value, "eaucation");
+        public Criteria andEducationLessThanOrEqualTo(String value) {
+            addCriterion("education <=", value, "education");
             return (Criteria) this;
         }
 
-        public Criteria andEaucationLike(String value) {
-            addCriterion("eaucation like", value, "eaucation");
+        public Criteria andEducationLike(String value) {
+            addCriterion("education like", value, "education");
             return (Criteria) this;
         }
 
-        public Criteria andEaucationNotLike(String value) {
-            addCriterion("eaucation not like", value, "eaucation");
+        public Criteria andEducationNotLike(String value) {
+            addCriterion("education not like", value, "education");
             return (Criteria) this;
         }
 
-        public Criteria andEaucationIn(List<String> values) {
-            addCriterion("eaucation in", values, "eaucation");
+        public Criteria andEducationIn(List<String> values) {
+            addCriterion("education in", values, "education");
             return (Criteria) this;
         }
 
-        public Criteria andEaucationNotIn(List<String> values) {
-            addCriterion("eaucation not in", values, "eaucation");
+        public Criteria andEducationNotIn(List<String> values) {
+            addCriterion("education not in", values, "education");
             return (Criteria) this;
         }
 
-        public Criteria andEaucationBetween(String value1, String value2) {
-            addCriterion("eaucation between", value1, value2, "eaucation");
+        public Criteria andEducationBetween(String value1, String value2) {
+            addCriterion("education between", value1, value2, "education");
             return (Criteria) this;
         }
 
-        public Criteria andEaucationNotBetween(String value1, String value2) {
-            addCriterion("eaucation not between", value1, value2, "eaucation");
+        public Criteria andEducationNotBetween(String value1, String value2) {
+            addCriterion("education not between", value1, value2, "education");
             return (Criteria) this;
         }
 

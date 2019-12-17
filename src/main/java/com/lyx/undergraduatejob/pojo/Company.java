@@ -28,7 +28,7 @@ public class Company implements Serializable {
 
     private Integer companyVip;
 
-    private String welfale;
+    private String welfare;
 
     private Integer phoneAlbum;
 
@@ -144,12 +144,12 @@ public class Company implements Serializable {
         this.companyVip = companyVip;
     }
 
-    public String getWelfale() {
-        return welfale;
+    public String getWelfare() {
+        return welfare;
     }
 
-    public void setWelfale(String welfale) {
-        this.welfale = welfale;
+    public void setWelfare(String welfare) {
+        this.welfare = welfare;
     }
 
     public Integer getPhoneAlbum() {
@@ -234,7 +234,7 @@ public class Company implements Serializable {
         sb.append(", companyDesc=").append(companyDesc);
         sb.append(", aulStatus=").append(aulStatus);
         sb.append(", companyVip=").append(companyVip);
-        sb.append(", welfale=").append(welfale);
+        sb.append(", welfare=").append(welfare);
         sb.append(", phoneAlbum=").append(phoneAlbum);
         sb.append(", jobNum=").append(jobNum);
         sb.append(", collectNum=").append(collectNum);
