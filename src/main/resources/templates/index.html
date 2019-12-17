@@ -6,30 +6,30 @@
 <html lang="zxx" xmlns:th="http://www.thymeleaf.org">
  <!--[endif]-->
  <head th:replace="public::public_head">
-<!--  <meta charset="utf-8" />-->
-<!--  <title>大学生兼职平台</title>-->
-<!--  <meta content="width=device-width, initial-scale=1.0" name="viewport" />-->
-<!--  <meta name="description" content="JB desks,job portal,job" />-->
-<!--  <meta name="keywords" content="JB desks,job portal,job" />-->
-<!--  <meta name="author" content="" />-->
-<!--  <meta name="MobileOptimized" content="320" />-->
-<!--  &lt;!&ndash;Template style &ndash;&gt;-->
-<!--  <link rel="stylesheet" type="text/css" href="css/animate.css" />-->
-<!--  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />-->
-<!--  <link rel="stylesheet" type="text/css" href="css/fonts.css" />-->
-<!--  <link rel="stylesheet" type="text/css" href="css/flaticon.css" />-->
-<!--  <link rel="stylesheet" type="text/css" href="css/font-awesome.css" />-->
-<!--  <link rel="stylesheet" type="text/css" href="css/owl.carousel.css" />-->
-<!--  <link rel="stylesheet" type="text/css" href="css/owl.theme.default.css" />-->
-<!--  <link rel="stylesheet" type="text/css" href="css/dropify.min.css" />-->
-<!--  <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css" />-->
-<!--  <link rel="stylesheet" type="text/css" href="css/magnific-popup.css" />-->
-<!--  <link rel="stylesheet" type="text/css" href="css/nice-select.css" />-->
-<!--  <link rel="stylesheet" type="text/css" href="css/reset.css" />-->
-<!--  <link rel="stylesheet" type="text/css" href="css/style.css" />-->
-<!--  <link rel="stylesheet" type="text/css" href="css/responsive.css" />-->
-<!--  &lt;!&ndash;favicon&ndash;&gt;-->
-<!--  <link rel="shortcut icon" type="image/png" href="images/favicon.png" />-->
+  <meta charset="utf-8" />
+  <title>大学生兼职平台</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <meta name="description" content="JB desks,job portal,job" />
+  <meta name="keywords" content="JB desks,job portal,job" />
+  <meta name="author" content="" />
+  <meta name="MobileOptimized" content="320" />
+  <!--Template style -->
+  <link rel="stylesheet" type="text/css" href="css/animate.css" />
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="css/fonts.css" />
+  <link rel="stylesheet" type="text/css" href="css/flaticon.css" />
+  <link rel="stylesheet" type="text/css" href="css/font-awesome.css" />
+  <link rel="stylesheet" type="text/css" href="css/owl.carousel.css" />
+  <link rel="stylesheet" type="text/css" href="css/owl.theme.default.css" />
+  <link rel="stylesheet" type="text/css" href="css/dropify.min.css" />
+  <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css" />
+  <link rel="stylesheet" type="text/css" href="css/magnific-popup.css" />
+  <link rel="stylesheet" type="text/css" href="css/nice-select.css" />
+  <link rel="stylesheet" type="text/css" href="css/reset.css" />
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
+  <link rel="stylesheet" type="text/css" href="css/responsive.css" />
+  <!--favicon-->
+  <link rel="shortcut icon" type="image/png" href="images/favicon.png" />
  </head>
  <body>
   <!-- preloader Start -->
@@ -49,6 +49,8 @@
    <ul th:replace="public::public_cd-dropdown-content"></ul>
    <!-- .cd-dropdown-content -->
   </nav>
+
+
   <div class="cp_navi_main_wrapper jb_cover">
    <div class="container-fluid">
     <div class="cp_logo_wrapper">
@@ -96,24 +98,16 @@
     <div class="jb_navigation_wrapper">
      <div class="mainmenu d-xl-block d-lg-block d-md-none d-sm-none d-none">
       <ul class="main_nav_ul">
-       <li class="has-mega gc_main_navigation"><a href="#" class="gc_main_navigation active_class">home</a>
+
+       <li class="has-mega gc_main_navigation"><a href="#" class="gc_main_navigation active_class">主页</a>
         <ul class="navi_2_dropdown">
-         <li class="parent"><a href="index"><i class="fas fa-square"></i>home I</a></li>
-         <li class="parent"><a href="index_III"><i class="fas fa-square"></i>home II</a></li>
+         <li class="parent"><a href="index"><i class="fas fa-square"></i>主页 I</a></li>
+         <li class="parent"><a href="index_III"><i class="fas fa-square"></i>主页 II</a></li>
 
         </ul></li>
-       <li class="has-mega gc_main_navigation"><a href="#" class="gc_main_navigation">jobs</a>
-        <ul class="navi_2_dropdown">
-         <li class="parent"><a href="job_listing_grid_left_filter"><i class="fas fa-square"></i>job listing grid</a></li>
-         <li class="parent"><a href="job_listing_list_left_filter"><i class="fas fa-square"></i>job listing list</a></li>
-         <li class="parent"><a href="job_single"><i class="fas fa-square"></i>job single</a></li>
-         <li class="parent"><a href="#"><i class="fas fa-square"></i>jobs<span><i class="fas fa-chevron-right"></i></span></a>
-          <ul class="dropdown-menu-right">
-           <li><a href="job_listing_grid_left_filter"><i class="fas fa-square"></i>job listing grid</a></li>
-           <li><a href="job_listing_list_left_filter"><i class="fas fa-square"></i>job listing list</a></li>
-           <li><a href="job_single"><i class="fas fa-square"></i>job single</a></li>
-          </ul></li>
-        </ul></li>
+
+       <li class="has-mega gc_main_navigation"><a href="job_listing_grid_left_filter" class="gc_main_navigation">职位</a>
+        </li>
        <li class="has-mega gc_main_navigation kv_sub_menu"><a href="#" class="gc_main_navigation">candidates</a>
         <!-- mega menu start -->
         <ul class="kv_mega_menu">
@@ -186,46 +180,50 @@
            </div>
           </div></li>
         </ul></li>
+
        <li class="has-mega gc_main_navigation"><a href="#" class="gc_main_navigation">pages</a>
         <ul class="navi_2_dropdown">
-         <li class="parent"><a href="about_us"><i class="fas fa-square"></i>about us</a></li>
+         <li class="parent"><a href="about_us"><i class="fas fa-square"></i>关于我们</a></li>
          <li class="parent"><a href="companies"><i class="fas fa-square"></i>companies</a></li>
          <li class="parent"><a href="company_single"><i class="fas fa-square"></i>company single</a></li>
          <li class="parent"><a href="error_page"><i class="fas fa-square"></i>error page</a></li>
          <li class="parent"><a href="login"><i class="fas fa-square"></i>登录</a></li>
-         <li class="parent"><a href="pricing_table"><i class="fas fa-square"></i>pricing table</a></li>
+         <li class="parent"><a href="pricing_table"><i class="fas fa-square"></i>平台服务</a></li>
          <li class="parent"><a href="sign_up"><i class="fas fa-square"></i>注册</a></li>
         </ul></li>
-       <li class="has-mega gc_main_navigation"><a href="#" class="gc_main_navigation">个人/企业资料</a>
+
+       <li class="has-mega gc_main_navigation"><a href="#" class="gc_main_navigation">用户中心</a>
         <ul class="navi_2_dropdown">
-         <li class="parent"><a href="#"><i class="fas fa-square"></i>candidate<span><i class="fas fa-chevron-right"></i></span></a>
+         <li class="parent"><a href="#"><i class="fas fa-square"></i>用户中心<span><i class="fas fa-chevron-right"></i></span></a>
           <ul class="dropdown-menu-right">
-           <li><a href="dashboard/candidate_applied_job"><i class="fas fa-square"></i>applied job</a></li>
-           <li><a href="dashboard/candidate_dashboard"><i class="fas fa-square"></i>个人/企业资料</a></li>
-           <li><a href="dashboard/candidate_edit_profile"><i class="fas fa-square"></i>edit profile</a></li>
-           <li><a href="dashboard/candidate_favourite_job"><i class="fas fa-square"></i>favourite job</a></li>
-           <li><a href="dashboard/candidate_resume"><i class="fas fa-square"></i>resume</a></li>
-           <li><a href="dashboard/message"><i class="fas fa-square"></i>message</a></li>
-           <li><a href="dashboard/pricing_plans"><i class="fas fa-square"></i>pricing plans</a></li>
+           <li><a href="dashboard/candidate_applied_job"><i class="fas fa-square"></i>找工作</a></li>
+           <li><a href="dashboard/candidate_dashboard"><i class="fas fa-square"></i>个人资料</a></li>
+           <li><a href="dashboard/candidate_edit_profile"><i class="fas fa-square"></i>编辑个人资料</a></li>
+           <li><a href="dashboard/candidate_favourite_job"><i class="fas fa-square"></i>我的收藏</a></li>
+           <li><a href="dashboard/candidate_resume"><i class="fas fa-square"></i>我的简历</a></li>
+           <li><a href="dashboard/message"><i class="fas fa-square"></i>个人信息</a></li>
+           <li><a href="dashboard/pricing_plans"><i class="fas fa-square"></i>VIP</a></li>
           </ul></li>
-         <li class="parent"><a href="#"><i class="fas fa-square"></i>company<span><i class="fas fa-chevron-right"></i></span></a>
+         <li class="parent"><a href="#"><i class="fas fa-square"></i>企业中心<span><i class="fas fa-chevron-right"></i></span></a>
           <ul class="dropdown-menu-right">
-           <li><a href="dashboard/comp_applications"><i class="fas fa-square"></i>applications</a></li>
+           <li><a href="dashboard/comp_applications"><i class="fas fa-square"></i>收到的简历</a></li>
            <li><a href="dashboard/comp_company_page"><i class="fas fa-square"></i>公司主页</a></li>
-           <li><a href="dashboard/comp_employer_dashboard"><i class="fas fa-square"></i>个人/企业资料</a></li>
-           <li><a href="dashboard/comp_employer_edit_profile"><i class="fas fa-square"></i>edit profile</a></li>
-           <li><a href="dashboard/comp_employer_manage_jobs"><i class="fas fa-square"></i>manage jobs</a></li>
-           <li><a href="dashboard/comp_post_new_job"><i class="fas fa-square"></i>post new job</a></li>
-           <li><a href="dashboard/message"><i class="fas fa-square"></i>message</a></li>
-           <li><a href="dashboard/pricing_plans"><i class="fas fa-square"></i>pricing plans</a></li>
+           <li><a href="dashboard/comp_employer_dashboard"><i class="fas fa-square"></i>企业资料</a></li>
+           <li><a href="dashboard/comp_employer_edit_profile"><i class="fas fa-square"></i>编辑企业资料</a></li>
+           <li><a href="dashboard/comp_employer_manage_jobs"><i class="fas fa-square"></i>管理职位</a></li>
+           <li><a href="dashboard/comp_post_new_job"><i class="fas fa-square"></i>发布职位</a></li>
+           <li><a href="dashboard/message"><i class="fas fa-square"></i>公司信息</a></li>
+           <li><a href="dashboard/pricing_plans"><i class="fas fa-square"></i>VIP</a></li>
           </ul></li>
         </ul></li>
-       <li class="has-mega gc_main_navigation"><a href="#" class="gc_main_navigation">blog</a>
+
+       <li class="has-mega gc_main_navigation"><a href="#" class="gc_main_navigation">博客</a>
         <ul class="navi_2_dropdown">
          <li class="parent"><a href="blog_single"><i class="fas fa-square"></i>blog single</a></li>
          <li class="parent"><a href="blog_category_right_sidebar"><i class="fas fa-square"></i>blog category</a></li>
         </ul></li>
-       <li><a href="contact_us" class="gc_main_navigation">contact</a></li>
+
+       <li><a href="contact_us" class="gc_main_navigation">联系我们</a></li>
       </ul>
      </div>
      <!-- mainmenu end -->
@@ -336,32 +334,32 @@
     <div class="row">
      <div class="col-lg-10 offset-lg-1 col-md-12 col-sm-12">
       <div class="jb_heading_wraper">
-       <h3>Browse Jobs By Category</h3>
-       <p>Your next level Product developemnt company assets</p>
+       <h3>按类别浏览职位</h3>
+       <p>有因必有果，你的报应就是我</p>
       </div>
      </div>
      <div class="col-lg-3 col-md-6 col-sm-12">
       <div class="jb_browse_category jb_cover">
        <a href="job_listing_list_left_filter">
-        <div class="hover-block"></div><i class="flaticon-code"></i><h3>developer</h3><p>(1450 jobs)</p></a>
+        <div class="hover-block"></div><i class="flaticon-code"></i><h3>开发商</h3><p>(1450 jobs)</p></a>
       </div>
      </div>
      <div class="col-lg-3 col-md-6 col-sm-12">
       <div class="jb_browse_category jb_cover">
        <a href="job_listing_list_left_filter">
-        <div class="hover-block"></div><i class="flaticon-laptop"></i><h3>technology</h3><p>(4525 jobs)</p></a>
+        <div class="hover-block"></div><i class="flaticon-laptop"></i><h3>技术</h3><p>(4525 jobs)</p></a>
       </div>
      </div>
      <div class="col-lg-3 col-md-6 col-sm-12">
       <div class="jb_browse_category jb_cover">
        <a href="job_listing_list_left_filter">
-        <div class="hover-block"></div><i class="flaticon-bar-chart"></i><h3>accounting</h3><p>(214 jobs)</p></a>
+        <div class="hover-block"></div><i class="flaticon-bar-chart"></i><h3>会计</h3><p>(214 jobs)</p></a>
       </div>
      </div>
      <div class="col-lg-3 col-md-6 col-sm-12">
       <div class="jb_browse_category jb_cover">
        <a href="job_listing_list_left_filter">
-        <div class="hover-block"></div><i class="flaticon-doctor"></i><h3>medical</h3><p>(4572 jobs)</p></a>
+        <div class="hover-block"></div><i class="flaticon-doctor"></i><h3>医疗</h3><p>(4572 jobs)</p></a>
       </div>
      </div>
      <div class="col-lg-10 offset-lg-1 col-md-12 col-sm-12 pd5">
@@ -369,25 +367,25 @@
        <div class="col-lg-4 col-md-6 col-sm-12">
         <div class="jb_browse_category jb_cover">
          <a href="job_listing_list_left_filter">
-          <div class="hover-block"></div><i class="flaticon-city-hall"></i><h3>goverment</h3><p>(2414 jobs)</p></a>
+          <div class="hover-block"></div><i class="flaticon-city-hall"></i><h3>政府</h3><p>(2414 jobs)</p></a>
         </div>
        </div>
        <div class="col-lg-4 col-md-6 col-sm-12">
         <div class="jb_browse_category jb_cover">
          <a href="job_listing_list_left_filter">
-          <div class="hover-block"></div><i class="flaticon-newspaper"></i><h3>media &amp; news</h3><p>(2142 jobs)</p></a>
+          <div class="hover-block"></div><i class="flaticon-newspaper"></i><h3>媒体与新闻</h3><p>(2142 jobs)</p></a>
         </div>
        </div>
        <div class="col-lg-4 col-md-6 col-sm-12">
         <div class="jb_browse_category jb_cover">
          <a href="job_listing_list_left_filter">
-          <div class="hover-block"></div><i class="flaticon-lunch"></i><h3>restaurents</h3><p>(2342 jobs)</p></a>
+          <div class="hover-block"></div><i class="flaticon-lunch"></i><h3>餐饮</h3><p>(2342 jobs)</p></a>
         </div>
        </div>
       </div>
      </div>
      <div class="header_btn search_btn load_btn jb_cover">
-      <a href="#">load more</a>
+      <a href="job_listing_list_left_filter">更多职位</a>
      </div>
     </div>
    </div>
@@ -424,22 +422,27 @@
     <div class="row">
      <div class="job_main_overflow jb_cover">
       <div class="latest_job_overlow jb_cover">
+
+       <!--   最新职位    -->
        <div class="col-lg-12 col-md-12 col-sm-12">
         <div class="latest_job_toper jb_cover">
-         <h1>latest jobs</h1>
+         <h1>最新职位</h1>
          <div class="latest_job_tabs">
           <ul class="nav nav-tabs">
-           <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#home">all</a></li>
-           <li class="nav-item"><a class="nav-link " data-toggle="tab" href="#menu1">featured</a></li>
-           <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#menu2">remotely</a></li>
-           <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#menu3">part time</a></li>
-           <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#menu4">full time</a></li>
+           <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#home">所有</a></li>
+           <li class="nav-item"><a class="nav-link " data-toggle="tab" href="#menu1">精选</a></li>
+           <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#menu2">热门</a></li>
+           <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#menu3">兼职</a></li>
+           <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#menu4">全职</a></li>
           </ul>
          </div>
         </div>
        </div>
+
+
        <div class="col-xl-12 col-lg-12 col-md-12">
         <div class="tab-content">
+         <!--    所有  start   -->
          <div id="home" class="tab-pane active">
           <div class="row">
            <div class="col-lg-12 col-md-12 col-12">
@@ -791,11 +794,14 @@
               </div>
              </div>
             </div>
-            <p class="showing">Showing 1-5 of 23 Latest Jobs</p>
-            <span class="se_all_job"><a href="#">See All Jobs <i class="fas fa-long-arrow-alt-right"></i></a></span>
+            <p class="showing">显示23个最新工作中的1-5个</p>
+            <span class="se_all_job"><a href="job_listing_grid_left_filter"> 查看所有工作 <i class="fas fa-long-arrow-alt-right"></i></a></span>
            </div>
           </div>
          </div>
+         <!--    所有  end   -->
+
+         <!--    精选  start   -->
          <div id="menu1" class="tab-pane fade">
           <div class="row">
            <div class="col-lg-12 col-md-12 col-12">
@@ -1147,11 +1153,14 @@
               </div>
              </div>
             </div>
-            <p class="showing">Showing 1-5 of 23 Latest Jobs</p>
-            <span class="se_all_job"><a href="#">See All Jobs <i class="fas fa-long-arrow-alt-right"></i></a></span>
+            <p class="showing">显示23个最新工作中的1-5个</p>
+            <span class="se_all_job"><a href="#">查看所有工作 <i class="fas fa-long-arrow-alt-right"></i></a></span>
            </div>
           </div>
          </div>
+         <!--    精选  end   -->
+
+         <!--    热门  start   -->
          <div id="menu2" class="tab-pane fade">
           <div class="row">
            <div class="col-lg-12 col-md-12 col-12">
@@ -1503,11 +1512,14 @@
               </div>
              </div>
             </div>
-            <p class="showing">Showing 1-5 of 23 Latest Jobs</p>
-            <span class="se_all_job"><a href="#">See All Jobs <i class="fas fa-long-arrow-alt-right"></i></a></span>
+            <p class="showing">显示23个最新工作中的1-5个</p>
+            <span class="se_all_job"><a href="#">查看所有工作 <i class="fas fa-long-arrow-alt-right"></i></a></span>
            </div>
           </div>
          </div>
+         <!--    热门  end   -->
+
+         <!--    兼职  start   -->
          <div id="menu3" class="tab-pane fade">
           <div class="row">
            <div class="col-lg-12 col-md-12 col-12">
@@ -1859,11 +1871,14 @@
               </div>
              </div>
             </div>
-            <p class="showing">Showing 1-5 of 23 Latest Jobs</p>
-            <span class="se_all_job"><a href="#">See All Jobs <i class="fas fa-long-arrow-alt-right"></i></a></span>
+            <p class="showing">显示23个最新工作中的1-5个</p>
+            <span class="se_all_job"><a href="#">查看所有工作 <i class="fas fa-long-arrow-alt-right"></i></a></span>
            </div>
           </div>
          </div>
+         <!--    兼职  end   -->
+
+         <!--    全职  start   -->
          <div id="menu4" class="tab-pane fade">
           <div class="row">
            <div class="col-lg-12 col-md-12 col-12">
@@ -2215,11 +2230,13 @@
               </div>
              </div>
             </div>
-            <p class="showing">Showing 1-5 of 23 Latest Jobs</p>
-            <span class="se_all_job"><a href="#">See All Jobs <i class="fas fa-long-arrow-alt-right"></i></a></span>
+            <p class="showing">显示23个最新工作中的1-5个</p>
+            <span class="se_all_job"><a href="#">查看所有工作 <i class="fas fa-long-arrow-alt-right"></i></a></span>
            </div>
           </div>
          </div>
+         <!--    全职  end   -->
+
         </div>
        </div>
       </div>
@@ -2245,12 +2262,12 @@
      </div>
      <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
       <div class="counter_right_wrapper jb_cover">
-       <h1>Some Statistical Facts</h1>
+       <h1>一些统计事实</h1>
        <div class="counter_width">
         <div class="counter_cntnt_box">
          <div class="count-description">
           <span class="timer">2500</span>
-          <p class="con2">happy customers</p>
+          <p class="con2">客户满意</p>
          </div>
         </div>
        </div>
@@ -2258,7 +2275,7 @@
         <div class="counter_cntnt_box">
          <div class="count-description">
           <span class="timer">9425</span>
-          <p class="con2">ticket solved</p>
+          <p class="con2">解决就业</p>
          </div>
         </div>
        </div>
@@ -2267,7 +2284,7 @@
          <div class="count-description">
           <span class="timer">9</span>
           <span>+</span>
-          <p class="con2">average rating</p>
+          <p class="con2">平均评分</p>
          </div>
         </div>
        </div>
@@ -2284,9 +2301,9 @@
      <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
       <div class="top_hiring_cpmpany_heading jb_cover">
        <div class="jb_heading_wraper left_jb_jeading">
-        <h3>Top Hiring Companies</h3>
+        <h3>明星企业</h3>
        </div>
-       <p>What do all consultants need? In short, trust. This is achieved with professional presentation and the ability to communicate. Clearly with existing and potential clients.ll consultants need? In short, trust. This is achieved with Whether you Whether you are an accountant.</p>
+       <p>所有顾问都需要什么？简而言之，信任。这是通过专业的演讲和交流能力实现的。显然与现有和潜在客户合作。顾问需要吗？简而言之，信任。这取决于您是否是会计师。</p>
       </div>
      </div>
      <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
@@ -2492,34 +2509,34 @@
   </div>
   <!-- job rivew wrapper end-->
   <!-- download app wrapper start-->
-  <div class="download_wrapper jb_cover">
-   <div class="counter_overlay"></div>
-   <div class="container">
-    <div class="row">
-     <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-      <div class="download_mockup_design jb_cover">
-       <div class="animation-circle-inverse2">
-        <i></i>
-        <i></i>
-        <i></i>
-       </div>
-       <img src="picture/mockup5.png" class="img-responsive" alt="img" />
-      </div>
-     </div>
-     <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-      <div class="download_app_store jb_cover">
-       <h1>Download</h1>
-       <h2>Job Portal App Now!</h2>
-       <p>All it takes is 30 seconds to Download. Your Mobile App for Job <br />Fast, Simple &amp; Delightful.</p>
-       <div class="app_btn jb_cover">
-        <a href="#" class="ss_playstore"><span><i class="flaticon-android-logo"></i></span>Play Store</a>
-        <a href="#" class="ss_appstore"><span><i class="flaticon-apple"></i></span>App Store</a>
-       </div>
-      </div>
-     </div>
-    </div>
-   </div>
-  </div>
+<!--  <div class="download_wrapper jb_cover">-->
+<!--   <div class="counter_overlay"></div>-->
+<!--   <div class="container">-->
+<!--    <div class="row">-->
+<!--     <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">-->
+<!--      <div class="download_mockup_design jb_cover">-->
+<!--       <div class="animation-circle-inverse2">-->
+<!--        <i></i>-->
+<!--        <i></i>-->
+<!--        <i></i>-->
+<!--       </div>-->
+<!--       <img src="picture/mockup5.png" class="img-responsive" alt="img" />-->
+<!--      </div>-->
+<!--     </div>-->
+<!--     <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">-->
+<!--      <div class="download_app_store jb_cover">-->
+<!--       <h1>Download</h1>-->
+<!--       <h2>Job Portal App Now!</h2>-->
+<!--       <p>All it takes is 30 seconds to Download. Your Mobile App for Job <br />Fast, Simple &amp; Delightful.</p>-->
+<!--       <div class="app_btn jb_cover">-->
+<!--        <a href="#" class="ss_playstore"><span><i class="flaticon-android-logo"></i></span>Play Store</a>-->
+<!--        <a href="#" class="ss_appstore"><span><i class="flaticon-apple"></i></span>App Store</a>-->
+<!--       </div>-->
+<!--      </div>-->
+<!--     </div>-->
+<!--    </div>-->
+<!--   </div>-->
+<!--  </div>-->
   <!-- download app wrapper end-->
   <!-- blog wrapper start-->
   <div class="blog_wrapper jb_cover">
@@ -2607,12 +2624,12 @@
      <div class="col-lg-12 col-md-12 col-sm-12">
       <div class="job_newsletter_wrapper jb_cover">
        <div class="jb_newslwtteter_left">
-        <h2>Looking For A Job</h2>
-        <p>Your next level Product developemnt company assetsYour next level Product</p>
+        <h2>寻找一个工作</h2>
+        <p>总有一个工作适合您！</p>
        </div>
        <div class="jb_newslwtteter_button">
         <div class="header_btn search_btn news_btn jb_cover">
-         <a href="#">submit</a>
+         <a href="#">寻找</a>
         </div>
        </div>
       </div>
@@ -2621,88 +2638,11 @@
    </div>
   </div>
   <!-- blog wrapper end-->
+
   <!-- footer Wrapper Start -->
-  <div class="footer jb_cover">
-   <div class="container">
-    <div class="row">
-     <div class="col-lg-3 col-sm-6 col-12">
-      <div class="footerNav jb_cover">
-       <a href="#"><img src="picture/logo2.png" alt="img" /></a>
-       <ul class="footer_first_contact">
-        <li><i class="flaticon-location-pointer"></i><p>123 City Avenue, Floor 10, <br />malbourne, Australia.</p></li>
-        <li><i class="flaticon-telephone"></i><p>1 -234 -456 -7890 <br />1 -234 -456 -7890</p></li>
-        <li><i class="flaticon-envelope"></i><a href="#">info@Jbdesks.com</a><br /><a href="#">support@Jbdesks.com</a></li>
-       </ul>
-       <ul class="icon_list_news jb_cover">
-        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-        <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
-       </ul>
-      </div>
-     </div>
-     <div class="col-lg-3 col-sm-6 col-12">
-      <div class="footerNav jb_cover footer_border_displ">
-       <h5>features</h5>
-       <ul class="nav-widget">
-        <li><a href="#"><i class="fa fa-square"></i>Job Management &amp; Billing</a></li>
-        <li><a href="#"><i class="fa fa-square"></i>Time &amp; Materials Tracking</a></li>
-        <li><a href="#"><i class="fa fa-square"></i>Standards Compliance </a></li>
-        <li><a href="#"><i class="fa fa-square"></i>Real Time GPS Tracking</a></li>
-        <li><a href="#"><i class="fa fa-square"></i>Client Portal</a></li>
-        <li><a href="#"><i class="fa fa-square"></i>Powerful Workflow</a></li>
-       </ul>
-      </div>
-     </div>
-     <div class="col-lg-3 col-sm-6 col-12">
-      <div class="footerNav jb_cover footer_border_displ">
-       <h5>browse</h5>
-       <ul class="nav-widget">
-        <li><a href="#"><i class="fa fa-square"></i>Freelancers by Category</a></li>
-        <li><a href="#"><i class="fa fa-square"></i>Freelancers in USA </a></li>
-        <li><a href="#"><i class="fa fa-square"></i>Freelancers in UK</a></li>
-        <li><a href="#"><i class="fa fa-square"></i>Freelancers in Canada</a></li>
-        <li><a href="#"><i class="fa fa-square"></i>Freelancers in india</a></li>
-        <li><a href="#"><i class="fa fa-square"></i>find jobs</a></li>
-       </ul>
-      </div>
-     </div>
-     <div class="col-lg-3 col-sm-6 col-12">
-      <div class="footerNav jb_cover footer_border_displ">
-       <h5>app &amp; integration</h5>
-       <ul class="nav-widget">
-        <li><a href="#"><img src="picture/ft1.png" alt="img" />Xero</a></li>
-        <li><a href="#"><img src="picture/ft2.png" alt="img" />Reckon</a></li>
-        <li><a href="#"><img src="picture/ft3.png" alt="img" />Flexidocs</a></li>
-        <li><a href="#"><img src="picture/ft4.png" alt="img" />Microsoft Exchange</a></li>
-        <li><a href="#"><img src="picture/ft5.png" alt="img" />Mailchimp</a></li>
-        <li><a href="#"><img src="picture/ft6.png" alt="img" />MYOB</a></li>
-       </ul>
-      </div>
-     </div>
-     <div class="copyright_left">
-      <i class="fa fa-copyright"></i>2019 
-      <a href="#"> JB desks. </a>All Rights 
-      <a href="http://www.17sucai.com">reserved</a>.
-     </div>
-     <div class="clearfix"></div>
-    </div>
-    <!--/.row-->
-   </div>
-   <!--/.container-->
-   <div class="waveWrapper waveAnimation">
-    <div class="waveWrapperInner bgTop gradient-color">
-     <div class="wave waveTop"></div>
-    </div>
-    <div class="waveWrapperInner bgMiddle">
-     <div class="wave waveMiddle"></div>
-    </div>
-    <div class="waveWrapperInner bgBottom">
-     <div class="wave waveBottom"></div>
-    </div>
-   </div>
-  </div>
+  <div class="footer jb_cover" th:replace="public::public_footer_jb_cover"></div>
   <!-- footer Wrapper End -->
+
   <!-- chat box Wrapper start -->
   <div id="chat-circle" class="btn btn-raised">
    <i class="fas fa-comment-alt"></i>

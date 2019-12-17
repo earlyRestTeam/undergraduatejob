@@ -998,7 +998,7 @@ ga('send', 'pageview');
 					<input type="text" value="" name="s" id="s" />
 					<input type="submit" id="searchsubmit" value="Search" />
 				</div>
-			</form></aside><aside id="nav_menu-1" class="widget widget_nav_menu"><h3 class="widget-title"><span>Site content</span></h3><div class="menu-mega-main-menu-container"><ul id="menu-mega-main-menu" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-2972"><a href="https://webstrot.com/about/">About Us</a>
+			</form></aside><aside id="nav_menu-1" class="widget widget_nav_menu"><h3 class="widget-title"><span>Site content</span></h3><div class="menu-mega-main-menu-container"><ul id="menu-mega-main-menu" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-2972"><a href="https://webstrot.com/about/">关于我们</a>
 <ul class="sub-menu">
 	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-2055"><a>AGENCY</a>
 	<ul class="sub-menu">
@@ -1060,11 +1060,11 @@ ga('send', 'pageview');
 </ul>
 </li>
 <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2747"><a href="https://webstrot.com/services/services-software-developement/">Software</a></li>
-<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2280"><a href="https://webstrot.com/blog/">Blog</a></li>
-<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2277"><a href="https://webstrot.com/contact-us/">Contact us</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2280"><a href="https://webstrot.com/blog/">博客</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2277"><a href="https://webstrot.com/contact-us/">联系我们</a></li>
 <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2262"><a href="https://webstrot.com/career/">Career</a></li>
 <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3545"><a href="https://webstrot.com/hire-us/">Hire Us</a></li>
-</ul></div></aside><aside id="text-1" class="widget widget_text"><h3 class="widget-title"><span>Contact us</span></h3>			<div class="textwidget"><h4>
+</ul></div></aside><aside id="text-1" class="widget widget_text"><h3 class="widget-title"><span>联系我们</span></h3>			<div class="textwidget"><h4>
 <i class="im-icon-bubble-5" 
 style="font-size:85%;
 margin-right:10px;
