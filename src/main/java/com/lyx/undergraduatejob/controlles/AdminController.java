@@ -6,6 +6,79 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
+    /**
+     * 职位审核管理
+     * @return
+     */
+    @RequestMapping("audit-job")
+    public String audit_job() {
+        return "/admin/audit-job";
+    }
+    /**
+     * 简历审核管理
+     * @return
+     */
+    @RequestMapping("audit-resume")
+    public String audit_resume() {
+        return "/admin/audit-resume";
+    }
+    /**
+     * 学生管理
+     * @return
+     */
+    @RequestMapping("manager-student")
+    public String manager_student() {
+        return "/admin/manager-student";
+    }
+    /**
+     * 公司管理
+     * @return
+     */
+    @RequestMapping("manager-company")
+    public String manager_company() {
+        return "/admin/manager-company";
+    }
+    /**
+     * 学生认证管理
+     * @return
+     */
+    @RequestMapping("authentication-student")
+    public String authentication_student() {
+        return "/admin/authentication-student";
+    }
+    /**
+     * 公司认证管理
+     * @return
+     */
+    @RequestMapping("authentication-company")
+    public String authentication_company() {
+        return "/admin/authentication-company";
+    }
+    /**
+     * 广告管理
+     * @return
+     */
+    @RequestMapping("manager-advertising")
+    public String manager_advertising() {
+        return "/admin/manager-advertising";
+    }
+    /**
+     * 评论管理
+     * @return
+     */
+    @RequestMapping("manager-comment")
+    public String manager_comment() {
+        return "/admin/manager-comment";
+    }
+    /**
+     * 投诉管理
+     * @return
+     */
+    @RequestMapping("manager-complaint")
+    public String manager_complaint() {
+        return "/admin/manager-complaint";
+    }
+
     @RequestMapping("auth-404")
     public String auth404(){
         return "/admin/auth-404";
@@ -154,6 +227,10 @@ public class AdminController {
         return "/admin/index";
     }
 
+    @RequestMapping("index-moban")
+    public String index1(){
+        return "/admin/index1";
+    }
 
     @RequestMapping("layouts-boxed")
     public String layouts_boxed(){
