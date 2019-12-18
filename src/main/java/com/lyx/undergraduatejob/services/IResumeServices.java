@@ -4,6 +4,8 @@ import com.github.pagehelper.PageInfo;
 
 import com.lyx.undergraduatejob.pojo.Resume;
 
+import java.util.Map;
+
 /**
  * 简历
  */
@@ -29,21 +31,21 @@ public interface IResumeServices {
      * @param r
      * @return
      */
-    boolean addResume(Resume r);
+    Map<String,String> addResume(Resume r);
 
     /**
      * 修改个人简历
      * @param r
      * @return
      */
-    boolean updateResume(Resume r);
+    Map<String,String> updateResume(Resume r);
 
     /**
      * 删除个人简历
      * @param
      * @return
      */
-    boolean deleteResume(Integer userId);
+    Map<String,String> deleteResume(Integer userId);
 
 
 
@@ -52,7 +54,7 @@ public interface IResumeServices {
      * @param
      * @return
      */
-    boolean updateResumeStatus(Integer userId,Integer status);
+    Map<String,String> updateResumeStatus(Integer userId,Integer status);
 
 //    /**
 //     * 取消发布个人简历

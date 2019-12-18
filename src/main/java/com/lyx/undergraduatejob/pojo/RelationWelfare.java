@@ -3,20 +3,16 @@ package com.lyx.undergraduatejob.pojo;
 import java.io.Serializable;
 import java.util.Date;
 
-public class Picture implements Serializable {
+public class RelationWelfare implements Serializable {
     private Integer id;
+
+    private String welfareId;
 
     private Integer ownerId;
 
     private Integer ownerType;
 
-    private Integer pictureType;
-
-    private String pictureUrl;
-
     private Date createTime;
-
-    private Integer status;
 
     private static final long serialVersionUID = 1L;
 
@@ -26,6 +22,14 @@ public class Picture implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getWelfareId() {
+        return welfareId;
+    }
+
+    public void setWelfareId(String welfareId) {
+        this.welfareId = welfareId;
     }
 
     public Integer getOwnerId() {
@@ -44,36 +48,12 @@ public class Picture implements Serializable {
         this.ownerType = ownerType;
     }
 
-    public Integer getPictureType() {
-        return pictureType;
-    }
-
-    public void setPictureType(Integer pictureType) {
-        this.pictureType = pictureType;
-    }
-
-    public String getPictureUrl() {
-        return pictureUrl;
-    }
-
-    public void setPictureUrl(String pictureUrl) {
-        this.pictureUrl = pictureUrl;
-    }
-
     public Date getCreateTime() {
         return createTime;
     }
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
-    }
-
-    public Integer getStatus() {
-        return status;
-    }
-
-    public void setStatus(Integer status) {
-        this.status = status;
     }
 
     @Override
@@ -83,12 +63,10 @@ public class Picture implements Serializable {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
+        sb.append(", welfareId=").append(welfareId);
         sb.append(", ownerId=").append(ownerId);
         sb.append(", ownerType=").append(ownerType);
-        sb.append(", pictureType=").append(pictureType);
-        sb.append(", pictureUrl=").append(pictureUrl);
         sb.append(", createTime=").append(createTime);
-        sb.append(", status=").append(status);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();
