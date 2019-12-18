@@ -775,6 +775,66 @@ public class AutStudentExample {
             return (Criteria) this;
         }
 
+        public Criteria andStudentStatusIsNull() {
+            addCriterion("student_status is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStudentStatusIsNotNull() {
+            addCriterion("student_status is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStudentStatusEqualTo(Integer value) {
+            addCriterion("student_status =", value, "studentStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andStudentStatusNotEqualTo(Integer value) {
+            addCriterion("student_status <>", value, "studentStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andStudentStatusGreaterThan(Integer value) {
+            addCriterion("student_status >", value, "studentStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andStudentStatusGreaterThanOrEqualTo(Integer value) {
+            addCriterion("student_status >=", value, "studentStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andStudentStatusLessThan(Integer value) {
+            addCriterion("student_status <", value, "studentStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andStudentStatusLessThanOrEqualTo(Integer value) {
+            addCriterion("student_status <=", value, "studentStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andStudentStatusIn(List<Integer> values) {
+            addCriterion("student_status in", values, "studentStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andStudentStatusNotIn(List<Integer> values) {
+            addCriterion("student_status not in", values, "studentStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andStudentStatusBetween(Integer value1, Integer value2) {
+            addCriterion("student_status between", value1, value2, "studentStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andStudentStatusNotBetween(Integer value1, Integer value2) {
+            addCriterion("student_status not between", value1, value2, "studentStatus");
+            return (Criteria) this;
+        }
+
         public Criteria andRelatedPictureIsNull() {
             addCriterion("related_picture is null");
             return (Criteria) this;

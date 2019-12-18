@@ -12,6 +12,7 @@
     <result column="specialty" jdbcType="VARCHAR" property="specialty" />
     <result column="education" jdbcType="VARCHAR" property="education" />
     <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="student_status" jdbcType="INTEGER" property="studentStatus" />
     <result column="related_picture" jdbcType="INTEGER" property="relatedPicture" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
   </resultMap>
@@ -75,7 +76,7 @@
   </sql>
   <sql id="Base_Column_List">
     id, user_id, proposer_name, id_card, proposer_phone, school, student_num, specialty, 
-    education, status, related_picture, create_time
+    education, status, student_status, related_picture, create_time
   </sql>
   <select id="selectByExample" parameterType="com.lyx.undergraduatejob.pojo.AutStudentExample" resultMap="BaseResultMap">
     select
@@ -114,11 +115,13 @@
     insert into aut_student (user_id, proposer_name, id_card, 
       proposer_phone, school, student_num, 
       specialty, education, status, 
-      related_picture, create_time)
+      student_status, related_picture, create_time
+      )
     values (#{userId,jdbcType=INTEGER}, #{proposerName,jdbcType=VARCHAR}, #{idCard,jdbcType=VARCHAR}, 
       #{proposerPhone,jdbcType=VARCHAR}, #{school,jdbcType=VARCHAR}, #{studentNum,jdbcType=VARCHAR}, 
       #{specialty,jdbcType=VARCHAR}, #{education,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
-      #{relatedPicture,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP})
+      #{studentStatus,jdbcType=INTEGER}, #{relatedPicture,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.lyx.undergraduatejob.pojo.AutStudent">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
@@ -152,6 +155,9 @@
       </if>
       <if test="status != null">
         status,
+      </if>
+      <if test="studentStatus != null">
+        student_status,
       </if>
       <if test="relatedPicture != null">
         related_picture,
@@ -187,6 +193,9 @@
       </if>
       <if test="status != null">
         #{status,jdbcType=INTEGER},
+      </if>
+      <if test="studentStatus != null">
+        #{studentStatus,jdbcType=INTEGER},
       </if>
       <if test="relatedPicture != null">
         #{relatedPicture,jdbcType=INTEGER},
@@ -235,6 +244,9 @@
       <if test="record.status != null">
         status = #{record.status,jdbcType=INTEGER},
       </if>
+      <if test="record.studentStatus != null">
+        student_status = #{record.studentStatus,jdbcType=INTEGER},
+      </if>
       <if test="record.relatedPicture != null">
         related_picture = #{record.relatedPicture,jdbcType=INTEGER},
       </if>
@@ -258,6 +270,7 @@
       specialty = #{record.specialty,jdbcType=VARCHAR},
       education = #{record.education,jdbcType=VARCHAR},
       status = #{record.status,jdbcType=INTEGER},
+      student_status = #{record.studentStatus,jdbcType=INTEGER},
       related_picture = #{record.relatedPicture,jdbcType=INTEGER},
       create_time = #{record.createTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
@@ -294,6 +307,9 @@
       <if test="status != null">
         status = #{status,jdbcType=INTEGER},
       </if>
+      <if test="studentStatus != null">
+        student_status = #{studentStatus,jdbcType=INTEGER},
+      </if>
       <if test="relatedPicture != null">
         related_picture = #{relatedPicture,jdbcType=INTEGER},
       </if>
@@ -314,6 +330,7 @@
       specialty = #{specialty,jdbcType=VARCHAR},
       education = #{education,jdbcType=VARCHAR},
       status = #{status,jdbcType=INTEGER},
+      student_status = #{studentStatus,jdbcType=INTEGER},
       related_picture = #{relatedPicture,jdbcType=INTEGER},
       create_time = #{createTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}

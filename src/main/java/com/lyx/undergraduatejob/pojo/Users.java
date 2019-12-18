@@ -18,6 +18,8 @@ public class Users implements Serializable {
 
     private Integer status;
 
+    private Integer autStatus;
+
     private Date createTime;
 
     private static final long serialVersionUID = 1L;
@@ -78,6 +80,14 @@ public class Users implements Serializable {
         this.status = status;
     }
 
+    public Integer getAutStatus() {
+        return autStatus;
+    }
+
+    public void setAutStatus(Integer autStatus) {
+        this.autStatus = autStatus;
+    }
+
     public Date getCreateTime() {
         return createTime;
     }
@@ -99,6 +109,7 @@ public class Users implements Serializable {
         sb.append(", nickName=").append(nickName);
         sb.append(", phone=").append(phone);
         sb.append(", status=").append(status);
+        sb.append(", autStatus=").append(autStatus);
         sb.append(", createTime=").append(createTime);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");

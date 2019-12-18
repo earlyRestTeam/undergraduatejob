@@ -20,6 +20,10 @@ public class AutCompany implements Serializable {
 
     private Date createTime;
 
+    private Integer companyStatus;
+
+    private Integer status;
+
     private static final long serialVersionUID = 1L;
 
     public Integer getId() {
@@ -86,6 +90,22 @@ public class AutCompany implements Serializable {
         this.createTime = createTime;
     }
 
+    public Integer getCompanyStatus() {
+        return companyStatus;
+    }
+
+    public void setCompanyStatus(Integer companyStatus) {
+        this.companyStatus = companyStatus;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -100,6 +120,8 @@ public class AutCompany implements Serializable {
         sb.append(", licenseCard=").append(licenseCard);
         sb.append(", licensePicture=").append(licensePicture);
         sb.append(", createTime=").append(createTime);
+        sb.append(", companyStatus=").append(companyStatus);
+        sb.append(", status=").append(status);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

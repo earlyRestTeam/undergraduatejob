@@ -624,6 +624,126 @@ public class AutCompanyExample {
             addCriterion("create_time not between", value1, value2, "createTime");
             return (Criteria) this;
         }
+
+        public Criteria andCompanyStatusIsNull() {
+            addCriterion("company_status is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompanyStatusIsNotNull() {
+            addCriterion("company_status is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompanyStatusEqualTo(Integer value) {
+            addCriterion("company_status =", value, "companyStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompanyStatusNotEqualTo(Integer value) {
+            addCriterion("company_status <>", value, "companyStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompanyStatusGreaterThan(Integer value) {
+            addCriterion("company_status >", value, "companyStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompanyStatusGreaterThanOrEqualTo(Integer value) {
+            addCriterion("company_status >=", value, "companyStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompanyStatusLessThan(Integer value) {
+            addCriterion("company_status <", value, "companyStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompanyStatusLessThanOrEqualTo(Integer value) {
+            addCriterion("company_status <=", value, "companyStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompanyStatusIn(List<Integer> values) {
+            addCriterion("company_status in", values, "companyStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompanyStatusNotIn(List<Integer> values) {
+            addCriterion("company_status not in", values, "companyStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompanyStatusBetween(Integer value1, Integer value2) {
+            addCriterion("company_status between", value1, value2, "companyStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompanyStatusNotBetween(Integer value1, Integer value2) {
+            addCriterion("company_status not between", value1, value2, "companyStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatusIsNull() {
+            addCriterion("status is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatusIsNotNull() {
+            addCriterion("status is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatusEqualTo(Integer value) {
+            addCriterion("status =", value, "status");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatusNotEqualTo(Integer value) {
+            addCriterion("status <>", value, "status");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatusGreaterThan(Integer value) {
+            addCriterion("status >", value, "status");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatusGreaterThanOrEqualTo(Integer value) {
+            addCriterion("status >=", value, "status");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatusLessThan(Integer value) {
+            addCriterion("status <", value, "status");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatusLessThanOrEqualTo(Integer value) {
+            addCriterion("status <=", value, "status");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatusIn(List<Integer> values) {
+            addCriterion("status in", values, "status");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatusNotIn(List<Integer> values) {
+            addCriterion("status not in", values, "status");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatusBetween(Integer value1, Integer value2) {
+            addCriterion("status between", value1, value2, "status");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatusNotBetween(Integer value1, Integer value2) {
+            addCriterion("status not between", value1, value2, "status");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

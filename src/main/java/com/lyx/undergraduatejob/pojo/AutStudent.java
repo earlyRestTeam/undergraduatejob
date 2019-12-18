@@ -24,6 +24,8 @@ public class AutStudent implements Serializable {
 
     private Integer status;
 
+    private Integer studentStatus;
+
     private Integer relatedPicture;
 
     private Date createTime;
@@ -110,6 +112,14 @@ public class AutStudent implements Serializable {
         this.status = status;
     }
 
+    public Integer getStudentStatus() {
+        return studentStatus;
+    }
+
+    public void setStudentStatus(Integer studentStatus) {
+        this.studentStatus = studentStatus;
+    }
+
     public Integer getRelatedPicture() {
         return relatedPicture;
     }
@@ -142,6 +152,7 @@ public class AutStudent implements Serializable {
         sb.append(", specialty=").append(specialty);
         sb.append(", education=").append(education);
         sb.append(", status=").append(status);
+        sb.append(", studentStatus=").append(studentStatus);
         sb.append(", relatedPicture=").append(relatedPicture);
         sb.append(", createTime=").append(createTime);
         sb.append(", serialVersionUID=").append(serialVersionUID);

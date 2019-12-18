@@ -575,6 +575,66 @@ public class UsersExample {
             return (Criteria) this;
         }
 
+        public Criteria andAutStatusIsNull() {
+            addCriterion("aut_status is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAutStatusIsNotNull() {
+            addCriterion("aut_status is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAutStatusEqualTo(Integer value) {
+            addCriterion("aut_status =", value, "autStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andAutStatusNotEqualTo(Integer value) {
+            addCriterion("aut_status <>", value, "autStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andAutStatusGreaterThan(Integer value) {
+            addCriterion("aut_status >", value, "autStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andAutStatusGreaterThanOrEqualTo(Integer value) {
+            addCriterion("aut_status >=", value, "autStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andAutStatusLessThan(Integer value) {
+            addCriterion("aut_status <", value, "autStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andAutStatusLessThanOrEqualTo(Integer value) {
+            addCriterion("aut_status <=", value, "autStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andAutStatusIn(List<Integer> values) {
+            addCriterion("aut_status in", values, "autStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andAutStatusNotIn(List<Integer> values) {
+            addCriterion("aut_status not in", values, "autStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andAutStatusBetween(Integer value1, Integer value2) {
+            addCriterion("aut_status between", value1, value2, "autStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andAutStatusNotBetween(Integer value1, Integer value2) {
+            addCriterion("aut_status not between", value1, value2, "autStatus");
+            return (Criteria) this;
+        }
+
         public Criteria andCreateTimeIsNull() {
             addCriterion("create_time is null");
             return (Criteria) this;

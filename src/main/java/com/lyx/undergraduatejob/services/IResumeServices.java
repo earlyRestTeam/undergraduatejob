@@ -1,7 +1,7 @@
 package com.lyx.undergraduatejob.services;
 
 import com.github.pagehelper.PageInfo;
-import com.lyx.undergraduatejob.pojo.ReceiveResume;
+
 import com.lyx.undergraduatejob.pojo.Resume;
 
 /**
@@ -40,30 +40,27 @@ public interface IResumeServices {
 
     /**
      * 删除个人简历
-     * @param r
-     * @return
-     */
-    boolean deleteResume(Resume r);
-
-    /**
-     * 发布个人简历
-     * @param r
-     * @return
-     */
-    boolean updateResumeIssue(Resume r);
-
-    /**
-     * 取消发布个人简历
-     * @param r
-     * @return
-     */
-    boolean updateResumeCancelIssue(Resume r);
-    /**
-     * 申请工作职位
      * @param
      * @return
      */
-    boolean  addReceiveResume(ReceiveResume re);
+    boolean deleteResume(Integer userId);
+
+
+
+    /**
+     * 发布/取消发布个人简历
+     * @param
+     * @return
+     */
+    boolean updateResumeStatus(Integer userId,Integer status);
+
+//    /**
+//     * 取消发布个人简历
+//     * @param
+//     * @return
+//     */
+//    boolean updateDisResume(Integer userId);
+
 
 //    /**
 //     * 修改求职状态（暂定不要）

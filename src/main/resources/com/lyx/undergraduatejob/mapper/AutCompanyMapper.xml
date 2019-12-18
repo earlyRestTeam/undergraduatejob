@@ -10,6 +10,8 @@
     <result column="license_card" jdbcType="VARCHAR" property="licenseCard" />
     <result column="license_picture" jdbcType="INTEGER" property="licensePicture" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="company_status" jdbcType="INTEGER" property="companyStatus" />
+    <result column="status" jdbcType="INTEGER" property="status" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -71,7 +73,7 @@
   </sql>
   <sql id="Base_Column_List">
     id, company_id, proposer_name, id_card, proposer_phone, license_card, license_picture, 
-    create_time
+    create_time, company_status, status
   </sql>
   <select id="selectByExample" parameterType="com.lyx.undergraduatejob.pojo.AutCompanyExample" resultMap="BaseResultMap">
     select
@@ -109,10 +111,12 @@
     </selectKey>
     insert into aut_company (company_id, proposer_name, id_card, 
       proposer_phone, license_card, license_picture, 
-      create_time)
+      create_time, company_status, status
+      )
     values (#{companyId,jdbcType=INTEGER}, #{proposerName,jdbcType=VARCHAR}, #{idCard,jdbcType=VARCHAR}, 
       #{proposerPhone,jdbcType=VARCHAR}, #{licenseCard,jdbcType=VARCHAR}, #{licensePicture,jdbcType=INTEGER}, 
-      #{createTime,jdbcType=TIMESTAMP})
+      #{createTime,jdbcType=TIMESTAMP}, #{companyStatus,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.lyx.undergraduatejob.pojo.AutCompany">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
@@ -141,6 +145,12 @@
       <if test="createTime != null">
         create_time,
       </if>
+      <if test="companyStatus != null">
+        company_status,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="companyId != null">
@@ -163,6 +173,12 @@
       </if>
       <if test="createTime != null">
         #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="companyStatus != null">
+        #{companyStatus,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -199,6 +215,12 @@
       <if test="record.createTime != null">
         create_time = #{record.createTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="record.companyStatus != null">
+        company_status = #{record.companyStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -213,7 +235,9 @@
       proposer_phone = #{record.proposerPhone,jdbcType=VARCHAR},
       license_card = #{record.licenseCard,jdbcType=VARCHAR},
       license_picture = #{record.licensePicture,jdbcType=INTEGER},
-      create_time = #{record.createTime,jdbcType=TIMESTAMP}
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      company_status = #{record.companyStatus,jdbcType=INTEGER},
+      status = #{record.status,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -242,6 +266,12 @@
       <if test="createTime != null">
         create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="companyStatus != null">
+        company_status = #{companyStatus,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -253,7 +283,9 @@
       proposer_phone = #{proposerPhone,jdbcType=VARCHAR},
       license_card = #{licenseCard,jdbcType=VARCHAR},
       license_picture = #{licensePicture,jdbcType=INTEGER},
-      create_time = #{createTime,jdbcType=TIMESTAMP}
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      company_status = #{companyStatus,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

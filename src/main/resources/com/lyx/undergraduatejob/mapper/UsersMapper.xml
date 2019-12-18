@@ -9,6 +9,7 @@
     <result column="nick_name" jdbcType="VARCHAR" property="nickName" />
     <result column="phone" jdbcType="VARCHAR" property="phone" />
     <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="aut_status" jdbcType="INTEGER" property="autStatus" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -70,7 +71,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, username, password, email, nick_name, phone, status, create_time
+    id, username, password, email, nick_name, phone, status, aut_status, create_time
   </sql>
   <select id="selectByExample" parameterType="com.lyx.undergraduatejob.pojo.UsersExample" resultMap="BaseResultMap">
     select
@@ -108,10 +109,10 @@
     </selectKey>
     insert into users (username, password, email, 
       nick_name, phone, status, 
-      create_time)
+      aut_status, create_time)
     values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
       #{nickName,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
-      #{createTime,jdbcType=TIMESTAMP})
+      #{autStatus,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.lyx.undergraduatejob.pojo.Users">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
@@ -137,6 +138,9 @@
       <if test="status != null">
         status,
       </if>
+      <if test="autStatus != null">
+        aut_status,
+      </if>
       <if test="createTime != null">
         create_time,
       </if>
@@ -159,6 +163,9 @@
       </if>
       <if test="status != null">
         #{status,jdbcType=INTEGER},
+      </if>
+      <if test="autStatus != null">
+        #{autStatus,jdbcType=INTEGER},
       </if>
       <if test="createTime != null">
         #{createTime,jdbcType=TIMESTAMP},
@@ -195,6 +202,9 @@
       <if test="record.status != null">
         status = #{record.status,jdbcType=INTEGER},
       </if>
+      <if test="record.autStatus != null">
+        aut_status = #{record.autStatus,jdbcType=INTEGER},
+      </if>
       <if test="record.createTime != null">
         create_time = #{record.createTime,jdbcType=TIMESTAMP},
       </if>
@@ -212,6 +222,7 @@
       nick_name = #{record.nickName,jdbcType=VARCHAR},
       phone = #{record.phone,jdbcType=VARCHAR},
       status = #{record.status,jdbcType=INTEGER},
+      aut_status = #{record.autStatus,jdbcType=INTEGER},
       create_time = #{record.createTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -238,6 +249,9 @@
       <if test="status != null">
         status = #{status,jdbcType=INTEGER},
       </if>
+      <if test="autStatus != null">
+        aut_status = #{autStatus,jdbcType=INTEGER},
+      </if>
       <if test="createTime != null">
         create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
@@ -252,6 +266,7 @@
       nick_name = #{nickName,jdbcType=VARCHAR},
       phone = #{phone,jdbcType=VARCHAR},
       status = #{status,jdbcType=INTEGER},
+      aut_status = #{autStatus,jdbcType=INTEGER},
       create_time = #{createTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
