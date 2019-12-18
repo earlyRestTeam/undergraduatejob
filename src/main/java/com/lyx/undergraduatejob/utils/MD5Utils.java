@@ -9,7 +9,7 @@ public class MD5Utils
 
   public static void main(String[] args)
   {
-    String a = StringInMd5("aabbcc123");
+    String a = StringInMd5("123");
     System.out.println(a);
   }
 
