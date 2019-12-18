@@ -34,27 +34,35 @@ public interface IResumeServices {
     Map<String,String> addResume(Resume r);
 
     /**
-     * 修改个人简历
+     * 用户修改个人简历
+     * @param r
+     * @return
+     */
+    Map<String,String> updateResume(Resume r,Integer userId);
+
+
+
+    /**
+     * 管理员修改个人简历
      * @param r
      * @return
      */
     Map<String,String> updateResume(Resume r);
-
-    /**
-     * 删除个人简历
-     * @param
-     * @return
-     */
-    Map<String,String> deleteResume(Integer userId);
-
-
-
-    /**
-     * 发布/取消发布个人简历
-     * @param
-     * @return
-     */
-    Map<String,String> updateResumeStatus(Integer userId,Integer status);
+//    /**
+//     * 删除个人简历
+//     * @param
+//     * @return
+//     */
+//    Map<String,String> deleteResume(Integer resumeId);
+//
+//
+//
+//    /**
+//     * 发布/取消发布个人简历
+//     * @param
+//     * @return
+//     */
+//    Map<String,String> updateResumeStatus(Integer resumeId,Integer pushStatus);
 
 //    /**
 //     * 取消发布个人简历

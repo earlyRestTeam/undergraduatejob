@@ -16,6 +16,6 @@ public interface StaticPool {
     int USER_ENTITY = 1;
     int STAFF_ENTITY = 2;
 
-    int ORDER_SUCCESS = 1;
-    int ORDER_NOT_RECIVE = 2;
+    int RESUME_NO = 0;//失效
+    int RESUME_OK = 1;//有效
 }
