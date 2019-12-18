@@ -3,9 +3,9 @@ server:
 
 spring:
     datasource:
-        url: jdbc:mysql://localhost:3306/expressage?useUnicode=true
-        username: lyx
-        password: 123
+        url: jdbc:mysql://localhost:3306/undergraduatejob?useUnicode=true
+        username: root
+        password: 110412
     mail:
         host: smtp.163.com
         username: 18216308307@163.com
@@ -32,4 +32,7 @@ spring:
 want:
     mail:
         senderName: want-conpany
-
+mybatis:
+    # spring boot集成mybatis的方式打印sql
+    configuration:
+        log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
