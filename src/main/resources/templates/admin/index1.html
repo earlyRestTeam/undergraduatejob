@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
     <head>
         <meta charset="utf-8" />
         <title>Dashoon - Responsive Bootstrap 4 Admin Dashboard</title>
@@ -28,7 +28,36 @@
             <!-- Topbar Start -->
             <div class="navbar-custom">
                 <ul class="list-unstyled topnav-menu float-right mb-0">
-                    <!--显示未处理消息数...，选做-->
+
+                    <li class="dropdown d-none d-lg-block">
+                        <a class="nav-link dropdown-toggle mr-0 waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                            <img src="images/flags/us.jpg" alt="user-image" class="mr-1" height="12"> <span class="align-middle">English <i class="mdi mdi-chevron-down"></i> </span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right">
+
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <img src="images/flags/spain.jpg" alt="user-image" class="mr-1" height="12"> <span class="align-middle">Spanish</span>
+                            </a>
+
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <img src="images/flags/germany.jpg" alt="user-image" class="mr-1" height="12"> <span class="align-middle">German</span>
+                            </a>
+
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <img src="images/flags/italy.jpg" alt="user-image" class="mr-1" height="12"> <span class="align-middle">Italian</span>
+                            </a>
+
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <img src="images/flags/russia.jpg" alt="user-image" class="mr-1" height="12"> <span class="align-middle">Russian</span>
+                            </a>
+
+                        </div>
+                    </li>
+
                     <li class="dropdown notification-list">
                         <a class="nav-link dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                             <i class="dripicons-inbox mail-icon"></i>
@@ -170,8 +199,7 @@
 
                         </div>
                     </li>
-                    <!--显示未处理消息数...，选做-->
-                    <!--头像...-->
+
                     <li class="dropdown notification-list">
                         <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                             <img src="images/users/avatar-1.jpg" alt="user-image" class="rounded-circle">
@@ -215,13 +243,12 @@
 
                         </div>
                     </li>
-                    <!--头像...-->
+
                 </ul>
 
                 <ul class="list-unstyled menu-left mb-0">
-                    <!--logo-->
                     <li class="float-left">
-                        <a href="index" class="logo">
+                        <a href="index-moban" class="logo">
                             <span class="logo-lg">
                                 <img src="images/logo.png" alt="" height="25">
                             </span>
@@ -230,7 +257,6 @@
                             </span>
                         </a>
                     </li>
-                    <!--logo-->
                     <li class="float-left">
                         <a class="button-menu-mobile navbar-toggle">
                             <div class="lines">
@@ -240,7 +266,12 @@
                             </div>
                         </a>
                     </li>
-
+                    <li class="app-search d-none d-md-block">
+                        <form class="form-inline"> 
+                            <input type="text" class="form-control" placeholder="Search…"> 
+                            <button class="btn btn-primary-color" type="submit"><i class="fa fa-search"></i></button> 
+                        </form>
+                    </li>
                 </ul>
             </div>
             <!-- end Topbar -->
@@ -269,40 +300,58 @@
                             </div>
 
                             <li>
-                                <a href="index">
+                                <a href="index-moban">
                                     <i class="dripicons-device-desktop"></i>
-                                    <span> 主页 </span>
+                                    <span> Dashboard </span>
                                 </a>
                             </li>
 
                             <li>
                                 <a href="javascript: void(0);">
                                     <i class="dripicons-view-apps"></i>
-                                    <span> 审核管理 </span>
+                                    <span> Layouts </span>
                                     <span class="menu-arrow"></span>
                                 </a>
                                 <ul class="nav-second-level" aria-expanded="false">
                                     <li>
-                                        <a href="audit-job">职位审核管理</a>
+                                        <a href="layouts-dark-header">Dark Header</a>
                                     </li>
                                     <li>
-                                        <a href="audit-resume">简历审核管理</a>
+                                        <a href="layouts-sidebar-collapsed">Sidebar Collapsed</a>
+                                    </li>
+                                    <li>
+                                        <a href="layouts-dark-sidebar">Dark Sidebar</a>
+                                    </li>
+                                    <li>
+                                        <a href="layouts-small-sidebar">Small Sidebar</a>
+                                    </li>
+                                    <li>
+                                        <a href="layouts-boxed">Boxed Layout</a>
                                     </li>
                                 </ul>
+                            </li>
+                
+                            <li>
+                                <a href="calendar">
+                                    <i class="dripicons-calendar"></i> <span> Calendar </span>
+                                </a>
                             </li>
 
                             <li>
                                 <a href="javascript: void(0);">
                                     <i class="dripicons-inbox"></i>
-                                    <span> 用户管理  </span>
+                                    <span> Email </span>
                                     <span class="menu-arrow"></span>
                                 </a>
                                 <ul class="nav-second-level" aria-expanded="false">
                                     <li>
-                                        <a href="manager-student">学生管理</a>
+                                        <a href="email-inbox">Inbox</a>
                                     </li>
                                     <li>
-                                        <a href="manager-company">企业管理</a>
+                                        <a href="email-read">Read Email</a>
+                                    </li>
+                                    <li>
+                                        <a href="email-compose">Compose Email</a>
                                     </li>
                                 </ul>
                             </li>
@@ -310,15 +359,48 @@
                             <li>
                                 <a href="javascript: void(0);">
                                     <i class="dripicons-briefcase"></i>
-                                    <span> 认证管理 </span>
+                                    <span> UI Elements </span>
                                     <span class="menu-arrow"></span>
                                 </a>
                                 <ul class="nav-second-level" aria-expanded="false">
                                     <li>
-                                        <a href="authentication-student">学生认证管理</a>
+                                        <a href="ui-typography">Typography</a>
                                     </li>
                                     <li>
-                                        <a href="authentication-company">企业认证管理</a>
+                                        <a href="ui-buttons">Buttons</a>
+                                    </li>
+                                    <li>
+                                        <a href="ui-notifications">Notifications</a>
+                                    </li>
+                                    <li>
+                                        <a href="ui-cards">Cards</a>
+                                    </li>
+                                    <li>
+                                        <a href="ui-modals">Modals</a>
+                                    </li>
+                                    <li>
+                                        <a href="ui-grid">Grid</a>
+                                    </li>
+                                    <li>
+                                        <a href="ui-checkbox-radio">Checkbox & Radio</a>
+                                    </li>
+                                    <li>
+                                        <a href="ui-general">General</a>
+                                    </li>
+                                    <li>
+                                        <a href="ui-progress">Progress</a>
+                                    </li>
+                                    <li>
+                                        <a href="ui-tabs">Tabs & Accordions</a>
+                                    </li>
+                                    <li>
+                                        <a href="ui-sweetalerts">Sweet Alerts</a>
+                                    </li>
+                                    <li>
+                                        <a href="ui-ribbons">Ribbons</a>
+                                    </li> 
+                                    <li>
+                                        <a href="ui-range-slider">Range Slider</a>
                                     </li>
                                 </ul>
                             </li>
@@ -326,12 +408,24 @@
                             <li>
                                 <a href="javascript: void(0);">
                                     <i class="dripicons-graph-pie"></i>
-                                    <span> 广告管理 </span>
+                                    <span> Charts </span>
                                     <span class="menu-arrow"></span>
                                 </a>
                                 <ul class="nav-second-level" aria-expanded="false">
                                     <li>
-                                        <a href="manager-advertising">广告管理</a>
+                                        <a href="chart-chartjs">Chartjs Charts</a>
+                                    </li>
+                                    <li>
+                                        <a href="chart-flot">Flot Charts</a>
+                                    </li>
+                                    <li>
+                                        <a href="chart-chartist">Chartist Charts</a>
+                                    </li>
+                                    <li>
+                                        <a href="chart-knob">Jquery Knob</a>
+                                    </li>
+                                    <li>
+                                        <a href="chart-sparkline">Sparkline Charts</a>
                                     </li>
                                 </ul>
                             </li>
@@ -339,12 +433,27 @@
                             <li>
                                 <a href="javascript: void(0);">
                                     <i class="dripicons-document"></i>
-                                    <span> 评论管理 </span>
+                                    <span> Forms </span>
                                     <span class="menu-arrow"></span>
                                 </a>
                                 <ul class="nav-second-level" aria-expanded="false">
                                     <li>
-                                        <a href="manager-comment">评论管理</a>
+                                        <a href="form-elements">Form Elements</a>
+                                    </li>
+                                    <li>
+                                        <a href="form-advanced">Form Advanced</a>
+                                    </li>
+                                    <li>
+                                        <a href="form-validation">Form Validation</a>
+                                    </li>
+                                    <li>
+                                        <a href="form-wizard">Form Wizard</a>
+                                    </li>
+                                    <li>
+                                        <a href="form-upload">Form Upload</a>
+                                    </li>
+                                    <li>
+                                        <a href="form-summernote">Summernote</a>
                                     </li>
                                 </ul>
                             </li>
@@ -352,12 +461,106 @@
                             <li>
                                 <a href="javascript: void(0);">
                                     <i class="dripicons-view-list"></i>
-                                    <span> 投诉管理 </span>
+                                    <span> Tables </span>
                                     <span class="menu-arrow"></span>
                                 </a>
                                 <ul class="nav-second-level" aria-expanded="false">
                                     <li>
-                                        <a href="manager-complaint">投诉管理</a>
+                                        <a href="tables-basic">Basic Tables</a>
+                                    </li>
+                                    <li>
+                                        <a href="tables-datatable">Data Tables</a>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a href="javascript: void(0);">
+                                    <i class="dripicons-map"></i>
+                                    <span> Maps </span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li>
+                                        <a href="maps-google">Google Maps</a>
+                                    </li>
+                                    <li>
+                                        <a href="maps-vector">Vector Maps</a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a href="javascript: void(0);">
+                                    <i class="dripicons-star"></i>
+                                    <span> Icons </span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li>
+                                        <a href="icons-simpleline">Simple Line</a>
+                                    </li>
+                                    <li>
+                                        <a href="icons-dripicons">Dripicons</a>
+                                    </li> 
+                                    <li>
+                                        <a href="icons-materialdesign">Material Design</a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a href="javascript: void(0);">
+                                    <i class="dripicons-user"></i>
+                                    <span> Authentication </span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li><a href="auth-login">Log In</a></li>
+                                    <li><a href="auth-register">Register</a></li>
+                                    <li><a href="auth-recoverpassword">Recover Password</a></li>
+                                    <li><a href="auth-lock-screen">Lock Screen</a></li>
+                                    <li><a href="auth-404">Error 404</a></li>
+                                    <li><a href="auth-500">Error 500</a></li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a href="javascript: void(0);">
+                                    <i class="dripicons-duplicate"></i>
+                                    <span> Extra Pages </span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li><a href="pages-pricing">Pricing</a></li>
+                                    <li><a href="pages-starter">Starter</a></li>
+                                    <li><a href="pages-invoice">Invoice</a></li>
+                                    <li><a href="pages-timeline">Timeline</a></li>
+                                    <li><a href="pages-faq">FAQs</a></li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a href="javascript: void(0);">
+                                    <i class="dripicons-network-3"></i>
+                                    <span> Multi Level </span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <ul class="nav-second-level nav" aria-expanded="false">
+                                    <li>
+                                        <a href="javascript: void(0);">Menu 1</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript: void(0);" aria-expanded="false">Menu 2
+                                            <span class="menu-arrow"></span>
+                                        </a>
+                                        <ul class="nav-third-level nav" aria-expanded="false">
+                                            <li>
+                                                <a href="javascript: void(0);">Menu 2.1</a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript: void(0);">Menu 2.2</a>
+                                            </li>
+                                        </ul>
                                     </li>
                                 </ul>
                             </li>
@@ -391,11 +594,11 @@
                                 <div class="page-title-box">
                                     <div class="page-title-right">
                                         <ol class="breadcrumb m-0">
-                                            <li class="breadcrumb-item"><a href="javascript: void(0);">主页</a></li>
-                                            <li class="breadcrumb-item active">主页</li>
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Dashoon</a></li>
+                                            <li class="breadcrumb-item active">Dashboard</li>
                                         </ol>
                                     </div>
-                                    <h4 class="page-title">主页</h4>
+                                    <h4 class="page-title">Dashboard</h4>
                                 </div>
                             </div>
                         </div>     
