@@ -37,6 +37,12 @@ public class APIResult implements java.io.Serializable {
         this.code = code;
         this.data = data;
     }
+    public static APIResult genSuccessApiResponse(String message){
+        return new APIResult(message,true,200,null);
+    }
+    public static APIResult genFailApiResponse(String message){
+        return new APIResult(message,true,500,null);
+    }
 
     public String getMessage() {
         return message;
