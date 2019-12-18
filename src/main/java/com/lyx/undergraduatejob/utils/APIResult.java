@@ -2,6 +2,8 @@ package com.lyx.undergraduatejob.utils;
 
 public class APIResult implements java.io.Serializable {
 
+
+
     private String message;
     private boolean result;
     private int code = 200;

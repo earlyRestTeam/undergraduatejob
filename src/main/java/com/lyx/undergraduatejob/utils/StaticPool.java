@@ -18,4 +18,8 @@ public interface StaticPool {
 
     int ORDER_SUCCESS = 1;
     int ORDER_NOT_RECIVE = 2;
+
+    //简历状态
+    int RESUME_NOT_PUBLISH = 0;//未发布
+    int RESUME_PUBLISH = 1;//已发布
 }

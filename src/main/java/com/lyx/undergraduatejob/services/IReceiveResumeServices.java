@@ -38,5 +38,12 @@ public interface IReceiveResumeServices {
      * @param receiveResumeId
      * @return
      */
-    boolean deleteReceiveResume(int receiveResumeId);
+    boolean deleteReceiveResume(Integer receiveResumeId);
+
+    /**
+     * 申请工作职位
+     * @param
+     * @return
+     */
+    boolean  addReceiveResume(ReceiveResume re);
 }
