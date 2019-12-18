@@ -19,7 +19,11 @@ import java.util.List;
 public class AdminServiceImpl implements IAdminServices {
     @Autowired
     AdminMapper adminMapper;
-
+    /**
+     * 加载 管理员 通过 管理员名
+     * @param name
+     * @return
+     */
     @Override
     public Admin loadAdminByName(String name) {
         AdminExample example = new AdminExample();

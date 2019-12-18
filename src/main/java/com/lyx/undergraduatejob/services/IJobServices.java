@@ -3,6 +3,7 @@ package com.lyx.undergraduatejob.services;
 import com.github.pagehelper.PageInfo;
 import com.lyx.undergraduatejob.pojo.Job;
 import com.lyx.undergraduatejob.pojo.ReceiveResume;
+import com.lyx.undergraduatejob.search.entity.JobSearchEntity;
 
 import java.util.Map;
 
@@ -34,10 +35,10 @@ public interface IJobServices {
 
     /**
      * 删除招聘职位
-     * @param JobId
+     * @param jobId
      * @return
      */
-    Map<String, String> deleteJob(Integer JobId);
+    Map<String, String> deleteJob(Integer jobId);
     /**
      * 查看求职记录
      * @param index
@@ -52,13 +53,23 @@ public interface IJobServices {
      * 增加 阅读数
      * @return
      */
-    boolean incReadCount(int count);
-
+    boolean incReadCount(int jobId, int count);
     /**
      * 增加接受简历数
      * @return
      */
-    boolean incReceiveNum(int count);
+    boolean updateIncrReceiveNum(int jobId, int count);
+
+    /**
+     * 按照 条件分页查找
+     *
+     * @param start
+     * @param pageSize
+     * @param jobSearchEntity
+     * @return
+     */
+    PageInfo<Job> selectJobByJobSearchEntity(int start, int pageSize, JobSearchEntity jobSearchEntity);
+
 
 //    boolean
 }

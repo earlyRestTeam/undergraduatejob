@@ -12,6 +12,11 @@ import java.util.Map;
  */
 public interface IUserServices{
 
+    /**
+     * 通过用户名加载 用户
+     * @param username
+     * @return
+     */
     Users loadUserByName(String username);
     /**
      * 用户注册

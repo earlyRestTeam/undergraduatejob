@@ -24,7 +24,11 @@ public class UserServicesImpl implements IUserServices {
 
     @Autowired
     UsersMapper usersMapper;
-
+    /**
+     * 通过用户名加载 用户
+     * @param username
+     * @return
+     */
     @Override
     public Users loadUserByName(String username) {
         UsersExample example = new UsersExample();
@@ -36,7 +40,11 @@ public class UserServicesImpl implements IUserServices {
             return null;
         return users.get(0);
     }
-
+    /**
+     * 用户注册
+     * @param u
+     * @return
+     */
     @Override
     public Map<String, String> addUser(Users u) {
         //检查用户名 是否 重复
@@ -64,7 +72,10 @@ public class UserServicesImpl implements IUserServices {
         }
         return result;
     }
-
+    /**
+     * 找回密码
+     * @return
+     */
     @Override
     public Map<String, String> updateUserPassword(Integer id,String oldPwd,String newPwd) {
         //id是否合法
@@ -92,8 +103,8 @@ public class UserServicesImpl implements IUserServices {
     }
 
     /**
-     *
-     * @param user
+     * 修改个人信息
+     * @param u
      * @return
      */
     @Override
@@ -118,7 +129,12 @@ public class UserServicesImpl implements IUserServices {
         }
         return result;
     }
-
+    /**
+     * 按条件查询 用户
+     * @param start
+     * @param pageSize
+     * @return
+     */
     @Override
     public PageInfo<Users> queryUsers(Integer start, Integer pageSize, UsersSearchEntity entity) {
         Map<String,String> result = new HashMap<>();
@@ -134,7 +150,11 @@ public class UserServicesImpl implements IUserServices {
         PageInfo<Users> pageInfo = PageInfo.of(users);
         return pageInfo;
     }
-
+    /**
+     * 按照 用户 的email 查询
+     * @param email
+     * @return
+     */
     @Override
     public Users queryUserByEmail(String email) {
         UsersExample example = new UsersExample();
@@ -146,7 +166,11 @@ public class UserServicesImpl implements IUserServices {
             return null;
         return users.get(0);
     }
-
+    /**
+     * 按照 id查询
+     * @param id
+     * @return
+     */
     @Override
     public Users queryUserById(Integer id) {
         return usersMapper.selectByPrimaryKey(id);

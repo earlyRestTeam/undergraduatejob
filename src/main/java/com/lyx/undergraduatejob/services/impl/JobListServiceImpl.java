@@ -2,15 +2,21 @@ package com.lyx.undergraduatejob.services.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.lyx.undergraduatejob.mapper.JobListMapper;
 import com.lyx.undergraduatejob.mapper.JobMapper;
-import com.lyx.undergraduatejob.pojo.Job;
-import com.lyx.undergraduatejob.pojo.JobExample;
+import com.lyx.undergraduatejob.pojo.*;
+import com.lyx.undergraduatejob.search.entity.JobListSearchEntity;
 import com.lyx.undergraduatejob.search.entity.JobSearchEntity;
 import com.lyx.undergraduatejob.search.entity.RentValueBlock;
 import com.lyx.undergraduatejob.services.IJobListServices;
 import org.aspectj.lang.annotation.AdviceName;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
+import org.thymeleaf.util.StringUtils;
 
 import java.awt.print.Pageable;
 import java.util.Date;
@@ -23,76 +29,74 @@ import java.util.Random;
  * @createTime 2019.12.17.21:52
  */
 @Service
+@CacheConfig(cacheNames = "jobList")
 public class JobListServiceImpl implements IJobListServices {
 
     @Autowired
-    JobMapper jobMapper;
+    JobListMapper mapper;
 
-
+    Logger logger = LoggerFactory.getLogger(this.getClass());
+    /**
+     * 查询 所有 的 职业 通过 行业 id
+     * @return
+     */
     @Override
-    public PageInfo<Job> selectJobByJobSearchEntity(int start, int pageSize, JobSearchEntity jobSearchEntity) {
+    @Cacheable(key="'jobList'+#p0")
+    public List<JobList> queryALLByIndustriesId(int industriesId) {
+        JobListExample example = new JobListExample();
+        example.createCriteria().andIndustriesIdEqualTo(industriesId);
+        List<JobList> jobLists = mapper.selectByExample(example);
+        return jobLists;
+    }
+    /**
+     * 分页查询 行业 -- 供 后台 使用
+     * @param start
+     * @param pageSize
+     * @param jobSearchEntity
+     * @return
+     */
+    @Override
+    @Cacheable(key="'JobList'+#p0+'-'+#p1")
+    public PageInfo<JobList> queryByPage(Integer start, Integer pageSize, JobListSearchEntity jobSearchEntity) {
+        PageHelper.startPage(start, pageSize);
 
-        PageHelper.startPage(start,pageSize);
-        JobExample example = new JobExample();
-        JobExample.Criteria criteria = example.createCriteria();
-        criteria.andStatusEqualTo(1);
-        criteria.andAulStatusEqualTo(2);
+        JobListExample example = new JobListExample();
+        JobListExample.Criteria criteria = example.createCriteria();
+        if( jobSearchEntity.getIndustriesId() != null)
+            criteria.andIndustriesIdEqualTo(jobSearchEntity.getIndustriesId());
+        if( !StringUtils.isEmpty(jobSearchEntity.getKeyWord()))
+            criteria.andJobNameEqualTo(jobSearchEntity.getKeyWord()+"%");
 
-        String key;
-        if( (key = jobSearchEntity.getKeyWord() )!= null)
-            criteria.andJobNameLike(key+"%");
-        String workArea;
-        if( (workArea = jobSearchEntity.getWorkArea() )!= null)
-            criteria.andWorkAddressEqualTo(workArea);
-        Integer closeAnAccount;
-        if( (closeAnAccount = jobSearchEntity.getCloseAnAccount() )!= null)
-            criteria.andCloseTypeEqualTo(closeAnAccount);
-        RentValueBlock rentValueBlock = RentValueBlock.getRentValueBlock(jobSearchEntity.getSalaryArea());
-        if(rentValueBlock.getMin() > 0)
-            criteria.andSalaryGreaterThan(rentValueBlock.getMin());
-        if(rentValueBlock.getMax() > 0)
-            criteria.andSalaryLessThan(rentValueBlock.getMax());
+        List<JobList> JobList = mapper.selectByExample(example);
+        PageInfo<JobList> pageInfo = PageInfo.of(JobList);
 
-        example.setOrderByClause(jobSearchEntity.getOrderExample()+jobSearchEntity.getOrder());
-
-        List<Job> jobs = jobMapper.selectByExample(example);
-        PageInfo<Job> pageInfo = PageInfo.of(jobs);
         return pageInfo;
     }
-
-    public void insertJob(){
-        Job job = null;
-        Random rand = new Random();
-        for (int i = 0; i < 10; i++) {
-            int random = rand.nextInt(15)+5;
-            String s = genStr(4);
-            for (int j = 0; j < random; j++) {
-//        String s = "h1";
-                String s1 = genStr(8);
-                job = new Job();
-                job.setJobName(s+s1);
-                job.setStatus(1);
-                job.setAulStatus(2);
-                job.setJobTitle(genStr(8));
-                job.setPartFull(rand.nextInt(2)+1);
-                job.setSalary(rand.nextInt(10000));
-                job.setCloseType(rand.nextInt(3));
-                job.setWorkAddress(s);
-                job.setCreateTime(new Date());
-                jobMapper.insert(job);
-            }
-        }
+    /**
+     * 修改 行业
+     * @param jobList
+     * @return
+     */
+    @Override
+    public boolean updateJobList(JobList jobList) {
+        return mapper.updateByPrimaryKeySelective(jobList) > 0;
     }
-
-    //length用户要求产生字符串的长度
-    public static String genStr(int length){
-        String str="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-        Random random=new Random();
-        StringBuffer sb=new StringBuffer();
-        for(int i=0;i<length;i++){
-            int number=random.nextInt(62);
-            sb.append(str.charAt(number));
-        }
-        return sb.toString();
+    /**
+     * 增加 行业
+     * @param jobList
+     * @return
+     */
+    @Override
+    public boolean addJobList(JobList jobList) {
+        return mapper.insert(jobList) > 0;
+    }
+    /**
+     * 删除 行业 根据 id
+     * @param id
+     * @return
+     */
+    @Override
+    public boolean deleteJobList(int id) {
+        return mapper.deleteByPrimaryKey(id) > 0;
     }
 }
