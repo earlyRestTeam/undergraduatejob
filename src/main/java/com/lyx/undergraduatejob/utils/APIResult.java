@@ -35,12 +35,55 @@ public class APIResult implements java.io.Serializable {
         this.code = code;
         this.data = data;
     }
+    //成功
     public static APIResult genSuccessApiResponse(String message){
-        return new APIResult(message,true,200,null);
+        return genSuccessApiResponse(message,null);
     }
-    public static APIResult genFailApiResponse(String message){
-        return new APIResult(message,true,500,null);
+
+    public static APIResult genSuccessApiResponse(Object data){
+        return genSuccessApiResponse(null,data);
     }
+    public static APIResult genSuccessApiResponse(String message, Object data){
+        return new APIResult(message,true,200,data);
+    }
+
+
+
+    //失败500
+    public static APIResult genFailApiResponse500(String message){
+        return genFailApiResponse500(message,null);
+    }
+    public static APIResult genFailApiResponse500(Object data){
+        return  genFailApiResponse500(null,data);
+    }
+
+    public static APIResult genFailApiResponse500(String message,Object data){
+        return new APIResult(message,true,500,data);
+    }
+
+    //失败400
+    public static APIResult genFailApiResponse400(String message){
+        return genFailApiResponse400(message,null);
+    }
+    public static APIResult genFailApiResponse400(Object data){
+        return  genFailApiResponse400(null,data);
+    }
+    public static APIResult genFailApiResponse400(String message,Object data){
+        return new APIResult(message,true,400,data);
+    }
+
+    //失败401
+
+    public static APIResult genFailApiResponse401(String message){
+        return genFailApiResponse401(message,null);
+    }
+    public static APIResult genFailApiResponse401(Object data){
+        return  genFailApiResponse401(null,data);
+    }
+    public static APIResult genFailApiResponse401(String message,Object data){
+        return new APIResult(message,true,401,data);
+    }
+
 
     public String getMessage() {
         return message;
