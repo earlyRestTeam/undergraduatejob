@@ -1,12 +1,13 @@
 package com.lyx.undergraduatejob.search.entity;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
 /**
  * @createTime 2019.12.17.21:57
  */
-public class JobSearchEntity {
+public class JobSearchEntity implements Serializable {
     //    关键字
     private String keyWord;
     //工作职位

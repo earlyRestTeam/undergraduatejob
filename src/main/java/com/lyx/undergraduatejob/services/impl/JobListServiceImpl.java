@@ -23,7 +23,7 @@ import java.util.Random;
  * @createTime 2019.12.17.21:52
  */
 @Service
-public class JobListService implements IJobListServices {
+public class JobListServiceImpl implements IJobListServices {
 
     @Autowired
     JobMapper jobMapper;
