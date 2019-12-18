@@ -1,48 +1,56 @@
 package com.lyx.undergraduatejob.services;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageInfo;
 import com.lyx.undergraduatejob.pojo.Users;
+import com.lyx.undergraduatejob.search.entity.UsersSearchEntity;
+
+import java.util.Map;
 
 /**
- * 账号（登陆等）
+ * 用户服务层
  */
-public interface IUserServices {
-    /**
-     * 用户登陆
-     * @param u
-     * @return
-     */
-    boolean loginUser(Users u);
+public interface IUserServices{
 
+    Users loadUserByName(String username);
     /**
      * 用户注册
      * @param u
      * @return
      */
-    boolean register(Users u);
+    Map<String,String> addUser(Users u);
 
     /**
      * 找回密码
      * @return
      */
-    boolean findPwd();
-
-    /**
-     * 注销
-     * @return
-     */
-    boolean logout();
-
-    /**
-     * 修改密码
-     * @param u
-     * @return
-     */
-    boolean updatePwd(Users u);
-
+    Map<String,String> updateUserPassword(Integer id,String oldPwd,String newPwd);
     /**
      * 修改个人信息
      * @param u
      * @return
      */
-    boolean updateInfo(Users u);
+    Map<String,String> updateInfo(Users u);
+
+    /**
+     * 按条件查询 用户
+     * @param start
+     * @param pageSize
+     * @return
+     */
+    PageInfo<Users> queryUsers(Integer start, Integer pageSize, UsersSearchEntity entity);
+
+    /**
+     * 按照 用户 的email 查询
+     * @param email
+     * @return
+     */
+    Users queryUserByEmail(String email);
+
+    /**
+     * 按照 id查询
+     * @param id
+     * @return
+     */
+    Users queryUserById(Integer id);
 }

@@ -45,6 +45,7 @@ public class TransactionConfig {
         source.addTransactionalMethod("set*", txAttr_REQUIRED);
         source.addTransactionalMethod("insert*", txAttr_REQUIRED);
         source.addTransactionalMethod("add*", txAttr_REQUIRED);
+        //source.addTransactionalMethod("register*", txAttr_REQUIRED);
 
         //以下 只能为 只读的 数据库连接
         source.addTransactionalMethod("get*", txAttr_REQUIRED_READONLY);

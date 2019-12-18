@@ -3,7 +3,7 @@ spring:
     username: root
     password: 110412
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/expressage?useUnicode=true
+    url: jdbc:mysql://localhost:3306/undergraduatejob?useUnicode=true
     type: com.alibaba.druid.pool.DruidDataSource
     #   数据源其他配置
     initialSize: 5
