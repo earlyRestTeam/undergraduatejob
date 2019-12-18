@@ -50,6 +50,7 @@ public class UserServicesImpl implements IUserServices {
         List<Users> users = usersMapper.selectByExample(example);
         if(users != null && users.size() > 0){
             result.put(StaticPool.ERROR,"用户名 或 email 已存在");
+            return result;
         }
         //设置 默认状态
         //增加 创建时间
@@ -61,6 +62,7 @@ public class UserServicesImpl implements IUserServices {
         }else {
             result.put(StaticPool.ERROR,"系统繁忙");
         }
+        return result;
     }
 
     @Override
