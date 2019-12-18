@@ -21,6 +21,7 @@
     <result column="self_introduction" jdbcType="VARCHAR" property="selfIntroduction" />
     <result column="push_time" jdbcType="TIMESTAMP" property="pushTime" />
     <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="push_status" jdbcType="INTEGER" property="pushStatus" />
     <result column="aul_status" jdbcType="INTEGER" property="aulStatus" />
     <result column="resume_url" jdbcType="VARCHAR" property="resumeUrl" />
     <result column="skill1" jdbcType="VARCHAR" property="skill1" />
@@ -92,7 +93,7 @@
   <sql id="Base_Column_List">
     id, user_id, name, age, gender, phone, email, graduate_school, specialty, education, 
     job, job_type, salary, job_address, part_full, free_time, self_introduction, push_time, 
-    status, aul_status, resume_url, skill1, skill2, skill3, skill4, work_experience, 
+    status, push_status, aul_status, resume_url, skill1, skill2, skill3, skill4, work_experience, 
     resume_vip, create_time
   </sql>
   <select id="selectByExample" parameterType="com.lyx.undergraduatejob.pojo.ResumeExample" resultMap="BaseResultMap">
@@ -135,20 +136,20 @@
       job, job_type, salary, 
       job_address, part_full, free_time, 
       self_introduction, push_time, status, 
-      aul_status, resume_url, skill1, 
-      skill2, skill3, skill4, 
-      work_experience, resume_vip, create_time
-      )
+      push_status, aul_status, resume_url, 
+      skill1, skill2, skill3, 
+      skill4, work_experience, resume_vip, 
+      create_time)
     values (#{userId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}, 
       #{gender,jdbcType=INTEGER}, #{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
       #{graduateSchool,jdbcType=VARCHAR}, #{specialty,jdbcType=VARCHAR}, #{education,jdbcType=VARCHAR}, 
       #{job,jdbcType=VARCHAR}, #{jobType,jdbcType=VARCHAR}, #{salary,jdbcType=INTEGER}, 
       #{jobAddress,jdbcType=VARCHAR}, #{partFull,jdbcType=INTEGER}, #{freeTime,jdbcType=VARCHAR}, 
       #{selfIntroduction,jdbcType=VARCHAR}, #{pushTime,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER}, 
-      #{aulStatus,jdbcType=INTEGER}, #{resumeUrl,jdbcType=VARCHAR}, #{skill1,jdbcType=VARCHAR}, 
-      #{skill2,jdbcType=VARCHAR}, #{skill3,jdbcType=VARCHAR}, #{skill4,jdbcType=VARCHAR}, 
-      #{workExperience,jdbcType=INTEGER}, #{resumeVip,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}
-      )
+      #{pushStatus,jdbcType=INTEGER}, #{aulStatus,jdbcType=INTEGER}, #{resumeUrl,jdbcType=VARCHAR}, 
+      #{skill1,jdbcType=VARCHAR}, #{skill2,jdbcType=VARCHAR}, #{skill3,jdbcType=VARCHAR}, 
+      #{skill4,jdbcType=VARCHAR}, #{workExperience,jdbcType=INTEGER}, #{resumeVip,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.lyx.undergraduatejob.pojo.Resume">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
@@ -209,6 +210,9 @@
       </if>
       <if test="status != null">
         status,
+      </if>
+      <if test="pushStatus != null">
+        push_status,
       </if>
       <if test="aulStatus != null">
         aul_status,
@@ -292,6 +296,9 @@
       </if>
       <if test="status != null">
         #{status,jdbcType=INTEGER},
+      </if>
+      <if test="pushStatus != null">
+        #{pushStatus,jdbcType=INTEGER},
       </if>
       <if test="aulStatus != null">
         #{aulStatus,jdbcType=INTEGER},
@@ -388,6 +395,9 @@
       <if test="record.status != null">
         status = #{record.status,jdbcType=INTEGER},
       </if>
+      <if test="record.pushStatus != null">
+        push_status = #{record.pushStatus,jdbcType=INTEGER},
+      </if>
       <if test="record.aulStatus != null">
         aul_status = #{record.aulStatus,jdbcType=INTEGER},
       </if>
@@ -441,6 +451,7 @@
       self_introduction = #{record.selfIntroduction,jdbcType=VARCHAR},
       push_time = #{record.pushTime,jdbcType=TIMESTAMP},
       status = #{record.status,jdbcType=INTEGER},
+      push_status = #{record.pushStatus,jdbcType=INTEGER},
       aul_status = #{record.aulStatus,jdbcType=INTEGER},
       resume_url = #{record.resumeUrl,jdbcType=VARCHAR},
       skill1 = #{record.skill1,jdbcType=VARCHAR},
@@ -511,6 +522,9 @@
       <if test="status != null">
         status = #{status,jdbcType=INTEGER},
       </if>
+      <if test="pushStatus != null">
+        push_status = #{pushStatus,jdbcType=INTEGER},
+      </if>
       <if test="aulStatus != null">
         aul_status = #{aulStatus,jdbcType=INTEGER},
       </if>
@@ -561,6 +575,7 @@
       self_introduction = #{selfIntroduction,jdbcType=VARCHAR},
       push_time = #{pushTime,jdbcType=TIMESTAMP},
       status = #{status,jdbcType=INTEGER},
+      push_status = #{pushStatus,jdbcType=INTEGER},
       aul_status = #{aulStatus,jdbcType=INTEGER},
       resume_url = #{resumeUrl,jdbcType=VARCHAR},
       skill1 = #{skill1,jdbcType=VARCHAR},

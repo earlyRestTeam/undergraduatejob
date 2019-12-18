@@ -42,6 +42,8 @@ public class Resume implements Serializable {
 
     private Integer status;
 
+    private Integer pushStatus;
+
     private Integer aulStatus;
 
     private String resumeUrl;
@@ -214,6 +216,14 @@ public class Resume implements Serializable {
         this.status = status;
     }
 
+    public Integer getPushStatus() {
+        return pushStatus;
+    }
+
+    public void setPushStatus(Integer pushStatus) {
+        this.pushStatus = pushStatus;
+    }
+
     public Integer getAulStatus() {
         return aulStatus;
     }
@@ -311,6 +321,7 @@ public class Resume implements Serializable {
         sb.append(", selfIntroduction=").append(selfIntroduction);
         sb.append(", pushTime=").append(pushTime);
         sb.append(", status=").append(status);
+        sb.append(", pushStatus=").append(pushStatus);
         sb.append(", aulStatus=").append(aulStatus);
         sb.append(", resumeUrl=").append(resumeUrl);
         sb.append(", skill1=").append(skill1);

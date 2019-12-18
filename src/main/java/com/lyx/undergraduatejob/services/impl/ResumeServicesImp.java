@@ -23,18 +23,22 @@ public class ResumeServicesImp implements IResumeServices {
         return null;
     }
 
+    /**
+     * 查看个人简历
+     * @param userId
+     * @return
+     */
     @Override
     public Resume queryResumeByUserId(int userId) {
-//        Resume resume = resumeMapper.selectByPrimaryKey(userId);
-//        if(resume != null){
-//            return resume;
-//        }else {
-//            logger.warn("服务繁忙！");
-//            return null;
-//        }
+
         return resumeMapper.selectByPrimaryKey(userId);
     }
 
+    /**
+     * 添加个人简历
+     * @param r
+     * @return
+     */
     @Override
     public Map<String,String> addResume(Resume r) {
         Map<String,String> result = new HashMap<>();
@@ -50,6 +54,11 @@ public class ResumeServicesImp implements IResumeServices {
         return result;
     }
 
+    /**
+     * 修改个人简历
+     * @param r
+     * @return
+     */
     @Override
     public Map<String,String> updateResume(Resume r) {
         Map<String,String> result = new HashMap<>();
@@ -64,6 +73,11 @@ public class ResumeServicesImp implements IResumeServices {
         return result;
     }
 
+    /**
+     * 删除个人简历
+     * @param
+     * @return
+     */
     @Override
     public Map<String,String> deleteResume(Integer userId) {
         Map<String,String> result = new HashMap<>();
