@@ -6,6 +6,7 @@
     <result column="user_id" jdbcType="INTEGER" property="userId" />
     <result column="company_id" jdbcType="INTEGER" property="companyId" />
     <result column="job_id" jdbcType="INTEGER" property="jobId" />
+    <result column="receive_status" jdbcType="INTEGER" property="receiveStatus" />
     <result column="status" jdbcType="INTEGER" property="status" />
     <result column="resume_url" jdbcType="VARCHAR" property="resumeUrl" />
     <result column="receive_time" jdbcType="TIMESTAMP" property="receiveTime" />
@@ -70,7 +71,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, user_id, company_id, job_id, status, resume_url, receive_time, create_time
+    id, user_id, company_id, job_id, receive_status, status, resume_url, receive_time, 
+    create_time
   </sql>
   <select id="selectByExample" parameterType="com.lyx.undergraduatejob.pojo.ReceiveResumeExample" resultMap="BaseResultMap">
     select
@@ -107,11 +109,11 @@
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into receive_resume (user_id, company_id, job_id, 
-      status, resume_url, receive_time, 
-      create_time)
+      receive_status, status, resume_url, 
+      receive_time, create_time)
     values (#{userId,jdbcType=INTEGER}, #{companyId,jdbcType=INTEGER}, #{jobId,jdbcType=INTEGER}, 
-      #{status,jdbcType=INTEGER}, #{resumeUrl,jdbcType=VARCHAR}, #{receiveTime,jdbcType=TIMESTAMP}, 
-      #{createTime,jdbcType=TIMESTAMP})
+      #{receiveStatus,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{resumeUrl,jdbcType=VARCHAR}, 
+      #{receiveTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.lyx.undergraduatejob.pojo.ReceiveResume">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
@@ -127,6 +129,9 @@
       </if>
       <if test="jobId != null">
         job_id,
+      </if>
+      <if test="receiveStatus != null">
+        receive_status,
       </if>
       <if test="status != null">
         status,
@@ -150,6 +155,9 @@
       </if>
       <if test="jobId != null">
         #{jobId,jdbcType=INTEGER},
+      </if>
+      <if test="receiveStatus != null">
+        #{receiveStatus,jdbcType=INTEGER},
       </if>
       <if test="status != null">
         #{status,jdbcType=INTEGER},
@@ -186,6 +194,9 @@
       <if test="record.jobId != null">
         job_id = #{record.jobId,jdbcType=INTEGER},
       </if>
+      <if test="record.receiveStatus != null">
+        receive_status = #{record.receiveStatus,jdbcType=INTEGER},
+      </if>
       <if test="record.status != null">
         status = #{record.status,jdbcType=INTEGER},
       </if>
@@ -209,6 +220,7 @@
       user_id = #{record.userId,jdbcType=INTEGER},
       company_id = #{record.companyId,jdbcType=INTEGER},
       job_id = #{record.jobId,jdbcType=INTEGER},
+      receive_status = #{record.receiveStatus,jdbcType=INTEGER},
       status = #{record.status,jdbcType=INTEGER},
       resume_url = #{record.resumeUrl,jdbcType=VARCHAR},
       receive_time = #{record.receiveTime,jdbcType=TIMESTAMP},
@@ -228,6 +240,9 @@
       </if>
       <if test="jobId != null">
         job_id = #{jobId,jdbcType=INTEGER},
+      </if>
+      <if test="receiveStatus != null">
+        receive_status = #{receiveStatus,jdbcType=INTEGER},
       </if>
       <if test="status != null">
         status = #{status,jdbcType=INTEGER},
@@ -249,6 +264,7 @@
     set user_id = #{userId,jdbcType=INTEGER},
       company_id = #{companyId,jdbcType=INTEGER},
       job_id = #{jobId,jdbcType=INTEGER},
+      receive_status = #{receiveStatus,jdbcType=INTEGER},
       status = #{status,jdbcType=INTEGER},
       resume_url = #{resumeUrl,jdbcType=VARCHAR},
       receive_time = #{receiveTime,jdbcType=TIMESTAMP},

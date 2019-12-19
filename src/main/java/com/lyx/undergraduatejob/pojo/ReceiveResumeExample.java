@@ -345,6 +345,66 @@ public class ReceiveResumeExample {
             return (Criteria) this;
         }
 
+        public Criteria andReceiveStatusIsNull() {
+            addCriterion("receive_status is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceiveStatusIsNotNull() {
+            addCriterion("receive_status is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceiveStatusEqualTo(Integer value) {
+            addCriterion("receive_status =", value, "receiveStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceiveStatusNotEqualTo(Integer value) {
+            addCriterion("receive_status <>", value, "receiveStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceiveStatusGreaterThan(Integer value) {
+            addCriterion("receive_status >", value, "receiveStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceiveStatusGreaterThanOrEqualTo(Integer value) {
+            addCriterion("receive_status >=", value, "receiveStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceiveStatusLessThan(Integer value) {
+            addCriterion("receive_status <", value, "receiveStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceiveStatusLessThanOrEqualTo(Integer value) {
+            addCriterion("receive_status <=", value, "receiveStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceiveStatusIn(List<Integer> values) {
+            addCriterion("receive_status in", values, "receiveStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceiveStatusNotIn(List<Integer> values) {
+            addCriterion("receive_status not in", values, "receiveStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceiveStatusBetween(Integer value1, Integer value2) {
+            addCriterion("receive_status between", value1, value2, "receiveStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceiveStatusNotBetween(Integer value1, Integer value2) {
+            addCriterion("receive_status not between", value1, value2, "receiveStatus");
+            return (Criteria) this;
+        }
+
         public Criteria andStatusIsNull() {
             addCriterion("status is null");
             return (Criteria) this;

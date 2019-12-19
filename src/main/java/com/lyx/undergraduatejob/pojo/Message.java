@@ -10,6 +10,14 @@ public class Message implements Serializable {
 
     private Integer receiverType;
 
+    private Integer receiverStatus;
+
+    private Integer senderId;
+
+    private Integer senderType;
+
+    private Integer senderStatus;
+
     private String messageTitle;
 
     private String messageContent;
@@ -42,6 +50,38 @@ public class Message implements Serializable {
 
     public void setReceiverType(Integer receiverType) {
         this.receiverType = receiverType;
+    }
+
+    public Integer getReceiverStatus() {
+        return receiverStatus;
+    }
+
+    public void setReceiverStatus(Integer receiverStatus) {
+        this.receiverStatus = receiverStatus;
+    }
+
+    public Integer getSenderId() {
+        return senderId;
+    }
+
+    public void setSenderId(Integer senderId) {
+        this.senderId = senderId;
+    }
+
+    public Integer getSenderType() {
+        return senderType;
+    }
+
+    public void setSenderType(Integer senderType) {
+        this.senderType = senderType;
+    }
+
+    public Integer getSenderStatus() {
+        return senderStatus;
+    }
+
+    public void setSenderStatus(Integer senderStatus) {
+        this.senderStatus = senderStatus;
     }
 
     public String getMessageTitle() {
@@ -85,6 +125,10 @@ public class Message implements Serializable {
         sb.append(", id=").append(id);
         sb.append(", receiverId=").append(receiverId);
         sb.append(", receiverType=").append(receiverType);
+        sb.append(", receiverStatus=").append(receiverStatus);
+        sb.append(", senderId=").append(senderId);
+        sb.append(", senderType=").append(senderType);
+        sb.append(", senderStatus=").append(senderStatus);
         sb.append(", messageTitle=").append(messageTitle);
         sb.append(", messageContent=").append(messageContent);
         sb.append(", createTime=").append(createTime);

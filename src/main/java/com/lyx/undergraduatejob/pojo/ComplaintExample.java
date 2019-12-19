@@ -475,6 +475,66 @@ public class ComplaintExample {
             return (Criteria) this;
         }
 
+        public Criteria andDealStatusIsNull() {
+            addCriterion("deal_status is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDealStatusIsNotNull() {
+            addCriterion("deal_status is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDealStatusEqualTo(Integer value) {
+            addCriterion("deal_status =", value, "dealStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andDealStatusNotEqualTo(Integer value) {
+            addCriterion("deal_status <>", value, "dealStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andDealStatusGreaterThan(Integer value) {
+            addCriterion("deal_status >", value, "dealStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andDealStatusGreaterThanOrEqualTo(Integer value) {
+            addCriterion("deal_status >=", value, "dealStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andDealStatusLessThan(Integer value) {
+            addCriterion("deal_status <", value, "dealStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andDealStatusLessThanOrEqualTo(Integer value) {
+            addCriterion("deal_status <=", value, "dealStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andDealStatusIn(List<Integer> values) {
+            addCriterion("deal_status in", values, "dealStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andDealStatusNotIn(List<Integer> values) {
+            addCriterion("deal_status not in", values, "dealStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andDealStatusBetween(Integer value1, Integer value2) {
+            addCriterion("deal_status between", value1, value2, "dealStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andDealStatusNotBetween(Integer value1, Integer value2) {
+            addCriterion("deal_status not between", value1, value2, "dealStatus");
+            return (Criteria) this;
+        }
+
         public Criteria andCreateTimeIsNull() {
             addCriterion("create_time is null");
             return (Criteria) this;

@@ -4,6 +4,7 @@
   <resultMap id="BaseResultMap" type="com.lyx.undergraduatejob.pojo.Job">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="push_status" jdbcType="INTEGER" property="pushStatus" />
     <result column="aul_status" jdbcType="INTEGER" property="aulStatus" />
     <result column="job_title" jdbcType="VARCHAR" property="jobTitle" />
     <result column="company_id" jdbcType="INTEGER" property="companyId" />
@@ -87,10 +88,10 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, status, aul_status, job_title, company_id, job_name, job_desc, job_type, contacts, 
-    contacts_phone, email, need_num, part_full, salary, close_type, education, work_years, 
-    work_address, detailed_address, receive_num, collect_num, visit_num, job_vip, push_time, 
-    create_time
+    id, status, push_status, aul_status, job_title, company_id, job_name, job_desc, job_type, 
+    contacts, contacts_phone, email, need_num, part_full, salary, close_type, education, 
+    work_years, work_address, detailed_address, receive_num, collect_num, visit_num, 
+    job_vip, push_time, create_time
   </sql>
   <select id="selectByExample" parameterType="com.lyx.undergraduatejob.pojo.JobExample" resultMap="BaseResultMap">
     select
@@ -126,24 +127,24 @@
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into job (status, aul_status, job_title, 
-      company_id, job_name, job_desc, 
-      job_type, contacts, contacts_phone, 
-      email, need_num, part_full, 
-      salary, close_type, education, 
-      work_years, work_address, detailed_address, 
-      receive_num, collect_num, visit_num, 
-      job_vip, push_time, create_time
-      )
-    values (#{status,jdbcType=INTEGER}, #{aulStatus,jdbcType=INTEGER}, #{jobTitle,jdbcType=VARCHAR}, 
-      #{companyId,jdbcType=INTEGER}, #{jobName,jdbcType=VARCHAR}, #{jobDesc,jdbcType=VARCHAR}, 
-      #{jobType,jdbcType=VARCHAR}, #{contacts,jdbcType=VARCHAR}, #{contactsPhone,jdbcType=VARCHAR}, 
-      #{email,jdbcType=VARCHAR}, #{needNum,jdbcType=INTEGER}, #{partFull,jdbcType=INTEGER}, 
-      #{salary,jdbcType=INTEGER}, #{closeType,jdbcType=INTEGER}, #{education,jdbcType=INTEGER}, 
-      #{workYears,jdbcType=INTEGER}, #{workAddress,jdbcType=VARCHAR}, #{detailedAddress,jdbcType=VARCHAR}, 
-      #{receiveNum,jdbcType=INTEGER}, #{collectNum,jdbcType=INTEGER}, #{visitNum,jdbcType=INTEGER}, 
-      #{jobVip,jdbcType=INTEGER}, #{pushTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP}
-      )
+    insert into job (status, push_status, aul_status, 
+      job_title, company_id, job_name, 
+      job_desc, job_type, contacts, 
+      contacts_phone, email, need_num, 
+      part_full, salary, close_type, 
+      education, work_years, work_address, 
+      detailed_address, receive_num, collect_num, 
+      visit_num, job_vip, push_time, 
+      create_time)
+    values (#{status,jdbcType=INTEGER}, #{pushStatus,jdbcType=INTEGER}, #{aulStatus,jdbcType=INTEGER}, 
+      #{jobTitle,jdbcType=VARCHAR}, #{companyId,jdbcType=INTEGER}, #{jobName,jdbcType=VARCHAR}, 
+      #{jobDesc,jdbcType=VARCHAR}, #{jobType,jdbcType=VARCHAR}, #{contacts,jdbcType=VARCHAR}, 
+      #{contactsPhone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{needNum,jdbcType=INTEGER}, 
+      #{partFull,jdbcType=INTEGER}, #{salary,jdbcType=INTEGER}, #{closeType,jdbcType=INTEGER}, 
+      #{education,jdbcType=INTEGER}, #{workYears,jdbcType=INTEGER}, #{workAddress,jdbcType=VARCHAR}, 
+      #{detailedAddress,jdbcType=VARCHAR}, #{receiveNum,jdbcType=INTEGER}, #{collectNum,jdbcType=INTEGER}, 
+      #{visitNum,jdbcType=INTEGER}, #{jobVip,jdbcType=INTEGER}, #{pushTime,jdbcType=TIMESTAMP}, 
+      #{createTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.lyx.undergraduatejob.pojo.Job">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
@@ -153,6 +154,9 @@
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="status != null">
         status,
+      </if>
+      <if test="pushStatus != null">
+        push_status,
       </if>
       <if test="aulStatus != null">
         aul_status,
@@ -227,6 +231,9 @@
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="status != null">
         #{status,jdbcType=INTEGER},
+      </if>
+      <if test="pushStatus != null">
+        #{pushStatus,jdbcType=INTEGER},
       </if>
       <if test="aulStatus != null">
         #{aulStatus,jdbcType=INTEGER},
@@ -314,6 +321,9 @@
       <if test="record.status != null">
         status = #{record.status,jdbcType=INTEGER},
       </if>
+      <if test="record.pushStatus != null">
+        push_status = #{record.pushStatus,jdbcType=INTEGER},
+      </if>
       <if test="record.aulStatus != null">
         aul_status = #{record.aulStatus,jdbcType=INTEGER},
       </if>
@@ -392,6 +402,7 @@
     update job
     set id = #{record.id,jdbcType=INTEGER},
       status = #{record.status,jdbcType=INTEGER},
+      push_status = #{record.pushStatus,jdbcType=INTEGER},
       aul_status = #{record.aulStatus,jdbcType=INTEGER},
       job_title = #{record.jobTitle,jdbcType=VARCHAR},
       company_id = #{record.companyId,jdbcType=INTEGER},
@@ -424,6 +435,9 @@
     <set>
       <if test="status != null">
         status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="pushStatus != null">
+        push_status = #{pushStatus,jdbcType=INTEGER},
       </if>
       <if test="aulStatus != null">
         aul_status = #{aulStatus,jdbcType=INTEGER},
@@ -500,6 +514,7 @@
   <update id="updateByPrimaryKey" parameterType="com.lyx.undergraduatejob.pojo.Job">
     update job
     set status = #{status,jdbcType=INTEGER},
+      push_status = #{pushStatus,jdbcType=INTEGER},
       aul_status = #{aulStatus,jdbcType=INTEGER},
       job_title = #{jobTitle,jdbcType=VARCHAR},
       company_id = #{companyId,jdbcType=INTEGER},

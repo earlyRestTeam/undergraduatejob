@@ -6,6 +6,8 @@ import java.util.Date;
 public class WorkExperience implements Serializable {
     private Integer id;
 
+    private Integer status;
+
     private Integer userId;
 
     private String workCompany;
@@ -26,6 +28,14 @@ public class WorkExperience implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
     public Integer getUserId() {
@@ -83,6 +93,7 @@ public class WorkExperience implements Serializable {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
+        sb.append(", status=").append(status);
         sb.append(", userId=").append(userId);
         sb.append(", workCompany=").append(workCompany);
         sb.append(", workTime=").append(workTime);

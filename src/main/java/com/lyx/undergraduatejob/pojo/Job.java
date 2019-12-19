@@ -8,6 +8,8 @@ public class Job implements Serializable {
 
     private Integer status;
 
+    private Integer pushStatus;
+
     private Integer aulStatus;
 
     private String jobTitle;
@@ -70,6 +72,14 @@ public class Job implements Serializable {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public Integer getPushStatus() {
+        return pushStatus;
+    }
+
+    public void setPushStatus(Integer pushStatus) {
+        this.pushStatus = pushStatus;
     }
 
     public Integer getAulStatus() {
@@ -264,6 +274,7 @@ public class Job implements Serializable {
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
         sb.append(", status=").append(status);
+        sb.append(", pushStatus=").append(pushStatus);
         sb.append(", aulStatus=").append(aulStatus);
         sb.append(", jobTitle=").append(jobTitle);
         sb.append(", companyId=").append(companyId);

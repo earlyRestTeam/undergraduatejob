@@ -16,6 +16,8 @@ public class Complaint implements Serializable {
 
     private Integer status;
 
+    private Integer dealStatus;
+
     private Date createTime;
 
     private static final long serialVersionUID = 1L;
@@ -68,6 +70,14 @@ public class Complaint implements Serializable {
         this.status = status;
     }
 
+    public Integer getDealStatus() {
+        return dealStatus;
+    }
+
+    public void setDealStatus(Integer dealStatus) {
+        this.dealStatus = dealStatus;
+    }
+
     public Date getCreateTime() {
         return createTime;
     }
@@ -88,6 +98,7 @@ public class Complaint implements Serializable {
         sb.append(", complaintType=").append(complaintType);
         sb.append(", complaintContent=").append(complaintContent);
         sb.append(", status=").append(status);
+        sb.append(", dealStatus=").append(dealStatus);
         sb.append(", createTime=").append(createTime);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");

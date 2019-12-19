@@ -12,6 +12,8 @@ public class ReceiveResume implements Serializable {
 
     private Integer jobId;
 
+    private Integer receiveStatus;
+
     private Integer status;
 
     private String resumeUrl;
@@ -52,6 +54,14 @@ public class ReceiveResume implements Serializable {
 
     public void setJobId(Integer jobId) {
         this.jobId = jobId;
+    }
+
+    public Integer getReceiveStatus() {
+        return receiveStatus;
+    }
+
+    public void setReceiveStatus(Integer receiveStatus) {
+        this.receiveStatus = receiveStatus;
     }
 
     public Integer getStatus() {
@@ -96,6 +106,7 @@ public class ReceiveResume implements Serializable {
         sb.append(", userId=").append(userId);
         sb.append(", companyId=").append(companyId);
         sb.append(", jobId=").append(jobId);
+        sb.append(", receiveStatus=").append(receiveStatus);
         sb.append(", status=").append(status);
         sb.append(", resumeUrl=").append(resumeUrl);
         sb.append(", receiveTime=").append(receiveTime);

@@ -285,6 +285,246 @@ public class MessageExample {
             return (Criteria) this;
         }
 
+        public Criteria andReceiverStatusIsNull() {
+            addCriterion("receiver_status is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceiverStatusIsNotNull() {
+            addCriterion("receiver_status is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceiverStatusEqualTo(Integer value) {
+            addCriterion("receiver_status =", value, "receiverStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceiverStatusNotEqualTo(Integer value) {
+            addCriterion("receiver_status <>", value, "receiverStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceiverStatusGreaterThan(Integer value) {
+            addCriterion("receiver_status >", value, "receiverStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceiverStatusGreaterThanOrEqualTo(Integer value) {
+            addCriterion("receiver_status >=", value, "receiverStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceiverStatusLessThan(Integer value) {
+            addCriterion("receiver_status <", value, "receiverStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceiverStatusLessThanOrEqualTo(Integer value) {
+            addCriterion("receiver_status <=", value, "receiverStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceiverStatusIn(List<Integer> values) {
+            addCriterion("receiver_status in", values, "receiverStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceiverStatusNotIn(List<Integer> values) {
+            addCriterion("receiver_status not in", values, "receiverStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceiverStatusBetween(Integer value1, Integer value2) {
+            addCriterion("receiver_status between", value1, value2, "receiverStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceiverStatusNotBetween(Integer value1, Integer value2) {
+            addCriterion("receiver_status not between", value1, value2, "receiverStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andSenderIdIsNull() {
+            addCriterion("sender_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSenderIdIsNotNull() {
+            addCriterion("sender_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSenderIdEqualTo(Integer value) {
+            addCriterion("sender_id =", value, "senderId");
+            return (Criteria) this;
+        }
+
+        public Criteria andSenderIdNotEqualTo(Integer value) {
+            addCriterion("sender_id <>", value, "senderId");
+            return (Criteria) this;
+        }
+
+        public Criteria andSenderIdGreaterThan(Integer value) {
+            addCriterion("sender_id >", value, "senderId");
+            return (Criteria) this;
+        }
+
+        public Criteria andSenderIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("sender_id >=", value, "senderId");
+            return (Criteria) this;
+        }
+
+        public Criteria andSenderIdLessThan(Integer value) {
+            addCriterion("sender_id <", value, "senderId");
+            return (Criteria) this;
+        }
+
+        public Criteria andSenderIdLessThanOrEqualTo(Integer value) {
+            addCriterion("sender_id <=", value, "senderId");
+            return (Criteria) this;
+        }
+
+        public Criteria andSenderIdIn(List<Integer> values) {
+            addCriterion("sender_id in", values, "senderId");
+            return (Criteria) this;
+        }
+
+        public Criteria andSenderIdNotIn(List<Integer> values) {
+            addCriterion("sender_id not in", values, "senderId");
+            return (Criteria) this;
+        }
+
+        public Criteria andSenderIdBetween(Integer value1, Integer value2) {
+            addCriterion("sender_id between", value1, value2, "senderId");
+            return (Criteria) this;
+        }
+
+        public Criteria andSenderIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("sender_id not between", value1, value2, "senderId");
+            return (Criteria) this;
+        }
+
+        public Criteria andSenderTypeIsNull() {
+            addCriterion("sender_type is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSenderTypeIsNotNull() {
+            addCriterion("sender_type is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSenderTypeEqualTo(Integer value) {
+            addCriterion("sender_type =", value, "senderType");
+            return (Criteria) this;
+        }
+
+        public Criteria andSenderTypeNotEqualTo(Integer value) {
+            addCriterion("sender_type <>", value, "senderType");
+            return (Criteria) this;
+        }
+
+        public Criteria andSenderTypeGreaterThan(Integer value) {
+            addCriterion("sender_type >", value, "senderType");
+            return (Criteria) this;
+        }
+
+        public Criteria andSenderTypeGreaterThanOrEqualTo(Integer value) {
+            addCriterion("sender_type >=", value, "senderType");
+            return (Criteria) this;
+        }
+
+        public Criteria andSenderTypeLessThan(Integer value) {
+            addCriterion("sender_type <", value, "senderType");
+            return (Criteria) this;
+        }
+
+        public Criteria andSenderTypeLessThanOrEqualTo(Integer value) {
+            addCriterion("sender_type <=", value, "senderType");
+            return (Criteria) this;
+        }
+
+        public Criteria andSenderTypeIn(List<Integer> values) {
+            addCriterion("sender_type in", values, "senderType");
+            return (Criteria) this;
+        }
+
+        public Criteria andSenderTypeNotIn(List<Integer> values) {
+            addCriterion("sender_type not in", values, "senderType");
+            return (Criteria) this;
+        }
+
+        public Criteria andSenderTypeBetween(Integer value1, Integer value2) {
+            addCriterion("sender_type between", value1, value2, "senderType");
+            return (Criteria) this;
+        }
+
+        public Criteria andSenderTypeNotBetween(Integer value1, Integer value2) {
+            addCriterion("sender_type not between", value1, value2, "senderType");
+            return (Criteria) this;
+        }
+
+        public Criteria andSenderStatusIsNull() {
+            addCriterion("sender_status is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSenderStatusIsNotNull() {
+            addCriterion("sender_status is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSenderStatusEqualTo(Integer value) {
+            addCriterion("sender_status =", value, "senderStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andSenderStatusNotEqualTo(Integer value) {
+            addCriterion("sender_status <>", value, "senderStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andSenderStatusGreaterThan(Integer value) {
+            addCriterion("sender_status >", value, "senderStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andSenderStatusGreaterThanOrEqualTo(Integer value) {
+            addCriterion("sender_status >=", value, "senderStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andSenderStatusLessThan(Integer value) {
+            addCriterion("sender_status <", value, "senderStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andSenderStatusLessThanOrEqualTo(Integer value) {
+            addCriterion("sender_status <=", value, "senderStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andSenderStatusIn(List<Integer> values) {
+            addCriterion("sender_status in", values, "senderStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andSenderStatusNotIn(List<Integer> values) {
+            addCriterion("sender_status not in", values, "senderStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andSenderStatusBetween(Integer value1, Integer value2) {
+            addCriterion("sender_status between", value1, value2, "senderStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andSenderStatusNotBetween(Integer value1, Integer value2) {
+            addCriterion("sender_status not between", value1, value2, "senderStatus");
+            return (Criteria) this;
+        }
+
         public Criteria andMessageTitleIsNull() {
             addCriterion("message_title is null");
             return (Criteria) this;

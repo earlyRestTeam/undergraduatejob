@@ -8,6 +8,7 @@
     <result column="complaint_type" jdbcType="INTEGER" property="complaintType" />
     <result column="complaint_content" jdbcType="VARCHAR" property="complaintContent" />
     <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="deal_status" jdbcType="INTEGER" property="dealStatus" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -69,7 +70,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, user_id, complaint_id, complaint_type, complaint_content, status, create_time
+    id, user_id, complaint_id, complaint_type, complaint_content, status, deal_status, 
+    create_time
   </sql>
   <select id="selectByExample" parameterType="com.lyx.undergraduatejob.pojo.ComplaintExample" resultMap="BaseResultMap">
     select
@@ -106,11 +108,11 @@
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into complaint (user_id, complaint_id, complaint_type, 
-      complaint_content, status, create_time
-      )
+      complaint_content, status, deal_status, 
+      create_time)
     values (#{userId,jdbcType=INTEGER}, #{complaintId,jdbcType=INTEGER}, #{complaintType,jdbcType=INTEGER}, 
-      #{complaintContent,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}
-      )
+      #{complaintContent,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{dealStatus,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.lyx.undergraduatejob.pojo.Complaint">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
@@ -133,6 +135,9 @@
       <if test="status != null">
         status,
       </if>
+      <if test="dealStatus != null">
+        deal_status,
+      </if>
       <if test="createTime != null">
         create_time,
       </if>
@@ -152,6 +157,9 @@
       </if>
       <if test="status != null">
         #{status,jdbcType=INTEGER},
+      </if>
+      <if test="dealStatus != null">
+        #{dealStatus,jdbcType=INTEGER},
       </if>
       <if test="createTime != null">
         #{createTime,jdbcType=TIMESTAMP},
@@ -185,6 +193,9 @@
       <if test="record.status != null">
         status = #{record.status,jdbcType=INTEGER},
       </if>
+      <if test="record.dealStatus != null">
+        deal_status = #{record.dealStatus,jdbcType=INTEGER},
+      </if>
       <if test="record.createTime != null">
         create_time = #{record.createTime,jdbcType=TIMESTAMP},
       </if>
@@ -201,6 +212,7 @@
       complaint_type = #{record.complaintType,jdbcType=INTEGER},
       complaint_content = #{record.complaintContent,jdbcType=VARCHAR},
       status = #{record.status,jdbcType=INTEGER},
+      deal_status = #{record.dealStatus,jdbcType=INTEGER},
       create_time = #{record.createTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -224,6 +236,9 @@
       <if test="status != null">
         status = #{status,jdbcType=INTEGER},
       </if>
+      <if test="dealStatus != null">
+        deal_status = #{dealStatus,jdbcType=INTEGER},
+      </if>
       <if test="createTime != null">
         create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
@@ -237,6 +252,7 @@
       complaint_type = #{complaintType,jdbcType=INTEGER},
       complaint_content = #{complaintContent,jdbcType=VARCHAR},
       status = #{status,jdbcType=INTEGER},
+      deal_status = #{dealStatus,jdbcType=INTEGER},
       create_time = #{createTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>

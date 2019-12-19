@@ -3,6 +3,7 @@
 <mapper namespace="com.lyx.undergraduatejob.mapper.WorkExperienceMapper">
   <resultMap id="BaseResultMap" type="com.lyx.undergraduatejob.pojo.WorkExperience">
     <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="status" jdbcType="INTEGER" property="status" />
     <result column="user_id" jdbcType="INTEGER" property="userId" />
     <result column="work_company" jdbcType="VARCHAR" property="workCompany" />
     <result column="work_time" jdbcType="VARCHAR" property="workTime" />
@@ -69,7 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, user_id, work_company, work_time, job, describe, create_time
+    id, status, user_id, work_company, work_time, job, describe, create_time
   </sql>
   <select id="selectByExample" parameterType="com.lyx.undergraduatejob.pojo.WorkExperienceExample" resultMap="BaseResultMap">
     select
@@ -105,12 +106,12 @@
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into work_experience (user_id, work_company, work_time, 
-      job, describe, create_time
-      )
-    values (#{userId,jdbcType=INTEGER}, #{workCompany,jdbcType=VARCHAR}, #{workTime,jdbcType=VARCHAR}, 
-      #{job,jdbcType=VARCHAR}, #{describe,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}
-      )
+    insert into work_experience (status, user_id, work_company, 
+      work_time, job, describe, 
+      create_time)
+    values (#{status,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{workCompany,jdbcType=VARCHAR}, 
+      #{workTime,jdbcType=VARCHAR}, #{job,jdbcType=VARCHAR}, #{describe,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.lyx.undergraduatejob.pojo.WorkExperience">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
@@ -118,6 +119,9 @@
     </selectKey>
     insert into work_experience
     <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="status != null">
+        status,
+      </if>
       <if test="userId != null">
         user_id,
       </if>
@@ -138,6 +142,9 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
       <if test="userId != null">
         #{userId,jdbcType=INTEGER},
       </if>
@@ -170,6 +177,9 @@
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
       </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
       <if test="record.userId != null">
         user_id = #{record.userId,jdbcType=INTEGER},
       </if>
@@ -196,6 +206,7 @@
   <update id="updateByExample" parameterType="map">
     update work_experience
     set id = #{record.id,jdbcType=INTEGER},
+      status = #{record.status,jdbcType=INTEGER},
       user_id = #{record.userId,jdbcType=INTEGER},
       work_company = #{record.workCompany,jdbcType=VARCHAR},
       work_time = #{record.workTime,jdbcType=VARCHAR},
@@ -209,6 +220,9 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.lyx.undergraduatejob.pojo.WorkExperience">
     update work_experience
     <set>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
       <if test="userId != null">
         user_id = #{userId,jdbcType=INTEGER},
       </if>
@@ -232,7 +246,8 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.lyx.undergraduatejob.pojo.WorkExperience">
     update work_experience
-    set user_id = #{userId,jdbcType=INTEGER},
+    set status = #{status,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=INTEGER},
       work_company = #{workCompany,jdbcType=VARCHAR},
       work_time = #{workTime,jdbcType=VARCHAR},
       job = #{job,jdbcType=VARCHAR},

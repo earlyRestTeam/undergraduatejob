@@ -5,6 +5,10 @@
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="receiver_id" jdbcType="INTEGER" property="receiverId" />
     <result column="receiver_type" jdbcType="INTEGER" property="receiverType" />
+    <result column="receiver_status" jdbcType="INTEGER" property="receiverStatus" />
+    <result column="sender_id" jdbcType="INTEGER" property="senderId" />
+    <result column="sender_type" jdbcType="INTEGER" property="senderType" />
+    <result column="sender_status" jdbcType="INTEGER" property="senderStatus" />
     <result column="message_title" jdbcType="VARCHAR" property="messageTitle" />
     <result column="message_content" jdbcType="VARCHAR" property="messageContent" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
@@ -69,7 +73,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, receiver_id, receiver_type, message_title, message_content, create_time, status
+    id, receiver_id, receiver_type, receiver_status, sender_id, sender_type, sender_status, 
+    message_title, message_content, create_time, status
   </sql>
   <select id="selectByExample" parameterType="com.lyx.undergraduatejob.pojo.MessageExample" resultMap="BaseResultMap">
     select
@@ -105,12 +110,14 @@
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into message (receiver_id, receiver_type, message_title, 
-      message_content, create_time, status
-      )
-    values (#{receiverId,jdbcType=INTEGER}, #{receiverType,jdbcType=INTEGER}, #{messageTitle,jdbcType=VARCHAR}, 
-      #{messageContent,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER}
-      )
+    insert into message (receiver_id, receiver_type, receiver_status, 
+      sender_id, sender_type, sender_status, 
+      message_title, message_content, create_time, 
+      status)
+    values (#{receiverId,jdbcType=INTEGER}, #{receiverType,jdbcType=INTEGER}, #{receiverStatus,jdbcType=INTEGER}, 
+      #{senderId,jdbcType=INTEGER}, #{senderType,jdbcType=INTEGER}, #{senderStatus,jdbcType=INTEGER}, 
+      #{messageTitle,jdbcType=VARCHAR}, #{messageContent,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{status,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.lyx.undergraduatejob.pojo.Message">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
@@ -123,6 +130,18 @@
       </if>
       <if test="receiverType != null">
         receiver_type,
+      </if>
+      <if test="receiverStatus != null">
+        receiver_status,
+      </if>
+      <if test="senderId != null">
+        sender_id,
+      </if>
+      <if test="senderType != null">
+        sender_type,
+      </if>
+      <if test="senderStatus != null">
+        sender_status,
       </if>
       <if test="messageTitle != null">
         message_title,
@@ -143,6 +162,18 @@
       </if>
       <if test="receiverType != null">
         #{receiverType,jdbcType=INTEGER},
+      </if>
+      <if test="receiverStatus != null">
+        #{receiverStatus,jdbcType=INTEGER},
+      </if>
+      <if test="senderId != null">
+        #{senderId,jdbcType=INTEGER},
+      </if>
+      <if test="senderType != null">
+        #{senderType,jdbcType=INTEGER},
+      </if>
+      <if test="senderStatus != null">
+        #{senderStatus,jdbcType=INTEGER},
       </if>
       <if test="messageTitle != null">
         #{messageTitle,jdbcType=VARCHAR},
@@ -176,6 +207,18 @@
       <if test="record.receiverType != null">
         receiver_type = #{record.receiverType,jdbcType=INTEGER},
       </if>
+      <if test="record.receiverStatus != null">
+        receiver_status = #{record.receiverStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.senderId != null">
+        sender_id = #{record.senderId,jdbcType=INTEGER},
+      </if>
+      <if test="record.senderType != null">
+        sender_type = #{record.senderType,jdbcType=INTEGER},
+      </if>
+      <if test="record.senderStatus != null">
+        sender_status = #{record.senderStatus,jdbcType=INTEGER},
+      </if>
       <if test="record.messageTitle != null">
         message_title = #{record.messageTitle,jdbcType=VARCHAR},
       </if>
@@ -198,6 +241,10 @@
     set id = #{record.id,jdbcType=INTEGER},
       receiver_id = #{record.receiverId,jdbcType=INTEGER},
       receiver_type = #{record.receiverType,jdbcType=INTEGER},
+      receiver_status = #{record.receiverStatus,jdbcType=INTEGER},
+      sender_id = #{record.senderId,jdbcType=INTEGER},
+      sender_type = #{record.senderType,jdbcType=INTEGER},
+      sender_status = #{record.senderStatus,jdbcType=INTEGER},
       message_title = #{record.messageTitle,jdbcType=VARCHAR},
       message_content = #{record.messageContent,jdbcType=VARCHAR},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
@@ -214,6 +261,18 @@
       </if>
       <if test="receiverType != null">
         receiver_type = #{receiverType,jdbcType=INTEGER},
+      </if>
+      <if test="receiverStatus != null">
+        receiver_status = #{receiverStatus,jdbcType=INTEGER},
+      </if>
+      <if test="senderId != null">
+        sender_id = #{senderId,jdbcType=INTEGER},
+      </if>
+      <if test="senderType != null">
+        sender_type = #{senderType,jdbcType=INTEGER},
+      </if>
+      <if test="senderStatus != null">
+        sender_status = #{senderStatus,jdbcType=INTEGER},
       </if>
       <if test="messageTitle != null">
         message_title = #{messageTitle,jdbcType=VARCHAR},
@@ -234,6 +293,10 @@
     update message
     set receiver_id = #{receiverId,jdbcType=INTEGER},
       receiver_type = #{receiverType,jdbcType=INTEGER},
+      receiver_status = #{receiverStatus,jdbcType=INTEGER},
+      sender_id = #{senderId,jdbcType=INTEGER},
+      sender_type = #{senderType,jdbcType=INTEGER},
+      sender_status = #{senderStatus,jdbcType=INTEGER},
       message_title = #{messageTitle,jdbcType=VARCHAR},
       message_content = #{messageContent,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
