@@ -1035,6 +1035,66 @@ public class ResumeExample {
             return (Criteria) this;
         }
 
+        public Criteria andCloseTypeIsNull() {
+            addCriterion("close_type is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCloseTypeIsNotNull() {
+            addCriterion("close_type is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCloseTypeEqualTo(Integer value) {
+            addCriterion("close_type =", value, "closeType");
+            return (Criteria) this;
+        }
+
+        public Criteria andCloseTypeNotEqualTo(Integer value) {
+            addCriterion("close_type <>", value, "closeType");
+            return (Criteria) this;
+        }
+
+        public Criteria andCloseTypeGreaterThan(Integer value) {
+            addCriterion("close_type >", value, "closeType");
+            return (Criteria) this;
+        }
+
+        public Criteria andCloseTypeGreaterThanOrEqualTo(Integer value) {
+            addCriterion("close_type >=", value, "closeType");
+            return (Criteria) this;
+        }
+
+        public Criteria andCloseTypeLessThan(Integer value) {
+            addCriterion("close_type <", value, "closeType");
+            return (Criteria) this;
+        }
+
+        public Criteria andCloseTypeLessThanOrEqualTo(Integer value) {
+            addCriterion("close_type <=", value, "closeType");
+            return (Criteria) this;
+        }
+
+        public Criteria andCloseTypeIn(List<Integer> values) {
+            addCriterion("close_type in", values, "closeType");
+            return (Criteria) this;
+        }
+
+        public Criteria andCloseTypeNotIn(List<Integer> values) {
+            addCriterion("close_type not in", values, "closeType");
+            return (Criteria) this;
+        }
+
+        public Criteria andCloseTypeBetween(Integer value1, Integer value2) {
+            addCriterion("close_type between", value1, value2, "closeType");
+            return (Criteria) this;
+        }
+
+        public Criteria andCloseTypeNotBetween(Integer value1, Integer value2) {
+            addCriterion("close_type not between", value1, value2, "closeType");
+            return (Criteria) this;
+        }
+
         public Criteria andJobAddressIsNull() {
             addCriterion("job_address is null");
             return (Criteria) this;

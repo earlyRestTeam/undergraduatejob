@@ -16,6 +16,7 @@
     <result column="job" jdbcType="VARCHAR" property="job" />
     <result column="job_type" jdbcType="VARCHAR" property="jobType" />
     <result column="salary" jdbcType="INTEGER" property="salary" />
+    <result column="close_type" jdbcType="INTEGER" property="closeType" />
     <result column="job_address" jdbcType="VARCHAR" property="jobAddress" />
     <result column="part_full" jdbcType="INTEGER" property="partFull" />
     <result column="free_time" jdbcType="VARCHAR" property="freeTime" />
@@ -93,9 +94,9 @@
   </sql>
   <sql id="Base_Column_List">
     id, user_id, name, avatar, age, gender, phone, email, graduate_school, specialty, 
-    education, job, job_type, salary, job_address, part_full, free_time, self_introduction, 
-    push_time, status, push_status, aul_status, resume_url, skill1, skill2, skill3, skill4, 
-    work_experience, resume_vip, create_time
+    education, job, job_type, salary, close_type, job_address, part_full, free_time, 
+    self_introduction, push_time, status, push_status, aul_status, resume_url, skill1, 
+    skill2, skill3, skill4, work_experience, resume_vip, create_time
   </sql>
   <select id="selectByExample" parameterType="com.lyx.undergraduatejob.pojo.ResumeExample" resultMap="BaseResultMap">
     select
@@ -135,22 +136,24 @@
       age, gender, phone, 
       email, graduate_school, specialty, 
       education, job, job_type, 
-      salary, job_address, part_full, 
-      free_time, self_introduction, push_time, 
-      status, push_status, aul_status, 
-      resume_url, skill1, skill2, 
-      skill3, skill4, work_experience, 
-      resume_vip, create_time)
+      salary, close_type, job_address, 
+      part_full, free_time, self_introduction, 
+      push_time, status, push_status, 
+      aul_status, resume_url, skill1, 
+      skill2, skill3, skill4, 
+      work_experience, resume_vip, create_time
+      )
     values (#{userId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{avatar,jdbcType=VARCHAR}, 
       #{age,jdbcType=INTEGER}, #{gender,jdbcType=INTEGER}, #{phone,jdbcType=VARCHAR}, 
       #{email,jdbcType=VARCHAR}, #{graduateSchool,jdbcType=VARCHAR}, #{specialty,jdbcType=VARCHAR}, 
       #{education,jdbcType=VARCHAR}, #{job,jdbcType=VARCHAR}, #{jobType,jdbcType=VARCHAR}, 
-      #{salary,jdbcType=INTEGER}, #{jobAddress,jdbcType=VARCHAR}, #{partFull,jdbcType=INTEGER}, 
-      #{freeTime,jdbcType=VARCHAR}, #{selfIntroduction,jdbcType=VARCHAR}, #{pushTime,jdbcType=TIMESTAMP}, 
-      #{status,jdbcType=INTEGER}, #{pushStatus,jdbcType=INTEGER}, #{aulStatus,jdbcType=INTEGER}, 
-      #{resumeUrl,jdbcType=VARCHAR}, #{skill1,jdbcType=VARCHAR}, #{skill2,jdbcType=VARCHAR}, 
-      #{skill3,jdbcType=VARCHAR}, #{skill4,jdbcType=VARCHAR}, #{workExperience,jdbcType=INTEGER}, 
-      #{resumeVip,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP})
+      #{salary,jdbcType=INTEGER}, #{closeType,jdbcType=INTEGER}, #{jobAddress,jdbcType=VARCHAR}, 
+      #{partFull,jdbcType=INTEGER}, #{freeTime,jdbcType=VARCHAR}, #{selfIntroduction,jdbcType=VARCHAR}, 
+      #{pushTime,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER}, #{pushStatus,jdbcType=INTEGER}, 
+      #{aulStatus,jdbcType=INTEGER}, #{resumeUrl,jdbcType=VARCHAR}, #{skill1,jdbcType=VARCHAR}, 
+      #{skill2,jdbcType=VARCHAR}, #{skill3,jdbcType=VARCHAR}, #{skill4,jdbcType=VARCHAR}, 
+      #{workExperience,jdbcType=INTEGER}, #{resumeVip,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.lyx.undergraduatejob.pojo.Resume">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
@@ -196,6 +199,9 @@
       </if>
       <if test="salary != null">
         salary,
+      </if>
+      <if test="closeType != null">
+        close_type,
       </if>
       <if test="jobAddress != null">
         job_address,
@@ -285,6 +291,9 @@
       </if>
       <if test="salary != null">
         #{salary,jdbcType=INTEGER},
+      </if>
+      <if test="closeType != null">
+        #{closeType,jdbcType=INTEGER},
       </if>
       <if test="jobAddress != null">
         #{jobAddress,jdbcType=VARCHAR},
@@ -387,6 +396,9 @@
       <if test="record.salary != null">
         salary = #{record.salary,jdbcType=INTEGER},
       </if>
+      <if test="record.closeType != null">
+        close_type = #{record.closeType,jdbcType=INTEGER},
+      </if>
       <if test="record.jobAddress != null">
         job_address = #{record.jobAddress,jdbcType=VARCHAR},
       </if>
@@ -456,6 +468,7 @@
       job = #{record.job,jdbcType=VARCHAR},
       job_type = #{record.jobType,jdbcType=VARCHAR},
       salary = #{record.salary,jdbcType=INTEGER},
+      close_type = #{record.closeType,jdbcType=INTEGER},
       job_address = #{record.jobAddress,jdbcType=VARCHAR},
       part_full = #{record.partFull,jdbcType=INTEGER},
       free_time = #{record.freeTime,jdbcType=VARCHAR},
@@ -517,6 +530,9 @@
       </if>
       <if test="salary != null">
         salary = #{salary,jdbcType=INTEGER},
+      </if>
+      <if test="closeType != null">
+        close_type = #{closeType,jdbcType=INTEGER},
       </if>
       <if test="jobAddress != null">
         job_address = #{jobAddress,jdbcType=VARCHAR},
@@ -584,6 +600,7 @@
       job = #{job,jdbcType=VARCHAR},
       job_type = #{jobType,jdbcType=VARCHAR},
       salary = #{salary,jdbcType=INTEGER},
+      close_type = #{closeType,jdbcType=INTEGER},
       job_address = #{jobAddress,jdbcType=VARCHAR},
       part_full = #{partFull,jdbcType=INTEGER},
       free_time = #{freeTime,jdbcType=VARCHAR},

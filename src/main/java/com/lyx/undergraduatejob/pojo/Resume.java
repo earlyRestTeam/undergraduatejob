@@ -32,6 +32,8 @@ public class Resume implements Serializable {
 
     private Integer salary;
 
+    private Integer closeType;
+
     private String jobAddress;
 
     private Integer partFull;
@@ -176,6 +178,14 @@ public class Resume implements Serializable {
 
     public void setSalary(Integer salary) {
         this.salary = salary;
+    }
+
+    public Integer getCloseType() {
+        return closeType;
+    }
+
+    public void setCloseType(Integer closeType) {
+        this.closeType = closeType;
     }
 
     public String getJobAddress() {
@@ -326,6 +336,7 @@ public class Resume implements Serializable {
         sb.append(", job=").append(job);
         sb.append(", jobType=").append(jobType);
         sb.append(", salary=").append(salary);
+        sb.append(", closeType=").append(closeType);
         sb.append(", jobAddress=").append(jobAddress);
         sb.append(", partFull=").append(partFull);
         sb.append(", freeTime=").append(freeTime);
