@@ -5,40 +5,26 @@ import com.lyx.undergraduatejob.pojo.Company;
 import com.lyx.undergraduatejob.pojo.Complaint;
 import com.lyx.undergraduatejob.pojo.Job;
 
+import java.util.Map;
+
 /**
  * 投诉
  */
 public interface IComplaintServices {
-
-    /**
-     * 查看可投诉的职位
-     * @param indexpage
-     * @param userId
-     * @return
-     */
-    PageInfo<Job> queryJob(Integer indexpage, int userId);
-
     /**
      * 投诉此职位
-     * @param c
+     * @param complaint
      * @return
      */
-    boolean ComplaintJob(Complaint c);
+    public Map<String, String> ComplaintJob(Complaint complaint);
 
-    /**
-     * 查看可投诉的企业
-     * @param indexpage
-     * @param userId
-     * @return
-     */
-    PageInfo<Company> queryCompany(Integer indexpage, int userId);
 
     /**
      * 投诉此企业
-     * @param c
+     * @param complaint
      * @return
      */
-    boolean ComplaintCompany(Complaint c);
+    public Map<String, String> ComplaintCompany(Complaint complaint);
 
     /**
      * 查看历史投诉
@@ -46,5 +32,5 @@ public interface IComplaintServices {
      * @param userId
      * @return
      */
-    PageInfo<Complaint> queryComplaint(Integer indexpage, int userId);
+    public PageInfo<Complaint> queryComplaint(Integer indexpage, Integer userId);
 }

@@ -4,37 +4,39 @@ import com.github.pagehelper.PageInfo;
 import com.lyx.undergraduatejob.pojo.Comment;
 import com.lyx.undergraduatejob.pojo.Company;
 
+import java.util.Map;
+
 /**
  * 评论
  */
 public interface ICommentServices {
     /**
-     * 发表评论
+     * 用户发表评论
      * @param c
      * @return
      */
-    boolean addComment(Comment c);
+    public Map<String,String> addComment(Comment c);
 
     /**
-     * 查看我可已评价的企业
+     * 查看用户可已评价的企业
      * @param indexpage
-     * @param o
+     * @param userid
      * @return
      */
-    PageInfo<Company> queryCompany(Integer indexpage, Object o);
+    public PageInfo<Company> queryCompany(Integer indexpage, Integer userid);
 
     /**
-     * 查看我的历史评价
+     * 查看用户的历史评价
      * @param indexpage
      * @param userId
      * @return
      */
-    PageInfo<Comment> queryComment(Integer indexpage, int userId);
+    public PageInfo<Comment> queryComment(Integer indexpage, Integer userId);
 
     /**
-     * 删除我的历史评价
+     * 删除用户的历史评价
      * @param commentId
      * @return
      */
-    boolean deleteComment(int commentId);
+    public Map<String,String> deleteComment(Integer commentId, Integer userid);
 }
