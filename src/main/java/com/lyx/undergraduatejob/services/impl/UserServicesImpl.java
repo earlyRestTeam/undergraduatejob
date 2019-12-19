@@ -104,7 +104,7 @@ public class UserServicesImpl implements IUserServices {
 
     /**
      * 修改个人信息
-     * @param u
+     * @param user
      * @return
      */
     @Override

@@ -34,7 +34,7 @@ public class WelfareServiceImpl implements WelfareServices {
      * @return
      */
     @Override
-    @Cacheable(key = "AllWelfare")
+    @Cacheable(key = "'AllWelfare'")
     public List<Welfare> queryAllWelfare() {
         List<Welfare> welfare = welfareMapper.selectByExample(new WelfareExample());
         return welfare;

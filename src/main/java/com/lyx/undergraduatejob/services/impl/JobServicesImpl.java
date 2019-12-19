@@ -67,29 +67,17 @@ public class JobServicesImpl implements IJobServices {
      * @return
      */
     @Override
-    public Map<String, String> updateJob(Job job) {
+    public Map<String, String> updateJob(Job job,int companyId) {
         Map<String,String> result = new HashMap<>();
-//        int id = job.getId();
-//        Job j = jobMapper.selectByPrimaryKey(id);
-//        if(j == null){
-//            logger.error("job id not have job entity " + job);
-//            throw new RuntimeException("服务 繁忙！");
-//        }
-//        job.setId(j.getId());
-//        job.setStatus(j.getCompanyId());
-//        job.setReceiveNum(j.getReceiveNum());
-//        job.setCollectNum(j.getCollectNum());
-//        job.setVisitNum(j.getVisitNum());
-//        job.setJobVip(j.getJobVip());
-//        job.setCreateTime(j.getCreateTime());
+
+        Job j = jobMapper.selectByPrimaryKey(job.getId());
+        if(j.getId() != companyId){
+            logger.error("非法操作！" + companyId);
+            result.put(StaticPool.ERROR,"系统繁忙");
+            return result;
+        }
 
         int res = jobMapper.updateByPrimaryKeySelective(job);
-//        j.setJobTitle(job.getJobTitle());
-//        j.setJobName(job.getJobName());
-//        j.setJobTitle(job.getJobType());
-//        j.setContacts(job.getContacts());
-//        j.setContactsPhone(job.getContactsPhone());
-//        j.set
         if(res > 0){
             result.put(StaticPool.SUCCESS,"取消成功！");
         }else {
@@ -98,6 +86,33 @@ public class JobServicesImpl implements IJobServices {
         }
         return result;
     }
+
+    @Override
+    public Map<String, String> deleteIssueJob(Integer jobId, int companyId) {
+        Map<String,String> result = new HashMap<>();
+
+        Job j = jobMapper.selectByPrimaryKey(jobId);
+        if(j.getId() != companyId){
+            logger.error("非法操作！" + companyId);
+            result.put(StaticPool.ERROR,"系统繁忙");
+            return result;
+        }
+        return deleteIssueJob(jobId);
+    }
+
+    @Override
+    public Map<String, String> deleteJob(Integer jobId, int companyId) {
+        Map<String,String> result = new HashMap<>();
+
+        Job j = jobMapper.selectByPrimaryKey(jobId);
+        if(j.getId() != companyId){
+            logger.error("非法操作！" + companyId);
+            result.put(StaticPool.ERROR,"系统繁忙");
+            return result;
+        }
+        return deleteJob(jobId);
+    }
+
     /**
      * 取消已发布的职位
      * @param jobId

@@ -24,7 +24,21 @@ public interface IJobServices {
      * @param job
      * @return
      */
-    Map<String,String> updateJob(Job job);
+    Map<String,String> updateJob(Job job,int companyId);
+
+    /**
+     * 取消已发布的职位
+     * @param jobId
+     * @return
+     */
+    Map<String, String> deleteIssueJob(Integer jobId,int companyId);
+
+    /**
+     * 删除招聘职位
+     * @param jobId
+     * @return
+     */
+    Map<String, String> deleteJob(Integer jobId,int companyId);
 
     /**
      * 取消已发布的职位
