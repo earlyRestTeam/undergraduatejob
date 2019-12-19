@@ -10,6 +10,8 @@ public class Resume implements Serializable {
 
     private String name;
 
+    private String avatar;
+
     private Integer age;
 
     private Integer gender;
@@ -86,6 +88,14 @@ public class Resume implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 
     public Integer getAge() {
@@ -305,6 +315,7 @@ public class Resume implements Serializable {
         sb.append(", id=").append(id);
         sb.append(", userId=").append(userId);
         sb.append(", name=").append(name);
+        sb.append(", avatar=").append(avatar);
         sb.append(", age=").append(age);
         sb.append(", gender=").append(gender);
         sb.append(", phone=").append(phone);

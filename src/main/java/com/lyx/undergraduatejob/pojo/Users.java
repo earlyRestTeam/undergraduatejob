@@ -12,6 +12,8 @@ public class Users implements Serializable {
 
     private String email;
 
+    private String avatar;
+
     private String nickName;
 
     private String phone;
@@ -54,6 +56,14 @@ public class Users implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 
     public String getNickName() {
@@ -106,6 +116,7 @@ public class Users implements Serializable {
         sb.append(", username=").append(username);
         sb.append(", password=").append(password);
         sb.append(", email=").append(email);
+        sb.append(", avatar=").append(avatar);
         sb.append(", nickName=").append(nickName);
         sb.append(", phone=").append(phone);
         sb.append(", status=").append(status);

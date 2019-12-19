@@ -136,7 +136,11 @@
             <artifactId>spring-boot-starter</artifactId>
         </dependency>
 
-
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>18.0</version>
+        </dependency>
 
         <!--        es-->
         <!--        <dependency>-->
@@ -202,12 +206,6 @@
                     <artifactId>commons-logging</artifactId>
                 </exclusion>
             </exclusions>
-        </dependency>
-
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>18.0</version>
         </dependency>
         <!--        <dependency>-->
         <!--            <groupId>com.google.code.gson</groupId>-->
