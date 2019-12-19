@@ -16,6 +16,8 @@ public class Message implements Serializable {
 
     private Date createTime;
 
+    private Integer status;
+
     private static final long serialVersionUID = 1L;
 
     public Integer getId() {
@@ -66,6 +68,14 @@ public class Message implements Serializable {
         this.createTime = createTime;
     }
 
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -78,6 +88,7 @@ public class Message implements Serializable {
         sb.append(", messageTitle=").append(messageTitle);
         sb.append(", messageContent=").append(messageContent);
         sb.append(", createTime=").append(createTime);
+        sb.append(", status=").append(status);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();
