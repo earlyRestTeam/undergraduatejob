@@ -16,4 +16,10 @@ public class AutController {
     public String aut_student(){
         return "/aut/aut_student";
     }
+
+//    @PostMapping("query")
+//    public String query(){
+//
+//    }
+
 }

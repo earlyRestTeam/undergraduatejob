@@ -30,16 +30,26 @@ public class AutCompanyServiceImpl implements IAutCompanyService {
     @Autowired
     AutCompanyMapper autCompanyMapper;
 
+    public PageInfo<AutCompany> queryAutCompanyBefore(Integer indexpage,Integer companyid, AutCompany autCompany ){
+        return queryAutCompanyBefore(indexpage,companyid,autCompany,"create_time","ASC");
+    }
+
     /**
-     * 除了时间以外的条件都调这个查询,
+     * 除了时间以外的条件都调这个查询,前台
      * @param indexpage
+     * @param companyid
      * @param autCompany
      * @param columnName 数据库的列名
      * @param sort ASC/DESC
      * @return
      */
     @Override
-    public PageInfo<AutCompany> queryAutCompany(Integer indexpage, AutCompany autCompany, String columnName, String sort) {
+    public PageInfo<AutCompany> queryAutCompanyBefore(Integer indexpage,Integer companyid, AutCompany autCompany, String columnName, String sort) {
+        if (companyid != autCompany.getCompanyId()){
+            logger.warn("非法访问,公司id："+companyid);
+            return null;
+        }
+
         indexpage = indexpage == null ? 1 : indexpage;
 
         AutCompanyExample example = new AutCompanyExample();
@@ -83,6 +93,48 @@ public class AutCompanyServiceImpl implements IAutCompanyService {
         PageInfo<AutCompany> info = new PageInfo<>(autCompanies,10);
 
         return info;
+    }
+
+    /**
+     * 后台查询
+     * @param autCompany
+     * @return
+     */
+    @Override
+    public List<AutCompany> queryAutCompanyBack(AutCompany autCompany) {
+        AutCompanyExample example = new AutCompanyExample();
+        AutCompanyExample.Criteria criteria = example.createCriteria();
+        if (autCompany.getId() != null){
+            criteria.andIdEqualTo(autCompany.getId());
+        }
+        if (autCompany.getCompanyId() != null){
+            criteria.andCompanyIdEqualTo(autCompany.getCompanyId());
+        }
+        if (autCompany.getProposerName() != null){
+            criteria.andProposerNameLike(autCompany.getProposerName()+"%");
+        }
+        if (autCompany.getProposerPhone() != null){
+            criteria.andProposerPhoneLike(autCompany.getProposerPhone()+"%");
+        }
+        if (autCompany.getIdCard() != null){
+            criteria.andIdCardLike(autCompany.getIdCard()+"%");
+        }
+        if (autCompany.getLicenseCard() != null){
+            criteria.andLicenseCardLike(autCompany.getLicenseCard()+"%");
+        }
+        if (autCompany.getLicensePicture() != null){
+            criteria.andLicensePictureEqualTo(autCompany.getLicensePicture());
+        }
+        if (autCompany.getCompanyStatus() != null){
+            criteria.andCompanyStatusEqualTo(autCompany.getCompanyStatus());
+        }
+        if (autCompany.getStatus() != null){
+            criteria.andStatusEqualTo(autCompany.getStatus());
+        }
+
+        List<AutCompany> autCompanies = autCompanyMapper.selectByExample(example);
+
+        return autCompanies;
     }
 
     @Override
@@ -148,10 +200,11 @@ public class AutCompanyServiceImpl implements IAutCompanyService {
 //    }
 
     @Override
-    public Map<String, String> addAutCompany(AutCompany autCompany) {
+    public Map<String, String> addAutCompany(AutCompany autCompany, Integer companyid) {
         Map<String,String> result = new HashMap<>();
-        if (autCompany.getId() == null){
-            result.put(StaticPool.ERROR,"ID不能为空");
+        if (companyid != autCompany.getCompanyId()){
+            result.put(StaticPool.ERROR,"非法访问");
+            logger.warn("非法访问,公司id："+companyid);
             return result;
         }
         if (! isAddAutCompany(autCompany.getId())) {

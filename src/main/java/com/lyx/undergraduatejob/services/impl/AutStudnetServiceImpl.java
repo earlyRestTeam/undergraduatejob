@@ -29,8 +29,11 @@ public class AutStudnetServiceImpl implements IAutStudentService {
     @Autowired
     AutStudentMapper autStudentMapper;
 
+    public PageInfo<AutStudent> queryAutStudentBefore(Integer indexpage,Integer userid, AutStudent autStudent){
+        return queryAutStudentBefore(indexpage,userid,autStudent,"create_time","ASC");
+    }
     /**
-     * 除了时间以外的条件都调这个查询,
+     * 除了时间以外的条件都调这个查询,前台
      * @param indexpage
      * @param autStudent
      * @param columnName 数据库的列名
@@ -38,7 +41,11 @@ public class AutStudnetServiceImpl implements IAutStudentService {
      * @return
      */
     @Override
-    public PageInfo<AutStudent> queryAutStudent(Integer indexpage, AutStudent autStudent, String columnName, String sort) {
+    public PageInfo<AutStudent> queryAutStudentBefore(Integer indexpage,Integer userid, AutStudent autStudent, String columnName, String sort) {
+        if (userid != autStudent.getUserId()){
+            logger.warn("非法访问,用户id："+userid);
+            return null;
+        }
         indexpage = indexpage == null ? 1 : indexpage;
 
         AutStudentExample example = new AutStudentExample();
@@ -95,6 +102,57 @@ public class AutStudnetServiceImpl implements IAutStudentService {
     }
 
     /**
+     * 后台查询
+     * @param autStudent
+     * @return
+     */
+    @Override
+    public List<AutStudent> queryAutStudentBack(AutStudent autStudent) {
+        AutStudentExample example = new AutStudentExample();
+        AutStudentExample.Criteria criteria = example.createCriteria();
+        if (autStudent.getId() != null){
+            criteria.andIdEqualTo(autStudent.getId());
+        }
+        if (autStudent.getUserId() != null){
+            criteria.andUserIdEqualTo(autStudent.getUserId());
+        }
+        if (autStudent.getProposerName() != null){
+            criteria.andProposerNameLike(autStudent.getProposerName()+"%");
+        }
+        if (autStudent.getProposerPhone() != null){
+            criteria.andProposerPhoneLike(autStudent.getProposerPhone()+"%");
+        }
+        if (autStudent.getIdCard() != null){
+            criteria.andIdCardLike(autStudent.getIdCard()+"%");
+        }
+        if (autStudent.getStudentNum() != null){
+            criteria.andStudentNumLike(autStudent.getStudentNum()+"%");
+        }
+        if (autStudent.getSchool() != null){
+            criteria.andSchoolLike(autStudent.getSchool()+"%");
+        }
+        if (autStudent.getSpecialty() != null){
+            criteria.andSpecialtyLike(autStudent.getSpecialty()+"%");
+        }
+        if (autStudent.getEducation() != null){
+            criteria.andEducationLike(autStudent.getEducation()+"%");
+        }
+        if (autStudent.getStatus() != null){
+            criteria.andStatusEqualTo(autStudent.getStatus());
+        }
+        if (autStudent.getStudentStatus() != null){
+            criteria.andStudentStatusEqualTo(autStudent.getStudentStatus());
+        }
+        if (autStudent.getRelatedPicture() != null){
+            criteria.andRelatedPictureEqualTo(autStudent.getRelatedPicture());
+        }
+
+        List<AutStudent> autStudents = autStudentMapper.selectByExample(example);
+
+        return autStudents;
+    }
+
+    /**
      * 用户有状态为已通过/未审核的认证申请则不能添加认证
      * @param userid
      * @return
@@ -115,13 +173,29 @@ public class AutStudnetServiceImpl implements IAutStudentService {
     }
 
     /**
-     * 所有修改都调这个方法，不要修改的属性就不要设值
+     * 所有修改都调这个方法（软删除），前台
      * @param autStudent
      * @return
      */
     @Override
-    public Map<String, String> updateAutStudent(AutStudent autStudent) {
+    public Map<String, String> updateAutStudentBefore(AutStudent autStudent, Integer userid){
         Map<String,String> result = new HashMap<>();
+        if (userid != autStudent.getUserId()){
+            result.put(StaticPool.ERROR,"非法访问");
+            logger.warn("非法访问,用户id："+userid);
+            return result;
+        }
+        return updateAutStudentBack(autStudent);
+    }
+
+    /**
+     * 后台修改
+     * @param autStudent
+     * @return
+     */
+    public Map<String, String> updateAutStudentBack(AutStudent autStudent) {
+        Map<String,String> result = new HashMap<>();
+
         if (autStudent.getId() == null){
             result.put(StaticPool.ERROR,"修改失败");
         } else {
@@ -138,8 +212,13 @@ public class AutStudnetServiceImpl implements IAutStudentService {
     }
 
     @Override
-    public Map<String, String> addAutStudent(AutStudent autStudent) {
+    public Map<String, String> addAutStudent(AutStudent autStudent,Integer userid) {
         Map<String,String> result = new HashMap<>();
+        if (userid != autStudent.getUserId()){
+            result.put(StaticPool.ERROR,"非法访问");
+            logger.warn("非法访问,用户id："+userid);
+            return result;
+        }
         if (! isAddAutStudent(autStudent.getId())) {
             result.put(StaticPool.ERROR,"你的认证已通过或请耐心等待认证");
         } else {

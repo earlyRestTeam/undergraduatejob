@@ -404,24 +404,16 @@
                             <div class="col-xl-12 stretch-card">
                                 <div class="card-box">
 
-                                    <div class="dropdown float-right">
-                                        <a href="#" class="dropdown-toggle arrow-none card-drop" data-toggle="dropdown" aria-expanded="false">
-                                            <i class="mdi mdi-dots-horizontal"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right">
-                                            <!-- item-->
-                                            <a href="javascript:void(0);" class="dropdown-item">Action</a>
-                                            <!-- item-->
-                                            <a href="javascript:void(0);" class="dropdown-item">Another action</a>
-                                            <!-- item-->
-                                            <a href="javascript:void(0);" class="dropdown-item">omething else here</a>
-                                        </div>
-                                    </div>
-                                    <h4 class="header-title mb-4">Latest Tickets</h4>
+                                    <h4 class="header-title mb-4">公司认证表</h4>
                                     <div >
-                                        <form class="form-inline">
-                                            <input type="text" class="form-control" placeholder="Search…">
-                                            <button class="" type="submit"><i class="fa fa-search"></i></button>
+                                        <form class="form-inline" style="float: right">
+                                            <input th:text="${proposerName}" type="text" class="form-control" placeholder="申请人姓名" name="proposerName">
+                                            <input th:text="${id}" type="text" class="form-control" placeholder="ID" name="id">
+                                            <select onchange="fn()" th:value="${status}" type="text" class="input-text" style="width:250px" placeholder="状态" id="status" name="status">
+                                                <option value="0" th:selected="${status eq 0}">无效</option>
+                                                <option value="1" th:selected="${status eq 1}">有效</option>
+                                            </select>
+                                            <button style="background-color: lightskyblue;height: 38px;width: 38px;border: lightskyblue;" class="" type="submit"><i class="fa fa-search"></i></button>
                                         </form>
 
                                     </div>
@@ -431,20 +423,20 @@
                                         <table class="table table-centered table-hover mb-0" id="datatable">
                                             <thead>
                                                 <tr>
-                                                    <th class="border-top-0">#</th>
-                                                    <th class="border-top-0">Company ID</th>
-                                                    <th class="border-top-0">Proposer</th>
-                                                    <th class="border-top-0">ID Card</th>
-                                                    <th class="border-top-0">Phone</th>
-                                                    <th class="border-top-0">License Card</th>
-                                                    <th class="border-top-0">Picture</th>
-                                                    <th class="border-top-0">Create Time</th>
-                                                    <th class="border-top-0">Status</th>
-                                                    <th class="border-top-0 text-center">Action</th>
+                                                    <th class="border-top-0">ID</th>
+                                                    <th class="border-top-0">公司ID</th>
+                                                    <th class="border-top-0">申请者姓名</th>
+                                                    <th class="border-top-0">身份证号码</th>
+                                                    <th class="border-top-0">手机号码</th>
+                                                    <th class="border-top-0">营业执照编码</th>
+                                                    <th class="border-top-0">认证图片</th>
+                                                    <th class="border-top-0">创建时间</th>
+                                                    <th class="border-top-0">状态</th>
+                                                    <th class="border-top-0 text-center">操作</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr th:each="aut,adStas:${pages.list}">
+                                                <tr th:each="aut,adStas:${list}">
                                                     <td th:text="${aut.id}"></td>
                                                     <td th:text="${aut.companyId}"></td>
                                                     <td th:text="${aut.proposerName}"></td>
@@ -453,7 +445,9 @@
                                                     <td th:text="${aut.licenseCard}"></td>
                                                     <td ><a href="" class="badge-info btn-sm mg-y-5" data-toggle="tooltip" data-placement="top" title="" data-original-title="">图片详情</a></td>
                                                     <td th:text="${#dates.format(aut.createTime,'yyyy-MM-dd')}"></td>
-                                                    <td th:text="${aut.status}"></td>
+                                                    <td class="td-status" th:if="${aut.status eq 0}"><span class="badge badge-danger">不通过</span></td>
+                                                    <td class="td-status" th:if="${aut.status eq 1}"><span class="badge badge-success">通过</span></td>
+                                                    <td class="td-status" th:if="${aut.status eq 2}"><span class="badge badge-warning">未审核</span></td>
                                                     <td class="text-center">
                                                         <a href="" class="badge-info btn-sm mg-y-5" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"><i class="mdi mdi-square-edit-outline"></i></a>
                                                         <a href="" class="badge-danger btn-sm mg-y-5" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete"><i class="mdi mdi-trash-can"></i></a>
@@ -524,6 +518,17 @@
 
         <!-- App js -->
         <script src="js/app.min.js"></script>
+        <script>
+            /*选择状态*/
+            function  fn(){
+                //var     name=$("#item1").find("option:selected").text(); //获取文本值
+                var     name=$("#item1").find("option:selected").val();  //获取value值
+                if(name !==null){
+                    version=name;
+                }
+            }
+        </script>
+
 
     </body>
 </html>
