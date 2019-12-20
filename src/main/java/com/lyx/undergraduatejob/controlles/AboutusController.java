@@ -2,6 +2,7 @@ package com.lyx.undergraduatejob.controlles;
 
 import com.github.pagehelper.PageInfo;
 import com.lyx.undergraduatejob.pojo.Company;
+import com.lyx.undergraduatejob.search.entity.CompanySerchEntity;
 import com.lyx.undergraduatejob.search.entity.JobSearchEntity;
 import com.lyx.undergraduatejob.services.ICompanyInfoServices;
 import com.lyx.undergraduatejob.services.IJobServices;
@@ -32,10 +33,11 @@ public class AboutusController {
 
     @RequestMapping("allCompany")
     public String allCompany(Integer indexpage, Company company, HttpServletRequest request){
+        CompanySerchEntity companySerchEntity = new CompanySerchEntity();
         company.setStatus(1);
         company.setAulStatus(1);
         System.out.println(company.toString());
-        PageInfo pageInfo = iCompanyInfoServices.queryCompanyList(indexpage,company);
+        PageInfo pageInfo = iCompanyInfoServices.queryCompanyList(indexpage,companySerchEntity);
         request.setAttribute("pages",pageInfo);
         return"/companies";
     }
