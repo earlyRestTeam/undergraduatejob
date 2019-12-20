@@ -16,6 +16,12 @@ public interface IJobListServices {
     List<JobList> queryALLByIndustriesId(int industriesId);
 
     /**
+     * 查询 所有 的 职业
+     * @return
+     */
+    List<JobList> queryALL();
+
+    /**
      * 分页查询 行业 -- 供 后台 使用
      * @param start
      * @param pageSize

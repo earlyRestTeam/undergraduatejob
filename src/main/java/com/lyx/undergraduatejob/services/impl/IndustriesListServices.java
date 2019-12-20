@@ -3,10 +3,9 @@ package com.lyx.undergraduatejob.services.impl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.lyx.undergraduatejob.mapper.IndustriesListMapper;
-import com.lyx.undergraduatejob.pojo.IndustriesList;
-import com.lyx.undergraduatejob.pojo.IndustriesListExample;
-import com.lyx.undergraduatejob.pojo.Welfare;
-import com.lyx.undergraduatejob.pojo.WelfareExample;
+import com.lyx.undergraduatejob.pojo.*;
+import com.lyx.undergraduatejob.services.IJobListServices;
+import com.lyx.undergraduatejob.services.IJobServices;
 import com.lyx.undergraduatejob.services.Industries_listServices;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,9 +16,14 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.thymeleaf.util.StringUtils;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
+ * 行业 服务
+ *
  * @createTime 2019.12.18.17:23
  */
 @Service
@@ -30,14 +34,42 @@ public class IndustriesListServices implements Industries_listServices {
 
     @Autowired
     IndustriesListMapper mapper;
+    @Autowired
+    IJobListServices jobListServices;
     /**
      * 查询 所有 的 行业
      * @return
      */
     @Override
-    @Cacheable(key="'IndustriesListAll'")
-    public List<IndustriesList> queryALL() {
+    @Cacheable(key="'queryALLWithOutJobList'")
+    public List<IndustriesList> queryALLWithOutJobList() {
         return mapper.selectByExample(new IndustriesListExample());
+    }
+
+    /**
+     * 查询 所有 的 行业  连带 职业名
+     * @return
+     */
+    @Override
+    @Cacheable(key="'queryALLWithJobList'")
+    public List<Map<String,Object>> queryALLWithJobList() {
+        List<IndustriesList> industriesLists = mapper.selectByExample(new IndustriesListExample());
+        List<JobList> jobLists = jobListServices.queryALL();
+        Map<Integer,List<JobList>> map = new HashMap<>();
+        for (JobList j : jobLists){
+            if( !map.containsKey(j.getIndustriesId()) ){
+                map.put(j.getIndustriesId(),new ArrayList<>());
+            }
+            map.get(j.getIndustriesId()).add(j);
+        }
+        List<Map<String,Object>> res = new ArrayList<>();
+        for (IndustriesList in : industriesLists) {
+            Map<String,Object> m = new HashMap<>();
+            m.put("industries",in);
+            m.put("jobList",map.get(in.getId()));
+            res.add(m);
+        }
+        return res;
     }
     /**
      * 分页查询 行业 -- 供 后台 使用

@@ -26,7 +26,7 @@ public class AboutusController {
     public String toaboutus(){
         JobSearchEntity jobSearchEntity = new JobSearchEntity();
         jobSearchEntity.setKeyWord("status");
-        iJobService.selectJobByJobSearchEntity(1,1,jobSearchEntity);
+//        iJobService.selectJobByJobSearchEntity(1,1,jobSearchEntity);
         return "";
 
     }

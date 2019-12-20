@@ -4,6 +4,7 @@ import com.github.pagehelper.PageInfo;
 import com.lyx.undergraduatejob.pojo.IndustriesList;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 行业 操作 服务层
@@ -13,7 +14,13 @@ public interface Industries_listServices {
      * 查询 所有 的 行业
      * @return
      */
-    List<IndustriesList> queryALL();
+    List<Map<String,Object>> queryALLWithJobList();
+
+    /**
+     * 查询 所有 的 行业 连带 职业名
+     * @return
+     */
+    List<IndustriesList> queryALLWithOutJobList();
 
     /**
      * 分页查询 行业 -- 供 后台 使用

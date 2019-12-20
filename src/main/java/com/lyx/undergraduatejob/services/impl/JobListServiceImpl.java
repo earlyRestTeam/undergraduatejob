@@ -42,6 +42,13 @@ public class JobListServiceImpl implements IJobListServices {
         List<JobList> jobLists = mapper.selectByExample(example);
         return jobLists;
     }
+
+    @Override
+    @Cacheable(key="'all'")
+    public List<JobList> queryALL() {
+        return mapper.selectByExample(new JobListExample());
+    }
+
     /**
      * 分页查询 行业 -- 供 后台 使用
      * @param start

@@ -1,10 +1,11 @@
 package com.lyx.undergraduatejob.controlles;
 
-import com.github.pagehelper.PageInfo;
 import com.lyx.undergraduatejob.pojo.AutCompany;
 import com.lyx.undergraduatejob.services.impl.AutCompanyServiceImpl;
+import com.lyx.undergraduatejob.utils.StaticPool;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
@@ -111,8 +112,9 @@ public class AdminController {
     }
 
 
-    @RequestMapping("auth-login")
-    public String login(){
+    @RequestMapping("login")
+    public String login(Model model){
+        model.addAttribute("type", StaticPool.ADMIN);
         return "/admin/auth-login";
     }
 

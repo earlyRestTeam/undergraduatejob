@@ -10,8 +10,12 @@ import java.util.Map;
 public class JobSearchEntity implements Serializable {
     //    关键字
     private String keyWord;
+    //公司 id
+    private Integer companyId;
     //工作职位
     private String workJob;
+    //工作 所属行业
+    private String jobType;
     //结算方式
     //时结 日结 月结 其它 all
     private Integer closeAnAccount;
@@ -27,7 +31,16 @@ public class JobSearchEntity implements Serializable {
     private String order = "desc";
     //工作时间要求
     private Integer workYear;
-    private Integer eaucationDemand;
+    // 兼职 全职
+    private Integer partFull;
+
+    public Integer getCompanyId() {
+        return companyId;
+    }
+
+    public void setCompanyId(Integer companyId) {
+        this.companyId = companyId;
+    }
 
     public String getKeyWord() {
         return keyWord;
@@ -41,16 +54,24 @@ public class JobSearchEntity implements Serializable {
         this.workYear = workYear;
     }
 
-    public Integer getEaucationDemand() {
-        return eaucationDemand;
+    public Integer getPartFull() {
+        return partFull;
     }
 
-    public void setEaucationDemand(Integer eaucationDemand) {
-        this.eaucationDemand = eaucationDemand;
+    public void setPartFull(Integer partFull) {
+        this.partFull = partFull;
     }
 
     public void setKeyWord(String keyWord) {
         this.keyWord = keyWord;
+    }
+
+    public String getJobType() {
+        return jobType;
+    }
+
+    public void setJobType(String jobType) {
+        this.jobType = jobType;
     }
 
     public String getWorkJob() {

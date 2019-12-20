@@ -10,8 +10,9 @@ public interface StaticPool {
 
 
     String ADMIN = "admin";
-    String STAFF = "staff";
     String USER = "user";
+
+    String JOB_VIP_SORT = ",job_vip desc";
 
     int USER_ENTITY = 1;
     int STAFF_ENTITY = 2;

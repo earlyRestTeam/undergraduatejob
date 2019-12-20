@@ -1,6 +1,8 @@
 package com.lyx.undergraduatejob.controlles;
 
+import com.lyx.undergraduatejob.utils.StaticPool;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
@@ -80,10 +82,10 @@ public class UsersController {
         return "job_single";
     }
 
-    @RequestMapping("login")
-    public String login(){
-
-        return "login";
+    @RequestMapping("/user/login")
+    public String login(Model model){
+        model.addAttribute("type", StaticPool.USER);
+        return "/login";
     }
     
     @RequestMapping("pricing_table")

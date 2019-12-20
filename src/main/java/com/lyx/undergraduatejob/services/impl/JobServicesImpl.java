@@ -18,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
+import org.thymeleaf.util.StringUtils;
 
 import java.util.*;
 
@@ -47,6 +48,7 @@ public class JobServicesImpl implements IJobServices {
         Map<String,String> result = new HashMap<>();
         //初始化状态、认证状态、收到的简历数、阅读数、收藏数、vip服务、发布时间
         job.setStatus(0);
+        job.setPushStatus(0);
         job.setAulStatus(0);
         job.setReceiveNum(0);
         job.setCollectNum(0);
@@ -179,17 +181,20 @@ public class JobServicesImpl implements IJobServices {
         example1.createCriteria().andIdIn(ids);
 
         List<Company> companies = companyMapper.selectByExample(example1);
-
-        List<Map<String,Object>> list = new ArrayList<>();
+        Map<Integer,Company> map = new HashMap<>();
+        companies.forEach(c->map.put(c.getId(),c));
+        ArrayList<Company> cs = new ArrayList<>();
+//        List<Map<String,Object>> list = new ArrayList<>();
         for (int i = 0; i < resumes.size(); i++) {
-            Map<String,Object> map = new HashMap<>();
-            map.put("resume",resumes.get(i));
-            map.put("company",companies.get(i));
-            list.add(map);
+            cs.add(map.get(resumes.get(i).getCompanyId()) == null
+                    ? new Company() : map.get(resumes.get(i).getCompanyId()));
         }
 //        pageInfo.
         MyPage page = new MyPage(pageInfo);
-        page.putList(list);
+        Map<String,Object> res = new HashMap<>();
+        res.put("receiveResumes",receiveResumes);
+        res.put("company",cs);
+        page.setMap(res);
         return page;
     }
     /**
@@ -217,8 +222,9 @@ public class JobServicesImpl implements IJobServices {
         int res = jobMapper.updateByPrimaryKeySelective(job);
         return res > 0;
     }
+
     /**
-     * 按照 条件分页查找
+     * 按照 条件分页 不查找 对应的 公司查找
      *
      * @param start
      * @param pageSize
@@ -226,36 +232,92 @@ public class JobServicesImpl implements IJobServices {
      * @return
      */
     @Override
-    public PageInfo<Job> selectJobByJobSearchEntity(int start, int pageSize, JobSearchEntity jobSearchEntity) {
-
+    public PageInfo<Job> selectJobByJobSearchEntityWithOutCompany(int start, int pageSize, JobSearchEntity jobSearchEntity) {
+        //初始化
         PageHelper.startPage(start,pageSize);
         JobExample example = new JobExample();
         JobExample.Criteria criteria = example.createCriteria();
         criteria.andStatusEqualTo(1);
         criteria.andAulStatusEqualTo(2);
-
+        criteria.andPushStatusEqualTo(1);
+        //加入查找 条件
         String key;
-        if( (key = jobSearchEntity.getKeyWord() )!= null)
+        if( !StringUtils.isEmpty( (key = jobSearchEntity.getKeyWord() ) ))
             criteria.andJobNameLike(key+"%");
         String workArea;
-        if( (workArea = jobSearchEntity.getWorkArea() )!= null)
+        if( !StringUtils.isEmpty((workArea = jobSearchEntity.getWorkArea() ) ) )
             criteria.andWorkAddressEqualTo(workArea);
+        if( !StringUtils.isEmpty(jobSearchEntity.getJobType())  )
+            criteria.andJobTypeEqualTo(jobSearchEntity.getJobType());
+        //结算类型
         Integer closeAnAccount;
-        if( (closeAnAccount = jobSearchEntity.getCloseAnAccount() )!= null)
+        if( (closeAnAccount = jobSearchEntity.getCloseAnAccount() )!= null && jobSearchEntity.getCloseAnAccount() > 0)
             criteria.andCloseTypeEqualTo(closeAnAccount);
+        //兼职 全职
+        if( jobSearchEntity.getPartFull()!= null && jobSearchEntity.getPartFull() > 0)
+            criteria.andCloseTypeEqualTo(jobSearchEntity.getPartFull());
+
+        if(jobSearchEntity.getCompanyId() != null)
+            criteria.andCompanyIdEqualTo(jobSearchEntity.getCompanyId());
         RentValueBlock rentValueBlock = RentValueBlock.getRentValueBlock(jobSearchEntity.getSalaryArea());
+
         if(rentValueBlock.getMin() > 0)
             criteria.andSalaryGreaterThan(rentValueBlock.getMin());
         if(rentValueBlock.getMax() > 0)
             criteria.andSalaryLessThan(rentValueBlock.getMax());
 
-        example.setOrderByClause(jobSearchEntity.getOrderExample()+jobSearchEntity.getOrder());
+        example.setOrderByClause(jobSearchEntity.getOrderExample()+jobSearchEntity.getOrder()
+                +StaticPool.JOB_VIP_SORT);
 
+
+        //查找到 这一页的 job
         List<Job> jobs = jobMapper.selectByExample(example);
         PageInfo<Job> pageInfo = PageInfo.of(jobs);
         return pageInfo;
     }
 
+    /**
+     * 按照 条件分页 查找 对应的 公司查找
+     *
+     * @param start
+     * @param pageSize
+     * @param jobSearchEntity
+     * @return
+     */
+    @Override
+    public MyPage selectJobByJobSearchEntityWithCompany(int start, int pageSize, JobSearchEntity jobSearchEntity) {
 
+        PageInfo<Job> pageInfo = selectJobByJobSearchEntityWithOutCompany(start, pageSize, jobSearchEntity);
+
+        MyPage page = new MyPage(pageInfo);
+        Map<String, Object> map = getJobAndThemCompany(pageInfo);
+        page.setMap(map);
+        return page;
+    }
+
+    //找到 对应的 company
+    private Map<String,Object> getJobAndThemCompany(PageInfo<Job> pageInfo){
+
+        List<Job> jl = pageInfo.getList();
+        List<Integer> ids = new ArrayList<>();
+        jl.forEach(j->ids.add(j.getCompanyId()));
+        CompanyExample example1 = new CompanyExample();
+        example1.createCriteria().andIdIn(ids);
+        List<Company> companies = companyMapper.selectByExample(example1);
+        Map<Integer,Company> cMap = new HashMap<>();
+        companies.forEach(c-> cMap.put(c.getId(),c));
+        List<Company> cs = new ArrayList<>();
+        for (int i = 0; i < jl.size(); i++) {
+            Job job = jl.get(i);
+            cs.add(cMap.get(job.getCompanyId()) == null ? new Company() : cMap.get(job.getCompanyId()));
+        }
+
+
+        Map<String,Object> map = new HashMap<>();
+
+        map.put("jobs", jl);
+        map.put("companys", cs);
+        return map;
+    }
 
 }

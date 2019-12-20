@@ -75,16 +75,30 @@ public interface IJobServices {
      */
     boolean updateIncrReceiveNum(int jobId, int count);
 
+//    /**
+//     * 按公司id查找 职位
+//     * @param cid
+//     * @return
+//     */
+//    PageInfo<Job> queryJobByCompanyId(Integer cid);
+
     /**
-     * 按照 条件分页查找
+     * 按照 条件分页 查找 对应的 公司查找
      *
      * @param start
      * @param pageSize
      * @param jobSearchEntity
      * @return
      */
-    PageInfo<Job> selectJobByJobSearchEntity(int start, int pageSize, JobSearchEntity jobSearchEntity);
+    MyPage selectJobByJobSearchEntityWithCompany(int start, int pageSize, JobSearchEntity jobSearchEntity);
+    /**
+     * 按照 条件分页 不查找 对应的 公司查找
+     *
+     * @param start
+     * @param pageSize
+     * @param jobSearchEntity
+     * @return
+     */
+    PageInfo<Job> selectJobByJobSearchEntityWithOutCompany(int start, int pageSize, JobSearchEntity jobSearchEntity);
 
-
-//    boolean
 }
