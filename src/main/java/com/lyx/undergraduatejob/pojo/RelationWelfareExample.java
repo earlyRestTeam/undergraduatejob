@@ -175,62 +175,52 @@ public class RelationWelfareExample {
             return (Criteria) this;
         }
 
-        public Criteria andWelfareIdEqualTo(String value) {
+        public Criteria andWelfareIdEqualTo(Integer value) {
             addCriterion("welfare_id =", value, "welfareId");
             return (Criteria) this;
         }
 
-        public Criteria andWelfareIdNotEqualTo(String value) {
+        public Criteria andWelfareIdNotEqualTo(Integer value) {
             addCriterion("welfare_id <>", value, "welfareId");
             return (Criteria) this;
         }
 
-        public Criteria andWelfareIdGreaterThan(String value) {
+        public Criteria andWelfareIdGreaterThan(Integer value) {
             addCriterion("welfare_id >", value, "welfareId");
             return (Criteria) this;
         }
 
-        public Criteria andWelfareIdGreaterThanOrEqualTo(String value) {
+        public Criteria andWelfareIdGreaterThanOrEqualTo(Integer value) {
             addCriterion("welfare_id >=", value, "welfareId");
             return (Criteria) this;
         }
 
-        public Criteria andWelfareIdLessThan(String value) {
+        public Criteria andWelfareIdLessThan(Integer value) {
             addCriterion("welfare_id <", value, "welfareId");
             return (Criteria) this;
         }
 
-        public Criteria andWelfareIdLessThanOrEqualTo(String value) {
+        public Criteria andWelfareIdLessThanOrEqualTo(Integer value) {
             addCriterion("welfare_id <=", value, "welfareId");
             return (Criteria) this;
         }
 
-        public Criteria andWelfareIdLike(String value) {
-            addCriterion("welfare_id like", value, "welfareId");
-            return (Criteria) this;
-        }
-
-        public Criteria andWelfareIdNotLike(String value) {
-            addCriterion("welfare_id not like", value, "welfareId");
-            return (Criteria) this;
-        }
-
-        public Criteria andWelfareIdIn(List<String> values) {
+        public Criteria andWelfareIdIn(List<Integer> values) {
             addCriterion("welfare_id in", values, "welfareId");
             return (Criteria) this;
         }
 
-        public Criteria andWelfareIdNotIn(List<String> values) {
+        public Criteria andWelfareIdNotIn(List<Integer> values) {
             addCriterion("welfare_id not in", values, "welfareId");
             return (Criteria) this;
         }
 
-        public Criteria andWelfareIdBetween(String value1, String value2) {
+        public Criteria andWelfareIdBetween(Integer value1, Integer value2) {
             addCriterion("welfare_id between", value1, value2, "welfareId");
             return (Criteria) this;
         }
 
-        public Criteria andWelfareIdNotBetween(String value1, String value2) {
+        public Criteria andWelfareIdNotBetween(Integer value1, Integer value2) {
             addCriterion("welfare_id not between", value1, value2, "welfareId");
             return (Criteria) this;
         }

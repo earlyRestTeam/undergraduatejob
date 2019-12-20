@@ -3,7 +3,7 @@
 <mapper namespace="com.lyx.undergraduatejob.mapper.RelationWelfareMapper">
   <resultMap id="BaseResultMap" type="com.lyx.undergraduatejob.pojo.RelationWelfare">
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="welfare_id" jdbcType="VARCHAR" property="welfareId" />
+    <result column="welfare_id" jdbcType="INTEGER" property="welfareId" />
     <result column="owner_id" jdbcType="INTEGER" property="ownerId" />
     <result column="owner_type" jdbcType="INTEGER" property="ownerType" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
@@ -105,7 +105,7 @@
     </selectKey>
     insert into relation_welfare (welfare_id, owner_id, owner_type, 
       create_time)
-    values (#{welfareId,jdbcType=VARCHAR}, #{ownerId,jdbcType=INTEGER}, #{ownerType,jdbcType=INTEGER}, 
+    values (#{welfareId,jdbcType=INTEGER}, #{ownerId,jdbcType=INTEGER}, #{ownerType,jdbcType=INTEGER}, 
       #{createTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.lyx.undergraduatejob.pojo.RelationWelfare">
@@ -129,7 +129,7 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="welfareId != null">
-        #{welfareId,jdbcType=VARCHAR},
+        #{welfareId,jdbcType=INTEGER},
       </if>
       <if test="ownerId != null">
         #{ownerId,jdbcType=INTEGER},
@@ -155,7 +155,7 @@
         id = #{record.id,jdbcType=INTEGER},
       </if>
       <if test="record.welfareId != null">
-        welfare_id = #{record.welfareId,jdbcType=VARCHAR},
+        welfare_id = #{record.welfareId,jdbcType=INTEGER},
       </if>
       <if test="record.ownerId != null">
         owner_id = #{record.ownerId,jdbcType=INTEGER},
@@ -174,7 +174,7 @@
   <update id="updateByExample" parameterType="map">
     update relation_welfare
     set id = #{record.id,jdbcType=INTEGER},
-      welfare_id = #{record.welfareId,jdbcType=VARCHAR},
+      welfare_id = #{record.welfareId,jdbcType=INTEGER},
       owner_id = #{record.ownerId,jdbcType=INTEGER},
       owner_type = #{record.ownerType,jdbcType=INTEGER},
       create_time = #{record.createTime,jdbcType=TIMESTAMP}
@@ -186,7 +186,7 @@
     update relation_welfare
     <set>
       <if test="welfareId != null">
-        welfare_id = #{welfareId,jdbcType=VARCHAR},
+        welfare_id = #{welfareId,jdbcType=INTEGER},
       </if>
       <if test="ownerId != null">
         owner_id = #{ownerId,jdbcType=INTEGER},
@@ -202,7 +202,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.lyx.undergraduatejob.pojo.RelationWelfare">
     update relation_welfare
-    set welfare_id = #{welfareId,jdbcType=VARCHAR},
+    set welfare_id = #{welfareId,jdbcType=INTEGER},
       owner_id = #{ownerId,jdbcType=INTEGER},
       owner_type = #{ownerType,jdbcType=INTEGER},
       create_time = #{createTime,jdbcType=TIMESTAMP}

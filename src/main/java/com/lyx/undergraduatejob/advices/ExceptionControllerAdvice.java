@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * 全局异常捕获处理
  */
-@RestControllerAdvice
+//@RestControllerAdvice
 public class ExceptionControllerAdvice {
     private static final Logger logger= LoggerFactory.getLogger(ExceptionControllerAdvice.class);
 

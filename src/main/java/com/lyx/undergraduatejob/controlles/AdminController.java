@@ -1,11 +1,23 @@
 package com.lyx.undergraduatejob.controlles;
 
+import com.github.pagehelper.PageInfo;
+import com.lyx.undergraduatejob.pojo.AutCompany;
+import com.lyx.undergraduatejob.services.impl.AutCompanyServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.servlet.http.HttpServletRequest;
+import java.awt.*;
+import java.util.List;
 
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
+
+    @Autowired
+    AutCompanyServiceImpl autCompanyService;
+
     /**
      * 职位审核管理
      * @return
@@ -51,7 +63,10 @@ public class AdminController {
      * @return
      */
     @RequestMapping("authentication-company")
-    public String authentication_company() {
+    public String authentication_company(HttpServletRequest request) {
+        AutCompany autCompany = new AutCompany();
+        List<AutCompany> autCompanyList = autCompanyService.queryAutCompanyBack(autCompany);
+        request.setAttribute("list",autCompanyList);
         return "/admin/authentication-company";
     }
     /**
