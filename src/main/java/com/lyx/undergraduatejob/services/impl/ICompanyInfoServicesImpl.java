@@ -37,8 +37,10 @@ public class ICompanyInfoServicesImpl implements ICompanyInfoServices {
      */
     @Override
     public Company queryCompanyById(Integer companyId) {
-        Company company = companyId == null ? null : companyMapper.selectByPrimaryKey(companyId);
-        return company;
+         if (companyId==null){
+             return new Company();
+         }
+        return companyMapper.selectByPrimaryKey(companyId);
     }
 
     /**
@@ -89,15 +91,19 @@ public class ICompanyInfoServicesImpl implements ICompanyInfoServices {
      * @return
      */
     @Override
-    public Map<String,String> addCompanyInfo(Company c) {
+    public Map<String,String> addCompanyInfo(Company c,Integer userid) {
         Map<String,String> result = new HashMap<>();
         CompanyExample example = new CompanyExample();
-        example.or().andCompanyNameEqualTo(c.getCompanyName());
-        example.or().andUserIdEqualTo(c.getUserId());
+        example.or().andUserIdEqualTo(userid);
+        c.setId(null);
         List<Company> companies = companyMapper.selectByExample(example);
         if (!companies.isEmpty()&&companies.size()>0){
-            result.put(StaticPool.ERROR,"公司名称已存在或用户已创建过公司");
-            logger.error("插入公司数据失败，公司名称已存在或用户已创建过公司");
+            result.put(StaticPool.ERROR,"非法访问！用户"+userid+"已经创建过公司");
+            logger.error("非法访问！用户"+userid+"已经创建过公司");
+            return result;
+        }else if (!userid.equals(c.getUserId())){
+            result.put(StaticPool.ERROR,"非法访问！用户"+userid+"不能给别人创建公司");
+            logger.error("非法访问！用户"+userid+"不能给别人创建公司");
             return result;
         }
         int res = companyMapper.insert(c);
@@ -105,8 +111,8 @@ public class ICompanyInfoServicesImpl implements ICompanyInfoServices {
             logger.info("创建公司成功");
             result.put(StaticPool.SUCCESS,"创建公司成功");
         }else {
-            logger.warn("系统繁忙,插入公司失败");
-            result.put(StaticPool.ERROR,"系统繁忙,插入公司失败");
+            logger.warn("系统繁忙,创建公司失败");
+            result.put(StaticPool.ERROR,"系统繁忙,创建公司失败");
 
         }
         return result;
@@ -121,8 +127,11 @@ public class ICompanyInfoServicesImpl implements ICompanyInfoServices {
     public Company queryCompanyByUserId(Integer userId) {
         CompanyExample example = new CompanyExample();
         example.or().andUserIdEqualTo(userId);
-        Company company = userId == null ? null : companyMapper.selectByExample(example).get(0);
-        return company;
+        List<Company> companies = companyMapper.selectByExample(example);
+        if (companies.isEmpty()){
+            return new Company();
+        }
+        return companies.get(0);
     }
 
     /**
