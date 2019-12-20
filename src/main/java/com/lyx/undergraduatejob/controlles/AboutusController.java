@@ -36,7 +36,7 @@ public class AboutusController {
         company.setAulStatus(1);
         System.out.println(company.toString());
         PageInfo pageInfo = iCompanyInfoServices.queryCompanyList(indexpage,company);
-        request.setAttribute("pages2",pageInfo);
+        request.setAttribute("pages",pageInfo);
         return"/companies";
     }
 
