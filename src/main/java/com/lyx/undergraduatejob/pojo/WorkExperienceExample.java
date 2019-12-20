@@ -495,73 +495,73 @@ public class WorkExperienceExample {
             return (Criteria) this;
         }
 
-        public Criteria andDescribeIsNull() {
-            addCriterion("describe is null");
+        public Criteria andExperienceDescIsNull() {
+            addCriterion("experience_desc is null");
             return (Criteria) this;
         }
 
-        public Criteria andDescribeIsNotNull() {
-            addCriterion("describe is not null");
+        public Criteria andExperienceDescIsNotNull() {
+            addCriterion("experience_desc is not null");
             return (Criteria) this;
         }
 
-        public Criteria andDescribeEqualTo(String value) {
-            addCriterion("describe =", value, "describe");
+        public Criteria andExperienceDescEqualTo(String value) {
+            addCriterion("experience_desc =", value, "experienceDesc");
             return (Criteria) this;
         }
 
-        public Criteria andDescribeNotEqualTo(String value) {
-            addCriterion("describe <>", value, "describe");
+        public Criteria andExperienceDescNotEqualTo(String value) {
+            addCriterion("experience_desc <>", value, "experienceDesc");
             return (Criteria) this;
         }
 
-        public Criteria andDescribeGreaterThan(String value) {
-            addCriterion("describe >", value, "describe");
+        public Criteria andExperienceDescGreaterThan(String value) {
+            addCriterion("experience_desc >", value, "experienceDesc");
             return (Criteria) this;
         }
 
-        public Criteria andDescribeGreaterThanOrEqualTo(String value) {
-            addCriterion("describe >=", value, "describe");
+        public Criteria andExperienceDescGreaterThanOrEqualTo(String value) {
+            addCriterion("experience_desc >=", value, "experienceDesc");
             return (Criteria) this;
         }
 
-        public Criteria andDescribeLessThan(String value) {
-            addCriterion("describe <", value, "describe");
+        public Criteria andExperienceDescLessThan(String value) {
+            addCriterion("experience_desc <", value, "experienceDesc");
             return (Criteria) this;
         }
 
-        public Criteria andDescribeLessThanOrEqualTo(String value) {
-            addCriterion("describe <=", value, "describe");
+        public Criteria andExperienceDescLessThanOrEqualTo(String value) {
+            addCriterion("experience_desc <=", value, "experienceDesc");
             return (Criteria) this;
         }
 
-        public Criteria andDescribeLike(String value) {
-            addCriterion("describe like", value, "describe");
+        public Criteria andExperienceDescLike(String value) {
+            addCriterion("experience_desc like", value, "experienceDesc");
             return (Criteria) this;
         }
 
-        public Criteria andDescribeNotLike(String value) {
-            addCriterion("describe not like", value, "describe");
+        public Criteria andExperienceDescNotLike(String value) {
+            addCriterion("experience_desc not like", value, "experienceDesc");
             return (Criteria) this;
         }
 
-        public Criteria andDescribeIn(List<String> values) {
-            addCriterion("describe in", values, "describe");
+        public Criteria andExperienceDescIn(List<String> values) {
+            addCriterion("experience_desc in", values, "experienceDesc");
             return (Criteria) this;
         }
 
-        public Criteria andDescribeNotIn(List<String> values) {
-            addCriterion("describe not in", values, "describe");
+        public Criteria andExperienceDescNotIn(List<String> values) {
+            addCriterion("experience_desc not in", values, "experienceDesc");
             return (Criteria) this;
         }
 
-        public Criteria andDescribeBetween(String value1, String value2) {
-            addCriterion("describe between", value1, value2, "describe");
+        public Criteria andExperienceDescBetween(String value1, String value2) {
+            addCriterion("experience_desc between", value1, value2, "experienceDesc");
             return (Criteria) this;
         }
 
-        public Criteria andDescribeNotBetween(String value1, String value2) {
-            addCriterion("describe not between", value1, value2, "describe");
+        public Criteria andExperienceDescNotBetween(String value1, String value2) {
+            addCriterion("experience_desc not between", value1, value2, "experienceDesc");
             return (Criteria) this;
         }
 

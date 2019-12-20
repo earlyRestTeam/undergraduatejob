@@ -16,7 +16,7 @@ public class WorkExperience implements Serializable {
 
     private String job;
 
-    private String describe;
+    private String experienceDesc;
 
     private Date createTime;
 
@@ -70,12 +70,12 @@ public class WorkExperience implements Serializable {
         this.job = job;
     }
 
-    public String getDescribe() {
-        return describe;
+    public String getExperienceDesc() {
+        return experienceDesc;
     }
 
-    public void setDescribe(String describe) {
-        this.describe = describe;
+    public void setExperienceDesc(String experienceDesc) {
+        this.experienceDesc = experienceDesc;
     }
 
     public Date getCreateTime() {
@@ -98,7 +98,7 @@ public class WorkExperience implements Serializable {
         sb.append(", workCompany=").append(workCompany);
         sb.append(", workTime=").append(workTime);
         sb.append(", job=").append(job);
-        sb.append(", describe=").append(describe);
+        sb.append(", experienceDesc=").append(experienceDesc);
         sb.append(", createTime=").append(createTime);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
