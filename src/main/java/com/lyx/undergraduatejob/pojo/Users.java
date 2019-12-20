@@ -22,6 +22,10 @@ public class Users implements Serializable {
 
     private Integer autStatus;
 
+    private Integer userVip;
+
+    private Date vipEndTime;
+
     private Date createTime;
 
     private static final long serialVersionUID = 1L;
@@ -98,6 +102,22 @@ public class Users implements Serializable {
         this.autStatus = autStatus;
     }
 
+    public Integer getUserVip() {
+        return userVip;
+    }
+
+    public void setUserVip(Integer userVip) {
+        this.userVip = userVip;
+    }
+
+    public Date getVipEndTime() {
+        return vipEndTime;
+    }
+
+    public void setVipEndTime(Date vipEndTime) {
+        this.vipEndTime = vipEndTime;
+    }
+
     public Date getCreateTime() {
         return createTime;
     }
@@ -121,6 +141,8 @@ public class Users implements Serializable {
         sb.append(", phone=").append(phone);
         sb.append(", status=").append(status);
         sb.append(", autStatus=").append(autStatus);
+        sb.append(", userVip=").append(userVip);
+        sb.append(", vipEndTime=").append(vipEndTime);
         sb.append(", createTime=").append(createTime);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");

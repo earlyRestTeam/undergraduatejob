@@ -52,6 +52,8 @@ public class Job implements Serializable {
 
     private Integer jobVip;
 
+    private Date vipEndTime;
+
     private Date pushTime;
 
     private Date createTime;
@@ -250,6 +252,14 @@ public class Job implements Serializable {
         this.jobVip = jobVip;
     }
 
+    public Date getVipEndTime() {
+        return vipEndTime;
+    }
+
+    public void setVipEndTime(Date vipEndTime) {
+        this.vipEndTime = vipEndTime;
+    }
+
     public Date getPushTime() {
         return pushTime;
     }
@@ -296,6 +306,7 @@ public class Job implements Serializable {
         sb.append(", collectNum=").append(collectNum);
         sb.append(", visitNum=").append(visitNum);
         sb.append(", jobVip=").append(jobVip);
+        sb.append(", vipEndTime=").append(vipEndTime);
         sb.append(", pushTime=").append(pushTime);
         sb.append(", createTime=").append(createTime);
         sb.append(", serialVersionUID=").append(serialVersionUID);

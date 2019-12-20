@@ -28,6 +28,8 @@ public class Company implements Serializable {
 
     private Integer companyVip;
 
+    private Date vipEndTime;
+
     private String welfare;
 
     private Integer phoneAlbum;
@@ -144,6 +146,14 @@ public class Company implements Serializable {
         this.companyVip = companyVip;
     }
 
+    public Date getVipEndTime() {
+        return vipEndTime;
+    }
+
+    public void setVipEndTime(Date vipEndTime) {
+        this.vipEndTime = vipEndTime;
+    }
+
     public String getWelfare() {
         return welfare;
     }
@@ -234,6 +244,7 @@ public class Company implements Serializable {
         sb.append(", companyDesc=").append(companyDesc);
         sb.append(", aulStatus=").append(aulStatus);
         sb.append(", companyVip=").append(companyVip);
+        sb.append(", vipEndTime=").append(vipEndTime);
         sb.append(", welfare=").append(welfare);
         sb.append(", phoneAlbum=").append(phoneAlbum);
         sb.append(", jobNum=").append(jobNum);

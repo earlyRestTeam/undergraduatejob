@@ -64,6 +64,8 @@ public class Resume implements Serializable {
 
     private Integer resumeVip;
 
+    private Date vipEndTime;
+
     private Date createTime;
 
     private static final long serialVersionUID = 1L;
@@ -308,6 +310,14 @@ public class Resume implements Serializable {
         this.resumeVip = resumeVip;
     }
 
+    public Date getVipEndTime() {
+        return vipEndTime;
+    }
+
+    public void setVipEndTime(Date vipEndTime) {
+        this.vipEndTime = vipEndTime;
+    }
+
     public Date getCreateTime() {
         return createTime;
     }
@@ -352,6 +362,7 @@ public class Resume implements Serializable {
         sb.append(", skill4=").append(skill4);
         sb.append(", workExperience=").append(workExperience);
         sb.append(", resumeVip=").append(resumeVip);
+        sb.append(", vipEndTime=").append(vipEndTime);
         sb.append(", createTime=").append(createTime);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
