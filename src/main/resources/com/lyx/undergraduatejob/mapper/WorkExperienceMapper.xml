@@ -8,7 +8,7 @@
     <result column="work_company" jdbcType="VARCHAR" property="workCompany" />
     <result column="work_time" jdbcType="VARCHAR" property="workTime" />
     <result column="job" jdbcType="VARCHAR" property="job" />
-    <result column="describe" jdbcType="VARCHAR" property="describe" />
+    <result column="experience_desc" jdbcType="VARCHAR" property="experienceDesc" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -70,7 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, status, user_id, work_company, work_time, job, describe, create_time
+    id, status, user_id, work_company, work_time, job, experience_desc, create_time
   </sql>
   <select id="selectByExample" parameterType="com.lyx.undergraduatejob.pojo.WorkExperienceExample" resultMap="BaseResultMap">
     select
@@ -107,10 +107,10 @@
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into work_experience (status, user_id, work_company, 
-      work_time, job, describe, 
+      work_time, job, experience_desc, 
       create_time)
     values (#{status,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{workCompany,jdbcType=VARCHAR}, 
-      #{workTime,jdbcType=VARCHAR}, #{job,jdbcType=VARCHAR}, #{describe,jdbcType=VARCHAR}, 
+      #{workTime,jdbcType=VARCHAR}, #{job,jdbcType=VARCHAR}, #{experienceDesc,jdbcType=VARCHAR}, 
       #{createTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.lyx.undergraduatejob.pojo.WorkExperience">
@@ -134,8 +134,8 @@
       <if test="job != null">
         job,
       </if>
-      <if test="describe != null">
-        describe,
+      <if test="experienceDesc != null">
+        experience_desc,
       </if>
       <if test="createTime != null">
         create_time,
@@ -157,8 +157,8 @@
       <if test="job != null">
         #{job,jdbcType=VARCHAR},
       </if>
-      <if test="describe != null">
-        #{describe,jdbcType=VARCHAR},
+      <if test="experienceDesc != null">
+        #{experienceDesc,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null">
         #{createTime,jdbcType=TIMESTAMP},
@@ -192,8 +192,8 @@
       <if test="record.job != null">
         job = #{record.job,jdbcType=VARCHAR},
       </if>
-      <if test="record.describe != null">
-        describe = #{record.describe,jdbcType=VARCHAR},
+      <if test="record.experienceDesc != null">
+        experience_desc = #{record.experienceDesc,jdbcType=VARCHAR},
       </if>
       <if test="record.createTime != null">
         create_time = #{record.createTime,jdbcType=TIMESTAMP},
@@ -211,7 +211,7 @@
       work_company = #{record.workCompany,jdbcType=VARCHAR},
       work_time = #{record.workTime,jdbcType=VARCHAR},
       job = #{record.job,jdbcType=VARCHAR},
-      describe = #{record.describe,jdbcType=VARCHAR},
+      experience_desc = #{record.experienceDesc,jdbcType=VARCHAR},
       create_time = #{record.createTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -235,8 +235,8 @@
       <if test="job != null">
         job = #{job,jdbcType=VARCHAR},
       </if>
-      <if test="describe != null">
-        describe = #{describe,jdbcType=VARCHAR},
+      <if test="experienceDesc != null">
+        experience_desc = #{experienceDesc,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null">
         create_time = #{createTime,jdbcType=TIMESTAMP},
@@ -251,7 +251,7 @@
       work_company = #{workCompany,jdbcType=VARCHAR},
       work_time = #{workTime,jdbcType=VARCHAR},
       job = #{job,jdbcType=VARCHAR},
-      describe = #{describe,jdbcType=VARCHAR},
+      experience_desc = #{experienceDesc,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>

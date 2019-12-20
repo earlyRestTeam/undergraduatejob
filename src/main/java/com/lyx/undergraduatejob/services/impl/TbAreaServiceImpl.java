@@ -3,7 +3,6 @@ package com.lyx.undergraduatejob.services.impl;
 import com.lyx.undergraduatejob.mapper.TbAreaMapper;
 import com.lyx.undergraduatejob.pojo.TbArea;
 import com.lyx.undergraduatejob.pojo.TbAreaExample;
-import com.lyx.undergraduatejob.services.IJobServices;
 import com.lyx.undergraduatejob.services.TbAreaServices;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,7 +14,7 @@ import java.util.List;
 @Service
 public class TbAreaServiceImpl implements TbAreaServices {
 
-    Logger logger = LoggerFactory.getLogger(IJobServices.class);
+    Logger logger = LoggerFactory.getLogger(TbAreaServices.class);
     @Autowired
     TbAreaMapper tbAreaMapper;
 

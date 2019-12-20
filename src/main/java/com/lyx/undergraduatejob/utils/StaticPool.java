@@ -16,6 +16,13 @@ public interface StaticPool {
     int USER_ENTITY = 1;
     int STAFF_ENTITY = 2;
 
-    int RESUME_NO = 0;//失效
+    /**
+     * 简历相关
+     */
+    int RESUME_NOT = 0;//失效
     int RESUME_OK = 1;//有效
+    int RESUME_PUSH_NOT = 0;//取消发布
+    int RESUME_PUSH_OK = 1;//发布
+
+
 }

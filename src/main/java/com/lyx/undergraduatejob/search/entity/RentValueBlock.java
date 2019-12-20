@@ -9,6 +9,7 @@ import java.util.Map;
  */
 public class RentValueBlock{
     public static final Map<String, RentValueBlock> salaryArea;
+    public static final Map<String, RentValueBlock> ageArea;
     public static final RentValueBlock ALL = new RentValueBlock("*",-1,-1);
 
     /**
@@ -20,6 +21,14 @@ public class RentValueBlock{
                 .put("1000 - 3000",new RentValueBlock("1000 - 3000",1000,3000))
                 .put("3000 - 5000",new RentValueBlock("3000 - 5000",3000,5000))
                 .put("5000 - *",new RentValueBlock("5000 - *",5000,-1))
+                .put("*",ALL).build();
+
+        ageArea = ImmutableMap.<String,RentValueBlock>builder()
+                .put("16 - 20",new RentValueBlock("16 - 20",16,20))
+                .put("21 - 30",new RentValueBlock("21 - 30",21,31))
+                .put("31 - 40",new RentValueBlock("31 - 40",31,40))
+                .put("41 - 50",new RentValueBlock("41 - 50",41,50))
+                .put("50 - *",new RentValueBlock("50 - *",50,-1))
                 .put("*",ALL).build();
     }
 
@@ -61,4 +70,8 @@ public class RentValueBlock{
         return res == null ? ALL : res;
     }
 
+    public static RentValueBlock getAgeArea(String key){
+        RentValueBlock res = ageArea.get(key);
+        return res == null ? ALL : res;
+    }
 }
