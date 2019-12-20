@@ -4,6 +4,7 @@ import com.github.pagehelper.PageInfo;
 import com.lyx.undergraduatejob.pojo.Job;
 import com.lyx.undergraduatejob.pojo.ReceiveResume;
 import com.lyx.undergraduatejob.search.entity.JobSearchEntity;
+import com.lyx.undergraduatejob.utils.MyPage;
 
 import java.util.Map;
 
@@ -61,7 +62,7 @@ public interface IJobServices {
      * @return
      *
      */
-    PageInfo<ReceiveResume> querySendRecord(Integer index, Integer pageSize, Integer userId);
+    MyPage querySendRecord(Integer index, Integer pageSize, Integer userId);
 
     /**
      * 增加 阅读数

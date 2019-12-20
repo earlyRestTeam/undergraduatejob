@@ -3,13 +3,9 @@ package com.lyx.undergraduatejob.services.impl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.lyx.undergraduatejob.mapper.JobListMapper;
-import com.lyx.undergraduatejob.mapper.JobMapper;
 import com.lyx.undergraduatejob.pojo.*;
 import com.lyx.undergraduatejob.search.entity.JobListSearchEntity;
-import com.lyx.undergraduatejob.search.entity.JobSearchEntity;
-import com.lyx.undergraduatejob.search.entity.RentValueBlock;
 import com.lyx.undergraduatejob.services.IJobListServices;
-import org.aspectj.lang.annotation.AdviceName;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,10 +14,8 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.thymeleaf.util.StringUtils;
 
-import java.awt.print.Pageable;
-import java.util.Date;
+
 import java.util.List;
-import java.util.Random;
 
 /**
  * 搜索招聘 服务类信息
@@ -97,6 +91,8 @@ public class JobListServiceImpl implements IJobListServices {
      */
     @Override
     public boolean deleteJobList(int id) {
+//        JobList jobList = new JobList();
+//        jobList.setId();
         return mapper.deleteByPrimaryKey(id) > 0;
     }
 }

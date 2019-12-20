@@ -2,15 +2,14 @@ package com.lyx.undergraduatejob.services.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.lyx.undergraduatejob.mapper.CompanyMapper;
 import com.lyx.undergraduatejob.mapper.JobMapper;
 import com.lyx.undergraduatejob.mapper.ReceiveResumeMapper;
-import com.lyx.undergraduatejob.pojo.Job;
-import com.lyx.undergraduatejob.pojo.JobExample;
-import com.lyx.undergraduatejob.pojo.ReceiveResume;
-import com.lyx.undergraduatejob.pojo.ReceiveResumeExample;
+import com.lyx.undergraduatejob.pojo.*;
 import com.lyx.undergraduatejob.search.entity.JobSearchEntity;
 import com.lyx.undergraduatejob.search.entity.RentValueBlock;
 import com.lyx.undergraduatejob.services.IJobServices;
+import com.lyx.undergraduatejob.utils.MyPage;
 import com.lyx.undergraduatejob.utils.RedisKeyUtil;
 import com.lyx.undergraduatejob.utils.StaticPool;
 import org.slf4j.Logger;
@@ -34,6 +33,8 @@ public class JobServicesImpl implements IJobServices {
     JobMapper jobMapper;
     @Autowired
     ReceiveResumeMapper receiveResumeMapper;
+    @Autowired
+    CompanyMapper companyMapper;
     @Autowired
     StringRedisTemplate stringRedisTemplate;   //操作k-v都是字符串的
     /**
@@ -164,13 +165,32 @@ public class JobServicesImpl implements IJobServices {
      *
      */
     @Override
-    public PageInfo<ReceiveResume> querySendRecord(Integer index, Integer pageSize, Integer userId) {
+    public MyPage querySendRecord(Integer index, Integer pageSize, Integer userId) {
         PageHelper.startPage(index, pageSize);
         ReceiveResumeExample example = new ReceiveResumeExample();
         example.createCriteria().andUserIdEqualTo(userId);
         List<ReceiveResume> receiveResumes = receiveResumeMapper.selectByExample(example);
         PageInfo<ReceiveResume> pageInfo = PageInfo.of(receiveResumes);
-        return pageInfo;
+        List<Integer> ids = new ArrayList<>();
+        List<ReceiveResume> resumes = pageInfo.getList();
+        resumes.forEach(rr -> ids.add(rr.getCompanyId()));
+
+        CompanyExample example1 = new CompanyExample();
+        example1.createCriteria().andIdIn(ids);
+
+        List<Company> companies = companyMapper.selectByExample(example1);
+
+        List<Map<String,Object>> list = new ArrayList<>();
+        for (int i = 0; i < resumes.size(); i++) {
+            Map<String,Object> map = new HashMap<>();
+            map.put("resume",resumes.get(i));
+            map.put("company",companies.get(i));
+            list.add(map);
+        }
+//        pageInfo.
+        MyPage page = new MyPage(pageInfo);
+        page.putList(list);
+        return page;
     }
     /**
      * 增加 阅读数
@@ -236,29 +256,6 @@ public class JobServicesImpl implements IJobServices {
         return pageInfo;
     }
 
-//    public void insertJob(){
-//        Job job = null;
-//        Random rand = new Random();
-//        for (int i = 0; i < 10; i++) {
-//            int random = rand.nextInt(15)+5;
-//            String s = genStr(4);
-//            for (int j = 0; j < random; j++) {
-////        String s = "h1";
-//                String s1 = genStr(8);
-//                job = new Job();
-//                job.setJobName(s+s1);
-//                job.setStatus(1);
-//                job.setAulStatus(2);
-//                job.setJobTitle(genStr(8));
-//                job.setPartFull(rand.nextInt(2)+1);
-//                job.setSalary(rand.nextInt(10000));
-//                job.setCloseType(rand.nextInt(3));
-//                job.setWorkAddress(s);
-//                job.setCreateTime(new Date());
-//                jobMapper.insert(job);
-//            }
-//        }
-//    }
 
 
 }
