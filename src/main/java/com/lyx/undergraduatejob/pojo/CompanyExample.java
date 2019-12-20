@@ -895,6 +895,66 @@ public class CompanyExample {
             return (Criteria) this;
         }
 
+        public Criteria andVipEndTimeIsNull() {
+            addCriterion("vip_end_time is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andVipEndTimeIsNotNull() {
+            addCriterion("vip_end_time is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andVipEndTimeEqualTo(Date value) {
+            addCriterion("vip_end_time =", value, "vipEndTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andVipEndTimeNotEqualTo(Date value) {
+            addCriterion("vip_end_time <>", value, "vipEndTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andVipEndTimeGreaterThan(Date value) {
+            addCriterion("vip_end_time >", value, "vipEndTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andVipEndTimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("vip_end_time >=", value, "vipEndTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andVipEndTimeLessThan(Date value) {
+            addCriterion("vip_end_time <", value, "vipEndTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andVipEndTimeLessThanOrEqualTo(Date value) {
+            addCriterion("vip_end_time <=", value, "vipEndTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andVipEndTimeIn(List<Date> values) {
+            addCriterion("vip_end_time in", values, "vipEndTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andVipEndTimeNotIn(List<Date> values) {
+            addCriterion("vip_end_time not in", values, "vipEndTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andVipEndTimeBetween(Date value1, Date value2) {
+            addCriterion("vip_end_time between", value1, value2, "vipEndTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andVipEndTimeNotBetween(Date value1, Date value2) {
+            addCriterion("vip_end_time not between", value1, value2, "vipEndTime");
+            return (Criteria) this;
+        }
+
         public Criteria andWelfareIsNull() {
             addCriterion("welfare is null");
             return (Criteria) this;

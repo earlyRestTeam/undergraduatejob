@@ -14,6 +14,7 @@
     <result column="company_desc" jdbcType="VARCHAR" property="companyDesc" />
     <result column="aul_status" jdbcType="INTEGER" property="aulStatus" />
     <result column="company_vip" jdbcType="INTEGER" property="companyVip" />
+    <result column="vip_end_time" jdbcType="TIMESTAMP" property="vipEndTime" />
     <result column="welfare" jdbcType="VARCHAR" property="welfare" />
     <result column="phone_album" jdbcType="INTEGER" property="phoneAlbum" />
     <result column="job_num" jdbcType="INTEGER" property="jobNum" />
@@ -84,8 +85,8 @@
   </sql>
   <sql id="Base_Column_List">
     id, status, user_id, company_name, logo, company_type, company_email, contacts, contacts_phone, 
-    company_desc, aul_status, company_vip, welfare, phone_album, job_num, collect_num, 
-    visit_num, apply_num, company_address, detailed_address, create_time
+    company_desc, aul_status, company_vip, vip_end_time, welfare, phone_album, job_num, 
+    collect_num, visit_num, apply_num, company_address, detailed_address, create_time
   </sql>
   <select id="selectByExample" parameterType="com.lyx.undergraduatejob.pojo.CompanyExample" resultMap="BaseResultMap">
     select
@@ -124,17 +125,19 @@
     insert into company (status, user_id, company_name, 
       logo, company_type, company_email, 
       contacts, contacts_phone, company_desc, 
-      aul_status, company_vip, welfare, 
-      phone_album, job_num, collect_num, 
-      visit_num, apply_num, company_address, 
-      detailed_address, create_time)
+      aul_status, company_vip, vip_end_time, 
+      welfare, phone_album, job_num, 
+      collect_num, visit_num, apply_num, 
+      company_address, detailed_address, create_time
+      )
     values (#{status,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{companyName,jdbcType=VARCHAR}, 
       #{logo,jdbcType=VARCHAR}, #{companyType,jdbcType=VARCHAR}, #{companyEmail,jdbcType=VARCHAR}, 
       #{contacts,jdbcType=VARCHAR}, #{contactsPhone,jdbcType=VARCHAR}, #{companyDesc,jdbcType=VARCHAR}, 
-      #{aulStatus,jdbcType=INTEGER}, #{companyVip,jdbcType=INTEGER}, #{welfare,jdbcType=VARCHAR}, 
-      #{phoneAlbum,jdbcType=INTEGER}, #{jobNum,jdbcType=INTEGER}, #{collectNum,jdbcType=INTEGER}, 
-      #{visitNum,jdbcType=INTEGER}, #{applyNum,jdbcType=INTEGER}, #{companyAddress,jdbcType=VARCHAR}, 
-      #{detailedAddress,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP})
+      #{aulStatus,jdbcType=INTEGER}, #{companyVip,jdbcType=INTEGER}, #{vipEndTime,jdbcType=TIMESTAMP}, 
+      #{welfare,jdbcType=VARCHAR}, #{phoneAlbum,jdbcType=INTEGER}, #{jobNum,jdbcType=INTEGER}, 
+      #{collectNum,jdbcType=INTEGER}, #{visitNum,jdbcType=INTEGER}, #{applyNum,jdbcType=INTEGER}, 
+      #{companyAddress,jdbcType=VARCHAR}, #{detailedAddress,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.lyx.undergraduatejob.pojo.Company">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
@@ -174,6 +177,9 @@
       </if>
       <if test="companyVip != null">
         company_vip,
+      </if>
+      <if test="vipEndTime != null">
+        vip_end_time,
       </if>
       <if test="welfare != null">
         welfare,
@@ -236,6 +242,9 @@
       </if>
       <if test="companyVip != null">
         #{companyVip,jdbcType=INTEGER},
+      </if>
+      <if test="vipEndTime != null">
+        #{vipEndTime,jdbcType=TIMESTAMP},
       </if>
       <if test="welfare != null">
         #{welfare,jdbcType=VARCHAR},
@@ -311,6 +320,9 @@
       <if test="record.companyVip != null">
         company_vip = #{record.companyVip,jdbcType=INTEGER},
       </if>
+      <if test="record.vipEndTime != null">
+        vip_end_time = #{record.vipEndTime,jdbcType=TIMESTAMP},
+      </if>
       <if test="record.welfare != null">
         welfare = #{record.welfare,jdbcType=VARCHAR},
       </if>
@@ -357,6 +369,7 @@
       company_desc = #{record.companyDesc,jdbcType=VARCHAR},
       aul_status = #{record.aulStatus,jdbcType=INTEGER},
       company_vip = #{record.companyVip,jdbcType=INTEGER},
+      vip_end_time = #{record.vipEndTime,jdbcType=TIMESTAMP},
       welfare = #{record.welfare,jdbcType=VARCHAR},
       phone_album = #{record.phoneAlbum,jdbcType=INTEGER},
       job_num = #{record.jobNum,jdbcType=INTEGER},
@@ -406,6 +419,9 @@
       <if test="companyVip != null">
         company_vip = #{companyVip,jdbcType=INTEGER},
       </if>
+      <if test="vipEndTime != null">
+        vip_end_time = #{vipEndTime,jdbcType=TIMESTAMP},
+      </if>
       <if test="welfare != null">
         welfare = #{welfare,jdbcType=VARCHAR},
       </if>
@@ -449,6 +465,7 @@
       company_desc = #{companyDesc,jdbcType=VARCHAR},
       aul_status = #{aulStatus,jdbcType=INTEGER},
       company_vip = #{companyVip,jdbcType=INTEGER},
+      vip_end_time = #{vipEndTime,jdbcType=TIMESTAMP},
       welfare = #{welfare,jdbcType=VARCHAR},
       phone_album = #{phoneAlbum,jdbcType=INTEGER},
       job_num = #{jobNum,jdbcType=INTEGER},

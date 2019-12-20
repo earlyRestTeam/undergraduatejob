@@ -32,6 +32,7 @@
     <result column="skill4" jdbcType="VARCHAR" property="skill4" />
     <result column="work_experience" jdbcType="INTEGER" property="workExperience" />
     <result column="resume_vip" jdbcType="INTEGER" property="resumeVip" />
+    <result column="vip_end_time" jdbcType="TIMESTAMP" property="vipEndTime" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -96,7 +97,7 @@
     id, user_id, name, avatar, age, gender, phone, email, graduate_school, specialty, 
     education, job, job_type, salary, close_type, job_address, part_full, free_time, 
     self_introduction, push_time, status, push_status, aul_status, resume_url, skill1, 
-    skill2, skill3, skill4, work_experience, resume_vip, create_time
+    skill2, skill3, skill4, work_experience, resume_vip, vip_end_time, create_time
   </sql>
   <select id="selectByExample" parameterType="com.lyx.undergraduatejob.pojo.ResumeExample" resultMap="BaseResultMap">
     select
@@ -141,8 +142,8 @@
       push_time, status, push_status, 
       aul_status, resume_url, skill1, 
       skill2, skill3, skill4, 
-      work_experience, resume_vip, create_time
-      )
+      work_experience, resume_vip, vip_end_time, 
+      create_time)
     values (#{userId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{avatar,jdbcType=VARCHAR}, 
       #{age,jdbcType=INTEGER}, #{gender,jdbcType=INTEGER}, #{phone,jdbcType=VARCHAR}, 
       #{email,jdbcType=VARCHAR}, #{graduateSchool,jdbcType=VARCHAR}, #{specialty,jdbcType=VARCHAR}, 
@@ -152,8 +153,8 @@
       #{pushTime,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER}, #{pushStatus,jdbcType=INTEGER}, 
       #{aulStatus,jdbcType=INTEGER}, #{resumeUrl,jdbcType=VARCHAR}, #{skill1,jdbcType=VARCHAR}, 
       #{skill2,jdbcType=VARCHAR}, #{skill3,jdbcType=VARCHAR}, #{skill4,jdbcType=VARCHAR}, 
-      #{workExperience,jdbcType=INTEGER}, #{resumeVip,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}
-      )
+      #{workExperience,jdbcType=INTEGER}, #{resumeVip,jdbcType=INTEGER}, #{vipEndTime,jdbcType=TIMESTAMP}, 
+      #{createTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.lyx.undergraduatejob.pojo.Resume">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
@@ -248,6 +249,9 @@
       <if test="resumeVip != null">
         resume_vip,
       </if>
+      <if test="vipEndTime != null">
+        vip_end_time,
+      </if>
       <if test="createTime != null">
         create_time,
       </if>
@@ -339,6 +343,9 @@
       </if>
       <if test="resumeVip != null">
         #{resumeVip,jdbcType=INTEGER},
+      </if>
+      <if test="vipEndTime != null">
+        #{vipEndTime,jdbcType=TIMESTAMP},
       </if>
       <if test="createTime != null">
         #{createTime,jdbcType=TIMESTAMP},
@@ -444,6 +451,9 @@
       <if test="record.resumeVip != null">
         resume_vip = #{record.resumeVip,jdbcType=INTEGER},
       </if>
+      <if test="record.vipEndTime != null">
+        vip_end_time = #{record.vipEndTime,jdbcType=TIMESTAMP},
+      </if>
       <if test="record.createTime != null">
         create_time = #{record.createTime,jdbcType=TIMESTAMP},
       </if>
@@ -484,6 +494,7 @@
       skill4 = #{record.skill4,jdbcType=VARCHAR},
       work_experience = #{record.workExperience,jdbcType=INTEGER},
       resume_vip = #{record.resumeVip,jdbcType=INTEGER},
+      vip_end_time = #{record.vipEndTime,jdbcType=TIMESTAMP},
       create_time = #{record.createTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -579,6 +590,9 @@
       <if test="resumeVip != null">
         resume_vip = #{resumeVip,jdbcType=INTEGER},
       </if>
+      <if test="vipEndTime != null">
+        vip_end_time = #{vipEndTime,jdbcType=TIMESTAMP},
+      </if>
       <if test="createTime != null">
         create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
@@ -616,6 +630,7 @@
       skill4 = #{skill4,jdbcType=VARCHAR},
       work_experience = #{workExperience,jdbcType=INTEGER},
       resume_vip = #{resumeVip,jdbcType=INTEGER},
+      vip_end_time = #{vipEndTime,jdbcType=TIMESTAMP},
       create_time = #{createTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>

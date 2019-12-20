@@ -26,6 +26,7 @@
     <result column="collect_num" jdbcType="INTEGER" property="collectNum" />
     <result column="visit_num" jdbcType="INTEGER" property="visitNum" />
     <result column="job_vip" jdbcType="INTEGER" property="jobVip" />
+    <result column="vip_end_time" jdbcType="TIMESTAMP" property="vipEndTime" />
     <result column="push_time" jdbcType="TIMESTAMP" property="pushTime" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
   </resultMap>
@@ -91,7 +92,7 @@
     id, status, push_status, aul_status, job_title, company_id, job_name, job_desc, job_type, 
     contacts, contacts_phone, email, need_num, part_full, salary, close_type, education, 
     work_years, work_address, detailed_address, receive_num, collect_num, visit_num, 
-    job_vip, push_time, create_time
+    job_vip, vip_end_time, push_time, create_time
   </sql>
   <select id="selectByExample" parameterType="com.lyx.undergraduatejob.pojo.JobExample" resultMap="BaseResultMap">
     select
@@ -134,8 +135,8 @@
       part_full, salary, close_type, 
       education, work_years, work_address, 
       detailed_address, receive_num, collect_num, 
-      visit_num, job_vip, push_time, 
-      create_time)
+      visit_num, job_vip, vip_end_time, 
+      push_time, create_time)
     values (#{status,jdbcType=INTEGER}, #{pushStatus,jdbcType=INTEGER}, #{aulStatus,jdbcType=INTEGER}, 
       #{jobTitle,jdbcType=VARCHAR}, #{companyId,jdbcType=INTEGER}, #{jobName,jdbcType=VARCHAR}, 
       #{jobDesc,jdbcType=VARCHAR}, #{jobType,jdbcType=VARCHAR}, #{contacts,jdbcType=VARCHAR}, 
@@ -143,8 +144,8 @@
       #{partFull,jdbcType=INTEGER}, #{salary,jdbcType=INTEGER}, #{closeType,jdbcType=INTEGER}, 
       #{education,jdbcType=INTEGER}, #{workYears,jdbcType=INTEGER}, #{workAddress,jdbcType=VARCHAR}, 
       #{detailedAddress,jdbcType=VARCHAR}, #{receiveNum,jdbcType=INTEGER}, #{collectNum,jdbcType=INTEGER}, 
-      #{visitNum,jdbcType=INTEGER}, #{jobVip,jdbcType=INTEGER}, #{pushTime,jdbcType=TIMESTAMP}, 
-      #{createTime,jdbcType=TIMESTAMP})
+      #{visitNum,jdbcType=INTEGER}, #{jobVip,jdbcType=INTEGER}, #{vipEndTime,jdbcType=TIMESTAMP}, 
+      #{pushTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.lyx.undergraduatejob.pojo.Job">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
@@ -220,6 +221,9 @@
       </if>
       <if test="jobVip != null">
         job_vip,
+      </if>
+      <if test="vipEndTime != null">
+        vip_end_time,
       </if>
       <if test="pushTime != null">
         push_time,
@@ -297,6 +301,9 @@
       </if>
       <if test="jobVip != null">
         #{jobVip,jdbcType=INTEGER},
+      </if>
+      <if test="vipEndTime != null">
+        #{vipEndTime,jdbcType=TIMESTAMP},
       </if>
       <if test="pushTime != null">
         #{pushTime,jdbcType=TIMESTAMP},
@@ -387,6 +394,9 @@
       <if test="record.jobVip != null">
         job_vip = #{record.jobVip,jdbcType=INTEGER},
       </if>
+      <if test="record.vipEndTime != null">
+        vip_end_time = #{record.vipEndTime,jdbcType=TIMESTAMP},
+      </if>
       <if test="record.pushTime != null">
         push_time = #{record.pushTime,jdbcType=TIMESTAMP},
       </if>
@@ -424,6 +434,7 @@
       collect_num = #{record.collectNum,jdbcType=INTEGER},
       visit_num = #{record.visitNum,jdbcType=INTEGER},
       job_vip = #{record.jobVip,jdbcType=INTEGER},
+      vip_end_time = #{record.vipEndTime,jdbcType=TIMESTAMP},
       push_time = #{record.pushTime,jdbcType=TIMESTAMP},
       create_time = #{record.createTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
@@ -502,6 +513,9 @@
       <if test="jobVip != null">
         job_vip = #{jobVip,jdbcType=INTEGER},
       </if>
+      <if test="vipEndTime != null">
+        vip_end_time = #{vipEndTime,jdbcType=TIMESTAMP},
+      </if>
       <if test="pushTime != null">
         push_time = #{pushTime,jdbcType=TIMESTAMP},
       </if>
@@ -536,6 +550,7 @@
       collect_num = #{collectNum,jdbcType=INTEGER},
       visit_num = #{visitNum,jdbcType=INTEGER},
       job_vip = #{jobVip,jdbcType=INTEGER},
+      vip_end_time = #{vipEndTime,jdbcType=TIMESTAMP},
       push_time = #{pushTime,jdbcType=TIMESTAMP},
       create_time = #{createTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
