@@ -40,7 +40,7 @@ public interface ICompanyInfoServices {
      * @param c
      * @return
      */
-    Map<String,String> addCompanyInfo(Company c);
+    Map<String,String> addCompanyInfo(Company c,Integer userid);
 
     /**
      * 查看我的企业资料

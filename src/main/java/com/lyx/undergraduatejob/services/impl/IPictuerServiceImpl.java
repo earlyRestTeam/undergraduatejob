@@ -89,7 +89,7 @@ public class IPictuerServiceImpl implements IPictureServices {
     @Override
     public Map<String, String> addPicture(Picture p,Integer userid,Integer comanyid) {
         Map<String,String> result = new HashMap<>();
-
+        p.setId(null);
         switch (p.getPictureType()){
             case 1:
                 //判断是不是用户插入他的学生认证图片

@@ -6,7 +6,7 @@ import java.util.Date;
 public class RelationWelfare implements Serializable {
     private Integer id;
 
-    private String welfareId;
+    private Integer welfareId;
 
     private Integer ownerId;
 
@@ -24,11 +24,11 @@ public class RelationWelfare implements Serializable {
         this.id = id;
     }
 
-    public String getWelfareId() {
+    public Integer getWelfareId() {
         return welfareId;
     }
 
-    public void setWelfareId(String welfareId) {
+    public void setWelfareId(Integer welfareId) {
         this.welfareId = welfareId;
     }
 

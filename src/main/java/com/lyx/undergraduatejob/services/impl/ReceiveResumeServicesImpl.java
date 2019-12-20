@@ -50,7 +50,7 @@ public class ReceiveResumeServicesImpl implements IReceiveResumeServices {
         criteria.andReceiveStatusEqualTo(0);//公司未删除
         criteria.andStatusEqualTo(status);//全部、已读、未读
 
-
+        receiveResumeExample.setOrderByClause("create_time desc");
         List<ReceiveResume> receiveResumes = receiveResumeMapper.selectByExample(receiveResumeExample);
         if(receiveResumes == null || receiveResumes.size() < 1)
             return null;
