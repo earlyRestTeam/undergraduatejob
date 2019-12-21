@@ -34,13 +34,22 @@ public class AboutusController {
     @RequestMapping("allCompany")
     public String allCompany(Integer indexpage, Company company, HttpServletRequest request){
         CompanySerchEntity companySerchEntity = new CompanySerchEntity();
-        company.setStatus(1);
-        company.setAulStatus(1);
+        companySerchEntity.setAulStatus(1);
+        companySerchEntity.setStatus(1);
+
+        if(company.getId() != null){
+            companySerchEntity.setId(company.getId());
+        }
+        if(company.getCompanyName() != null){
+            companySerchEntity.setCompanyName(company.getCompanyName());
+        }
+        if(company.getCompanyType() != null){
+            companySerchEntity.setCompanyType(company.getCompanyType());
+        }
+
         System.out.println(company.toString());
         PageInfo pageInfo = iCompanyInfoServices.queryCompanyList(indexpage,companySerchEntity);
         request.setAttribute("pages",pageInfo);
         return"/companies";
     }
-
-
 }

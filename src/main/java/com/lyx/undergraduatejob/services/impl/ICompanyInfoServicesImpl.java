@@ -234,11 +234,15 @@ public class ICompanyInfoServicesImpl implements ICompanyInfoServices {
         Map<String,String> result = new HashMap<>();
         indexpage = indexpage == null? 1 :indexpage ;
         CompanyExample example = new CompanyExample();
+        Integer companyId = companySerchEntity.getId();
         String companyName = companySerchEntity.getCompanyName();
         String companyType = companySerchEntity.getCompanyType();
         Integer status = companySerchEntity.getStatus();
         Integer aulStatus = companySerchEntity.getAulStatus();
         CompanyExample.Criteria criteria = example.createCriteria();
+        if(companyId !=null){
+            criteria.andIdEqualTo(companyId);
+        }
         if (companyName != null &&!"null".equals(companyName) &&!"".equals(companyName)){
             criteria.andCompanyNameLike(companyName+"%");
         }

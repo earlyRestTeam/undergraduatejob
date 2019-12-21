@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 
 public class CompanySerchEntity implements Serializable {
+    //公司ID
+    private Integer id;
     //    公司名
     private String companyName;
     //公司类型
@@ -18,6 +20,14 @@ public class CompanySerchEntity implements Serializable {
     private String orderExample = "`create_time` ";
 
     private String order = "desc";
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getCompanyName() {
         return companyName;

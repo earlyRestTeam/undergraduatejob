@@ -279,7 +279,7 @@
      <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" th:each="company:${pages.list}">
       <div class="company_main_wrapper">
        <div class="company_img_wrapper">
-        <img th:src="@{${company.logo}}" >
+        <img th:src="@{${company.logo}}" alt="team_img1" style="width:102px;height: 102px">
         <div class="btc_team_social_wrapper">
          <h1 ></h1>
         </div>
@@ -376,9 +376,30 @@
 
 <script>
    function searchCompany() {
-
+    var name = "";
+    var content = $("#content").val();
     var select = $("#selectTest option:selected").val()
-    var value = $("#content").val();
+    if(select ="按公司名字查找"){
+      name = "companyName";
+    }
+    else if(select = "按公司ID查找"){
+     name = "id";
+    }
+    else if (select = "按公司类型查询"){
+     name = "companyType";
+    }
+    alert(name);
+    $.ajax({
+     url:"/allCompany",
+     data:JSON.stringify({companyName:content}),
+     contentType: 'application/json; charset=UTF-8',
+     type:"post",
+     dataType:"json",
+     success:function(result){
+
+     }
+    })
+
    }
 </script>
 </html>
