@@ -36,11 +36,12 @@ public class ReceiveResumeServicesImpl implements IReceiveResumeServices {
      *
      * @param indexPage
      * @param pageSize
+     * @param jobid
      * @param companyId
      * @return
      */
     @Override
-    public PageInfo<Resume> queryReceiveResume(Integer indexPage, Integer pageSize, Integer companyId, Integer status) {
+    public PageInfo<Resume> queryReceiveResume(Integer indexPage, Integer pageSize,Integer jobid, Integer companyId, Integer status) {
         indexPage = indexPage == null ? 1 : indexPage;
         PageHelper.startPage(indexPage,pageSize);
 
@@ -49,7 +50,9 @@ public class ReceiveResumeServicesImpl implements IReceiveResumeServices {
         criteria.andCompanyIdEqualTo(companyId);
         criteria.andReceiveStatusEqualTo(0);//公司未删除
         criteria.andStatusEqualTo(status);//全部、已读、未读
-
+        if (jobid!=null){
+            criteria.andJobIdEqualTo(jobid);
+        }
         receiveResumeExample.setOrderByClause("create_time desc");
         List<ReceiveResume> receiveResumes = receiveResumeMapper.selectByExample(receiveResumeExample);
         if(receiveResumes == null || receiveResumes.size() < 1)

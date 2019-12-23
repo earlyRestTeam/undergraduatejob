@@ -238,13 +238,19 @@ public class JobServicesImpl implements IJobServices {
         PageHelper.startPage(start,pageSize);
         JobExample example = new JobExample();
         JobExample.Criteria criteria = example.createCriteria();
-        criteria.andStatusEqualTo(1);
-        criteria.andAulStatusEqualTo(2);
-        criteria.andPushStatusEqualTo(1);
-        //加入查找 条件
+        if (jobSearchEntity.getStatus()!=null){
+            criteria.andStatusEqualTo(jobSearchEntity.getStatus());
+        }
+        if (jobSearchEntity.getAulStatus()!=null){
+            criteria.andAulStatusEqualTo(jobSearchEntity.getAulStatus());
+        }
         String key;
         if( !StringUtils.isEmpty( (key = jobSearchEntity.getKeyWord() ) ))
             criteria.andJobNameLike(key+"%");
+        Integer companyId;
+        if ((companyId = jobSearchEntity.getCompanyId())!= null){
+            criteria.andCompanyIdEqualTo(companyId);
+        }
         String workArea;
         if( !StringUtils.isEmpty((workArea = jobSearchEntity.getWorkArea() ) ) )
             criteria.andWorkAddressEqualTo(workArea);

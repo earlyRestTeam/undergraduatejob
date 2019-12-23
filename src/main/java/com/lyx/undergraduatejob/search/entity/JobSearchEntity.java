@@ -34,6 +34,28 @@ public class JobSearchEntity implements Serializable {
     // 兼职 全职
     private Integer partFull;
 
+
+    private Integer status = 1;
+
+    private Integer aulStatus = 2;
+
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    public Integer getAulStatus() {
+        return aulStatus;
+    }
+
+    public void setAulStatus(Integer aulStatus) {
+        this.aulStatus = aulStatus;
+    }
+
     public Integer getCompanyId() {
         return companyId;
     }
