@@ -263,19 +263,22 @@
   </div>
   <!-- top header wrapper end -->
   <!--companies wrapper start -->
-  <div class="companies_wrapper jb_cover" th:fragment="company_type">
-   <div class="container">
-    <div class="row">
-     <div class="col-lg-12 col-md-12 col-sm-12">
-      <div class="filter-area jb_cover">
-       <select id="selectTest"><option>按公司名字查找</option><option>按公司ID查找</option><option>按公司类型查询</option></select>
-       <input id="content" type="text" style="position:relative; left:20px; height: 42px">
-       <button onclick="searchCompany()" class="btn btn-danger" style="position:relative; left:20px;height: 42px">点击搜索</button>
-       <div class="showpro">
-        <p>你正在浏览01到20</p>
-       </div>
+  <div class="companies_wrapper jb_cover">
+
+   <div class="container" >
+
+    <div class="col-lg-12 col-md-12 col-sm-12">
+     <div class="filter-area jb_cover">
+      <select id="selectTest"><option>按公司名字查找</option><option>按公司ID查找</option><option>按公司类型查询</option></select>
+      <input id="content" type="text" style="position:relative; left:20px; height: 42px">
+      <button onclick="searchCompany()" class="btn btn-danger" style="position:relative; left:20px;height: 42px">点击搜索</button>
+      <div class="showpro">
       </div>
      </div>
+    </div>
+
+    <div class="row" id="company_type" th:fragment="company_type" >
+
      <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" th:each="company:${pages.list}">
       <div class="company_main_wrapper">
        <div class="company_img_wrapper">
@@ -292,19 +295,21 @@
        </div>
       </div>
      </div>
+
      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
       <div class="blog_pagination_section jb_cover">
        <ul>
-        <li><a href="#" class="prev"><i class="flaticon-left-arrow"></i></a></li>
-        <li><a href="#">1</a></li>
-        <li class="third_pagger"><a href="#">2</a></li>
-        <li class="d-block d-sm-block d-md-block d-lg-block"><a href="#">3</a></li>
+        <li><a  href="javascript:void(0)" th:onclick="|javascript : searchCompany( '${pages.prePage}')|" class="prev"><i class="flaticon-left-arrow"></i></a></li>
+        <li><a href="javascript:void(0)" onclick="searchCompany(1)">1</a></li>
+        <li class="third_pagger"><a a href="javascript:void(0)" onclick="searchCompany(2)">2</a></li>
+        <li class="d-block d-sm-block d-md-block d-lg-block"><a a href="javascript:void(0)" onclick="searchCompany(2)">3</a></li>
         <li class="d-none d-sm-block d-md-block d-lg-block"><a href="#">...</a></li>
-        <li class="d-none d-sm-block d-md-block d-lg-block"><a href="#">6</a></li>
-        <li><a href="#" class="next"><i class="flaticon-right-arrow"></i></a></li>
+        <li class="d-none d-sm-block d-md-block d-lg-block"><a a href="javascript:void(0)" onclick="searchCompany(6)">6</a></li>
+        <li><a a href="javascript:void(0)" th:onclick="|javascript : searchCompany( '${pages.nextPage}')|" class="next"><i class="flaticon-right-arrow"></i></a></li>
        </ul>
       </div>
      </div>
+
     </div>
    </div>
   </div>
@@ -339,7 +344,7 @@
   </div>
   <div class="chat-box">
    <div class="chat-box-header">
-    ChatBot 
+    ChatBot
     <span class="chat-box-toggle"><i class="fas fa-times"></i></span>
    </div>
    <div class="chat-box-body">
@@ -375,29 +380,40 @@
  </body>
 
 <script>
-   function searchCompany() {
-    var name = "";
+   function searchCompany(indexpage) {
     var content = $("#content").val();
     var select = $("#selectTest option:selected").val()
-    if(select ="按公司名字查找"){
-      name = "companyName";
+    var data = {};
+    indexpage = indexpage == null? 1 :indexpage ;
+    key = 'indexpage';
+    value = indexpage;
+    data[key] = value;
+
+    if (content != ''){
+        if(select == "按公司名字查找"){
+          key = 'companyName';
+          value = content;
+          data[key] = value;
+        }
+        else if(select == "按公司ID查找"){
+          key = 'id';
+          value = content;
+          data[key] = value;
+        }
+        else if (select == "按公司类型查询"){
+          key = 'companyType';
+          value = content;
+          data[key] = value;
+        }
     }
-    else if(select = "按公司ID查找"){
-     name = "id";
-    }
-    else if (select = "按公司类型查询"){
-     name = "companyType";
-    }
-    alert(name);
+
     $.ajax({
      url:"/allCompany",
-     data:JSON.stringify({companyName:content}),
-     contentType: 'application/json; charset=UTF-8',
+     data:data,
      type:"post",
-     dataType:"json",
-     success:function(result){
-
-     }
+     success:function(data){
+        $("#company_type").html(data);
+      }
     })
 
    }
