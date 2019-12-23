@@ -31,6 +31,8 @@ public class Users implements Serializable, UserDetails {
 
     private Integer userVip;
 
+    private Date vipStartTime;
+
     private Date vipEndTime;
 
     private Date createTime;
@@ -139,6 +141,14 @@ public class Users implements Serializable, UserDetails {
 
     public void setUserVip(Integer userVip) {
         this.userVip = userVip;
+    }
+
+    public Date getVipStartTime() {
+        return vipStartTime;
+    }
+
+    public void setVipStartTime(Date vipStartTime) {
+        this.vipStartTime = vipStartTime;
     }
 
     public Date getVipEndTime() {

@@ -31,19 +31,24 @@ public class CandidateController {
     @RequestMapping("/user/candidate_dashboard")
     public String candidate_dashboard(HttpServletRequest request){
         Integer userId = 1;
-        Users users = userServices.queryUserById(1);
+        Users users = userServices.queryUserById(userId);
         System.out.println(users);
         request.setAttribute("users",users);
-        return "dashboard/candidate_dashboard";
+        return "/dashboard/candidate_dashboard";
     }
-    @RequestMapping("/user/candidate_index")
-    public String candidate_index(HttpServletRequest request){
-        Integer userId = 1;
-        Users users = userServices.queryUserById(1);
-        System.out.println(users);
-        request.setAttribute("users",users);
-        return "dashboard/candidate_index";
-    }
+
+
+
+//    @RequestMapping("/user/candidate_index")
+//    public String candidate_index(HttpServletRequest request){
+//        Integer userId = 1;
+//
+//        Users users = userServices.queryUserById(1);
+//        System.out.println(users);
+//        request.setAttribute("users",users);
+//
+//        return "dashboard/candidate_index";
+//    }
 
     @RequestMapping("/user/delMyInfo")
     @ResponseBody
@@ -103,8 +108,11 @@ public class CandidateController {
     }
 
     @RequestMapping("/user/candidate_resume")
-    public String candidate_resume(){
-
-        return "dashboard/candidate_resume";
+    public String candidate_resume(HttpServletRequest request){
+        Integer userId = 1;
+        Users users = userServices.queryUserById(1);
+        System.out.println(users);
+        request.setAttribute("users",users);
+        return "/dashboard/candidate_resume";
     }
 }

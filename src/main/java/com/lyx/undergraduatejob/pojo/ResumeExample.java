@@ -2,6 +2,7 @@ package com.lyx.undergraduatejob.pojo;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 public class ResumeExample {
@@ -103,6 +104,32 @@ public class ResumeExample {
                 throw new RuntimeException("Between values for " + property + " cannot be null");
             }
             criteria.add(new Criterion(condition, value1, value2));
+        }
+
+        protected void addCriterionForJDBCDate(String condition, Date value, String property) {
+            if (value == null) {
+                throw new RuntimeException("Value for " + property + " cannot be null");
+            }
+            addCriterion(condition, new java.sql.Date(value.getTime()), property);
+        }
+
+        protected void addCriterionForJDBCDate(String condition, List<Date> values, String property) {
+            if (values == null || values.size() == 0) {
+                throw new RuntimeException("Value list for " + property + " cannot be null or empty");
+            }
+            List<java.sql.Date> dateList = new ArrayList<java.sql.Date>();
+            Iterator<Date> iter = values.iterator();
+            while (iter.hasNext()) {
+                dateList.add(new java.sql.Date(iter.next().getTime()));
+            }
+            addCriterion(condition, dateList, property);
+        }
+
+        protected void addCriterionForJDBCDate(String condition, Date value1, Date value2, String property) {
+            if (value1 == null || value2 == null) {
+                throw new RuntimeException("Between values for " + property + " cannot be null");
+            }
+            addCriterion(condition, new java.sql.Date(value1.getTime()), new java.sql.Date(value2.getTime()), property);
         }
 
         public Criteria andIdIsNull() {
@@ -622,6 +649,206 @@ public class ResumeExample {
 
         public Criteria andEmailNotBetween(String value1, String value2) {
             addCriterion("email not between", value1, value2, "email");
+            return (Criteria) this;
+        }
+
+        public Criteria andBirthdayIsNull() {
+            addCriterion("birthday is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBirthdayIsNotNull() {
+            addCriterion("birthday is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBirthdayEqualTo(Date value) {
+            addCriterionForJDBCDate("birthday =", value, "birthday");
+            return (Criteria) this;
+        }
+
+        public Criteria andBirthdayNotEqualTo(Date value) {
+            addCriterionForJDBCDate("birthday <>", value, "birthday");
+            return (Criteria) this;
+        }
+
+        public Criteria andBirthdayGreaterThan(Date value) {
+            addCriterionForJDBCDate("birthday >", value, "birthday");
+            return (Criteria) this;
+        }
+
+        public Criteria andBirthdayGreaterThanOrEqualTo(Date value) {
+            addCriterionForJDBCDate("birthday >=", value, "birthday");
+            return (Criteria) this;
+        }
+
+        public Criteria andBirthdayLessThan(Date value) {
+            addCriterionForJDBCDate("birthday <", value, "birthday");
+            return (Criteria) this;
+        }
+
+        public Criteria andBirthdayLessThanOrEqualTo(Date value) {
+            addCriterionForJDBCDate("birthday <=", value, "birthday");
+            return (Criteria) this;
+        }
+
+        public Criteria andBirthdayIn(List<Date> values) {
+            addCriterionForJDBCDate("birthday in", values, "birthday");
+            return (Criteria) this;
+        }
+
+        public Criteria andBirthdayNotIn(List<Date> values) {
+            addCriterionForJDBCDate("birthday not in", values, "birthday");
+            return (Criteria) this;
+        }
+
+        public Criteria andBirthdayBetween(Date value1, Date value2) {
+            addCriterionForJDBCDate("birthday between", value1, value2, "birthday");
+            return (Criteria) this;
+        }
+
+        public Criteria andBirthdayNotBetween(Date value1, Date value2) {
+            addCriterionForJDBCDate("birthday not between", value1, value2, "birthday");
+            return (Criteria) this;
+        }
+
+        public Criteria andWeixinIsNull() {
+            addCriterion("weixin is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andWeixinIsNotNull() {
+            addCriterion("weixin is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andWeixinEqualTo(String value) {
+            addCriterion("weixin =", value, "weixin");
+            return (Criteria) this;
+        }
+
+        public Criteria andWeixinNotEqualTo(String value) {
+            addCriterion("weixin <>", value, "weixin");
+            return (Criteria) this;
+        }
+
+        public Criteria andWeixinGreaterThan(String value) {
+            addCriterion("weixin >", value, "weixin");
+            return (Criteria) this;
+        }
+
+        public Criteria andWeixinGreaterThanOrEqualTo(String value) {
+            addCriterion("weixin >=", value, "weixin");
+            return (Criteria) this;
+        }
+
+        public Criteria andWeixinLessThan(String value) {
+            addCriterion("weixin <", value, "weixin");
+            return (Criteria) this;
+        }
+
+        public Criteria andWeixinLessThanOrEqualTo(String value) {
+            addCriterion("weixin <=", value, "weixin");
+            return (Criteria) this;
+        }
+
+        public Criteria andWeixinLike(String value) {
+            addCriterion("weixin like", value, "weixin");
+            return (Criteria) this;
+        }
+
+        public Criteria andWeixinNotLike(String value) {
+            addCriterion("weixin not like", value, "weixin");
+            return (Criteria) this;
+        }
+
+        public Criteria andWeixinIn(List<String> values) {
+            addCriterion("weixin in", values, "weixin");
+            return (Criteria) this;
+        }
+
+        public Criteria andWeixinNotIn(List<String> values) {
+            addCriterion("weixin not in", values, "weixin");
+            return (Criteria) this;
+        }
+
+        public Criteria andWeixinBetween(String value1, String value2) {
+            addCriterion("weixin between", value1, value2, "weixin");
+            return (Criteria) this;
+        }
+
+        public Criteria andWeixinNotBetween(String value1, String value2) {
+            addCriterion("weixin not between", value1, value2, "weixin");
+            return (Criteria) this;
+        }
+
+        public Criteria andQqIsNull() {
+            addCriterion("qq is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andQqIsNotNull() {
+            addCriterion("qq is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andQqEqualTo(String value) {
+            addCriterion("qq =", value, "qq");
+            return (Criteria) this;
+        }
+
+        public Criteria andQqNotEqualTo(String value) {
+            addCriterion("qq <>", value, "qq");
+            return (Criteria) this;
+        }
+
+        public Criteria andQqGreaterThan(String value) {
+            addCriterion("qq >", value, "qq");
+            return (Criteria) this;
+        }
+
+        public Criteria andQqGreaterThanOrEqualTo(String value) {
+            addCriterion("qq >=", value, "qq");
+            return (Criteria) this;
+        }
+
+        public Criteria andQqLessThan(String value) {
+            addCriterion("qq <", value, "qq");
+            return (Criteria) this;
+        }
+
+        public Criteria andQqLessThanOrEqualTo(String value) {
+            addCriterion("qq <=", value, "qq");
+            return (Criteria) this;
+        }
+
+        public Criteria andQqLike(String value) {
+            addCriterion("qq like", value, "qq");
+            return (Criteria) this;
+        }
+
+        public Criteria andQqNotLike(String value) {
+            addCriterion("qq not like", value, "qq");
+            return (Criteria) this;
+        }
+
+        public Criteria andQqIn(List<String> values) {
+            addCriterion("qq in", values, "qq");
+            return (Criteria) this;
+        }
+
+        public Criteria andQqNotIn(List<String> values) {
+            addCriterion("qq not in", values, "qq");
+            return (Criteria) this;
+        }
+
+        public Criteria andQqBetween(String value1, String value2) {
+            addCriterion("qq between", value1, value2, "qq");
+            return (Criteria) this;
+        }
+
+        public Criteria andQqNotBetween(String value1, String value2) {
+            addCriterion("qq not between", value1, value2, "qq");
             return (Criteria) this;
         }
 
@@ -2072,6 +2299,66 @@ public class ResumeExample {
 
         public Criteria andResumeVipNotBetween(Integer value1, Integer value2) {
             addCriterion("resume_vip not between", value1, value2, "resumeVip");
+            return (Criteria) this;
+        }
+
+        public Criteria andVipStartTimeIsNull() {
+            addCriterion("vip_start_time is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andVipStartTimeIsNotNull() {
+            addCriterion("vip_start_time is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andVipStartTimeEqualTo(Date value) {
+            addCriterion("vip_start_time =", value, "vipStartTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andVipStartTimeNotEqualTo(Date value) {
+            addCriterion("vip_start_time <>", value, "vipStartTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andVipStartTimeGreaterThan(Date value) {
+            addCriterion("vip_start_time >", value, "vipStartTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andVipStartTimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("vip_start_time >=", value, "vipStartTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andVipStartTimeLessThan(Date value) {
+            addCriterion("vip_start_time <", value, "vipStartTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andVipStartTimeLessThanOrEqualTo(Date value) {
+            addCriterion("vip_start_time <=", value, "vipStartTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andVipStartTimeIn(List<Date> values) {
+            addCriterion("vip_start_time in", values, "vipStartTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andVipStartTimeNotIn(List<Date> values) {
+            addCriterion("vip_start_time not in", values, "vipStartTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andVipStartTimeBetween(Date value1, Date value2) {
+            addCriterion("vip_start_time between", value1, value2, "vipStartTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andVipStartTimeNotBetween(Date value1, Date value2) {
+            addCriterion("vip_start_time not between", value1, value2, "vipStartTime");
             return (Criteria) this;
         }
 
