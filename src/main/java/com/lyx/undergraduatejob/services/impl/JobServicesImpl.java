@@ -254,9 +254,9 @@ public class JobServicesImpl implements IJobServices {
         if( (closeAnAccount = jobSearchEntity.getCloseAnAccount() )!= null && jobSearchEntity.getCloseAnAccount() > 0)
             criteria.andCloseTypeEqualTo(closeAnAccount);
         //兼职 全职
-        if( jobSearchEntity.getPartFull()!= null && jobSearchEntity.getPartFull() > 0)
+        if( jobSearchEntity.getPartFull() != null && jobSearchEntity.getPartFull() > 0)
             criteria.andCloseTypeEqualTo(jobSearchEntity.getPartFull());
-
+        //公司id
         if(jobSearchEntity.getCompanyId() != null)
             criteria.andCompanyIdEqualTo(jobSearchEntity.getCompanyId());
         RentValueBlock rentValueBlock = RentValueBlock.getRentValueBlock(jobSearchEntity.getSalaryArea());

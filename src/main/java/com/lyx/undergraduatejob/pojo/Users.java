@@ -1,9 +1,16 @@
 package com.lyx.undergraduatejob.pojo;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+
 import java.io.Serializable;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.Date;
 
-public class Users implements Serializable {
+public class Users implements Serializable, UserDetails {
     private Integer id;
 
     private String username;
@@ -42,10 +49,34 @@ public class Users implements Serializable {
         return username;
     }
 
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return status==1;
+    }
+
     public void setUsername(String username) {
         this.username = username;
     }
 
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return Arrays.asList(new SimpleGrantedAuthority("ROLE_user"));
+    }
     public String getPassword() {
         return password;
     }

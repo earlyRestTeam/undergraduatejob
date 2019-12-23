@@ -84,6 +84,12 @@ public class APIResult implements java.io.Serializable {
         return new APIResult(message,true,401,data);
     }
 
+    public static Object genFailApiResponse403(String message) {
+        return new APIResult(message,true,406,message);
+    }
+    public static Object genNotLoginApiResponse(String message) {
+        return new APIResult(message,true,403,message);
+    }
 
     public String getMessage() {
         return message;

@@ -4,6 +4,8 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageInfo;
 import com.lyx.undergraduatejob.pojo.Users;
 import com.lyx.undergraduatejob.search.entity.UsersSearchEntity;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.util.Map;
 
@@ -18,6 +20,14 @@ public interface IUserServices{
      * @return
      */
     Users loadUserByName(String username);
+
+    /**
+     * 登录
+     * @param userName
+     * @param password
+     * @return
+     */
+    String login(String userName, String password);
     /**
      * 用户注册
      * @param u

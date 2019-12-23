@@ -3,6 +3,7 @@ package com.lyx.undergraduatejob.services.impl;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.lyx.undergraduatejob.common.JwtTokenUtil;
 import com.lyx.undergraduatejob.mapper.UsersMapper;
 import com.lyx.undergraduatejob.pojo.Users;
 import com.lyx.undergraduatejob.pojo.UsersExample;
@@ -10,7 +11,16 @@ import com.lyx.undergraduatejob.search.entity.UsersSearchEntity;
 import com.lyx.undergraduatejob.services.IUserServices;
 import com.lyx.undergraduatejob.utils.MD5Utils;
 import com.lyx.undergraduatejob.utils.StaticPool;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.thymeleaf.util.StringUtils;
 
@@ -21,9 +31,16 @@ import java.util.Map;
 
 @Service
 public class UserServicesImpl implements IUserServices {
+    Logger logger = LoggerFactory.getLogger(UserServicesImpl.class);
 
     @Autowired
     UsersMapper usersMapper;
+    @Autowired
+    PasswordEncoder encoder;
+    @Autowired
+    UserDetailsService userDetailsService;
+    @Autowired
+    JwtTokenUtil jwtTokenUtil;
     /**
      * 通过用户名加载 用户
      * @param username
@@ -32,13 +49,38 @@ public class UserServicesImpl implements IUserServices {
     @Override
     public Users loadUserByName(String username) {
         UsersExample example = new UsersExample();
-        example.createCriteria().andUsernameNotEqualTo(username);
+        example.createCriteria().andUsernameEqualTo(username);
         List<Users> users = usersMapper.selectByExample(example);
         if( users == null )
             return null;
         if( users.isEmpty() )
             return null;
         return users.get(0);
+    }
+
+    /**
+     * 通过用户名加载 用户
+     * @param username
+     * @return
+     */
+    @Override
+    public String login(String username, String password) {
+        String token = null;
+        try{
+            UserDetails details = userDetailsService.loadUserByUsername(username);
+            boolean b = encoder.matches(details.getPassword(), password);
+            if(!b){
+                logger.warn("password not true : "+username);
+                throw new BadCredentialsException("密码不正确");
+            }
+            UsernamePasswordAuthenticationToken uToken = new UsernamePasswordAuthenticationToken(details,username,details.getAuthorities());
+            SecurityContextHolder.getContext().setAuthentication(uToken);
+//            eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMjMiLCJjcmVhdGVkIjoxNTc2ODk0MzExOTAyLCJleHAiOjE1Nzc0OTkxMTF9.b5xK5XC8EQHNjYFSQzfHICNupwbZp43oxVQMaBkM_DRaY1FpRfplM8taLsuf9mjYG0XRG8T9oQ3F86_UCaZL3w
+            token = jwtTokenUtil.generateToken(details);
+        }catch (AuthenticationException e){
+            logger.warn("login error : "+e.getMessage());
+        }
+        return token;
     }
     /**
      * 用户注册

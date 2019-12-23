@@ -2,16 +2,28 @@ package com.lyx.undergraduatejob.config;
 
 
 
+import com.lyx.undergraduatejob.pojo.Users;
+import com.lyx.undergraduatejob.services.IUserServices;
+import com.lyx.undergraduatejob.services.security.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
+import javax.servlet.Filter;
 
 
 @Configuration
@@ -19,91 +31,89 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableGlobalMethodSecurity(securedEnabled = true,prePostEnabled = true)  //开启 全局的 security授权
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-//
-    /**
-     * 重写 config 指定 权限控制规则
-     * @param http
-     * @throws Exception
-     */
+    @Autowired
+    IUserServices userServices;
+    @Autowired
+    private RestfulAccessDeniedHandler restfulAccessDeniedHandler;
+    @Autowired
+    private RestAuthenticationEntryPoint restAuthenticationEntryPoint;
+
     @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        //资源访问 设置
-
-
-        http.authorizeRequests()
-                .anyRequest().permitAll()
-//                .antMatchers("/**/login").permitAll()    //管理员 登陆 入口
-//                .antMatchers("/static/**").permitAll()  //静态资源 访问
-//                .antMatchers("/admin/**").hasRole("admin")  //后台 控制 界面
-//                .antMatchers("/staff/**").hasAnyRole("staff","admin") //用户 界面
-//                .antMatchers("/user/**").hasAnyRole("user","admin") //用户 界面
-//                .antMatchers("/api/**").hasAnyRole("user","admin","staff")  //api接口
+    protected void configure(HttpSecurity httpSecurity) throws Exception {
+        httpSecurity.csrf()// 由于使用的是JWT，我们这里不需要csrf
+                .disable()
+                .sessionManagement()// 基于token，所以不需要session
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
-                .formLogin()    //表单 登陆
-                .loginPage("/index")// 自定义登录页面
-                .loginProcessingUrl("/login")// 自定义登录路径
-                .failureForwardUrl("/user/login?error=true")
-//                .failureHandler(loginFailureHandler())
-//                .successHandler(loginSuccessHandler())
-                .and()
-                .logout()
-                .logoutUrl("/logout")
-                .logoutSuccessUrl("/logout/success")
-                .deleteCookies("JSESSIONID")
-                .invalidateHttpSession(true)
-                .and()
-                .exceptionHandling()
-//                .authenticationEntryPoint(loginUrlEntryPoint())
-                .accessDeniedPage("/403");
+                .authorizeRequests()
+                .antMatchers(HttpMethod.GET, // 允许对于网站静态资源的无授权访问
+                        "/",
+                        "/*.html",
+                        "/favicon.ico",
+                        "/**/*.html",
+                        "/**/*.css",
+                        "/**/*.js"
+                )
+                .permitAll()
+                .antMatchers("/login", "/register")// 对登录注册要允许匿名访问
+                .permitAll()
+                .antMatchers(HttpMethod.OPTIONS)//跨域请求会先进行一次options请求
+                .permitAll()
+                .antMatchers("/**")//测试时全部运行访问
+                .permitAll()
+                .anyRequest()// 除上面外的所有请求全部需要鉴权认证
+                .authenticated();
+        // 禁用缓存
+        httpSecurity.headers().cacheControl();
+        // 添加JWT filter
 
-//        http.addFilter(myUsernamePasswordAuthenticationFilter());
-        //放入拦截器链之前
-//        http.addFilterBefore(myUsernamePasswordAuthenticationFilter(),UsernamePasswordAuthenticationFilter.class);
-        http.csrf().disable();
-        http.headers().frameOptions().sameOrigin();
+        httpSecurity.addFilterBefore(jwtAuthenticationTokenFilter(), UsernamePasswordAuthenticationFilter.class);
+//        httpSecurity.addFilterBefore(myTypeFilter(), JwtAuthenticationTokenFilter.class);
+        //添加自定义未授权和未登录结果返回
+        httpSecurity.exceptionHandling()
+                .accessDeniedHandler(restfulAccessDeniedHandler)
+                .authenticationEntryPoint(restAuthenticationEntryPoint);
     }
-//
-//
-//
-//    /**
-//     * 将自己写的 登陆认证器 加入到 登陆拦截中
-//     * @return
-//     * @throws Exception
-//     */
+
 //    @Bean
-//    public MyUsernamePasswordAuthenticationFilter myUsernamePasswordAuthenticationFilter() throws Exception {
-//        MyUsernamePasswordAuthenticationFilter myUsernamePasswordAuthenticationFilter = new MyUsernamePasswordAuthenticationFilter("/**");
-//        myUsernamePasswordAuthenticationFilter.setAuthenticationManager(authenticationManagerBean());
-//        return myUsernamePasswordAuthenticationFilter;
-//    }
-//
-//
-//
-//    @Bean
-//    @Override
-//    public AuthenticationManager authenticationManagerBean() throws Exception {
-//        AuthenticationManager manager = super.authenticationManagerBean();
-//        return manager;
-//    }
-//    @Bean
-//    public LoginUrlEntryPoint loginUrlEntryPoint(){
-//        return new LoginUrlEntryPoint("/user/login");
-//    }
-//
-//    @Bean
-//    public LoginFailureHandler loginFailureHandler() throws Exception {
-//        return new LoginFailureHandler(myUsernamePasswordAuthenticationFilter());
-//    }
-//
-//    @Bean
-//    public PasswordEncoder passwordEncoder(){
-//        return NoOpPasswordEncoder.getInstance();
-//    }
-//
-//    @Bean
-//    public LoginSuccessHandler loginSuccessHandler(){
-//        return new LoginSuccessHandler(loginUrlEntryPoint());
+//    public MyTypeFilter myTypeFilter() throws Exception {
+//        MyTypeFilter filter = new MyTypeFilter("/**");
+//        filter.setAuthenticationManager(authenticationManagerBean());
+//        return filter;
 //    }
 
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userDetailsService())
+                .passwordEncoder(passwordEncoder());
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return NoOpPasswordEncoder.getInstance();
+    }
+
+    @Bean
+    public UserDetailsService userDetailsService() {
+
+        return username -> {
+            Users users = userServices.loadUserByName(username);
+            if (users != null) {
+                return users;
+            }
+            throw new UsernameNotFoundException("用户名或密码错误");
+        };
+    }
+
+    @Bean
+    public JwtAuthenticationTokenFilter jwtAuthenticationTokenFilter(){
+        return new JwtAuthenticationTokenFilter();
+    }
+
+    @Bean
+    @Override
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        return super.authenticationManagerBean();
+    }
 
 }

@@ -1,17 +1,57 @@
 package com.lyx.undergraduatejob.controlles;
 
+import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.JSONPObject;
+import com.lyx.undergraduatejob.pojo.Users;
+import com.lyx.undergraduatejob.search.entity.LoginEntity;
+import com.lyx.undergraduatejob.services.IUserServices;
+import com.lyx.undergraduatejob.utils.APIResult;
 import com.lyx.undergraduatejob.utils.StaticPool;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.thymeleaf.util.StringUtils;
+
+import javax.servlet.http.HttpServletResponse;
+import java.util.HashMap;
+import java.util.Map;
 
 
 @Controller
 public class UsersController {
-
+    @Autowired
+    IUserServices userServices;
+    @Value("${jwt.tokenHead}")
+    String tokenHead;
+    @PostMapping("/login")
+    @ResponseBody
+    public APIResult result(@RequestBody LoginEntity entity, HttpServletResponse response){
+        String username = entity.getUsername();
+        String password = entity.getPassword();
+        String token = null;
+        if(!StringUtils.isEmpty(username)
+                && !StringUtils.isEmpty(password) ) {
+            token = userServices.login(username, password);
+        }
+        Map<String,String> map = new HashMap<>();
+        map.put("header",tokenHead);
+        map.put("token",token);
+//        response.setHeader(tokenHead,token);
+//        response.A
+        return APIResult.genSuccessApiResponse(map);
+    }
+    @PostMapping("/hi")
+    @ResponseBody
+    public APIResult sayHi(){
+        return APIResult.genSuccessApiResponse("hi");
+    }
     @RequestMapping("about_us")
     public String about_us(){
-
         return "about_us";
     }
     

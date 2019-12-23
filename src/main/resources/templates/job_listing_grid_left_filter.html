@@ -3,7 +3,7 @@
 <!--[if IE 8]><html lang="en" class="ie8 no-js"><![endif]-->
 <!--[if IE 9]><html lang="en" class="ie9 no-js"><![endif]-->
 <!--[if !IE]><!-->
-<html lang="zxx" xmlns:th="http://www.thymeleaf.org">
+<html lang="zxx" xmlns:th="http://www.thymeleaf.org" xmlns:v-bind="http://www.w3.org/1999/xhtml">
 <!--[endif]-->
 
 <head th:replace="public::public_head">
@@ -272,6 +272,7 @@
       <div class="aui-container-bxo clearfix">
        <div class="aui-content-sidebar clearfix" id="nav">
         <div class="aui-content-main" >
+         <div class="row">行业列表：</div>
          <div v-for="ind in industries"  class="aui-content-menu">
           <div class="aui-content-menu-head">
            <div class="aui-content-menu-head-list">
@@ -297,14 +298,29 @@
       </div>
      </div>
      <div class="col-lg-9 col-md-12 col-sm-12 col-12">
-      <div class="job_listing_left_side jb_cover">
-       <div class="filter-area jb_cover">
-         <input v-model="jobList" type="text" style="width: 200px;height: 40px;font-size: 18px;padding: 0px 10px" placeholder="输入职业名">
-        <select>
-         <option>short by</option>
-         <option>most recent</option>
-         <option>most popular</option>
-         <option>top rated</option>
+         <div class="job_listing_left_side jb_cover">
+             <div class="filter-area jb_cover">
+<!--        工作类型-->
+        <select style="width: 200px;height: 40px;font-size: 14px;float: left;text-align: center" v-model="searchEntity.partFull"  >
+         <option value="-1">选择工作类型</option>
+         <option value="1">全职</option>
+         <option value="2">兼职</option>
+        </select>
+        <select v-model="searchEntity.salaryArea" style="width: 200px;height: 40px;font-size: 14px;float: left;text-align: center">
+         <option value="*">选择薪水区间</option>
+         <option v-for="area in salaryArea" :value="area.key">{{area.key}}</option>
+        </select>
+         <input v-model="searchEntity.keyWord" type="text" style="margin-left:20px;width: 200px;height: 40px;font-size: 18px;padding: 20px 6px;" placeholder="输入职业名">
+        <select v-model="searchEntity.orderExample" style="width: 200px;height: 40px;font-size: 14px;float: left;text-align: center">
+         <option value="`create_time` ">按时间排序</option>
+         <option value="need_num ">按招聘人数排序</option>
+         <option value="salary ">按薪水排序</option>
+         <option value="visit_num ">按热度排序</option>
+         <option value="work_years ">按工作经验</option>
+        </select>
+        <select v-model="searchEntity.order" style="width: 200px;height: 40px;font-size: 14px;float: left;text-align: center">
+         <option value="desc">降序</option>
+         <option value="asc">升序</option>
         </select>
         <div class="showpro">
           <a href="login" style="width: 40px;height: 20px"><i class="flaticon-login"></i>搜索</a>
@@ -313,19 +329,20 @@
        <div class="tab-content btc_shop_index_content_tabs_main jb_cover">
         <div id="grid" class="tab-pane active">
          <div class="row">
-          <div v-for="job in jobs" class="col-lg-6 col-md-6 col-sm-12">
+          <div v-for="(job,index) in jobs" class="col-lg-6 col-md-6 col-sm-12">
            <div class="job_listing_left_fullwidth job_listing_grid_wrapper jb_cover">
             <div class="row">
              <div class="col-lg-12 col-md-12 col-sm-12 col-12">
               <div class="jp_job_post_side_img">
-               <img src="/picture/lt1.png" alt="post_img" />
+               <img :src="companies[index].logo == null ? '/picture/lt1.png' : companies[index].logo"   alt="post_img" />
+<!--               src="/picture/lt1.png"-->
                <br />
-               <span>google</span>
+               <span>{{companies[index].companyName}}</span>
               </div>
               <div class="jp_job_post_right_cont">
                <h4><a href="#">{{ job.jobTitle }}</a></h4>
                <ul>
-                <li><i class="flaticon-cash"></i>&nbsp; 3000</li>
+                <li><i class="flaticon-cash"></i>&nbsp; {{job.salary}}</li>
                 <li><i class="flaticon-location-pointer"></i>&nbsp;{{job.jobDesc}}</li>
                </ul>
               </div>
@@ -337,7 +354,7 @@
                  <div class="job_adds_right">
                   <a href="#!"><i class="far fa-heart"></i></a>
                  </div></li>
-                <li><a href="job_single" >{{job.part_full}}</a></li>
+                <li><a href="job_single" >{{job.partFull == 1 ? '兼职' : '全职' }}</a></li>
                 <li><a href="#" data-toggle="modal" data-target="#myModal01">应聘</a></li>
                </ul>
               </div>
@@ -933,13 +950,19 @@
 <!--        </div>-->
         <div class="blog_pagination_section jb_cover">
          <ul>
-          <li><a href="#" class="prev"><i class="flaticon-left-arrow"></i></a></li>
-          <li><a href="#">1</a></li>
-          <li class="third_pagger"><a href="#">2</a></li>
-          <li class="d-block d-sm-block d-md-block d-lg-block"><a href="#">3</a></li>
-          <li class="d-none d-sm-block d-md-block d-lg-block"><a href="#">...</a></li>
-          <li class="d-none d-sm-block d-md-block d-lg-block"><a href="#">6</a></li>
-          <li><a href="#" class="next"><i class="flaticon-right-arrow"></i></a></li>
+          <li><a @click="getJobs(searchEntity.start-1)" class="prev"><i class="flaticon-left-arrow"></i></a></li>
+          <li v-for="index of 5"
+              v-if="searchEntity.start-2+index > 0 && searchEntity.start-2+index < totalPage"
+              v-bind:class="[searchEntity.start == (searchEntity.start-2+index) ? 'third_pagger' : 'd-block','d-sm-block','d-md-block','d-lg-block']">
+           <a @click="getJobs(searchEntity.start-2+index)">{{searchEntity.start-2+index}}
+           </a>
+          </li>
+<!--          <li><a :click="getJobs(1)">1</a></li>-->
+<!--          <li ><a :click="getJobs(2)">2</a></li>-->
+<!--          <li class="d-block d-sm-block d-md-block d-lg-block"><a href="#">3</a></li>-->
+<!--          <li class="d-none d-sm-block d-md-block d-lg-block"><a href="#">...</a></li>-->
+<!--          <li class="d-none d-sm-block d-md-block d-lg-block"><a href="#">6</a></li>-->
+          <li><a @click="getJobs(searchEntity.start+1)"  class="next"><i class="flaticon-right-arrow"></i></a></li>
          </ul>
         </div>
        </div>
@@ -1075,21 +1098,24 @@
   <!--custom js files-->
   <script src="/js/jquery-3.3.1.min.js"></script>
   <script src="/js/bootstrap.min.js"></script>
+
   <script src="/js/modernizr.js"></script>
   <script src="/js/jquery.menu-aim.js"></script>
   <script src="/js/plugin.js"></script>
   <script src="/js/owl.carousel.js"></script>
   <script src="/js/jquery.countto.js"></script>
   <script src="/js/jquery.magnific-popup.js"></script>
+
   <script src="/js/jquery-ui.js"></script>
   <script src="/js/dropify.min.js"></script>
   <script src="/js/jquery.inview.min.js"></script>
-  <script src="/js/jquery.nice-select.min.js"></script>
+<!--  <script src="/js/jquery.nice-select.min.js"></script>-->
   <script src="/js/imagesloaded.pkgd.min.js"></script>
   <script src="/js/isotope.pkgd.min.js"></script>
   <script src="/js/custom.js"></script>
   <script src="/js/vue.js"></script>
-  <script type="text/javascript">
+ <script src="/js/axios.js"></script>
+ <script type="text/javascript">
 
    $(function(){
     $('.aui-content-main .aui-content-menu').hover(function(){
@@ -1113,21 +1139,24 @@
   var vue1 = new Vue({
    el:"#vue-app1",
    data:{
+    salaryArea:[],
     jobList:"",
     test:"test",
     industries:[],
     jobNames:[],
     jobs:[],
+    totalPage:0,
     companies:[],
     searchEntity:{
-     start:0,
-     size:5,
+     start:1,
+     size:12,
      keyWord:'',
      companyId:-1,
      workJob:'',
+     partFull:-1,
      jobType:'',
      closeAnAccount:'',
-     salaryArea:'',
+     salaryArea:'*',
      workArea:'',
      orderExample:"`create_time` ",
      order: "desc",
@@ -1136,47 +1165,47 @@
     },
    },
    created() {
+    this.getSalaryArea();
     this.getIndustries();
-    this.getJobs();
+    this.getJobs(1);
    },
    methods: {
-    getIndustries() {
+    getSalaryArea:function(){
      var that = this;
-     $.ajax({
-      type: 'POST',//方法类型
-      dataType: "json",//预期服务器返回的数据类型
-      async:false,
-      url: '/allIndustriesWithJobList',//url
-      contentType: "application/json; charset=utf-8",
-      success: function (result) {
-       that.industries = result.data;
-      },
-      error: function () {
-       alert("操作失败");
-      }
+     axios.get('/getSalaryArea').then(function(res){
+      that.salaryArea = res.data.data;
+     }).catch(function(){
+      alert("操作失败");
      })
     },
-    getJobs() {
+    getIndustries:function() {
      var that = this;
-     $.ajax({
-      async:false,
-      type: 'POST',//方法类型
-      dataType: "json",//预期服务器返回的数据类型
-      url: '/getJobs',//url
-      contentType: "application/json; charset=utf-8",
-      data: JSON.stringify(this.searchEntity),
-      success: function (result) {
-       if (result.code == 200) {
-        that.jobs = result.data.map.jobs;
-        that.companies = result.data.map.companys;
-       } else {
-        alert(result.message);
-       }
-      },
-      error: function () {
-       alert("操作失败");
+     axios.post('/allIndustriesWithJobList').then(function (result) {
+      that.industries = result.data.data;
+     }).catch(function () {alert("操作失败");});
+    },
+    getJobs:function(value) {
+     if(value <= 0)
+      value = 1;
+     if(value > this.searchEntity.total)
+      value = this.searchEntity.total;
+     this.searchEntity.start = value;
+     var that = this;
+     axios.post('/getJobs?start='+that.searchEntity.start+'&pageSize='+that.searchEntity.size,this.searchEntity).then(function(result){
+      console.log(result);
+      if (result.data.code == 200) {
+       console.log(result);
+       that.jobs = result.data.data.map.jobs;
+       that.start = result.data.data.pageNum;
+
+       that.totalPage = result.data.data.pages;
+       that.companies = result.data.data.map.companys;
+      } else {
+       alert(result.data.message);
       }
-     })
+     }).catch(function () {
+      alert("操作失败");
+     });
     },
    },
    computed:{
