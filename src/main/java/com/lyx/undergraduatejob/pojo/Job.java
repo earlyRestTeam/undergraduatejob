@@ -16,6 +16,10 @@ public class Job implements Serializable {
 
     private Integer companyId;
 
+    private String companyName;
+
+    private String companyLogo;
+
     private String jobName;
 
     private String jobDesc;
@@ -106,6 +110,22 @@ public class Job implements Serializable {
 
     public void setCompanyId(Integer companyId) {
         this.companyId = companyId;
+    }
+
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
+
+    public String getCompanyLogo() {
+        return companyLogo;
+    }
+
+    public void setCompanyLogo(String companyLogo) {
+        this.companyLogo = companyLogo;
     }
 
     public String getJobName() {
@@ -288,6 +308,8 @@ public class Job implements Serializable {
         sb.append(", aulStatus=").append(aulStatus);
         sb.append(", jobTitle=").append(jobTitle);
         sb.append(", companyId=").append(companyId);
+        sb.append(", companyName=").append(companyName);
+        sb.append(", companyLogo=").append(companyLogo);
         sb.append(", jobName=").append(jobName);
         sb.append(", jobDesc=").append(jobDesc);
         sb.append(", jobType=").append(jobType);
