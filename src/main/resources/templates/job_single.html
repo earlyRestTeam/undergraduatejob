@@ -273,9 +273,10 @@
        </div>
        <div class="job_overview_header jb_cover">
         <div class="jb_job_overview_img">
-         <img src="/picture/overview.png" alt="post_img" />
-         <h4>HTML Developer (1 - 2 Yrs Exp.)</h4>
-         <p>Webstrot Technology Pvt. Ltd.</p>
+         <img th:src="@{${res.company.logo}}" alt="post_img" />
+         <h4 th:text="${res.job.jobTitle}">HTML Developer (1 - 2 Yrs Exp.)</h4>
+         <p th:text="${res.company.companyName}" >Webstrot Technology Pvt. Ltd.</p>
+<!--         th:text="${res.company.companyName}"-->
          <ul class="job_single_lists">
           <li>
            <div class="job_adds_right">
@@ -293,8 +294,8 @@
          </div>
          <div class="jp_listing_list_icon_cont_wrapper">
           <ul>
-           <li>Date Posted:</li>
-           <li>Octomber 02, 2019</li>
+           <li>发布时间:</li>
+           <li th:text="${#dates.format(res.job.pushTime, 'dd/MMM/yyyy HH:mm')}">Octomber 02, 2019</li>
           </ul>
          </div>
         </div>
@@ -315,8 +316,8 @@
          </div>
          <div class="jp_listing_list_icon_cont_wrapper">
           <ul>
-           <li>Job Title:</li>
-           <li>HTML Developer</li>
+           <li>职位名 :</li>
+           <li th:text="${res.job.jobName}">HTML Developer</li>
           </ul>
          </div>
         </div>
@@ -326,8 +327,8 @@
          </div>
          <div class="jp_listing_list_icon_cont_wrapper">
           <ul>
-           <li>Hours:</li>
-           <li>40h / Week</li>
+           <li>上班时间:</li>
+           <li>5天 / 每周</li>
           </ul>
          </div>
         </div>
@@ -337,8 +338,8 @@
          </div>
          <div class="jp_listing_list_icon_cont_wrapper">
           <ul>
-           <li>Salary:</li>
-           <li>$12K - 15k P.A.</li>
+           <li>薪水:</li>
+           <li th:text="${res.job.salary}">$12K - 15k P.A.</li>
           </ul>
          </div>
         </div>
@@ -348,8 +349,8 @@
          </div>
          <div class="jp_listing_list_icon_cont_wrapper">
           <ul>
-           <li>Category:</li>
-           <li>Developer</li>
+           <li>行业:</li>
+           <li th:text="${res.job.jobType}">IT</li>
           </ul>
          </div>
         </div>
@@ -359,13 +360,13 @@
          </div>
          <div class="jp_listing_list_icon_cont_wrapper">
           <ul>
-           <li>Experience:</li>
-           <li>1+ Years Experience</li>
+           <li>经验:</li>
+           <li><span th:text="${res.job.workYears}"></span> 年以上</li>
           </ul>
          </div>
         </div>
         <div class="header_btn search_btn news_btn overview_btn  jb_cover">
-         <a href="#" data-toggle="modal" data-target="#myModal41">apply now !</a>
+         <a href="#" data-toggle="modal" data-target="#myModal41">现在申请 !</a>
         </div>
         <div class="modal fade apply_job_popup" id="myModal41" role="dialog">
          <div class="modal-dialog">
@@ -420,16 +421,16 @@
      <div class="col-lg-8 col-md-12 col-sm-12 col-12">
       <div class="jb_listing_single_overview jb_cover">
        <div class="jp_job_des jb_cover">
-        <h2 class="job_description_heading">Job Description</h2>
-        <p>Google is and always will be an engineering company. We hire people with a broad set of ical skills who are ready to tackle some of technology's greatest challenges and make an impact on millions, if not billions, of users. At Google, engineers not only revolutionize search, they routinely work on massive scalability and storage solutions, large-scale applications and rely new platforms for developers around the world. From AdWords to Chrome, Android to Ye, Social to Local, Google engineers are changing the world.</p>
-        <ul>
-         <li><i class="fas fa-globe-asia"></i>&nbsp;&nbsp; <a href="#">www.example.com</a></li>
-         <li><i class="fas fa-file-download"></i>&nbsp;&nbsp; <a href="#">Download Info</a></li>
-        </ul>
+        <h2 class="job_description_heading">职位描述</h2>
+        <p th:text="${res.job.jobDesc}">Google is and always will be an engineering company. We hire people with a broad set of ical skills who are ready to tackle some of technology's greatest challenges and make an impact on millions, if not billions, of users. At Google, engineers not only revolutionize search, they routinely work on massive scalability and storage solutions, large-scale applications and rely new platforms for developers around the world. From AdWords to Chrome, Android to Ye, Social to Local, Google engineers are changing the world.</p>
+<!--        <ul>-->
+<!--         <li><i class="fas fa-globe-asia"></i>&nbsp;&nbsp; <a href="#">www.example.com</a></li>-->
+<!--         <li><i class="fas fa-file-download"></i>&nbsp;&nbsp; <a href="#">Download Info</a></li>-->
+<!--        </ul>-->
        </div>
        <div class="jp_job_res jb_cover">
-        <h2 class="job_description_heading">Responsibilities</h2>
-        <p>Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Curabitur aliquet quam id dui posuere blandit.</p>
+        <h2 class="job_description_heading">职责范围</h2>
+        <p >Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Curabitur aliquet quam id dui posuere blandit.</p>
         <ul>
          <li><i class="fa fa-caret-right"></i>&nbsp;&nbsp; Build next-generation web applications with a focus on the client side.</li>
          <li><i class="fa fa-caret-right"></i>&nbsp;&nbsp; Redesign UI's, implement new UI's, and pick up Java as necessary.</li>
@@ -438,7 +439,7 @@
         </ul>
        </div>
        <div class="jp_job_res jb_cover minimum_cover">
-        <h2 class="job_description_heading">Minimum qualifications</h2>
+        <h2 class="job_description_heading">最低学历</h2>
         <ul>
          <li><i class="fa fa-caret-right"></i>&nbsp;&nbsp; Build next-generation web applications with a focus on the client side.</li>
          <li><i class="fa fa-caret-right"></i>&nbsp;&nbsp; Redesign UI's, implement new UI's, and pick up Java as necessary.</li>
@@ -447,11 +448,11 @@
         </ul>
        </div>
        <div class="jp_job_res jb_cover">
-        <h2 class="job_description_heading">how to apply</h2>
+        <h2 class="job_description_heading">怎样申请</h2>
         <p>Google is and always will be an engineering company. We hire people with a broad set of ical skills who are ready to tackle some of technology's greatest challenges and make an impact on millions, if not billions, of users. At Google, engineers not only revolutionize search, they routinely</p>
        </div>
        <div class="jp_job_res jb_cover">
-        <h2 class="job_description_heading">location</h2>
+        <h2 class="job_description_heading">位置</h2>
         <div class="map_wrapper jb_cover">
          <div id="map"></div>
         </div>
@@ -484,8 +485,8 @@
              <div class="jp_job_post_right_cont">
               <h4><a href="#">Trainee Web Designer, (Fresher)</a></h4>
               <ul>
-               <li><i class="flaticon-cash"></i>&nbsp; $12K - 15k P.A.</li>
-               <li><i class="flaticon-location-pointer"></i>&nbsp; Los Angeles, Califonia PO, 455001</li>
+               <li th:text="${res.job.salary}"><i class="flaticon-cash"></i>&nbsp; $12K - 15k P.A.</li>
+               <li th:text="${res.job.detailedAddress}"><i class="flaticon-location-pointer"></i>&nbsp; Los Angeles, Califonia PO, 455001</li>
               </ul>
              </div>
             </div>
@@ -496,8 +497,8 @@
                 <div class="job_adds_right">
                  <a href="#!"><i class="far fa-heart"></i></a>
                 </div></li>
-               <li><a href="job_single">Part Time</a></li>
-               <li><a href="#">apply</a></li>
+               <li><a th:text="${res.job.partFull}== 1 ? '兼职' : '全职'"></a></li>
+               <li><a href="#">申请</a></li>
               </ul>
              </div>
             </div>

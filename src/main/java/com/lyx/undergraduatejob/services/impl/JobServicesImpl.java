@@ -294,6 +294,18 @@ public class JobServicesImpl implements IJobServices {
         return pageInfo;
     }
 
+    @Override
+    public Map<String, Object> selectJobById(Integer id) {
+        Map<String,Object> map = new HashMap();
+        Job job = jobMapper.selectByPrimaryKey(id);
+        if(job == null)
+            throw new RuntimeException(" 该工作 不存在！");
+        Company company = companyMapper.selectByPrimaryKey(job.getCompanyId());
+        map.put("job",job);
+        map.put("company",company);
+        return map;
+    }
+
     /**
      * 按照 条件分页 查找 对应的 公司查找
      *

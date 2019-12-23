@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.JSONPObject;
 import com.lyx.undergraduatejob.pojo.Users;
 import com.lyx.undergraduatejob.search.entity.LoginEntity;
+import com.lyx.undergraduatejob.services.IJobServices;
 import com.lyx.undergraduatejob.services.IUserServices;
 import com.lyx.undergraduatejob.utils.APIResult;
 import com.lyx.undergraduatejob.utils.StaticPool;
@@ -11,10 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.thymeleaf.util.StringUtils;
 
 import javax.servlet.http.HttpServletResponse;
@@ -28,6 +26,8 @@ public class UsersController {
     IUserServices userServices;
     @Value("${jwt.tokenHead}")
     String tokenHead;
+    @Autowired
+    IJobServices jobServices;
     @PostMapping("/login")
     @ResponseBody
     public APIResult result(@RequestBody LoginEntity entity, HttpServletResponse response){
@@ -117,8 +117,9 @@ public class UsersController {
     }
     
     @RequestMapping("job_single")
-    public String job_single(){
-
+    public String job_single(@RequestParam("jobid") Integer id,Model model){
+        Map<String, Object> map = jobServices.selectJobById(id);
+        model.addAttribute("res",map);
         return "job_single";
     }
 

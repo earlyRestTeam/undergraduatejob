@@ -100,5 +100,8 @@ public interface IJobServices {
      * @return
      */
     PageInfo<Job> selectJobByJobSearchEntityWithOutCompany(int start, int pageSize, JobSearchEntity jobSearchEntity);
-
+    /**
+     * 根据主键查询 job
+     */
+    Map<String,Object> selectJobById(Integer id);
 }

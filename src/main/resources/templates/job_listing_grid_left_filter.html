@@ -333,7 +333,7 @@
            <div class="job_listing_left_fullwidth job_listing_grid_wrapper jb_cover">
             <div class="row">
              <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-              <div @click="toCompany?companyId=1" class="jp_job_post_side_img">
+              <div @click="toCompany(companies[index].id)" class="jp_job_post_side_img">
                <img :src="companies[index].logo == null ? '/picture/lt1.png' : companies[index].logo"   alt="post_img" />
 <!--               src="/picture/lt1.png"-->
                <br />
@@ -1210,6 +1210,10 @@
        reSearch:function () {
            //this.searchEntity.start = 1;
            this.getJobs(1);
+       },
+       toCompany:function (conpanyId) {
+            console.log(conpanyId);
+           //window.location.href = ""+conpanyId;
        }
    },
    computed:{
