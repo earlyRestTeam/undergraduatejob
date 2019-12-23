@@ -712,73 +712,73 @@ public class ResumeExample {
             return (Criteria) this;
         }
 
-        public Criteria andWeixinIsNull() {
-            addCriterion("weixin is null");
+        public Criteria andWeiXinIsNull() {
+            addCriterion("wei_xin is null");
             return (Criteria) this;
         }
 
-        public Criteria andWeixinIsNotNull() {
-            addCriterion("weixin is not null");
+        public Criteria andWeiXinIsNotNull() {
+            addCriterion("wei_xin is not null");
             return (Criteria) this;
         }
 
-        public Criteria andWeixinEqualTo(String value) {
-            addCriterion("weixin =", value, "weixin");
+        public Criteria andWeiXinEqualTo(String value) {
+            addCriterion("wei_xin =", value, "weiXin");
             return (Criteria) this;
         }
 
-        public Criteria andWeixinNotEqualTo(String value) {
-            addCriterion("weixin <>", value, "weixin");
+        public Criteria andWeiXinNotEqualTo(String value) {
+            addCriterion("wei_xin <>", value, "weiXin");
             return (Criteria) this;
         }
 
-        public Criteria andWeixinGreaterThan(String value) {
-            addCriterion("weixin >", value, "weixin");
+        public Criteria andWeiXinGreaterThan(String value) {
+            addCriterion("wei_xin >", value, "weiXin");
             return (Criteria) this;
         }
 
-        public Criteria andWeixinGreaterThanOrEqualTo(String value) {
-            addCriterion("weixin >=", value, "weixin");
+        public Criteria andWeiXinGreaterThanOrEqualTo(String value) {
+            addCriterion("wei_xin >=", value, "weiXin");
             return (Criteria) this;
         }
 
-        public Criteria andWeixinLessThan(String value) {
-            addCriterion("weixin <", value, "weixin");
+        public Criteria andWeiXinLessThan(String value) {
+            addCriterion("wei_xin <", value, "weiXin");
             return (Criteria) this;
         }
 
-        public Criteria andWeixinLessThanOrEqualTo(String value) {
-            addCriterion("weixin <=", value, "weixin");
+        public Criteria andWeiXinLessThanOrEqualTo(String value) {
+            addCriterion("wei_xin <=", value, "weiXin");
             return (Criteria) this;
         }
 
-        public Criteria andWeixinLike(String value) {
-            addCriterion("weixin like", value, "weixin");
+        public Criteria andWeiXinLike(String value) {
+            addCriterion("wei_xin like", value, "weiXin");
             return (Criteria) this;
         }
 
-        public Criteria andWeixinNotLike(String value) {
-            addCriterion("weixin not like", value, "weixin");
+        public Criteria andWeiXinNotLike(String value) {
+            addCriterion("wei_xin not like", value, "weiXin");
             return (Criteria) this;
         }
 
-        public Criteria andWeixinIn(List<String> values) {
-            addCriterion("weixin in", values, "weixin");
+        public Criteria andWeiXinIn(List<String> values) {
+            addCriterion("wei_xin in", values, "weiXin");
             return (Criteria) this;
         }
 
-        public Criteria andWeixinNotIn(List<String> values) {
-            addCriterion("weixin not in", values, "weixin");
+        public Criteria andWeiXinNotIn(List<String> values) {
+            addCriterion("wei_xin not in", values, "weiXin");
             return (Criteria) this;
         }
 
-        public Criteria andWeixinBetween(String value1, String value2) {
-            addCriterion("weixin between", value1, value2, "weixin");
+        public Criteria andWeiXinBetween(String value1, String value2) {
+            addCriterion("wei_xin between", value1, value2, "weiXin");
             return (Criteria) this;
         }
 
-        public Criteria andWeixinNotBetween(String value1, String value2) {
-            addCriterion("weixin not between", value1, value2, "weixin");
+        public Criteria andWeiXinNotBetween(String value1, String value2) {
+            addCriterion("wei_xin not between", value1, value2, "weiXin");
             return (Criteria) this;
         }
 
@@ -849,6 +849,146 @@ public class ResumeExample {
 
         public Criteria andQqNotBetween(String value1, String value2) {
             addCriterion("qq not between", value1, value2, "qq");
+            return (Criteria) this;
+        }
+
+        public Criteria andNationIsNull() {
+            addCriterion("nation is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andNationIsNotNull() {
+            addCriterion("nation is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andNationEqualTo(String value) {
+            addCriterion("nation =", value, "nation");
+            return (Criteria) this;
+        }
+
+        public Criteria andNationNotEqualTo(String value) {
+            addCriterion("nation <>", value, "nation");
+            return (Criteria) this;
+        }
+
+        public Criteria andNationGreaterThan(String value) {
+            addCriterion("nation >", value, "nation");
+            return (Criteria) this;
+        }
+
+        public Criteria andNationGreaterThanOrEqualTo(String value) {
+            addCriterion("nation >=", value, "nation");
+            return (Criteria) this;
+        }
+
+        public Criteria andNationLessThan(String value) {
+            addCriterion("nation <", value, "nation");
+            return (Criteria) this;
+        }
+
+        public Criteria andNationLessThanOrEqualTo(String value) {
+            addCriterion("nation <=", value, "nation");
+            return (Criteria) this;
+        }
+
+        public Criteria andNationLike(String value) {
+            addCriterion("nation like", value, "nation");
+            return (Criteria) this;
+        }
+
+        public Criteria andNationNotLike(String value) {
+            addCriterion("nation not like", value, "nation");
+            return (Criteria) this;
+        }
+
+        public Criteria andNationIn(List<String> values) {
+            addCriterion("nation in", values, "nation");
+            return (Criteria) this;
+        }
+
+        public Criteria andNationNotIn(List<String> values) {
+            addCriterion("nation not in", values, "nation");
+            return (Criteria) this;
+        }
+
+        public Criteria andNationBetween(String value1, String value2) {
+            addCriterion("nation between", value1, value2, "nation");
+            return (Criteria) this;
+        }
+
+        public Criteria andNationNotBetween(String value1, String value2) {
+            addCriterion("nation not between", value1, value2, "nation");
+            return (Criteria) this;
+        }
+
+        public Criteria andNativePlaceIsNull() {
+            addCriterion("native_place is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andNativePlaceIsNotNull() {
+            addCriterion("native_place is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andNativePlaceEqualTo(String value) {
+            addCriterion("native_place =", value, "nativePlace");
+            return (Criteria) this;
+        }
+
+        public Criteria andNativePlaceNotEqualTo(String value) {
+            addCriterion("native_place <>", value, "nativePlace");
+            return (Criteria) this;
+        }
+
+        public Criteria andNativePlaceGreaterThan(String value) {
+            addCriterion("native_place >", value, "nativePlace");
+            return (Criteria) this;
+        }
+
+        public Criteria andNativePlaceGreaterThanOrEqualTo(String value) {
+            addCriterion("native_place >=", value, "nativePlace");
+            return (Criteria) this;
+        }
+
+        public Criteria andNativePlaceLessThan(String value) {
+            addCriterion("native_place <", value, "nativePlace");
+            return (Criteria) this;
+        }
+
+        public Criteria andNativePlaceLessThanOrEqualTo(String value) {
+            addCriterion("native_place <=", value, "nativePlace");
+            return (Criteria) this;
+        }
+
+        public Criteria andNativePlaceLike(String value) {
+            addCriterion("native_place like", value, "nativePlace");
+            return (Criteria) this;
+        }
+
+        public Criteria andNativePlaceNotLike(String value) {
+            addCriterion("native_place not like", value, "nativePlace");
+            return (Criteria) this;
+        }
+
+        public Criteria andNativePlaceIn(List<String> values) {
+            addCriterion("native_place in", values, "nativePlace");
+            return (Criteria) this;
+        }
+
+        public Criteria andNativePlaceNotIn(List<String> values) {
+            addCriterion("native_place not in", values, "nativePlace");
+            return (Criteria) this;
+        }
+
+        public Criteria andNativePlaceBetween(String value1, String value2) {
+            addCriterion("native_place between", value1, value2, "nativePlace");
+            return (Criteria) this;
+        }
+
+        public Criteria andNativePlaceNotBetween(String value1, String value2) {
+            addCriterion("native_place not between", value1, value2, "nativePlace");
             return (Criteria) this;
         }
 
@@ -1519,76 +1659,6 @@ public class ResumeExample {
 
         public Criteria andFreeTimeNotBetween(String value1, String value2) {
             addCriterion("free_time not between", value1, value2, "freeTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andSelfIntroductionIsNull() {
-            addCriterion("self_introduction is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andSelfIntroductionIsNotNull() {
-            addCriterion("self_introduction is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andSelfIntroductionEqualTo(String value) {
-            addCriterion("self_introduction =", value, "selfIntroduction");
-            return (Criteria) this;
-        }
-
-        public Criteria andSelfIntroductionNotEqualTo(String value) {
-            addCriterion("self_introduction <>", value, "selfIntroduction");
-            return (Criteria) this;
-        }
-
-        public Criteria andSelfIntroductionGreaterThan(String value) {
-            addCriterion("self_introduction >", value, "selfIntroduction");
-            return (Criteria) this;
-        }
-
-        public Criteria andSelfIntroductionGreaterThanOrEqualTo(String value) {
-            addCriterion("self_introduction >=", value, "selfIntroduction");
-            return (Criteria) this;
-        }
-
-        public Criteria andSelfIntroductionLessThan(String value) {
-            addCriterion("self_introduction <", value, "selfIntroduction");
-            return (Criteria) this;
-        }
-
-        public Criteria andSelfIntroductionLessThanOrEqualTo(String value) {
-            addCriterion("self_introduction <=", value, "selfIntroduction");
-            return (Criteria) this;
-        }
-
-        public Criteria andSelfIntroductionLike(String value) {
-            addCriterion("self_introduction like", value, "selfIntroduction");
-            return (Criteria) this;
-        }
-
-        public Criteria andSelfIntroductionNotLike(String value) {
-            addCriterion("self_introduction not like", value, "selfIntroduction");
-            return (Criteria) this;
-        }
-
-        public Criteria andSelfIntroductionIn(List<String> values) {
-            addCriterion("self_introduction in", values, "selfIntroduction");
-            return (Criteria) this;
-        }
-
-        public Criteria andSelfIntroductionNotIn(List<String> values) {
-            addCriterion("self_introduction not in", values, "selfIntroduction");
-            return (Criteria) this;
-        }
-
-        public Criteria andSelfIntroductionBetween(String value1, String value2) {
-            addCriterion("self_introduction between", value1, value2, "selfIntroduction");
-            return (Criteria) this;
-        }
-
-        public Criteria andSelfIntroductionNotBetween(String value1, String value2) {
-            addCriterion("self_introduction not between", value1, value2, "selfIntroduction");
             return (Criteria) this;
         }
 

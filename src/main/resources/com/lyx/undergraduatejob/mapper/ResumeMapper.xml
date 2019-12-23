@@ -11,8 +11,10 @@
     <result column="phone" jdbcType="VARCHAR" property="phone" />
     <result column="email" jdbcType="VARCHAR" property="email" />
     <result column="birthday" jdbcType="DATE" property="birthday" />
-    <result column="weixin" jdbcType="VARCHAR" property="weixin" />
+    <result column="wei_xin" jdbcType="VARCHAR" property="weiXin" />
     <result column="qq" jdbcType="VARCHAR" property="qq" />
+    <result column="nation" jdbcType="VARCHAR" property="nation" />
+    <result column="native_place" jdbcType="VARCHAR" property="nativePlace" />
     <result column="graduate_school" jdbcType="VARCHAR" property="graduateSchool" />
     <result column="specialty" jdbcType="VARCHAR" property="specialty" />
     <result column="education" jdbcType="VARCHAR" property="education" />
@@ -23,7 +25,6 @@
     <result column="job_address" jdbcType="VARCHAR" property="jobAddress" />
     <result column="part_full" jdbcType="INTEGER" property="partFull" />
     <result column="free_time" jdbcType="VARCHAR" property="freeTime" />
-    <result column="self_introduction" jdbcType="VARCHAR" property="selfIntroduction" />
     <result column="push_time" jdbcType="TIMESTAMP" property="pushTime" />
     <result column="status" jdbcType="INTEGER" property="status" />
     <result column="push_status" jdbcType="INTEGER" property="pushStatus" />
@@ -38,6 +39,9 @@
     <result column="vip_start_time" jdbcType="TIMESTAMP" property="vipStartTime" />
     <result column="vip_end_time" jdbcType="TIMESTAMP" property="vipEndTime" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.lyx.undergraduatejob.pojo.Resume">
+    <result column="self_introduction" jdbcType="LONGVARCHAR" property="selfIntroduction" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -98,12 +102,31 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, user_id, name, avatar, age, gender, phone, email, birthday, weixin, qq, graduate_school, 
-    specialty, education, job, job_type, salary, close_type, job_address, part_full, 
-    free_time, self_introduction, push_time, status, push_status, aul_status, resume_url, 
+    id, user_id, name, avatar, age, gender, phone, email, birthday, wei_xin, qq, nation, 
+    native_place, graduate_school, specialty, education, job, job_type, salary, close_type, 
+    job_address, part_full, free_time, push_time, status, push_status, aul_status, resume_url, 
     skill1, skill2, skill3, skill4, work_experience, resume_vip, vip_start_time, vip_end_time, 
     create_time
   </sql>
+  <sql id="Blob_Column_List">
+    self_introduction
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.lyx.undergraduatejob.pojo.ResumeExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from resume
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
   <select id="selectByExample" parameterType="com.lyx.undergraduatejob.pojo.ResumeExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
@@ -118,9 +141,11 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
     select 
     <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
     from resume
     where id = #{id,jdbcType=INTEGER}
   </select>
@@ -140,28 +165,30 @@
     </selectKey>
     insert into resume (user_id, name, avatar, 
       age, gender, phone, 
-      email, birthday, weixin, 
-      qq, graduate_school, specialty, 
-      education, job, job_type, 
-      salary, close_type, job_address, 
-      part_full, free_time, self_introduction, 
-      push_time, status, push_status, 
-      aul_status, resume_url, skill1, 
-      skill2, skill3, skill4, 
-      work_experience, resume_vip, vip_start_time, 
-      vip_end_time, create_time)
+      email, birthday, wei_xin, 
+      qq, nation, native_place, 
+      graduate_school, specialty, education, 
+      job, job_type, salary, 
+      close_type, job_address, part_full, 
+      free_time, push_time, status, 
+      push_status, aul_status, resume_url, 
+      skill1, skill2, skill3, 
+      skill4, work_experience, resume_vip, 
+      vip_start_time, vip_end_time, create_time, 
+      self_introduction)
     values (#{userId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{avatar,jdbcType=VARCHAR}, 
       #{age,jdbcType=INTEGER}, #{gender,jdbcType=INTEGER}, #{phone,jdbcType=VARCHAR}, 
-      #{email,jdbcType=VARCHAR}, #{birthday,jdbcType=DATE}, #{weixin,jdbcType=VARCHAR}, 
-      #{qq,jdbcType=VARCHAR}, #{graduateSchool,jdbcType=VARCHAR}, #{specialty,jdbcType=VARCHAR}, 
-      #{education,jdbcType=VARCHAR}, #{job,jdbcType=VARCHAR}, #{jobType,jdbcType=VARCHAR}, 
-      #{salary,jdbcType=INTEGER}, #{closeType,jdbcType=INTEGER}, #{jobAddress,jdbcType=VARCHAR}, 
-      #{partFull,jdbcType=INTEGER}, #{freeTime,jdbcType=VARCHAR}, #{selfIntroduction,jdbcType=VARCHAR}, 
-      #{pushTime,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER}, #{pushStatus,jdbcType=INTEGER}, 
-      #{aulStatus,jdbcType=INTEGER}, #{resumeUrl,jdbcType=VARCHAR}, #{skill1,jdbcType=VARCHAR}, 
-      #{skill2,jdbcType=VARCHAR}, #{skill3,jdbcType=VARCHAR}, #{skill4,jdbcType=VARCHAR}, 
-      #{workExperience,jdbcType=INTEGER}, #{resumeVip,jdbcType=INTEGER}, #{vipStartTime,jdbcType=TIMESTAMP}, 
-      #{vipEndTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP})
+      #{email,jdbcType=VARCHAR}, #{birthday,jdbcType=DATE}, #{weiXin,jdbcType=VARCHAR}, 
+      #{qq,jdbcType=VARCHAR}, #{nation,jdbcType=VARCHAR}, #{nativePlace,jdbcType=VARCHAR}, 
+      #{graduateSchool,jdbcType=VARCHAR}, #{specialty,jdbcType=VARCHAR}, #{education,jdbcType=VARCHAR}, 
+      #{job,jdbcType=VARCHAR}, #{jobType,jdbcType=VARCHAR}, #{salary,jdbcType=INTEGER}, 
+      #{closeType,jdbcType=INTEGER}, #{jobAddress,jdbcType=VARCHAR}, #{partFull,jdbcType=INTEGER}, 
+      #{freeTime,jdbcType=VARCHAR}, #{pushTime,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER}, 
+      #{pushStatus,jdbcType=INTEGER}, #{aulStatus,jdbcType=INTEGER}, #{resumeUrl,jdbcType=VARCHAR}, 
+      #{skill1,jdbcType=VARCHAR}, #{skill2,jdbcType=VARCHAR}, #{skill3,jdbcType=VARCHAR}, 
+      #{skill4,jdbcType=VARCHAR}, #{workExperience,jdbcType=INTEGER}, #{resumeVip,jdbcType=INTEGER}, 
+      #{vipStartTime,jdbcType=TIMESTAMP}, #{vipEndTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{selfIntroduction,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.lyx.undergraduatejob.pojo.Resume">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
@@ -193,11 +220,17 @@
       <if test="birthday != null">
         birthday,
       </if>
-      <if test="weixin != null">
-        weixin,
+      <if test="weiXin != null">
+        wei_xin,
       </if>
       <if test="qq != null">
         qq,
+      </if>
+      <if test="nation != null">
+        nation,
+      </if>
+      <if test="nativePlace != null">
+        native_place,
       </if>
       <if test="graduateSchool != null">
         graduate_school,
@@ -228,9 +261,6 @@
       </if>
       <if test="freeTime != null">
         free_time,
-      </if>
-      <if test="selfIntroduction != null">
-        self_introduction,
       </if>
       <if test="pushTime != null">
         push_time,
@@ -274,6 +304,9 @@
       <if test="createTime != null">
         create_time,
       </if>
+      <if test="selfIntroduction != null">
+        self_introduction,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="userId != null">
@@ -300,11 +333,17 @@
       <if test="birthday != null">
         #{birthday,jdbcType=DATE},
       </if>
-      <if test="weixin != null">
-        #{weixin,jdbcType=VARCHAR},
+      <if test="weiXin != null">
+        #{weiXin,jdbcType=VARCHAR},
       </if>
       <if test="qq != null">
         #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="nation != null">
+        #{nation,jdbcType=VARCHAR},
+      </if>
+      <if test="nativePlace != null">
+        #{nativePlace,jdbcType=VARCHAR},
       </if>
       <if test="graduateSchool != null">
         #{graduateSchool,jdbcType=VARCHAR},
@@ -335,9 +374,6 @@
       </if>
       <if test="freeTime != null">
         #{freeTime,jdbcType=VARCHAR},
-      </if>
-      <if test="selfIntroduction != null">
-        #{selfIntroduction,jdbcType=VARCHAR},
       </if>
       <if test="pushTime != null">
         #{pushTime,jdbcType=TIMESTAMP},
@@ -381,6 +417,9 @@
       <if test="createTime != null">
         #{createTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="selfIntroduction != null">
+        #{selfIntroduction,jdbcType=LONGVARCHAR},
+      </if>
     </trim>
   </insert>
   <select id="countByExample" parameterType="com.lyx.undergraduatejob.pojo.ResumeExample" resultType="java.lang.Long">
@@ -419,11 +458,17 @@
       <if test="record.birthday != null">
         birthday = #{record.birthday,jdbcType=DATE},
       </if>
-      <if test="record.weixin != null">
-        weixin = #{record.weixin,jdbcType=VARCHAR},
+      <if test="record.weiXin != null">
+        wei_xin = #{record.weiXin,jdbcType=VARCHAR},
       </if>
       <if test="record.qq != null">
         qq = #{record.qq,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nation != null">
+        nation = #{record.nation,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nativePlace != null">
+        native_place = #{record.nativePlace,jdbcType=VARCHAR},
       </if>
       <if test="record.graduateSchool != null">
         graduate_school = #{record.graduateSchool,jdbcType=VARCHAR},
@@ -454,9 +499,6 @@
       </if>
       <if test="record.freeTime != null">
         free_time = #{record.freeTime,jdbcType=VARCHAR},
-      </if>
-      <if test="record.selfIntroduction != null">
-        self_introduction = #{record.selfIntroduction,jdbcType=VARCHAR},
       </if>
       <if test="record.pushTime != null">
         push_time = #{record.pushTime,jdbcType=TIMESTAMP},
@@ -500,7 +542,54 @@
       <if test="record.createTime != null">
         create_time = #{record.createTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="record.selfIntroduction != null">
+        self_introduction = #{record.selfIntroduction,jdbcType=LONGVARCHAR},
+      </if>
     </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update resume
+    set id = #{record.id,jdbcType=INTEGER},
+      user_id = #{record.userId,jdbcType=INTEGER},
+      name = #{record.name,jdbcType=VARCHAR},
+      avatar = #{record.avatar,jdbcType=VARCHAR},
+      age = #{record.age,jdbcType=INTEGER},
+      gender = #{record.gender,jdbcType=INTEGER},
+      phone = #{record.phone,jdbcType=VARCHAR},
+      email = #{record.email,jdbcType=VARCHAR},
+      birthday = #{record.birthday,jdbcType=DATE},
+      wei_xin = #{record.weiXin,jdbcType=VARCHAR},
+      qq = #{record.qq,jdbcType=VARCHAR},
+      nation = #{record.nation,jdbcType=VARCHAR},
+      native_place = #{record.nativePlace,jdbcType=VARCHAR},
+      graduate_school = #{record.graduateSchool,jdbcType=VARCHAR},
+      specialty = #{record.specialty,jdbcType=VARCHAR},
+      education = #{record.education,jdbcType=VARCHAR},
+      job = #{record.job,jdbcType=VARCHAR},
+      job_type = #{record.jobType,jdbcType=VARCHAR},
+      salary = #{record.salary,jdbcType=INTEGER},
+      close_type = #{record.closeType,jdbcType=INTEGER},
+      job_address = #{record.jobAddress,jdbcType=VARCHAR},
+      part_full = #{record.partFull,jdbcType=INTEGER},
+      free_time = #{record.freeTime,jdbcType=VARCHAR},
+      push_time = #{record.pushTime,jdbcType=TIMESTAMP},
+      status = #{record.status,jdbcType=INTEGER},
+      push_status = #{record.pushStatus,jdbcType=INTEGER},
+      aul_status = #{record.aulStatus,jdbcType=INTEGER},
+      resume_url = #{record.resumeUrl,jdbcType=VARCHAR},
+      skill1 = #{record.skill1,jdbcType=VARCHAR},
+      skill2 = #{record.skill2,jdbcType=VARCHAR},
+      skill3 = #{record.skill3,jdbcType=VARCHAR},
+      skill4 = #{record.skill4,jdbcType=VARCHAR},
+      work_experience = #{record.workExperience,jdbcType=INTEGER},
+      resume_vip = #{record.resumeVip,jdbcType=INTEGER},
+      vip_start_time = #{record.vipStartTime,jdbcType=TIMESTAMP},
+      vip_end_time = #{record.vipEndTime,jdbcType=TIMESTAMP},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      self_introduction = #{record.selfIntroduction,jdbcType=LONGVARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -516,8 +605,10 @@
       phone = #{record.phone,jdbcType=VARCHAR},
       email = #{record.email,jdbcType=VARCHAR},
       birthday = #{record.birthday,jdbcType=DATE},
-      weixin = #{record.weixin,jdbcType=VARCHAR},
+      wei_xin = #{record.weiXin,jdbcType=VARCHAR},
       qq = #{record.qq,jdbcType=VARCHAR},
+      nation = #{record.nation,jdbcType=VARCHAR},
+      native_place = #{record.nativePlace,jdbcType=VARCHAR},
       graduate_school = #{record.graduateSchool,jdbcType=VARCHAR},
       specialty = #{record.specialty,jdbcType=VARCHAR},
       education = #{record.education,jdbcType=VARCHAR},
@@ -528,7 +619,6 @@
       job_address = #{record.jobAddress,jdbcType=VARCHAR},
       part_full = #{record.partFull,jdbcType=INTEGER},
       free_time = #{record.freeTime,jdbcType=VARCHAR},
-      self_introduction = #{record.selfIntroduction,jdbcType=VARCHAR},
       push_time = #{record.pushTime,jdbcType=TIMESTAMP},
       status = #{record.status,jdbcType=INTEGER},
       push_status = #{record.pushStatus,jdbcType=INTEGER},
@@ -574,11 +664,17 @@
       <if test="birthday != null">
         birthday = #{birthday,jdbcType=DATE},
       </if>
-      <if test="weixin != null">
-        weixin = #{weixin,jdbcType=VARCHAR},
+      <if test="weiXin != null">
+        wei_xin = #{weiXin,jdbcType=VARCHAR},
       </if>
       <if test="qq != null">
         qq = #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="nation != null">
+        nation = #{nation,jdbcType=VARCHAR},
+      </if>
+      <if test="nativePlace != null">
+        native_place = #{nativePlace,jdbcType=VARCHAR},
       </if>
       <if test="graduateSchool != null">
         graduate_school = #{graduateSchool,jdbcType=VARCHAR},
@@ -609,9 +705,6 @@
       </if>
       <if test="freeTime != null">
         free_time = #{freeTime,jdbcType=VARCHAR},
-      </if>
-      <if test="selfIntroduction != null">
-        self_introduction = #{selfIntroduction,jdbcType=VARCHAR},
       </if>
       <if test="pushTime != null">
         push_time = #{pushTime,jdbcType=TIMESTAMP},
@@ -655,7 +748,51 @@
       <if test="createTime != null">
         create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="selfIntroduction != null">
+        self_introduction = #{selfIntroduction,jdbcType=LONGVARCHAR},
+      </if>
     </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.lyx.undergraduatejob.pojo.Resume">
+    update resume
+    set user_id = #{userId,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
+      avatar = #{avatar,jdbcType=VARCHAR},
+      age = #{age,jdbcType=INTEGER},
+      gender = #{gender,jdbcType=INTEGER},
+      phone = #{phone,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      birthday = #{birthday,jdbcType=DATE},
+      wei_xin = #{weiXin,jdbcType=VARCHAR},
+      qq = #{qq,jdbcType=VARCHAR},
+      nation = #{nation,jdbcType=VARCHAR},
+      native_place = #{nativePlace,jdbcType=VARCHAR},
+      graduate_school = #{graduateSchool,jdbcType=VARCHAR},
+      specialty = #{specialty,jdbcType=VARCHAR},
+      education = #{education,jdbcType=VARCHAR},
+      job = #{job,jdbcType=VARCHAR},
+      job_type = #{jobType,jdbcType=VARCHAR},
+      salary = #{salary,jdbcType=INTEGER},
+      close_type = #{closeType,jdbcType=INTEGER},
+      job_address = #{jobAddress,jdbcType=VARCHAR},
+      part_full = #{partFull,jdbcType=INTEGER},
+      free_time = #{freeTime,jdbcType=VARCHAR},
+      push_time = #{pushTime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=INTEGER},
+      push_status = #{pushStatus,jdbcType=INTEGER},
+      aul_status = #{aulStatus,jdbcType=INTEGER},
+      resume_url = #{resumeUrl,jdbcType=VARCHAR},
+      skill1 = #{skill1,jdbcType=VARCHAR},
+      skill2 = #{skill2,jdbcType=VARCHAR},
+      skill3 = #{skill3,jdbcType=VARCHAR},
+      skill4 = #{skill4,jdbcType=VARCHAR},
+      work_experience = #{workExperience,jdbcType=INTEGER},
+      resume_vip = #{resumeVip,jdbcType=INTEGER},
+      vip_start_time = #{vipStartTime,jdbcType=TIMESTAMP},
+      vip_end_time = #{vipEndTime,jdbcType=TIMESTAMP},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      self_introduction = #{selfIntroduction,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.lyx.undergraduatejob.pojo.Resume">
@@ -668,8 +805,10 @@
       phone = #{phone,jdbcType=VARCHAR},
       email = #{email,jdbcType=VARCHAR},
       birthday = #{birthday,jdbcType=DATE},
-      weixin = #{weixin,jdbcType=VARCHAR},
+      wei_xin = #{weiXin,jdbcType=VARCHAR},
       qq = #{qq,jdbcType=VARCHAR},
+      nation = #{nation,jdbcType=VARCHAR},
+      native_place = #{nativePlace,jdbcType=VARCHAR},
       graduate_school = #{graduateSchool,jdbcType=VARCHAR},
       specialty = #{specialty,jdbcType=VARCHAR},
       education = #{education,jdbcType=VARCHAR},
@@ -680,7 +819,6 @@
       job_address = #{jobAddress,jdbcType=VARCHAR},
       part_full = #{partFull,jdbcType=INTEGER},
       free_time = #{freeTime,jdbcType=VARCHAR},
-      self_introduction = #{selfIntroduction,jdbcType=VARCHAR},
       push_time = #{pushTime,jdbcType=TIMESTAMP},
       status = #{status,jdbcType=INTEGER},
       push_status = #{pushStatus,jdbcType=INTEGER},

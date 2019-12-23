@@ -22,9 +22,13 @@ public class Resume implements Serializable {
 
     private Date birthday;
 
-    private String weixin;
+    private String weiXin;
 
     private String qq;
+
+    private String nation;
+
+    private String nativePlace;
 
     private String graduateSchool;
 
@@ -45,8 +49,6 @@ public class Resume implements Serializable {
     private Integer partFull;
 
     private String freeTime;
-
-    private String selfIntroduction;
 
     private Date pushTime;
 
@@ -75,6 +77,8 @@ public class Resume implements Serializable {
     private Date vipEndTime;
 
     private Date createTime;
+
+    private String selfIntroduction;
 
     private static final long serialVersionUID = 1L;
 
@@ -150,12 +154,12 @@ public class Resume implements Serializable {
         this.birthday = birthday;
     }
 
-    public String getWeixin() {
-        return weixin;
+    public String getWeiXin() {
+        return weiXin;
     }
 
-    public void setWeixin(String weixin) {
-        this.weixin = weixin;
+    public void setWeiXin(String weiXin) {
+        this.weiXin = weiXin;
     }
 
     public String getQq() {
@@ -164,6 +168,22 @@ public class Resume implements Serializable {
 
     public void setQq(String qq) {
         this.qq = qq;
+    }
+
+    public String getNation() {
+        return nation;
+    }
+
+    public void setNation(String nation) {
+        this.nation = nation;
+    }
+
+    public String getNativePlace() {
+        return nativePlace;
+    }
+
+    public void setNativePlace(String nativePlace) {
+        this.nativePlace = nativePlace;
     }
 
     public String getGraduateSchool() {
@@ -244,14 +264,6 @@ public class Resume implements Serializable {
 
     public void setFreeTime(String freeTime) {
         this.freeTime = freeTime;
-    }
-
-    public String getSelfIntroduction() {
-        return selfIntroduction;
-    }
-
-    public void setSelfIntroduction(String selfIntroduction) {
-        this.selfIntroduction = selfIntroduction;
     }
 
     public Date getPushTime() {
@@ -366,6 +378,14 @@ public class Resume implements Serializable {
         this.createTime = createTime;
     }
 
+    public String getSelfIntroduction() {
+        return selfIntroduction;
+    }
+
+    public void setSelfIntroduction(String selfIntroduction) {
+        this.selfIntroduction = selfIntroduction;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -381,8 +401,10 @@ public class Resume implements Serializable {
         sb.append(", phone=").append(phone);
         sb.append(", email=").append(email);
         sb.append(", birthday=").append(birthday);
-        sb.append(", weixin=").append(weixin);
+        sb.append(", weiXin=").append(weiXin);
         sb.append(", qq=").append(qq);
+        sb.append(", nation=").append(nation);
+        sb.append(", nativePlace=").append(nativePlace);
         sb.append(", graduateSchool=").append(graduateSchool);
         sb.append(", specialty=").append(specialty);
         sb.append(", education=").append(education);
@@ -393,7 +415,6 @@ public class Resume implements Serializable {
         sb.append(", jobAddress=").append(jobAddress);
         sb.append(", partFull=").append(partFull);
         sb.append(", freeTime=").append(freeTime);
-        sb.append(", selfIntroduction=").append(selfIntroduction);
         sb.append(", pushTime=").append(pushTime);
         sb.append(", status=").append(status);
         sb.append(", pushStatus=").append(pushStatus);
@@ -408,6 +429,7 @@ public class Resume implements Serializable {
         sb.append(", vipStartTime=").append(vipStartTime);
         sb.append(", vipEndTime=").append(vipEndTime);
         sb.append(", createTime=").append(createTime);
+        sb.append(", selfIntroduction=").append(selfIntroduction);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

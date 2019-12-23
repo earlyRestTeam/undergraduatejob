@@ -1,10 +1,16 @@
 package com.lyx.undergraduatejob.controlles;
 
 import com.alibaba.fastjson.JSONObject;
+import com.lyx.undergraduatejob.pojo.Resume;
 import com.lyx.undergraduatejob.pojo.Users;
+import com.lyx.undergraduatejob.pojo.WorkExperience;
+import com.lyx.undergraduatejob.services.impl.ResumeServicesImp;
 import com.lyx.undergraduatejob.services.impl.UserServicesImpl;
+import com.lyx.undergraduatejob.services.impl.WorkExperienceServicesImpl;
 import com.lyx.undergraduatejob.utils.APIResult;
 import com.lyx.undergraduatejob.utils.StaticPool;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
@@ -13,13 +19,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 import java.util.Map;
 
 @Controller
 public class CandidateController {
+    Logger logger = LoggerFactory.getLogger(CandidateController.class);
 
     @Autowired
     UserServicesImpl userServices;
+    @Autowired
+    ResumeServicesImp resumeServicesImp;
+    @Autowired
+    WorkExperienceServicesImpl workExperienceServices;
 
     @RequestMapping("/user/candidate_applied_job")
     public String candidate_applied_job(){
@@ -113,6 +125,22 @@ public class CandidateController {
         Users users = userServices.queryUserById(1);
         System.out.println(users);
         request.setAttribute("users",users);
+
+        Resume resume = resumeServicesImp.queryResumeByUserId(userId);
+        System.out.println("我的简历：" + resume);
+        if(resume == null){
+            logger.warn("服务器繁忙，未找到数据");
+            throw new RuntimeException("error");
+        }
+        request.setAttribute("resume",resume);
+
+
+        List<WorkExperience> workExperienceList = workExperienceServices.selectWorkExByUserId(userId);
+        if(workExperienceList != null && workExperienceList.size() > 0){
+            request.setAttribute("workExperienceList",workExperienceList);
+        }
+
+
         return "/dashboard/candidate_resume";
     }
 }
