@@ -50,6 +50,8 @@ public class Resume implements Serializable {
 
     private String freeTime;
 
+    private String selfIntroduction;
+
     private Date pushTime;
 
     private Integer status;
@@ -77,8 +79,6 @@ public class Resume implements Serializable {
     private Date vipEndTime;
 
     private Date createTime;
-
-    private String selfIntroduction;
 
     private static final long serialVersionUID = 1L;
 
@@ -266,6 +266,14 @@ public class Resume implements Serializable {
         this.freeTime = freeTime;
     }
 
+    public String getSelfIntroduction() {
+        return selfIntroduction;
+    }
+
+    public void setSelfIntroduction(String selfIntroduction) {
+        this.selfIntroduction = selfIntroduction;
+    }
+
     public Date getPushTime() {
         return pushTime;
     }
@@ -378,14 +386,6 @@ public class Resume implements Serializable {
         this.createTime = createTime;
     }
 
-    public String getSelfIntroduction() {
-        return selfIntroduction;
-    }
-
-    public void setSelfIntroduction(String selfIntroduction) {
-        this.selfIntroduction = selfIntroduction;
-    }
-
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -415,6 +415,7 @@ public class Resume implements Serializable {
         sb.append(", jobAddress=").append(jobAddress);
         sb.append(", partFull=").append(partFull);
         sb.append(", freeTime=").append(freeTime);
+        sb.append(", selfIntroduction=").append(selfIntroduction);
         sb.append(", pushTime=").append(pushTime);
         sb.append(", status=").append(status);
         sb.append(", pushStatus=").append(pushStatus);
@@ -429,7 +430,6 @@ public class Resume implements Serializable {
         sb.append(", vipStartTime=").append(vipStartTime);
         sb.append(", vipEndTime=").append(vipEndTime);
         sb.append(", createTime=").append(createTime);
-        sb.append(", selfIntroduction=").append(selfIntroduction);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

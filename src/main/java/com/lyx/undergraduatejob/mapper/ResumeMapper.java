@@ -16,21 +16,15 @@ public interface ResumeMapper {
 
     int insertSelective(Resume record);
 
-    List<Resume> selectByExampleWithBLOBs(ResumeExample example);
-
     List<Resume> selectByExample(ResumeExample example);
 
     Resume selectByPrimaryKey(Integer id);
 
     int updateByExampleSelective(@Param("record") Resume record, @Param("example") ResumeExample example);
 
-    int updateByExampleWithBLOBs(@Param("record") Resume record, @Param("example") ResumeExample example);
-
     int updateByExample(@Param("record") Resume record, @Param("example") ResumeExample example);
 
     int updateByPrimaryKeySelective(Resume record);
-
-    int updateByPrimaryKeyWithBLOBs(Resume record);
 
     int updateByPrimaryKey(Resume record);
 }

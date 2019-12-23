@@ -1662,6 +1662,76 @@ public class ResumeExample {
             return (Criteria) this;
         }
 
+        public Criteria andSelfIntroductionIsNull() {
+            addCriterion("self_introduction is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSelfIntroductionIsNotNull() {
+            addCriterion("self_introduction is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSelfIntroductionEqualTo(String value) {
+            addCriterion("self_introduction =", value, "selfIntroduction");
+            return (Criteria) this;
+        }
+
+        public Criteria andSelfIntroductionNotEqualTo(String value) {
+            addCriterion("self_introduction <>", value, "selfIntroduction");
+            return (Criteria) this;
+        }
+
+        public Criteria andSelfIntroductionGreaterThan(String value) {
+            addCriterion("self_introduction >", value, "selfIntroduction");
+            return (Criteria) this;
+        }
+
+        public Criteria andSelfIntroductionGreaterThanOrEqualTo(String value) {
+            addCriterion("self_introduction >=", value, "selfIntroduction");
+            return (Criteria) this;
+        }
+
+        public Criteria andSelfIntroductionLessThan(String value) {
+            addCriterion("self_introduction <", value, "selfIntroduction");
+            return (Criteria) this;
+        }
+
+        public Criteria andSelfIntroductionLessThanOrEqualTo(String value) {
+            addCriterion("self_introduction <=", value, "selfIntroduction");
+            return (Criteria) this;
+        }
+
+        public Criteria andSelfIntroductionLike(String value) {
+            addCriterion("self_introduction like", value, "selfIntroduction");
+            return (Criteria) this;
+        }
+
+        public Criteria andSelfIntroductionNotLike(String value) {
+            addCriterion("self_introduction not like", value, "selfIntroduction");
+            return (Criteria) this;
+        }
+
+        public Criteria andSelfIntroductionIn(List<String> values) {
+            addCriterion("self_introduction in", values, "selfIntroduction");
+            return (Criteria) this;
+        }
+
+        public Criteria andSelfIntroductionNotIn(List<String> values) {
+            addCriterion("self_introduction not in", values, "selfIntroduction");
+            return (Criteria) this;
+        }
+
+        public Criteria andSelfIntroductionBetween(String value1, String value2) {
+            addCriterion("self_introduction between", value1, value2, "selfIntroduction");
+            return (Criteria) this;
+        }
+
+        public Criteria andSelfIntroductionNotBetween(String value1, String value2) {
+            addCriterion("self_introduction not between", value1, value2, "selfIntroduction");
+            return (Criteria) this;
+        }
+
         public Criteria andPushTimeIsNull() {
             addCriterion("push_time is null");
             return (Criteria) this;
