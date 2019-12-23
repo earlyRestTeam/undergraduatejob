@@ -24,7 +24,7 @@ import java.util.Map;
  * @Version V1.0
  */
 @Service
-public class AutStudnetServiceImpl implements IAutStudentService {
+public class AutStudentServiceImpl implements IAutStudentService {
     Logger logger = LoggerFactory.getLogger(IJobServices.class);
     @Autowired
     AutStudentMapper autStudentMapper;

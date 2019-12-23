@@ -1,7 +1,9 @@
 package com.lyx.undergraduatejob.controlles;
 
 import com.lyx.undergraduatejob.pojo.AutCompany;
+import com.lyx.undergraduatejob.pojo.AutStudent;
 import com.lyx.undergraduatejob.services.impl.AutCompanyServiceImpl;
+import com.lyx.undergraduatejob.services.impl.AutStudentServiceImpl;
 import com.lyx.undergraduatejob.utils.StaticPool;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,7 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
-import java.awt.*;
 import java.util.List;
 
 @Controller
@@ -18,6 +19,9 @@ public class AdminController {
 
     @Autowired
     AutCompanyServiceImpl autCompanyService;
+
+    @Autowired
+    AutStudentServiceImpl autStudnetService;
 
     /**
      * 职位审核管理
@@ -56,7 +60,10 @@ public class AdminController {
      * @return
      */
     @RequestMapping("authentication-student")
-    public String authentication_student() {
+    public String authentication_student(HttpServletRequest request) {
+        AutStudent autStudnet = new AutStudent();
+        List<AutStudent> autStudentList = autStudnetService.queryAutStudentBack(autStudnet);
+        request.setAttribute("list",autStudentList);
         return "/admin/authentication-student";
     }
     /**

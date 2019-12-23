@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="utf-8" />
         <title>Dashoon - Responsive Bootstrap 4 Admin Dashboard</title>
@@ -281,10 +281,10 @@
                                 </a>
                                 <ul class="nav-second-level" aria-expanded="false">
                                     <li>
-                                        <a href="audit-job">职位审核管理</a>
+                                        <a href="/admin/audit-job">职位审核管理</a>
                                     </li>
                                     <li>
-                                        <a href="audit-resume">简历审核管理</a>
+                                        <a href="/admin/audit-resume">简历审核管理</a>
                                     </li>
                                 </ul>
                             </li>
@@ -297,10 +297,10 @@
                                 </a>
                                 <ul class="nav-second-level" aria-expanded="false">
                                     <li>
-                                        <a href="manager-student">学生管理</a>
+                                        <a href="/admin/manager-student">学生管理</a>
                                     </li>
                                     <li>
-                                        <a href="manager-company">企业管理</a>
+                                        <a href="/admin/manager-company">企业管理</a>
                                     </li>
                                 </ul>
                             </li>
@@ -313,10 +313,10 @@
                                 </a>
                                 <ul class="nav-second-level" aria-expanded="false">
                                     <li>
-                                        <a href="authentication-student">学生认证管理</a>
+                                        <a href="/admin/authentication-student">学生认证管理</a>
                                     </li>
                                     <li>
-                                        <a href="authentication-company">企业认证管理</a>
+                                        <a href="/admin/authentication-company">企业认证管理</a>
                                     </li>
                                 </ul>
                             </li>
@@ -329,7 +329,7 @@
                                 </a>
                                 <ul class="nav-second-level" aria-expanded="false">
                                     <li>
-                                        <a href="manager-advertising">广告管理</a>
+                                        <a href="/admin/manager-advertising">广告管理</a>
                                     </li>
                                 </ul>
                             </li>
@@ -342,7 +342,7 @@
                                 </a>
                                 <ul class="nav-second-level" aria-expanded="false">
                                     <li>
-                                        <a href="manager-comment">评论管理</a>
+                                        <a href="/admin/manager-comment">评论管理</a>
                                     </li>
                                 </ul>
                             </li>
@@ -355,7 +355,7 @@
                                 </a>
                                 <ul class="nav-second-level" aria-expanded="false">
                                     <li>
-                                        <a href="manager-complaint">投诉管理</a>
+                                        <a href="/admin/manager-complaint">投诉管理</a>
                                     </li>
                                 </ul>
                             </li>
@@ -398,346 +398,8 @@
                                 </div>
                             </div>
                         </div>     
-                        <!-- end page title --> 
+                        <!-- end page title -->
 
-                        <div class="row">
-                            <div class="col-xl-12 stretch-card">
-                                <div class="card-box card-gradient">
-                                    <div class="row">
-                                        <div class="col-xl-4 p-20"> 
-                                            <div class="row">
-                                                <div class="col-6"> 
-                                                    <h4 class="header-title">Total Earning</h4>
-                                                    <h1>$5685K</h1>
-                                                </div>
-                                                <div class="col-6"> 
-                                                    <div class="float-right">
-                                                        <h4 class="header-title">Total Member</h4>
-                                                        <h1>78445K</h1>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="p-process">
-                                                <p>Work in Process 100%</p>
-                                                <div class="progress mb-7" style="height: 3px;">
-                                                    <div class="progress-bar bg-info" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-6"> 
-                                                    <h4 class="header-title">Available Space</h4>
-                                                    <h1>4456TB</h1>
-                                                </div>
-                                                <div class="col-6"> 
-                                                    <div class="float-right">
-                                                        <h4 class="header-title">Used Space</h4>
-                                                        <h1>2248TB</h1>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-4 p-20">    
-                                            <div class="dropdown float-right">
-                                                <a href="#" class="dropdown-toggle arrow-none card-drop" data-toggle="dropdown" aria-expanded="false"> 2019 <i class="mdi mdi-chevron-down"></i>
-                                                </a>
-                                                <div class="dropdown-menu dropdown-menu-right">
-                                                    <!-- item-->
-                                                    <a href="javascript:void(0);" class="dropdown-item">2018</a>
-                                                    <!-- item-->
-                                                    <a href="javascript:void(0);" class="dropdown-item">2017</a>
-                                                    <!-- item-->
-                                                    <a href="javascript:void(0);" class="dropdown-item">2016</a>
-                                                </div>
-                                            </div>
-                                            <h4 class="header-title mb-3">Upload/Download Chart</h4>
-                                            <div class="chartjs-chart product-chart">
-                                                <canvas id="product-chart"></canvas>
-                                            </div> 
-                                        </div>
-                                        <div class="col-xl-4 p-20"> 
-                                            <div class="dropdown float-right">
-                                                <a href="#" class="dropdown-toggle arrow-none card-drop" data-toggle="dropdown" aria-expanded="false"> 2019 <i class="mdi mdi-chevron-down"></i></a>
-                                                <div class="dropdown-menu dropdown-menu-right">
-                                                    <!-- item-->
-                                                    <a href="javascript:void(0);" class="dropdown-item">2018</a>
-                                                    <!-- item-->
-                                                    <a href="javascript:void(0);" class="dropdown-item">2017</a>
-                                                    <!-- item-->
-                                                    <a href="javascript:void(0);" class="dropdown-item">2016</a>
-                                                </div>
-                                            </div>
-                                            <h4 class="header-title mb-3">Upload/Download Percent</h4>
-                                            
-                                            <div class="dudash chartjs-chart dash-doughnut">
-                                                <canvas id="doughnut"></canvas>
-                                            </div>
-    
-                                            <div class="doughnut-footer">
-                                                <i class="mdi mdi-stop-circle-outline text-pink"></i> Download 60% <span class="float-right"><i class="mdi mdi-stop-circle-outline text-info"></i> Upload 40%</span>
-                                            </div>
-                                        </div>
-                                    </div>           
-                                </div> <!-- end card-box-->
-                            </div> <!-- end col -->
-                        </div>
-                        <!-- end row -->
-
-                        <div class="row">
-                            <div class="col-xl-8 stretch-card">
-                                <div class="card-box">
-                                    <div class="dropdown float-right">
-                                        <a href="#" class="dropdown-toggle arrow-none card-drop" data-toggle="dropdown" aria-expanded="false">
-                                            <i class="mdi mdi-dots-horizontal"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right">
-                                            <!-- item-->
-                                            <a href="javascript:void(0);" class="dropdown-item">Action</a>
-                                            <!-- item-->
-                                            <a href="javascript:void(0);" class="dropdown-item">Another action</a>
-                                            <!-- item-->
-                                            <a href="javascript:void(0);" class="dropdown-item">omething else here</a>
-                                        </div>
-                                    </div>
-                                    <h4 class="header-title mb-4">Transaction History</h4>
-        
-                                    <div class="table-responsive">
-                                        <table class="table table-centered table-hover mb-0">
-                                            <thead>
-                                                <tr>
-                                                    <th class="border-top-0">User Name</th>
-                                                    <th class="border-top-0">Payment Method</th>
-                                                    <th class="border-top-0">Date</th>
-                                                    <th class="border-top-0">Amount</th>
-                                                    <th class="border-top-0">Status</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <img src="/admin/images/users/avatar-6.jpg" alt="user-pic" class="rounded-circle avatar-sm bx-shadow-lg" />
-                                                        <span class="ml-2"> Grant S. Gooch</span>
-                                                    </td>
-                                                    <td>Cash on delivery</td>
-                                                    <td>27.03.2018</td>
-                                                    <td>$34050.98</td>
-                                                    <td><span class="badge badge-pill badge-success">Approved</span></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <img src="/admin/images/users/avatar-2.jpg" alt="user-pic" class="rounded-circle avatar-sm bx-shadow-lg" />
-                                                        <span class="ml-2"> Christopher Keel</span>
-                                                    </td>
-                                                    <td>Master Card</td>
-                                                    <td>28.03.2018</td>
-                                                    <td>$11254.25</td>
-                                                    <td><span class="badge badge-pill badge-danger">Pending</span></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <img src="/admin/images/users/avatar-3.jpg" alt="user-pic" class="rounded-circle avatar-sm bx-shadow-lg" />
-                                                        <span class="ml-2">Leo R. Berry</span>
-                                                    </td>
-                                                    <td>Internet banking</td>
-                                                    <td>28.03.2018</td>
-                                                    <td>$14544.57</td>
-                                                    <td><span class="badge badge-pill badge-success">Approved</span></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <img src="/admin/images/users/avatar-4.jpg" alt="user-pic" class="rounded-circle avatar-sm bx-shadow-lg" />
-                                                        <span class="ml-2">Thomas Arnold</span>
-                                                    </td>
-                                                    <td>Credit Card</td>
-                                                    <td>29.03.2018</td>
-                                                    <td>$23005.89</td>
-                                                    <td><span class="badge badge-pill badge-danger">Pending</span></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <img src="/admin/images/users/avatar-5.jpg" alt="user-pic" class="rounded-circle avatar-sm bx-shadow-lg" />
-                                                        <span class="ml-2">William Weidner</span>
-                                                    </td>
-                                                    <td>Cash on delivery</td>
-                                                    <td>27.03.2018</td>
-                                                    <td>$34545.98</td>
-                                                    <td><span class="badge badge-pill badge-success">Approved</span></td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-        
-                                </div> <!-- end card-box-->
-                            </div> <!-- end col-->
-
-                            <div class="col-xl-4 stretch-card">
-                                <div class="card-box">
-                                    <div class="dropdown float-right">
-                                        <a href="#" class="dropdown-toggle arrow-none card-drop" data-toggle="dropdown" aria-expanded="false">
-                                            <i class="mdi mdi-dots-horizontal"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right">
-                                            <!-- item-->
-                                            <a href="javascript:void(0);" class="dropdown-item">Action</a>
-                                            <!-- item-->
-                                            <a href="javascript:void(0);" class="dropdown-item">Another action</a>
-                                            <!-- item-->
-                                            <a href="javascript:void(0);" class="dropdown-item">omething else here</a>
-                                        </div>
-                                    </div>
-                                    <h4 class="header-title mb-3">Statistics</h4>
-                                    <div class="row text-center">
-                                        <div class="col-sm-4 mb-3">
-                                            <h3 class="font-weight-light">19,785</h3>
-                                            <p class="text-muted text-overflow">Add Views</p>
-                                        </div>
-                                        <div class="col-sm-4 mb-3">
-                                            <h3 class="font-weight-light">$3,787</h3>
-                                            <p class="text-muted text-overflow">Est. Earning</p>
-                                        </div>
-                                        <div class="col-sm-4 mb-3">
-                                            <h3 class="font-weight-light">$4,548</h3>
-                                            <p class="text-muted text-overflow">Total Cost</p>
-                                        </div>
-                                    </div>
-                                    <div class="chartjs-chart line-chart-static">
-                                        <canvas id="line-chart-static"></canvas>    
-                                    </div>  
-                                </div> <!-- end card-box -->
-                            </div> <!-- end col -->
-                        </div>
-                        <!-- end row -->
-
-                        <div class="row">
-                            <div class="col-xl-4 stretch-card">
-                                <div class="card-box">
-                                    <div class="dropdown float-right">
-                                        <a href="#" class="dropdown-toggle arrow-none card-drop" data-toggle="dropdown" aria-expanded="false">
-                                            <i class="mdi mdi-dots-horizontal"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right">
-                                            <!-- item-->
-                                            <a href="javascript:void(0);" class="dropdown-item">Action</a>
-                                            <!-- item-->
-                                            <a href="javascript:void(0);" class="dropdown-item">Another action</a>
-                                            <!-- item-->
-                                            <a href="javascript:void(0);" class="dropdown-item">omething else here</a>
-                                        </div>
-                                    </div>
-                                    <h4 class="header-title mb-3">Activity Log</h4>
-                                    <div class="vertical-timeline-wrapper">
-                                        <div class="timeline-vertical dashboard-timeline">
-                                            <div class="activity-log">
-                                                <p class="log-name">Donald D. Kane</p>
-                                                <div class="log-details">We got monthy payment from Exclucive clients. Via Paypal, Skrill, MasterCard.
-                                                </div>
-                                                <small class="log-time">Just Now</small>
-                                            </div>
-                                            <div class="activity-log">
-                                                <p class="log-name">Courtney S. Parker</p>
-                                                <div class="log-details">We are start working not only USA Project & working on all other country
-                                                    <div class="grouped-images mt-2">
-                                                        <img class="img-sm" src="/admin/images/users/avatar-5.jpg" alt="Profile Image" data-toggle="tooltip" title="" data-original-title="William Weidner">
-                                                        <img class="img-sm" src="/admin/images/users/avatar-4.jpg" alt="Profile Image" data-toggle="tooltip" title="" data-original-title="Grant S. Gooch">
-                                                        <img class="img-sm" src="/admin/images/users/avatar-3.jpg" alt="Profile Image" data-toggle="tooltip" title="" data-original-title="Leo R. Berry">
-                                                        <img class="img-sm" src="/admin/images/users/avatar-2.jpg" alt="Profile Image" data-toggle="tooltip" title="" data-original-title="Thomas Arnold">
-                                                        <img class="img-sm" src="/admin/images/users/avatar-1.jpg" alt="Profile Image" data-toggle="tooltip" title="" data-original-title="William Weidner">
-                                                        <span class="plus-text img-sm">+12</span>
-                                                    </div>
-                                                </div>
-                                                <small class="log-time">5 mins Ago</small>
-                                            </div>
-                                            <div class="activity-log">
-                                                <p class="log-name">Daniel C. Stewart</p>
-                                                <div class="log-details">Report has been updated. Approved your request.
-                                                    <div class="wrapper mt-2">
-                                                        <button type="button" class="btn btn-xs btn-primary">Approve</button>
-                                                        <button type="button" class="btn btn-xs btn-danger">Reject</button>
-                                                    </div>
-                                                </div>
-                                                <small class="log-time">3 Hours Ago</small>
-                                            </div>
-                                            <div class="activity-log">
-                                                <p class="log-name">William A. Weidner</p>
-                                                <div class="log-details">We are done process of submitted project</div>
-                                                <small class="log-time">7 Hours Ago</small>
-                                            </div>
-                                            <div class="activity-log">
-                                                <p class="log-name">Franklin I. Hall</p>
-                                                <div class="log-details">We are completed a theme development.</div>
-                                                <small class="log-time">8 Hours Ago</small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <a class="border-top activity py-2 d-block text-gray" href="#">
-                                        <small class="font-weight-medium"><i class="mdi mdi-chevron-down mr-2"></i> View All</small>
-                                    </a> 
-                                </div> <!-- end card-box-->
-                            </div> <!-- end col -->
-
-                            <div class="col-xl-4 stretch-card">
-                                <div class="card-box">
-                                    <div class="dropdown float-right">
-                                        <a href="#" class="dropdown-toggle arrow-none card-drop" data-toggle="dropdown" aria-expanded="false">
-                                            <i class="mdi mdi-dots-horizontal"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right">
-                                            <!-- item-->
-                                            <a href="javascript:void(0);" class="dropdown-item">Action</a>
-                                            <!-- item-->
-                                            <a href="javascript:void(0);" class="dropdown-item">Another action</a>
-                                            <!-- item-->
-                                            <a href="javascript:void(0);" class="dropdown-item">omething else here</a>
-                                        </div>
-                                    </div>
-                                    <h4 class="header-title mb-3">Earning Goal</h4>
-                                    <div class="row deposit-balance-card">
-                                        <div class="col-md-12 mt-2 text-center m-value">
-                                            <input data-plugin="knob" data-width="150" data-height="150" data-linecap=round data-fgColor="#FF679B" value="70" data-skin="tron" data-angleOffset="180" data-readOnly=true data-thickness=".1" />
-                                        </div>
-                                        <div class="col-md-12 text-center mt-2">
-                                            <h3 class="font-weight-medium">$70,125</h3></div>
-                                        <div class="col-12">
-                                            <button type="button" class="btn btn-sm btn-block mt-2 btn-primary">View Transactions</button>
-                                        </div>
-                                        <div class="deposit-balance-card-footer">
-                                            <div class="footer-col col"><small>Goal: $100k</small>
-                                                <div class="progress progress-slim mt-2">
-                                                    <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar" style="width: 70%" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100"></div>
-                                                </div>
-                                            </div>
-                                            <div class="footer-col col"><small>Duration: 30 Days</small>
-                                                <div class="progress progress-slim mt-2">
-                                                    <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar" style="width: 25%" aria-valuenow="76" aria-valuemin="0" aria-valuemax="100"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>      
-                                </div> <!-- end card-box-->
-                            </div> <!-- end col -->
-
-                            <div class="col-xl-4 stretch-card">
-                                <div class="card-box">
-                                    <div class="dropdown float-right">
-                                        <a href="#" class="dropdown-toggle arrow-none card-drop" data-toggle="dropdown" aria-expanded="false">
-                                            <i class="mdi mdi-dots-horizontal"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right">
-                                            <!-- item-->
-                                            <a href="javascript:void(0);" class="dropdown-item">Action</a>
-                                            <!-- item-->
-                                            <a href="javascript:void(0);" class="dropdown-item">Another action</a>
-                                            <!-- item-->
-                                            <a href="javascript:void(0);" class="dropdown-item">omething else here</a>
-                                        </div>
-                                    </div>
-                                    <h4 class="header-title mb-3">Calendar</h4>
-                                    <div class="calendar2">
-                                        <div id="inline-datepicker-example" class="datepicker"></div>
-                                    </div>     
-                                </div> <!-- end card-box-->
-                            </div> <!-- end col -->
-                        </div>
-                        <!-- end row -->
 
                         <div class="row">
                             <div class="col-xl-12 stretch-card">
@@ -755,123 +417,93 @@
                                             <a href="javascript:void(0);" class="dropdown-item">omething else here</a>
                                         </div>
                                     </div>
-                                    <h4 class="header-title mb-4">Latest Tickets</h4>
-        
+                                    <h4 class="header-title mb-4">学生认证表</h4>
+
+                                    <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h4 class="modal-title" id="myModalLabel">图片详情</h4>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <h5>学生认证图片</h5>
+                                                    <hr>
+                                                    <h5>身份证/学生证照片</h5>
+                                                    <ul id="picList">
+                                                        <!--<li><img th:src="${pic.pictureUrl}"></li>-->
+                                                    </ul>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-primary waves-effect waves-light" data-dismiss="modal">确定</button>
+                                                    <!--<button type="button" class="btn btn-light waves-effect"></button>-->
+                                                </div>
+                                            </div><!-- /.modal-content -->
+                                        </div><!-- /.modal-dialog -->
+                                    </div>
+
+                                    <div >
+                                        <form class="form-inline" style="float: right" action="/aut/query_aut_student" method="post">
+                                            <input th:value="${proposerName}" type="text" class="form-control" placeholder="申请人姓名" name="proposerName">
+                                            <input th:value="${userId}" type="text" class="form-control" placeholder="申请人ID" name="userId">
+                                            <select onchange="fn()" th:value="${status}" type="text" class="form-control" style="width:188px" placeholder="状态" id="status" name="status">
+                                                <option value="" th:selected="${status eq 0}">全部</option>
+                                                <option value="0" th:selected="${status eq 0}">不通过</option>
+                                                <option value="1" th:selected="${status eq 1}">通过</option>
+                                                <option value="2" th:selected="${status eq 2}">未审核</option>
+                                            </select>
+                                            <button style="background-color: lightskyblue;height: 38px;width: 38px;border: lightskyblue;" class="" type="submit"><i class="fa fa-search"></i></button>
+                                        </form>
+                                    </div>
+
+
                                     <div class="table-responsive">
                                         <table class="table table-centered table-hover mb-0" id="datatable">
                                             <thead>
-                                                <tr>
-                                                    <th class="border-top-0">User Name</th>
-                                                    <th class="border-top-0">Ticket ID</th>
-                                                    <th class="border-top-0">Subject</th>
-                                                    <th class="border-top-0">Mobile No.</th>
-                                                    <th class="border-top-0">Date</th>
-                                                    <th class="border-top-0">Deadline</th>
-                                                    <th class="border-top-0">Priority</th>
-                                                    <th class="border-top-0 text-center">Action</th>
-                                                </tr>
+                                            <tr>
+                                                <th class="border-top-0">ID</th>
+                                                <th class="border-top-0">申请者ID</th>
+                                                <th class="border-top-0">申请者姓名</th>
+                                                <th class="border-top-0">身份证号码</th>
+                                                <th class="border-top-0">手机号码</th>
+                                                <th class="border-top-0">学校</th>
+                                                <th class="border-top-0">学号</th>
+                                                <th class="border-top-0">专业</th>
+                                                <th class="border-top-0">学历</th>
+                                                <th class="border-top-0">毕业状态</th>
+                                                <th class="border-top-0">认证图片</th>
+                                                <th class="border-top-0">创建时间</th>
+                                                <th class="border-top-0">状态</th>
+                                                <th class="border-top-0 text-center">操作</th>
+                                            </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <img src="/admin/images/users/avatar-6.jpg" alt="user-pic" class="rounded-circle avatar-sm bx-shadow-lg" />
-                                                        <span class="ml-2">William Weidner</span>
-                                                    </td>
-                                                    <td>#58454587</td>
-                                                    <td>Office Manager</td>
-                                                    <td>+123456789</td>
-                                                    <td>27.03.2018</td>
-                                                    <td>27.03.2018</td>
-                                                    <td>
-                                                        <div class="progress progress-md">
-                                                            <div class="progress-bar bg-success" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-                                                        </div>
-                                                    </td>
-                                                    <td class="text-center">
-                                                        <a href="" class="badge-info btn-sm mg-y-5" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"><i class="mdi mdi-square-edit-outline"></i></a>
-                                                        <a href="" class="badge-danger btn-sm mg-y-5" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete"><i class="mdi mdi-trash-can"></i></a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <img src="/admin/images/users/avatar-5.jpg" alt="user-pic" class="rounded-circle avatar-sm bx-shadow-lg" />
-                                                        <span class="ml-2">Grant S. Gooch</span>
-                                                    </td>
-                                                    <td>#58584587</td>
-                                                    <td>Support Lead</td>
-                                                    <td>+123456789</td>
-                                                    <td>28.03.2018</td>
-                                                    <td>28.03.2018</td>
-                                                    <td>
-                                                        <div class="progress progress-md">
-                                                            <div class="progress-bar bg-primary" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                                                        </div>
-                                                    </td>
-                                                    <td class="text-center">
-                                                        <a href="" class="badge-info btn-sm mg-y-5" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"><i class="mdi mdi-square-edit-outline"></i></a>
-                                                        <a href="" class="badge-danger btn-sm mg-y-5" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete"><i class="mdi mdi-trash-can"></i></a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <img src="/admin/images/users/avatar-4.jpg" alt="user-pic" class="rounded-circle avatar-sm bx-shadow-lg" />
-                                                        <span class="ml-2">Leo R. Berry</span>
-                                                    </td>
-                                                    <td>#58447587</td>
-                                                    <td>Sales Assistant</td>
-                                                    <td>+123456789</td>
-                                                    <td>28.03.2018</td>
-                                                    <td>28.03.2018</td>
-                                                    <td>
-                                                        <div class="progress progress-md">
-                                                            <div class="progress-bar bg-info" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                                                        </div>
-                                                    </td>
-                                                    <td class="text-center">
-                                                        <a href="" class="badge-info btn-sm mg-y-5" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"><i class="mdi mdi-square-edit-outline"></i></a>
-                                                        <a href="" class="badge-danger btn-sm mg-y-5" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete"><i class="mdi mdi-trash-can"></i></a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <img src="/admin/images/users/avatar-3.jpg" alt="user-pic" class="rounded-circle avatar-sm bx-shadow-lg" />
-                                                        <span class="ml-2">Thomas Arnold</span>
-                                                    </td>
-                                                    <td>#54784587</td>
-                                                    <td>Account Manager</td>
-                                                    <td>+123456789</td>
-                                                    <td>29.03.2018</td>
-                                                    <td>29.03.2018</td>
-                                                    <td>
-                                                        <div class="progress progress-md">
-                                                            <div class="progress-bar bg-warning" role="progressbar" style="width: 35%" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100"></div>
-                                                        </div>
-                                                    </td>
-                                                    <td class="text-center">
-                                                        <a href="" class="badge-info btn-sm mg-y-5" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"><i class="mdi mdi-square-edit-outline"></i></a>
-                                                        <a href="" class="badge-danger btn-sm mg-y-5" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete"><i class="mdi mdi-trash-can"></i></a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <img src="/admin/images/users/avatar-2.jpg" alt="user-pic" class="rounded-circle avatar-sm bx-shadow-lg" />
-                                                        <span class="ml-2">Christopher Keel</span>
-                                                    </td>
-                                                    <td>#58854587</td>
-                                                    <td>System Architect</td>
-                                                    <td>+123456789</td>
-                                                    <td>31.03.2018</td>
-                                                    <td>31.03.2018</td>
-                                                    <td>
-                                                        <div class="progress progress-md">
-                                                            <div class="progress-bar bg-danger" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                                        </div>
-                                                    </td>
-                                                    <td class="text-center">
-                                                        <a href="" class="badge-info btn-sm mg-y-5" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"><i class="mdi mdi-square-edit-outline"></i></a>
-                                                        <a href="" class="badge-danger btn-sm mg-y-5" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete"><i class="mdi mdi-trash-can"></i></a>
-                                                    </td>
-                                                </tr>
+                                            <tr th:each="aut,adStas:${list}">
+                                                <td th:text="${aut.id}"></td>
+                                                <td th:text="${aut.userId}"></td>
+                                                <td th:text="${aut.proposerName}"></td>
+                                                <td th:text="${aut.idCard}"></td>
+                                                <td th:text="${aut.proposerPhone}"></td>
+                                                <td th:text="${aut.school}"></td>
+                                                <td th:text="${aut.studentNum}"></td>
+                                                <td th:text="${aut.specialty}"></td>
+                                                <td th:text="${aut.education}"></td>
+                                                <td class="td-status" th:if="${aut.studentStatus eq 1}"><span class="badge badge-secondary">在校学生</span></td>
+                                                <td class="td-status" th:if="${aut.studentStatus eq 2}"><span class="badge badge-primary">毕业生</span></td>
+                                                <td>
+                                                    <button type="button" class="btn btn-primary waves-effect waves-light" th:onclick="'load_pic('+${aut.id}+')'">图片详情</button>
+                                                </td>
+                                                <td th:text="${#dates.format(aut.createTime,'yyyy-MM-dd')}"></td>
+                                                <td class="td-status" th:if="${aut.status eq 0}"><span class="badge badge-danger">不通过</span></td>
+                                                <td class="td-status" th:if="${aut.status eq 1}"><span class="badge badge-success">通过</span></td>
+                                                <td class="td-status" th:if="${aut.status eq 2}"><span class="badge badge-warning">未审核</span></td>
+                                                <td class="text-center">
+                                                    <a th:onclick="'adopt_shenhe('+${aut.id}+','+${aut.status}+')'" class="badge-info btn-sm mg-y-5" data-toggle="tooltip" data-placement="top" title="" data-original-title="通过"><i class="mdi dripicons-checkmark"></i></a>
+                                                    <a th:onclick="'unadopt_shenhe('+${aut.id}+','+${aut.status}+')'" class="badge-danger btn-sm mg-y-5" data-toggle="tooltip" data-placement="top" title="" data-original-title="不通过"><i class="mdi dripicons-cross"></i></a>
+                                                </td>
+
+                                            </tr>
+
                                             </tbody>
                                         </table>
                                     </div>
@@ -926,6 +558,65 @@
         
         <!-- App js -->
         <script src="/admin/js/app.min.js"></script>
+
+        <script>
+            /*选择状态*/
+            function  fn(){
+                //var     name=$("#item1").find("option:selected").text(); //获取文本值
+                var     name=$("#item1").find("option:selected").val();  //获取value值
+                if(name !==null){
+                    version=name;
+                }
+            }
+            //确认不通过认证
+            function unadopt_shenhe(id,status){
+
+                if (status != 2){console.log(id+"-----"+status);
+                    alert("只能操作未审核的认证!")
+                } else {console.log(id+"-----"+status);
+                    if (confirm("确认不通过？")) {
+                        self.location = "/aut/update_aut_student_status?id="+id+"&status=0";
+                    }
+                }
+
+            }
+            //确认通过认证
+            function adopt_shenhe(id,status){
+
+                if (status != 2){console.log(id+"-----"+status);
+                    alert("只能操作未审核的认证!")
+                } else {console.log(id+"-----"+status);
+                    if (confirm("确认通过？")) {
+                        self.location = "/aut/update_aut_student_status?id="+id+"&status=1";
+                    }
+                }
+
+            }
+            //显示图片详情
+            function load_pic(id) {
+                $.ajax({
+                    url:"/aut/aut_student_pic_load",
+                    type:"POST",
+                    dateType:"json",
+                    data:{
+                        "id":id
+                    },
+                    success:function(data){
+                        var list = data.data
+                        console.log(list);
+                        while ($("#picture").length > 0) {
+                            $("#picture").remove();
+                        }
+                        for (var i = 0; i < list.length; i++) {
+                            console.log(list[i]);
+                            $("#picList").append("<li><img src=\""+list[i].pictureUrl+"\"></li>");
+                        }
+                        $("#myModal").modal('show');
+                    }
+                });
+
+            }
+        </script>
 
     </body>
 </html>
