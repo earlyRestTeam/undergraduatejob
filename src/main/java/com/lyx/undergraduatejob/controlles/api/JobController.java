@@ -23,10 +23,11 @@ public class JobController {
     IJobServices jobServices;
 
     @PostMapping("/getJobs")
-    public APIResult selectJob(@RequestParam(value="start",defaultValue = "0") Integer start,
+    public APIResult selectJob(@RequestParam(value="start",defaultValue = "1") Integer start,
                                @RequestParam(value="pageSize",defaultValue = "12") Integer pageSize,
                                @RequestBody JobSearchEntity entity){
-
+        if(start <= 0)
+            start = 1;
         MyPage myPage = jobServices.selectJobByJobSearchEntityWithCompany(start, pageSize, entity);
 
         return APIResult.genSuccessApiResponse(myPage);

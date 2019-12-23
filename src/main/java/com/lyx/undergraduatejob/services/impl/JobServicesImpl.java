@@ -174,22 +174,33 @@ public class JobServicesImpl implements IJobServices {
         example.createCriteria().andUserIdEqualTo(userId);
         List<ReceiveResume> receiveResumes = receiveResumeMapper.selectByExample(example);
         PageInfo<ReceiveResume> pageInfo = PageInfo.of(receiveResumes);
-        List<Integer> ids = new ArrayList<>();
         List<ReceiveResume> resumes = pageInfo.getList();
-        resumes.forEach(rr -> ids.add(rr.getCompanyId()));
 
-        CompanyExample example1 = new CompanyExample();
-        example1.createCriteria().andIdIn(ids);
+        List<Integer> ids = resumes.stream().map(ReceiveResume::getCompanyId).collect(Collectors.toList());
+//        List<Integer> ids = new ArrayList<>();
+//        resumes.forEach(rr -> ids.add(rr.getCompanyId()));
+        List<Company> cs = null;
+        if(ids.size() > 0){
+            CompanyExample example1 = new CompanyExample();
+            example1.createCriteria().andIdIn(ids);
 
-        List<Company> companies = companyMapper.selectByExample(example1);
-        Map<Integer,Company> map = new HashMap<>();
-        companies.forEach(c->map.put(c.getId(),c));
-        ArrayList<Company> cs = new ArrayList<>();
-//        List<Map<String,Object>> list = new ArrayList<>();
-        for (int i = 0; i < resumes.size(); i++) {
-            cs.add(map.get(resumes.get(i).getCompanyId()) == null
-                    ? new Company() : map.get(resumes.get(i).getCompanyId()));
+
+            List<Company> companies = companyMapper.selectByExample(example1);
+            //转为 map
+            Map<Integer,Company> map = companies.stream().collect(Collectors.toMap(Company::getId,company -> company,(key1,key2)->key1));
+            cs = resumes.stream().map(r -> {
+                return map.get(r.getCompanyId()) == null ? new Company() : map.get(r.getCompanyId());
+            }).collect(Collectors.toList());
         }
+
+//        Map<Integer,Company> map = new HashMap<>();
+//        companies.forEach(c->map.put(c.getId(),c));
+
+//        ArrayList<Company> cs = new ArrayList<>();
+//        for (int i = 0; i < resumes.size(); i++) {
+//            cs.add(map.get(resumes.get(i).getCompanyId()) == null
+//                    ? new Company() : map.get(resumes.get(i).getCompanyId()));
+//        }
 //        pageInfo.
         MyPage page = new MyPage(pageInfo);
         Map<String,Object> res = new HashMap<>();
@@ -302,28 +313,21 @@ public class JobServicesImpl implements IJobServices {
         List<Job> jl = pageInfo.getList();
 //        List<Integer> ids = new ArrayList<>();
 //        jl.forEach(j->ids.add(j.getCompanyId()));
+        List<Company> cs = null;
+        if( !jl.isEmpty()){
+            List<Integer> ids = jl.stream().map(Job::getCompanyId).collect(Collectors.toList());
 
-        List<Integer> ids = jl.stream().map(Job::getId).collect(Collectors.toList());
-
-        CompanyExample example1 = new CompanyExample();
-        example1.createCriteria().andIdIn(ids);
-        List<Company> companies = companyMapper.selectByExample(example1);
-        //加入 map
-        Map<Integer,Company> cMap = companies.stream()
-                .collect(Collectors.toMap(Company::getId,company -> company,(key1,key2)->key1));
-
-        List<Company> cs = jl.stream()
-                .map(j ->
-                    {
-                        Company c = cMap.get(j.getCompanyId());return c == null ? new Company() : c;
-                    }).collect(Collectors.toList());
-//        List<Company> cs = new ArrayList<>();
-//        for (int i = 0; i < jl.size(); i++) {
-//            Job job = jl.get(i);
-//            cs.add(cMap.get(job.getCompanyId()) == null ? new Company() : cMap.get(job.getCompanyId()));
-//        }
-
-
+            CompanyExample example1 = new CompanyExample();
+            example1.createCriteria().andIdIn(ids);
+            List<Company> companies = companyMapper.selectByExample(example1);
+            //加入 map
+            Map<Integer,Company> cMap = companies.stream()
+                    .collect(Collectors.toMap(Company::getId,company -> company,(key1,key2)->key1));
+            //转为11对应
+            cs = jl.stream()
+                    .map(j ->{Company c = cMap.get(j.getCompanyId());return c == null ? new Company() : c;})
+                    .collect(Collectors.toList());
+        }
         Map<String,Object> map = new HashMap<>();
 
         map.put("jobs", jl);

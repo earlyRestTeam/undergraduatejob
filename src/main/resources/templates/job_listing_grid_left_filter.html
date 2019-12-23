@@ -323,7 +323,7 @@
          <option value="asc">升序</option>
         </select>
         <div class="showpro">
-          <a href="login" style="width: 40px;height: 20px"><i class="flaticon-login"></i>搜索</a>
+          <a @click="reSearch" style="width: 40px;height: 20px"><i class="flaticon-login"></i>搜索</a>
         </div>
        </div>
        <div class="tab-content btc_shop_index_content_tabs_main jb_cover">
@@ -333,17 +333,17 @@
            <div class="job_listing_left_fullwidth job_listing_grid_wrapper jb_cover">
             <div class="row">
              <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-              <div class="jp_job_post_side_img">
+              <div @click="toCompany?companyId=1" class="jp_job_post_side_img">
                <img :src="companies[index].logo == null ? '/picture/lt1.png' : companies[index].logo"   alt="post_img" />
 <!--               src="/picture/lt1.png"-->
                <br />
-               <span>{{companies[index].companyName}}</span>
+               <span >{{companies[index].companyName}}</span>
               </div>
               <div class="jp_job_post_right_cont">
-               <h4><a href="#">{{ job.jobTitle }}</a></h4>
+               <h4><a v-bind:href="['/job_single?jobid='+job.id]">{{ job.jobTitle }}</a></h4>
                <ul>
                 <li><i class="flaticon-cash"></i>&nbsp; {{job.salary}}</li>
-                <li><i class="flaticon-location-pointer"></i>&nbsp;{{job.jobDesc}}</li>
+                <li><i class="flaticon-location-pointer"></i>&nbsp;{{job.workAddress}}</li>
                </ul>
               </div>
              </div>
@@ -354,8 +354,8 @@
                  <div class="job_adds_right">
                   <a href="#!"><i class="far fa-heart"></i></a>
                  </div></li>
-                <li><a href="job_single" >{{job.partFull == 1 ? '兼职' : '全职' }}</a></li>
-                <li><a href="#" data-toggle="modal" data-target="#myModal01">应聘</a></li>
+                <li><a v-bind:href="['/job_single?jobid='+job.id]" >{{job.partFull == 1 ? '兼职' : '全职' }}</a></li>
+                <li><a data-toggle="modal" data-target="#myModal01">应聘</a></li>
                </ul>
               </div>
               <div class="modal fade apply_job_popup" id="myModal01" role="dialog">
@@ -1207,6 +1207,10 @@
       alert("操作失败");
      });
     },
+       reSearch:function () {
+           //this.searchEntity.start = 1;
+           this.getJobs(1);
+       }
    },
    computed:{
 
