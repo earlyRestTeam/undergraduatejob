@@ -527,13 +527,14 @@ inelevated the..</a></h3>
                 <div class="col-lg-3 col-md-12 col-sm-12 col-12">
                     <div class="emp_dashboard_sidebar jb_cover">
                         <div class="emp_web_profile jb_cover">
-                            <img src="/dashboard/images/web.png" alt="post_img" />
-                            <h4>Webstrot Technology</h4>
+                            <img th:if="${company.logo==null}" src="../dashboard/images/web.png" alt="post_img">
+                            <img th:if="${company.logo!=null}" th:src="@{${company.logo}}" alt="post_img">
+                            <h4 th:text="${company.companyName}">Webstrot Technology</h4>
                             <div class="skills jb_cover">
                                 <div class="skill-item jb_cover">
-                                    <h6>资料完善度<span>70%</span></h6>
                                     <div class="skills-progress"><span data-value="70%"></span>
                                     </div>
+                                    <div class=></div>
                                 </div>
                             </div>
                         </div>
@@ -606,13 +607,14 @@ inelevated the..</a></h3>
                                 <div class="row">
                                     <div class="col-lg-8 col-md-7 col-sm-12 col-12">
                                         <div class="jp_job_post_side_img">
-                                            <img src="images/ws.png" alt="post_img">
+                                            <img th:if="${company.logo==null}" src="images/ws.png" alt="post_img">
+                                            <img th:if="${company.logo!=null}" th:src="@{${company.logo}}" alt="post_img">
                                         </div>
                                         <div class="jp_job_post_right_cont">
                                             <h4 th:text="${company.companyName}">Webstrot Technology</h4>
                                             <ul>
-                                                <li th:text="${company.companyType}"><i class="fas fa-suitcase"></i>&nbsp; Software Firm</li>
-                                                <li th:text="${company.companyAddress}"><i class="flaticon-location-pointer"></i>&nbsp; Los Angeles</li>
+                                                <li ><i class="fas fa-suitcase"></i>&nbsp;&nbsp;<p style="display: inline-block" th:text="${company.companyType}"></p></li>
+                                                <li ><i class="flaticon-location-pointer"></i>&nbsp;&nbsp;<p style="display: inline-block" th:text="${company.companyAddress}"></p></li>
                                             </ul>
                                         </div>
                                     </div>

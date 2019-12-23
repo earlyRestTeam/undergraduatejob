@@ -17,7 +17,7 @@ public interface IReceiveResumeServices {
      * @param companyId
      * @return
      */
-    PageInfo<Resume> queryReceiveResume(Integer indexPage, Integer pageSize, Integer companyId, Integer status);
+    PageInfo<Resume> queryReceiveResume(Integer indexPage, Integer pageSize,Integer jobid, Integer companyId, Integer status);
 
 //    /**
 //     * 查看已读简历

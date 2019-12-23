@@ -606,9 +606,9 @@ inelevated the..</a></h3>
                             <div class="job_main_overflow jb_cover">
                                 <div class="latest_job_overlow jb_cover">
                                     <div class="manage_jobs_wrapper jb_cover">
-                                        <div class="job_list mange_list">
+                                        <div class="job_list_next mange_list">
 
-                                            <h6>job title</h6>
+                                            <h6>职业名称</h6>
 
                                         </div>
                                         <div class="job_list_next mange_list">
@@ -616,186 +616,43 @@ inelevated the..</a></h3>
 
                                         </div>
                                         <div class="job_list_next mange_list">
-                                            <h6>status</h6>
+                                            <h6>发布状态</h6>
 
                                         </div>
                                         <div class="job_list_next mange_list">
-                                            <h6>action</h6>
+                                            <h6>审核状态</h6>
+
+                                        </div>
+                                        <div class="job_list_next mange_list">
+                                            <h6>操作</h6>
 
                                         </div>
                                     </div>
+                                    <div th:each="job,Stat:${pages.list}"   class="latest_job_box jb_cover">
+                                        <div class="job_list_next">
 
-                                    <div class="latest_job_box jb_cover">
-                                        <div class="job_list">
-
-                                            <h6><a href="#">General Ledger Accountant</a></h6>
-                                            <p> <i class="far fa-calendar"></i> Date Posted : 02 Oct 2017</p>
+                                            <h6 th:text="${job.jobName}"><a href="#">General Ledger Accountant</a></h6>
+                                            <p  th:text="'发布日期 : '+${job.pushTime}"> <i class="far fa-calendar"></i> 02 Oct 2017</p>
 
                                         </div>
                                         <div class="job_list_next">
-                                            <p><a href="#">06 Applications</a></p>
+                                            <p><a th:text="*{reciveResumeSize[Stat.index]}" href="#">06 Applications</a></p>
 
                                         </div>
-                                        <div class="job_list_next">
-                                            <p class="gn">active</p>
-
+                                        <div th:switch="${job.pushStatus}" class="job_list_next">
+                                            <p th:case="1" class="gn">已发布</p>
+                                            <p th:case="0" class="ex">未发布</p>
+                                        </div>
+                                        <div th:switch="${job.aulStatus}" class="job_list_next">
+                                            <p th:case="2" class="gn">通过</p>
+                                            <p th:case="0" class="pen">待审核</p>
+                                            <p th:case="3" class="ex">未通过</p>
                                         </div>
                                         <div class="job_list_next">
                                             <ul>
                                                 <li><a href="#"><i class="fas fa-eye"></i></a></li>
                                                 <li><a href="#"><i class="fas fa-edit"></i></a></li>
-                                                <li><a href="#"><i class="fas fa-trash-alt"></i></a></li>
-                                            </ul>
-
-                                        </div>
-
-                                    </div>
-
-                                    <div class="latest_job_box jb_cover">
-                                        <div class="job_list">
-
-                                            <h6><a href="#">General Ledger Accountant</a></h6>
-                                            <p> <i class="far fa-calendar"></i> Date Posted : 02 Oct 2017</p>
-
-                                        </div>
-                                        <div class="job_list_next">
-                                            <p><a href="#">12 Applications</a></p>
-
-                                        </div>
-                                        <div class="job_list_next">
-                                            <p class="pen">pending</p>
-
-                                        </div>
-                                        <div class="job_list_next">
-                                            <ul>
-                                                <li><a href="#"><i class="fas fa-eye"></i></a></li>
-                                                <li><a href="#"><i class="fas fa-edit"></i></a></li>
-                                                <li><a href="#"><i class="fas fa-trash-alt"></i></a></li>
-                                            </ul>
-
-                                        </div>
-
-                                    </div>
-                                    <div class="latest_job_box jb_cover">
-                                        <div class="job_list">
-
-                                            <h6><a href="#">Land Development Marketer</a></h6>
-                                            <p> <i class="far fa-calendar"></i> Date Posted : 02 Oct 2017</p>
-
-                                        </div>
-                                        <div class="job_list_next">
-                                            <p><a href="#">07 Applications</a></p>
-
-                                        </div>
-                                        <div class="job_list_next">
-                                            <p class="ex">expired</p>
-
-                                        </div>
-                                        <div class="job_list_next">
-                                            <ul>
-                                                <li><a href="#"><i class="fas fa-eye"></i></a></li>
-                                                <li><a href="#"><i class="fas fa-edit"></i></a></li>
-                                                <li><a href="#"><i class="fas fa-trash-alt"></i></a></li>
-                                            </ul>
-
-                                        </div>
-
-                                    </div>
-                                    <div class="latest_job_box jb_cover">
-                                        <div class="job_list">
-
-                                            <h6><a href="#">General Ledger Accountant</a></h6>
-                                            <p> <i class="far fa-calendar"></i> Date Posted : 02 Oct 2017</p>
-
-                                        </div>
-                                        <div class="job_list_next">
-                                            <p><a href="#">66 Applications</a></p>
-
-                                        </div>
-                                        <div class="job_list_next">
-                                            <p class="gn">active</p>
-
-                                        </div>
-                                        <div class="job_list_next">
-                                            <ul>
-                                                <li><a href="#"><i class="fas fa-eye"></i></a></li>
-                                                <li><a href="#"><i class="fas fa-edit"></i></a></li>
-                                                <li><a href="#"><i class="fas fa-trash-alt"></i></a></li>
-                                            </ul>
-
-                                        </div>
-
-                                    </div>
-                                    <div class="latest_job_box jb_cover">
-                                        <div class="job_list">
-
-                                            <h6><a href="#">Designer Required </a></h6>
-                                            <p> <i class="far fa-calendar"></i> Date Posted : 02 Oct 2017</p>
-
-                                        </div>
-                                        <div class="job_list_next">
-                                            <p><a href="#">03 Applications</a></p>
-
-                                        </div>
-                                        <div class="job_list_next">
-                                            <p class="pen">pending</p>
-
-                                        </div>
-                                        <div class="job_list_next">
-                                            <ul>
-                                                <li><a href="#"><i class="fas fa-eye"></i></a></li>
-                                                <li><a href="#"><i class="fas fa-edit"></i></a></li>
-                                                <li><a href="#"><i class="fas fa-trash-alt"></i></a></li>
-                                            </ul>
-
-                                        </div>
-
-                                    </div>
-                                    <div class="latest_job_box jb_cover">
-                                        <div class="job_list">
-
-                                            <h6><a href="#">General Ledger Accountant</a></h6>
-                                            <p> <i class="far fa-calendar"></i> Date Posted : 02 Oct 2017</p>
-
-                                        </div>
-                                        <div class="job_list_next">
-                                            <p><a href="#">66 Applications</a></p>
-
-                                        </div>
-                                        <div class="job_list_next">
-                                            <p class="gn">active</p>
-
-                                        </div>
-                                        <div class="job_list_next">
-                                            <ul>
-                                                <li><a href="#"><i class="fas fa-eye"></i></a></li>
-                                                <li><a href="#"><i class="fas fa-edit"></i></a></li>
-                                                <li><a href="#"><i class="fas fa-trash-alt"></i></a></li>
-                                            </ul>
-
-                                        </div>
-
-                                    </div>
-                                    <div class="latest_job_box jb_cover">
-                                        <div class="job_list">
-
-                                            <h6><a href="#">Land Development Marketer</a></h6>
-                                            <p> <i class="far fa-calendar"></i> Date Posted : 02 Oct 2017</p>
-
-                                        </div>
-                                        <div class="job_list_next">
-                                            <p><a href="#">16 Applications</a></p>
-
-                                        </div>
-                                        <div class="job_list_next">
-                                            <p class="ex">expired</p>
-
-                                        </div>
-                                        <div class="job_list_next">
-                                            <ul>
-                                                <li><a href="#"><i class="fas fa-eye"></i></a></li>
-                                                <li><a href="#"><i class="fas fa-edit"></i></a></li>
-                                                <li><a href="#"><i class="fas fa-trash-alt"></i></a></li>
+                                                <li><a href="#" th:onclick="'deleteJob('+${job.id}+')'"><i class="fas fa-trash-alt"></i></a></li>
                                             </ul>
 
                                         </div>
@@ -832,26 +689,6 @@ inelevated the..</a></h3>
     </div>
     <!--employee dashboard wrapper end-->
     <!-- newsletter wrapper start -->
-    <div class="jb_cover">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12">
-                    <div class="job_newsletter_wrapper jb_cover">
-                        <div class="jb_newslwtteter_left">
-                            <h2> Looking For A Job</h2>
-                            <p>Your next level Product developemnt company assetsYour next level Product </p>
-                        </div>
-                        <div class="jb_newslwtteter_button">
-                            <div class="header_btn search_btn news_btn jb_cover">
-
-                                <a href="#">submit</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
     <!-- newsletter wrapper end -->
     <!-- footer Wrapper Start -->
     <div class="footer jb_cover">
@@ -1012,6 +849,22 @@ inelevated the..</a></h3>
   </div>
   <!-- chat box Wrapper end -->
     <!--custom js files-->
+    <script>
+        function deleteJob(jobid) {
+            $.ajax({
+                url:"deleteJobbyId",
+                type:'post',
+                dataType:'json',
+                contentType: 'application/json',
+                data:,
+                success:function (APIResult) {
+                    if (APIResult.){
+
+                    }
+                }
+            })
+        }
+    </script>
     <script src="/dashboard/js/jquery-3.3.1.min.js"></script>
     <script src="/dashboard/js/bootstrap.min.js"></script>
     <script src="/dashboard/js/modernizr.js"></script>

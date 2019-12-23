@@ -4,7 +4,9 @@ package com.lyx.undergraduatejob.config;
 
 import com.lyx.undergraduatejob.pojo.Users;
 import com.lyx.undergraduatejob.services.IUserServices;
-import com.lyx.undergraduatejob.services.security.*;
+import com.lyx.undergraduatejob.services.security.JwtAuthenticationTokenFilter;
+import com.lyx.undergraduatejob.services.security.RestAuthenticationEntryPoint;
+import com.lyx.undergraduatejob.services.security.RestfulAccessDeniedHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

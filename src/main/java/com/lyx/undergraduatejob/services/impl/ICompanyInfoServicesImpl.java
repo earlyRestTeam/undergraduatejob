@@ -202,10 +202,14 @@ public class ICompanyInfoServicesImpl implements ICompanyInfoServices {
         Map<String,String> result = new HashMap<>();
         indexpage = indexpage == null? 1 :indexpage ;
         CompanyExample example = new CompanyExample();
+        Integer companyId = companySerchEntity.getId();
         String companyName = companySerchEntity.getCompanyName();
         String companyType = companySerchEntity.getCompanyType();
         Integer aulStatus = companySerchEntity.getAulStatus();
         CompanyExample.Criteria criteria = example.createCriteria();
+        if(companyId !=null){
+            criteria.andIdEqualTo(companyId);
+        }
         if (companyName != null &&!"null".equals(companyName) &&!"".equals(companyName)){
             criteria.andCompanyNameLike(companyName+"%");
         }
@@ -217,7 +221,7 @@ public class ICompanyInfoServicesImpl implements ICompanyInfoServices {
             criteria.andAulStatusEqualTo(aulStatus);
         }
         example.setOrderByClause(companySerchEntity.getOrderExample()+companySerchEntity.getOrder());
-        PageHelper.startPage(indexpage,10);
+        PageHelper.startPage(indexpage,2);
         List<Company> companies = companyMapper.selectByExample(example);
         PageInfo pageInfo = new PageInfo(companies,5);
         return pageInfo;
