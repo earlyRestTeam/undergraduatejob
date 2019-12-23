@@ -160,7 +160,7 @@ public class UserServicesImpl implements IUserServices {
             result.put(StaticPool.ERROR,"id 错误！");
             return result;
         }
-        u.setEmail(user.getEmail());
+        u.setAvatar(user.getAvatar());
         u.setNickName(user.getNickName());
         u.setPhone(user.getPhone());
         int res = usersMapper.updateByPrimaryKey(u);
