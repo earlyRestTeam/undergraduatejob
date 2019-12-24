@@ -7,6 +7,7 @@ import com.lyx.undergraduatejob.search.entity.UsersSearchEntity;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -68,4 +69,6 @@ public interface IUserServices{
      * @return
      */
     Users queryUserById(Integer id);
+
+    List<Users> queryAllUses();
 }

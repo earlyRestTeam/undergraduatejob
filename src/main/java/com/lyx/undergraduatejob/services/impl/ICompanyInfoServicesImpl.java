@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -189,6 +190,19 @@ public class ICompanyInfoServicesImpl implements ICompanyInfoServices {
             result.put(StaticPool.ERROR,"修改公司数据失败！系统繁忙");
         }
         return result;
+    }
+
+    @Override
+    public List<Company> queryallCompany() {
+        CompanyExample example = new CompanyExample();
+        CompanyExample.Criteria criteria = example.createCriteria();
+        List<Company> list = new ArrayList<>();
+        criteria.andCompanyVipEqualTo(1);
+        list = companyMapper.selectByExample(example);
+        if(list == null){
+            return null;
+        }
+        return list;
     }
 
     /**

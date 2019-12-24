@@ -218,4 +218,12 @@ public class UserServicesImpl implements IUserServices {
         return usersMapper.selectByPrimaryKey(id);
     }
 
+    @Override
+    public List<Users> queryAllUses() {
+        UsersExample example = new UsersExample();
+        example.createCriteria().andUserVipEqualTo(1);
+        List<Users> list = usersMapper.selectByExample(example);
+        return list;
+    }
+
 }

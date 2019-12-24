@@ -5,6 +5,7 @@ import com.lyx.undergraduatejob.pojo.Comment;
 import com.lyx.undergraduatejob.pojo.Company;
 import com.lyx.undergraduatejob.search.entity.CompanySerchEntity;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -78,5 +79,7 @@ public interface ICompanyInfoServices {
      * @return
      */
     Map<String, String> updateCompanyInfobyAdmin(Company c);
+
+    List<Company> queryallCompany();
 
 }
