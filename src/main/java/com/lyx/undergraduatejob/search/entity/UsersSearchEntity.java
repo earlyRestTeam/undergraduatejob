@@ -10,6 +10,33 @@ public class UsersSearchEntity implements Serializable {
     private Integer status;
     private String orderKey = "create_time ";
     private String orderBy = "desc";
+    private Integer userVip;
+    private String username;
+    private String nickName;
+
+    public Integer getUserVip() {
+        return userVip;
+    }
+
+    public void setUserVip(Integer userVip) {
+        this.userVip = userVip;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getNickName() {
+        return nickName;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
+    }
 
     public String getKeyWord() {
         return keyWord;

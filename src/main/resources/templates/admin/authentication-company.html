@@ -474,8 +474,8 @@
                                                     <td class="td-status" th:if="${aut.status eq 1}"><span class="badge badge-success">通过</span></td>
                                                     <td class="td-status" th:if="${aut.status eq 2}"><span class="badge badge-warning">未审核</span></td>
                                                     <td class="text-center">
-                                                        <a th:onclick="'adopt_shenhe('+${aut.id}+','+${aut.status}+')'" class="badge-info btn-sm mg-y-5" data-toggle="tooltip" data-placement="top" title="" data-original-title="通过"><i class="mdi dripicons-checkmark"></i></a>
-                                                        <a th:onclick="'unadopt_shenhe('+${aut.id}+','+${aut.status}+')'" class="badge-danger btn-sm mg-y-5" data-toggle="tooltip" data-placement="top" title="" data-original-title="不通过"><i class="mdi dripicons-cross"></i></a>
+                                                        <a th:onclick="'adopt_shenhe('+${aut.id}+','+${aut.status}+','+${aut.companyId}+')'" class="badge-info btn-sm mg-y-5" data-toggle="tooltip" data-placement="top" title="" data-original-title="通过"><i class="mdi dripicons-checkmark"></i></a>
+                                                        <a th:onclick="'unadopt_shenhe('+${aut.id}+','+${aut.status}+','+${aut.companyId}+')'" class="badge-danger btn-sm mg-y-5" data-toggle="tooltip" data-placement="top" title="" data-original-title="不通过"><i class="mdi dripicons-cross"></i></a>
                                                     </td>
                                                 </tr>
 
@@ -555,25 +555,25 @@
                 }
             }
             //确认不通过认证
-            function unadopt_shenhe(id,status){
+            function unadopt_shenhe(id,status,companyId){
 
                 if (status != 2){console.log(id+"-----"+status);
                     alert("只能操作未审核的认证!")
                 } else {console.log(id+"-----"+status);
                     if (confirm("确认不通过？")) {
-                        self.location = "/aut/update_aut_company_status?id="+id+"&status=0";
+                        self.location = "/aut/update_aut_company_status?id="+id+"&status=0&companyId="+companyId;
                     }
                 }
 
             }
             //确认通过认证
-            function adopt_shenhe(id,status){
+            function adopt_shenhe(id,status,companyId){
 
                 if (status != 2){console.log(id+"-----"+status);
                     alert("只能操作未审核的认证!")
-                } else {console.log(id+"-----"+status);
-                    if (confirm("确认通过？")) {
-                        self.location = "/aut/update_aut_company_status?id="+id+"&status=1";
+                } else {
+                    if (confirm("确认通过？")) {console.log(id+"-----"+status);
+                        self.location = "/aut/update_aut_company_status?id="+id+"&status=1&companyId="+companyId;
                     }
                 }
 
