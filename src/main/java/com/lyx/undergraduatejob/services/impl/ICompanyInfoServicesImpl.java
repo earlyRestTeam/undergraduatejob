@@ -12,6 +12,8 @@ import com.lyx.undergraduatejob.utils.StaticPool;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -20,6 +22,7 @@ import java.util.List;
 import java.util.Map;
 
 @Service
+@CacheConfig(cacheNames = "companyInfo")
 public class ICompanyInfoServicesImpl implements ICompanyInfoServices {
 
     Logger logger = LoggerFactory.getLogger(ICompanyInfoServices.class);
@@ -30,6 +33,23 @@ public class ICompanyInfoServicesImpl implements ICompanyInfoServices {
     CommentMapper commentMapper;
     @Autowired
     AdminMapper adminMapper;
+
+    /**
+     * 获取首页的企业信息
+     */
+    @Override
+    @Cacheable(key="'indexCompany'")
+    public List<Company> queryIndexCompany() {
+        PageHelper.startPage(1,6);
+        CompanyExample example = new CompanyExample();
+        example.createCriteria()
+                .andStatusEqualTo(1)
+                .andAulStatusEqualTo(2);
+        example.setOrderByClause("visit_num desc,apply_num desc,collect_num desc,company_vip desc");
+        List<Company> companies = companyMapper.selectByExample(example);
+        PageInfo<Company> cPage = PageInfo.of(companies);
+        return cPage.getList();
+    }
 
     /**
      * 浏览企业信息(详情)

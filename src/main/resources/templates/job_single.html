@@ -247,13 +247,13 @@
      <div class="row">
       <!-- section_heading start -->
       <div class="col-lg-9 col-md-9 col-12 col-sm-8">
-       <h1>job single</h1>
+       <h1>工作详情</h1>
       </div>
       <div class="col-lg-3 col-md-3 col-12 col-sm-4">
        <div class="sub_title_section">
         <ul class="sub_title">
          <li><a href="index">主页 </a>&nbsp; / &nbsp;</li>
-         <li>job single</li>
+         <li>工作详情</li>
         </ul>
        </div>
       </div>
@@ -305,8 +305,8 @@
          </div>
          <div class="jp_listing_list_icon_cont_wrapper">
           <ul>
-           <li>Location:</li>
-           <li>Los Angeles Califonia PO, 455001</li>
+           <li>地址:</li>
+           <li th:text="res.job.workAddress">Los Angeles Califonia PO, 455001</li>
           </ul>
          </div>
         </div>
@@ -361,7 +361,7 @@
          <div class="jp_listing_list_icon_cont_wrapper">
           <ul>
            <li>经验:</li>
-           <li><span th:text="${res.job.workYears}"></span> 年以上</li>
+           <li><span th:text="${res.job.workYears} == null ? 2 : ${res.job.workYears}"></span> 年以上</li>
           </ul>
          </div>
         </div>
@@ -422,26 +422,29 @@
       <div class="jb_listing_single_overview jb_cover">
        <div class="jp_job_des jb_cover">
         <h2 class="job_description_heading">职位描述</h2>
-        <p th:text="${res.job.jobDesc}">Google is and always will be an engineering company. We hire people with a broad set of ical skills who are ready to tackle some of technology's greatest challenges and make an impact on millions, if not billions, of users. At Google, engineers not only revolutionize search, they routinely work on massive scalability and storage solutions, large-scale applications and rely new platforms for developers around the world. From AdWords to Chrome, Android to Ye, Social to Local, Google engineers are changing the world.</p>
+        <p th:text="${res.job.jobDesc}">北京中关村软件园人才基地由北京中关村软件园官方投资建设，共青团中青才智教育投资（北京）有限公司与北京百知教育集团联合承办，承担着园区300多家企业的人才培养及招聘任务，本次招聘的岗位全部采用定制式培养，学习结束后，统一安排在园区工作，对欲在IT领域有所建树的有识之士来说，现在入职中关村软件园，千载难逢，机会难得......
+         中关村软件园自2000年开发建设以来，先后获得“国家软件产业基地”、“国家软件出口基地”、“软件产品研发基地”、“软件企业孵化基地”、软件产品出口基地、软件人才培养基地和国际软件技术合作基地等十多项*称号。目前园区已集聚软件领军龙头企业600多家 ，是中国软件产业的龙头，有着“中国硅谷”之称。
+         中关村软件园二期全面建成后,将吸纳近10万高端IT人才就业，预计每月人才缺口将超过2000人，迫在眉睫的人才之渴，将是未来园区发展的瓶颈。在这样的迫切需求之下，人才基地于2005年成立。
+         为满足不同企业，对人才的不同需求，整个实训过程均由企业共同参与完成，业内较新、较实用的技术会在*时间带到教学当中，通过企业真实项目的实践、学习，真正实现了基地与企业之间无缝对接，学生入企即可上手工作，从而在根本上解决企业招人难，学生就业难的问题。
+         基地由政府投资建设、运营、管理，设备投资近亿元，拥有大型Unix/Linux服务器，Oracle数据库服务器，JavaEE 应用服务器以及多种型号的 Cisco 路由器，交换机等设备。可提供软件研发、网络运维、服务器集群、数据库DBA等多种实践环境，硬件优质无可比拟。
+         北京中关村软件园欢迎你！</p>
 <!--        <ul>-->
 <!--         <li><i class="fas fa-globe-asia"></i>&nbsp;&nbsp; <a href="#">www.example.com</a></li>-->
 <!--         <li><i class="fas fa-file-download"></i>&nbsp;&nbsp; <a href="#">Download Info</a></li>-->
 <!--        </ul>-->
        </div>
        <div class="jp_job_res jb_cover">
-        <h2 class="job_description_heading">职责范围</h2>
-        <p >Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Curabitur aliquet quam id dui posuere blandit.</p>
+        <h2 class="job_description_heading">福利待遇</h2>
+        <p >人才基地由北京中关村软件园官方投资建设，团中央中青才智与北京百知教育集团联合承办，基地承担着中关村软件园园区内500多家知名IT企业的人才培养、招聘的任务，本次招聘的岗位全部采用企业定制，所招实习生实习结束，统一安排在园区工作，千载难逢，机会难得......</p>
         <ul>
-         <li><i class="fa fa-caret-right"></i>&nbsp;&nbsp; Build next-generation web applications with a focus on the client side.</li>
-         <li><i class="fa fa-caret-right"></i>&nbsp;&nbsp; Redesign UI's, implement new UI's, and pick up Java as necessary.</li>
-         <li><i class="fa fa-caret-right"></i>&nbsp;&nbsp; Explore and design dynamic and compelling consumer experiences.</li>
-         <li><i class="fa fa-caret-right"></i>&nbsp;&nbsp; Design and build scalable framework for web applications.</li>
+         <li><i class="fa fa-caret-right"></i>&nbsp;&nbsp; 签订正式《劳动合同》、五险一金等。</li>
+         <li><i class="fa fa-caret-right"></i>&nbsp;&nbsp; 在京工作一年后要求回当地工作的，可申请调回当地省会城市的分公司或合作企业工作。</li>
         </ul>
        </div>
        <div class="jp_job_res jb_cover minimum_cover">
         <h2 class="job_description_heading">最低学历</h2>
         <ul>
-         <li><i class="fa fa-caret-right"></i>&nbsp;&nbsp; Build next-generation web applications with a focus on the client side.</li>
+         <li><i class="fa fa-caret-right" th:text="${res.job.partFull}== 1 ? '高中以上' : '全日制本科毕业'"></i>&nbsp;&nbsp; Build next-generation web applications with a focus on the client side.</li>
          <li><i class="fa fa-caret-right"></i>&nbsp;&nbsp; Redesign UI's, implement new UI's, and pick up Java as necessary.</li>
          <li><i class="fa fa-caret-right"></i>&nbsp;&nbsp; Explore and design dynamic and compelling consumer experiences.</li>
          <li><i class="fa fa-caret-right"></i>&nbsp;&nbsp; Design and build scalable framework for web applications.</li>
@@ -449,44 +452,44 @@
        </div>
        <div class="jp_job_res jb_cover">
         <h2 class="job_description_heading">怎样申请</h2>
-        <p>Google is and always will be an engineering company. We hire people with a broad set of ical skills who are ready to tackle some of technology's greatest challenges and make an impact on millions, if not billions, of users. At Google, engineers not only revolutionize search, they routinely</p>
+        <p>新环境人将不断学习，锐意进取，在董事长袁李先生的领导下，培育和践行社会主义核心价值观，规范从业行为，加强从业诚信建设，提高从业整体素质，立足湖南，连锁全国。</p>
        </div>
        <div class="jp_job_res jb_cover">
         <h2 class="job_description_heading">位置</h2>
-        <div class="map_wrapper jb_cover">
-         <div id="map"></div>
-        </div>
+        <div class="map_wrapper jb_cover" th:text="${res.job.workAddress}">
+<!--         <div id="map"></div>-->
+<!--        </div>-->
        </div>
-       <div class="jp_job_res jp_listing_left_wrapper jb_cover">
-        <div class="jp_listing_left_bottom_sidebar_social_wrapper">
-         <ul>
-          <li>share :</li>
-          <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-          <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-          <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-          <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
-         </ul>
-        </div>
-       </div>
+<!--       <div class="jp_job_res jp_listing_left_wrapper jb_cover">-->
+<!--        <div class="jp_listing_left_bottom_sidebar_social_wrapper">-->
+<!--         <ul>-->
+<!--          <li>share :</li>-->
+<!--          <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>-->
+<!--          <li><a href="#"><i class="fab fa-twitter"></i></a></li>-->
+<!--          <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>-->
+<!--          <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>-->
+<!--         </ul>-->
+<!--        </div>-->
+<!--       </div>-->
       </div>
       <div class="related_job_wrapper jb_cover">
-       <h1 class="related_job">related job</h1>
+       <h1 class="related_job">推荐职业</h1>
        <div class="related_product_job jb_cover">
         <div class="owl-carousel owl-theme">
          <div class="item">
-          <div class="job_listing_left_fullwidth jb_cover">
+          <div th:each="job,index:${jobList}"  class="job_listing_left_fullwidth jb_cover">
            <div class="row">
             <div class="col-lg-9 col-md-9 col-sm-12 col-12">
              <div class="jp_job_post_side_img">
-              <img src="/picture/lt2.png" alt="post_img" />
+              <img th:src="@{${job.companyLogo}}" src="/picture/lt2.png" alt="post_img" />
               <br />
-              <span>google</span>
+              <span th:text="${job.companyName}">google</span>
              </div>
              <div class="jp_job_post_right_cont">
-              <h4><a href="#">Trainee Web Designer, (Fresher)</a></h4>
+              <h4><a th:href="@{'/job_single?jobid='+@{job.id}}" th:text="${job.jobName}">Trainee Web Designer, (Fresher)</a></h4>
               <ul>
-               <li th:text="${res.job.salary}"><i class="flaticon-cash"></i>&nbsp; $12K - 15k P.A.</li>
-               <li th:text="${res.job.detailedAddress}"><i class="flaticon-location-pointer"></i>&nbsp; Los Angeles, Califonia PO, 455001</li>
+               <li th:text="${job.salary}"><i class="flaticon-cash"></i>&nbsp; $12K - 15k P.A.</li>
+               <li th:text="${job.detailedAddress}"><i class="flaticon-location-pointer"></i>&nbsp; Los Angeles, Califonia PO, 455001</li>
               </ul>
              </div>
             </div>
@@ -497,68 +500,8 @@
                 <div class="job_adds_right">
                  <a href="#!"><i class="far fa-heart"></i></a>
                 </div></li>
-               <li><a th:text="${res.job.partFull}== 1 ? '兼职' : '全职'"></a></li>
+               <li><a th:text="${job.partFull}== 1 ? '兼职' : '全职'"></a></li>
                <li><a href="#">申请</a></li>
-              </ul>
-             </div>
-            </div>
-           </div>
-          </div>
-          <div class="job_listing_left_fullwidth jb_cover">
-           <div class="row">
-            <div class="col-lg-9 col-md-9 col-sm-12 col-12">
-             <div class="jp_job_post_side_img">
-              <img src="/picture/lt1.png" alt="post_img" />
-              <br />
-              <span>google</span>
-             </div>
-             <div class="jp_job_post_right_cont">
-              <h4><a href="#">Power Systems Experience Designer </a></h4>
-              <ul>
-               <li><i class="flaticon-cash"></i>&nbsp; $12K - 15k P.A.</li>
-               <li><i class="flaticon-location-pointer"></i>&nbsp; Los Angeles, Califonia PO, 455001</li>
-              </ul>
-             </div>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-12 col-12">
-             <div class="jp_job_post_right_btn_wrapper">
-              <ul>
-               <li>
-                <div class="job_adds_right">
-                 <a href="#!"><i class="far fa-heart"></i></a>
-                </div></li>
-               <li><a href="job_single">Part Time</a></li>
-               <li><a href="#">apply</a></li>
-              </ul>
-             </div>
-            </div>
-           </div>
-          </div>
-          <div class="job_listing_left_fullwidth jb_cover">
-           <div class="row">
-            <div class="col-lg-9 col-md-9 col-sm-12 col-12">
-             <div class="jp_job_post_side_img">
-              <img src="/picture/lt5.png" alt="post_img" />
-              <br />
-              <span>google</span>
-             </div>
-             <div class="jp_job_post_right_cont">
-              <h4><a href="#">Trainee Web Designer, (Fresher)</a></h4>
-              <ul>
-               <li><i class="flaticon-cash"></i>&nbsp; $12K - 15k P.A.</li>
-               <li><i class="flaticon-location-pointer"></i>&nbsp; Los Angeles, Califonia PO, 455001</li>
-              </ul>
-             </div>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-12 col-12">
-             <div class="jp_job_post_right_btn_wrapper">
-              <ul>
-               <li>
-                <div class="job_adds_right">
-                 <a href="#!"><i class="far fa-heart"></i></a>
-                </div></li>
-               <li><a href="job_single">Part Time</a></li>
-               <li><a href="#">apply</a></li>
               </ul>
              </div>
             </div>
@@ -566,19 +509,19 @@
           </div>
          </div>
          <div class="item">
-          <div class="job_listing_left_fullwidth jb_cover">
+          <div th:each="job,index:${jobList1}" class="job_listing_left_fullwidth jb_cover">
            <div class="row">
             <div class="col-lg-9 col-md-9 col-sm-12 col-12">
              <div class="jp_job_post_side_img">
-              <img src="/picture/lt2.png" alt="post_img" />
+              <img th:src="@{${job.companyLogo}}" src="/picture/lt2.png" alt="post_img" />
               <br />
-              <span>google</span>
+              <span th:text="${job.companyName}">google</span>
              </div>
              <div class="jp_job_post_right_cont">
-              <h4><a href="#">Trainee Web Designer, (Fresher)</a></h4>
+              <h4><a th:href="@{'/job_single?jobid='+@{job.id}}" th:text="${job.jobName}">Trainee Web Designer, (Fresher)</a></h4>
               <ul>
-               <li><i class="flaticon-cash"></i>&nbsp; $12K - 15k P.A.</li>
-               <li><i class="flaticon-location-pointer"></i>&nbsp; Los Angeles, Califonia PO, 455001</li>
+               <li th:text="${job.salary}"><i class="flaticon-cash"></i>&nbsp; $12K - 15k P.A.</li>
+               <li th:text="${job.detailedAddress}"><i class="flaticon-location-pointer"></i>&nbsp; Los Angeles, Califonia PO, 455001</li>
               </ul>
              </div>
             </div>
@@ -589,68 +532,8 @@
                 <div class="job_adds_right">
                  <a href="#!"><i class="far fa-heart"></i></a>
                 </div></li>
-               <li><a href="job_single">Part Time</a></li>
-               <li><a href="#">apply</a></li>
-              </ul>
-             </div>
-            </div>
-           </div>
-          </div>
-          <div class="job_listing_left_fullwidth jb_cover">
-           <div class="row">
-            <div class="col-lg-9 col-md-9 col-sm-12 col-12">
-             <div class="jp_job_post_side_img">
-              <img src="/picture/lt1.png" alt="post_img" />
-              <br />
-              <span>google</span>
-             </div>
-             <div class="jp_job_post_right_cont">
-              <h4><a href="#">Power Systems Experience Designer </a></h4>
-              <ul>
-               <li><i class="flaticon-cash"></i>&nbsp; $12K - 15k P.A.</li>
-               <li><i class="flaticon-location-pointer"></i>&nbsp; Los Angeles, Califonia PO, 455001</li>
-              </ul>
-             </div>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-12 col-12">
-             <div class="jp_job_post_right_btn_wrapper">
-              <ul>
-               <li>
-                <div class="job_adds_right">
-                 <a href="#!"><i class="far fa-heart"></i></a>
-                </div></li>
-               <li><a href="job_single">Part Time</a></li>
-               <li><a href="#">apply</a></li>
-              </ul>
-             </div>
-            </div>
-           </div>
-          </div>
-          <div class="job_listing_left_fullwidth jb_cover">
-           <div class="row">
-            <div class="col-lg-9 col-md-9 col-sm-12 col-12">
-             <div class="jp_job_post_side_img">
-              <img src="/picture/lt5.png" alt="post_img" />
-              <br />
-              <span>google</span>
-             </div>
-             <div class="jp_job_post_right_cont">
-              <h4><a href="#">Trainee Web Designer, (Fresher)</a></h4>
-              <ul>
-               <li><i class="flaticon-cash"></i>&nbsp; $12K - 15k P.A.</li>
-               <li><i class="flaticon-location-pointer"></i>&nbsp; Los Angeles, Califonia PO, 455001</li>
-              </ul>
-             </div>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-12 col-12">
-             <div class="jp_job_post_right_btn_wrapper">
-              <ul>
-               <li>
-                <div class="job_adds_right">
-                 <a href="#!"><i class="far fa-heart"></i></a>
-                </div></li>
-               <li><a href="job_single">Part Time</a></li>
-               <li><a href="#">apply</a></li>
+               <li><a th:text="${job.partFull}== 1 ? '兼职' : '全职'"></a></li>
+               <li><a href="#">申请</a></li>
               </ul>
              </div>
             </div>

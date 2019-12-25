@@ -31,6 +31,7 @@ public class ResumeSearchEntity implements Serializable {
 //    private Integer pushStatus = 1;
 //    //已通过审核
 //    private Integer aulStatus = 2;
+
     //工作时间
     private Integer workExperience;
 

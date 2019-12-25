@@ -33,10 +33,9 @@ public class JobSearchEntity implements Serializable {
     private Integer workYear;
     // 兼职 全职
     private Integer partFull;
-
-
+    //工作状态
     private Integer status = 1;
-
+    //审核状态
     private Integer aulStatus = 2;
 
 

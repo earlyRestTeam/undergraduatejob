@@ -1,9 +1,13 @@
 package com.lyx.undergraduatejob.pojo;
 
+
+
 import java.io.Serializable;
 import java.util.Date;
 
+
 public class Job implements Serializable {
+
     private Integer id;
 
     private Integer status;
@@ -11,6 +15,7 @@ public class Job implements Serializable {
     private Integer pushStatus;
 
     private Integer aulStatus;
+
 
     private String jobTitle;
 

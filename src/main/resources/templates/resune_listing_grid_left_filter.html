@@ -249,13 +249,13 @@
      <div class="row">
       <!-- section_heading start -->
       <div class="col-lg-9 col-md-9 col-12 col-sm-8">
-       <h1>job listing</h1>
+       <h1>简历市场</h1>
       </div>
       <div class="col-lg-3 col-md-3 col-12 col-sm-4">
        <div class="sub_title_section">
         <ul class="sub_title">
          <li><a href="index">主页 </a>&nbsp; / &nbsp;</li>
-         <li>job listing</li>
+         <li>简历市场</li>
         </ul>
        </div>
       </div>
@@ -287,7 +287,7 @@
              <span>职业</span>
             </dt>
             <dd>
-             <a v-for="jobl in ind.jobList" @click="changeWorkType($event)"   href="#" class="aui-a-curr">{{jobl.jobName}}</a>
+             <a v-for="jobl in ind.jobList" @click="changeWorkType($event)" class="aui-a-curr">{{jobl.jobName}}</a>
             </dd>
            </dl>
           </div>
@@ -301,22 +301,38 @@
          <div class="job_listing_left_side jb_cover">
              <div class="filter-area jb_cover">
 <!--        工作类型-->
-        <select style="width: 200px;height: 40px;font-size: 14px;float: left;text-align: center" v-model="searchEntity.partFull"  >
-         <option value="-1">选择工作类型</option>
-         <option value="1">全职</option>
-         <option value="2">兼职</option>
+        <select style="width: 200px;height: 40px;font-size: 14px;float: left;text-align: center" v-model="searchEntity.gender"  >
+         <option value="-1">选择性别</option>
+         <option value="1">男</option>
+         <option value="2">女</option>
         </select>
+              <select style="width: 200px;height: 40px;font-size: 14px;float: left;text-align: center" v-model="searchEntity.partFull"  >
+               <option value="-1">选择简历类型</option>
+               <option value="1">兼职简历</option>
+               <option value="2">全职简历</option>
+              </select>
+              <select style="width: 200px;height: 40px;font-size: 14px;float: left;text-align: center" v-model="searchEntity.workYear"  >
+                <option value="-1">选择经验要求</option>
+                <option value="1">1年以上</option>
+               <option value="2">2年以上</option>
+               <option value="3">3年以上</option>
+               <option value="4">4年以上</option>
+               <option value="5">5年以上</option>
+               <option value="6">6年以上</option>
+              </select>
+              <select style="width: 200px;height: 40px;font-size: 14px;float: left;text-align: center" v-model="searchEntity.ageArea"  >
+                <option value="*">选择年龄区间</option>
+                <option v-for="area in ageArea" :value="area.key">{{area.key}}</option>
+              </select>
         <select v-model="searchEntity.salaryArea" style="width: 200px;height: 40px;font-size: 14px;float: left;text-align: center">
          <option value="*">选择薪水区间</option>
          <option v-for="area in salaryArea" :value="area.key">{{area.key}}</option>
         </select>
          <input v-model="searchEntity.keyWord" type="text" style="margin-left:20px;width: 200px;height: 40px;font-size: 18px;padding: 20px 6px;" placeholder="输入职业名">
         <select v-model="searchEntity.orderExample" style="width: 200px;height: 40px;font-size: 14px;float: left;text-align: center">
-         <option value="`create_time` ">按时间排序</option>
-         <option value="need_num ">按招聘人数排序</option>
+         <option value="`push_time` ">按时间排序</option>
          <option value="salary ">按薪水排序</option>
-         <option value="visit_num ">按热度排序</option>
-         <option value="work_years ">按工作经验</option>
+         <option value="work_years ">按工作经验排序</option>
         </select>
         <select v-model="searchEntity.order" style="width: 200px;height: 40px;font-size: 14px;float: left;text-align: center">
          <option value="desc">降序</option>
@@ -329,21 +345,21 @@
        <div class="tab-content btc_shop_index_content_tabs_main jb_cover">
         <div id="grid" class="tab-pane active">
          <div class="row">
-          <div v-for="(job,index) in jobs" class="col-lg-6 col-md-6 col-sm-12">
+          <div v-for="(resume,index) in resumes" class="col-lg-6 col-md-6 col-sm-12">
            <div class="job_listing_left_fullwidth job_listing_grid_wrapper jb_cover">
             <div class="row">
              <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-              <div @click="toCompany(companies[index].id)" class="jp_job_post_side_img">
-               <img :src="companies[index].logo == null ? '/picture/lt1.png' : companies[index].logo"   alt="post_img" />
+              <div @click="toCompany(resume.userId)" class="jp_job_post_side_img">
+               <img :src="resume.avatar == null ? '/picture/lt1.png' : resume.avatar"   alt="post_img" />
 <!--               src="/picture/lt1.png"-->
                <br />
-               <span >{{companies[index].companyName}}</span>
+               <span >{{resume.name}}</span>
               </div>
               <div class="jp_job_post_right_cont">
-               <h4><a v-bind:href="['/job_single?jobid='+job.id]">{{ job.jobTitle }}</a></h4>
+               <h4><a v-bind:href="['/job_single?jobid='+resume.id]">{{ resume.jobType }}</a></h4>
                <ul>
-                <li><i class="flaticon-cash"></i>&nbsp; {{job.salary}}</li>
-                <li><i class="flaticon-location-pointer"></i>&nbsp;{{job.workAddress}}</li>
+                <li><i class="flaticon-cash"></i>&nbsp; {{resume.salary}}</li>
+                <li><i class="flaticon-location-pointer"></i>&nbsp;{{resume.jobAddress}}</li>
                </ul>
               </div>
              </div>
@@ -354,7 +370,7 @@
                  <div class="job_adds_right">
                   <a href="#!"><i class="far fa-heart"></i></a>
                  </div></li>
-                <li><a v-bind:href="['/job_single?jobid='+job.id]" >{{job.partFull == 1 ? '兼职' : '全职' }}</a></li>
+                <li><a v-bind:href="['/job_single?jobid='+resume.id]" >{{resume.partFull == 1 ? '兼职' : '全职' }}</a></li>
                 <li><a data-toggle="modal" data-target="#myModal01">应聘</a></li>
                </ul>
               </div>
@@ -950,11 +966,11 @@
 <!--        </div>-->
         <div class="blog_pagination_section jb_cover">
          <ul>
-          <li><a @click="getJobs(searchEntity.start-1)" class="prev"><i class="flaticon-left-arrow"></i></a></li>
+          <li><a @click="getResumes(searchEntity.start-1)" class="prev"><i class="flaticon-left-arrow"></i></a></li>
           <li v-for="index of 5"
               v-if="searchEntity.start-2+index > 0 && searchEntity.start-2+index <= totalPage"
               v-bind:class="[searchEntity.start == (searchEntity.start-2+index) ? 'third_pagger' : 'd-block','d-sm-block','d-md-block','d-lg-block']">
-           <a @click="getJobs(searchEntity.start-2+index)">{{searchEntity.start-2+index}}
+           <a @click="getResumes(searchEntity.start-2+index)">{{searchEntity.start-2+index}}
            </a>
           </li>
 <!--          <li><a :click="getJobs(1)">1</a></li>-->
@@ -962,7 +978,7 @@
 <!--          <li class="d-block d-sm-block d-md-block d-lg-block"><a href="#">3</a></li>-->
 <!--          <li class="d-none d-sm-block d-md-block d-lg-block"><a href="#">...</a></li>-->
 <!--          <li class="d-none d-sm-block d-md-block d-lg-block"><a href="#">6</a></li>-->
-          <li><a @click="getJobs(searchEntity.start+1)"  class="next"><i class="flaticon-right-arrow"></i></a></li>
+          <li><a @click="getResumes(searchEntity.start+1)"  class="next"><i class="flaticon-right-arrow"></i></a></li>
          </ul>
         </div>
        </div>
@@ -1139,41 +1155,51 @@
   var vue1 = new Vue({
    el:"#vue-app1",
    data:{
+    ageArea:[],
+    resumes:[],
     salaryArea:[],
-    jobList:"",
-    test:"test",
     industries:[],
-    jobNames:[],
-    jobs:[],
     totalPage:1,
-    companies:[],
     searchEntity:{
      start:1,
      size:12,
-     keyWord:'',
-     companyId:-1,
-     workJob:'',
+     gender:-1,
+     job:'',
      partFull:-1,
-     jobType:'',
      closeAnAccount:'',
+     ageArea:'*',
      salaryArea:'*',
-     workArea:'',
-     orderExample:"`create_time` ",
+     jobAddress:'',
+     orderExample:"`push_time` ",
      order: "desc",
      workYear:-1,
-     eaucationDemand:-1,
     },
    },
    created() {
-    this.getSalaryArea();
     this.getIndustries();
-    this.getJobs(1);
+    this.getAgeArea();
+    this.getResumes(1);
+    this.getSalaryArea();
    },
    methods: {
     changeWorkType:function(e){
      console.log(e.currentTarget.text);
-     this.searchEntity.jobType = e.currentTarget.text;
+     this.searchEntity.job = e.currentTarget.text;
      this.getResumes(1);
+    },
+    getIndustries:function() {
+     var that = this;
+     axios.post('/allIndustriesWithJobList').then(function (result) {
+      that.industries = result.data.data;
+     }).catch(function () {alert("操作失败");});
+    },
+    getAgeArea:function(){
+     var that = this;
+     axios.get('/getAgeArea').then(function(res){
+      that.ageArea = res.data.data;
+     }).catch(function(){
+      alert("操作失败");
+     })
     },
     getSalaryArea:function(){
      var that = this;
@@ -1183,35 +1209,25 @@
       alert("操作失败");
      })
     },
-    getIndustries:function() {
-     var that = this;
-     axios.post('/allIndustriesWithJobList').then(function (result) {
-      that.industries = result.data.data;
-     }).catch(function () {alert("操作失败");});
-    },
-    getJobs:function(value) {
+    getResumes:function(value) {
      if(value <= 0){
        value = 1;
        return;
      }
-
      if(value > this.totalPage){
       value = this.totalPage;
       return;
      }
-
-
      this.searchEntity.start = value;
      var that = this;
-     axios.post('/getJobs?start='+that.searchEntity.start+'&pageSize='+that.searchEntity.size,this.searchEntity).then(function(result){
+     axios.post('/getResumes?start='+that.searchEntity.start+'&pageSize='+that.searchEntity.size,this.searchEntity).then(function(result){
       console.log(result);
       if (result.data.code == 200) {
-       console.log(result);
-       that.jobs = result.data.data.map.jobs;
+
        that.start = result.data.data.pageNum;
 
        that.totalPage = result.data.data.pages;
-       that.companies = result.data.data.map.companys;
+       that.resumes = result.data.data.list;
       } else {
        alert(result.data.message);
       }
@@ -1219,18 +1235,17 @@
       alert("操作失败");
      });
     },
-       reSearch:function () {
-           //this.searchEntity.start = 1;
-           this.getJobs(1);
-       },
-       toCompany:function (conpanyId) {
-            console.log(conpanyId);
-           //window.location.href = ""+conpanyId;
-       }
+    reSearch:function () {
+     this.getResumes(1);
+    },
+    toCompany:function (conpanyId) {
+     console.log(conpanyId);
+     //window.location.href = ""+conpanyId;
+    }
    },
    computed:{
 
-   },
+   }
   })
  </script>
 

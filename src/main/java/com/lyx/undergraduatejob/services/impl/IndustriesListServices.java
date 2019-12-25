@@ -47,6 +47,20 @@ public class IndustriesListServices implements Industries_listServices {
     }
 
     /**
+     * 首页 行业
+     */
+    @Override
+    @Cacheable(key="'indexIndustries'")
+    public List<IndustriesList> queryIndexIndustries() {
+        IndustriesListExample example = new IndustriesListExample();
+        example.setOrderByClause("create_time desc");
+        PageHelper.startPage(1,7);
+        List<IndustriesList> lists = mapper.selectByExample(example);
+        PageInfo<IndustriesList> info = PageInfo.of(lists);
+        return info.getList();
+    }
+
+    /**
      * 查询 所有 的 行业  连带 职业名
      * @return
      */

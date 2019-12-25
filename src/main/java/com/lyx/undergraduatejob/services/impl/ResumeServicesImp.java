@@ -50,7 +50,7 @@ public class ResumeServicesImp implements IResumeServices {
 
         //职位
         String job = resumeSearchEntity.getJob();
-        if(job != null)
+        if(job != null && job.trim().length()>0)
             criteria.andJobEqualTo(job);
         //年龄
         RentValueBlock ageArea = RentValueBlock.getAgeArea(resumeSearchEntity.getAge());
@@ -60,20 +60,20 @@ public class ResumeServicesImp implements IResumeServices {
             criteria.andAgeLessThan(ageArea.getMax());
         //性别
         Integer gender = resumeSearchEntity.getGender();
-        if(gender != null)
+        if(gender != null && gender > 0)
             criteria.andGenderEqualTo(gender);
         //支付方式
         Integer closeAnAccount = resumeSearchEntity.getCloseAnAccount();
-        if(closeAnAccount != null)
+        if(closeAnAccount != null && closeAnAccount > 0)
             criteria.andCloseTypeEqualTo(closeAnAccount);
 
         //兼职/全职
         Integer partFull = resumeSearchEntity.getPartFull();
-        if(partFull != null)
+        if(partFull != null && partFull > 0)
             criteria.andPushStatusEqualTo(partFull);
 
         String jobAddress = resumeSearchEntity.getJobAddress();
-        if(jobAddress != null)
+        if(jobAddress != null && jobAddress.trim().length()>0)
             criteria.andJobAddressEqualTo(jobAddress);
 
         //薪水区间

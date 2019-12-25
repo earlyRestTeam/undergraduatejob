@@ -16,6 +16,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 import org.thymeleaf.util.StringUtils;
@@ -65,6 +66,80 @@ public class JobServicesImpl implements IJobServices {
         }
         return result;
     }
+    @Cacheable(key="'neerJob'+#p0+#p1")
+    @Override
+    public List<Job> queryNeerJob(int start,String jobType){
+        JobExample example = new JobExample();
+        example.createCriteria().andJobTypeEqualTo(jobType)
+                .andStatusEqualTo(1)
+                .andAulStatusEqualTo(2)
+                .andPushStatusEqualTo(1);
+        example.setOrderByClause("receive_num desc");
+
+        PageHelper.startPage(start,3);
+        List<Job> jobs = jobMapper.selectByExample(example);
+        PageInfo<Job> res = PageInfo.of(jobs);
+        return res.getList();
+    }
+
+    /**
+     * 获取 明星 职业
+     *
+     * @return
+     */
+    @Override
+    public List<Job> queryStarJob() {
+
+        JobSearchEntity jobSearchEntity = new JobSearchEntity();
+        jobSearchEntity.setOrderExample("receive_num");
+
+        return selectJobByJobSearchEntityWithOutCompany(1,6,jobSearchEntity).getList();
+    }
+
+    /**
+     * 获取 最近的 工作
+     */
+    @Override
+    public List<Job> queryRecentJob() {
+        return selectJobByJobSearchEntityWithOutCompany(1,
+                6,new JobSearchEntity()).getList();
+    }
+
+    /**
+     * 获取 最贵的 工作
+     */
+    @Override
+    public List<Job> queryBestJob() {
+        JobSearchEntity entity = new JobSearchEntity();
+        entity.setOrderExample("salary");
+        return selectJobByJobSearchEntityWithOutCompany(1,
+                6,entity).getList();
+    }
+
+    /**
+     * 获取 最贵的 兼职 工作
+     */
+    @Override
+    public List<Job> queryBestPartJob() {
+        JobSearchEntity entity = new JobSearchEntity();
+        entity.setPartFull(1);
+        entity.setOrderExample("salary");
+        return selectJobByJobSearchEntityWithOutCompany(1,
+                6,entity).getList();
+    }
+
+    /**
+     * 获取 最贵的 全职 工作
+     */
+    @Override
+    public List<Job> queryBestFullJob() {
+        JobSearchEntity entity = new JobSearchEntity();
+        entity.setPartFull(2);
+        entity.setOrderExample("salary");
+        return selectJobByJobSearchEntityWithOutCompany(1,
+                6,entity).getList();
+    }
+
     /**
      * 修改已有招聘职位
      * @param job
@@ -257,11 +332,7 @@ public class JobServicesImpl implements IJobServices {
         }
         String key;
         if( !StringUtils.isEmpty( (key = jobSearchEntity.getKeyWord() ) ))
-            criteria.andJobNameLike(key+"%");
-        Integer companyId;
-        if ((companyId = jobSearchEntity.getCompanyId())!= null){
-            criteria.andCompanyIdEqualTo(companyId);
-        }
+            criteria.andJobTitleLike(key+"%");
         String workArea;
         if( !StringUtils.isEmpty((workArea = jobSearchEntity.getWorkArea() ) ) )
             criteria.andWorkAddressEqualTo(workArea);
@@ -284,7 +355,7 @@ public class JobServicesImpl implements IJobServices {
         if(rentValueBlock.getMax() > 0)
             criteria.andSalaryLessThan(rentValueBlock.getMax());
 
-        example.setOrderByClause(jobSearchEntity.getOrderExample()+jobSearchEntity.getOrder()
+        example.setOrderByClause(jobSearchEntity.getOrderExample()+" "+jobSearchEntity.getOrder()
                 +StaticPool.JOB_VIP_SORT);
 
 

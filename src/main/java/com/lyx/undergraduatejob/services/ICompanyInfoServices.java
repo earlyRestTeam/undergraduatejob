@@ -13,6 +13,10 @@ import java.util.Map;
  */
 public interface ICompanyInfoServices {
     /**
+     * 获取首页的企业信息
+     */
+    List<Company> queryIndexCompany();
+    /**
      * 浏览企业信息(详情)
      * @param companyId
      * @return
