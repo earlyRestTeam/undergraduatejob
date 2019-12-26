@@ -183,9 +183,9 @@
 
        <li class="has-mega gc_main_navigation"><a href="#" class="gc_main_navigation">pages</a>
         <ul class="navi_2_dropdown">
-         <li class="parent"><a href="about_us"><i class="fas fa-square"></i>关于我们</a></li>
-         <li class="parent"><a href="companies"><i class="fas fa-square"></i>companies</a></li>
-         <li class="parent"><a href="company_single"><i class="fas fa-square"></i>company single</a></li>
+         <li class="parent"><a href="/toaboutus"><i class="fas fa-square"></i>关于我们</a></li>
+         <li class="parent"><a href="/allcompany"><i class="fas fa-square"></i>公司</a></li>
+         <li class="parent"><a href="company_single"><i class="fas fa-square"></i>公司详情</a></li>
          <li class="parent"><a href="error_page"><i class="fas fa-square"></i>error page</a></li>
          <li class="parent"><a href="login"><i class="fas fa-square"></i>登录</a></li>
          <li class="parent"><a href="pricing_table"><i class="fas fa-square"></i>平台服务</a></li>
@@ -308,7 +308,7 @@
        <p>有因必有果，你的报应就是我</p>
       </div>
      </div>
-     <div th:each="dayCyc : ${#numbers.sequence(0,3)}" th:if="${dayCyc <= industriesList.size()}" class="col-lg-3 col-md-6 col-sm-12">
+     <div th:each="dayCyc : ${#numbers.sequence(0,3)}" th:if="${dayCyc < industriesList.size()}" class="col-lg-3 col-md-6 col-sm-12">
       <div class="jb_browse_category jb_cover">
        <a href="job_listing_list_left_filter">
         <div class="hover-block"></div><i class="flaticon-code"></i><h3 th:text="${industriesList.get(__${dayCyc}__).industriesName}">开发商</h3><p>(1450 jobs)</p></a>
@@ -316,7 +316,7 @@
      </div>
      <div class="col-lg-10 offset-lg-1 col-md-12 col-sm-12 pd5">
       <div class="row">
-       <div th:each="dayCyc : ${#numbers.sequence(4,6)}" th:if="${dayCyc <= industriesList.size()}" class="col-lg-4 col-md-6 col-sm-12">
+       <div th:each="dayCyc : ${#numbers.sequence(4,6)}" th:if="${dayCyc < industriesList.size()}" class="col-lg-4 col-md-6 col-sm-12">
         <div class="jb_browse_category jb_cover">
          <a href="job_listing_list_left_filter">
           <div class="hover-block"></div><i class="flaticon-city-hall"></i><h3 th:text="${industriesList.get(__${dayCyc}__).industriesName}">政府</h3><p>(2414 jobs)</p></a>
