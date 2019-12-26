@@ -1,9 +1,16 @@
 package com.lyx.undergraduatejob.controlles;
 
+import com.github.pagehelper.PageInfo;
 import com.lyx.undergraduatejob.pojo.AutCompany;
 import com.lyx.undergraduatejob.pojo.AutStudent;
+import com.lyx.undergraduatejob.pojo.Company;
+import com.lyx.undergraduatejob.pojo.Users;
+import com.lyx.undergraduatejob.search.entity.CompanySerchEntity;
+import com.lyx.undergraduatejob.search.entity.UsersSearchEntity;
 import com.lyx.undergraduatejob.services.impl.AutCompanyServiceImpl;
 import com.lyx.undergraduatejob.services.impl.AutStudentServiceImpl;
+import com.lyx.undergraduatejob.services.impl.ICompanyInfoServicesImpl;
+import com.lyx.undergraduatejob.services.impl.UserServicesImpl;
 import com.lyx.undergraduatejob.utils.StaticPool;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,6 +29,12 @@ public class AdminController {
 
     @Autowired
     AutStudentServiceImpl autStudnetService;
+
+    @Autowired
+    ICompanyInfoServicesImpl companyInfoServices;
+
+    @Autowired
+    UserServicesImpl userServices;
 
     /**
      * 职位审核管理
@@ -44,7 +57,10 @@ public class AdminController {
      * @return
      */
     @RequestMapping("manager-student")
-    public String manager_student() {
+    public String manager_student(HttpServletRequest request) {
+        UsersSearchEntity usersSearchEntity = new UsersSearchEntity();
+        PageInfo<Users> info = userServices.queryUsers(1, 10, usersSearchEntity);
+        request.setAttribute("pages",info);
         return "/admin/manager-student";
     }
     /**
@@ -52,7 +68,11 @@ public class AdminController {
      * @return
      */
     @RequestMapping("manager-company")
-    public String manager_company() {
+    public String manager_company(HttpServletRequest request) {
+        System.out.println("!!！！！！");
+        CompanySerchEntity companySerchEntity = new CompanySerchEntity();
+        PageInfo info = companyInfoServices.queryCompanyListByAdmin(1, companySerchEntity);
+        request.setAttribute("pages",info);
         return "/admin/manager-company";
     }
     /**

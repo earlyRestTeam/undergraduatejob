@@ -262,7 +262,7 @@ public class ICompanyInfoServicesImpl implements ICompanyInfoServices {
     }
 
     /**
-     * 前台按公司名称，公司类型，公司状态为1，公司认证状态查看公司列表（传入什么参数就AND加入条件）
+     * 后台按公司名称，公司类型，公司状态为1，公司认证状态查看公司列表（传入什么参数就AND加入条件）
      * @param indexpage
      * @param companySerchEntity
      * @return
@@ -277,6 +277,7 @@ public class ICompanyInfoServicesImpl implements ICompanyInfoServices {
         String companyType = companySerchEntity.getCompanyType();
         Integer status = companySerchEntity.getStatus();
         Integer aulStatus = companySerchEntity.getAulStatus();
+        Integer companyVip = companySerchEntity.getCompanyVip();
         CompanyExample.Criteria criteria = example.createCriteria();
         if(companyId !=null){
             criteria.andIdEqualTo(companyId);
@@ -292,6 +293,9 @@ public class ICompanyInfoServicesImpl implements ICompanyInfoServices {
         }
         if (aulStatus!=null){
             criteria.andAulStatusEqualTo(aulStatus);
+        }
+        if (companyVip!=null){
+            criteria.andCompanyVipEqualTo(companyVip);
         }
         example.setOrderByClause(companySerchEntity.getOrderExample()+companySerchEntity.getOrder());
         PageHelper.startPage(indexpage,10);
