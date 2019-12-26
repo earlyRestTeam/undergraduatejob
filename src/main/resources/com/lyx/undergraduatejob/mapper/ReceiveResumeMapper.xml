@@ -3,7 +3,7 @@
 <mapper namespace="com.lyx.undergraduatejob.mapper.ReceiveResumeMapper">
   <resultMap id="BaseResultMap" type="com.lyx.undergraduatejob.pojo.ReceiveResume">
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="resume_id" jdbcType="INTEGER" property="resumeId" />
     <result column="company_id" jdbcType="INTEGER" property="companyId" />
     <result column="job_id" jdbcType="INTEGER" property="jobId" />
     <result column="receive_status" jdbcType="INTEGER" property="receiveStatus" />
@@ -71,7 +71,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, user_id, company_id, job_id, receive_status, status, resume_url, receive_time, 
+    id, resume_id, company_id, job_id, receive_status, status, resume_url, receive_time, 
     create_time
   </sql>
   <select id="selectByExample" parameterType="com.lyx.undergraduatejob.pojo.ReceiveResumeExample" resultMap="BaseResultMap">
@@ -108,10 +108,10 @@
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into receive_resume (user_id, company_id, job_id, 
+    insert into receive_resume (resume_id, company_id, job_id, 
       receive_status, status, resume_url, 
       receive_time, create_time)
-    values (#{userId,jdbcType=INTEGER}, #{companyId,jdbcType=INTEGER}, #{jobId,jdbcType=INTEGER}, 
+    values (#{resumeId,jdbcType=INTEGER}, #{companyId,jdbcType=INTEGER}, #{jobId,jdbcType=INTEGER}, 
       #{receiveStatus,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{resumeUrl,jdbcType=VARCHAR}, 
       #{receiveTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP})
   </insert>
@@ -121,8 +121,8 @@
     </selectKey>
     insert into receive_resume
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="userId != null">
-        user_id,
+      <if test="resumeId != null">
+        resume_id,
       </if>
       <if test="companyId != null">
         company_id,
@@ -147,8 +147,8 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="userId != null">
-        #{userId,jdbcType=INTEGER},
+      <if test="resumeId != null">
+        #{resumeId,jdbcType=INTEGER},
       </if>
       <if test="companyId != null">
         #{companyId,jdbcType=INTEGER},
@@ -185,8 +185,8 @@
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.userId != null">
-        user_id = #{record.userId,jdbcType=INTEGER},
+      <if test="record.resumeId != null">
+        resume_id = #{record.resumeId,jdbcType=INTEGER},
       </if>
       <if test="record.companyId != null">
         company_id = #{record.companyId,jdbcType=INTEGER},
@@ -217,7 +217,7 @@
   <update id="updateByExample" parameterType="map">
     update receive_resume
     set id = #{record.id,jdbcType=INTEGER},
-      user_id = #{record.userId,jdbcType=INTEGER},
+      resume_id = #{record.resumeId,jdbcType=INTEGER},
       company_id = #{record.companyId,jdbcType=INTEGER},
       job_id = #{record.jobId,jdbcType=INTEGER},
       receive_status = #{record.receiveStatus,jdbcType=INTEGER},
@@ -232,8 +232,8 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.lyx.undergraduatejob.pojo.ReceiveResume">
     update receive_resume
     <set>
-      <if test="userId != null">
-        user_id = #{userId,jdbcType=INTEGER},
+      <if test="resumeId != null">
+        resume_id = #{resumeId,jdbcType=INTEGER},
       </if>
       <if test="companyId != null">
         company_id = #{companyId,jdbcType=INTEGER},
@@ -261,7 +261,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.lyx.undergraduatejob.pojo.ReceiveResume">
     update receive_resume
-    set user_id = #{userId,jdbcType=INTEGER},
+    set resume_id = #{resumeId,jdbcType=INTEGER},
       company_id = #{companyId,jdbcType=INTEGER},
       job_id = #{jobId,jdbcType=INTEGER},
       receive_status = #{receiveStatus,jdbcType=INTEGER},

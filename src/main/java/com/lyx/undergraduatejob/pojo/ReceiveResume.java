@@ -6,7 +6,7 @@ import java.util.Date;
 public class ReceiveResume implements Serializable {
     private Integer id;
 
-    private Integer userId;
+    private Integer resumeId;
 
     private Integer companyId;
 
@@ -32,12 +32,12 @@ public class ReceiveResume implements Serializable {
         this.id = id;
     }
 
-    public Integer getUserId() {
-        return userId;
+    public Integer getResumeId() {
+        return resumeId;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setResumeId(Integer resumeId) {
+        this.resumeId = resumeId;
     }
 
     public Integer getCompanyId() {
@@ -103,7 +103,7 @@ public class ReceiveResume implements Serializable {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
-        sb.append(", userId=").append(userId);
+        sb.append(", resumeId=").append(resumeId);
         sb.append(", companyId=").append(companyId);
         sb.append(", jobId=").append(jobId);
         sb.append(", receiveStatus=").append(receiveStatus);
