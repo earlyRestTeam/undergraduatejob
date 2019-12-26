@@ -26,19 +26,19 @@ public class EntityInterceptor implements HandlerInterceptor {
 
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
-//        Object o = loginEntityHelper.getEntity();
-//        if( !(o instanceof String) ) //        "anonymousUser"
-//            if(modelAndView != null){
-//                int type;
-//                if(o instanceof Users)
-//                    type = 1;
-//                else if(o instanceof Admin)
-//                    type = 2;
-//                else
-//                    type = 3;
-//                modelAndView.addObject("type",type);
-//                modelAndView.addObject("entity",o);
-//            }
+        Object o = loginEntityHelper.getEntity();
+        if( !(o instanceof String) ) //        "anonymousUser"
+            if(modelAndView != null){
+                int type;
+                if(o instanceof Users)
+                    type = 1;
+                else if(o instanceof Admin)
+                    type = 2;
+                else
+                    type = 3;
+                modelAndView.addObject("type",type);
+                modelAndView.addObject("entity",o);
+            }
 
     }
 

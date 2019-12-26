@@ -1,5 +1,6 @@
 package com.lyx.undergraduatejob.common;
 
+import com.lyx.undergraduatejob.pojo.Users;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -29,6 +30,10 @@ public class JwtTokenUtil {
     private static final Logger LOGGER = LoggerFactory.getLogger(JwtTokenUtil.class);
     private static final String CLAIM_KEY_USERNAME = "sub";
     private static final String CLAIM_KEY_CREATED = "created";
+    private static final String CLAIM_KEY_ENTITY_ID = "entity_id";
+    private static final String CLAIM_KEY_COMPANY_ID = "company_id";
+
+
     @Value("${jwt.secret}")
     private String secret;
     @Value("${jwt.expiration}")
@@ -81,7 +86,32 @@ public class JwtTokenUtil {
         }
         return username;
     }
-
+    /**
+     * 从token中获取登录实体的id
+     */
+    public Integer getEntityIdForToken(String token){
+        Integer id = null;
+        try{
+            Claims claims = getClaimsFromToken(token);
+            id =  claims.get(CLAIM_KEY_COMPANY_ID) != null ? (Integer)claims.get(CLAIM_KEY_COMPANY_ID) : null;
+        } catch (Exception e) {
+            id = null;
+        }
+        return id;
+    }
+    /**
+     * 从token中获取登录实体的id
+     */
+    public Integer getCompanyIdForToken(String token){
+        Integer id = null;
+        try{
+            Claims claims = getClaimsFromToken(token);
+            id =  claims.get(CLAIM_KEY_COMPANY_ID) != null ? (Integer)claims.get(CLAIM_KEY_COMPANY_ID) : null;
+        } catch (Exception e) {
+            id = null;
+        }
+        return id;
+    }
     /**
      * 验证token是否还有效
      *
@@ -114,6 +144,12 @@ public class JwtTokenUtil {
      */
     public String generateToken(UserDetails userDetails) {
         Map<String, Object> claims = new HashMap<>();
+        if(userDetails instanceof Users){
+            Users u = (Users)userDetails;
+            claims.put(CLAIM_KEY_ENTITY_ID,u.getId());
+            if(u.hasCompany())
+                claims.put(CLAIM_KEY_COMPANY_ID,u.getCompany().getId());
+        }
         claims.put(CLAIM_KEY_USERNAME, userDetails.getUsername());
         claims.put(CLAIM_KEY_CREATED, new Date());
         return generateToken(claims);

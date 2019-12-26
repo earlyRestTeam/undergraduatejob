@@ -64,23 +64,25 @@ public class UserServicesImpl implements IUserServices {
      * @return
      */
     @Override
-    public String login(String username, String password) {
-        String token = null;
+    public Map<String,String> login(String username, String password) {
+        Map<String,String> res = new HashMap<>();
         try{
             UserDetails details = userDetailsService.loadUserByUsername(username);
             boolean b = encoder.matches(details.getPassword(), password);
             if(!b){
                 logger.warn("password not true : "+username);
-                throw new BadCredentialsException("密码不正确");
+                throw new BadCredentialsException("用户名或密码不正确");
             }
             UsernamePasswordAuthenticationToken uToken = new UsernamePasswordAuthenticationToken(details,username,details.getAuthorities());
             SecurityContextHolder.getContext().setAuthentication(uToken);
 //            eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMjMiLCJjcmVhdGVkIjoxNTc2ODk0MzExOTAyLCJleHAiOjE1Nzc0OTkxMTF9.b5xK5XC8EQHNjYFSQzfHICNupwbZp43oxVQMaBkM_DRaY1FpRfplM8taLsuf9mjYG0XRG8T9oQ3F86_UCaZL3w
-            token = jwtTokenUtil.generateToken(details);
+            String token = jwtTokenUtil.generateToken(details);
+            res.put(StaticPool.SUCCESS,token);
         }catch (AuthenticationException e){
             logger.warn("login error : "+e.getMessage());
+            res.put(StaticPool.ERROR,e.getMessage());
         }
-        return token;
+        return res;
     }
     /**
      * 用户注册

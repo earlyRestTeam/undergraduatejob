@@ -20,6 +20,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.thymeleaf.util.StringUtils;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.*;
 
@@ -67,16 +69,23 @@ public class UsersController {
         model.addAttribute("bestPartJob",bestPartJob);
         return "index";
     }
-    @PostMapping("/login")
+    @PostMapping("/user/login")
     @ResponseBody
-    public APIResult result(@RequestBody LoginEntity entity, HttpServletResponse response){
+    public APIResult result(@RequestBody LoginEntity entity, HttpServletRequest request, HttpServletResponse response){
         String username = entity.getUsername();
         String password = entity.getPassword();
         String token = null;
-        if(!StringUtils.isEmpty(username)
-                && !StringUtils.isEmpty(password) ) {
-            token = userServices.login(username, password);
+        Map<String,String> res;
+        if(StringUtils.isEmpty(username)
+                || StringUtils.isEmpty(password) ) {
+            throw new RuntimeException("params error!");
         }
+        res = userServices.login(username, password);
+        token = res.get(StaticPool.SUCCESS);
+        if(token == null)
+            return APIResult.genFailApiResponse401(res.get(StaticPool.ERROR) == null ? "服务繁忙" : res.get(StaticPool.ERROR));
+        response.addHeader(tokenHead,token);
+        response.addCookie(new Cookie(tokenHead,token));
         Map<String,String> map = new HashMap<>();
         map.put("header",tokenHead);
         map.put("token",token);
@@ -164,9 +173,8 @@ public class UsersController {
         return "job_single";
     }
 
-    @RequestMapping("/user/login")
+    @RequestMapping("/user/loginPage")
     public String login(Model model){
-        model.addAttribute("type", StaticPool.USER);
         return "/login";
     }
     

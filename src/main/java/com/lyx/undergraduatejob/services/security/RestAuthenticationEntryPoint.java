@@ -19,6 +19,14 @@ import java.io.IOException;
 public class RestAuthenticationEntryPoint implements AuthenticationEntryPoint {
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException, ServletException {
+        String requestType = request.getHeader("X-Requested-With");
+        if(requestType == null){
+            String baseUrl = request.getRequestURI().replace(request.getContextPath(),"");
+            String fatherUrl = baseUrl.substring(0,baseUrl.indexOf("/",1));
+            response.sendRedirect(fatherUrl+"/loginPage");
+            return;
+        }
+
         response.setCharacterEncoding("UTF-8");
         response.setContentType("application/json");
         response.getWriter().println(JSONUtil.parse(APIResult.genFailApiResponse403(authException.getMessage())));

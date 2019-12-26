@@ -21,6 +21,14 @@ public class RestfulAccessDeniedHandler implements AccessDeniedHandler {
     public void handle(HttpServletRequest request,
                        HttpServletResponse response,
                        AccessDeniedException e) throws IOException, ServletException {
+        String requestType = request.getHeader("X-Requested-With");
+        if(requestType == null){
+            String baseUrl = request.getRequestURI().replace(request.getContextPath(),"");
+            String fatherUrl = baseUrl.substring(0,baseUrl.indexOf("/",1));
+            response.sendRedirect(fatherUrl+"/403");
+            return;
+        }
+
         response.setCharacterEncoding("UTF-8");
         response.setContentType("application/json");
         response.getWriter().println(JSONUtil.parse(APIResult.genFailApiResponse403(e.getMessage())));

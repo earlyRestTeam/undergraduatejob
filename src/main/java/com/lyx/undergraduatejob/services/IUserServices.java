@@ -28,7 +28,7 @@ public interface IUserServices{
      * @param password
      * @return
      */
-    String login(String userName, String password);
+    Map<String,String> login(String userName, String password);
     /**
      * 用户注册
      * @param u

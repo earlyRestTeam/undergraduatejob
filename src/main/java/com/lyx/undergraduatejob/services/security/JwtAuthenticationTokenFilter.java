@@ -15,6 +15,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -38,15 +39,27 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request,
                                     HttpServletResponse response,
                                     FilterChain chain) throws ServletException, IOException {
-        String authHeader = request.getHeader(this.tokenHeader);
-        if (authHeader != null && authHeader.startsWith(this.tokenHead)) {
-            String authToken = authHeader.substring(this.tokenHead.length());// The part after "Bearer "
-            String username = jwtTokenUtil.getUserNameFromToken(authToken);
+//        String authHeader = request.getHeader(this.tokenHeader);
+//        if(authHeader == null){
+        String authHeader = null;
+                Cookie[] cookies = request.getCookies();
+            if(cookies != null && cookies.length > 0){
+                for (Cookie c : cookies){
+                    if(c.getName().equals(this.tokenHead) ){
+                        authHeader = c.getValue();
+                        break;
+                    }
+                }
+            }
+
+//        }
+        if (authHeader != null) {// && authHeader.startsWith(this.tokenHead)
+            //String authToken = authHeader.substring(this.tokenHead.length());// The part after "Bearer "
+            String username = jwtTokenUtil.getUserNameFromToken(authHeader);
             LOGGER.info("checking username:{}", username);
             if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
                 UserDetails userDetails = this.userDetailsService.loadUserByUsername(username);
-                boolean b = jwtTokenUtil.validateToken(authToken, userDetails);
-                if (b) {
+                if (jwtTokenUtil.validateToken(authHeader, userDetails)) {
                     UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
                     authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
                     LOGGER.info("authenticated user:{}", username);

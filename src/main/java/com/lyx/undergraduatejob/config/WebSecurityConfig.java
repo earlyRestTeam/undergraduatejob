@@ -2,7 +2,9 @@ package com.lyx.undergraduatejob.config;
 
 
 
+import com.lyx.undergraduatejob.pojo.Company;
 import com.lyx.undergraduatejob.pojo.Users;
+import com.lyx.undergraduatejob.services.ICompanyInfoServices;
 import com.lyx.undergraduatejob.services.IUserServices;
 import com.lyx.undergraduatejob.services.security.JwtAuthenticationTokenFilter;
 import com.lyx.undergraduatejob.services.security.RestAuthenticationEntryPoint;
@@ -36,6 +38,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     IUserServices userServices;
     @Autowired
+    ICompanyInfoServices companyInfoServices;
+    @Autowired
     private RestfulAccessDeniedHandler restfulAccessDeniedHandler;
     @Autowired
     private RestAuthenticationEntryPoint restAuthenticationEntryPoint;
@@ -57,14 +61,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/**/*.js"
                 )
                 .permitAll()
-                .antMatchers("/login", "/register")// 对登录注册要允许匿名访问
+                .antMatchers("/user/loginPage","/user/login", "/user/register","/admin/login","/admin/loginPage")// 对登录注册要允许匿名访问
                 .permitAll()
                 .antMatchers(HttpMethod.OPTIONS)//跨域请求会先进行一次options请求
                 .permitAll()
                 .antMatchers("/**")//测试时全部运行访问
                 .permitAll()
-                .anyRequest()// 除上面外的所有请求全部需要鉴权认证
-                .authenticated();
+//                .antMatchers("/user/**")// 除上面外的所有请求全部需要鉴权认证
+//                .hasAnyRole("user","admin","company")
+//                .antMatchers("/admin/**")// 除上面外的所有请求全部需要鉴权认证
+//                .hasAnyRole("admin");
+                .anyRequest()
+                .permitAll();
         // 禁用缓存
         httpSecurity.headers().cacheControl();
         // 添加JWT filter
@@ -101,9 +109,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return username -> {
             Users users = userServices.loadUserByName(username);
             if (users != null) {
+                Company company = companyInfoServices.queryCompanyByUserId(users.getId());
+                if(company.getStatus() != null && company.getStatus()==1
+                        && company.getAulStatus() != null && company.getAulStatus() == 1)
+                    users.setCompany(company);
                 return users;
             }
-            throw new UsernameNotFoundException("用户名或密码错误");
+            throw new UsernameNotFoundException("用户名不存在！");
         };
     }
 
