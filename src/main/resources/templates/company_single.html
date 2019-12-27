@@ -286,7 +286,7 @@
          <div class="jp_job_post_right_btn_wrapper web_single_btn">
           <ul>
            <li>
-            <div class="job_adds_right">
+            <div class="job_adds_right" id="collectCompany">
               <a th:onclick="collectCompany([[${pages.map.company.id}]])">
               <i class="far fa-heart"></i>
              </a>
@@ -527,7 +527,7 @@
   <!--custom js files-->
   <script src="/js/jquery-3.3.1.min.js"></script>
   <script src="/js/bootstrap.min.js"></script>
-  <script src="/js/modernizr.js"></script>
+  <script src="/js/F.js"></script>
   <script src="/js/jquery.menu-aim.js"></script>
   <script src="/js/plugin.js"></script>
   <script src="/js/owl.carousel.js"></script>
@@ -567,12 +567,12 @@
          success:function (result){
           if (result.data == 1){
              if (result.result){
-               $(".job_adds_right").attr("class","job_adds_right change change22");
+              $("#collectCompany").attr("class","job_adds_right change change22");
              }
            alert(result.message)
           }else{
             if (result.result){
-             $(".job_adds_right").attr("class","job_adds_right");
+             $("#collectCompany").attr("class","job_adds_right");
             }
            alert(result.message)
           }

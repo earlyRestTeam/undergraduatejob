@@ -15,7 +15,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -139,5 +141,60 @@ public class CollectController {
         }
         return apiResult;
     }
+
+    @RequestMapping("collectResume")
+    @ResponseBody
+    public APIResult collectResume(Integer resumeId) {
+        APIResult apiResult = new APIResult();
+        OnlineEntity entity = loginEntityHelper.getOnlineEntity();
+        if (entity == null)
+            return APIResult.genFailApiResponse500("必须要登录才能收藏");
+
+        Integer companyId = null;
+        if (entity.getCompanyId() == null)
+            return APIResult.genFailApiResponse500("穷逼没公司还想收藏简历");
+
+        companyId = entity.getCompanyId();
+        List<Integer> list = new ArrayList<>();
+        list.add(resumeId);
+
+        List<Integer> list1 = iCollectServices.queryCollectStatus(list, 3, companyId, 2);
+        if (list1.size() > 0 && list1 != null) {
+            int flag = 2;
+            apiResult.setData(flag);
+            Map<String, String> map = iCollectServices.deleteCollectResume(resumeId, companyId);
+            if (map.get(StaticPool.SUCCESS) != null) {
+                apiResult.setResult(true);
+                apiResult.setMessage("取消成功");
+            } else {
+                apiResult.setResult(false);
+                apiResult.setMessage("取消失败");
+            }
+        } else {
+            int flag = 1;
+            apiResult.setData(flag);
+            if (resumeId != null && companyId != null) {
+                Collect collect = new Collect();
+                collect.setCollectorId(companyId);
+                collect.setCollectionId(resumeId);
+                collect.setCollectorType(2);
+                collect.setCollectionType(3);
+                collect.setCreateTime(new Date());
+                Map<String, String> map = iCollectServices.addCollectResume(collect);
+                if (map.get(StaticPool.SUCCESS) != null) {
+                    apiResult.setResult(true);
+                    apiResult.setMessage("收藏成功");
+                } else {
+                    apiResult.setResult(false);
+                    apiResult.setMessage("收藏失败");
+                }
+            } else {
+                apiResult.setResult(false);
+                apiResult.setMessage("收藏失败");
+            }
+        }
+        return apiResult;
+    }
+
 
 }
