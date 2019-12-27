@@ -23,7 +23,7 @@
         </div>
         
         <div class="account-pages w-100 mt-5 mb-5">
-            <div class="container">
+            <div class="container" id="login-mv">
                 <div class="row justify-content-center">
                     <div class="col-md-8 col-lg-6 col-xl-5">
                         <div class="card">
@@ -36,22 +36,15 @@
                                     </a>
                                 </div>
 
-                                <form action="/login" method="post">
-                                    <div th:if="${param.error}" class="form-group">
-                                        <label class="form-control-label">错误:</label>
-                                        <span th:text="${session.SPRING_SECURITY_LAST_EXCEPTION.message}"></span>
-                                    </div>
-                                    <input hidden name="type" th:value="${type}">
-
+<!--                                <form action="/login" method="post">-->
                                     <div class="form-group mb-3">
                                         <label for="emailaddress">Email address</label>
-                                        <input class="form-control" name="username" type="text" id="emailaddress" required="" placeholder="输入用户名">
+                                        <input class="form-control" v-model="loginEntity.username" name="username" type="text" id="emailaddress" required="" placeholder="输入用户名">
                                     </div>
 
                                     <div class="form-group mb-3">
-                                        <a href="auth-recoverpassword.html" class="text-muted float-right"><small>Forgot your password?</small></a>
                                         <label for="password">Password</label>
-                                        <input class="form-control" name="password" type="password" required="" id="password" placeholder="输入你的密码">
+                                        <input class="form-control" v-model="loginEntity.password" name="password" type="password" required="" id="password" placeholder="输入你的密码">
                                     </div>
 
                                     <div class="custom-control custom-checkbox mb-3">
@@ -60,10 +53,10 @@
                                     </div>
 
                                     <div class="form-group mb-0 text-center">
-                                        <button class="btn btn-info btn-block" type="submit"> Log In </button>
+                                        <button class="btn btn-info btn-block" @click="login()"> 登录 </button>
                                     </div>
 
-                                </form>
+<!--                                </form>-->
 
                                 <div class="row mt-3">
                                     <div class="col-12 text-center">
@@ -89,6 +82,36 @@
 
         <!-- App js -->
         <script src="/admin/js/app.min.js"></script>
-        
+        <script src="/js/vue.js"></script>
+        <script src="/js/axios.js"></script>
+        <!-- custom js-->
+        <script>
+            var mv = new Vue({
+                el:'#login-mv',
+                data:{
+                    loginEntity:{
+                        username:'',
+                        password:''
+                    },
+                },
+                methods:{
+                    login:function(){
+                        axios.post('/admin/login',this.loginEntity)
+                            .then(function(res){
+                                console.log(res.data);
+                                if(res.data.code == 200){
+                                    alert("登陆成功！");
+                                    window.location.href="/admin/";
+                                }else{
+                                    alert(res.data.message);
+                                }
+                            }).catch(function (res) {console.log("error")});
+                    }
+                },
+                created:{
+
+                },
+            })
+        </script>
     </body>
 </html>

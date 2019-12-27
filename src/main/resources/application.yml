@@ -35,16 +35,31 @@ spring:
                 max-active: 100
                 max-idle: 20
                 min-idle: 0
-
+        timeout: 5000
+    rabbitmq:
+        host: localhost
+        port: 5672
+        username: guest
+        password: guest
+mail:
+    queue:
+        name: local.mail.queue
+    exchange:
+        name: local.mail.exchange
+    routing:
+        key:
+            name: local.mail.routing.key
 
 
 want:
     mail:
-        senderName: want-conpany
+        senderName: 59同城
 mybatis:
     # spring boot集成mybatis的方式打印sql
     configuration:
         log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+
 # 自定义jwt key
 jwt:
     tokenHeader: Authorization #JWT存储的请求头

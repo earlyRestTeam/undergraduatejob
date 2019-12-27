@@ -90,8 +90,8 @@
     </header>
     <div class="menu_btn_box header_btn jb_cover">
      <ul>
-      <li><a href="sign_up"><i class="flaticon-man-user"></i>注册</a></li>
-      <li><a href="login"><i class="flaticon-login"></i>登录</a></li>
+      <li><a href="/sign_up"><i class="flaticon-man-user"></i>注册</a></li>
+      <li><a href="/user/login"><i class="flaticon-login"></i>登录</a></li>
      </ul>
     </div>
     <div class="jb_navigation_wrapper">
@@ -262,7 +262,7 @@
   </div>
   <!-- top header wrapper end -->
   <!-- 注册 wrapper start -->
-  <div class="login_wrapper jb_cover">
+  <div id="register-mv" class="login_wrapper jb_cover">
    <div class="container">
     <div class="row">
      <div class="col-lg-12 col-md-12 col-sm-12">
@@ -282,26 +282,33 @@
        <div class="login_form_wrapper signup_wrapper">
         <h2>注册</h2>
         <div class="form-group icon_form comments_form">
-         <input type="text" class="form-control require" name="full_name" placeholder="账号*" />
+         <input type="text" v-model="registerEntity.username" class="form-control require" name="full_name" placeholder="账号*" />
          <i class="fas fa-user"></i>
         </div>
         <div class="form-group icon_form comments_form">
-         <input type="text" class="form-control require" name="full_name" placeholder="邮箱*" />
+         <input type="text" v-model="registerEntity.email" class="form-control require" name="full_name" placeholder="邮箱*" />
+         <i class="fas fa-envelope"></i>
+         <div class="header_btn search_btn login_btn jb_cover">
+          <a @click="getCode()">获取验证码</a>
+         </div>
+        </div>
+        <div class="form-group icon_form comments_form">
+         <input type="text" v-model="registerEntity.code" class="form-control require" name="full_name" placeholder="验证码*" />
          <i class="fas fa-envelope"></i>
         </div>
         <div class="form-group icon_form comments_form">
-         <input type="password" class="form-control require" placeholder="密码 *" />
+         <input type="password" v-model="registerEntity.password" class="form-control require" placeholder="密码 *" />
          <i class="fas fa-lock"></i>
         </div>
         <div class="login_remember_box">
          <label class="control control--checkbox">记住账号<input type="checkbox" /><span class="control__indicator"></span></label>
-         <a href="#" class="forget_password"> 忘记密码</a>
+         <a href="/forgetPassword" class="forget_password"> 忘记密码</a>
         </div>
         <div class="header_btn search_btn login_btn jb_cover">
-         <a href="#">注册</a>
+         <a @click="register">注册</a>
         </div>
         <div class="dont_have_account jb_cover">
-         <p>已有账号 ？<a href="/login">登录</a></p>
+         <p>已有账号 ？<a href="/user/loginPage">登录</a></p>
         </div>
        </div>
       </div>
@@ -372,6 +379,50 @@
   <script src="/js/imagesloaded.pkgd.min.js"></script>
   <script src="/js/isotope.pkgd.min.js"></script>
   <script src="/js/custom.js"></script>
+  <script src="/js/vue.js"></script>
+  <script src="/js/axios.js"></script>
+  <!-- custom js-->
+  <script>
+   var mv = new Vue({
+    el:'#register-mv',
+    data:{
+     type:"1",
+     registerEntity:{
+      username:'',
+      email:'',
+      code:'',
+      password:'',
+     },
+    },
+    methods:{
+     register:function(){
+      axios.post('/user/register',this.registerEntity)
+              .then(function(res){
+                 console.log(res.data);
+                 if(res.data.code == 200){
+                  alert("注册成功！");
+                  window.location.href = "/user/loginPage";
+                 }else if(res.data.code == 401){
+                  alert(res.data.message);
+                 }
+              }).catch(function (res) {console.log("error")});
+     },
+     getCode:function () {
+           axios.get("/getCode?type="+this.type+"&email="+this.registerEntity.email).then(function(res){
+            if(res.data.code == 200)
+             alert("发送验证码成功，请去邮箱查看!");
+            else
+             alert(res.data.message);
+           }).catch(function(){
+            alert("服务繁忙！");
+           })
+     }
+    },
+    created:{
+
+    },
+   })
+  </script>
   <!-- custom js-->
  </body>
 </html>

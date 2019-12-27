@@ -1,6 +1,6 @@
 package com.lyx.undergraduatejob.services.impl;
 
-import com.github.pagehelper.Page;
+
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.lyx.undergraduatejob.common.JwtTokenUtil;
@@ -14,6 +14,7 @@ import com.lyx.undergraduatejob.utils.StaticPool;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.AuthenticationException;
@@ -40,7 +41,42 @@ public class UserServicesImpl implements IUserServices {
     @Autowired
     UserDetailsService userDetailsService;
     @Autowired
+    RedisTemplate redisTemplate;
+    @Autowired
     JwtTokenUtil jwtTokenUtil;
+
+    @Override
+    public Map<String, String> forgetPassword(String emailCode, String newPassword, String code) {
+        Map<String,String> res = new HashMap<>();
+
+        UsersExample example = new UsersExample();
+        UsersExample.Criteria criteria = example.createCriteria();
+        criteria.andEmailEqualTo(emailCode);
+
+        List<Users> users = usersMapper.selectByExample(example);
+        if( users == null ){
+            res.put(StaticPool.ERROR,"修改失败！该email错误！");
+            return res;
+        }
+
+        if( users.isEmpty() ){
+            res.put(StaticPool.ERROR,"修改失败！该email错误！");
+            return res;
+        }
+        String code2 = (String) redisTemplate.opsForValue().get(emailCode);
+        //code 正确
+        if(code.equalsIgnoreCase(code2)){
+            Users u = users.get(0);
+            String password = encoder.encode(newPassword);
+            u.setPassword(password);
+            usersMapper.updateByPrimaryKeySelective(u);
+            res.put(StaticPool.SUCCESS,"修改成功！");
+        }else {
+            res.put(StaticPool.ERROR,"修改失败！验证码错误！");
+        }
+
+        return res;
+    }
     /**
      * 通过用户名加载 用户
      * @param username
@@ -165,7 +201,7 @@ public class UserServicesImpl implements IUserServices {
         u.setAvatar(user.getAvatar());
         u.setNickName(user.getNickName());
         u.setPhone(user.getPhone());
-        int res = usersMapper.updateByPrimaryKey(u);
+        int res = usersMapper.updateByPrimaryKeySelective(u);
         if(res > 0){
             result.put(StaticPool.SUCCESS,"修改个人信息成功！");
         }else {

@@ -1,7 +1,7 @@
 package com.lyx.undergraduatejob.controlles;
 
+
 import com.alibaba.fastjson.JSONObject;
-import com.alibaba.fastjson.JSONPObject;
 import com.lyx.undergraduatejob.pojo.Company;
 import com.lyx.undergraduatejob.pojo.IndustriesList;
 import com.lyx.undergraduatejob.pojo.Job;
@@ -15,6 +15,7 @@ import com.lyx.undergraduatejob.utils.APIResult;
 import com.lyx.undergraduatejob.utils.StaticPool;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -38,6 +39,8 @@ public class UsersController {
     ICompanyInfoServices companyInfoServices;
     @Autowired
     Industries_listServices industries_listServices;
+    @Autowired
+    RedisTemplate redisTemplate;
 
     /**
      * 首页
@@ -92,6 +95,71 @@ public class UsersController {
 
         return APIResult.genSuccessApiResponse(map);
     }
+    /**
+     * 账号找回
+     * @param jsonObject
+     * @return
+     */
+    @PostMapping("/user/findBack")
+    @ResponseBody
+    public APIResult findBack(@RequestBody JSONObject jsonObject){
+        APIResult result = null;
+        String email = (String) jsonObject.get("email");
+        String password = (String) jsonObject.get("password");
+        String code = (String) jsonObject.get("code");
+        if(org.springframework.util.StringUtils.isEmpty(email) || org.springframework.util.StringUtils.isEmpty(password)
+                || org.springframework.util.StringUtils.isEmpty(code)){
+            result =  APIResult.genFailApiResponse500("PARAMS ERROR!");
+            return result;
+        }
+        Map<String, String> res = userServices.forgetPassword(email, password, code);
+        if( res.get(StaticPool.ERROR) != null ){
+            result = APIResult.genFailApiResponse500(res.get(StaticPool.ERROR));
+        }else {
+            result = APIResult.genSuccessApiResponse(res.get(StaticPool.SUCCESS));
+        }
+        return result;
+    }
+    @PostMapping("/user/register")
+    @ResponseBody
+    public APIResult register(@RequestBody JSONObject jsonObject){
+        APIResult result = null;
+
+        String code = (String) jsonObject.get("code");
+        String username = (String) jsonObject.get("username");
+        String password = (String) jsonObject.get("password");
+        String email = (String) jsonObject.get("email");
+        if(org.springframework.util.StringUtils.isEmpty(code) ||
+                org.springframework.util.StringUtils.isEmpty(username) ||
+                org.springframework.util.StringUtils.isEmpty(password) ||
+                org.springframework.util.StringUtils.isEmpty(email)){
+            result =  APIResult.genFailApiResponse500("PARAMS ERROR!");
+            return result;
+        }
+        Users user = new Users();
+        user.setUsername(username);
+        user.setEmail(email);
+        user.setPassword(password);
+
+        String mail = user.getEmail();
+        String code2 = (String) redisTemplate.opsForValue().get(mail);
+
+        if(code.equalsIgnoreCase(code2)){
+            redisTemplate.delete(mail);
+
+            Map<String, String> res = userServices.addUser(user);
+            if( res.get(StaticPool.ERROR) != null ){
+                result = APIResult.genFailApiResponse500(res.get(StaticPool.ERROR));
+            }else {
+                result = APIResult.genSuccessApiResponse(res.get(StaticPool.SUCCESS));
+            }
+        }else {
+            result = APIResult.genFailApiResponse500("验证码错误！请重新填写！");
+        }
+        return result;
+    }
+
+
     @PostMapping("/hi")
     @ResponseBody
     public APIResult sayHi(){
@@ -142,11 +210,13 @@ public class UsersController {
     }
 
 
-
+    @RequestMapping("forgetPassword")
+    public String findBack(){
+        return "/findBack";
+    }
 
     @RequestMapping("index_III")
     public String index_III(){
-
         return "index_III";
     }
     

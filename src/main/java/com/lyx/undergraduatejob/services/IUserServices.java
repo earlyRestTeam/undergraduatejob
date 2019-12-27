@@ -14,7 +14,15 @@ import java.util.Map;
  * 用户服务层
  */
 public interface IUserServices{
-
+    /**
+     * 找回密码
+     * @param emailCode
+     * @param newPassword
+     * @param code
+     * @return
+     */
+    Map<String,String> forgetPassword(String emailCode,String newPassword
+            ,String code);
     /**
      * 通过用户名加载 用户
      * @param username
