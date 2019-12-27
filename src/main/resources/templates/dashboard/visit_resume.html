@@ -14,7 +14,7 @@ Author:
 
 <head>
     <meta charset="utf-8" />
-    <title>Candidates Resume</title>
+    <title>我的简历</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta name="description" content="JB desks,job portal,job" />
     <meta name="keywords" content="JB desks,job portal,job" />
@@ -501,7 +501,7 @@ Author:
                     <!-- section_heading start -->
                     <div class="col-xl-9 col-lg-7 col-md-7 col-12 col-sm-12">
 
-                        <h1>Candidates resume</h1>
+                        <h1>简历预览</h1>
                     </div>
                     <div class="col-xl-3 col-lg-5 col-md-5 col-12 col-sm-12">
                         <div class="sub_title_section">
@@ -518,281 +518,238 @@ Author:
     <!-- top header wrapper end -->
     <!--employee dashboard wrapper start-->
     <div class="candidate_dashboard_wrapper jb_cover">
+
         <div class="container">
-            <div class="row">
+            <div id="resume" class="col-lg-9 col-md-12 col-sm-12 col-12" th:fragment="myResume">
+                <div class="row">
+                    <input id="id" type="hidden" th:value="${resume.id}">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="job_filter_category_sidebar company_wrapper jb_cover">
 
+                            <div class="job_filter_sidebar_heading jb_cover">
+                                <h1>
+                                    <span th:text="${resume.name}" style="font-size: 26px;float: none"></span>
+                                    <span th:if="${resume.gender == 1}" th:text="' (女，'+ ${resume.age} + ')'" style="float: none"></span>
+                                    <span th:if="${resume.gender == 2}" th:text="' (男，'+ ${resume.age} + ')'" style="float: none"></span>
+                                    <!--                                        <span><a href="#" data-toggle="modal" data-target="#myModal1"><i class="fas fa-edit"></i></a></span>-->
+                                    <span><a href="">立即置顶</a></span>
+                                </h1>
+                            </div>
 
-                <div class="col-lg-3 col-md-12 col-sm-12 col-12">
-                    <div class="emp_dashboard_sidebar jb_cover">
-                        <img src="/dashboard/images/profile.jpg" class="img-responsive" alt="post_img" />
-                        <div class="emp_web_profile candidate_web_profile jb_cover">
+                            <div class="job_overview_header jb_cover">
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12 col-12">
 
-                            <h4>luca wallace</h4>
-                            <p>@username</p>
-                            <div class="skills jb_cover">
-                                <div class="skill-item jb_cover">
-                                    <h6>profile<span>70%</span></h6>
-                                    <div class="skills-progress"><span data-value="70%"></span>
+                                        <div class="jp_listing_overview_list_main_wrapper jb_cover">
+                                            <div class="jp_listing_list_icon">
+                                                <i class="far fa-calendar"></i>
+                                            </div>
+                                            <div class="jp_listing_list_icon_cont_wrapper">
+                                                <ul class="ul_crosswise">
+                                                    <li>基本情况:</li>
+                                                    <li th:text="${resume.education}"></li>
+                                                    <li>|</li>
+                                                    <li>应届生</li>
+                                                    <li>|</li>
+                                                    <li>现居长沙岳麓区</li>
+                                                    <li>|</li>
+                                                    <li>郴州人</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                        <div class="jp_listing_overview_list_main_wrapper jb_cover">
+                                            <div class="jp_listing_list_icon">
+                                                <i class="far fa-calendar"></i>
+                                            </div>
+                                            <div class="jp_listing_list_icon_cont_wrapper">
+                                                <ul class="ul_crosswise">
+                                                    <li>求职意向:</li>
+                                                    <li th:text="'求职' + ${resume.job}"></li>
+                                                    <li>|</li>
+                                                    <li th:text="'想在' + ${resume.jobAddress}"></li>
+                                                    <li>|</li>
+                                                    <li th:text="'期望薪资' + ${resume.salary}"></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                        <div class="jp_listing_overview_list_main_wrapper jb_cover" style="padding: 0">
+                                            <div class="jp_listing_list_icon">
+                                                <i class="far fa-calendar"></i>
+                                            </div>
+                                            <div class="jp_listing_list_icon_cont_wrapper">
+                                                <ul class="ul_crosswise">
+                                                    <li>自我介绍:</li>
+                                                </ul>
+                                            </div>
+                                            <div class="job_overview_header pdd jb_cover" style="padding-top: 0">
+                                                <p id="selfIntroduction" th:text="${resume.selfIntroduction}"></p>
+                                            </div>
+                                        </div>
+
+                                        <div class="job_overview_header jb_cover">
+                                            <ul class="speical_qualification_wrapper ul_crosswise">
+                                                <li th:if="${resume.skill1 != null}">
+                                                    <i class="fas fa-check-square"></i>
+                                                    <p id="skill1" name="skill1" th:text="${resume.skill1}" style="display: inline-block"></p>
+                                                </li>
+                                                <li  th:if="${resume.skill2 != null && resume.skill2 != ''}">
+                                                    <i class="fas fa-check-square"></i>
+                                                    <p id="skill2" name="skill2" th:text="${resume.skill2}" style="display: inline-block"></p>
+                                                </li>
+                                                <li  th:if="${resume.skill3 != null && resume.skill3 != ''}">
+                                                    <i class="fas fa-check-square"></i>
+                                                    <p id="skill3" name="skill3" th:text="${resume.skill3}" style="display: inline-block"></p>
+                                                </li>
+                                                <li  th:if="${resume.skill4 != null && resume.skill4 != ''}">
+                                                    <i class="fas fa-check-square"></i>
+                                                    <p id="skill4" name="skill4" th:text="${resume.skill4}" style="display: inline-block"></p>
+                                                </li>
+
+                                            </ul>
+                                        </div>
+
+                                        <div class="jp_listing_overview_list_main_wrapper jb_cover">
+                                            <div class="jp_listing_list_icon">
+                                                <i class="far fa-calendar"></i>
+                                            </div>
+                                            <div class="jp_listing_list_icon_cont_wrapper">
+                                                <input id="gender" name="gender" type="hidden" th:value="${resume.gender}">
+                                                <ul class="ul_crosswise">
+                                                    <li>联系方式:</li>
+                                                    <li th:text="'电话：' + ${resume.phone}"></li>
+                                                    <li>|</li>
+                                                    <li th:text="'邮箱：' + ${resume.email}"></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
                                     </div>
+                                    <!--                                            <div class="col-lg-12 col-md-12 col-sm-12 col-12">-->
+                                    <!--                                                -->
+                                    <!--                                            </div>-->
+
+                                    <div class="jp_listing_overview_list_main_wrapper jb_cover">
+                                        <div class="jp_listing_list_icon">
+                                            <i class="far fa-calendar"></i>
+                                        </div>
+                                        <div class="jp_listing_list_icon_cont_wrapper">
+                                            <ul>
+                                                <li >籍贯:<p id="nativePlace" name="nativePlace" style="display: inline-block" th:text="${resume.nativePlace}"></p></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
-                        <div class="emp_follow_link jb_cover">
-                             <ul class="feedlist">
-                                <li><a href="/user/candidate_dashboard"><i class="fas fa-tachometer-alt"></i> 个人资料 </a></li>
-                                <li><a href="/user/candidate_resume" class="link_active"><i class="fas fa-file"></i>我的简历</a></li>
-                                <li><a href="candidate_favourite_job"><i class="fas fa-heart"></i>我的收藏</a></li>
-                                <li><a href="candidate_applied_job"><i class="fas fa-check-square"></i>找工作</a></li>
-                                <li><a href="message"><i class="fas fa-envelope"></i>消息</a></li>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="job_filter_category_sidebar company_wrapper jb_cover">
+                            <div class="job_filter_sidebar_heading jb_cover">
+                                <h1>工作经验
+                                    <!--                                        <span><a href="#" data-toggle="modal" data-target="#myModal6"><i class="fas fa-edit"></i></a></span>-->
+                                </h1>
+                            </div>
 
-                                <li><a href="pricing_plans"><i class="fas fa-tag"></i>VIP</a></li>
-                            </ul>
-                            <ul class="feedlist logout_link jb_cover">
-                                <li><a href="#"><i class="fas fa-power-off"></i>退出登录</a></li>
-                                <li>
-                                    <a href="#" data-toggle="modal" data-target="#myModal"><i class="fas fa-trash-alt"></i>删除账户
-                                </a>
-                                </li>
+                            <div class="job_overview_header jb_cover">
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-12" th:each="workExperience:${workExperienceList}">
 
-                            </ul>
+                                        <div class="jp_listing_overview_list_main_wrapper education_board jb_cover">
+                                            <div class="jp_listing_list_icon">
+                                                <i class="fas fa-suitcase"></i>
+                                            </div>
+                                            <div class="jp_listing_list_icon_cont_wrapper">
+                                                <ul>
+                                                    <li th:text="${workExperience.workTime}">2018 - Present</li>
+                                                    <li>所属公司：
+                                                        <p th:text="${workExperience.workCompany}" style="display: inline-block"></p>
+                                                    </li>
+                                                    <li>担任职位：
+                                                        <p th:text="${workExperience.job}" style="display: inline-block"></p>
+                                                    </li>
+                                                    <li>详细描述：</li>
+                                                </ul>
+                                                <p th:text="${workExperience.experienceDesc}">As a UI/UX Designer, i have a strong background of work closely with Developers and associate with Design Research to enhance design suggestions. Manage design wireframes, mockups and navigation maps. My job was to make sure that my Designs are unique.Develop clean well executed design concepts. Coordinate with team on design and prototype of new interfaces.</p>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+
+                                </div>
+                            </div>
+
                         </div>
                     </div>
-                    <div class="modal fade delete_popup" id="myModal" role="dialog">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="job_filter_category_sidebar company_wrapper jb_cover">
+                            <div class="job_filter_sidebar_heading jb_cover">
+                                <h1> 教育背景
+                                    <!--                                        <span><a href="#" data-toggle="modal" data-target="#myModal4"><i class="fas fa-edit"></i></a></span>-->
+                                </h1>
+                            </div>
+
+
+                            <div class="job_overview_header jb_cover">
                                 <div class="row">
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-
-                                        <div class="delett_cntn jb_cover">
-                                            <h1><i class="fas fa-trash-alt"></i> delete account</h1>
-                                            <p>Are you sure! You want to delete your profile. This
-                                                <br> can't be undone!</p>
-
-                                            <div class="delete_jb_form">
-
-                                                <input type="password" name="password" placeholder="Enter Password">
+                                        <div class="jp_listing_overview_list_main_wrapper education_board jb_cover">
+                                            <div class="jp_listing_list_icon">
+                                                <i class="fas fa-graduation-cap"></i>
                                             </div>
-                                            <div class="header_btn search_btn applt_pop_btn">
-
-                                                <a onclick="update8()"data-dismiss="modal">保存修改</a>
-
-                                            </div>
-                                            <div class="cancel_wrapper">
-                                                <a href="#" class="" data-dismiss="modal">取消</a>
-                                            </div>
-                                            <div class="login_remember_box jb_cover">
-                                                <label class="control control--checkbox">You accepts our <a href="#">Terms and Conditions </a> and <a href="#">Privacy Policy</a>
-                                                    <input type="checkbox">
-                                                    <span class="control__indicator"></span>
-                                                </label>
+                                            <div class="jp_listing_list_icon_cont_wrapper">
+                                                <ul>
+                                                    <li>2018 - 至今</li>
+                                                    <li>博士 <a href="#">清华大学 </a></li>
+                                                </ul>
+                                                <p>Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage</p>
                                             </div>
                                         </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="col-lg-9 col-md-12 col-sm-12 col-12">
-                    <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                            <div class="job_main_overflow jb_cover">
-                                <div class="latest_job_overlow jb_cover">
-                                    <div class="manage_jobs_wrapper jb_cover">
-                                        <div class="job_list_next mange_list">
-
-                                            <h6>简历名称</h6>
-
+                                        <div class="jp_listing_overview_list_main_wrapper education_board jb_cover">
+                                            <div class="jp_listing_list_icon">
+                                                <i class="fas fa-graduation-cap"></i>
+                                            </div>
+                                            <div class="jp_listing_list_icon_cont_wrapper">
+                                                <ul>
+                                                    <li>2014 - 2018</li>
+                                                    <li>研究生 <a href="#">北京大学</a></li>
+                                                </ul>
+                                                <p>Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage</p>
+                                            </div>
                                         </div>
-                                        <div class="job_list_next mange_list">
-                                            <h6>类型</h6>
-
-                                        </div>
-                                        <div class="job_list_next mange_list">
-                                            <h6>发布状态</h6>
-
-                                        </div>
-                                        <div class="job_list_next mange_list">
-                                            <h6>审核状态</h6>
-
-                                        </div>
-                                        <div class="job_list_next mange_list">
-                                            <h6>操作</h6>
-
+                                        <div class="jp_listing_overview_list_main_wrapper education_board jb_cover">
+                                            <div class="jp_listing_list_icon">
+                                                <i class="fas fa-graduation-cap"></i>
+                                            </div>
+                                            <div class="jp_listing_list_icon_cont_wrapper">
+                                                <ul>
+                                                    <li>2014 - 2014</li>
+                                                    <li>高中生 <a href="#">衡水中学</a></li>
+                                                </ul>
+                                                <p>Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage</p>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div th:each="resume : ${resumeList}" th:id="'resume'+${resume.id}"  class="latest_job_box jb_cover">
-                                        <div class="job_list_next">
-
-                                            <h6 th:text="${resume.job}"><a href="#">General Ledger Accountant</a></h6>
-                                            <p  th:text="'发布日期 : '+${#dates.format(resume.pushTime, 'yyyy-MM-dd hh:MM:ss')}"> <i class="far fa-calendar"></i> 02 Oct 2017</p>
-
-                                        </div>
-                                        <div class="job_list_next" th:switch="${resume.partFull}">
-                                            <p th:case="1"><a href="#">兼职</a></p>
-                                            <p th:case="2"><a href="#">全职</a></p>
-                                            <p th:case="2"><a href="#">全职</a></p>
-
-                                        </div>
-                                        <div th:switch="${resume.pushStatus}" class="job_list_next">
-                                            <p th:case="1" class="gn">已发布</p>
-                                            <p th:case="0" class="ex">未发布</p>
-                                        </div>
-                                        <div th:switch="${resume.aulStatus}" class="job_list_next">
-                                            <p th:case="2" class="gn">通过</p>
-                                            <p th:case="0" class="pen">待审核</p>
-                                            <p th:case="3" class="ex">未通过</p>
-                                        </div>
-                                        <div class="job_list_next">
-                                            <ul>
-                                                <li><a href="javascript:">预览<i class="fas fa-eye"></i></a></li>
-                                                <li><a href="javascript:" th:onclick="|javascript:update(${resume.id})|">修改<i class="fas fa-edit"></i></a></li>
-                                                <li><a href="javascript:" th:onclick="|javascript:del(${resume.id})|">删除<i class="fas fa-trash-alt"></i></a></li>
-                                            </ul>
-
-                                        </div>
-
-                                    </div>
-
-                                    <div class="latest_job_box jb_cover">
-                                        <div class="job_list_next">
-
-                                            <h6 ><a href="#" class="gn">修改求职状态</a></h6>
-                                            <p  th:text="'当前状态 : 求职中'"> <i class="far fa-calendar"></i> 02 Oct 2017</p>
-
-                                        </div>
-                                        <div class="job_list_next">
-                                            <p><a th:text="'共可创建 6 份简历'" href="#">06 Applications</a></p>
-
-                                        </div>
-                                        <div class="job_list_next">
-                                            <p class="gn" th:text="'您已创建 1 份'"></p>
-                                            <!--                                            <p th:case="0" class="ex">未发布</p>-->
-                                        </div>
-                                        <div class="job_list_next">
-                                            <p class="gn"><a href="javascript:" onclick="window.open('/user/addResume')" >创建全职简历</a></p>
-                                            <!--                                            <p th:case="2" class="gn">通过</p>-->
-                                            <!--                                            <p th:case="0" class="pen">待审核</p>-->
-                                            <!--                                            <p th:case="3" class="ex">未通过</p>-->
-                                        </div>
-                                        <div class="job_list_next">
-                                            <p class="gn"><a href="#">创建兼职简历</a></p>
-<!--                                            <ul>-->
-<!--                                                <li><a href="#">创建全职简历-->
-<!--                                                    <i class="fas fa-eye"></i>-->
-<!--                                                </a></li>-->
-<!--                                                <li><a href="#">创建兼职简历<i class="fas fa-edit"></i></a></li>-->
-<!--                                                <li><a href="#">删除<i class="fas fa-trash-alt"></i></a></li>-->
-<!--                                            </ul>-->
-
-                                        </div>
-
-                                    </div>
-
-
-<!--                                    <div class="blog_pagination_section jb_cover">-->
-<!--                                        <ul>-->
-<!--                                            <li>-->
-<!--                                                <a href="#" class="prev"> <i class="flaticon-left-arrow"></i> </a>-->
-<!--                                            </li>-->
-<!--                                            <li><a href="#">1</a>-->
-<!--                                            </li>-->
-<!--                                            <li class="third_pagger"><a href="#">2</a>-->
-<!--                                            </li>-->
-<!--                                            <li class="d-block d-sm-block d-md-block d-lg-block"><a href="#">3</a>-->
-<!--                                            </li>-->
-<!--                                            <li class="d-none d-sm-block d-md-block d-lg-block"><a href="#">...</a>-->
-<!--                                            </li>-->
-<!--                                            <li class="d-none d-sm-block d-md-block d-lg-block"><a href="#">6</a>-->
-<!--                                            </li>-->
-
-<!--                                            <li>-->
-<!--                                                <a href="#" class="next"> <i class="flaticon-right-arrow"></i> </a>-->
-<!--                                            </li>-->
-<!--                                        </ul>-->
-<!--                                    </div>-->
 
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="header_btn search_btn jb_cover" >
+                            <a href="javascript:" id="saveUpdate">保存</a>
+                            <a href="javascript:" onclick="downloadword()" style="padding-left: 40px">上传本地简历</a>
+                            <!--                                <a href="javascript:" onclick="downloadword()" style="padding-left: 40px">下载简历</a>-->
+                        </div>
+                    </div>
                 </div>
-
-                <!--个人简历 start-->
-<!--                <div id="resume" class="col-lg-9 col-md-12 col-sm-12 col-12" th:fragment="myResume">-->
-<!--                    <div class="row">-->
-
-<!--&lt;!&ndash;                        <div th:if="${resume.id == null}" id="noResume" class="col-lg-12 col-md-12 col-sm-12 col-12">&ndash;&gt;-->
-<!--&lt;!&ndash;                            <div class="job_filter_category_sidebar company_wrapper jb_cover">&ndash;&gt;-->
-<!--&lt;!&ndash;                                <div class="job_filter_sidebar_heading jb_cover">&ndash;&gt;-->
-<!--&lt;!&ndash;                                    <h1> 您还没有简历，请在下方填写简历信息&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;                                        <span><a href="javascript:" ><i class="fas fa-edit"></i></a></span>&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                    </h1>&ndash;&gt;-->
-<!--&lt;!&ndash;                                </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                            </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                    <input type="hidden" name="id" th:value="${resume.id}">&ndash;&gt;-->
-<!--                        <div class="col-lg-12 col-md-12 col-sm-12 col-12">-->
-<!--                            <div class="job_filter_category_sidebar company_wrapper jb_cover" th:each="resume : ${resumeList}">-->
-<!--                                <div class="job_filter_sidebar_heading jb_cover" style="margin-bottom: 15px">-->
-<!--&lt;!&ndash;                                    <input id="id" type="hidden" th:value="${resume.id}">&ndash;&gt;-->
-<!--                                    <h1 th:text="${resume.job}"> 简历名称1 <span><a href="#" data-toggle="modal" data-target="#myModal1"><i class="fas fa-edit"></i></a></span></h1>-->
-<!--                                </div>-->
-<!--&lt;!&ndash;                                <div class="padder_top jb_cover"></div>&ndash;&gt;-->
-
-<!--                                <div class="job_filter_sidebar_heading jb_cover" style="margin-bottom: 15px">-->
-<!--                                    <h1> 简历名称2 <span><a href="#" data-toggle="modal" data-target="#myModal1"><i class="fas fa-edit"></i></a></span></h1>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-
-<!--                        <div class="col-lg-12 col-md-12 col-sm-12 col-12">-->
-<!--                            <div class="job_filter_category_sidebar company_wrapper jb_cover">-->
-<!--                                <div class="job_overview_header jb_cover">-->
-<!--                            <div class="row">-->
-<!--                                <div class="col-lg-6 col-md-12 col-sm-12 col-12">-->
-
-<!--                                    <div class="jp_listing_overview_list_main_wrapper jb_cover">-->
-<!--                                        <div class="jp_listing_list_icon">-->
-<!--                                            <i class="far fa-calendar"></i>-->
-<!--                                        </div>-->
-<!--                                        <div class="jp_listing_list_icon_cont_wrapper">-->
-<!--                                            <ul>-->
-<!--&lt;!&ndash;                                                <li>联系电话:<p id="phone" name="phone" style="display: inline-block" th:text="${resume.phone}"></p></li>&ndash;&gt;-->
-<!--                                            </ul>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-
-<!--                                    <div class="jp_listing_overview_list_main_wrapper jb_cover">-->
-<!--                                        <div class="jp_listing_list_icon">-->
-<!--                                            <i class="far fa-calendar"></i>-->
-<!--                                        </div>-->
-<!--                                        <div class="jp_listing_list_icon_cont_wrapper">-->
-<!--                                            <ul>-->
-<!--&lt;!&ndash;                                                <li>QQ  号:<p id="qq" name="qq" style="display: inline-block" th:text="${resume.qq}"></p></li>&ndash;&gt;-->
-<!--                                            </ul>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-
-
-
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-
-
-<!--                </div>-->
-<!--                </div>-->
-                <!--个人简历 end-->
-
             </div>
+
         </div>
+
     </div>
     <!--employee dashboard wrapper end-->
     <!-- newsletter wrapper start -->
@@ -991,8 +948,7 @@ Author:
     <script  src="/dashboard/js/fileSaver.js"></script>
     <script  src="/dashboard/js/wordexport.js"></script>
 
-
-
+    
     <script>
         function downloadword() {
             var papername = "个人简历";
@@ -1020,43 +976,7 @@ Author:
         }
     </script>
 
-    <script>
-        //修改简历
-        function update(id) {
-            console.log("修改简历id:"+id);
-            window.open("/user/updateResume?resumeId=" + id);
-        }
-        //删除简历
-        function del(id) {
-            var con = confirm("你确定要删除吗？");
-            if(con){
-                console.log("删除简历id:"+id);
-
-                var url = "/user/delResume?resumeId=" + id;
-                var data = {"resumeId":id};
-                $.ajax({
-                    url:url,
-                    type:"post",
-                    contentType: "application/json; charset=utf-8",
-                    data: JSON.stringify(data),
-                    dataType: "json",
-                    success:function(result){
-                        console.log(result);//打印服务端返回的数据
-                        if (result.code == 200) {
-                            alert(result.message);
-                            $("#resume"+id).remove();
-                        } else {
-                            alert(result.message);
-                        }
-                    },
-                    error:function(e){
-                        alert("服务器繁忙，稍后再试。");
-                    }
-                });
-            }
-
-        }
-    </script>
+    
 
     <script>
         // //页面加载完毕后运行
@@ -1106,14 +1026,14 @@ Author:
             $("#jobType").text($("#update_jobType").val());
             $("#salary").text($("#update_salary").val());
             $("#jobAddress").text($("#update_jobAddress").text());
-            var partFull = $(".update_partFull").text()
-            $(".partFull").text();
-            if(partFull === ("兼职")){
-                $("#partFull").attr("value",1);
-            }else {
-                $("#partFull").attr("value",2);
-            }
-
+            // var partFull = $(".update_partFull").text()
+            // $(".partFull").text();
+            // if(partFull === ("兼职")){
+            //     $("#partFull").attr("value",1);
+            // }else {
+            //     $("#partFull").attr("value",2);
+            // }
+            $("#partFull").attr("value",2);
 
         }
         <!--    修改自我介绍    -->
@@ -1173,7 +1093,7 @@ Author:
             var resume = {"id": id, "name": name, "age": age, "gender": gender, "nativePlace": nativePlace,
                 "graduateSchool": graduateSchool, "specialty": specialty, "education": education, "phone": phone,
                 "email": email, "qq": qq, "weiXin": weiXin, "job": job, "jobType": jobType, "salary": salary,
-                "jobAddress": jobAddress, "partFull": partFull, "selfIntroduction": selfIntroduction,
+                "jobAddress": jobAddress, "partFull": 2, "selfIntroduction": selfIntroduction,
                 "skill1": skill1, "skill2": skill2, "skill3": skill3, "skill4": skill4
 
             };
@@ -1196,6 +1116,7 @@ Author:
                     console.log(result);//打印服务端返回的数据
                     if (result.code == 200) {
                         alert(result.message);
+                        window.location.href="/user/candidate_resume";
                     } else {
                         alert(result.message);
                     }

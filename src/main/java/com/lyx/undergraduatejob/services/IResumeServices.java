@@ -5,6 +5,7 @@ import com.github.pagehelper.PageInfo;
 import com.lyx.undergraduatejob.pojo.Resume;
 import com.lyx.undergraduatejob.search.entity.ResumeSearchEntity;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -45,7 +46,7 @@ public interface IResumeServices {
      * @param userId
      * @return
      */
-    Resume queryResumeByUserId(int userId);
+    List<Resume> queryResumeByUserId(int userId);
 
     /**
      * 添加个人简历

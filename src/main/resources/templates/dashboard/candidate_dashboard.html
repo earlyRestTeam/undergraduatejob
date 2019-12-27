@@ -598,7 +598,7 @@ Author:
                                                                 <div class="col-lg-9 col-md-9 col-sm-12 col-12">
                                                                     <div class="delete_jb_form">
 
-                                                                        <input id="del_nickName" type="text" name="name" th:value="${users.nickName}">
+                                                                        <input id="update_nickName" type="text" name="name" th:value="${users.nickName}">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -613,7 +613,7 @@ Author:
                                                                 <div class="col-lg-9 col-md-9 col-sm-12 col-12">
                                                                     <div class="delete_jb_form">
 
-                                                                        <input id="del_phone" type="tel" name="name" th:value="${users.phone}">
+                                                                        <input id="update_phone" type="tel" name="name" th:value="${users.phone}">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -704,13 +704,13 @@ Author:
                             <div class="job_filter_category_sidebar company_wrapper jb_cover">
 
                                 <div class="job_filter_sidebar_heading jb_cover">
-                                    <h1> 修改密码 <span><a href="#" data-toggle="modal" data-target="#myModal_delPwd"><i class="fas fa-edit"></i></a></span></h1>
+                                    <h1> 修改密码 <span><a href="#" data-toggle="modal" data-target="#myModal_updatePwd"><i class="fas fa-edit"></i></a></span></h1>
                                 </div>
 
-                                <div class="modal fade delete_popup company_popup" id="myModal_delPwd" role="dialog">
+                                <div class="modal fade delete_popup company_popup" id="myModal_updatePwd" role="dialog">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
-                                            <button type="button" id="close_delPwd" class="close" data-dismiss="modal">&times;</button>
+                                            <button type="button" id="close_updatePwd" class="close" data-dismiss="modal">&times;</button>
                                             <div class="row">
                                                 <div class="col-lg-12 col-md-12 col-sm-12 col-12">
 
@@ -772,7 +772,7 @@ Author:
                                                             </div>
 
                                                             <div class="cancel_wrapper">
-                                                                <a href="#" data-dismiss="modal_delPwd">取消</a>
+                                                                <a href="#" data-dismiss="modal_updatePwd">取消</a>
                                                             </div>
                                                         </form>
                                                     </div>
@@ -1034,23 +1034,23 @@ Author:
 
         //确认修改资料
         function confirm() {
-            var del_avatar = $('.img-responsive').attr('src');
-            var del_nickName = $("#del_nickName").val();
-            var del_phone = $("#del_phone").val();
-            var data ={"avatar": del_avatar, "nickName": del_nickName, "phone": del_phone};
+            var update_avatar = $('.img-responsive').attr('src');
+            var update_nickName = $("#update_nickName").val();
+            var update_phone = $("#update_phone").val();
+            var data ={"avatar": update_avatar, "nickName": update_nickName, "phone": update_phone};
 
             $.ajax({
                 type: 'POST',//方法类型
                 dataType: "json",//预期服务器返回的数据类型
-                url: '/user/delMyInfo',//url
+                url: '/user/updateMyInfo',//url
                 contentType: "application/json; charset=utf-8",
                 data: JSON.stringify(data),
                 success: function (result) {
                     console.log(result);//打印服务端返回的数据
                     if (result.code == 200) {
-                        $('.avatar').attr("src",del_avatar);
-                        $(".nickName").text(del_nickName);
-                        $("#phone").text(del_phone);
+                        $('.avatar').attr("src",update_avatar);
+                        $(".nickName").text(update_nickName);
+                        $("#phone").text(update_phone);
                         $('#close').click();
                         alert("修改成功!");
                     }
@@ -1058,7 +1058,7 @@ Author:
                         $('#close').click();
                         alert(result.message);
                     }
-                    ;
+
                 },
                 error: function () {
 
@@ -1171,7 +1171,7 @@ Author:
                     console.log(result);//打印服务端返回的数据
                     if (result.code == 200) {
                         alert("重置成功!");
-                        $('#close_delPwd').click();
+                        $('#close_updatePwd').click();
                     }
                     else {
                         alert(result.message);

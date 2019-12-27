@@ -1463,10 +1463,12 @@ a:hover {
 	line-height:30px;
 }
 .jp_listing_list_icon_cont_wrapper{
-	float:left;
-	width:calc(100% - 20px);
-	padding-left:10px;
-}
+     float:left;
+     width:calc(100% - 20px);
+     padding-left:10px;
+ }
+
+
 .jp_listing_list_icon i{
 	color:#ff5353;
 }
@@ -1474,6 +1476,10 @@ a:hover {
 	color:#222;
 	font-size:16px;
 	text-transform:capitalize;
+}
+
+.ul_crosswise li{
+    display: inline-block;
 }
 .jp_listing_right_bar_btn_wrapper{
 	float:left;
@@ -1543,6 +1549,10 @@ a:hover {
 }
 .jp_listing_list_icon_cont_wrapper ul li:last-child a {
     color: #797979;
+}
+
+.jp_listing_list_icon_cont_wrapper ul li:last-child p {
+    color: #777777;
 }
 #map {
     float: left;
@@ -3502,6 +3512,11 @@ background:#fff;
     clear: both;
     margin-bottom: 70px;
 }
+
+.p-f{
+    display: inline-block;
+}
+
 @-webkit-keyframes pulse {
   to {
     box-shadow: 0 0 0 30px rgba(232, 76, 61, 0);

@@ -136,19 +136,18 @@ public class ResumeServicesImp implements IResumeServices {
      * @return
      */
     @Override
-    public Resume queryResumeByUserId(int userId) {
+    public List<Resume> queryResumeByUserId(int userId) {
         ResumeExample example = new ResumeExample();
         ResumeExample.Criteria criteria = example.createCriteria();
         criteria.andUserIdEqualTo(userId);
-        criteria.andStatusEqualTo(StaticPool.RESUME_OK);
+        criteria.andStatusEqualTo(1);
 
         List<Resume> resumes = resumeMapper.selectByExample(example);
-
-        if(resumes == null || resumes.size() != 1){
-            logger.warn("服务器繁忙"+resumes);
-            return null;
-        }
-        return resumes.get(0);
+//        if(resumes == null || resumes.size() != 1){
+//            logger.warn("服务器繁忙"+resumes);
+//            return null;
+//        }
+        return resumes;
     }
 
     /**
@@ -166,19 +165,20 @@ public class ResumeServicesImp implements IResumeServices {
             return result;
         }
 
-        if(r.getUserId() != userId){
-            logger.error("非法访问！！！用户id："+userId);
-            result.put(StaticPool.ERROR,"简历修改失败");
-            return result;
-        }
-        if(queryResumeByUserId(userId) != null){
-            logger.error("非法访问！！！用户id："+userId);
-            result.put(StaticPool.ERROR,"简历修改失败");
+//        //
+//        if(r.getUserId() != userId){
+//            logger.error("非法访问！！！用户id："+userId);
+//            result.put(StaticPool.ERROR,"简历修改失败");
+//            return result;
+//        }
+        if(queryResumeByUserId(userId).size() == 6){
+            logger.warn("简历添加失败，已超过6个简历。！！！用户id："+userId);
+            result.put(StaticPool.ERROR,"简历添加失败，已超过6个简历。");
             return result;
         }
         //设置id我空，防止非法操作
         r.setId(null);
-        int insert = resumeMapper.insert(r);
+        int insert = resumeMapper.insertSelective(r);
         if(insert > 0){
             result.put(StaticPool.SUCCESS,"简历添加成功");
         }else {
@@ -215,7 +215,7 @@ public class ResumeServicesImp implements IResumeServices {
                 result.put(StaticPool.ERROR,"简历修改失败");
             }
         }else {
-            logger.error("简历和访问用户不匹配非法访问！！！用户id："+userId);
+            logger.error("简历和访问用户ID不匹配非法访问！！！用户id："+userId);
             result.put(StaticPool.ERROR,"服务器繁忙，简历修改失败");
         }
 
