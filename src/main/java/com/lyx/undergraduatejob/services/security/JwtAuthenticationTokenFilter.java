@@ -26,8 +26,10 @@ import java.io.IOException;
  */
 public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
     private static final Logger LOGGER = LoggerFactory.getLogger(JwtAuthenticationTokenFilter.class);
-    @Autowired
-    private UserDetailsService userDetailsService;
+//    @Autowired
+//    private UserDetailsService userDetailsService;
+//    @Autowired
+//    private UserDetailsService adminDetailService;
     @Autowired
     private JwtTokenUtil jwtTokenUtil;
     @Value("${jwt.tokenHeader}")
@@ -53,19 +55,22 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
             }
 
 //        }
+
         if (authHeader != null) {// && authHeader.startsWith(this.tokenHead)
             //String authToken = authHeader.substring(this.tokenHead.length());// The part after "Bearer "
             String username = jwtTokenUtil.getUserNameFromToken(authHeader);
+            Integer id = jwtTokenUtil.getEntityIdForToken(authHeader);
+            Integer cid = jwtTokenUtil.getCompanyIdForToken(authHeader);
+            String roles = jwtTokenUtil.getRolesForToken(authHeader);
+            String headImg = jwtTokenUtil.getHeadImgForToken(authHeader);
+            String nickName = jwtTokenUtil.getNickNameForToken(authHeader);
+
             LOGGER.info("checking username:{}", username);
-            if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-                UserDetails userDetails = this.userDetailsService.loadUserByUsername(username);
-                if (jwtTokenUtil.validateToken(authHeader, userDetails)) {
-                    UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
-                    authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
-                    LOGGER.info("authenticated user:{}", username);
-                    SecurityContextHolder.getContext().setAuthentication(authentication);
-                }
-            }
+            UserDetails userDetails = new OnlineEntity(id,cid,username,headImg,roles,nickName);
+            UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+            authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+            LOGGER.info("authenticated user:{}", username);
+            SecurityContextHolder.getContext().setAuthentication(authentication);
         }
         chain.doFilter(request, response);
     }

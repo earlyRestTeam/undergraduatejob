@@ -41,7 +41,10 @@ public class UsersController {
     Industries_listServices industries_listServices;
     @Autowired
     RedisTemplate redisTemplate;
-
+    @RequestMapping("/logout")
+    public String logout(){
+        return "/";
+    }
     /**
      * 首页
      * @param model

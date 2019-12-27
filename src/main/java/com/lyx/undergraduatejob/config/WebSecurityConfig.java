@@ -2,8 +2,10 @@ package com.lyx.undergraduatejob.config;
 
 
 
+import com.lyx.undergraduatejob.pojo.Admin;
 import com.lyx.undergraduatejob.pojo.Company;
 import com.lyx.undergraduatejob.pojo.Users;
+import com.lyx.undergraduatejob.services.IAdminServices;
 import com.lyx.undergraduatejob.services.ICompanyInfoServices;
 import com.lyx.undergraduatejob.services.IUserServices;
 import com.lyx.undergraduatejob.services.security.JwtAuthenticationTokenFilter;
@@ -38,6 +40,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     IUserServices userServices;
     @Autowired
+    IAdminServices adminServices;
+    @Autowired
     ICompanyInfoServices companyInfoServices;
     @Autowired
     private RestfulAccessDeniedHandler restfulAccessDeniedHandler;
@@ -65,12 +69,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .antMatchers(HttpMethod.OPTIONS)//跨域请求会先进行一次options请求
                 .permitAll()
-                .antMatchers("/**")//测试时全部运行访问
-                .permitAll()
-//                .antMatchers("/user/**")// 除上面外的所有请求全部需要鉴权认证
-//                .hasAnyRole("user","admin","company")
-//                .antMatchers("/admin/**")// 除上面外的所有请求全部需要鉴权认证
-//                .hasAnyRole("admin");
+//                .antMatchers("/**")//测试时全部运行访问
+//                .permitAll()
+                .antMatchers("/user/**")// 除上面外的所有请求全部需要鉴权认证
+                .hasAnyRole("user","admin","company")
+                .antMatchers("/admin/**")// 除上面外的所有请求全部需要鉴权认证
+                .hasAnyRole("admin")
                 .anyRequest()
                 .permitAll();
         // 禁用缓存
@@ -103,6 +107,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return NoOpPasswordEncoder.getInstance();
     }
 
+    @Bean
+    public UserDetailsService adminDetailService() {
+
+        return username -> {
+            Admin admin = adminServices.loadAdminByName(username);
+            if (admin != null) {
+                return admin;
+            }
+            throw new UsernameNotFoundException("用户名不存在！");
+        };
+    }
     @Bean
     public UserDetailsService userDetailsService() {
 

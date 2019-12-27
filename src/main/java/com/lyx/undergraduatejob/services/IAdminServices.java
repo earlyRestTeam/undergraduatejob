@@ -1,6 +1,7 @@
 package com.lyx.undergraduatejob.services;
 
 import com.lyx.undergraduatejob.pojo.Admin;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Map;
 

@@ -1,5 +1,6 @@
 package com.lyx.undergraduatejob.common;
 
+import com.lyx.undergraduatejob.pojo.Admin;
 import com.lyx.undergraduatejob.pojo.Users;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -7,9 +8,11 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
+import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -32,6 +35,9 @@ public class JwtTokenUtil {
     private static final String CLAIM_KEY_CREATED = "created";
     private static final String CLAIM_KEY_ENTITY_ID = "entity_id";
     private static final String CLAIM_KEY_COMPANY_ID = "company_id";
+    private static final String CLAIM_KEY_ENTITY_ROLE = "entity_role";
+    private static final String CLAIM_KEY_ENTITY_HEAD_IMG = "entity_head_img";
+    private static final String CLAIM_KEY_ENTITY_NICK_NAME = "entity_nick_name";
 
 
     @Value("${jwt.secret}")
@@ -93,7 +99,20 @@ public class JwtTokenUtil {
         Integer id = null;
         try{
             Claims claims = getClaimsFromToken(token);
-            id =  claims.get(CLAIM_KEY_COMPANY_ID) != null ? (Integer)claims.get(CLAIM_KEY_COMPANY_ID) : null;
+            id =  claims.get(CLAIM_KEY_ENTITY_ID) != null ? (Integer)claims.get(CLAIM_KEY_ENTITY_ID) : null;
+        } catch (Exception e) {
+            id = null;
+        }
+        return id;
+    }
+    /**
+     * 从token中获取登录实体的头像
+     */
+    public String getHeadImgForToken(String token) {
+        String id = null;
+        try{
+            Claims claims = getClaimsFromToken(token);
+            id =  (String) claims.get(CLAIM_KEY_ENTITY_HEAD_IMG);
         } catch (Exception e) {
             id = null;
         }
@@ -107,6 +126,26 @@ public class JwtTokenUtil {
         try{
             Claims claims = getClaimsFromToken(token);
             id =  claims.get(CLAIM_KEY_COMPANY_ID) != null ? (Integer)claims.get(CLAIM_KEY_COMPANY_ID) : null;
+        } catch (Exception e) {
+            id = null;
+        }
+        return id;
+    }
+    public String getRolesForToken(String token){
+        String id = null;
+        try{
+            Claims claims = getClaimsFromToken(token);
+            id =  (String) claims.get(CLAIM_KEY_ENTITY_ROLE);
+        } catch (Exception e) {
+            id = null;
+        }
+        return id;
+    }
+    public String getNickNameForToken(String token){
+        String id = null;
+        try{
+            Claims claims = getClaimsFromToken(token);
+            id =  (String) claims.get(CLAIM_KEY_ENTITY_NICK_NAME);
         } catch (Exception e) {
             id = null;
         }
@@ -144,14 +183,37 @@ public class JwtTokenUtil {
      */
     public String generateToken(UserDetails userDetails) {
         Map<String, Object> claims = new HashMap<>();
+        Collection<? extends GrantedAuthority> authorities = userDetails.getAuthorities();
+        StringBuilder builder = new StringBuilder();
+        for (GrantedAuthority g : authorities){
+            builder.append(g.getAuthority()).append(",");
+        }
+        if(builder.length() == 0)
+            throw new RuntimeException("不能没有角色！");
+        String roles = builder.deleteCharAt(builder.length()-1).toString();
+        claims.put(CLAIM_KEY_ENTITY_ROLE,roles);
         if(userDetails instanceof Users){
             Users u = (Users)userDetails;
+            //放入id
             claims.put(CLAIM_KEY_ENTITY_ID,u.getId());
+            //放入头像
+            claims.put(CLAIM_KEY_ENTITY_HEAD_IMG,u.getAvatar());
+            //放入昵称
+            claims.put(CLAIM_KEY_ENTITY_NICK_NAME,u.getNickName());
             if(u.hasCompany())
                 claims.put(CLAIM_KEY_COMPANY_ID,u.getCompany().getId());
+        }else if(userDetails instanceof Admin){
+            Admin admin = (Admin)userDetails;
+            //放入id
+            claims.put(CLAIM_KEY_ENTITY_ID,admin.getId());
+            //放入昵称
+            claims.put(CLAIM_KEY_ENTITY_NICK_NAME,admin.getNickName());
         }
+        //放入密码
         claims.put(CLAIM_KEY_USERNAME, userDetails.getUsername());
+        //加入时间
         claims.put(CLAIM_KEY_CREATED, new Date());
+
         return generateToken(claims);
     }
 
@@ -170,4 +232,6 @@ public class JwtTokenUtil {
         claims.put(CLAIM_KEY_CREATED, new Date());
         return generateToken(claims);
     }
+
+
 }

@@ -104,6 +104,7 @@ public class UserServicesImpl implements IUserServices {
         Map<String,String> res = new HashMap<>();
         try{
             UserDetails details = userDetailsService.loadUserByUsername(username);
+
             boolean b = encoder.matches(details.getPassword(), password);
             if(!b){
                 logger.warn("password not true : "+username);
