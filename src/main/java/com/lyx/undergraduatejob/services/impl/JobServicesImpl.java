@@ -48,7 +48,7 @@ public class JobServicesImpl implements IJobServices {
     public Map<String, String> addJob(Job job) {
         Map<String,String> result = new HashMap<>();
         //初始化状态、认证状态、收到的简历数、阅读数、收藏数、vip服务、发布时间
-        job.setStatus(0);
+        job.setStatus(1);
         job.setPushStatus(0);
         job.setAulStatus(0);
         job.setReceiveNum(0);

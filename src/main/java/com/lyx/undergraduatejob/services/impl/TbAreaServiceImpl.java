@@ -33,6 +33,9 @@ public class TbAreaServiceImpl implements TbAreaServices {
         TbAreaExample example = new TbAreaExample();
         example.or().andParentidEqualTo(parentId);
         List<TbArea> tbAreas = tbAreaMapper.selectByExample(example);
+        if (tbAreas.isEmpty()){
+            return null;
+        }
         return tbAreas;
     }
 }

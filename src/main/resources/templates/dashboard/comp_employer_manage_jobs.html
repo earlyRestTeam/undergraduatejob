@@ -628,7 +628,7 @@ inelevated the..</a></h3>
 
                                         </div>
                                     </div>
-                                    <div th:each="job,Stat:${pages.list}"   class="latest_job_box jb_cover">
+                                    <div th:each="job,Stat:${pages.list}" th:id="${job.id}"  class="latest_job_box jb_cover">
                                         <div class="job_list_next">
 
                                             <h6 th:text="${job.jobName}"><a href="#">General Ledger Accountant</a></h6>
@@ -636,7 +636,7 @@ inelevated the..</a></h3>
 
                                         </div>
                                         <div class="job_list_next">
-                                            <p><a th:text="*{reciveResumeSize[Stat.index]}" href="#">06 Applications</a></p>
+                                            <p><a th:text="${job.receiveNum}" href="#">06 Applications</a></p>
 
                                         </div>
                                         <div th:switch="${job.pushStatus}" class="job_list_next">
@@ -661,22 +661,24 @@ inelevated the..</a></h3>
                                     <div class="blog_pagination_section jb_cover">
                                         <ul>
                                             <li>
-                                                <a href="#" class="prev"> <i class="flaticon-left-arrow"></i> </a>
+                                                <a href="javascript:void(0);" th:onclick="'selectbyJobId('+${pages.prePage}+')'" class="prev"> <i class="flaticon-left-arrow"></i> </a>
                                             </li>
-                                            <li><a href="#">1</a>
+                                            <li><a href="javascript:void(0);" onclick="selectbyJobId(1)">首页</a></li>
+                                            <!--<li class="third_pagger"><a href="#">2</a>-->
+                                            <!--</li>-->
+                                            <span  th:each="p:${pages.navigatepageNums}" >
+                                            <li  th:if="${pages.pageNum == p}"  class="third_pagger">
+                                                <a th:text="${p}" th:onclick="'selectbyJobId('+${p}+')'"  href="javascript:void(0);">3</a>
                                             </li>
-                                            <li class="third_pagger"><a href="#">2</a>
+                                            <li  th:if="${pages.pageNum != p}"  class="d-block d-sm-block d-md-block d-lg-block">
+                                                <a th:text="${p}" th:onclick="'selectbyJobId('+${p}+')'"  href="javascript:void(0);">3</a>
                                             </li>
-                                            <li class="d-block d-sm-block d-md-block d-lg-block"><a href="#">3</a>
-                                            </li>
-                                            <li class="d-none d-sm-block d-md-block d-lg-block"><a href="#">...</a>
-                                            </li>
-                                            <li class="d-none d-sm-block d-md-block d-lg-block"><a href="#">6</a>
+                                            </span>
+                                            <li><a href="javascript:void(0);" th:onclick="'selectbyJobId('+${pages.pages}+')'">尾页</a></li>
+                                            <li>
+                                                <a href="javascript:void(0);" th:onclick="'selectbyJobId('+${pages.nextPage}+')'" class="next"> <i class="flaticon-right-arrow"></i> </a>
                                             </li>
 
-                                            <li>
-                                                <a href="#" class="next"> <i class="flaticon-right-arrow"></i> </a>
-                                            </li>
                                         </ul>
                                     </div>
                                 </div>
@@ -851,18 +853,22 @@ inelevated the..</a></h3>
     <!--custom js files-->
     <script>
         function deleteJob(jobid) {
-            $.ajax({
-                url:"deleteJobbyId",
-                type:'post',
-                dataType:'json',
-                contentType: 'application/json',
-                data:,
-                success:function (APIResult) {
-                    if (APIResult.){
-
+            var conf= confirm("确认删除？");
+            if (conf){
+                $.ajax({
+                    url:"deleteJobbyId",
+                    type:"post",
+                    dataType:"json",
+                    data:{"jobid":jobid},
+                    success:function (APIResult) {
+                        alert(APIResult.message);
+                        if (200 == APIResult.code){
+                            $("#"+jobid).attr("style","display:none;")
+                        }
                     }
-                }
-            })
+                })
+            }
+
         }
     </script>
     <script src="/dashboard/js/jquery-3.3.1.min.js"></script>

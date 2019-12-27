@@ -604,68 +604,93 @@ inelevated the..</a></h3>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="job_filter_category_sidebar pd0 jb_cover">
                                 <div class="job_filter_sidebar_heading jb_cover">
-                                    <h1> post new job</h1>
+                                    <h1> 发 布 新 职 位</h1>
                                 </div>
                                 <div class="job_overview_header jb_cover">
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                                            <div class="select_box">
-                                                <label>job category</label>
-                                                <select>
-                                                    <option>UI/UX designer</option>
-                                                    <option>accountant</option>
-                                                    <option>graphic designer</option>
-                                                    <option>teacher</option>
-
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                                             <div class="contect_form3">
-                                                <label>job title</label>
-                                                <input type="text" name="name" placeholder="Need Graphic Designer">
+                                                <label>职业 标题</label>
+                                                <input type="text" name="jobTitle" placeholder="请输入职业标题">
                                             </div>
                                         </div>
-                                        <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                        <div class="col-lg-4 col-md-4 col-sm-12 col-12">
                                             <div class="select_box">
-                                                <label>job type</label>
-                                                <select>
-                                                    <option>full time</option>
-                                                    <option>part time</option>
-                                                    <option> temperory</option>
-                                                    <option>freelance</option>
-
+                                                <label>工作时间</label>
+                                                <select name="partFull">
+                                                    <option value="1">兼职</option>
+                                                    <option value="2">全职</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-4 col-sm-12 col-12">
+                                            <div class="select_box">
+                                                <label>结算方式</label>
+                                                <select name="closeType">
+                                                    <option value="1">日结</option>
+                                                    <option value="2">周结</option>
+                                                    <option value="3">月结</option>
+                                                    <option value="4">其他</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-4 col-sm-12 col-12">
+                                            <div class="select_box">
+                                                <label>学历要求</label>
+                                                <select name="education">
+                                                    <option value="1">小学</option>
+                                                    <option value="2">初中</option>
+                                                    <option value="3">高中</option>
+                                                    <option value="4">中专</option>
+                                                    <option value="5">大专</option>
+                                                    <option value="6">本科</option>
+                                                    <option value="7">研究生</option>
+                                                    <option value="8">硕士</option>
+                                                    <option value="9">博士及以上</option>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                            <div class="select_box">
+                                                <label>所属 行业</label>
+                                                <div class="nice-select" tabindex="0">
+                                                    <span id="industries" class="current" >请选择</span>
+                                                    <ul class="list">
+                                                        <li value="-1" class="option selected">其他</li>
+                                                        <li class="option" th:each="i,index:${list}" th:value="${index.index}" th:text="${i['industries'].industriesName}">上海</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                            <div class="select_box">
+                                                <label>职业 名称</label>
+                                                <div id="jobaa" class="nice-select" tabindex="0">
+                                                    <span id="jobaaa" class="current"  >请选择</span>
+                                                    <ul class="list">
+                                                        <li value="0" class="option selected ">请选择</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-6 col-sm-12 col-12">
+                                            <div class="select_box">
+                                                <div class="contect_form3">
+                                                    <label>薪 水</label>
+                                                    <input type="number" name="salary" placeholder="输入薪水">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-6 col-sm-12 col-12">
                                             <div class="contect_form3">
-                                                <label>working hours</label>
-                                                <input type="text" name="name" placeholder="40/h Week">
+                                                <label>工 作 经 验</label>
+                                                <input type="number" name="workYears" placeholder="输入年">
                                             </div>
                                         </div>
-                                        <div class="col-lg-6 col-md-6 col-sm-12 col-12">
-                                            <div class="select_box">
-                                                <label>salary</label>
-                                                <select>
-                                                    <option>$12K - 15k P.A.</option>
-                                                    <option>$12K - 20k P.A.</option>
-                                                    <option> $12K - 35k P.A.</option>
-                                                    <option>$12K - 45k P.A.</option>
-
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6 col-md-6 col-sm-12 col-12">
-                                            <div class="select_box">
-                                                <label>experience</label>
-                                                <select>
-                                                    <option>1 year experience</option>
-                                                    <option>2 year experience</option>
-                                                    <option> 3 year experience</option>
-                                                    <option>4 year experience</option>
-
-                                                </select>
+                                        <div class="col-lg-4 col-md-6 col-sm-12 col-12">
+                                            <div class="contect_form3">
+                                                <label>招 聘 人 数</label>
+                                                <input type="number" name="needNum" placeholder="输入人数">
                                             </div>
                                         </div>
                                     </div>
@@ -675,7 +700,7 @@ inelevated the..</a></h3>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="job_filter_category_sidebar jb_cover">
                                 <div class="job_filter_sidebar_heading jb_cover">
-                                    <h1> about this job</h1>
+                                    <h1> 职业 描述</h1>
                                 </div>
                                 <div class="job_overview_header jb_cover">
 
@@ -731,7 +756,7 @@ inelevated the..</a></h3>
                                             <option value="Tahoma">Tahoma</option>
                                             <option value="Arial">Verdana</option>
                                         </select>
-                                        <iframe name="editor" id="editor"></iframe>
+                                        <iframe name="jobDesc" id="editor"></iframe>
                                     </div>
 
                                 </div>
@@ -740,89 +765,78 @@ inelevated the..</a></h3>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="job_filter_category_sidebar jb_cover">
                                 <div class="job_filter_sidebar_heading jb_cover">
-                                    <h1>trending keywords</h1>
-                                </div>
-                                <div class="job_overview_header jb_cover">
-                                    <div class="contect_form3">
-
-                                        <input type="text" name="name" placeholder="Type Keywords">
-                                    </div>
-                                    <div class="jb_btm_keyword jb_cover">
-                                        <ul>
-                                            <li><i class="flaticon-tag"></i> Trending Keywords :</li>
-                                            <li><a href="#">ui designer,</a></li>
-                                            <li><a href="#">developer,</a></li>
-                                            <li><a href="#">senior</a></li>
-                                            <li><a href="#">it company,</a></li>
-                                            <li><a href="#">design,</a></li>
-                                            <li><a href="#">call center</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                            <div class="job_filter_category_sidebar jb_cover">
-                                <div class="job_filter_sidebar_heading jb_cover">
-                                    <h1>address / location </h1>
+                                    <h1>地址 / 联系方式 </h1>
                                 </div>
                                 <div class="job_overview_header jb_cover">
                                     <div class="row">
-                                        <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                        <div class="col-lg-4 col-md-4 col-sm-12 col-12">
                                             <div class="select_box">
-                                                <label>country</label>
-                                                <select>
-                                                    <option>USA</option>
-                                                    <option>france</option>
-                                                    <option>UK</option>
-                                                    <option>germany</option>
-
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6 col-md-6 col-sm-12 col-12">
-                                            <div class="select_box">
-                                                <label>city</label>
-                                                <select>
-                                                    <option>new york</option>
-                                                    <option>california</option>
-                                                    <option> loss angles</option>
-
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                                            <div class="contect_form3">
-                                                <label>full address</label>
-                                                <input type="text" name="name" placeholder="Lundon UK">
-                                            </div>
-                                        </div>
-
-                                        <div class="col-lg-4 col-md-6 col-sm-12 col-12">
-                                            <div class="contect_form3">
-                                                <label>latitude</label>
-                                                <input type="text" name="name" placeholder="41.4073509">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 col-md-6 col-sm-12 col-12">
-                                            <div class="contect_form3">
-                                                <label>longitude</label>
-                                                <input type="text" name="name" placeholder="50.4073509">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 col-md-6 col-sm-12 col-12">
-                                            <div class="contect_form3">
-                                                <label>zoom</label>
-                                                <input type="text" name="name" placeholder="20">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                                            <div class="map_wrapper jb_cover">
-                                                <div id='map'>
+                                                <label>省</label>
+                                                <div class="nice-select" tabindex="0">
+                                                    <span id="province" class="current" >请选择</span>
+                                                    <ul style="height:300px;overflow-y:scroll;" class="list">
+                                                        <li  value="-1" class="option selected">请选择</li>
+                                                        <li class="option" th:each="p:${province}" th:value="${p.id}" th:text="${p.name}">请选择</li>
+                                                    </ul>
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="col-lg-4 col-md-4 col-sm-12 col-12">
+                                            <div class="select_box">
+                                                <label>市</label>
+                                                <div class="nice-select" tabindex="0">
+                                                    <span id="city" class="current" >请选择</span>
+                                                    <ul style="height:300px;overflow-y:scroll;" class="list">
+                                                        <li  value="-1" class="option selected">请选择</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-4 col-sm-12 col-12">
+                                            <div class="select_box">
+                                                <label>县/区</label>
+                                                <div class="nice-select" tabindex="0">
+                                                    <span id="district" class="current" >请选择</span>
+                                                    <ul style="height:300px;overflow-y:scroll;" class="list">
+                                                        <li  value="-1" class="option selected">请选择</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                                            <div class="contect_form3">
+                                                <label>详 细 地 址</label>
+                                                <input type="text" name="detailedAddress" placeholder="所在街道/门牌号">
+                                            </div>
+                                        </div>
 
+                                        <div class="col-lg-4 col-md-6 col-sm-12 col-12">
+                                            <div class="contect_form3">
+                                                <label>联 系 人</label>
+                                                <input type="text" name="contacts" placeholder="xx先生/小姐">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-6 col-sm-12 col-12">
+                                            <div class="contect_form3">
+                                                <label>联系方式（电话）</label>
+                                                <input type="text" name="contactsPhone" placeholder="136xxxxxxxxx">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-6 col-sm-12 col-12">
+                                            <div class="contect_form3">
+                                                <label>邮 箱</label>
+                                                <input type="email" name="email" placeholder="xxxxxxxxx@xx.xx">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="margin-bottom: 20px" class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="login_remember_box jb_cover">
+                                    <div class="header_btn search_btn jb_cover">
+                                        <a href="javascript:void(0);" onclick="addNewJob()"> 发 布 职 位 </a>
                                     </div>
                                 </div>
                             </div>
@@ -834,26 +848,6 @@ inelevated the..</a></h3>
     </div>
     <!--employee dashboard wrapper end-->
     <!-- newsletter wrapper start -->
-    <div class="jb_cover">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12">
-                    <div class="job_newsletter_wrapper jb_cover">
-                        <div class="jb_newslwtteter_left">
-                            <h2> Looking For A Job</h2>
-                            <p>Your next level Product developemnt company assetsYour next level Product </p>
-                        </div>
-                        <div class="jb_newslwtteter_button">
-                            <div class="header_btn search_btn news_btn jb_cover">
-
-                                <a href="#">submit</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
     <!-- newsletter wrapper end -->
     <!-- footer Wrapper Start -->
     <div class="footer jb_cover">
@@ -1032,10 +1026,190 @@ inelevated the..</a></h3>
     <script src="/dashboard/js/custom.js"></script>
     <!-- custom js-->
     <script>
-        editor.document.designMode = "On";
+       function addNewJob() {
+          var boolean =  confirm("确认发布？");
+          if (boolean){
+              var jobTitle = $("input[name='jobTitle']").val();
+              var partFull = $("select[name='partFull']").parent().find(".option.selected").attr("data-value");
+              var closeType = $("select[name='closeType']").parent().find(".option.selected").attr("data-value");
+              var education = $("select[name='education']").parent().find(".option.selected").attr("data-value");
+              var  jobType =  $("#industries").text();
+              var  jobName =  $("#jobaaa").text();
+              if (jobName == ""){
+                  jobName =$("#jobaa").val();
+              }
+              var salary = $("input[name='salary']").val();
+              var workYears = $("input[name='workYears']").val();
+              var needNum = $("input[name='needNum']").val();
+              var jobDesc =  $("iframe[name='jobDesc']").contents().find("body").text();
+              var workAddress =$("#province").text()+$("#city").text()+ $("#district").text();
+              var detailedAddress = $("input[name='detailedAddress']").val();
+              var contacts = $("input[name='contacts']").val();
+              var contactsPhone = $("input[name='contactsPhone']").val();
+              var email = $("input[name='email']").val();
+              if(jobTitle==""||partFull==""||closeType==""||education==""||jobType=="请选择"||jobName=="请选择"||jobName==""||salary==""||workYears==""||
+                  needNum==""||jobDesc==""||workAddress=="请选择"||detailedAddress==""||contacts==""||contactsPhone==""||email==""){
+                  alert("请将所有项填写完")
+              }else {
+                  $.ajax({
+                      url: "addNewJob",
+                      type: "POST",
+                      dataType: "json",
+                      data: {"jobTitle": jobTitle, "partFull": partFull, "closeType": closeType,
+                          "education": education, "jobType": jobType, "jobName": jobName,
+                          "salary": salary, "workYears": workYears, "needNum": needNum, "jobDesc": jobDesc,
+                          "workAddress": workAddress, "detailedAddress": detailedAddress, "contacts": contacts,
+                          "contactsPhone": contactsPhone, "email": email,
+                      },
+                      success:function (APIResult) {
+                          alert(APIResult.message)
+                      }
+                  })
+              }
+
+          }
+
+       }
+       //选择职业和行业的下拉框级联
+       $("#industries").bind("DOMNodeInserted",function () {
+           var index= $("#industries").parent().find(".option.selected").val();
+           var  b = $("#jobaa");
+           if (index!=-1){
+               $.ajax({
+                   url:"comp_applicationsAPIResult",
+                   type:"POST",
+                   dataType:"json",
+                   data:{"index":index},
+                   success:function (APIResult) {
+                       if (200 == APIResult.code){
+                           var diva = document.createElement("div");
+                           $(diva).addClass("nice-select")
+                           $(diva).attr("tabindex","0")
+                           $(diva).attr("id","jobaa")
+                           var spana = document.createElement("span");
+                           $(spana).attr("id","jobaaa")
+                           $(spana).addClass("current")
+                           var ula = document.createElement("ul");
+                           $(ula).addClass("list");
+                           $(diva).append(spana).append(ula);
+                           b.replaceWith(diva);
+                           var  a = $("#jobaaa");
+                           a.parent().find("ul").empty();
+                           a.text(APIResult.data[0].jobName);
+                           for (var i = 0; i <APIResult.data.length ; i++) {
+                               var jobid = APIResult.data[i].id;
+                               var jobname = APIResult.data[i].jobName;
+                               var li = document.createElement("li");
+                               $(li).val(jobid);
+                               $(li).text(jobname);
+                               if (i==0){
+                                   $(li).addClass("option selected")
+                               } else {
+                                   $(li).addClass("option")
+                               }
+                               a.parent().find("ul").append(li);
+                           }
+                       }
+                   }
+               })
+           }else {
+               b.empty()
+               var input = document.createElement("input");
+               $(input).text("所有");
+               $(input).attr("id","jobaa");
+               $(input).addClass("option selected");
+               $(input).css({"display":"","width":"371.5px","height":"50px"});
+               $(input).attr("data-options", "required:true");
+               b.replaceWith(input);
+           }
+       })
+    </script>
+    <script>
+        $("#province").bind("DOMNodeInserted",function () {
+            var parentId= $("#province").parent().find(".option.selected").val();
+            if (parentId !=-1){
+                $.ajax({
+                    url: "Area_list",
+                    type: "POST",
+                    dataType: "json",
+                    data: {"parentId": parentId},
+                    success:function (APIResult) {
+                        if (APIResult.data==null){
+                            $("#city").parent().find("ul").empty();
+                            $("#city").text("")
+                            $("#district").parent().find("ul").empty();
+                            $("#district").text("")
+                        }else {
+                            var city = $("#city")
+                            city.parent().find("ul").empty();
+                            for (var i = 0; i <APIResult.data.length ; i++) {
+                                var li = document.createElement("li");
+                                if ( i == 0){
+                                    $(li).addClass("option selected")
+                                }else {
+                                    $(li).addClass("option")
+                                }
+                                $(li).val(APIResult.data[i].id);
+                                $(li).text(APIResult.data[i].name);
+                                city.parent().find("ul").append(li);
+                            }
+                            city.text(APIResult.data[0].name)
+                        }
+
+                    }
+                })
+            }else {
+                $("#city").parent().find("ul").empty();
+                var li = document.createElement("li");
+                $(li).addClass("option selected")
+                $(li).val(-1);
+                $(li).text("请选择");
+                $("#city").parent().find("ul").append(li);
+                $("#city").text("请选择")
+            }
+        })
+        $("#city").bind("DOMNodeInserted",function () {
+            var parentId= $("#city").parent().find(".option.selected").val();
+            if (parentId !=-1){
+                $.ajax({
+                    url: "Area_list",
+                    type: "POST",
+                    dataType: "json",
+                    data: {"parentId": parentId},
+                    success:function (APIResult) {
+                            var district = $("#district")
+                            district.text(APIResult.data[0].name)
+                            district.parent().find("ul").empty();
+                            for (var i = 0; i <APIResult.data.length ; i++) {
+                                var li = document.createElement("li");
+                                if ( i == 0){
+                                    $(li).addClass("option selected")
+                                }else {
+                                    $(li).addClass("option")
+                                }
+                                $(li).val(APIResult.data[i].id);
+                                $(li).text(APIResult.data[i].name);
+                                district.parent().find("ul").append(li);
+                        }
+
+                    }
+                })
+            }else {
+                $("#district").parent().find("ul").empty();
+                var li = document.createElement("li");
+                $(li).addClass("option selected")
+                $(li).val(-1);
+                $(li).text("请选择");
+                $("#district").parent().find("ul").append(li)
+                $("#district").text("请选择")
+            }
+        })
+    </script>
+    <script>
+        jobDesc.document.designMode = "On";
 
         function transform(option, argument) {
-            editor.document.execCommand(option, false, argument);
+            jobDesc.document.execCommand(option, false, argument);
         }
     </script>
     <script>
@@ -1055,7 +1229,8 @@ inelevated the..</a></h3>
             });
         }
     </script>
-<!--    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBi2zbxXa0ObGqaSBo5NJMdwLs_xtQ03nI&callback=initMap"></script>-->
+
+    <!--    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBi2zbxXa0ObGqaSBo5NJMdwLs_xtQ03nI&callback=initMap"></script>-->
 </body>
 
 </html>
