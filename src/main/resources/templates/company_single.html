@@ -247,13 +247,13 @@
      <div class="row">
       <!-- section_heading start -->
       <div class="col-lg-9 col-md-8 col-12 col-sm-7">
-       <h1>company single</h1>
+       <h1>公司介绍</h1>
       </div>
       <div class="col-lg-3 col-md-4 col-12 col-sm-5">
        <div class="sub_title_section">
         <ul class="sub_title">
          <li><a href="index">主页 </a>&nbsp; / &nbsp;</li>
-         <li>company single</li>
+         <li>公司详情</li>
         </ul>
        </div>
       </div>
@@ -272,13 +272,13 @@
        <div class="row">
         <div class="col-lg-8 col-md-7 col-sm-12 col-12">
          <div class="jp_job_post_side_img">
-          <img src="/picture/web.png" alt="post_img" />
+          <img th:src="@{${pages.map.company.logo}}" alt="post_img" style="width: 102px;height:102px;"/>
          </div>
          <div class="jp_job_post_right_cont web_text">
-          <h4>Webstrot Technology</h4>
+          <h4 th:text="${pages.map.company.companyType}"></h4>
           <ul>
-           <li><i class="flaticon-location-pointer"></i>&nbsp; Los Angeles</li>
-           <li><i class="fa fa-th-large"></i>&nbsp; web design</li>
+           <li><i class="flaticon-location-pointer" th:text="${pages.map.company.companyAddress}"></i></li>
+           <li><i class="fa fa-th-large" th:text="${pages.map.company.companyType}"></i></li>
           </ul>
          </div>
         </div>
@@ -287,9 +287,11 @@
           <ul>
            <li>
             <div class="job_adds_right">
-             <a href="#!"><i class="far fa-heart"></i></a>
+              <a th:onclick="collectCompany([[${pages.map.company.id}]])">
+              <i class="far fa-heart"></i>
+             </a>
             </div></li>
-           <li><a href="job_single">4 open positions</a></li>
+           <li><a href="job_single" th:text="${pages.totals} + '个空缺职位'"></a></li>
           </ul>
          </div>
         </div>
@@ -300,11 +302,13 @@
       <div class="jb_listing_single_overview jb_cover">
        <div class="jp_job_des jb_cover">
         <h2 class="job_description_heading">关于我们</h2>
-        <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris in erat justo. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc.</p>
+        <p th:text="${pages.map.company.companyDesc}"></p>
        </div>
        <div class="jp_job_res jb_cover">
-        <h2 class="job_description_heading">responsiblities</h2>
-        <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit.<br /><br />Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris in erat justo. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc.</p>
+        <h2 class="job_description_heading">社会责任</h2>
+        <p>这是Photoshop的版本的Lorem存有。NIBH怀孕微波或香蕉的户外作者。Aenean sollicitudin，LOREM QUIS必比登auctor，尼丝纺ELIT consequat存有制造业adipiscing ELIT NIBH sagittis SEM。家庭作业，并通过大量的胡萝卜consequat elitr运行开始的痛恨。室外足球层本身。对于还甚至的奥迪奥tincidunt ELIT足球仇恨的作者。但它不是生命的作者，并有在美国拍摄的足球。
+         <br><br>
+         开始上课就业扭曲我们的婚姻，每himenaeos。在刚刚最大。番茄酱和锅蛋白质足球触发了大量的宣传。但它不是，也不是投资者。但是，如果这样的融资。微波酱热身了。</p>
        </div>
        <div class="jp_job_res jb_cover">
         <h2 class="job_description_heading">intro video</h2>
@@ -328,23 +332,23 @@
        </div>
       </div>
       <div class="related_job_wrapper jb_cover">
-       <h1 class="related_job">job open</h1>
+       <h1 class="related_job">空缺职位</h1>
        <div class="related_product_job cmpny_related_jobs jb_cover">
         <div class="owl-carousel owl-theme">
          <div class="item">
-          <div class="job_listing_left_fullwidth cmpny_single_slidr jb_cover">
+          <div class="job_listing_left_fullwidth cmpny_single_slidr jb_cover" th:each="job:${pages.map.jobs}">
            <div class="row">
             <div class="col-lg-9 col-md-9 col-sm-12 col-12">
              <div class="jp_job_post_side_img">
-              <img src="/picture/lt2.png" alt="post_img" />
+              <img th:src="@{${pages.map.company.logo}}" alt="post_img" />
               <br />
-              <span>google</span>
+              <span th:text="${pages.map.company.companyName}"></span>
              </div>
              <div class="jp_job_post_right_cont">
-              <h4><a href="#">Trainee Web Designer, (Fresher)</a></h4>
+              <h4><a href="#" th:text="${job.jobName}"></a></h4>
               <ul>
-               <li><i class="flaticon-cash"></i>&nbsp; $12K - 15k P.A.</li>
-               <li><i class="flaticon-location-pointer"></i>&nbsp; Los Angeles, Califonia PO, 455001</li>
+               <li><i class="flaticon-cash"></i></li>
+               <li><i class="flaticon-location-pointer" th:text="${job.workAddress}"></i></li>
               </ul>
              </div>
             </div>
@@ -353,162 +357,11 @@
               <ul>
                <li>
                 <div class="job_adds_right">
-                 <a href="#!"><i class="far fa-heart"></i></a>
+                 <a href="#!">
+                  <i class="far fa-heart"></i></a>
                 </div></li>
-               <li><a href="job_single">Part Time</a></li>
-               <li><a href="#">apply</a></li>
-              </ul>
-             </div>
-            </div>
-           </div>
-          </div>
-          <div class="job_listing_left_fullwidth cmpny_single_slidr jb_cover">
-           <div class="row">
-            <div class="col-lg-9 col-md-9 col-sm-12 col-12">
-             <div class="jp_job_post_side_img">
-              <img src="/picture/lt1.png" alt="post_img" />
-              <br />
-              <span>google</span>
-             </div>
-             <div class="jp_job_post_right_cont">
-              <h4><a href="#">Power Systems Experience Designer </a></h4>
-              <ul>
-               <li><i class="flaticon-cash"></i>&nbsp; $12K - 15k P.A.</li>
-               <li><i class="flaticon-location-pointer"></i>&nbsp; Los Angeles, Califonia PO, 455001</li>
-              </ul>
-             </div>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-12 col-12">
-             <div class="jp_job_post_right_btn_wrapper">
-              <ul>
-               <li>
-                <div class="job_adds_right">
-                 <a href="#!"><i class="far fa-heart"></i></a>
-                </div></li>
-               <li><a href="job_single">Part Time</a></li>
-               <li><a href="#">apply</a></li>
-              </ul>
-             </div>
-            </div>
-           </div>
-          </div>
-          <div class="job_listing_left_fullwidth cmpny_single_slidr jb_cover">
-           <div class="row">
-            <div class="col-lg-9 col-md-9 col-sm-12 col-12">
-             <div class="jp_job_post_side_img">
-              <img src="/picture/lt5.png" alt="post_img" />
-              <br />
-              <span>google</span>
-             </div>
-             <div class="jp_job_post_right_cont">
-              <h4><a href="#">Trainee Web Designer, (Fresher)</a></h4>
-              <ul>
-               <li><i class="flaticon-cash"></i>&nbsp; $12K - 15k P.A.</li>
-               <li><i class="flaticon-location-pointer"></i>&nbsp; Los Angeles, Califonia PO, 455001</li>
-              </ul>
-             </div>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-12 col-12">
-             <div class="jp_job_post_right_btn_wrapper">
-              <ul>
-               <li>
-                <div class="job_adds_right">
-                 <a href="#!"><i class="far fa-heart"></i></a>
-                </div></li>
-               <li><a href="job_single">Part Time</a></li>
-               <li><a href="#">apply</a></li>
-              </ul>
-             </div>
-            </div>
-           </div>
-          </div>
-         </div>
-         <div class="item">
-          <div class="job_listing_left_fullwidth cmpny_single_slidr jb_cover">
-           <div class="row">
-            <div class="col-lg-9 col-md-9 col-sm-12 col-12">
-             <div class="jp_job_post_side_img">
-              <img src="/picture/lt2.png" alt="post_img" />
-              <br />
-              <span>google</span>
-             </div>
-             <div class="jp_job_post_right_cont">
-              <h4><a href="#">Trainee Web Designer, (Fresher)</a></h4>
-              <ul>
-               <li><i class="flaticon-cash"></i>&nbsp; $12K - 15k P.A.</li>
-               <li><i class="flaticon-location-pointer"></i>&nbsp; Los Angeles, Califonia PO, 455001</li>
-              </ul>
-             </div>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-12 col-12">
-             <div class="jp_job_post_right_btn_wrapper">
-              <ul>
-               <li>
-                <div class="job_adds_right">
-                 <a href="#!"><i class="far fa-heart"></i></a>
-                </div></li>
-               <li><a href="job_single">Part Time</a></li>
-               <li><a href="#">apply</a></li>
-              </ul>
-             </div>
-            </div>
-           </div>
-          </div>
-          <div class="job_listing_left_fullwidth cmpny_single_slidr jb_cover">
-           <div class="row">
-            <div class="col-lg-9 col-md-9 col-sm-12 col-12">
-             <div class="jp_job_post_side_img">
-              <img src="/picture/lt1.png" alt="post_img" />
-              <br />
-              <span>google</span>
-             </div>
-             <div class="jp_job_post_right_cont">
-              <h4><a href="#">Power Systems Experience Designer </a></h4>
-              <ul>
-               <li><i class="flaticon-cash"></i>&nbsp; $12K - 15k P.A.</li>
-               <li><i class="flaticon-location-pointer"></i>&nbsp; Los Angeles, Califonia PO, 455001</li>
-              </ul>
-             </div>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-12 col-12">
-             <div class="jp_job_post_right_btn_wrapper">
-              <ul>
-               <li>
-                <div class="job_adds_right">
-                 <a href="#!"><i class="far fa-heart"></i></a>
-                </div></li>
-               <li><a href="job_single">Part Time</a></li>
-               <li><a href="#">apply</a></li>
-              </ul>
-             </div>
-            </div>
-           </div>
-          </div>
-          <div class="job_listing_left_fullwidth cmpny_single_slidr jb_cover">
-           <div class="row">
-            <div class="col-lg-9 col-md-9 col-sm-12 col-12">
-             <div class="jp_job_post_side_img">
-              <img src="/picture/lt5.png" alt="post_img" />
-              <br />
-              <span>google</span>
-             </div>
-             <div class="jp_job_post_right_cont">
-              <h4><a href="#">Trainee Web Designer, (Fresher)</a></h4>
-              <ul>
-               <li><i class="flaticon-cash"></i>&nbsp; $12K - 15k P.A.</li>
-               <li><i class="flaticon-location-pointer"></i>&nbsp; Los Angeles, Califonia PO, 455001</li>
-              </ul>
-             </div>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-12 col-12">
-             <div class="jp_job_post_right_btn_wrapper">
-              <ul>
-               <li>
-                <div class="job_adds_right">
-                 <a href="#!"><i class="far fa-heart"></i></a>
-                </div></li>
-               <li><a href="job_single">Part Time</a></li>
-               <li><a href="#">apply</a></li>
+               <li><a href="job_single" th:text="${job.type}"></a></li>
+               <li><a href="#">申请</a></li>
               </ul>
              </div>
             </div>
@@ -522,7 +375,7 @@
      <div class="col-lg-4 col-md-12 col-sm-12 col-12">
       <div class="job_filter_category_sidebar jb_cover">
        <div class="job_filter_sidebar_heading jb_cover">
-        <h1>overview company</h1>
+        <h1>公司概述</h1>
        </div>
        <div class="job_overview_header jb_cover">
         <div class="jp_listing_overview_list_main_wrapper jb_cover">
@@ -531,8 +384,8 @@
          </div>
          <div class="jp_listing_list_icon_cont_wrapper">
           <ul>
-           <li>categories:</li>
-           <li>Design &amp; Creative</li>
+           <li>类别:</li>
+           <li th:text="${pages.map.company.companyType}"></li>
           </ul>
          </div>
         </div>
@@ -542,8 +395,8 @@
          </div>
          <div class="jp_listing_list_icon_cont_wrapper">
           <ul>
-           <li>Location:</li>
-           <li>Los Angeles Califonia PO</li>
+           <li>位置:</li>
+           <li th:text="${pages.map.company.companyAddress}"></li>
           </ul>
          </div>
         </div>
@@ -553,8 +406,8 @@
          </div>
          <div class="jp_listing_list_icon_cont_wrapper">
           <ul>
-           <li>Hotline::</li>
-           <li>0145636941:</li>
+           <li>热线::</li>
+           <li th:text="${pages.map.company.contactsPhone}"></li>
           </ul>
          </div>
         </div>
@@ -564,8 +417,8 @@
          </div>
          <div class="jp_listing_list_icon_cont_wrapper">
           <ul>
-           <li>email:</li>
-           <li><a href="#">webstrot@example.com</a></li>
+           <li>邮件:</li>
+           <li><a href="#" th:text="${pages.map.company.companyEmail}"></a></li>
           </ul>
          </div>
         </div>
@@ -575,7 +428,7 @@
          </div>
          <div class="jp_listing_list_icon_cont_wrapper">
           <ul>
-           <li>compant size:</li>
+           <li>公司人数:</li>
            <li>20-50</li>
           </ul>
          </div>
@@ -586,7 +439,7 @@
          </div>
          <div class="jp_listing_list_icon_cont_wrapper">
           <ul>
-           <li>website:</li>
+           <li>网站:</li>
            <li><a href="#">www.webstrot.com</a></li>
           </ul>
          </div>
@@ -704,6 +557,35 @@
 			map: map
 		});
 	}
+	
+	function collectCompany(companyId) {
+        $.ajax({
+         url:"/user/collectCompany",
+         data:{"companyId":companyId},
+         type:"post",
+         dataType:"json",
+         success:function (result){
+          if (result.data == 1){
+             if (result.result){
+               $(".job_adds_right").attr("class","job_adds_right change change22");
+             }
+           alert(result.message)
+          }else{
+            if (result.result){
+             $(".job_adds_right").attr("class","job_adds_right");
+            }
+           alert(result.message)
+          }
+         }
+
+        })
+     
+    }
+
+    function collectJob(jobId){
+
+     }
+
   </script>
   <script async="" defer="" src="/js/9ab6a2e020ce47d1a7933c9b3886b8b7.js"></script>
  </body>

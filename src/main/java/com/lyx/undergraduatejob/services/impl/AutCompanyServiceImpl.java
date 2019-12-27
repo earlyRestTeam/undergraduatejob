@@ -176,6 +176,18 @@ public class AutCompanyServiceImpl implements IAutCompanyService {
         return result;
     }
 
+    /**
+     * 只有状态为未审核时才能修改状态
+     * @param status
+     * @return
+     */
+    public boolean isUpdateStatus(Integer status){
+        if (status == 2){
+            return true;
+        }
+        return false;
+    }
+
 //    /**
 //     * 前台修改
 //     * @param autCompany

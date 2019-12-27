@@ -2,10 +2,15 @@ package com.lyx.undergraduatejob.controlles;
 
 import com.github.pagehelper.PageInfo;
 import com.lyx.undergraduatejob.pojo.Company;
+import com.lyx.undergraduatejob.pojo.Job;
+import com.lyx.undergraduatejob.pojo.Users;
 import com.lyx.undergraduatejob.search.entity.CompanySerchEntity;
 import com.lyx.undergraduatejob.search.entity.JobSearchEntity;
+import com.lyx.undergraduatejob.search.entity.UsersSearchEntity;
 import com.lyx.undergraduatejob.services.ICompanyInfoServices;
 import com.lyx.undergraduatejob.services.IJobServices;
+import com.lyx.undergraduatejob.services.IUserServices;
+import com.lyx.undergraduatejob.utils.MyPage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +18,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.constraints.Null;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 
 @Controller
@@ -23,15 +31,39 @@ public class AboutusController {
     @Autowired
     ICompanyInfoServices iCompanyInfoServices;
 
+    @Autowired
+    IUserServices userServices;
+
+
+    //关于平台
     @RequestMapping("toaboutus")
-    public String toaboutus(){
+    public String toaboutus( HttpServletRequest request){
         JobSearchEntity jobSearchEntity = new JobSearchEntity();
-        jobSearchEntity.setKeyWord("status");
-//        iJobService.selectJobByJobSearchEntity(1,1,jobSearchEntity);
-        return "";
+        PageInfo<Job> jobPageInfo = iJobService.selectJobByJobSearchEntityWithOutCompany(1, 10, jobSearchEntity);
+        Long jobnNums =  jobPageInfo.getTotal();
+
+        UsersSearchEntity usersSearchEntity = new UsersSearchEntity();
+        usersSearchEntity.setStatus(0);
+        PageInfo<Users> usersPageInfo = userServices.queryUsers(1, 10, usersSearchEntity);
+        long userNums = usersPageInfo.getTotal();
+
+        CompanySerchEntity companySerchEntity = new CompanySerchEntity();
+        companySerchEntity.setAulStatus(1);
+        companySerchEntity.setStatus(1);
+        PageInfo info = iCompanyInfoServices.queryCompanyListByAdmin(1, companySerchEntity);
+        long companyNums = info.getTotal();
+
+        Map<String, Long> map = new HashMap<>();
+        map.put("jobnNums",jobnNums);
+        map.put("userNums",userNums);
+        map.put("companyNums",companyNums);
+
+        request.setAttribute("result",map);
+        return "/about_us";
 
     }
 
+    //按条件查询公司
     @RequestMapping("allCompany")
     public String allCompany(Integer indexpage, String companyName,Integer id,String companyType, HttpServletRequest request){
         CompanySerchEntity companySerchEntity = new CompanySerchEntity();
@@ -61,6 +93,17 @@ public class AboutusController {
         }else{
             return "/companies::company_type";
         }
+
+    }
+
+
+    //显示公司详情
+    @RequestMapping("tocompanysingle")
+    public String toCompanySingle(Integer companyId,Integer indexpage,HttpServletRequest request){
+        MyPage page = iCompanyInfoServices.queryDetailbyCompanyId(indexpage,companyId);
+        System.out.println(page.getMap().get("jobs").toString());
+        request.setAttribute("pages",page);
+        return "/company_single";
 
     }
 }

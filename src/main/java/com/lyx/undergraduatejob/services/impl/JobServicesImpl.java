@@ -2,13 +2,17 @@ package com.lyx.undergraduatejob.services.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.lyx.undergraduatejob.mapper.CollectMapper;
 import com.lyx.undergraduatejob.mapper.CompanyMapper;
 import com.lyx.undergraduatejob.mapper.JobMapper;
 import com.lyx.undergraduatejob.mapper.ReceiveResumeMapper;
 import com.lyx.undergraduatejob.pojo.*;
 import com.lyx.undergraduatejob.search.entity.JobSearchEntity;
 import com.lyx.undergraduatejob.search.entity.RentValueBlock;
+import com.lyx.undergraduatejob.services.ICollectServices;
 import com.lyx.undergraduatejob.services.IJobServices;
+import com.lyx.undergraduatejob.services.security.LoginEntityHelper;
+import com.lyx.undergraduatejob.services.security.OnlineEntity;
 import com.lyx.undergraduatejob.utils.MyPage;
 import com.lyx.undergraduatejob.utils.RedisKeyUtil;
 import com.lyx.undergraduatejob.utils.StaticPool;
@@ -16,6 +20,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 import org.thymeleaf.util.StringUtils;
@@ -38,7 +43,12 @@ public class JobServicesImpl implements IJobServices {
     @Autowired
     CompanyMapper companyMapper;
     @Autowired
+    ICollectServices collectServices;
+    @Autowired
     StringRedisTemplate stringRedisTemplate;   //操作k-v都是字符串的
+
+    @Autowired
+    LoginEntityHelper loginEntityHelper;
     /**
      * 添加招聘职位
      * @param job
@@ -65,6 +75,80 @@ public class JobServicesImpl implements IJobServices {
         }
         return result;
     }
+    @Cacheable(key="'neerJob'+#p0+#p1")
+    @Override
+    public List<Job> queryNeerJob(int start,String jobType){
+        JobExample example = new JobExample();
+        example.createCriteria().andJobTypeEqualTo(jobType)
+                .andStatusEqualTo(1)
+                .andAulStatusEqualTo(2)
+                .andPushStatusEqualTo(1);
+        example.setOrderByClause("receive_num desc");
+
+        PageHelper.startPage(start,3);
+        List<Job> jobs = jobMapper.selectByExample(example);
+        PageInfo<Job> res = PageInfo.of(jobs);
+        return res.getList();
+    }
+
+    /**
+     * 获取 明星 职业
+     *
+     * @return
+     */
+    @Override
+    public List<Job> queryStarJob() {
+
+        JobSearchEntity jobSearchEntity = new JobSearchEntity();
+        jobSearchEntity.setOrderExample("receive_num");
+
+        return selectJobByJobSearchEntityWithOutCompany(1,6,jobSearchEntity).getList();
+    }
+
+    /**
+     * 获取 最近的 工作
+     */
+    @Override
+    public List<Job> queryRecentJob() {
+        return selectJobByJobSearchEntityWithOutCompany(1,
+                6,new JobSearchEntity()).getList();
+    }
+
+    /**
+     * 获取 最贵的 工作
+     */
+    @Override
+    public List<Job> queryBestJob() {
+        JobSearchEntity entity = new JobSearchEntity();
+        entity.setOrderExample("salary");
+        return selectJobByJobSearchEntityWithOutCompany(1,
+                6,entity).getList();
+    }
+
+    /**
+     * 获取 最贵的 兼职 工作
+     */
+    @Override
+    public List<Job> queryBestPartJob() {
+        JobSearchEntity entity = new JobSearchEntity();
+        entity.setPartFull(1);
+        entity.setOrderExample("salary");
+        return selectJobByJobSearchEntityWithOutCompany(1,
+                6,entity).getList();
+    }
+
+    /**
+     * 获取 最贵的 全职 工作
+     */
+    @Override
+    public List<Job> queryBestFullJob() {
+        JobSearchEntity entity = new JobSearchEntity();
+        entity.setPartFull(2);
+        entity.setOrderExample("salary");
+        return selectJobByJobSearchEntityWithOutCompany(1,
+                6,entity).getList();
+    }
+
     /**
      * 修改已有招聘职位
      * @param job
@@ -174,22 +258,33 @@ public class JobServicesImpl implements IJobServices {
         example.createCriteria().andUserIdEqualTo(userId);
         List<ReceiveResume> receiveResumes = receiveResumeMapper.selectByExample(example);
         PageInfo<ReceiveResume> pageInfo = PageInfo.of(receiveResumes);
-        List<Integer> ids = new ArrayList<>();
         List<ReceiveResume> resumes = pageInfo.getList();
-        resumes.forEach(rr -> ids.add(rr.getCompanyId()));
 
-        CompanyExample example1 = new CompanyExample();
-        example1.createCriteria().andIdIn(ids);
+        List<Integer> ids = resumes.stream().map(ReceiveResume::getCompanyId).collect(Collectors.toList());
+//        List<Integer> ids = new ArrayList<>();
+//        resumes.forEach(rr -> ids.add(rr.getCompanyId()));
+        List<Company> cs = null;
+        if(ids.size() > 0){
+            CompanyExample example1 = new CompanyExample();
+            example1.createCriteria().andIdIn(ids);
 
-        List<Company> companies = companyMapper.selectByExample(example1);
-        Map<Integer,Company> map = new HashMap<>();
-        companies.forEach(c->map.put(c.getId(),c));
-        ArrayList<Company> cs = new ArrayList<>();
-//        List<Map<String,Object>> list = new ArrayList<>();
-        for (int i = 0; i < resumes.size(); i++) {
-            cs.add(map.get(resumes.get(i).getCompanyId()) == null
-                    ? new Company() : map.get(resumes.get(i).getCompanyId()));
+
+            List<Company> companies = companyMapper.selectByExample(example1);
+            //转为 map
+            Map<Integer,Company> map = companies.stream().collect(Collectors.toMap(Company::getId,company -> company,(key1,key2)->key1));
+            cs = resumes.stream().map(r -> {
+                return map.get(r.getCompanyId()) == null ? new Company() : map.get(r.getCompanyId());
+            }).collect(Collectors.toList());
         }
+
+//        Map<Integer,Company> map = new HashMap<>();
+//        companies.forEach(c->map.put(c.getId(),c));
+
+//        ArrayList<Company> cs = new ArrayList<>();
+//        for (int i = 0; i < resumes.size(); i++) {
+//            cs.add(map.get(resumes.get(i).getCompanyId()) == null
+//                    ? new Company() : map.get(resumes.get(i).getCompanyId()));
+//        }
 //        pageInfo.
         MyPage page = new MyPage(pageInfo);
         Map<String,Object> res = new HashMap<>();
@@ -246,11 +341,7 @@ public class JobServicesImpl implements IJobServices {
         }
         String key;
         if( !StringUtils.isEmpty( (key = jobSearchEntity.getKeyWord() ) ))
-            criteria.andJobNameLike(key+"%");
-        Integer companyId;
-        if ((companyId = jobSearchEntity.getCompanyId())!= null){
-            criteria.andCompanyIdEqualTo(companyId);
-        }
+            criteria.andJobTitleLike(key+"%");
         String workArea;
         if( !StringUtils.isEmpty((workArea = jobSearchEntity.getWorkArea() ) ) )
             criteria.andWorkAddressEqualTo(workArea);
@@ -273,7 +364,7 @@ public class JobServicesImpl implements IJobServices {
         if(rentValueBlock.getMax() > 0)
             criteria.andSalaryLessThan(rentValueBlock.getMax());
 
-        example.setOrderByClause(jobSearchEntity.getOrderExample()+jobSearchEntity.getOrder()
+        example.setOrderByClause(jobSearchEntity.getOrderExample()+" "+jobSearchEntity.getOrder()
                 +StaticPool.JOB_VIP_SORT);
 
 
@@ -281,6 +372,18 @@ public class JobServicesImpl implements IJobServices {
         List<Job> jobs = jobMapper.selectByExample(example);
         PageInfo<Job> pageInfo = PageInfo.of(jobs);
         return pageInfo;
+    }
+
+    @Override
+    public Map<String, Object> selectJobById(Integer id) {
+        Map<String,Object> map = new HashMap();
+        Job job = jobMapper.selectByPrimaryKey(id);
+        if(job == null)
+            throw new RuntimeException(" 该工作 不存在！");
+        Company company = companyMapper.selectByPrimaryKey(job.getCompanyId());
+        map.put("job",job);
+        map.put("company",company);
+        return map;
     }
 
     /**
@@ -309,31 +412,44 @@ public class JobServicesImpl implements IJobServices {
 //        List<Integer> ids = new ArrayList<>();
 //        jl.forEach(j->ids.add(j.getCompanyId()));
 
-        List<Integer> ids = jl.stream().map(Job::getId).collect(Collectors.toList());
-
-        CompanyExample example1 = new CompanyExample();
-        example1.createCriteria().andIdIn(ids);
-        List<Company> companies = companyMapper.selectByExample(example1);
-        //加入 map
-        Map<Integer,Company> cMap = companies.stream()
-                .collect(Collectors.toMap(Company::getId,company -> company,(key1,key2)->key1));
-
-        List<Company> cs = jl.stream()
-                .map(j ->
-                    {
-                        Company c = cMap.get(j.getCompanyId());return c == null ? new Company() : c;
-                    }).collect(Collectors.toList());
-//        List<Company> cs = new ArrayList<>();
-//        for (int i = 0; i < jl.size(); i++) {
-//            Job job = jl.get(i);
-//            cs.add(cMap.get(job.getCompanyId()) == null ? new Company() : cMap.get(job.getCompanyId()));
-//        }
+        List<Company> cs = null;
+        List<Integer> status = null;
+        if( !jl.isEmpty()){
+            //获取关注状态
+            OnlineEntity onlineEntity = loginEntityHelper.getOnlineEntity();
+            if(onlineEntity != null){
+                List<Integer> ids = jl.stream().map(Job::getId).collect(Collectors.toList());
+                Integer id = onlineEntity.getId();
+                Integer type = 1;
+                Integer collectionType = 2;
+                status = collectServices.queryCollectStatus(ids, collectionType, id, type);
+            }else {
+                status = new ArrayList<>(jl.size());
+                for (int i = 0; i < jl.size(); i++) {
+                    status.add(0);
+                }
+            }
 
 
+
+            List<Integer> ids = jl.stream().map(Job::getCompanyId).collect(Collectors.toList());
+
+            CompanyExample example1 = new CompanyExample();
+            example1.createCriteria().andIdIn(ids);
+            List<Company> companies = companyMapper.selectByExample(example1);
+            //加入 map
+            Map<Integer,Company> cMap = companies.stream()
+                    .collect(Collectors.toMap(Company::getId,company -> company,(key1,key2)->key1));
+            //转为11对应
+            cs = jl.stream()
+                    .map(j ->{Company c = cMap.get(j.getCompanyId());return c == null ? new Company() : c;})
+                    .collect(Collectors.toList());
+        }
         Map<String,Object> map = new HashMap<>();
 
         map.put("jobs", jl);
         map.put("companys", cs);
+        map.put("status", status);
         return map;
     }
 

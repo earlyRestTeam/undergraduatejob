@@ -1,6 +1,9 @@
 package com.lyx.undergraduatejob.services;
 
 import com.lyx.undergraduatejob.pojo.Admin;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.Map;
 
 public interface IAdminServices {
     /**
@@ -9,4 +12,10 @@ public interface IAdminServices {
      * @return
      */
     Admin loadAdminByName(String name);
+
+
+    /**
+     * 登录
+     */
+    Map<String,String> login(String username, String password);
 }

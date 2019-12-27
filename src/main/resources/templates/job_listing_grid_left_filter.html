@@ -287,7 +287,7 @@
              <span>职业</span>
             </dt>
             <dd>
-             <a v-for="jobl in ind.jobList" href="#" class="aui-a-curr">{{jobl.jobName}}</a>
+             <a v-for="jobl in ind.jobList" @click="changeWorkType($event)"   href="#" class="aui-a-curr">{{jobl.jobName}}</a>
             </dd>
            </dl>
           </div>
@@ -323,7 +323,7 @@
          <option value="asc">升序</option>
         </select>
         <div class="showpro">
-          <a href="login" style="width: 40px;height: 20px"><i class="flaticon-login"></i>搜索</a>
+          <a @click="reSearch" style="width: 40px;height: 20px"><i class="flaticon-login"></i>搜索</a>
         </div>
        </div>
        <div class="tab-content btc_shop_index_content_tabs_main jb_cover">
@@ -333,17 +333,17 @@
            <div class="job_listing_left_fullwidth job_listing_grid_wrapper jb_cover">
             <div class="row">
              <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-              <div class="jp_job_post_side_img">
+              <div @click="toCompany(companies[index].id)" class="jp_job_post_side_img">
                <img :src="companies[index].logo == null ? '/picture/lt1.png' : companies[index].logo"   alt="post_img" />
 <!--               src="/picture/lt1.png"-->
                <br />
-               <span>{{companies[index].companyName}}</span>
+               <span >{{companies[index].companyName}}</span>
               </div>
               <div class="jp_job_post_right_cont">
-               <h4><a href="#">{{ job.jobTitle }}</a></h4>
+               <h4><a v-bind:href="['/job_single?jobid='+job.id]">{{ job.jobTitle }}</a></h4>
                <ul>
                 <li><i class="flaticon-cash"></i>&nbsp; {{job.salary}}</li>
-                <li><i class="flaticon-location-pointer"></i>&nbsp;{{job.jobDesc}}</li>
+                <li><i class="flaticon-location-pointer"></i>&nbsp;{{job.workAddress}}</li>
                </ul>
               </div>
              </div>
@@ -351,11 +351,11 @@
               <div class="jp_job_post_right_btn_wrapper jb_cover">
                <ul>
                 <li>
-                 <div class="job_adds_right">
-                  <a href="#!"><i class="far fa-heart"></i></a>
+                 <div :class="{'change22':status[index]==1,'change':status[index]==1}" class="job_adds_right">
+                  <a @click="changeStatus(index,$event)" ><i class="far fa-heart"></i></a>
                  </div></li>
-                <li><a href="job_single" >{{job.partFull == 1 ? '兼职' : '全职' }}</a></li>
-                <li><a href="#" data-toggle="modal" data-target="#myModal01">应聘</a></li>
+                <li><a v-bind:href="['/job_single?jobid='+job.id]" >{{job.partFull == 1 ? '兼职' : '全职' }}</a></li>
+                <li><a data-toggle="modal" data-target="#myModal01">应聘</a></li>
                </ul>
               </div>
               <div class="modal fade apply_job_popup" id="myModal01" role="dialog">
@@ -952,7 +952,7 @@
          <ul>
           <li><a @click="getJobs(searchEntity.start-1)" class="prev"><i class="flaticon-left-arrow"></i></a></li>
           <li v-for="index of 5"
-              v-if="searchEntity.start-2+index > 0 && searchEntity.start-2+index < totalPage"
+              v-if="searchEntity.start-2+index > 0 && searchEntity.start-2+index <= totalPage"
               v-bind:class="[searchEntity.start == (searchEntity.start-2+index) ? 'third_pagger' : 'd-block','d-sm-block','d-md-block','d-lg-block']">
            <a @click="getJobs(searchEntity.start-2+index)">{{searchEntity.start-2+index}}
            </a>
@@ -1050,25 +1050,25 @@
   </div>
   <!--job listing filter  wrapper end-->
   <!-- news app wrapper start-->
-  <div class="news_letter_wrapper jb_cover">
-   <div class="container">
-    <div class="row">
-     <div class="col-lg-12 col-md-12 col-sm-12">
-      <div class="job_newsletter_wrapper jb_cover">
-       <div class="jb_newslwtteter_left">
-        <h2>Looking For A Job</h2>
-        <p>Your next level Product developemnt company assetsYour next level Product</p>
-       </div>
-       <div class="jb_newslwtteter_button">
-        <div class="header_btn search_btn news_btn jb_cover">
-         <a href="#">submit</a>
-        </div>
-       </div>
-      </div>
-     </div>
-    </div>
-   </div>
-  </div>
+<!--  <div class="news_letter_wrapper jb_cover">-->
+<!--   <div class="container">-->
+<!--    <div class="row">-->
+<!--     <div class="col-lg-12 col-md-12 col-sm-12">-->
+<!--      <div class="job_newsletter_wrapper jb_cover">-->
+<!--       <div class="jb_newslwtteter_left">-->
+<!--        <h2>Looking For A Job</h2>-->
+<!--        <p>Your next level Product developemnt company assetsYour next level Product</p>-->
+<!--       </div>-->
+<!--       <div class="jb_newslwtteter_button">-->
+<!--        <div class="header_btn search_btn news_btn jb_cover">-->
+<!--         <a href="#">submit</a>-->
+<!--        </div>-->
+<!--       </div>-->
+<!--      </div>-->
+<!--     </div>-->
+<!--    </div>-->
+<!--   </div>-->
+<!--  </div>-->
   <!-- news app wrapper end-->
   <!-- footer Wrapper Start -->
   <div class="footer jb_cover" th:replace="public::public_footer_jb_cover"></div>
@@ -1145,8 +1145,9 @@
     industries:[],
     jobNames:[],
     jobs:[],
-    totalPage:0,
+    totalPage:1,
     companies:[],
+    status:[],
     searchEntity:{
      start:1,
      size:12,
@@ -1170,6 +1171,11 @@
     this.getJobs(1);
    },
    methods: {
+    changeWorkType:function(e){
+     //console.log(e.currentTarget.text);
+     this.searchEntity.jobType = e.currentTarget.text;
+     this.getResumes(1);
+    },
     getSalaryArea:function(){
      var that = this;
      axios.get('/getSalaryArea').then(function(res){
@@ -1184,11 +1190,33 @@
       that.industries = result.data.data;
      }).catch(function () {alert("操作失败");});
     },
+       changeStatus:function(index,e){
+        var value = 1- this.status[index];
+
+        var that = this;
+        axios.get("/user/collectJob?jobId="+that.jobs[index].id).then(function(res){
+         console.log(res.data);
+         if(res.data.result){
+          Vue.set(vue1.status, index, value);
+         }else {
+          alert(res.data.message);
+         }
+        }).catch(function(){
+         alert("操作失败");
+        });
+       },
     getJobs:function(value) {
-     if(value <= 0)
-      value = 1;
-     if(value > this.searchEntity.total)
-      value = this.searchEntity.total;
+     if(value <= 0){
+       value = 1;
+       return;
+     }
+
+     if(value > this.totalPage){
+      value = this.totalPage;
+      return;
+     }
+
+
      this.searchEntity.start = value;
      var that = this;
      axios.post('/getJobs?start='+that.searchEntity.start+'&pageSize='+that.searchEntity.size,this.searchEntity).then(function(result){
@@ -1197,7 +1225,7 @@
        console.log(result);
        that.jobs = result.data.data.map.jobs;
        that.start = result.data.data.pageNum;
-
+       that.status = result.data.data.map.status;
        that.totalPage = result.data.data.pages;
        that.companies = result.data.data.map.companys;
       } else {
@@ -1207,10 +1235,18 @@
       alert("操作失败");
      });
     },
+       reSearch:function () {
+           //this.searchEntity.start = 1;
+           this.getJobs(1);
+       },
+       toCompany:function (conpanyId) {
+            console.log(conpanyId);
+           //window.location.href = ""+conpanyId;
+       },
    },
    computed:{
 
-   },
+   }
   })
  </script>
 

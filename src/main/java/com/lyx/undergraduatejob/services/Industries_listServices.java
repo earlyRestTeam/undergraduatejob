@@ -11,13 +11,17 @@ import java.util.Map;
  */
 public interface Industries_listServices {
     /**
-     * 查询 所有 的 行业
+     * 首页 行业
+     */
+    List<IndustriesList>  queryIndexIndustries();
+    /**
+     * 查询 所有 的 行业 连带 职业名
      * @return
      */
     List<Map<String,Object>> queryALLWithJobList();
 
     /**
-     * 查询 所有 的 行业 连带 职业名
+     * 查询 所有 的 行业
      * @return
      */
     List<IndustriesList> queryALLWithOutJobList();

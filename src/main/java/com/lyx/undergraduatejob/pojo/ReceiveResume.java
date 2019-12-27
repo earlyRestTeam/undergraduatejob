@@ -8,6 +8,8 @@ public class ReceiveResume implements Serializable {
 
     private Integer userId;
 
+    private Integer resumeId;
+
     private Integer companyId;
 
     private Integer jobId;
@@ -38,6 +40,14 @@ public class ReceiveResume implements Serializable {
 
     public void setUserId(Integer userId) {
         this.userId = userId;
+    }
+
+    public Integer getResumeId() {
+        return resumeId;
+    }
+
+    public void setResumeId(Integer resumeId) {
+        this.resumeId = resumeId;
     }
 
     public Integer getCompanyId() {
@@ -104,6 +114,7 @@ public class ReceiveResume implements Serializable {
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
         sb.append(", userId=").append(userId);
+        sb.append(", resumeId=").append(resumeId);
         sb.append(", companyId=").append(companyId);
         sb.append(", jobId=").append(jobId);
         sb.append(", receiveStatus=").append(receiveStatus);

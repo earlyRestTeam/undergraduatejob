@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 public class ICollectServicesImpl implements ICollectServices {
@@ -155,6 +156,11 @@ public class ICollectServicesImpl implements ICollectServices {
         return res;
     }
 
+
+
+
+
+
     /**
      * 用户收藏职位信息
      * @param collect
@@ -270,6 +276,31 @@ public class ICollectServicesImpl implements ICollectServices {
         return resume;
     }
 
+
+    /**
+     * 查看该用户是否以收藏该职位
+     * @param jobId
+     * @param userId
+     * @return
+     */
+    @Override
+    public boolean queryjobIdByjobIdAndUserId(Integer jobId, Integer userId) {
+        CollectExample collectExample = new CollectExample();
+        CollectExample.Criteria criteria = collectExample.createCriteria();
+        criteria.andCollectorIdEqualTo(userId);
+        criteria.andCollectionIdEqualTo(jobId);
+        criteria.andCollectionTypeEqualTo(2);
+        List<Collect> collectList = collectMapper.selectByExample(collectExample);
+
+        if(collectList != null && collectList.size() > 0){
+            return true;
+        }
+        return false;
+    }
+
+
+
+
     /**
      * 收藏公司信息
      * @param collect
@@ -330,7 +361,28 @@ public class ICollectServicesImpl implements ICollectServices {
     }
 
     /**
-     * 浏览详细职位信息（查看职位详情）
+     * 查看该用户是否以收藏该公司
+     * @param companyId
+     * @param userId
+     * @return
+     */
+    @Override
+    public boolean queryBycompIdAndUserId(Integer companyId, Integer userId) {
+        CollectExample collectExample = new CollectExample();
+        CollectExample.Criteria criteria = collectExample.createCriteria();
+        criteria.andCollectorIdEqualTo(userId);
+        criteria.andCollectionIdEqualTo(companyId);
+        criteria.andCollectionTypeEqualTo(1);
+        List<Collect> collectList = collectMapper.selectByExample(collectExample);
+
+        if(collectList != null && collectList.size() > 0){
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * 浏览详细公司信息（查看公司详情）
      * @param companyId
      * @return
      */
@@ -342,7 +394,7 @@ public class ICollectServicesImpl implements ICollectServices {
 
 
     /**
-     * 取消收藏职位
+     * 取消收藏公司
      * @param companyId
      * @param userId
      * @return
@@ -368,6 +420,38 @@ public class ICollectServicesImpl implements ICollectServices {
             res.put(StaticPool.ERROR,"取消异常");
         }
 
+        return res;
+    }
+
+    /**
+     * 查询 收藏的 状态
+     *
+     * @param ids            要查询的 收藏的 id集合
+     * @param collectionType 收藏的类型
+     * @param userId         用户id
+     * @param userType       用户类型
+     * @return
+     */
+    @Override
+    public List<Integer> queryCollectStatus(List<Integer> ids, int collectionType, int userId, int userType) {
+
+        CollectExample example = new CollectExample();
+        example.createCriteria().andCollectionIdIn(ids)
+                .andCollectionTypeEqualTo(collectionType)
+                .andCollectorIdEqualTo(userId)
+                .andCollectorTypeEqualTo(userType);
+
+        List<Collect> collects = collectMapper.selectByExample(example);
+
+        //加入 map
+        Map<Integer, Collect> cs = collects.stream()
+                .collect(Collectors.toMap(Collect::getCollectionId, collect -> collect, (key1, key2) -> key1));
+
+        List<Integer> res = new ArrayList<>(ids.size());
+
+        ids.forEach(id->{
+            res.add(cs.get(id) == null ? 0 : 1);
+        });
         return res;
     }
 }

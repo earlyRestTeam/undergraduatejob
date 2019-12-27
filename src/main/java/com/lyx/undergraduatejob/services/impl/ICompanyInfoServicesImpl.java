@@ -5,20 +5,26 @@ import com.github.pagehelper.PageInfo;
 import com.lyx.undergraduatejob.mapper.AdminMapper;
 import com.lyx.undergraduatejob.mapper.CommentMapper;
 import com.lyx.undergraduatejob.mapper.CompanyMapper;
+import com.lyx.undergraduatejob.mapper.JobMapper;
 import com.lyx.undergraduatejob.pojo.*;
 import com.lyx.undergraduatejob.search.entity.CompanySerchEntity;
 import com.lyx.undergraduatejob.services.ICompanyInfoServices;
+import com.lyx.undergraduatejob.utils.MyPage;
 import com.lyx.undergraduatejob.utils.StaticPool;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 @Service
+@CacheConfig(cacheNames = "companyInfo")
 public class ICompanyInfoServicesImpl implements ICompanyInfoServices {
 
     Logger logger = LoggerFactory.getLogger(ICompanyInfoServices.class);
@@ -29,6 +35,26 @@ public class ICompanyInfoServicesImpl implements ICompanyInfoServices {
     CommentMapper commentMapper;
     @Autowired
     AdminMapper adminMapper;
+
+    @Autowired
+    JobMapper jobMapper;
+
+    /**
+     * 获取首页的企业信息
+     */
+    @Override
+    @Cacheable(key="'indexCompany'")
+    public List<Company> queryIndexCompany() {
+        PageHelper.startPage(1,6);
+        CompanyExample example = new CompanyExample();
+        example.createCriteria()
+                .andStatusEqualTo(1)
+                .andAulStatusEqualTo(2);
+        example.setOrderByClause("visit_num desc,apply_num desc,collect_num desc,company_vip desc");
+        List<Company> companies = companyMapper.selectByExample(example);
+        PageInfo<Company> cPage = PageInfo.of(companies);
+        return cPage.getList();
+    }
 
     /**
      * 浏览企业信息(详情)
@@ -191,6 +217,52 @@ public class ICompanyInfoServicesImpl implements ICompanyInfoServices {
         return result;
     }
 
+    @Override
+    public List<Company> queryallCompany() {
+        CompanyExample example = new CompanyExample();
+        CompanyExample.Criteria criteria = example.createCriteria();
+        List<Company> list = new ArrayList<>();
+        criteria.andCompanyVipEqualTo(1);
+        list = companyMapper.selectByExample(example);
+        if(list == null){
+            return null;
+        }
+        return list;
+    }
+
+    /**
+     * 查询公司的详细信息
+     * @param indexpage
+     * @param companyId
+     * @return
+     */
+    @Override
+    public MyPage queryDetailbyCompanyId(Integer indexpage, Integer companyId) {
+        Company company = companyMapper.selectByPrimaryKey(companyId);
+
+        indexpage = indexpage == null? 1 :indexpage;
+
+        PageHelper.startPage(indexpage,3);
+
+        JobExample jobExample = new JobExample();
+        JobExample.Criteria criteria = jobExample.createCriteria();
+        criteria.andCompanyIdEqualTo(companyId);
+        criteria.andStatusEqualTo(1);
+        criteria.andAulStatusEqualTo(2);
+        criteria.andPushStatusEqualTo(1);
+        List<Job> list = jobMapper.selectByExample(jobExample);
+
+        PageInfo pageInfo = new PageInfo(list);
+        MyPage myPage = new MyPage(pageInfo);
+
+        Map<String,Object> map = new HashMap<>();
+        map.put("company",company);
+        map.put("jobs",list);
+        myPage.setMap(map);
+
+        return myPage;
+    }
+
     /**
      * 前台按公司名称，公司类型，公司状态为1，公司认证状态查看公司列表（传入什么参数就AND加入条件）
      * @param indexpage
@@ -228,7 +300,7 @@ public class ICompanyInfoServicesImpl implements ICompanyInfoServices {
     }
 
     /**
-     * 前台按公司名称，公司类型，公司状态为1，公司认证状态查看公司列表（传入什么参数就AND加入条件）
+     * 后台按公司名称，公司类型，公司状态为1，公司认证状态查看公司列表（传入什么参数就AND加入条件）
      * @param indexpage
      * @param companySerchEntity
      * @return
@@ -243,6 +315,7 @@ public class ICompanyInfoServicesImpl implements ICompanyInfoServices {
         String companyType = companySerchEntity.getCompanyType();
         Integer status = companySerchEntity.getStatus();
         Integer aulStatus = companySerchEntity.getAulStatus();
+        Integer companyVip = companySerchEntity.getCompanyVip();
         CompanyExample.Criteria criteria = example.createCriteria();
         if(companyId !=null){
             criteria.andIdEqualTo(companyId);
@@ -259,12 +332,18 @@ public class ICompanyInfoServicesImpl implements ICompanyInfoServices {
         if (aulStatus!=null){
             criteria.andAulStatusEqualTo(aulStatus);
         }
+        if (companyVip!=null){
+            criteria.andCompanyVipEqualTo(companyVip);
+        }
         example.setOrderByClause(companySerchEntity.getOrderExample()+companySerchEntity.getOrder());
         PageHelper.startPage(indexpage,10);
         List<Company> companies = companyMapper.selectByExample(example);
         PageInfo pageInfo = new PageInfo(companies,5);
         return pageInfo;
     }
+
+
+
 
 
 }

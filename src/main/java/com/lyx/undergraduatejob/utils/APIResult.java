@@ -35,7 +35,7 @@ public class APIResult implements java.io.Serializable {
         this.code = code;
         this.data = data;
     }
-    //成功
+    //成功200
     public static APIResult genSuccessApiResponse(String message){
         return genSuccessApiResponse(message,null);
     }

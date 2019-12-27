@@ -362,7 +362,7 @@ Author:
                                             <a href="candidate_applied_job"> <i class="fas fa-square"></i>找工作</a>
                                         </li>
                                         <li>
-                                            <a href="candidate_dashboard"> <i class="fas fa-square"></i>个人资料</a>
+                                            <a href="/user/candidate_dashboard"> <i class="fas fa-square"></i>个人资料</a>
                                         </li>
                                         <li>
                                             <a href="candidate_edit_profile"> <i class="fas fa-square"></i>编辑个人资料</a>
@@ -480,11 +480,11 @@ Author:
             <div class="row">
                 <div class="col-lg-3 col-md-12 col-sm-12 col-12">
                     <div class="emp_dashboard_sidebar jb_cover">
-                        <img th:if="${users.avatar == null}" src="/dashboard/images/profile.jpg" class="img-responsive" alt="post_img" />
-                        <img th:if="${users.avatar != null}" th:src="@{${users.avatar}}" class="img-responsive" alt="post_img" />
+                        <img  th:if="${users.avatar == null}" src="/dashboard/images/profile.jpg" class="avatar" alt="post_img" />
+                        <img  th:if="${users.avatar != null}" th:src="@{${users.avatar}}" class="avatar" alt="post_img" />
                         <div class="emp_web_profile candidate_web_profile jb_cover">
 
-                            <h4 th:text="${users.nickName}">luca wallace</h4>
+                            <h4 class="nickName" th:text="${users.nickName}">luca wallace</h4>
                             <p th:text="${users.email}">@username</p>
                             <div class="skills jb_cover">
                                 <div class="skill-item jb_cover">
@@ -494,18 +494,14 @@ Author:
                                 </div>
                             </div>
                         </div>
-                        <div class="emp_follow_link jb_cover">
+                        <div class="emp_follow_link jb_cover" >
                            <ul class="feedlist">
-                                <li><a href="candidate_dashboard" class="link_active"><i class="fas fa-tachometer-alt"></i> 个人资料 </a></li>
-                                <li>
-                                    <a href="candidate_edit_profile"> <i class="fas fa-edit"></i>编辑资料</a>
-                                </li>
-                                <li><a href="candidate_resume"><i class="fas fa-file"></i>我的简历</a></li>
-                                <li><a href="candidate_favourite_job"><i class="fas fa-heart"></i>我的收藏</a></li>
-                                <li><a href="candidate_applied_job"><i class="fas fa-check-square"></i>找工作</a></li>
-                                <li><a href="message"><i class="fas fa-envelope"></i>消息</a></li>
-
-                                <li><a href="pricing_plans"><i class="fas fa-tag"></i>VIP</a></li>
+                               <li><a href="/user/candidate_dashboard" class="link_active"><i class="fas fa-tachometer-alt"></i> 个人资料 </a></li>
+                               <li><a href="/user/candidate_resume" ><i class="fas fa-file"></i>我的简历</a></li>
+                               <li><a href="candidate_favourite_job"><i class="fas fa-heart"></i>我的收藏</a></li>
+                               <li><a href="candidate_applied_job"><i class="fas fa-check-square"></i>找工作</a></li>
+                               <li><a href="message"><i class="fas fa-envelope"></i>消息</a></li>
+                               <li><a href="pricing_plans"><i class="fas fa-tag"></i>VIP</a></li>
                             </ul>
                             <ul class="feedlist logout_link jb_cover">
                                 <li><a href="#"><i class="fas fa-power-off"></i>退出登录</a></li>
@@ -556,276 +552,243 @@ Author:
                     </div>
                 </div>
 
-                <div class="col-lg-9 col-md-12 col-sm-12 col-12">
+                <div class="col-lg-9 col-md-12 col-sm-12 col-12" id="myInfo" th:fragment="myInfo" >
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                            <div class="job_listing_left_fullwidth jb_cover">
-                                <div class="row">
-                                    <div class="col-lg-8 col-md-7 col-sm-12 col-12">
-                                        <div class="jp_job_post_side_img">
-                                            <img th:if="${users.avatar == null}" src="/dashboard/images/pf1.jpg" alt="post_img">
-                                            <img th:if="${users.avatar != null}" th:src="@{${users.avatar}}" alt="post_img">
-                                        </div>
-                                        <div class="jp_job_post_right_cont">
-                                            <h4 th:text="${users.nickName}">luca wallace</h4>
+                            <div class="job_filter_category_sidebar company_wrapper jb_cover">
 
-                                            <ul>
-                                                <li th:text="${users.email}"><i class="fas fa-envelope"></i>&nbsp; Software Firm</li>
-<!--                                                <li><i class="fas fa-envelope"></i>&nbsp; Software Firm</li>-->
-<!--                                                <li><i class="flaticon-location-pointer"></i>&nbsp; Los Angeles</li>-->
+                                <div class="job_filter_sidebar_heading jb_cover">
+                                    <h1> 个人资料 <span><a href="#" data-toggle="modal" data-target="#myModal1"><i class="fas fa-edit"></i></a></span></h1>
+                                </div>
 
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-5 col-sm-12 col-12">
-                                        <div class="jp_job_post_right_btn_wrapper jb_cover">
-                                            <div class="header_btn search_btn jb_cover">
+                                <div class="modal fade delete_popup company_popup" id="myModal1" role="dialog">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <button id="close" type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <div class="row">
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-12">
 
-                                                <a href="#">修改资料</a>
+                                                    <div class="delett_cntn jb_cover">
+                                                        <h1><i class="fas fa-edit"></i>修改个人资料</h1>
+                                                        <div class="padder_top jb_cover"></div>
+                                                        <div class="job_filter_category_sidebar company_wrapper ">
+                                                            <div class="jp_job_post_side_img" style="text-align: center">
+                                                                <img th:if="${users.avatar == null}" src="/dashboard/images/pf1.jpg" class="img-responsive"  alt="post_img" style="width: 100px;height: 100px">
+                                                                <img th:if="${users.avatar != null}" th:src="@{${users.avatar}}" class="img-responsive" alt="post_img" style="width: 100px;height: 100px">
+                                                            </div>
+                                                            <div class="jp_job_post_right_btn_wrapper ">
+                                                                <div class="header_btn search_btn " >
+
+                                                                    <input type="hidden" id="save_image" name="image" onclick="upload()" style="display:none;"/>
+                                                                    <a href="#" onclick="saveImage();return false;">确认图片</a>
+                                                                    <input type="file" id="file" name="image"  style="display:none;"/>
+                                                                    <a style="float: right" href="#" onclick="addImage();return false;">上传图片</a>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="padder_top jb_cover"></div>
+                                                        <div class="category_wrapper jb_cover">
+                                                            <div class="row">
+                                                                <div class="col-lg-3 col-md-3 col-sm-12 col-12">
+                                                                    <div class="category_lavel jb_cover">
+                                                                        <p>昵称 :</p>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-9 col-md-9 col-sm-12 col-12">
+                                                                    <div class="delete_jb_form">
+
+                                                                        <input id="del_nickName" type="text" name="name" th:value="${users.nickName}">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="category_wrapper jb_cover">
+                                                            <div class="row">
+                                                                <div class="col-lg-3 col-md-3 col-sm-12 col-12">
+                                                                    <div class="category_lavel jb_cover">
+                                                                        <p>手机号码 :</p>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-9 col-md-9 col-sm-12 col-12">
+                                                                    <div class="delete_jb_form">
+
+                                                                        <input id="del_phone" type="tel" name="name" th:value="${users.phone}">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+
+                                                        <div class="padder_top jb_cover"></div>
+                                                        <div class="header_btn search_btn applt_pop_btn">
+
+                                                            <a onclick="confirm()" href="#">确认</a>
+
+                                                        </div>
+                                                        <div class="cancel_wrapper">
+                                                            <a href="#" data-dismiss="modal">取消</a>
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
                                             </div>
                                         </div>
-
                                     </div>
+                                </div>
 
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-5 col-md-12 col-sm-12 col-12">
-                            <div class="job_filter_category_sidebar jb_cover">
-                                <div class="job_filter_sidebar_heading jb_cover">
-                                    <h1> 基本信息</h1>
-                                </div>
                                 <div class="job_overview_header jb_cover">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-12 col-sm-12 col-12">
+                                            <div class="jp_listing_overview_list_main_wrapper dcv jb_cover">
+                                                <div class="jp_listing_list_icon">
+                                                    <i class="far fa-user"></i>
+                                                </div>
+                                                <div class="jp_listing_list_icon_cont_wrapper">
+                                                    <ul>
+                                                        <li>账号:</li>
+                                                        <li th:text="${users.username}"></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
 
-<!--                                    <div class="jp_listing_overview_list_main_wrapper jb_cover">-->
-<!--                                        <div class="jp_listing_list_icon">-->
-<!--                                            <i class="far fa-calendar"></i>-->
-<!--                                        </div>-->
-<!--                                        <div class="jp_listing_list_icon_cont_wrapper">-->
-<!--                                            <ul>-->
-<!--                                                <li>职位描述:</li>-->
-<!--                                                <li>Graphic Designer</li>-->
-<!--                                            </ul>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                    <div class="jp_listing_overview_list_main_wrapper jb_cover">-->
-<!--                                        <div class="jp_listing_list_icon">-->
-<!--                                            <i class="fas fa-map-marker-alt"></i>-->
-<!--                                        </div>-->
-<!--                                        <div class="jp_listing_list_icon_cont_wrapper">-->
-<!--                                            <ul>-->
-<!--                                                <li>Location:</li>-->
-<!--                                                <li>Los Angeles Califonia PO</li>-->
-<!--                                            </ul>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-
-                                    <div class="jp_listing_overview_list_main_wrapper jb_cover">
-                                        <div class="jp_listing_list_icon">
-                                            <i class="fa fa-info-circle"></i>
+                                            <div class="jp_listing_overview_list_main_wrapper jb_cover">
+                                                <div class="jp_listing_list_icon">
+                                                    <i class="fas fa-envelope"></i>
+                                                </div>
+                                                <div class="jp_listing_list_icon_cont_wrapper">
+                                                    <ul>
+                                                        <li>邮箱:</li>
+                                                        <li th:text="${users.email}"></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="jp_listing_list_icon_cont_wrapper">
-                                            <ul>
-                                                <li>电话:</li>
-                                                <li th:text="${users.phone}">0145636941:</li>
-                                            </ul>
+                                        <div class="col-lg-6 col-md-12 col-sm-12 col-12">
+                                            <div class="jp_listing_overview_list_main_wrapper dcv jb_cover">
+                                                <div class="jp_listing_list_icon">
+                                                    <i class="fas fa-user-alt"></i>
+                                                </div>
+                                                <div class="jp_listing_list_icon_cont_wrapper">
+                                                    <ul>
+                                                        <li>昵称:</li>
+                                                        <li class="nickName" th:text="${users.nickName}"></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                            <div class="jp_listing_overview_list_main_wrapper jb_cover">
+                                                <div class="jp_listing_list_icon">
+                                                    <i class="fa fa-info-circle"></i>
+                                                </div>
+                                                <div class="jp_listing_list_icon_cont_wrapper">
+                                                    <ul>
+                                                        <li>电话 :</li>
+                                                        <li id="phone" th:text="${users.phone}"></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+
                                         </div>
                                     </div>
-
-                                    <div class="jp_listing_overview_list_main_wrapper jb_cover">
-                                        <div class="jp_listing_list_icon">
-                                            <i class="fas fa-envelope"></i>
-                                        </div>
-                                        <div class="jp_listing_list_icon_cont_wrapper">
-                                            <ul>
-                                                <li>电子邮件:</li>
-                                                <li><a href="#" th:text="${users.email}">luca@example.com</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-
-<!--                                    <div class="jp_listing_overview_list_main_wrapper dcv jb_cover">-->
-<!--                                        <div class="jp_listing_list_icon">-->
-<!--                                            <i class="fas fa-globe-asia"></i>-->
-<!--                                        </div>-->
-<!--                                        <div class="jp_listing_list_icon_cont_wrapper">-->
-<!--                                            <ul>-->
-<!--                                                <li>website:</li>-->
-<!--                                                <li><a href="#">www.example.com</a></li>-->
-<!--                                            </ul>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-
                                 </div>
+
                             </div>
-
-
-<!--                            <div class="row">-->
-<!--                                <div class="col-lg-12 col-md-12 col-sm-12 col-12">-->
-<!--                                    <div class="job_filter_category_sidebar jb_cover">-->
-<!--                                        <div class="job_filter_sidebar_heading jb_cover">-->
-<!--                                            <h1> social profile</h1>-->
-<!--                                        </div>-->
-<!--                                        <div class="job_overview_header jb_cover">-->
-<!--                                            <div class="jp_listing_left_bottom_sidebar_social_wrapper">-->
-<!--                                                <ul>-->
-<!--                                                    <li></li>-->
-<!--                                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>-->
-<!--                                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>-->
-<!--                                                    <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>-->
-
-<!--                                                    <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>-->
-
-<!--                                                </ul>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
                         </div>
-<!--                        <div class="col-lg-7 col-md-12 col-sm-12 col-12">-->
-<!--                            <div class="row">-->
-<!--                                <div class="col-lg-12 col-md-12 col-sm-12 col-12">-->
-<!--                                    <div class="job_filter_category_sidebar jb_cover">-->
-<!--                                        <div class="job_filter_sidebar_heading jb_cover">-->
-<!--                                            <h1> our location</h1>-->
-<!--                                        </div>-->
-<!--                                        <div class="job_overview_header jb_cover">-->
-<!--                                            <div id='map'>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                                <div class="col-lg-12 col-md-12 col-sm-12 col-12">-->
-<!--                                    <div class="emp_job_post jb_cover">-->
-<!--                                        <div class="emp_job_side_img">-->
-<!--                                            <i class="fas fa-book"></i>-->
+                    </div>
 
-<!--                                        </div>-->
-<!--                                        <div class="emp_job_side_text">-->
-<!--                                            <h1>260</h1>-->
-<!--                                            <p>applied jobs</p>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                                <div class="col-lg-12 col-md-12 col-sm-12 col-12">-->
-<!--                                    <div class="emp_job_post jb_cover">-->
-<!--                                        <div class="emp_job_side_img greens">-->
-<!--                                            <i class="fas fa-eye"></i>-->
-<!--                                        </div>-->
-<!--                                        <div class="emp_job_side_text">-->
-<!--                                            <h1>11,200</h1>-->
-<!--                                            <p>companies viewed</p>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                                <div class="col-lg-12 col-md-12 col-sm-12 col-12">-->
-<!--                                    <div class="emp_job_post jb_cover">-->
-<!--                                        <div class="emp_job_side_img parts">-->
-<!--                                            <i class="fas fa-envelope-open-text"></i>-->
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="job_filter_category_sidebar company_wrapper jb_cover">
 
-<!--                                        </div>-->
-<!--                                        <div class="emp_job_side_text">-->
-<!--                                            <h1>1,608</h1>-->
-<!--                                            <p>favourite jobs</p>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                </div>-->
+                                <div class="job_filter_sidebar_heading jb_cover">
+                                    <h1> 修改密码 <span><a href="#" data-toggle="modal" data-target="#myModal_delPwd"><i class="fas fa-edit"></i></a></span></h1>
+                                </div>
 
-<!--                            </div>-->
-<!--                        </div>-->
+                                <div class="modal fade delete_popup company_popup" id="myModal_delPwd" role="dialog">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <button type="button" id="close_delPwd" class="close" data-dismiss="modal">&times;</button>
+                                            <div class="row">
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-12">
 
-<!--                        <div class="col-lg-12 col-md-12 col-sm-12 col-12">-->
-<!--                            <div class="job_filter_category_sidebar jb_cover">-->
-<!--                                <div class="job_filter_sidebar_heading jb_cover">-->
-<!--                                    <h1> recent activity</h1>-->
-<!--                                </div>-->
-<!--                                <div class="job_overview_header apps_wrapper jb_cover">-->
-<!--                                    <div class="row">-->
-<!--                                        <div class="col-lg-12 col-md-12 col-sm-12 col-12">-->
-<!--                                            <div class="activity_app">-->
-<!--                                                <i class="fas fa-angle-right"></i>-->
-<!--                                            </div>-->
+                                                    <div class="delett_cntn jb_cover">
+                                                        <h1><i class="fas fa-edit"></i>修改密码</h1>
+                                                        <div class="padder_top jb_cover"></div>
 
-<!--                                            <div class="activity_logos">-->
-<!--                                                <h4>Our Resume Updated!Dobrick published an article-->
-<!--</h4>-->
+                                                        <form class="form-horizontal" id="passwordForm">
+                                                            <div class="category_wrapper jb_cover">
+                                                                <div class="row">
+                                                                    <div class="col-lg-3 col-md-3 col-sm-12 col-12">
+                                                                        <div class="category_lavel jb_cover">
+                                                                            <p>原始密码 :</p>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-lg-9 col-md-9 col-sm-12 col-12">
+                                                                        <div class="delete_jb_form">
 
-<!--                                                <ul>-->
-<!--                                                    <li>5 hours ago</li>-->
+                                                                            <input type="password" id="inputOldPassword" name="oldPassword" placeholder="请输入旧密码"/>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="category_wrapper jb_cover">
+                                                                <div class="row">
+                                                                    <div class="col-lg-3 col-md-3 col-sm-12 col-12">
+                                                                        <div class="category_lavel jb_cover">
+                                                                            <p>新密码 :</p>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-lg-9 col-md-9 col-sm-12 col-12">
+                                                                        <div class="delete_jb_form">
 
-<!--                                                </ul>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
+                                                                            <input type="password" id="inputNewPassword" name="newPassword" placeholder="请输入新密码">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="category_wrapper jb_cover">
+                                                                <div class="row">
+                                                                    <div class="col-lg-3 col-md-3 col-sm-12 col-12">
+                                                                        <div class="category_lavel jb_cover">
+                                                                            <p>重复新密码 :</p>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-lg-9 col-md-9 col-sm-12 col-12">
+                                                                        <div class="delete_jb_form">
 
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                                <div class="job_overview_header apps_wrapper jb_cover">-->
-<!--                                    <div class="row">-->
-<!--                                        <div class="col-lg-12 col-md-12 col-sm-12 col-12">-->
-<!--                                            <div class="activity_app">-->
-<!--                                                <i class="fas fa-angle-right"></i>-->
-<!--                                            </div>-->
+                                                                            <input type="password" id="inputNewPassword1" name="newPassword1"   placeholder="请重复密码">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
 
-<!--                                            <div class="activity_logos">-->
-<!--                                                <h4>Dobrick published an article-->
-<!--</h4>-->
+                                                            <div class="padder_top jb_cover"></div>
 
-<!--                                                <ul>-->
-<!--                                                    <li>2 hours ago</li>-->
+                                                            <div class="header_btn search_btn applt_pop_btn">
+                                                                <a onclick="changePassword()" href="#">确认</a>
+                                                            </div>
 
-<!--                                                </ul>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
+                                                            <div class="cancel_wrapper">
+                                                                <a href="#" data-dismiss="modal_delPwd">取消</a>
+                                                            </div>
+                                                        </form>
+                                                    </div>
 
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                                <div class="job_overview_header apps_wrapper jb_cover">-->
-<!--                                    <div class="row">-->
-<!--                                        <div class="col-lg-12 col-md-12 col-sm-12 col-12">-->
-<!--                                            <div class="activity_app">-->
-<!--                                                <i class="fas fa-angle-right"></i>-->
-<!--                                            </div>-->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
-<!--                                            <div class="activity_logos">-->
-<!--                                                <h4>Someone bookmarked you-->
-<!--</h4>-->
 
-<!--                                                <ul>-->
-<!--                                                    <li>4 hours ago</li>-->
-
-<!--                                                </ul>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-
-<!--                                    </div>-->
-<!--                                </div>-->
-
-<!--                                <div class="job_overview_header apps_wrapper jb_cover">-->
-<!--                                    <div class="row">-->
-<!--                                        <div class="col-lg-12 col-md-12 col-sm-12 col-12">-->
-<!--                                            <div class="activity_app">-->
-<!--                                                <i class="fas fa-angle-right"></i>-->
-<!--                                            </div>-->
-
-<!--                                            <div class="activity_logos">-->
-<!--                                                <h4>Your Resume Updated!-->
-<!--</h4>-->
-
-<!--                                                <ul>-->
-<!--                                                    <li>2 hours ago</li>-->
-
-<!--                                                </ul>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-
-<!--                                    </div>-->
-<!--                                </div>-->
-
-<!--                            </div>-->
-<!--                        </div>-->
+                            </div>
+                        </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
@@ -1030,7 +993,25 @@ Author:
     <script src="/dashboard/js/isotope.pkgd.min.js"></script>
     <script src="/dashboard/js/custom.js"></script>
     <!-- custom js-->
+
+
+    <!-- 跳转页面   -->
     <script>
+        function myResume() {
+
+            var url = '';
+            $.ajax({
+                url: url,
+                type: 'POST',
+                success: function (data) {
+                    $("#article_type").html(data);
+                }
+            })
+        }
+    </script>
+    
+    <!-- 修改资料   -->
+    <script type="text/javascript">
         function initMap() {
             var uluru = {
                 lat: -36.742775,
@@ -1044,6 +1025,167 @@ Author:
             var marker = new google.maps.Marker({
                 position: uluru,
                 map: map
+            });
+        }
+
+
+
+
+
+        //确认修改资料
+        function confirm() {
+            var del_avatar = $('.img-responsive').attr('src');
+            var del_nickName = $("#del_nickName").val();
+            var del_phone = $("#del_phone").val();
+            var data ={"avatar": del_avatar, "nickName": del_nickName, "phone": del_phone};
+
+            $.ajax({
+                type: 'POST',//方法类型
+                dataType: "json",//预期服务器返回的数据类型
+                url: '/user/delMyInfo',//url
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(data),
+                success: function (result) {
+                    console.log(result);//打印服务端返回的数据
+                    if (result.code == 200) {
+                        $('.avatar').attr("src",del_avatar);
+                        $(".nickName").text(del_nickName);
+                        $("#phone").text(del_phone);
+                        $('#close').click();
+                        alert("修改成功!");
+                    }
+                    else {
+                        $('#close').click();
+                        alert(result.message);
+                    }
+                    ;
+                },
+                error: function () {
+
+                    //关闭模态框
+                    $('#close').click();
+                    alert("操作失败");
+                }
+            });
+
+        }
+
+    </script>
+    <!-- 图片上传   -->
+    <script type="text/javascript">
+
+        //选择图片
+        function addImage(){
+            document.getElementById("file").click();
+        }
+
+        //选择图片
+        function saveImage(){
+            document.getElementById("save_image").click();
+        }
+        //上传图片，获取服务器图片路由
+        function upload() {
+            var formData = new FormData();
+            var file = document.getElementById("file").files[0];
+            formData.append("file", file);
+            $.ajax({
+                url:"/upload",
+                type:"POST",
+                data:formData,
+                processData : false,
+                contentType : false,
+                dataType : 'json',
+                async : false,
+                success : function (result) {
+                    console.log(result);
+                    if(result.code == 200){
+                        $('.img-responsive').attr("src",result.message);
+                        alert("图片上传成功")
+                    }else {
+                        alert("error!");
+                    }
+                }
+            });
+        }
+
+        $('#file').change(function(e) {
+
+            var _URL = window.URL || window.webkitURL;
+            var file, img;
+            if ((file = this.files[0])) {
+                img = new Image();
+                img.onload = function() {
+                    $('.img-responsive').attr('src', this.src);
+                };
+                img.src = _URL.createObjectURL(file);
+            }
+            alert("图片符合要求");
+        })
+
+    </script>
+
+    <!-- 修改密码   -->
+    <script type="text/javascript">
+        $().ready(function() {
+            $("#passwordForm").validate({
+                rules: {
+                    oldPassword: "required",
+                    newPassword: {
+                        required: true,
+                        minlength: 5
+                    },
+                    newPassword1: {
+                        required: true,
+                        minlength: 5,
+                        equalTo: "#inputNewPassword"
+                    }
+                },
+                messages: {
+                    oldPassword: "原始密码不能为空",
+                    newPassword: {
+                        required: "新密码不能为空",
+                        minlength: "密码长度不能小于 5 个字母"
+                    },
+                    newPassword1: {
+                        required: "新密码不能为空",
+                        minlength: "密码长度不能小于 5 个字母",
+                        equalTo: "两次密码输入不一致"
+                    }
+                },
+
+            });
+        });
+
+        function changePassword() {
+            //一切正常后发送网络请求
+            var oldPassword = $("#inputOldPassword").val();
+            var newPassword = $("#inputNewPassword").val();
+            var data = {"oldPassword": oldPassword, "newPassword": newPassword};
+            $.ajax({
+                type: 'POST',//方法类型
+                dataType: "json",//预期服务器返回的数据类型
+                url: '/user/changeUserPwd',//url
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(data),
+                success: function (result) {
+                    console.log(result);//打印服务端返回的数据
+                    if (result.code == 200) {
+                        alert("重置成功!");
+                        $('#close_delPwd').click();
+                    }
+                    else {
+                        alert(result.message);
+                        $("#inputOldPassword").val('');
+                        $("#inputNewPassword").val('');
+                        $("#inputNewPassword1").val('');
+                    }
+                },
+                error: function () {
+                    $("#inputOldPassword").val('');
+                    $("#inputNewPassword").val('');
+                    $("#inputNewPassword1").val('');
+                    alert("操作失败");
+                }
             });
         }
     </script>

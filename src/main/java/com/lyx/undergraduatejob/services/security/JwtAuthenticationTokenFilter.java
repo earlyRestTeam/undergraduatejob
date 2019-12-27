@@ -15,6 +15,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -25,8 +26,10 @@ import java.io.IOException;
  */
 public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
     private static final Logger LOGGER = LoggerFactory.getLogger(JwtAuthenticationTokenFilter.class);
-    @Autowired
-    private UserDetailsService userDetailsService;
+//    @Autowired
+//    private UserDetailsService userDetailsService;
+//    @Autowired
+//    private UserDetailsService adminDetailService;
     @Autowired
     private JwtTokenUtil jwtTokenUtil;
     @Value("${jwt.tokenHeader}")
@@ -38,21 +41,36 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request,
                                     HttpServletResponse response,
                                     FilterChain chain) throws ServletException, IOException {
-        String authHeader = request.getHeader(this.tokenHeader);
-        if (authHeader != null && authHeader.startsWith(this.tokenHead)) {
-            String authToken = authHeader.substring(this.tokenHead.length());// The part after "Bearer "
-            String username = jwtTokenUtil.getUserNameFromToken(authToken);
-            LOGGER.info("checking username:{}", username);
-            if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-                UserDetails userDetails = this.userDetailsService.loadUserByUsername(username);
-                boolean b = jwtTokenUtil.validateToken(authToken, userDetails);
-                if (b) {
-                    UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
-                    authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
-                    LOGGER.info("authenticated user:{}", username);
-                    SecurityContextHolder.getContext().setAuthentication(authentication);
+//        String authHeader = request.getHeader(this.tokenHeader);
+//        if(authHeader == null){
+        String authHeader = null;
+                Cookie[] cookies = request.getCookies();
+            if(cookies != null && cookies.length > 0){
+                for (Cookie c : cookies){
+                    if(c.getName().equals(this.tokenHead) ){
+                        authHeader = c.getValue();
+                        break;
+                    }
                 }
             }
+
+//        }
+
+        if (authHeader != null) {// && authHeader.startsWith(this.tokenHead)
+            //String authToken = authHeader.substring(this.tokenHead.length());// The part after "Bearer "
+            String username = jwtTokenUtil.getUserNameFromToken(authHeader);
+            Integer id = jwtTokenUtil.getEntityIdForToken(authHeader);
+            Integer cid = jwtTokenUtil.getCompanyIdForToken(authHeader);
+            String roles = jwtTokenUtil.getRolesForToken(authHeader);
+            String headImg = jwtTokenUtil.getHeadImgForToken(authHeader);
+            String nickName = jwtTokenUtil.getNickNameForToken(authHeader);
+
+            LOGGER.info("checking username:{}", username);
+            UserDetails userDetails = new OnlineEntity(id,cid,username,headImg,roles,nickName);
+            UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+            authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+            LOGGER.info("authenticated user:{}", username);
+            SecurityContextHolder.getContext().setAuthentication(authentication);
         }
         chain.doFilter(request, response);
     }

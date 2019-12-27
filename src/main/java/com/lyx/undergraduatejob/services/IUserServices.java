@@ -7,13 +7,22 @@ import com.lyx.undergraduatejob.search.entity.UsersSearchEntity;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
+import java.util.List;
 import java.util.Map;
 
 /**
  * 用户服务层
  */
 public interface IUserServices{
-
+    /**
+     * 找回密码
+     * @param emailCode
+     * @param newPassword
+     * @param code
+     * @return
+     */
+    Map<String,String> forgetPassword(String emailCode,String newPassword
+            ,String code);
     /**
      * 通过用户名加载 用户
      * @param username
@@ -27,7 +36,7 @@ public interface IUserServices{
      * @param password
      * @return
      */
-    String login(String userName, String password);
+    Map<String,String> login(String userName, String password);
     /**
      * 用户注册
      * @param u
@@ -68,4 +77,6 @@ public interface IUserServices{
      * @return
      */
     Users queryUserById(Integer id);
+
+    List<Users> queryAllUses();
 }

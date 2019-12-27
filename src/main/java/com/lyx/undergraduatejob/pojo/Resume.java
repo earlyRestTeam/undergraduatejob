@@ -20,6 +20,16 @@ public class Resume implements Serializable {
 
     private String email;
 
+    private Date birthday;
+
+    private String weiXin;
+
+    private String qq;
+
+    private String nation;
+
+    private String nativePlace;
+
     private String graduateSchool;
 
     private String specialty;
@@ -63,6 +73,8 @@ public class Resume implements Serializable {
     private Integer workExperience;
 
     private Integer resumeVip;
+
+    private Date vipStartTime;
 
     private Date vipEndTime;
 
@@ -132,6 +144,46 @@ public class Resume implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
+
+    public String getWeiXin() {
+        return weiXin;
+    }
+
+    public void setWeiXin(String weiXin) {
+        this.weiXin = weiXin;
+    }
+
+    public String getQq() {
+        return qq;
+    }
+
+    public void setQq(String qq) {
+        this.qq = qq;
+    }
+
+    public String getNation() {
+        return nation;
+    }
+
+    public void setNation(String nation) {
+        this.nation = nation;
+    }
+
+    public String getNativePlace() {
+        return nativePlace;
+    }
+
+    public void setNativePlace(String nativePlace) {
+        this.nativePlace = nativePlace;
     }
 
     public String getGraduateSchool() {
@@ -310,6 +362,14 @@ public class Resume implements Serializable {
         this.resumeVip = resumeVip;
     }
 
+    public Date getVipStartTime() {
+        return vipStartTime;
+    }
+
+    public void setVipStartTime(Date vipStartTime) {
+        this.vipStartTime = vipStartTime;
+    }
+
     public Date getVipEndTime() {
         return vipEndTime;
     }
@@ -340,6 +400,11 @@ public class Resume implements Serializable {
         sb.append(", gender=").append(gender);
         sb.append(", phone=").append(phone);
         sb.append(", email=").append(email);
+        sb.append(", birthday=").append(birthday);
+        sb.append(", weiXin=").append(weiXin);
+        sb.append(", qq=").append(qq);
+        sb.append(", nation=").append(nation);
+        sb.append(", nativePlace=").append(nativePlace);
         sb.append(", graduateSchool=").append(graduateSchool);
         sb.append(", specialty=").append(specialty);
         sb.append(", education=").append(education);
@@ -362,6 +427,7 @@ public class Resume implements Serializable {
         sb.append(", skill4=").append(skill4);
         sb.append(", workExperience=").append(workExperience);
         sb.append(", resumeVip=").append(resumeVip);
+        sb.append(", vipStartTime=").append(vipStartTime);
         sb.append(", vipEndTime=").append(vipEndTime);
         sb.append(", createTime=").append(createTime);
         sb.append(", serialVersionUID=").append(serialVersionUID);

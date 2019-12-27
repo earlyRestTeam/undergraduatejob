@@ -5,6 +5,7 @@ import com.lyx.undergraduatejob.pojo.Job;
 import com.lyx.undergraduatejob.search.entity.JobSearchEntity;
 import com.lyx.undergraduatejob.search.entity.RentValueBlock;
 import com.lyx.undergraduatejob.services.IJobServices;
+import com.lyx.undergraduatejob.services.security.LoginEntityHelper;
 import com.lyx.undergraduatejob.utils.APIResult;
 import com.lyx.undergraduatejob.utils.MyPage;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,11 +23,13 @@ public class JobController {
     @Autowired
     IJobServices jobServices;
 
+
     @PostMapping("/getJobs")
-    public APIResult selectJob(@RequestParam(value="start",defaultValue = "0") Integer start,
+    public APIResult selectJob(@RequestParam(value="start",defaultValue = "1") Integer start,
                                @RequestParam(value="pageSize",defaultValue = "12") Integer pageSize,
                                @RequestBody JobSearchEntity entity){
-
+        if(start <= 0)
+            start = 1;
         MyPage myPage = jobServices.selectJobByJobSearchEntityWithCompany(start, pageSize, entity);
 
         return APIResult.genSuccessApiResponse(myPage);

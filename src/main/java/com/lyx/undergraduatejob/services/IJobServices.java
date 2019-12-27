@@ -6,6 +6,7 @@ import com.lyx.undergraduatejob.pojo.ReceiveResume;
 import com.lyx.undergraduatejob.search.entity.JobSearchEntity;
 import com.lyx.undergraduatejob.utils.MyPage;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -100,5 +101,37 @@ public interface IJobServices {
      * @return
      */
     PageInfo<Job> selectJobByJobSearchEntityWithOutCompany(int start, int pageSize, JobSearchEntity jobSearchEntity);
+    /**
+     * 根据主键查询 job
+     */
+    Map<String,Object> selectJobById(Integer id);
 
+    /**
+     * 查询相近的职业
+     * @param jobType
+     * @return
+     */
+    List<Job> queryNeerJob(int start,String jobType);
+
+    /**
+     *  获取 明星 工作
+     * @return
+     */
+    List<Job> queryStarJob();
+    /**
+     * 获取 最近的 工作
+     */
+    List<Job> queryRecentJob();
+    /**
+     * 获取 最贵的 工作
+     */
+    List<Job> queryBestJob();
+    /**
+     * 获取 最贵的 兼职 工作
+     */
+    List<Job> queryBestPartJob();
+    /**
+     * 获取 最贵的 全职 工作
+     */
+    List<Job> queryBestFullJob();
 }

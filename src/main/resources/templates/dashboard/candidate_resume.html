@@ -344,8 +344,7 @@ Author:
                                                         <div class="open_jobs_wrapper_1 jb_cover">
                                                             <img src="/dashboard/images/job1.jpg" alt="img">
                                                             <div class="open_job_text">
-                                                                <h3><a href="#">Some designers 
-inelevated the..</a></h3>
+                                                                <h3><a href="#">Some designers inelevated the..</a></h3>
                                                                 <p>5 hour ago</p>
 
                                                             </div>
@@ -353,8 +352,7 @@ inelevated the..</a></h3>
                                                         <div class="open_jobs_wrapper_1 jb_cover">
                                                             <img src="/dashboard/images/job1.jpg" alt="img">
                                                             <div class="open_job_text">
-                                                                <h3><a href="#">Some designers 
-inelevated the..</a></h3>
+                                                                <h3><a href="#">Some designers inelevated the..</a></h3>
                                                                 <p>12 hour ago</p>
 
                                                             </div>
@@ -407,7 +405,7 @@ inelevated the..</a></h3>
                                             <a href="candidate_applied_job"> <i class="fas fa-square"></i>找工作</a>
                                         </li>
                                         <li>
-                                            <a href="candidate_dashboard"> <i class="fas fa-square"></i>个人资料</a>
+                                            <a href="/user/candidate_dashboard"> <i class="fas fa-square"></i>个人资料</a>
                                         </li>
                                         <li>
                                             <a href="candidate_edit_profile"> <i class="fas fa-square"></i>编辑个人资料</a>
@@ -541,12 +539,8 @@ inelevated the..</a></h3>
                         </div>
                         <div class="emp_follow_link jb_cover">
                              <ul class="feedlist">
-                                <li><a href="candidate_dashboard"><i class="fas fa-tachometer-alt"></i> 个人资料 </a></li>
-                                <li>
-                                    <a href="candidate_edit_profile"> <i class="fas fa-edit"></i>编辑资料
-                                    </a>
-                                </li>
-                                <li><a href="candidate_resume" class="link_active"><i class="fas fa-file"></i>我的简历</a></li>
+                                <li><a href="/user/candidate_dashboard"><i class="fas fa-tachometer-alt"></i> 个人资料 </a></li>
+                                <li><a href="/user/candidate_resume" class="link_active"><i class="fas fa-file"></i>我的简历</a></li>
                                 <li><a href="candidate_favourite_job"><i class="fas fa-heart"></i>我的收藏</a></li>
                                 <li><a href="candidate_applied_job"><i class="fas fa-check-square"></i>找工作</a></li>
                                 <li><a href="message"><i class="fas fa-envelope"></i>消息</a></li>
@@ -602,13 +596,14 @@ inelevated the..</a></h3>
                     </div>
                 </div>
                 <!--个人简历 start-->
-                <div id="resume" class="col-lg-9 col-md-12 col-sm-12 col-12">
+                <div id="resume" class="col-lg-9 col-md-12 col-sm-12 col-12" th:fragment="myResume">
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="job_filter_category_sidebar company_wrapper jb_cover">
                                 <div class="job_filter_sidebar_heading jb_cover">
                                     <h1> 基本信息 <span><a href="#" data-toggle="modal" data-target="#myModal1"><i class="fas fa-edit"></i></a></span></h1>
                                 </div>
+                                <!--  模态框 -->
                                 <div class="modal fade delete_popup company_popup" id="myModal1" role="dialog">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
@@ -716,64 +711,357 @@ inelevated the..</a></h3>
                                 <div class="job_overview_header jb_cover">
                                     <div class="row">
                                         <div class="col-lg-6 col-md-12 col-sm-12 col-12">
+
                                             <div class="jp_listing_overview_list_main_wrapper jb_cover">
                                                 <div class="jp_listing_list_icon">
                                                     <i class="far fa-calendar"></i>
                                                 </div>
                                                 <div class="jp_listing_list_icon_cont_wrapper">
                                                     <ul>
-                                                        <li>求职意向:</li>
-                                                        <li>Java工程师</li>
+                                                        <li>姓名:</li>
+                                                        <li th:text="${resume.name}">Java工程师</li>
                                                     </ul>
                                                 </div>
                                             </div>
+
+                                            <div class="jp_listing_overview_list_main_wrapper jb_cover">
+                                                <div class="jp_listing_list_icon">
+                                                    <i class="far fa-calendar"></i>
+                                                </div>
+                                                <div class="jp_listing_list_icon_cont_wrapper">
+                                                    <ul>
+                                                        <li>年龄:</li>
+                                                        <li th:text="${resume.age}">Java工程师</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                            <div class="jp_listing_overview_list_main_wrapper jb_cover">
+                                                <div class="jp_listing_list_icon">
+                                                    <i class="far fa-calendar"></i>
+                                                </div>
+                                                <div class="jp_listing_list_icon_cont_wrapper">
+                                                    <ul>
+                                                        <li>性别:</li>
+                                                        <li th:if="${resume.gender == 1}" >女</li>
+                                                        <li th:if="${resume.gender == 2}" >男</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                            <div class="jp_listing_overview_list_main_wrapper jb_cover">
+                                                <div class="jp_listing_list_icon">
+                                                    <i class="far fa-calendar"></i>
+                                                </div>
+                                                <div class="jp_listing_list_icon_cont_wrapper">
+                                                    <ul>
+                                                        <li>联系电话:</li>
+                                                        <li th:text="${resume.phone}">Java工程师</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                            <div class="jp_listing_overview_list_main_wrapper jb_cover">
+                                                <div class="jp_listing_list_icon">
+                                                    <i class="far fa-calendar"></i>
+                                                </div>
+                                                <div class="jp_listing_list_icon_cont_wrapper">
+                                                    <ul>
+                                                        <li>QQ  号:</li>
+                                                        <li th:text="${resume.qq}">872352442</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
                                             <div class="jp_listing_overview_list_main_wrapper jb_cover">
                                                 <div class="jp_listing_list_icon">
                                                     <i class="fas fa-map-marker-alt"></i>
                                                 </div>
                                                 <div class="jp_listing_list_icon_cont_wrapper">
                                                     <ul>
-                                                        <li>籍贯:</li>
-                                                        <li>湖南郴州</li>
+                                                        <li>邮箱:</li>
+                                                        <li th:text="${resume.email}">湖南郴州</li>
                                                     </ul>
                                                 </div>
                                             </div>
+
                                             <div class="jp_listing_overview_list_main_wrapper jb_cover">
                                                 <div class="jp_listing_list_icon">
                                                     <i class="fa fa-info-circle"></i>
                                                 </div>
                                                 <div class="jp_listing_list_icon_cont_wrapper">
                                                     <ul>
-                                                        <li>电话 :</li>
-                                                        <li>13378052140</li>
+                                                        <li>微信 :</li>
+                                                        <li th:text="${resume.weiXin}">13378052140</li>
                                                     </ul>
                                                 </div>
                                             </div>
+
                                         </div>
+
                                         <div class="col-lg-6 col-md-12 col-sm-12 col-12">
+
                                             <div class="jp_listing_overview_list_main_wrapper jb_cover">
                                                 <div class="jp_listing_list_icon">
                                                     <i class="fas fa-envelope"></i>
                                                 </div>
                                                 <div class="jp_listing_list_icon_cont_wrapper">
                                                     <ul>
-                                                        <li>邮箱:</li>
-                                                        <li><a href="#">digital@example.com</a></li>
+                                                        <li>出生年月:</li>
+                                                        <li th:text="${#dates.format(resume.birthday,'yyyy-MM-dd')}"></li>
                                                     </ul>
                                                 </div>
                                             </div>
 
-                                            <div class="jp_listing_overview_list_main_wrapper dcv jb_cover">
+                                            <div class="jp_listing_overview_list_main_wrapper jb_cover">
                                                 <div class="jp_listing_list_icon">
-                                                    <i class="fas fa-globe-asia"></i>
+                                                    <i class="far fa-calendar"></i>
                                                 </div>
                                                 <div class="jp_listing_list_icon_cont_wrapper">
                                                     <ul>
-                                                        <li>网址:</li>
-                                                        <li><a href="#">www.digital.com</a></li>
+                                                        <li>民族  :</li>
+                                                        <li th:text="${resume.nation}">Java工程师</li>
                                                     </ul>
                                                 </div>
                                             </div>
+
+                                            <div class="jp_listing_overview_list_main_wrapper jb_cover">
+                                                <div class="jp_listing_list_icon">
+                                                    <i class="far fa-calendar"></i>
+                                                </div>
+                                                <div class="jp_listing_list_icon_cont_wrapper">
+                                                    <ul>
+                                                        <li>毕业学校:</li>
+                                                        <li th:text="${resume.graduateSchool}">Java工程师</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                            <div class="jp_listing_overview_list_main_wrapper jb_cover">
+                                                <div class="jp_listing_list_icon">
+                                                    <i class="far fa-calendar"></i>
+                                                </div>
+                                                <div class="jp_listing_list_icon_cont_wrapper">
+                                                    <ul>
+                                                        <li>专业  :</li>
+                                                        <li th:text="${resume.specialty}">Java工程师</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                            <div class="jp_listing_overview_list_main_wrapper jb_cover">
+                                                <div class="jp_listing_list_icon">
+                                                    <i class="far fa-calendar"></i>
+                                                </div>
+                                                <div class="jp_listing_list_icon_cont_wrapper">
+                                                    <ul>
+                                                        <li>学历  :</li>
+                                                        <li th:text="${resume.education}">Java工程师</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                            <div class="jp_listing_overview_list_main_wrapper jb_cover">
+                                                <div class="jp_listing_list_icon">
+                                                    <i class="far fa-calendar"></i>
+                                                </div>
+                                                <div class="jp_listing_list_icon_cont_wrapper">
+                                                    <ul>
+                                                        <li>籍贯  :</li>
+                                                        <li th:text="${resume.nativePlace}">Java工程师</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="job_filter_category_sidebar company_wrapper jb_cover">
+                                <div class="job_filter_sidebar_heading jb_cover">
+                                    <h1> 求职意向 <span><a href="#" data-toggle="modal" data-target="#myModal8"><i class="fas fa-edit"></i></a></span></h1>
+                                </div>
+                                <!--  模态框 -->
+                                <div class="modal fade delete_popup company_popup" id="myModal8" role="dialog">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <div class="row">
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+
+                                                    <div class="delett_cntn jb_cover">
+                                                        <h1><i class="fas fa-edit"></i>basic information</h1>
+
+                                                        <div class="category_wrapper jb_cover">
+                                                            <div class="row">
+                                                                <div class="col-lg-3 col-md-3 col-sm-12 col-12">
+                                                                    <div class="category_lavel jb_cover">
+                                                                        <p>job :</p>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-9 col-md-9 col-sm-12 col-12">
+                                                                    <div class="delete_jb_form">
+
+                                                                        <input type="text" name="name" placeholder="Graphic Designer">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="category_wrapper jb_cover">
+                                                            <div class="row">
+                                                                <div class="col-lg-3 col-md-3 col-sm-12 col-12">
+                                                                    <div class="category_lavel jb_cover">
+                                                                        <p>location :</p>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-9 col-md-9 col-sm-12 col-12">
+                                                                    <div class="delete_jb_form">
+
+                                                                        <input type="text" name="name" placeholder="loss angles">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="category_wrapper jb_cover">
+                                                            <div class="row">
+                                                                <div class="col-lg-3 col-md-3 col-sm-12 col-12">
+                                                                    <div class="category_lavel jb_cover">
+                                                                        <p>phone :</p>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-9 col-md-9 col-sm-12 col-12">
+                                                                    <div class="delete_jb_form">
+
+                                                                        <input type="text" name="name" placeholder="+91 983622711">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="category_wrapper jb_cover">
+                                                            <div class="row">
+                                                                <div class="col-lg-3 col-md-3 col-sm-12 col-12">
+                                                                    <div class="category_lavel jb_cover">
+                                                                        <p>email :</p>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-9 col-md-9 col-sm-12 col-12">
+                                                                    <div class="delete_jb_form">
+
+                                                                        <input type="email" name="email" placeholder="digital@example.com">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="category_wrapper jb_cover">
+                                                            <div class="row">
+                                                                <div class="col-lg-3 col-md-3 col-sm-12 col-12">
+                                                                    <div class="category_lavel jb_cover">
+                                                                        <p>website
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-9 col-md-9 col-sm-12 col-12">
+                                                                    <div class="delete_jb_form">
+
+                                                                        <input type="text" name="name" placeholder="www.digital.com">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="padder_top jb_cover"></div>
+                                                        <div class="header_btn search_btn applt_pop_btn">
+
+                                                            <a href="#">save updates</a>
+
+                                                        </div>
+                                                        <div class="cancel_wrapper">
+                                                            <a href="#" data-dismiss="modal">cancel</a>
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="job_overview_header jb_cover">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-12 col-sm-12 col-12">
+
+                                            <div class="jp_listing_overview_list_main_wrapper jb_cover">
+                                                <div class="jp_listing_list_icon">
+                                                    <i class="far fa-calendar"></i>
+                                                </div>
+                                                <div class="jp_listing_list_icon_cont_wrapper">
+                                                    <ul>
+                                                        <li>职位/职能:</li>
+                                                        <li th:text="${resume.job}">Java工程师</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                            <div class="jp_listing_overview_list_main_wrapper jb_cover">
+                                                <div class="jp_listing_list_icon">
+                                                    <i class="far fa-calendar"></i>
+                                                </div>
+                                                <div class="jp_listing_list_icon_cont_wrapper">
+                                                    <ul>
+                                                        <li>薪资  :</li>
+                                                        <li th:text="${resume.salary}">Java工程师</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                            <div class="jp_listing_overview_list_main_wrapper jb_cover">
+                                                <div class="jp_listing_list_icon">
+                                                    <i class="far fa-calendar"></i>
+                                                </div>
+                                                <div class="jp_listing_list_icon_cont_wrapper">
+                                                    <ul>
+                                                        <li>工作类型:</li>
+                                                        <li th:if="${resume.partFull == 1}" >兼职</li>
+                                                        <li th:if="${resume.partFull == 2}" >全职</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+
+                                        <div class="col-lg-6 col-md-12 col-sm-12 col-12">
+
+                                            <div class="jp_listing_overview_list_main_wrapper jb_cover">
+                                                <div class="jp_listing_list_icon">
+                                                    <i class="fas fa-envelope"></i>
+                                                </div>
+                                                <div class="jp_listing_list_icon_cont_wrapper">
+                                                    <ul>
+                                                        <li>行业  :</li>
+                                                        <li th:text="${resume.jobType}"></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                            <div class="jp_listing_overview_list_main_wrapper jb_cover">
+                                                <div class="jp_listing_list_icon">
+                                                    <i class="far fa-calendar"></i>
+                                                </div>
+                                                <div class="jp_listing_list_icon_cont_wrapper">
+                                                    <ul>
+                                                        <li>地点  :</li>
+                                                        <li th:text="${resume.jobAddress}">Java工程师</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+
 
                                         </div>
                                     </div>
@@ -786,6 +1074,7 @@ inelevated the..</a></h3>
                             <div class="job_filter_category_sidebar company_wrapper jb_cover">
                                 <div class="job_filter_sidebar_heading jb_cover">
                                     <h1> 自我介绍 <span><a href="#" data-toggle="modal" data-target="#myModal2"><i class="fas fa-edit"></i></a></span></h1>
+                                    <!--  模态框 -->
                                     <div class="modal fade delete_popup company_popup" id="myModal2" role="dialog">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
@@ -831,9 +1120,7 @@ inelevated the..</a></h3>
                                     </div>
                                 </div>
                                 <div class="job_overview_header pdd jb_cover">
-                                    <p>我熟悉了java编程基础,熟悉spring主流框架，能创建Maven工程,熟悉MySQL数据库基础开发，熟悉Tomcat,SpringMVC,SpringBoot,MyBatis,等技术，熟悉html,css,javaScript,,Ajax,JSON等Web页面技术，熟悉jQuery框架。在大学期间自学了office办公软件，会word文档编写，ppt演示文稿制作，excel表格设计，熟悉java项目开发流程，熟悉项目需求分析表，能写java项目相关文档。
-                                        <br>
-                                        <br>
+                                    <p th:text="${resume.selfIntroduction}">我熟悉了java编程基础,熟悉spring主流框架，能创建Maven工程,熟悉MySQL数据库基础开发，熟悉Tomcat,SpringMVC,SpringBoot,MyBatis,等技术，熟悉html,css,javaScript,,Ajax,JSON等Web页面技术，熟悉jQuery框架。在大学期间自学了office办公软件，会word文档编写，ppt演示文稿制作，excel表格设计，熟悉java项目开发流程，熟悉项目需求分析表，能写java项目相关文档。
                                         我是一个适应能力强，学习能力强，能吃苦耐劳，工作积极认真负责，充满热情的人。</p>
                                 </div>
                             </div>
@@ -844,6 +1131,7 @@ inelevated the..</a></h3>
                                 <div class="job_filter_sidebar_heading jb_cover">
                                     <h1> 教育背景<span><a href="#" data-toggle="modal" data-target="#myModal4"><i class="fas fa-edit"></i></a></span></h1>
                                 </div>
+                                <!--  模态框 -->
                                 <div class="modal fade delete_popup company_popup" id="myModal4" role="dialog">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
@@ -972,6 +1260,7 @@ inelevated the..</a></h3>
                                 <div class="job_filter_sidebar_heading jb_cover">
                                     <h1>工作经验 <span><a href="#" data-toggle="modal" data-target="#myModal6"><i class="fas fa-edit"></i></a></span></h1>
                                 </div>
+                                <!--  模态框 -->
                                 <div class="modal fade delete_popup company_popup" id="myModal6" role="dialog">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
@@ -1049,38 +1338,31 @@ inelevated the..</a></h3>
                                         </div>
                                     </div>
                                 </div>
+
+
                                 <div class="job_overview_header jb_cover">
                                     <div class="row">
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-12" th:each="workExperience:${workExperienceList}">
+
                                             <div class="jp_listing_overview_list_main_wrapper education_board jb_cover">
                                                 <div class="jp_listing_list_icon">
                                                     <i class="fas fa-suitcase"></i>
                                                 </div>
                                                 <div class="jp_listing_list_icon_cont_wrapper">
                                                     <ul>
-                                                        <li>2018 - Present</li>
-                                                        <li><a href="#">阿里巴巴</a>  首席UI / UX，Web设计，交互设计 </li>
+                                                        <li th:text="${workExperience.workTime}">2018 - Present</li>
+                                                        <li><a href="#" th:text="${workExperience.workCompany}">阿里巴巴</a>  <p th:text="${workExperience.job}" >首席UI / UX，Web设计，交互设计</p> </li>
                                                     </ul>
-                                                    <p>As a UI/UX Designer, i have a strong background of work closely with Developers and associate with Design Research to enhance design suggestions. Manage design wireframes, mockups and navigation maps. My job was to make sure that my Designs are unique.Develop clean well executed design concepts. Coordinate with team on design and prototype of new interfaces.</p>
+                                                    <p th:text="${workExperience.experienceDesc}">As a UI/UX Designer, i have a strong background of work closely with Developers and associate with Design Research to enhance design suggestions. Manage design wireframes, mockups and navigation maps. My job was to make sure that my Designs are unique.Develop clean well executed design concepts. Coordinate with team on design and prototype of new interfaces.</p>
                                                 </div>
                                             </div>
-                                            <div class="jp_listing_overview_list_main_wrapper education_board jb_cover">
-                                                <div class="jp_listing_list_icon">
-                                                    <i class="fas fa-suitcase"></i>
-                                                </div>
-                                                <div class="jp_listing_list_icon_cont_wrapper">
-                                                    <ul>
-                                                        <li>2014 - 2018</li>
-                                                        <li><a href="#">华为</a>  计算机操作员/java工程师 </li>
-                                                    </ul>
-                                                    <p>We can develop and design anything beyond your imagination. About our work, we don��t say anything because our work speaks. For more, you can ask our clients and they will tell you how much satisfied they are with our services. So, what are you waiting for?We can develop and design anything beyond your imagination. About our work, we don��t say anything because our work speaks. For more, you can ask our clients and they will tell you how much satisfied they are with our services. So, what are you waiting for?</p>
-                                                </div>
-                                            </div>
+
 
                                         </div>
 
                                     </div>
                                 </div>
+
                             </div>
                         </div>
 
@@ -1089,6 +1371,7 @@ inelevated the..</a></h3>
                                 <div class="job_filter_sidebar_heading jb_cover">
                                     <h1> 专业技能 <span><a href="#" data-toggle="modal" data-target="#myModal7"><i class="fas fa-edit"></i></a></span></h1>
                                 </div>
+                                <!--  模态框 -->
                                 <div class="modal fade delete_popup company_popup" id="myModal7" role="dialog">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
@@ -1140,18 +1423,24 @@ inelevated the..</a></h3>
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="job_overview_header jb_cover">
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-12">
 
                                             <ul class="speical_qualification_wrapper">
-                                                <li><i class="fas fa-check-square"></i>5年以上设计和制造产品的经验。
+                                                <li><i class="fas fa-check-square"></i>
+                                                    <p th:text="${resume.skill1}">5年以上设计和制造产品的经验。</p>
                                                 </li>
-                                                <li><i class="fas fa-check-square"></i>精通java。
+                                                <li><i class="fas fa-check-square"></i>
+                                                    <p th:text="${resume.skill2}">精通java。</p>
                                                 </li>
-                                                <li><i class="fas fa-check-square"></i>对以人为本的设计充满热情，扎实的直觉。
+                                                <li><i class="fas fa-check-square"></i>
+                                                    <p th:text="${resume.skill3}">对以人为本的设计充满热情，扎实的直觉。</p>
                                                 </li>
-                                                <li><i class="fas fa-check-square"></i>努力工作的人和快速的效率。</li>
+                                                <li><i class="fas fa-check-square"></i>
+                                                    <p th:text="${resume.skill4}">努力工作的人和快速的效率。</p>
+                                                </li>
 
                                             </ul>
 
@@ -1240,20 +1529,15 @@ inelevated the..</a></h3>
                     <div class="footerNav jb_cover footer_border_displ">
                         <h5>features</h5>
                         <ul class="nav-widget">
-                            <li><a href="#"><i class="fa fa-square"></i>Job Management & Billing
-</a></li>
+                            <li><a href="#"><i class="fa fa-square"></i>Job Management & Billing</a></li>
 
-                            <li><a href="#"><i class="fa fa-square"></i>Time & Materials Tracking
-</a></li>
+                            <li><a href="#"><i class="fa fa-square"></i>Time & Materials Tracking</a></li>
 
-                            <li><a href="#"><i class="fa fa-square"></i>Standards Compliance 
-</a></li>
+                            <li><a href="#"><i class="fa fa-square"></i>Standards Compliance</a></li>
 
-                            <li><a href="#"><i class="fa fa-square"></i>Real Time GPS Tracking
-</a></li>
+                            <li><a href="#"><i class="fa fa-square"></i>Real Time GPS Tracking</a></li>
 
-                            <li><a href="#"><i class="fa fa-square"></i>Client Portal
-</a></li>
+                            <li><a href="#"><i class="fa fa-square"></i>Client Portal</a></li>
 
                             <li><a href="#"><i class="fa fa-square"></i> Powerful Workflow</a></li>
 

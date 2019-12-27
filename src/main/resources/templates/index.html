@@ -92,7 +92,7 @@
     <div class="menu_btn_box header_btn jb_cover">
      <ul>
       <li><a href="sign_up"><i class="flaticon-man-user"></i>注册</a></li>
-      <li><a href="login"><i class="flaticon-login"></i>登录</a></li>
+      <li><a href="/user/loginPage"><i class="flaticon-login"></i>登录</a></li>
      </ul>
     </div>
     <div class="jb_navigation_wrapper">
@@ -183,9 +183,9 @@
 
        <li class="has-mega gc_main_navigation"><a href="#" class="gc_main_navigation">pages</a>
         <ul class="navi_2_dropdown">
-         <li class="parent"><a href="about_us"><i class="fas fa-square"></i>关于我们</a></li>
-         <li class="parent"><a href="companies"><i class="fas fa-square"></i>companies</a></li>
-         <li class="parent"><a href="company_single"><i class="fas fa-square"></i>company single</a></li>
+         <li class="parent"><a href="/toaboutus"><i class="fas fa-square"></i>关于我们</a></li>
+         <li class="parent"><a href="/allcompany"><i class="fas fa-square"></i>公司</a></li>
+         <li class="parent"><a href="company_single"><i class="fas fa-square"></i>公司详情</a></li>
          <li class="parent"><a href="error_page"><i class="fas fa-square"></i>error page</a></li>
          <li class="parent"><a href="login"><i class="fas fa-square"></i>登录</a></li>
          <li class="parent"><a href="pricing_table"><i class="fas fa-square"></i>平台服务</a></li>
@@ -288,40 +288,10 @@
   <div class="jb_banner_list jb_cover">
    <div class="container">
     <div class="row">
-     <div class="col-lg-2 col-md-4 col-sm-4 col-xs-12">
+     <div th:each=" c : ${companies}" class="col-lg-2 col-md-4 col-sm-4 col-xs-12">
       <div class="jb_top_jobs_category jb_cover">
-       <h3><a href="#">laravel</a></h3>
-       <img src="/picture/jb1.png" alt="img" />
-      </div>
-     </div>
-     <div class="col-lg-2 col-md-4 col-sm-4 col-xs-12">
-      <div class="jb_top_jobs_category jb_cover">
-       <h3><a href="#">Wordpress</a></h3>
-       <img src="/picture/jb2.png" alt="img" />
-      </div>
-     </div>
-     <div class="col-lg-2 col-md-4 col-sm-4 col-xs-12">
-      <div class="jb_top_jobs_category jb_cover">
-       <h3><a href="#">AngularJS</a></h3>
-       <img src="/picture/jb3.png" alt="img" />
-      </div>
-     </div>
-     <div class="col-lg-2 col-md-4 col-sm-4 col-xs-12">
-      <div class="jb_top_jobs_category jb_cover">
-       <h3><a href="#">node js</a></h3>
-       <img src="/picture/jb4.png" alt="img" />
-      </div>
-     </div>
-     <div class="col-lg-2 col-md-4 col-sm-4 col-xs-12">
-      <div class="jb_top_jobs_category jb_cover">
-       <h3><a href="#">1onic</a></h3>
-       <img src="/picture/jb5.png" alt="img" />
-      </div>
-     </div>
-     <div class="col-lg-2 col-md-4 col-sm-4 col-xs-12">
-      <div class="jb_top_jobs_category">
-       <h3><a href="#">node js</a></h3>
-       <img src="/picture/jb4.png" alt="img" />
+       <h3><a href="" th:text="${c.companyName}">laravel</a></h3>
+       <img src="/picture/jb1.png" th:src="@{${c.logo}}" alt="img" />
       </div>
      </div>
     </div>
@@ -338,48 +308,18 @@
        <p>有因必有果，你的报应就是我</p>
       </div>
      </div>
-     <div class="col-lg-3 col-md-6 col-sm-12">
+     <div th:each="dayCyc : ${#numbers.sequence(0,3)}" th:if="${dayCyc < industriesList.size()}" class="col-lg-3 col-md-6 col-sm-12">
       <div class="jb_browse_category jb_cover">
        <a href="job_listing_list_left_filter">
-        <div class="hover-block"></div><i class="flaticon-code"></i><h3>开发商</h3><p>(1450 jobs)</p></a>
-      </div>
-     </div>
-     <div class="col-lg-3 col-md-6 col-sm-12">
-      <div class="jb_browse_category jb_cover">
-       <a href="job_listing_list_left_filter">
-        <div class="hover-block"></div><i class="flaticon-laptop"></i><h3>技术</h3><p>(4525 jobs)</p></a>
-      </div>
-     </div>
-     <div class="col-lg-3 col-md-6 col-sm-12">
-      <div class="jb_browse_category jb_cover">
-       <a href="job_listing_list_left_filter">
-        <div class="hover-block"></div><i class="flaticon-bar-chart"></i><h3>会计</h3><p>(214 jobs)</p></a>
-      </div>
-     </div>
-     <div class="col-lg-3 col-md-6 col-sm-12">
-      <div class="jb_browse_category jb_cover">
-       <a href="job_listing_list_left_filter">
-        <div class="hover-block"></div><i class="flaticon-doctor"></i><h3>医疗</h3><p>(4572 jobs)</p></a>
+        <div class="hover-block"></div><i class="flaticon-code"></i><h3 th:text="${industriesList.get(__${dayCyc}__).industriesName}">开发商</h3><p>(1450 jobs)</p></a>
       </div>
      </div>
      <div class="col-lg-10 offset-lg-1 col-md-12 col-sm-12 pd5">
       <div class="row">
-       <div class="col-lg-4 col-md-6 col-sm-12">
+       <div th:each="dayCyc : ${#numbers.sequence(4,6)}" th:if="${dayCyc < industriesList.size()}" class="col-lg-4 col-md-6 col-sm-12">
         <div class="jb_browse_category jb_cover">
          <a href="job_listing_list_left_filter">
-          <div class="hover-block"></div><i class="flaticon-city-hall"></i><h3>政府</h3><p>(2414 jobs)</p></a>
-        </div>
-       </div>
-       <div class="col-lg-4 col-md-6 col-sm-12">
-        <div class="jb_browse_category jb_cover">
-         <a href="job_listing_list_left_filter">
-          <div class="hover-block"></div><i class="flaticon-newspaper"></i><h3>媒体与新闻</h3><p>(2142 jobs)</p></a>
-        </div>
-       </div>
-       <div class="col-lg-4 col-md-6 col-sm-12">
-        <div class="jb_browse_category jb_cover">
-         <a href="job_listing_list_left_filter">
-          <div class="hover-block"></div><i class="flaticon-lunch"></i><h3>餐饮</h3><p>(2342 jobs)</p></a>
+          <div class="hover-block"></div><i class="flaticon-city-hall"></i><h3 th:text="${industriesList.get(__${dayCyc}__).industriesName}">政府</h3><p>(2414 jobs)</p></a>
         </div>
        </div>
       </div>
@@ -446,21 +386,21 @@
          <div id="home" class="tab-pane active">
           <div class="row">
            <div class="col-lg-12 col-md-12 col-12">
-            <div class="latest_job_box jb_cover">
+            <div th:each=" rj : ${recentJob}" class="latest_job_box jb_cover">
              <div class="job_list">
-              <a href="#"><img src="/picture/lt1.png" alt="img" /><h6>Trainee Web Designer, (Fresher)</h6></a>
+              <a href="#"><img th:src="@{rj.companyLogo}" src="/picture/lt1.png" alt="img" /><h6 th:text="${rj.jobTitle}">Trainee Web Designer, (Fresher)</h6></a>
              </div>
              <div class="job_list_next">
-              <p>google</p>
+              <p th:text="${rj.companyName}">google</p>
              </div>
              <div class="job_list_next">
-              <p>Remotely</p>
+              <p th:text="${rj.jobName}">Remotely</p>
              </div>
              <div class="job_list_next">
-              <p>new york</p>
+              <p th:text="${rj.workAddress}">new york</p>
              </div>
              <div class="job_list_next">
-              <p>$9,000</p>
+              <p th:text="${rj.salary}">$9,000</p>
              </div>
              <div class="job_list_next">
               <div class="header_btn search_btn apply_btn jb_cover">
@@ -504,296 +444,6 @@
               </div>
              </div>
             </div>
-            <div class="latest_job_box jb_cover">
-             <div class="job_list">
-              <a href="#"><img src="/picture/lt2.png" alt="img" /><h6>Trainee Web Designer, (Fresher)</h6></a>
-             </div>
-             <div class="job_list_next">
-              <p>google</p>
-             </div>
-             <div class="job_list_next">
-              <p>Remotely</p>
-             </div>
-             <div class="job_list_next">
-              <p>new york</p>
-             </div>
-             <div class="job_list_next">
-              <p>$9,000</p>
-             </div>
-             <div class="job_list_next">
-              <div class="header_btn search_btn apply_btn jb_cover">
-               <a href="#" data-toggle="modal" data-target="#myModal1">apply</a>
-              </div>
-             </div>
-             <div class="modal fade apply_job_popup" id="myModal1" role="dialog">
-              <div class="modal-dialog">
-               <div class="modal-content">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <div class="row">
-                 <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                  <div class="apply_job jb_cover">
-                   <h1>apply for this job :</h1>
-                   <div class="search_alert_box jb_cover">
-                    <div class="apply_job_form">
-                     <input type="text" name="name" placeholder="full name" />
-                    </div>
-                    <div class="apply_job_form">
-                     <input type="text" name="Email" placeholder="Enter Your Email" />
-                    </div>
-                    <div class="apply_job_form">
-                     <textarea class="form-control" name="message" placeholder="Message"></textarea>
-                    </div>
-                    <div class="resume_optional jb_cover">
-                     <p>resume (optional)</p>
-                     <div class="width_50">
-                      <input type="file" id="input-file-now-custom-2" class="dropify" data-height="90" />
-                      <span class="post_photo">upload resume</span>
-                     </div>
-                     <p class="word_file">microsoft word or pdf file only (5mb)</p>
-                    </div>
-                   </div>
-                   <div class="header_btn search_btn applt_pop_btn jb_cover">
-                    <a href="#">apply now</a>
-                   </div>
-                  </div>
-                 </div>
-                </div>
-               </div>
-              </div>
-             </div>
-            </div>
-            <div class="latest_job_box jb_cover">
-             <div class="job_list">
-              <a href="#"><img src="/picture/lt3.png" alt="img" /><h6>Trainee Web Designer, (Fresher)</h6></a>
-             </div>
-             <div class="job_list_next">
-              <p>google</p>
-             </div>
-             <div class="job_list_next">
-              <p>Remotely</p>
-             </div>
-             <div class="job_list_next">
-              <p>new york</p>
-             </div>
-             <div class="job_list_next">
-              <p>$9,000</p>
-             </div>
-             <div class="job_list_next">
-              <div class="header_btn search_btn apply_btn jb_cover">
-               <a href="#" data-toggle="modal" data-target="#myModal2">apply</a>
-              </div>
-             </div>
-             <div class="modal fade apply_job_popup" id="myModal2" role="dialog">
-              <div class="modal-dialog">
-               <div class="modal-content">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <div class="row">
-                 <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                  <div class="apply_job jb_cover">
-                   <h1>apply for this job :</h1>
-                   <div class="search_alert_box jb_cover">
-                    <div class="apply_job_form">
-                     <input type="text" name="name" placeholder="full name" />
-                    </div>
-                    <div class="apply_job_form">
-                     <input type="text" name="Email" placeholder="Enter Your Email" />
-                    </div>
-                    <div class="apply_job_form">
-                     <textarea class="form-control" name="message" placeholder="Message"></textarea>
-                    </div>
-                    <div class="resume_optional jb_cover">
-                     <p>resume (optional)</p>
-                     <div class="width_50">
-                      <input type="file" id="input-file-now-custom-3" class="dropify" data-height="90" />
-                      <span class="post_photo">upload resume</span>
-                     </div>
-                     <p class="word_file">microsoft word or pdf file only (5mb)</p>
-                    </div>
-                   </div>
-                   <div class="header_btn search_btn applt_pop_btn jb_cover">
-                    <a href="#">apply now</a>
-                   </div>
-                  </div>
-                 </div>
-                </div>
-               </div>
-              </div>
-             </div>
-            </div>
-            <div class="latest_job_box jb_cover">
-             <div class="job_list">
-              <a href="#"><img src="/picture/lt4.png" alt="img" /><h6>Trainee Web Designer, (Fresher)</h6></a>
-             </div>
-             <div class="job_list_next">
-              <p>google</p>
-             </div>
-             <div class="job_list_next">
-              <p>Remotely</p>
-             </div>
-             <div class="job_list_next">
-              <p>new york</p>
-             </div>
-             <div class="job_list_next">
-              <p>$9,000</p>
-             </div>
-             <div class="job_list_next">
-              <div class="header_btn search_btn apply_btn jb_cover">
-               <a href="#" data-toggle="modal" data-target="#myModal3">apply</a>
-              </div>
-             </div>
-             <div class="modal fade apply_job_popup" id="myModal3" role="dialog">
-              <div class="modal-dialog">
-               <div class="modal-content">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <div class="row">
-                 <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                  <div class="apply_job jb_cover">
-                   <h1>apply for this job :</h1>
-                   <div class="search_alert_box jb_cover">
-                    <div class="apply_job_form">
-                     <input type="text" name="name" placeholder="full name" />
-                    </div>
-                    <div class="apply_job_form">
-                     <input type="text" name="Email" placeholder="Enter Your Email" />
-                    </div>
-                    <div class="apply_job_form">
-                     <textarea class="form-control" name="message" placeholder="Message"></textarea>
-                    </div>
-                    <div class="resume_optional jb_cover">
-                     <p>resume (optional)</p>
-                     <div class="width_50">
-                      <input type="file" id="input-file-now-custom-4" class="dropify" data-height="90" />
-                      <span class="post_photo">upload resume</span>
-                     </div>
-                     <p class="word_file">microsoft word or pdf file only (5mb)</p>
-                    </div>
-                   </div>
-                   <div class="header_btn search_btn applt_pop_btn jb_cover">
-                    <a href="#">apply now</a>
-                   </div>
-                  </div>
-                 </div>
-                </div>
-               </div>
-              </div>
-             </div>
-            </div>
-            <div class="latest_job_box jb_cover">
-             <div class="job_list">
-              <a href="#"><img src="/picture/lt1.png" alt="img" /><h6>Trainee Web Designer, (Fresher)</h6></a>
-             </div>
-             <div class="job_list_next">
-              <p>google</p>
-             </div>
-             <div class="job_list_next">
-              <p>Remotely</p>
-             </div>
-             <div class="job_list_next">
-              <p>new york</p>
-             </div>
-             <div class="job_list_next">
-              <p>$9,000</p>
-             </div>
-             <div class="job_list_next">
-              <div class="header_btn search_btn apply_btn jb_cover">
-               <a href="#" data-toggle="modal" data-target="#myModal4">apply</a>
-              </div>
-             </div>
-             <div class="modal fade apply_job_popup" id="myModal4" role="dialog">
-              <div class="modal-dialog">
-               <div class="modal-content">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <div class="row">
-                 <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                  <div class="apply_job jb_cover">
-                   <h1>apply for this job :</h1>
-                   <div class="search_alert_box jb_cover">
-                    <div class="apply_job_form">
-                     <input type="text" name="name" placeholder="full name" />
-                    </div>
-                    <div class="apply_job_form">
-                     <input type="text" name="Email" placeholder="Enter Your Email" />
-                    </div>
-                    <div class="apply_job_form">
-                     <textarea class="form-control" name="message" placeholder="Message"></textarea>
-                    </div>
-                    <div class="resume_optional jb_cover">
-                     <p>resume (optional)</p>
-                     <div class="width_50">
-                      <input type="file" id="input-file-now-custom-5" class="dropify" data-height="90" />
-                      <span class="post_photo">upload resume</span>
-                     </div>
-                     <p class="word_file">microsoft word or pdf file only (5mb)</p>
-                    </div>
-                   </div>
-                   <div class="header_btn search_btn applt_pop_btn jb_cover">
-                    <a href="#">apply now</a>
-                   </div>
-                  </div>
-                 </div>
-                </div>
-               </div>
-              </div>
-             </div>
-            </div>
-            <div class="latest_job_box jb_cover">
-             <div class="job_list">
-              <a href="#"><img src="/picture/lt2.png" alt="img" /><h6>Trainee Web Designer, (Fresher)</h6></a>
-             </div>
-             <div class="job_list_next">
-              <p>google</p>
-             </div>
-             <div class="job_list_next">
-              <p>Remotely</p>
-             </div>
-             <div class="job_list_next">
-              <p>new york</p>
-             </div>
-             <div class="job_list_next">
-              <p>$9,000</p>
-             </div>
-             <div class="job_list_next">
-              <div class="header_btn search_btn apply_btn jb_cover">
-               <a href="#" data-toggle="modal" data-target="#myModal5">apply</a>
-              </div>
-             </div>
-             <div class="modal fade apply_job_popup" id="myModal5" role="dialog">
-              <div class="modal-dialog">
-               <div class="modal-content">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <div class="row">
-                 <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                  <div class="apply_job jb_cover">
-                   <h1>apply for this job :</h1>
-                   <div class="search_alert_box jb_cover">
-                    <div class="apply_job_form">
-                     <input type="text" name="name" placeholder="full name" />
-                    </div>
-                    <div class="apply_job_form">
-                     <input type="text" name="Email" placeholder="Enter Your Email" />
-                    </div>
-                    <div class="apply_job_form">
-                     <textarea class="form-control" name="message" placeholder="Message"></textarea>
-                    </div>
-                    <div class="resume_optional jb_cover">
-                     <p>resume (optional)</p>
-                     <div class="width_50">
-                      <input type="file" id="input-file-now-custom-6" class="dropify" data-height="90" />
-                      <span class="post_photo">upload resume</span>
-                     </div>
-                     <p class="word_file">microsoft word or pdf file only (5mb)</p>
-                    </div>
-                   </div>
-                   <div class="header_btn search_btn applt_pop_btn jb_cover">
-                    <a href="#">apply now</a>
-                   </div>
-                  </div>
-                 </div>
-                </div>
-               </div>
-              </div>
-             </div>
-            </div>
             <p class="showing">显示23个最新工作中的1-5个</p>
             <span class="se_all_job"><a href="job_listing_grid_left_filter"> 查看所有工作 <i class="fas fa-long-arrow-alt-right"></i></a></span>
            </div>
@@ -805,28 +455,28 @@
          <div id="menu1" class="tab-pane fade">
           <div class="row">
            <div class="col-lg-12 col-md-12 col-12">
-            <div class="latest_job_box jb_cover">
+            <div th:each=" rj : ${bestJob}" class="latest_job_box jb_cover">
              <div class="job_list">
-              <a href="#"><img src="/picture/lt4.png" alt="img" /><h6>Trainee Web Designer, (Fresher)</h6></a>
+              <a href="#"><img th:src="@{rj.companyLogo}" src="/picture/lt1.png" alt="img" /><h6 th:text="${rj.jobTitle}">Trainee Web Designer, (Fresher)</h6></a>
              </div>
              <div class="job_list_next">
-              <p>google</p>
+              <p th:text="${rj.companyName}">google</p>
              </div>
              <div class="job_list_next">
-              <p>Remotely</p>
+              <p th:text="${rj.jobName}">Remotely</p>
              </div>
              <div class="job_list_next">
-              <p>new york</p>
+              <p th:text="${rj.workAddress}">new york</p>
              </div>
              <div class="job_list_next">
-              <p>$9,000</p>
+              <p th:text="${rj.salary}">$9,000</p>
              </div>
              <div class="job_list_next">
               <div class="header_btn search_btn apply_btn jb_cover">
-               <a href="#" data-toggle="modal" data-target="#myModa7">apply</a>
+               <a href="#" data-toggle="modal" data-target="#myModal">apply</a>
               </div>
              </div>
-             <div class="modal fade apply_job_popup" id="myModal7" role="dialog">
+             <div class="modal fade apply_job_popup" id="myModal" role="dialog">
               <div class="modal-dialog">
                <div class="modal-content">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -847,297 +497,7 @@
                     <div class="resume_optional jb_cover">
                      <p>resume (optional)</p>
                      <div class="width_50">
-                      <input type="file" id="input-file-now-custom-7" class="dropify" data-height="90" />
-                      <span class="post_photo">upload resume</span>
-                     </div>
-                     <p class="word_file">microsoft word or pdf file only (5mb)</p>
-                    </div>
-                   </div>
-                   <div class="header_btn search_btn applt_pop_btn jb_cover">
-                    <a href="#">apply now</a>
-                   </div>
-                  </div>
-                 </div>
-                </div>
-               </div>
-              </div>
-             </div>
-            </div>
-            <div class="latest_job_box jb_cover">
-             <div class="job_list">
-              <a href="#"><img src="/picture/lt3.png" alt="img" /><h6>Trainee Web Designer, (Fresher)</h6></a>
-             </div>
-             <div class="job_list_next">
-              <p>google</p>
-             </div>
-             <div class="job_list_next">
-              <p>Remotely</p>
-             </div>
-             <div class="job_list_next">
-              <p>new york</p>
-             </div>
-             <div class="job_list_next">
-              <p>$9,000</p>
-             </div>
-             <div class="job_list_next">
-              <div class="header_btn search_btn apply_btn jb_cover">
-               <a href="#" data-toggle="modal" data-target="#myModal8">apply</a>
-              </div>
-             </div>
-             <div class="modal fade apply_job_popup" id="myModal8" role="dialog">
-              <div class="modal-dialog">
-               <div class="modal-content">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <div class="row">
-                 <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                  <div class="apply_job jb_cover">
-                   <h1>apply for this job :</h1>
-                   <div class="search_alert_box jb_cover">
-                    <div class="apply_job_form">
-                     <input type="text" name="name" placeholder="full name" />
-                    </div>
-                    <div class="apply_job_form">
-                     <input type="text" name="Email" placeholder="Enter Your Email" />
-                    </div>
-                    <div class="apply_job_form">
-                     <textarea class="form-control" name="message" placeholder="Message"></textarea>
-                    </div>
-                    <div class="resume_optional jb_cover">
-                     <p>resume (optional)</p>
-                     <div class="width_50">
-                      <input type="file" id="input-file-now-custom-8" class="dropify" data-height="90" />
-                      <span class="post_photo">upload resume</span>
-                     </div>
-                     <p class="word_file">microsoft word or pdf file only (5mb)</p>
-                    </div>
-                   </div>
-                   <div class="header_btn search_btn applt_pop_btn jb_cover">
-                    <a href="#">apply now</a>
-                   </div>
-                  </div>
-                 </div>
-                </div>
-               </div>
-              </div>
-             </div>
-            </div>
-            <div class="latest_job_box jb_cover">
-             <div class="job_list">
-              <a href="#"><img src="/picture/lt2.png" alt="img" /><h6>Trainee Web Designer, (Fresher)</h6></a>
-             </div>
-             <div class="job_list_next">
-              <p>google</p>
-             </div>
-             <div class="job_list_next">
-              <p>Remotely</p>
-             </div>
-             <div class="job_list_next">
-              <p>new york</p>
-             </div>
-             <div class="job_list_next">
-              <p>$9,000</p>
-             </div>
-             <div class="job_list_next">
-              <div class="header_btn search_btn apply_btn jb_cover">
-               <a href="#" data-toggle="modal" data-target="#myModal9">apply</a>
-              </div>
-             </div>
-             <div class="modal fade apply_job_popup" id="myModal9" role="dialog">
-              <div class="modal-dialog">
-               <div class="modal-content">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <div class="row">
-                 <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                  <div class="apply_job jb_cover">
-                   <h1>apply for this job :</h1>
-                   <div class="search_alert_box jb_cover">
-                    <div class="apply_job_form">
-                     <input type="text" name="name" placeholder="full name" />
-                    </div>
-                    <div class="apply_job_form">
-                     <input type="text" name="Email" placeholder="Enter Your Email" />
-                    </div>
-                    <div class="apply_job_form">
-                     <textarea class="form-control" name="message" placeholder="Message"></textarea>
-                    </div>
-                    <div class="resume_optional jb_cover">
-                     <p>resume (optional)</p>
-                     <div class="width_50">
-                      <input type="file" id="input-file-now-custom-9" class="dropify" data-height="90" />
-                      <span class="post_photo">upload resume</span>
-                     </div>
-                     <p class="word_file">microsoft word or pdf file only (5mb)</p>
-                    </div>
-                   </div>
-                   <div class="header_btn search_btn applt_pop_btn jb_cover">
-                    <a href="#">apply now</a>
-                   </div>
-                  </div>
-                 </div>
-                </div>
-               </div>
-              </div>
-             </div>
-            </div>
-            <div class="latest_job_box jb_cover">
-             <div class="job_list">
-              <a href="#"><img src="/picture/lt1.png" alt="img" /><h6>Trainee Web Designer, (Fresher)</h6></a>
-             </div>
-             <div class="job_list_next">
-              <p>google</p>
-             </div>
-             <div class="job_list_next">
-              <p>Remotely</p>
-             </div>
-             <div class="job_list_next">
-              <p>new york</p>
-             </div>
-             <div class="job_list_next">
-              <p>$9,000</p>
-             </div>
-             <div class="job_list_next">
-              <div class="header_btn search_btn apply_btn jb_cover">
-               <a href="#" data-toggle="modal" data-target="#myModal0">apply</a>
-              </div>
-             </div>
-             <div class="modal fade apply_job_popup" id="myModal0" role="dialog">
-              <div class="modal-dialog">
-               <div class="modal-content">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <div class="row">
-                 <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                  <div class="apply_job jb_cover">
-                   <h1>apply for this job :</h1>
-                   <div class="search_alert_box jb_cover">
-                    <div class="apply_job_form">
-                     <input type="text" name="name" placeholder="full name" />
-                    </div>
-                    <div class="apply_job_form">
-                     <input type="text" name="Email" placeholder="Enter Your Email" />
-                    </div>
-                    <div class="apply_job_form">
-                     <textarea class="form-control" name="message" placeholder="Message"></textarea>
-                    </div>
-                    <div class="resume_optional jb_cover">
-                     <p>resume (optional)</p>
-                     <div class="width_50">
-                      <input type="file" id="input-file-now-custom-0" class="dropify" data-height="90" />
-                      <span class="post_photo">upload resume</span>
-                     </div>
-                     <p class="word_file">microsoft word or pdf file only (5mb)</p>
-                    </div>
-                   </div>
-                   <div class="header_btn search_btn applt_pop_btn jb_cover">
-                    <a href="#">apply now</a>
-                   </div>
-                  </div>
-                 </div>
-                </div>
-               </div>
-              </div>
-             </div>
-            </div>
-            <div class="latest_job_box jb_cover">
-             <div class="job_list">
-              <a href="#"><img src="/picture/lt2.png" alt="img" /><h6>Trainee Web Designer, (Fresher)</h6></a>
-             </div>
-             <div class="job_list_next">
-              <p>google</p>
-             </div>
-             <div class="job_list_next">
-              <p>Remotely</p>
-             </div>
-             <div class="job_list_next">
-              <p>new york</p>
-             </div>
-             <div class="job_list_next">
-              <p>$9,000</p>
-             </div>
-             <div class="job_list_next">
-              <div class="header_btn search_btn apply_btn jb_cover">
-               <a href="#" data-toggle="modal" data-target="#myModal11">apply</a>
-              </div>
-             </div>
-             <div class="modal fade apply_job_popup" id="myModal11" role="dialog">
-              <div class="modal-dialog">
-               <div class="modal-content">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <div class="row">
-                 <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                  <div class="apply_job jb_cover">
-                   <h1>apply for this job :</h1>
-                   <div class="search_alert_box jb_cover">
-                    <div class="apply_job_form">
-                     <input type="text" name="name" placeholder="full name" />
-                    </div>
-                    <div class="apply_job_form">
-                     <input type="text" name="Email" placeholder="Enter Your Email" />
-                    </div>
-                    <div class="apply_job_form">
-                     <textarea class="form-control" name="message" placeholder="Message"></textarea>
-                    </div>
-                    <div class="resume_optional jb_cover">
-                     <p>resume (optional)</p>
-                     <div class="width_50">
-                      <input type="file" id="input-file-now-custom-12" class="dropify" data-height="90" />
-                      <span class="post_photo">upload resume</span>
-                     </div>
-                     <p class="word_file">microsoft word or pdf file only (5mb)</p>
-                    </div>
-                   </div>
-                   <div class="header_btn search_btn applt_pop_btn jb_cover">
-                    <a href="#">apply now</a>
-                   </div>
-                  </div>
-                 </div>
-                </div>
-               </div>
-              </div>
-             </div>
-            </div>
-            <div class="latest_job_box jb_cover">
-             <div class="job_list">
-              <a href="#"><img src="/picture/lt3.png" alt="img" /><h6>Trainee Web Designer, (Fresher)</h6></a>
-             </div>
-             <div class="job_list_next">
-              <p>google</p>
-             </div>
-             <div class="job_list_next">
-              <p>Remotely</p>
-             </div>
-             <div class="job_list_next">
-              <p>new york</p>
-             </div>
-             <div class="job_list_next">
-              <p>$9,000</p>
-             </div>
-             <div class="job_list_next">
-              <div class="header_btn search_btn apply_btn jb_cover">
-               <a href="#" data-toggle="modal" data-target="#myModal15">apply</a>
-              </div>
-             </div>
-             <div class="modal fade apply_job_popup" id="myModal15" role="dialog">
-              <div class="modal-dialog">
-               <div class="modal-content">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <div class="row">
-                 <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                  <div class="apply_job jb_cover">
-                   <h1>apply for this job :</h1>
-                   <div class="search_alert_box jb_cover">
-                    <div class="apply_job_form">
-                     <input type="text" name="name" placeholder="full name" />
-                    </div>
-                    <div class="apply_job_form">
-                     <input type="text" name="Email" placeholder="Enter Your Email" />
-                    </div>
-                    <div class="apply_job_form">
-                     <textarea class="form-control" name="message" placeholder="Message"></textarea>
-                    </div>
-                    <div class="resume_optional jb_cover">
-                     <p>resume (optional)</p>
-                     <div class="width_50">
-                      <input type="file" id="input-file-now-custom-22" class="dropify" data-height="90" />
+                      <input type="file" id="input-file-now-custom-1" class="dropify" data-height="90" />
                       <span class="post_photo">upload resume</span>
                      </div>
                      <p class="word_file">microsoft word or pdf file only (5mb)</p>
@@ -1164,28 +524,28 @@
          <div id="menu2" class="tab-pane fade">
           <div class="row">
            <div class="col-lg-12 col-md-12 col-12">
-            <div class="latest_job_box jb_cover">
+            <div th:each=" rj : ${jobs}" class="latest_job_box jb_cover">
              <div class="job_list">
-              <a href="#"><img src="/picture/lt2.png" alt="img" /><h6>Trainee Web Designer, (Fresher)</h6></a>
+              <a href="#"><img th:src="@{rj.companyLogo}" src="/picture/lt1.png" alt="img" /><h6 th:text="${rj.jobTitle}">Trainee Web Designer, (Fresher)</h6></a>
              </div>
              <div class="job_list_next">
-              <p>google</p>
+              <p th:text="${rj.companyName}">google</p>
              </div>
              <div class="job_list_next">
-              <p>Remotely</p>
+              <p th:text="${rj.jobName}">Remotely</p>
              </div>
              <div class="job_list_next">
-              <p>new york</p>
+              <p th:text="${rj.workAddress}">new york</p>
              </div>
              <div class="job_list_next">
-              <p>$9,000</p>
+              <p th:text="${rj.salary}">$9,000</p>
              </div>
              <div class="job_list_next">
               <div class="header_btn search_btn apply_btn jb_cover">
-               <a href="#" data-toggle="modal" data-target="#myModal01">apply</a>
+               <a href="#" data-toggle="modal" data-target="#myModal">apply</a>
               </div>
              </div>
-             <div class="modal fade apply_job_popup" id="myModal01" role="dialog">
+             <div class="modal fade apply_job_popup" id="myModal" role="dialog">
               <div class="modal-dialog">
                <div class="modal-content">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -1206,297 +566,7 @@
                     <div class="resume_optional jb_cover">
                      <p>resume (optional)</p>
                      <div class="width_50">
-                      <input type="file" id="input-file-now-custom-23" class="dropify" data-height="90" />
-                      <span class="post_photo">upload resume</span>
-                     </div>
-                     <p class="word_file">microsoft word or pdf file only (5mb)</p>
-                    </div>
-                   </div>
-                   <div class="header_btn search_btn applt_pop_btn jb_cover">
-                    <a href="#">apply now</a>
-                   </div>
-                  </div>
-                 </div>
-                </div>
-               </div>
-              </div>
-             </div>
-            </div>
-            <div class="latest_job_box jb_cover">
-             <div class="job_list">
-              <a href="#"><img src="/picture/lt1.png" alt="img" /><h6>Trainee Web Designer, (Fresher)</h6></a>
-             </div>
-             <div class="job_list_next">
-              <p>google</p>
-             </div>
-             <div class="job_list_next">
-              <p>Remotely</p>
-             </div>
-             <div class="job_list_next">
-              <p>new york</p>
-             </div>
-             <div class="job_list_next">
-              <p>$9,000</p>
-             </div>
-             <div class="job_list_next">
-              <div class="header_btn search_btn apply_btn jb_cover">
-               <a href="#" data-toggle="modal" data-target="#myModal02">apply</a>
-              </div>
-             </div>
-             <div class="modal fade apply_job_popup" id="myModal02" role="dialog">
-              <div class="modal-dialog">
-               <div class="modal-content">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <div class="row">
-                 <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                  <div class="apply_job jb_cover">
-                   <h1>apply for this job :</h1>
-                   <div class="search_alert_box jb_cover">
-                    <div class="apply_job_form">
-                     <input type="text" name="name" placeholder="full name" />
-                    </div>
-                    <div class="apply_job_form">
-                     <input type="text" name="Email" placeholder="Enter Your Email" />
-                    </div>
-                    <div class="apply_job_form">
-                     <textarea class="form-control" name="message" placeholder="Message"></textarea>
-                    </div>
-                    <div class="resume_optional jb_cover">
-                     <p>resume (optional)</p>
-                     <div class="width_50">
-                      <input type="file" id="input-file-now-custom-24" class="dropify" data-height="90" />
-                      <span class="post_photo">upload resume</span>
-                     </div>
-                     <p class="word_file">microsoft word or pdf file only (5mb)</p>
-                    </div>
-                   </div>
-                   <div class="header_btn search_btn applt_pop_btn jb_cover">
-                    <a href="#">apply now</a>
-                   </div>
-                  </div>
-                 </div>
-                </div>
-               </div>
-              </div>
-             </div>
-            </div>
-            <div class="latest_job_box jb_cover">
-             <div class="job_list">
-              <a href="#"><img src="/picture/lt3.png" alt="img" /><h6>Trainee Web Designer, (Fresher)</h6></a>
-             </div>
-             <div class="job_list_next">
-              <p>google</p>
-             </div>
-             <div class="job_list_next">
-              <p>Remotely</p>
-             </div>
-             <div class="job_list_next">
-              <p>new york</p>
-             </div>
-             <div class="job_list_next">
-              <p>$9,000</p>
-             </div>
-             <div class="job_list_next">
-              <div class="header_btn search_btn apply_btn jb_cover">
-               <a href="#" data-toggle="modal" data-target="#myModal21">apply</a>
-              </div>
-             </div>
-             <div class="modal fade apply_job_popup" id="myModal21" role="dialog">
-              <div class="modal-dialog">
-               <div class="modal-content">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <div class="row">
-                 <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                  <div class="apply_job jb_cover">
-                   <h1>apply for this job :</h1>
-                   <div class="search_alert_box jb_cover">
-                    <div class="apply_job_form">
-                     <input type="text" name="name" placeholder="full name" />
-                    </div>
-                    <div class="apply_job_form">
-                     <input type="text" name="Email" placeholder="Enter Your Email" />
-                    </div>
-                    <div class="apply_job_form">
-                     <textarea class="form-control" name="message" placeholder="Message"></textarea>
-                    </div>
-                    <div class="resume_optional jb_cover">
-                     <p>resume (optional)</p>
-                     <div class="width_50">
-                      <input type="file" id="input-file-now-custom-25" class="dropify" data-height="90" />
-                      <span class="post_photo">upload resume</span>
-                     </div>
-                     <p class="word_file">microsoft word or pdf file only (5mb)</p>
-                    </div>
-                   </div>
-                   <div class="header_btn search_btn applt_pop_btn jb_cover">
-                    <a href="#">apply now</a>
-                   </div>
-                  </div>
-                 </div>
-                </div>
-               </div>
-              </div>
-             </div>
-            </div>
-            <div class="latest_job_box jb_cover">
-             <div class="job_list">
-              <a href="#"><img src="/picture/lt4.png" alt="img" /><h6>Trainee Web Designer, (Fresher)</h6></a>
-             </div>
-             <div class="job_list_next">
-              <p>google</p>
-             </div>
-             <div class="job_list_next">
-              <p>Remotely</p>
-             </div>
-             <div class="job_list_next">
-              <p>new york</p>
-             </div>
-             <div class="job_list_next">
-              <p>$9,000</p>
-             </div>
-             <div class="job_list_next">
-              <div class="header_btn search_btn apply_btn jb_cover">
-               <a href="#" data-toggle="modal" data-target="#myModal31">apply</a>
-              </div>
-             </div>
-             <div class="modal fade apply_job_popup" id="myModal31" role="dialog">
-              <div class="modal-dialog">
-               <div class="modal-content">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <div class="row">
-                 <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                  <div class="apply_job jb_cover">
-                   <h1>apply for this job :</h1>
-                   <div class="search_alert_box jb_cover">
-                    <div class="apply_job_form">
-                     <input type="text" name="name" placeholder="full name" />
-                    </div>
-                    <div class="apply_job_form">
-                     <input type="text" name="Email" placeholder="Enter Your Email" />
-                    </div>
-                    <div class="apply_job_form">
-                     <textarea class="form-control" name="message" placeholder="Message"></textarea>
-                    </div>
-                    <div class="resume_optional jb_cover">
-                     <p>resume (optional)</p>
-                     <div class="width_50">
-                      <input type="file" id="input-file-now-custom-26" class="dropify" data-height="90" />
-                      <span class="post_photo">upload resume</span>
-                     </div>
-                     <p class="word_file">microsoft word or pdf file only (5mb)</p>
-                    </div>
-                   </div>
-                   <div class="header_btn search_btn applt_pop_btn jb_cover">
-                    <a href="#">apply now</a>
-                   </div>
-                  </div>
-                 </div>
-                </div>
-               </div>
-              </div>
-             </div>
-            </div>
-            <div class="latest_job_box jb_cover">
-             <div class="job_list">
-              <a href="#"><img src="/picture/lt1.png" alt="img" /><h6>Trainee Web Designer, (Fresher)</h6></a>
-             </div>
-             <div class="job_list_next">
-              <p>google</p>
-             </div>
-             <div class="job_list_next">
-              <p>Remotely</p>
-             </div>
-             <div class="job_list_next">
-              <p>new york</p>
-             </div>
-             <div class="job_list_next">
-              <p>$9,000</p>
-             </div>
-             <div class="job_list_next">
-              <div class="header_btn search_btn apply_btn jb_cover">
-               <a href="#" data-toggle="modal" data-target="#myModal41">apply</a>
-              </div>
-             </div>
-             <div class="modal fade apply_job_popup" id="myModal41" role="dialog">
-              <div class="modal-dialog">
-               <div class="modal-content">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <div class="row">
-                 <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                  <div class="apply_job jb_cover">
-                   <h1>apply for this job :</h1>
-                   <div class="search_alert_box jb_cover">
-                    <div class="apply_job_form">
-                     <input type="text" name="name" placeholder="full name" />
-                    </div>
-                    <div class="apply_job_form">
-                     <input type="text" name="Email" placeholder="Enter Your Email" />
-                    </div>
-                    <div class="apply_job_form">
-                     <textarea class="form-control" name="message" placeholder="Message"></textarea>
-                    </div>
-                    <div class="resume_optional jb_cover">
-                     <p>resume (optional)</p>
-                     <div class="width_50">
-                      <input type="file" id="input-file-now-custom-27" class="dropify" data-height="90" />
-                      <span class="post_photo">upload resume</span>
-                     </div>
-                     <p class="word_file">microsoft word or pdf file only (5mb)</p>
-                    </div>
-                   </div>
-                   <div class="header_btn search_btn applt_pop_btn jb_cover">
-                    <a href="#">apply now</a>
-                   </div>
-                  </div>
-                 </div>
-                </div>
-               </div>
-              </div>
-             </div>
-            </div>
-            <div class="latest_job_box jb_cover">
-             <div class="job_list">
-              <a href="#"><img src="/picture/lt2.png" alt="img" /><h6>Trainee Web Designer, (Fresher)</h6></a>
-             </div>
-             <div class="job_list_next">
-              <p>google</p>
-             </div>
-             <div class="job_list_next">
-              <p>Remotely</p>
-             </div>
-             <div class="job_list_next">
-              <p>new york</p>
-             </div>
-             <div class="job_list_next">
-              <p>$9,000</p>
-             </div>
-             <div class="job_list_next">
-              <div class="header_btn search_btn apply_btn jb_cover">
-               <a href="#" data-toggle="modal" data-target="#myModal51">apply</a>
-              </div>
-             </div>
-             <div class="modal fade apply_job_popup" id="myModal51" role="dialog">
-              <div class="modal-dialog">
-               <div class="modal-content">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <div class="row">
-                 <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                  <div class="apply_job jb_cover">
-                   <h1>apply for this job :</h1>
-                   <div class="search_alert_box jb_cover">
-                    <div class="apply_job_form">
-                     <input type="text" name="name" placeholder="full name" />
-                    </div>
-                    <div class="apply_job_form">
-                     <input type="text" name="Email" placeholder="Enter Your Email" />
-                    </div>
-                    <div class="apply_job_form">
-                     <textarea class="form-control" name="message" placeholder="Message"></textarea>
-                    </div>
-                    <div class="resume_optional jb_cover">
-                     <p>resume (optional)</p>
-                     <div class="width_50">
-                      <input type="file" id="input-file-now-custom-28" class="dropify" data-height="90" />
+                      <input type="file" id="input-file-now-custom-1" class="dropify" data-height="90" />
                       <span class="post_photo">upload resume</span>
                      </div>
                      <p class="word_file">microsoft word or pdf file only (5mb)</p>
@@ -1523,28 +593,28 @@
          <div id="menu3" class="tab-pane fade">
           <div class="row">
            <div class="col-lg-12 col-md-12 col-12">
-            <div class="latest_job_box jb_cover">
+            <div th:each=" rj : ${bestPartJob}" class="latest_job_box jb_cover">
              <div class="job_list">
-              <a href="#"><img src="/picture/lt1.png" alt="img" /><h6>Trainee Web Designer, (Fresher)</h6></a>
+              <a href="#"><img th:src="@{rj.companyLogo}" src="/picture/lt1.png" alt="img" /><h6 th:text="${rj.jobTitle}">Trainee Web Designer, (Fresher)</h6></a>
              </div>
              <div class="job_list_next">
-              <p>google</p>
+              <p th:text="${rj.companyName}">google</p>
              </div>
              <div class="job_list_next">
-              <p>Remotely</p>
+              <p th:text="${rj.jobName}">Remotely</p>
              </div>
              <div class="job_list_next">
-              <p>new york</p>
+              <p th:text="${rj.workAddress}">new york</p>
              </div>
              <div class="job_list_next">
-              <p>$9,000</p>
+              <p th:text="${rj.salary}">$9,000</p>
              </div>
              <div class="job_list_next">
               <div class="header_btn search_btn apply_btn jb_cover">
-               <a href="#" data-toggle="modal" data-target="#myModal00">apply</a>
+               <a href="#" data-toggle="modal" data-target="#myModal">apply</a>
               </div>
              </div>
-             <div class="modal fade apply_job_popup" id="myModal00" role="dialog">
+             <div class="modal fade apply_job_popup" id="myModal" role="dialog">
               <div class="modal-dialog">
                <div class="modal-content">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -1565,297 +635,7 @@
                     <div class="resume_optional jb_cover">
                      <p>resume (optional)</p>
                      <div class="width_50">
-                      <input type="file" id="input-file-now-custom-29" class="dropify" data-height="90" />
-                      <span class="post_photo">upload resume</span>
-                     </div>
-                     <p class="word_file">microsoft word or pdf file only (5mb)</p>
-                    </div>
-                   </div>
-                   <div class="header_btn search_btn applt_pop_btn jb_cover">
-                    <a href="#">apply now</a>
-                   </div>
-                  </div>
-                 </div>
-                </div>
-               </div>
-              </div>
-             </div>
-            </div>
-            <div class="latest_job_box jb_cover">
-             <div class="job_list">
-              <a href="#"><img src="/picture/lt3.png" alt="img" /><h6>Trainee Web Designer, (Fresher)</h6></a>
-             </div>
-             <div class="job_list_next">
-              <p>google</p>
-             </div>
-             <div class="job_list_next">
-              <p>Remotely</p>
-             </div>
-             <div class="job_list_next">
-              <p>new york</p>
-             </div>
-             <div class="job_list_next">
-              <p>$9,000</p>
-             </div>
-             <div class="job_list_next">
-              <div class="header_btn search_btn apply_btn jb_cover">
-               <a href="#" data-toggle="modal" data-target="#myModal1500">apply</a>
-              </div>
-             </div>
-             <div class="modal fade apply_job_popup" id="myModal500" role="dialog">
-              <div class="modal-dialog">
-               <div class="modal-content">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <div class="row">
-                 <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                  <div class="apply_job jb_cover">
-                   <h1>apply for this job :</h1>
-                   <div class="search_alert_box jb_cover">
-                    <div class="apply_job_form">
-                     <input type="text" name="name" placeholder="full name" />
-                    </div>
-                    <div class="apply_job_form">
-                     <input type="text" name="Email" placeholder="Enter Your Email" />
-                    </div>
-                    <div class="apply_job_form">
-                     <textarea class="form-control" name="message" placeholder="Message"></textarea>
-                    </div>
-                    <div class="resume_optional jb_cover">
-                     <p>resume (optional)</p>
-                     <div class="width_50">
-                      <input type="file" id="input-file-now-custom-20" class="dropify" data-height="90" />
-                      <span class="post_photo">upload resume</span>
-                     </div>
-                     <p class="word_file">microsoft word or pdf file only (5mb)</p>
-                    </div>
-                   </div>
-                   <div class="header_btn search_btn applt_pop_btn jb_cover">
-                    <a href="#">apply now</a>
-                   </div>
-                  </div>
-                 </div>
-                </div>
-               </div>
-              </div>
-             </div>
-            </div>
-            <div class="latest_job_box jb_cover">
-             <div class="job_list">
-              <a href="#"><img src="/picture/lt4.png" alt="img" /><h6>Trainee Web Designer, (Fresher)</h6></a>
-             </div>
-             <div class="job_list_next">
-              <p>google</p>
-             </div>
-             <div class="job_list_next">
-              <p>Remotely</p>
-             </div>
-             <div class="job_list_next">
-              <p>new york</p>
-             </div>
-             <div class="job_list_next">
-              <p>$9,000</p>
-             </div>
-             <div class="job_list_next">
-              <div class="header_btn search_btn apply_btn jb_cover">
-               <a href="#" data-toggle="modal" data-target="#myModal201">apply</a>
-              </div>
-             </div>
-             <div class="modal fade apply_job_popup" id="myModal201" role="dialog">
-              <div class="modal-dialog">
-               <div class="modal-content">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <div class="row">
-                 <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                  <div class="apply_job jb_cover">
-                   <h1>apply for this job :</h1>
-                   <div class="search_alert_box jb_cover">
-                    <div class="apply_job_form">
-                     <input type="text" name="name" placeholder="full name" />
-                    </div>
-                    <div class="apply_job_form">
-                     <input type="text" name="Email" placeholder="Enter Your Email" />
-                    </div>
-                    <div class="apply_job_form">
-                     <textarea class="form-control" name="message" placeholder="Message"></textarea>
-                    </div>
-                    <div class="resume_optional jb_cover">
-                     <p>resume (optional)</p>
-                     <div class="width_50">
-                      <input type="file" id="input-file-now-custom-211" class="dropify" data-height="90" />
-                      <span class="post_photo">upload resume</span>
-                     </div>
-                     <p class="word_file">microsoft word or pdf file only (5mb)</p>
-                    </div>
-                   </div>
-                   <div class="header_btn search_btn applt_pop_btn jb_cover">
-                    <a href="#">apply now</a>
-                   </div>
-                  </div>
-                 </div>
-                </div>
-               </div>
-              </div>
-             </div>
-            </div>
-            <div class="latest_job_box jb_cover">
-             <div class="job_list">
-              <a href="#"><img src="/picture/lt1.png" alt="img" /><h6>Trainee Web Designer, (Fresher)</h6></a>
-             </div>
-             <div class="job_list_next">
-              <p>google</p>
-             </div>
-             <div class="job_list_next">
-              <p>Remotely</p>
-             </div>
-             <div class="job_list_next">
-              <p>new york</p>
-             </div>
-             <div class="job_list_next">
-              <p>$9,000</p>
-             </div>
-             <div class="job_list_next">
-              <div class="header_btn search_btn apply_btn jb_cover">
-               <a href="#" data-toggle="modal" data-target="#myModal302">apply</a>
-              </div>
-             </div>
-             <div class="modal fade apply_job_popup" id="myModal302" role="dialog">
-              <div class="modal-dialog">
-               <div class="modal-content">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <div class="row">
-                 <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                  <div class="apply_job jb_cover">
-                   <h1>apply for this job :</h1>
-                   <div class="search_alert_box jb_cover">
-                    <div class="apply_job_form">
-                     <input type="text" name="name" placeholder="full name" />
-                    </div>
-                    <div class="apply_job_form">
-                     <input type="text" name="Email" placeholder="Enter Your Email" />
-                    </div>
-                    <div class="apply_job_form">
-                     <textarea class="form-control" name="message" placeholder="Message"></textarea>
-                    </div>
-                    <div class="resume_optional jb_cover">
-                     <p>resume (optional)</p>
-                     <div class="width_50">
-                      <input type="file" id="input-file-now-custom-222" class="dropify" data-height="90" />
-                      <span class="post_photo">upload resume</span>
-                     </div>
-                     <p class="word_file">microsoft word or pdf file only (5mb)</p>
-                    </div>
-                   </div>
-                   <div class="header_btn search_btn applt_pop_btn jb_cover">
-                    <a href="#">apply now</a>
-                   </div>
-                  </div>
-                 </div>
-                </div>
-               </div>
-              </div>
-             </div>
-            </div>
-            <div class="latest_job_box jb_cover">
-             <div class="job_list">
-              <a href="#"><img src="/picture/lt1.png" alt="img" /><h6>Trainee Web Designer, (Fresher)</h6></a>
-             </div>
-             <div class="job_list_next">
-              <p>google</p>
-             </div>
-             <div class="job_list_next">
-              <p>Remotely</p>
-             </div>
-             <div class="job_list_next">
-              <p>new york</p>
-             </div>
-             <div class="job_list_next">
-              <p>$9,000</p>
-             </div>
-             <div class="job_list_next">
-              <div class="header_btn search_btn apply_btn jb_cover">
-               <a href="#" data-toggle="modal" data-target="#myModal401">apply</a>
-              </div>
-             </div>
-             <div class="modal fade apply_job_popup" id="myModal401" role="dialog">
-              <div class="modal-dialog">
-               <div class="modal-content">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <div class="row">
-                 <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                  <div class="apply_job jb_cover">
-                   <h1>apply for this job :</h1>
-                   <div class="search_alert_box jb_cover">
-                    <div class="apply_job_form">
-                     <input type="text" name="name" placeholder="full name" />
-                    </div>
-                    <div class="apply_job_form">
-                     <input type="text" name="Email" placeholder="Enter Your Email" />
-                    </div>
-                    <div class="apply_job_form">
-                     <textarea class="form-control" name="message" placeholder="Message"></textarea>
-                    </div>
-                    <div class="resume_optional jb_cover">
-                     <p>resume (optional)</p>
-                     <div class="width_50">
-                      <input type="file" id="input-file-now-custom-233" class="dropify" data-height="90" />
-                      <span class="post_photo">upload resume</span>
-                     </div>
-                     <p class="word_file">microsoft word or pdf file only (5mb)</p>
-                    </div>
-                   </div>
-                   <div class="header_btn search_btn applt_pop_btn jb_cover">
-                    <a href="#">apply now</a>
-                   </div>
-                  </div>
-                 </div>
-                </div>
-               </div>
-              </div>
-             </div>
-            </div>
-            <div class="latest_job_box jb_cover">
-             <div class="job_list">
-              <a href="#"><img src="/picture/lt2.png" alt="img" /><h6>Trainee Web Designer, (Fresher)</h6></a>
-             </div>
-             <div class="job_list_next">
-              <p>google</p>
-             </div>
-             <div class="job_list_next">
-              <p>Remotely</p>
-             </div>
-             <div class="job_list_next">
-              <p>new york</p>
-             </div>
-             <div class="job_list_next">
-              <p>$9,000</p>
-             </div>
-             <div class="job_list_next">
-              <div class="header_btn search_btn apply_btn jb_cover">
-               <a href="#" data-toggle="modal" data-target="#myModal501">apply</a>
-              </div>
-             </div>
-             <div class="modal fade apply_job_popup" id="myModal501" role="dialog">
-              <div class="modal-dialog">
-               <div class="modal-content">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <div class="row">
-                 <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                  <div class="apply_job jb_cover">
-                   <h1>apply for this job :</h1>
-                   <div class="search_alert_box jb_cover">
-                    <div class="apply_job_form">
-                     <input type="text" name="name" placeholder="full name" />
-                    </div>
-                    <div class="apply_job_form">
-                     <input type="text" name="Email" placeholder="Enter Your Email" />
-                    </div>
-                    <div class="apply_job_form">
-                     <textarea class="form-control" name="message" placeholder="Message"></textarea>
-                    </div>
-                    <div class="resume_optional jb_cover">
-                     <p>resume (optional)</p>
-                     <div class="width_50">
-                      <input type="file" id="input-file-now-custom-255" class="dropify" data-height="90" />
+                      <input type="file" id="input-file-now-custom-1" class="dropify" data-height="90" />
                       <span class="post_photo">upload resume</span>
                      </div>
                      <p class="word_file">microsoft word or pdf file only (5mb)</p>
@@ -1882,28 +662,28 @@
          <div id="menu4" class="tab-pane fade">
           <div class="row">
            <div class="col-lg-12 col-md-12 col-12">
-            <div class="latest_job_box jb_cover">
+            <div th:each=" rj : ${bestFullJob}" class="latest_job_box jb_cover">
              <div class="job_list">
-              <a href="#"><img src="/picture/lt1.png" alt="img" /><h6>Trainee Web Designer, (Fresher)</h6></a>
+              <a href="#"><img th:src="@{rj.companyLogo}" src="/picture/lt1.png" alt="img" /><h6 th:text="${rj.jobTitle}">Trainee Web Designer, (Fresher)</h6></a>
              </div>
              <div class="job_list_next">
-              <p>google</p>
+              <p th:text="${rj.companyName}">google</p>
              </div>
              <div class="job_list_next">
-              <p>Remotely</p>
+              <p th:text="${rj.jobName}">Remotely</p>
              </div>
              <div class="job_list_next">
-              <p>new york</p>
+              <p th:text="${rj.workAddress}">new york</p>
              </div>
              <div class="job_list_next">
-              <p>$9,000</p>
+              <p th:text="${rj.salary}">$9,000</p>
              </div>
              <div class="job_list_next">
               <div class="header_btn search_btn apply_btn jb_cover">
-               <a href="#" data-toggle="modal" data-target="#myModalt">apply</a>
+               <a href="#" data-toggle="modal" data-target="#myModal">apply</a>
               </div>
              </div>
-             <div class="modal fade apply_job_popup" id="myModalt" role="dialog">
+             <div class="modal fade apply_job_popup" id="myModal" role="dialog">
               <div class="modal-dialog">
                <div class="modal-content">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -1924,297 +704,7 @@
                     <div class="resume_optional jb_cover">
                      <p>resume (optional)</p>
                      <div class="width_50">
-                      <input type="file" id="input-file-now-custom-266" class="dropify" data-height="90" />
-                      <span class="post_photo">upload resume</span>
-                     </div>
-                     <p class="word_file">microsoft word or pdf file only (5mb)</p>
-                    </div>
-                   </div>
-                   <div class="header_btn search_btn applt_pop_btn jb_cover">
-                    <a href="#">apply now</a>
-                   </div>
-                  </div>
-                 </div>
-                </div>
-               </div>
-              </div>
-             </div>
-            </div>
-            <div class="latest_job_box jb_cover">
-             <div class="job_list">
-              <a href="#"><img src="/picture/lt2.png" alt="img" /><h6>Trainee Web Designer, (Fresher)</h6></a>
-             </div>
-             <div class="job_list_next">
-              <p>google</p>
-             </div>
-             <div class="job_list_next">
-              <p>Remotely</p>
-             </div>
-             <div class="job_list_next">
-              <p>new york</p>
-             </div>
-             <div class="job_list_next">
-              <p>$9,000</p>
-             </div>
-             <div class="job_list_next">
-              <div class="header_btn search_btn apply_btn jb_cover">
-               <a href="#" data-toggle="modal" data-target="#myModalt1">apply</a>
-              </div>
-             </div>
-             <div class="modal fade apply_job_popup" id="myModalt1" role="dialog">
-              <div class="modal-dialog">
-               <div class="modal-content">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <div class="row">
-                 <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                  <div class="apply_job jb_cover">
-                   <h1>apply for this job :</h1>
-                   <div class="search_alert_box jb_cover">
-                    <div class="apply_job_form">
-                     <input type="text" name="name" placeholder="full name" />
-                    </div>
-                    <div class="apply_job_form">
-                     <input type="text" name="Email" placeholder="Enter Your Email" />
-                    </div>
-                    <div class="apply_job_form">
-                     <textarea class="form-control" name="message" placeholder="Message"></textarea>
-                    </div>
-                    <div class="resume_optional jb_cover">
-                     <p>resume (optional)</p>
-                     <div class="width_50">
-                      <input type="file" id="input-file-now-custom-277" class="dropify" data-height="90" />
-                      <span class="post_photo">upload resume</span>
-                     </div>
-                     <p class="word_file">microsoft word or pdf file only (5mb)</p>
-                    </div>
-                   </div>
-                   <div class="header_btn search_btn applt_pop_btn jb_cover">
-                    <a href="#">apply now</a>
-                   </div>
-                  </div>
-                 </div>
-                </div>
-               </div>
-              </div>
-             </div>
-            </div>
-            <div class="latest_job_box jb_cover">
-             <div class="job_list">
-              <a href="#"><img src="/picture/lt3.png" alt="img" /><h6>Trainee Web Designer, (Fresher)</h6></a>
-             </div>
-             <div class="job_list_next">
-              <p>google</p>
-             </div>
-             <div class="job_list_next">
-              <p>Remotely</p>
-             </div>
-             <div class="job_list_next">
-              <p>new york</p>
-             </div>
-             <div class="job_list_next">
-              <p>$9,000</p>
-             </div>
-             <div class="job_list_next">
-              <div class="header_btn search_btn apply_btn jb_cover">
-               <a href="#" data-toggle="modal" data-target="#myModalt2">apply</a>
-              </div>
-             </div>
-             <div class="modal fade apply_job_popup" id="myModalt2" role="dialog">
-              <div class="modal-dialog">
-               <div class="modal-content">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <div class="row">
-                 <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                  <div class="apply_job jb_cover">
-                   <h1>apply for this job :</h1>
-                   <div class="search_alert_box jb_cover">
-                    <div class="apply_job_form">
-                     <input type="text" name="name" placeholder="full name" />
-                    </div>
-                    <div class="apply_job_form">
-                     <input type="text" name="Email" placeholder="Enter Your Email" />
-                    </div>
-                    <div class="apply_job_form">
-                     <textarea class="form-control" name="message" placeholder="Message"></textarea>
-                    </div>
-                    <div class="resume_optional jb_cover">
-                     <p>resume (optional)</p>
-                     <div class="width_50">
-                      <input type="file" id="input-file-now-custom-288" class="dropify" data-height="90" />
-                      <span class="post_photo">upload resume</span>
-                     </div>
-                     <p class="word_file">microsoft word or pdf file only (5mb)</p>
-                    </div>
-                   </div>
-                   <div class="header_btn search_btn applt_pop_btn jb_cover">
-                    <a href="#">apply now</a>
-                   </div>
-                  </div>
-                 </div>
-                </div>
-               </div>
-              </div>
-             </div>
-            </div>
-            <div class="latest_job_box jb_cover">
-             <div class="job_list">
-              <a href="#"><img src="/picture/lt4.png" alt="img" /><h6>Trainee Web Designer, (Fresher)</h6></a>
-             </div>
-             <div class="job_list_next">
-              <p>google</p>
-             </div>
-             <div class="job_list_next">
-              <p>Remotely</p>
-             </div>
-             <div class="job_list_next">
-              <p>new york</p>
-             </div>
-             <div class="job_list_next">
-              <p>$9,000</p>
-             </div>
-             <div class="job_list_next">
-              <div class="header_btn search_btn apply_btn jb_cover">
-               <a href="#" data-toggle="modal" data-target="#myModalt3">apply</a>
-              </div>
-             </div>
-             <div class="modal fade apply_job_popup" id="myModalt3" role="dialog">
-              <div class="modal-dialog">
-               <div class="modal-content">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <div class="row">
-                 <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                  <div class="apply_job jb_cover">
-                   <h1>apply for this job :</h1>
-                   <div class="search_alert_box jb_cover">
-                    <div class="apply_job_form">
-                     <input type="text" name="name" placeholder="full name" />
-                    </div>
-                    <div class="apply_job_form">
-                     <input type="text" name="Email" placeholder="Enter Your Email" />
-                    </div>
-                    <div class="apply_job_form">
-                     <textarea class="form-control" name="message" placeholder="Message"></textarea>
-                    </div>
-                    <div class="resume_optional jb_cover">
-                     <p>resume (optional)</p>
-                     <div class="width_50">
-                      <input type="file" id="input-file-now-custom-299" class="dropify" data-height="90" />
-                      <span class="post_photo">upload resume</span>
-                     </div>
-                     <p class="word_file">microsoft word or pdf file only (5mb)</p>
-                    </div>
-                   </div>
-                   <div class="header_btn search_btn applt_pop_btn jb_cover">
-                    <a href="#">apply now</a>
-                   </div>
-                  </div>
-                 </div>
-                </div>
-               </div>
-              </div>
-             </div>
-            </div>
-            <div class="latest_job_box jb_cover">
-             <div class="job_list">
-              <a href="#"><img src="/picture/lt1.png" alt="img" /><h6>Trainee Web Designer, (Fresher)</h6></a>
-             </div>
-             <div class="job_list_next">
-              <p>google</p>
-             </div>
-             <div class="job_list_next">
-              <p>Remotely</p>
-             </div>
-             <div class="job_list_next">
-              <p>new york</p>
-             </div>
-             <div class="job_list_next">
-              <p>$9,000</p>
-             </div>
-             <div class="job_list_next">
-              <div class="header_btn search_btn apply_btn jb_cover">
-               <a href="#" data-toggle="modal" data-target="#myModalt4">apply</a>
-              </div>
-             </div>
-             <div class="modal fade apply_job_popup" id="myModalt4" role="dialog">
-              <div class="modal-dialog">
-               <div class="modal-content">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <div class="row">
-                 <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                  <div class="apply_job jb_cover">
-                   <h1>apply for this job :</h1>
-                   <div class="search_alert_box jb_cover">
-                    <div class="apply_job_form">
-                     <input type="text" name="name" placeholder="full name" />
-                    </div>
-                    <div class="apply_job_form">
-                     <input type="text" name="Email" placeholder="Enter Your Email" />
-                    </div>
-                    <div class="apply_job_form">
-                     <textarea class="form-control" name="message" placeholder="Message"></textarea>
-                    </div>
-                    <div class="resume_optional jb_cover">
-                     <p>resume (optional)</p>
-                     <div class="width_50">
-                      <input type="file" id="input-file-now-custom-200" class="dropify" data-height="90" />
-                      <span class="post_photo">upload resume</span>
-                     </div>
-                     <p class="word_file">microsoft word or pdf file only (5mb)</p>
-                    </div>
-                   </div>
-                   <div class="header_btn search_btn applt_pop_btn jb_cover">
-                    <a href="#">apply now</a>
-                   </div>
-                  </div>
-                 </div>
-                </div>
-               </div>
-              </div>
-             </div>
-            </div>
-            <div class="latest_job_box jb_cover">
-             <div class="job_list">
-              <a href="#"><img src="/picture/lt2.png" alt="img" /><h6>Trainee Web Designer, (Fresher)</h6></a>
-             </div>
-             <div class="job_list_next">
-              <p>google</p>
-             </div>
-             <div class="job_list_next">
-              <p>Remotely</p>
-             </div>
-             <div class="job_list_next">
-              <p>new york</p>
-             </div>
-             <div class="job_list_next">
-              <p>$9,000</p>
-             </div>
-             <div class="job_list_next">
-              <div class="header_btn search_btn apply_btn jb_cover">
-               <a href="#" data-toggle="modal" data-target="#myModalt5">apply</a>
-              </div>
-             </div>
-             <div class="modal fade apply_job_popup" id="myModalt5" role="dialog">
-              <div class="modal-dialog">
-               <div class="modal-content">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <div class="row">
-                 <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                  <div class="apply_job jb_cover">
-                   <h1>apply for this job :</h1>
-                   <div class="search_alert_box jb_cover">
-                    <div class="apply_job_form">
-                     <input type="text" name="name" placeholder="full name" />
-                    </div>
-                    <div class="apply_job_form">
-                     <input type="text" name="Email" placeholder="Enter Your Email" />
-                    </div>
-                    <div class="apply_job_form">
-                     <textarea class="form-control" name="message" placeholder="Message"></textarea>
-                    </div>
-                    <div class="resume_optional jb_cover">
-                     <p>resume (optional)</p>
-                     <div class="width_50">
-                      <input type="file" id="input-file-now-custom-082" class="dropify" data-height="90" />
+                      <input type="file" id="input-file-now-custom-1" class="dropify" data-height="90" />
                       <span class="post_photo">upload resume</span>
                      </div>
                      <p class="word_file">microsoft word or pdf file only (5mb)</p>

@@ -6,6 +6,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
@@ -31,11 +32,27 @@ public class Users implements Serializable, UserDetails {
 
     private Integer userVip;
 
+    private Date vipStartTime;
+
     private Date vipEndTime;
 
     private Date createTime;
 
+    private Company company = null;
+
     private static final long serialVersionUID = 1L;
+
+    public boolean hasCompany(){
+        return company != null;
+    }
+
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
+    }
 
     public Integer getId() {
         return id;
@@ -75,7 +92,11 @@ public class Users implements Serializable, UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Arrays.asList(new SimpleGrantedAuthority("ROLE_user"));
+        ArrayList<GrantedAuthority> grantedAuthorities = new ArrayList<>();
+        grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_user"));
+        if(this.company != null)
+            grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_company"));
+        return grantedAuthorities;
     }
     public String getPassword() {
         return password;
@@ -139,6 +160,14 @@ public class Users implements Serializable, UserDetails {
 
     public void setUserVip(Integer userVip) {
         this.userVip = userVip;
+    }
+
+    public Date getVipStartTime() {
+        return vipStartTime;
+    }
+
+    public void setVipStartTime(Date vipStartTime) {
+        this.vipStartTime = vipStartTime;
     }
 
     public Date getVipEndTime() {

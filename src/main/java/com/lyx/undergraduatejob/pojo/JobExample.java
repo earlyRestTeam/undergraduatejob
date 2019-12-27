@@ -475,6 +475,146 @@ public class JobExample {
             return (Criteria) this;
         }
 
+        public Criteria andCompanyNameIsNull() {
+            addCriterion("company_name is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompanyNameIsNotNull() {
+            addCriterion("company_name is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompanyNameEqualTo(String value) {
+            addCriterion("company_name =", value, "companyName");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompanyNameNotEqualTo(String value) {
+            addCriterion("company_name <>", value, "companyName");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompanyNameGreaterThan(String value) {
+            addCriterion("company_name >", value, "companyName");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompanyNameGreaterThanOrEqualTo(String value) {
+            addCriterion("company_name >=", value, "companyName");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompanyNameLessThan(String value) {
+            addCriterion("company_name <", value, "companyName");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompanyNameLessThanOrEqualTo(String value) {
+            addCriterion("company_name <=", value, "companyName");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompanyNameLike(String value) {
+            addCriterion("company_name like", value, "companyName");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompanyNameNotLike(String value) {
+            addCriterion("company_name not like", value, "companyName");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompanyNameIn(List<String> values) {
+            addCriterion("company_name in", values, "companyName");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompanyNameNotIn(List<String> values) {
+            addCriterion("company_name not in", values, "companyName");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompanyNameBetween(String value1, String value2) {
+            addCriterion("company_name between", value1, value2, "companyName");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompanyNameNotBetween(String value1, String value2) {
+            addCriterion("company_name not between", value1, value2, "companyName");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompanyLogoIsNull() {
+            addCriterion("company_logo is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompanyLogoIsNotNull() {
+            addCriterion("company_logo is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompanyLogoEqualTo(String value) {
+            addCriterion("company_logo =", value, "companyLogo");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompanyLogoNotEqualTo(String value) {
+            addCriterion("company_logo <>", value, "companyLogo");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompanyLogoGreaterThan(String value) {
+            addCriterion("company_logo >", value, "companyLogo");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompanyLogoGreaterThanOrEqualTo(String value) {
+            addCriterion("company_logo >=", value, "companyLogo");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompanyLogoLessThan(String value) {
+            addCriterion("company_logo <", value, "companyLogo");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompanyLogoLessThanOrEqualTo(String value) {
+            addCriterion("company_logo <=", value, "companyLogo");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompanyLogoLike(String value) {
+            addCriterion("company_logo like", value, "companyLogo");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompanyLogoNotLike(String value) {
+            addCriterion("company_logo not like", value, "companyLogo");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompanyLogoIn(List<String> values) {
+            addCriterion("company_logo in", values, "companyLogo");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompanyLogoNotIn(List<String> values) {
+            addCriterion("company_logo not in", values, "companyLogo");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompanyLogoBetween(String value1, String value2) {
+            addCriterion("company_logo between", value1, value2, "companyLogo");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompanyLogoNotBetween(String value1, String value2) {
+            addCriterion("company_logo not between", value1, value2, "companyLogo");
+            return (Criteria) this;
+        }
+
         public Criteria andJobNameIsNull() {
             addCriterion("job_name is null");
             return (Criteria) this;
@@ -1632,6 +1772,66 @@ public class JobExample {
 
         public Criteria andJobVipNotBetween(Integer value1, Integer value2) {
             addCriterion("job_vip not between", value1, value2, "jobVip");
+            return (Criteria) this;
+        }
+
+        public Criteria andVipStartTimeIsNull() {
+            addCriterion("vip_start_time is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andVipStartTimeIsNotNull() {
+            addCriterion("vip_start_time is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andVipStartTimeEqualTo(Date value) {
+            addCriterion("vip_start_time =", value, "vipStartTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andVipStartTimeNotEqualTo(Date value) {
+            addCriterion("vip_start_time <>", value, "vipStartTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andVipStartTimeGreaterThan(Date value) {
+            addCriterion("vip_start_time >", value, "vipStartTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andVipStartTimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("vip_start_time >=", value, "vipStartTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andVipStartTimeLessThan(Date value) {
+            addCriterion("vip_start_time <", value, "vipStartTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andVipStartTimeLessThanOrEqualTo(Date value) {
+            addCriterion("vip_start_time <=", value, "vipStartTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andVipStartTimeIn(List<Date> values) {
+            addCriterion("vip_start_time in", values, "vipStartTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andVipStartTimeNotIn(List<Date> values) {
+            addCriterion("vip_start_time not in", values, "vipStartTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andVipStartTimeBetween(Date value1, Date value2) {
+            addCriterion("vip_start_time between", value1, value2, "vipStartTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andVipStartTimeNotBetween(Date value1, Date value2) {
+            addCriterion("vip_start_time not between", value1, value2, "vipStartTime");
             return (Criteria) this;
         }
 

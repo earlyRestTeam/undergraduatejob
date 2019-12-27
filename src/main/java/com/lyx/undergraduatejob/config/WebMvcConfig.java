@@ -1,5 +1,6 @@
 package com.lyx.undergraduatejob.config;
 
+import com.lyx.undergraduatejob.controlles.interceptor.EntityInterceptor;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -25,8 +26,8 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter implements Application
     @Value("${spring.thymeleaf.cache}")
     private boolean thymeleafCacheEnable = true;
 
-//    @Autowired
-//    EntityInterceptor entityInterceptor;
+    @Autowired
+    EntityInterceptor entityInterceptor;
 
     private ApplicationContext applicationContext;
 
@@ -85,7 +86,7 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter implements Application
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-//        registry.addInterceptor(entityInterceptor).addPathPatterns("/**");
-//        super.addInterceptors(registry);
+        registry.addInterceptor(entityInterceptor).addPathPatterns("/**");
+        super.addInterceptors(registry);
     }
 }

@@ -225,6 +225,66 @@ public class ReceiveResumeExample {
             return (Criteria) this;
         }
 
+        public Criteria andResumeIdIsNull() {
+            addCriterion("resume_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andResumeIdIsNotNull() {
+            addCriterion("resume_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andResumeIdEqualTo(Integer value) {
+            addCriterion("resume_id =", value, "resumeId");
+            return (Criteria) this;
+        }
+
+        public Criteria andResumeIdNotEqualTo(Integer value) {
+            addCriterion("resume_id <>", value, "resumeId");
+            return (Criteria) this;
+        }
+
+        public Criteria andResumeIdGreaterThan(Integer value) {
+            addCriterion("resume_id >", value, "resumeId");
+            return (Criteria) this;
+        }
+
+        public Criteria andResumeIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("resume_id >=", value, "resumeId");
+            return (Criteria) this;
+        }
+
+        public Criteria andResumeIdLessThan(Integer value) {
+            addCriterion("resume_id <", value, "resumeId");
+            return (Criteria) this;
+        }
+
+        public Criteria andResumeIdLessThanOrEqualTo(Integer value) {
+            addCriterion("resume_id <=", value, "resumeId");
+            return (Criteria) this;
+        }
+
+        public Criteria andResumeIdIn(List<Integer> values) {
+            addCriterion("resume_id in", values, "resumeId");
+            return (Criteria) this;
+        }
+
+        public Criteria andResumeIdNotIn(List<Integer> values) {
+            addCriterion("resume_id not in", values, "resumeId");
+            return (Criteria) this;
+        }
+
+        public Criteria andResumeIdBetween(Integer value1, Integer value2) {
+            addCriterion("resume_id between", value1, value2, "resumeId");
+            return (Criteria) this;
+        }
+
+        public Criteria andResumeIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("resume_id not between", value1, value2, "resumeId");
+            return (Criteria) this;
+        }
+
         public Criteria andCompanyIdIsNull() {
             addCriterion("company_id is null");
             return (Criteria) this;

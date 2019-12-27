@@ -36,13 +36,15 @@ public class ReceiveResumeServicesImpl implements IReceiveResumeServices {
      *
      * @param indexPage
      * @param pageSize
-     * @param jobid
+     * @param jobId
      * @param companyId
      * @return
      */
     @Override
-    public PageInfo<Resume> queryReceiveResume(Integer indexPage, Integer pageSize,Integer jobid, Integer companyId, Integer status) {
+    public PageInfo<Resume> queryReceiveResume(Integer indexPage, Integer pageSize,Integer jobId, Integer companyId, Integer status) {
         indexPage = indexPage == null ? 1 : indexPage;
+        PageHelper.startPage(indexPage,pageSize);
+
         ReceiveResumeExample receiveResumeExample = new ReceiveResumeExample();
         ReceiveResumeExample.Criteria criteria = receiveResumeExample.createCriteria();
         criteria.andCompanyIdEqualTo(companyId);
@@ -50,23 +52,25 @@ public class ReceiveResumeServicesImpl implements IReceiveResumeServices {
         if (status!=null){
             criteria.andStatusEqualTo(status);//全部、已读、未读
         }
-        if (jobid!=null){
-            criteria.andJobIdEqualTo(jobid);
+        if (jobId!=null){
+            criteria.andJobIdEqualTo(jobId);
         }
         receiveResumeExample.setOrderByClause("create_time desc");
         List<ReceiveResume> receiveResumes = receiveResumeMapper.selectByExample(receiveResumeExample);
         if(receiveResumes == null || receiveResumes.size() < 1)
             return null;
 
-        List<Integer> resumeUserIdList = new ArrayList<>();
+        List<Integer> resumeIdList = new ArrayList<>();
         for (ReceiveResume receiveResume : receiveResumes) {
-            resumeUserIdList.add(receiveResume.getUserId());
+            resumeIdList.add(receiveResume.getResumeId());
         }
 
         ResumeExample resumeExample = new ResumeExample();
         ResumeExample.Criteria criteria1 = resumeExample.createCriteria();
-        criteria1.andUserIdIn(resumeUserIdList);
-        PageHelper.startPage(indexPage,pageSize);
+        criteria1.andIdIn(resumeIdList);
+        criteria1.andStatusEqualTo(1);
+        criteria1.andAulStatusEqualTo(2);
+
         List<Resume> resumeList = resumeMapper.selectByExample(resumeExample);
 
         if(resumeList == null || resumeList.size() < 1)

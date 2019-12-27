@@ -1,9 +1,13 @@
 package com.lyx.undergraduatejob.pojo;
 
+
+
 import java.io.Serializable;
 import java.util.Date;
 
+
 public class Job implements Serializable {
+
     private Integer id;
 
     private Integer status;
@@ -12,9 +16,14 @@ public class Job implements Serializable {
 
     private Integer aulStatus;
 
+
     private String jobTitle;
 
     private Integer companyId;
+
+    private String companyName;
+
+    private String companyLogo;
 
     private String jobName;
 
@@ -51,6 +60,8 @@ public class Job implements Serializable {
     private Integer visitNum;
 
     private Integer jobVip;
+
+    private Date vipStartTime;
 
     private Date vipEndTime;
 
@@ -106,6 +117,22 @@ public class Job implements Serializable {
 
     public void setCompanyId(Integer companyId) {
         this.companyId = companyId;
+    }
+
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
+
+    public String getCompanyLogo() {
+        return companyLogo;
+    }
+
+    public void setCompanyLogo(String companyLogo) {
+        this.companyLogo = companyLogo;
     }
 
     public String getJobName() {
@@ -252,6 +279,14 @@ public class Job implements Serializable {
         this.jobVip = jobVip;
     }
 
+    public Date getVipStartTime() {
+        return vipStartTime;
+    }
+
+    public void setVipStartTime(Date vipStartTime) {
+        this.vipStartTime = vipStartTime;
+    }
+
     public Date getVipEndTime() {
         return vipEndTime;
     }
@@ -288,6 +323,8 @@ public class Job implements Serializable {
         sb.append(", aulStatus=").append(aulStatus);
         sb.append(", jobTitle=").append(jobTitle);
         sb.append(", companyId=").append(companyId);
+        sb.append(", companyName=").append(companyName);
+        sb.append(", companyLogo=").append(companyLogo);
         sb.append(", jobName=").append(jobName);
         sb.append(", jobDesc=").append(jobDesc);
         sb.append(", jobType=").append(jobType);
@@ -306,6 +343,7 @@ public class Job implements Serializable {
         sb.append(", collectNum=").append(collectNum);
         sb.append(", visitNum=").append(visitNum);
         sb.append(", jobVip=").append(jobVip);
+        sb.append(", vipStartTime=").append(vipStartTime);
         sb.append(", vipEndTime=").append(vipEndTime);
         sb.append(", pushTime=").append(pushTime);
         sb.append(", createTime=").append(createTime);

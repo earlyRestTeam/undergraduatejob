@@ -4,13 +4,19 @@ import com.github.pagehelper.PageInfo;
 import com.lyx.undergraduatejob.pojo.Comment;
 import com.lyx.undergraduatejob.pojo.Company;
 import com.lyx.undergraduatejob.search.entity.CompanySerchEntity;
+import com.lyx.undergraduatejob.utils.MyPage;
 
+import java.util.List;
 import java.util.Map;
 
 /**
  * 企业资料
  */
 public interface ICompanyInfoServices {
+    /**
+     * 获取首页的企业信息
+     */
+    List<Company> queryIndexCompany();
     /**
      * 浏览企业信息(详情)
      * @param companyId
@@ -78,5 +84,21 @@ public interface ICompanyInfoServices {
      * @return
      */
     Map<String, String> updateCompanyInfobyAdmin(Company c);
+
+
+    /**
+     * 查询所有公司
+     * @param
+     * @return
+     */
+    List<Company> queryallCompany();
+
+    /**
+     * 查询公司的详细信息
+     * @param indexpage
+     * @param companyId
+     * @return
+     */
+    public MyPage queryDetailbyCompanyId(Integer indexpage,Integer companyId);
 
 }

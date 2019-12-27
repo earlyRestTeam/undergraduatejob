@@ -14,6 +14,8 @@ public class CompanySerchEntity implements Serializable {
     private Integer status;
     //公司认证状态
     private Integer aulStatus;
+    //vip状态
+    private Integer companyVip;
     //公司详细地址
     private String companyAddress;
     //     * 排序的方式 ： 升序 、 降序
@@ -83,5 +85,13 @@ public class CompanySerchEntity implements Serializable {
 
     public void setOrder(String order) {
         this.order = order;
+    }
+
+    public Integer getCompanyVip() {
+        return companyVip;
+    }
+
+    public void setCompanyVip(Integer companyVip) {
+        this.companyVip = companyVip;
     }
 }

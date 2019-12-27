@@ -1,16 +1,36 @@
 package com.lyx.undergraduatejob.controlles;
 
+import com.github.pagehelper.PageInfo;
 import com.lyx.undergraduatejob.pojo.AutCompany;
+import com.lyx.undergraduatejob.pojo.AutStudent;
+import com.lyx.undergraduatejob.pojo.Company;
+import com.lyx.undergraduatejob.pojo.Users;
+import com.lyx.undergraduatejob.search.entity.CompanySerchEntity;
+import com.lyx.undergraduatejob.search.entity.LoginEntity;
+import com.lyx.undergraduatejob.search.entity.UsersSearchEntity;
+import com.lyx.undergraduatejob.services.IAdminServices;
 import com.lyx.undergraduatejob.services.impl.AutCompanyServiceImpl;
+import com.lyx.undergraduatejob.services.impl.AutStudentServiceImpl;
+import com.lyx.undergraduatejob.services.impl.ICompanyInfoServicesImpl;
+import com.lyx.undergraduatejob.services.impl.UserServicesImpl;
+import com.lyx.undergraduatejob.utils.APIResult;
 import com.lyx.undergraduatejob.utils.StaticPool;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.thymeleaf.util.StringUtils;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
-import java.awt.*;
+import javax.servlet.http.HttpServletResponse;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/admin")
@@ -18,6 +38,19 @@ public class AdminController {
 
     @Autowired
     AutCompanyServiceImpl autCompanyService;
+
+    @Autowired
+    AutStudentServiceImpl autStudnetService;
+
+    @Autowired
+    ICompanyInfoServicesImpl companyInfoServices;
+
+    @Autowired
+    UserServicesImpl userServices;
+    @Autowired
+    IAdminServices adminServices;
+    @Value("${jwt.tokenHead}")
+    String tokenHead;
 
     /**
      * 职位审核管理
@@ -40,15 +73,46 @@ public class AdminController {
      * @return
      */
     @RequestMapping("manager-student")
-    public String manager_student() {
+    public String manager_student(HttpServletRequest request) {
+        UsersSearchEntity usersSearchEntity = new UsersSearchEntity();
+        PageInfo<Users> info = userServices.queryUsers(1, 10, usersSearchEntity);
+        request.setAttribute("pages",info);
         return "/admin/manager-student";
+    }
+    @PostMapping("login")
+    @ResponseBody
+    public APIResult login(@RequestBody LoginEntity loginEntity, HttpServletResponse response) {
+        String username = loginEntity.getUsername();
+        String password = loginEntity.getPassword();
+        String token = null;
+        Map<String,String> res;
+        if(StringUtils.isEmpty(username)
+                || StringUtils.isEmpty(password) ) {
+            //throw new RuntimeException("params error!");
+            return APIResult.genFailApiResponse401("参数错误！");
+        }
+        res = adminServices.login(username, password);
+        token = res.get(StaticPool.SUCCESS);
+        if(token == null)
+            return APIResult.genFailApiResponse401(res.get(StaticPool.ERROR) == null ? "服务繁忙" : res.get(StaticPool.ERROR));
+        response.addHeader(tokenHead,token);
+        response.addCookie(new Cookie(tokenHead,token));
+        Map<String,String> map = new HashMap<>();
+        map.put("header",tokenHead);
+        map.put("token",token);
+
+        return APIResult.genSuccessApiResponse(map);
     }
     /**
      * 公司管理
      * @return
      */
     @RequestMapping("manager-company")
-    public String manager_company() {
+    public String manager_company(HttpServletRequest request) {
+        System.out.println("!!！！！！");
+        CompanySerchEntity companySerchEntity = new CompanySerchEntity();
+        PageInfo info = companyInfoServices.queryCompanyListByAdmin(1, companySerchEntity);
+        request.setAttribute("pages",info);
         return "/admin/manager-company";
     }
     /**
@@ -56,7 +120,10 @@ public class AdminController {
      * @return
      */
     @RequestMapping("authentication-student")
-    public String authentication_student() {
+    public String authentication_student(HttpServletRequest request) {
+        AutStudent autStudnet = new AutStudent();
+        List<AutStudent> autStudentList = autStudnetService.queryAutStudentBack(autStudnet);
+        request.setAttribute("list",autStudentList);
         return "/admin/authentication-student";
     }
     /**
@@ -112,7 +179,7 @@ public class AdminController {
     }
 
 
-    @RequestMapping("login")
+    @RequestMapping("loginPage")
     public String login(Model model){
         model.addAttribute("type", StaticPool.ADMIN);
         return "/admin/auth-login";

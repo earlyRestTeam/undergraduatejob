@@ -12,6 +12,7 @@
     <result column="status" jdbcType="INTEGER" property="status" />
     <result column="aut_status" jdbcType="INTEGER" property="autStatus" />
     <result column="user_vip" jdbcType="INTEGER" property="userVip" />
+    <result column="vip_start_time" jdbcType="TIMESTAMP" property="vipStartTime" />
     <result column="vip_end_time" jdbcType="TIMESTAMP" property="vipEndTime" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
   </resultMap>
@@ -75,7 +76,7 @@
   </sql>
   <sql id="Base_Column_List">
     id, username, password, email, avatar, nick_name, phone, status, aut_status, user_vip, 
-    vip_end_time, create_time
+    vip_start_time, vip_end_time, create_time
   </sql>
   <select id="selectByExample" parameterType="com.lyx.undergraduatejob.pojo.UsersExample" resultMap="BaseResultMap">
     select
@@ -114,11 +115,13 @@
     insert into users (username, password, email, 
       avatar, nick_name, phone, 
       status, aut_status, user_vip, 
-      vip_end_time, create_time)
+      vip_start_time, vip_end_time, create_time
+      )
     values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
       #{avatar,jdbcType=VARCHAR}, #{nickName,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
       #{status,jdbcType=INTEGER}, #{autStatus,jdbcType=INTEGER}, #{userVip,jdbcType=INTEGER}, 
-      #{vipEndTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP})
+      #{vipStartTime,jdbcType=TIMESTAMP}, #{vipEndTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.lyx.undergraduatejob.pojo.Users">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
@@ -152,6 +155,9 @@
       </if>
       <if test="userVip != null">
         user_vip,
+      </if>
+      <if test="vipStartTime != null">
+        vip_start_time,
       </if>
       <if test="vipEndTime != null">
         vip_end_time,
@@ -187,6 +193,9 @@
       </if>
       <if test="userVip != null">
         #{userVip,jdbcType=INTEGER},
+      </if>
+      <if test="vipStartTime != null">
+        #{vipStartTime,jdbcType=TIMESTAMP},
       </if>
       <if test="vipEndTime != null">
         #{vipEndTime,jdbcType=TIMESTAMP},
@@ -235,6 +244,9 @@
       <if test="record.userVip != null">
         user_vip = #{record.userVip,jdbcType=INTEGER},
       </if>
+      <if test="record.vipStartTime != null">
+        vip_start_time = #{record.vipStartTime,jdbcType=TIMESTAMP},
+      </if>
       <if test="record.vipEndTime != null">
         vip_end_time = #{record.vipEndTime,jdbcType=TIMESTAMP},
       </if>
@@ -258,6 +270,7 @@
       status = #{record.status,jdbcType=INTEGER},
       aut_status = #{record.autStatus,jdbcType=INTEGER},
       user_vip = #{record.userVip,jdbcType=INTEGER},
+      vip_start_time = #{record.vipStartTime,jdbcType=TIMESTAMP},
       vip_end_time = #{record.vipEndTime,jdbcType=TIMESTAMP},
       create_time = #{record.createTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
@@ -294,6 +307,9 @@
       <if test="userVip != null">
         user_vip = #{userVip,jdbcType=INTEGER},
       </if>
+      <if test="vipStartTime != null">
+        vip_start_time = #{vipStartTime,jdbcType=TIMESTAMP},
+      </if>
       <if test="vipEndTime != null">
         vip_end_time = #{vipEndTime,jdbcType=TIMESTAMP},
       </if>
@@ -314,6 +330,7 @@
       status = #{status,jdbcType=INTEGER},
       aut_status = #{autStatus,jdbcType=INTEGER},
       user_vip = #{userVip,jdbcType=INTEGER},
+      vip_start_time = #{vipStartTime,jdbcType=TIMESTAMP},
       vip_end_time = #{vipEndTime,jdbcType=TIMESTAMP},
       create_time = #{createTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
