@@ -9,6 +9,7 @@ import com.lyx.undergraduatejob.services.IJobServices;
 import com.lyx.undergraduatejob.services.Industries_listServices;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
@@ -28,7 +29,7 @@ import java.util.Map;
  */
 @Service
 @CacheConfig(cacheNames = "IndustriesLis")
-public class IndustriesListServices implements Industries_listServices {
+public class IndustriesListServices implements Industries_listServices, InitializingBean {
 
     Logger logger = LoggerFactory.getLogger(this.getClass());
 
@@ -143,5 +144,10 @@ public class IndustriesListServices implements Industries_listServices {
     @CacheEvict(allEntries=true)
     public boolean deleteIndustriesList(int id) {
         return mapper.deleteByPrimaryKey(id) > 0;
+    }
+
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        queryALLWithJobList();
     }
 }

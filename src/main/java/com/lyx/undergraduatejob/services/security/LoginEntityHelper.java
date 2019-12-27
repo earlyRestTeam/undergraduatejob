@@ -1,7 +1,7 @@
 package com.lyx.undergraduatejob.services.security;
 
 
-import com.lyx.undergraduatejob.search.entity.LoginEntity;
+
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 
@@ -30,6 +30,12 @@ public class LoginEntityHelper {
             return null;
     }
 
-
+    public OnlineEntity getOnlineEntity(){
+        Object entity = getEntity();
+        if(entity instanceof OnlineEntity)
+            return (OnlineEntity) entity;
+        else
+            return null;
+    }
 
 }

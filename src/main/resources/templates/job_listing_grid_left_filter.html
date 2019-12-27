@@ -351,8 +351,8 @@
               <div class="jp_job_post_right_btn_wrapper jb_cover">
                <ul>
                 <li>
-                 <div class="job_adds_right">
-                  <a href="#!"><i class="far fa-heart"></i></a>
+                 <div :class="{'change22':status[index]==1,'change':status[index]==1}" class="job_adds_right">
+                  <a @click="changeStatus(index,$event)" ><i class="far fa-heart"></i></a>
                  </div></li>
                 <li><a v-bind:href="['/job_single?jobid='+job.id]" >{{job.partFull == 1 ? '兼职' : '全职' }}</a></li>
                 <li><a data-toggle="modal" data-target="#myModal01">应聘</a></li>
@@ -1172,7 +1172,7 @@
    },
    methods: {
     changeWorkType:function(e){
-     console.log(e.currentTarget.text);
+     //console.log(e.currentTarget.text);
      this.searchEntity.jobType = e.currentTarget.text;
      this.getResumes(1);
     },
@@ -1190,6 +1190,21 @@
       that.industries = result.data.data;
      }).catch(function () {alert("操作失败");});
     },
+       changeStatus:function(index,e){
+        var value = 1- this.status[index];
+
+        var that = this;
+        axios.get("/user/collectJob?jobId="+that.jobs[index].id).then(function(res){
+         console.log(res.data);
+         if(res.data.result){
+          Vue.set(vue1.status, index, value);
+         }else {
+          alert(res.data.message);
+         }
+        }).catch(function(){
+         alert("操作失败");
+        });
+       },
     getJobs:function(value) {
      if(value <= 0){
        value = 1;
@@ -1227,11 +1242,11 @@
        toCompany:function (conpanyId) {
             console.log(conpanyId);
            //window.location.href = ""+conpanyId;
-       }
+       },
    },
    computed:{
 
-   },
+   }
   })
  </script>
 

@@ -6,6 +6,7 @@ import com.lyx.undergraduatejob.pojo.Users;
 import com.lyx.undergraduatejob.services.ICollectServices;
 import com.lyx.undergraduatejob.services.ICompanyInfoServices;
 import com.lyx.undergraduatejob.services.security.LoginEntityHelper;
+import com.lyx.undergraduatejob.services.security.OnlineEntity;
 import com.lyx.undergraduatejob.utils.APIResult;
 import com.lyx.undergraduatejob.utils.StaticPool;
 import com.sun.org.apache.bcel.internal.generic.NEW;
@@ -31,6 +32,8 @@ public class CollectController {
 
     @Autowired
     ICollectServices iCollectServices;
+    @Autowired
+    LoginEntityHelper loginEntityHelper;
 
 
     //用户收藏公司
@@ -38,13 +41,14 @@ public class CollectController {
     @ResponseBody
     public APIResult collectCompany(Integer companyId){
         APIResult apiResult = new APIResult();
-        LoginEntityHelper loginEntityHelper = new LoginEntityHelper();
-        Users user = (Users) loginEntityHelper.getEntityByClass(Users.class);
+        OnlineEntity entity = loginEntityHelper.getOnlineEntity();
+        if(entity == null)
+            return APIResult.genFailApiResponse500("必须要登录才能收藏");
+
         Integer userid = null;
-        if(user != null){
-            userid = user.getId();
+        if(entity != null){
+            userid = entity.getId();
         }
-        userid = 1;
         if(iCollectServices.queryBycompIdAndUserId(companyId,userid)){
             int flag = 2;
             apiResult.setData(flag);
@@ -88,16 +92,19 @@ public class CollectController {
     @ResponseBody
     public APIResult collectJob(Integer jobId) {
         APIResult apiResult = new APIResult();
-        LoginEntityHelper loginEntityHelper = new LoginEntityHelper();
-        Users user = (Users) loginEntityHelper.getEntityByClass(Users.class);
+        OnlineEntity entity = loginEntityHelper.getOnlineEntity();
+        if(entity == null)
+            return APIResult.genFailApiResponse500("必须要登录才能收藏");
+
+
         Integer userid = null;
-        if (user != null) {
-            userid = user.getId();
+        if(entity != null){
+            userid = entity.getId();
         }
-        userid = 1;
 
         if (iCollectServices.queryjobIdByjobIdAndUserId(jobId, userid)) {
             int flag = 2;
+            apiResult.setCode(200);
             apiResult.setData(flag);
             Map<String, String> map = iCollectServices.deleteUserCollectJob(jobId, userid);
             if (map.get(StaticPool.SUCCESS) != null) {

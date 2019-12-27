@@ -416,7 +416,7 @@ public class JobServicesImpl implements IJobServices {
         List<Integer> status = null;
         if( !jl.isEmpty()){
             //获取关注状态
-            OnlineEntity onlineEntity = loginEntityHelper.getEntityByClass(OnlineEntity.class);
+            OnlineEntity onlineEntity = loginEntityHelper.getOnlineEntity();
             if(onlineEntity != null){
                 List<Integer> ids = jl.stream().map(Job::getId).collect(Collectors.toList());
                 Integer id = onlineEntity.getId();

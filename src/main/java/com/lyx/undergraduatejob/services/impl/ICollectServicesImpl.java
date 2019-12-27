@@ -452,6 +452,6 @@ public class ICollectServicesImpl implements ICollectServices {
         ids.forEach(id->{
             res.add(cs.get(id) == null ? 0 : 1);
         });
-        return ids;
+        return res;
     }
 }
