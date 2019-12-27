@@ -4,6 +4,7 @@ import com.github.pagehelper.PageInfo;
 import com.lyx.undergraduatejob.pojo.Comment;
 import com.lyx.undergraduatejob.pojo.Company;
 import com.lyx.undergraduatejob.search.entity.CompanySerchEntity;
+import com.lyx.undergraduatejob.utils.MyPage;
 
 import java.util.List;
 import java.util.Map;
@@ -84,6 +85,20 @@ public interface ICompanyInfoServices {
      */
     Map<String, String> updateCompanyInfobyAdmin(Company c);
 
+
+    /**
+     * 查询所有公司
+     * @param
+     * @return
+     */
     List<Company> queryallCompany();
+
+    /**
+     * 查询公司的详细信息
+     * @param indexpage
+     * @param companyId
+     * @return
+     */
+    public MyPage queryDetailbyCompanyId(Integer indexpage,Integer companyId);
 
 }

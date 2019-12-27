@@ -43,6 +43,9 @@ public interface ICollectServices {
      */
     Map<String,String>  addCollectResume(Collect collect);
 
+
+
+
     /**
      * 收藏职位信息
      * @param collect
@@ -74,6 +77,18 @@ public interface ICollectServices {
     Resume queryJobByJobId(Integer resumeId);
 
     /**
+     * 查看该用户是否以收藏该职位
+     * @param jobId
+     * @param userId
+     * @return
+     */
+    boolean queryjobIdByjobIdAndUserId(Integer jobId,Integer userId);
+
+
+
+
+
+    /**
      * 收藏公司信息
      * @param collect
      * @return
@@ -88,6 +103,14 @@ public interface ICollectServices {
      */
     PageInfo<Company> queryUserCollectCompany(Integer indexpage, Integer userId);
 
+    /**
+     * 查看该用户是否以收藏该公司
+     * @param companyId
+     * @param userId
+     * @return
+     */
+    boolean queryBycompIdAndUserId(Integer companyId,Integer userId);
+
 
     /**
      * 浏览详细公司信息（查看公司详情）
@@ -97,7 +120,7 @@ public interface ICollectServices {
     Company queryCompanyByCompanyId(Integer companyId);
 
     /**
-     * 取消收藏职位
+     * 取消收藏公司
      * @param companyId
      * @param userId
      * @return

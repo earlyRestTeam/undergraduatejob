@@ -10,6 +10,7 @@ import com.lyx.undergraduatejob.search.entity.UsersSearchEntity;
 import com.lyx.undergraduatejob.services.ICompanyInfoServices;
 import com.lyx.undergraduatejob.services.IJobServices;
 import com.lyx.undergraduatejob.services.IUserServices;
+import com.lyx.undergraduatejob.utils.MyPage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.constraints.Null;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -32,6 +34,8 @@ public class AboutusController {
     @Autowired
     IUserServices userServices;
 
+
+    //关于平台
     @RequestMapping("toaboutus")
     public String toaboutus( HttpServletRequest request){
         JobSearchEntity jobSearchEntity = new JobSearchEntity();
@@ -59,6 +63,7 @@ public class AboutusController {
 
     }
 
+    //按条件查询公司
     @RequestMapping("allCompany")
     public String allCompany(Integer indexpage, String companyName,Integer id,String companyType, HttpServletRequest request){
         CompanySerchEntity companySerchEntity = new CompanySerchEntity();
@@ -88,6 +93,17 @@ public class AboutusController {
         }else{
             return "/companies::company_type";
         }
+
+    }
+
+
+    //显示公司详情
+    @RequestMapping("tocompanysingle")
+    public String toCompanySingle(Integer companyId,Integer indexpage,HttpServletRequest request){
+        MyPage page = iCompanyInfoServices.queryDetailbyCompanyId(indexpage,companyId);
+        System.out.println(page.getMap().get("jobs").toString());
+        request.setAttribute("pages",page);
+        return "/company_single";
 
     }
 }

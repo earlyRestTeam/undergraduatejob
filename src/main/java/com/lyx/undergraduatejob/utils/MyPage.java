@@ -18,6 +18,7 @@ public class MyPage implements Serializable {
     private int pages;
     private int prePage;
     private int nextPage;
+    private long totals;
     private Map<String,Object> map;
 
     public MyPage(PageInfo pageInfo){
@@ -30,6 +31,7 @@ public class MyPage implements Serializable {
         pages = pageInfo.getPages();
         prePage = pageInfo.getPrePage();
         nextPage = pageInfo.getNextPage();
+        totals = pageInfo.getTotal();
     }
     public void putObject(String key,Object o){
         this.map.put(key,o);
@@ -105,5 +107,9 @@ public class MyPage implements Serializable {
 
     public void setNextPage(int nextPage) {
         this.nextPage = nextPage;
+    }
+
+    public long getTotals() {
+        return totals;
     }
 }

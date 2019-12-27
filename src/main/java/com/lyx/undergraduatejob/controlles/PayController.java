@@ -216,7 +216,7 @@ public class PayController {
     public APIResult iscompany(){
         APIResult apiResult = new APIResult();
       /*  LoginEntityHelper loginEntityHelper = new LoginEntityHelper();
-        Users user = (Users) loginEntityHelper.getEntityByClass(User.class);
+        Users user = (Users) loginEntityHelper.getEntityByClass(Users.class);
         if(user != null){*/
             Company company = iCompanyInfoServices.queryCompanyByUserId(1);
             if(company.getId() == null){

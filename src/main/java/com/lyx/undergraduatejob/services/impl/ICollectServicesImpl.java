@@ -156,6 +156,11 @@ public class ICollectServicesImpl implements ICollectServices {
         return res;
     }
 
+
+
+
+
+
     /**
      * 用户收藏职位信息
      * @param collect
@@ -271,6 +276,31 @@ public class ICollectServicesImpl implements ICollectServices {
         return resume;
     }
 
+
+    /**
+     * 查看该用户是否以收藏该职位
+     * @param jobId
+     * @param userId
+     * @return
+     */
+    @Override
+    public boolean queryjobIdByjobIdAndUserId(Integer jobId, Integer userId) {
+        CollectExample collectExample = new CollectExample();
+        CollectExample.Criteria criteria = collectExample.createCriteria();
+        criteria.andCollectorIdEqualTo(userId);
+        criteria.andCollectionIdEqualTo(jobId);
+        criteria.andCollectionTypeEqualTo(2);
+        List<Collect> collectList = collectMapper.selectByExample(collectExample);
+
+        if(collectList != null && collectList.size() > 0){
+            return true;
+        }
+        return false;
+    }
+
+
+
+
     /**
      * 收藏公司信息
      * @param collect
@@ -331,7 +361,28 @@ public class ICollectServicesImpl implements ICollectServices {
     }
 
     /**
-     * 浏览详细职位信息（查看职位详情）
+     * 查看该用户是否以收藏该公司
+     * @param companyId
+     * @param userId
+     * @return
+     */
+    @Override
+    public boolean queryBycompIdAndUserId(Integer companyId, Integer userId) {
+        CollectExample collectExample = new CollectExample();
+        CollectExample.Criteria criteria = collectExample.createCriteria();
+        criteria.andCollectorIdEqualTo(userId);
+        criteria.andCollectionIdEqualTo(companyId);
+        criteria.andCollectionTypeEqualTo(1);
+        List<Collect> collectList = collectMapper.selectByExample(collectExample);
+
+        if(collectList != null && collectList.size() > 0){
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * 浏览详细公司信息（查看公司详情）
      * @param companyId
      * @return
      */
@@ -343,7 +394,7 @@ public class ICollectServicesImpl implements ICollectServices {
 
 
     /**
-     * 取消收藏职位
+     * 取消收藏公司
      * @param companyId
      * @param userId
      * @return
