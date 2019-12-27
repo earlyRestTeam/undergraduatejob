@@ -5,6 +5,7 @@ import com.lyx.undergraduatejob.pojo.Company;
 import com.lyx.undergraduatejob.pojo.Complaint;
 import com.lyx.undergraduatejob.pojo.Job;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -33,4 +34,15 @@ public interface IComplaintServices {
      * @return
      */
     public PageInfo<Complaint> queryComplaint(Integer indexpage, Integer userId);
+
+    public List<Complaint> queryCommplaint(Complaint complaint);
+
+    public PageInfo queryCommplaint(Integer indexpage,Complaint complaint);
+
+    /**
+     * 处理投诉信息
+     * @param complaint
+     * @return
+     */
+    public Map<String,Object> updateCommplaint(Complaint complaint);
 }

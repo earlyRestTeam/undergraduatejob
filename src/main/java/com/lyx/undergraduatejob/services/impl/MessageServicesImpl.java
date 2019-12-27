@@ -68,6 +68,7 @@ public class MessageServicesImpl implements IMessageServices {
         Map<String,Object> res = new HashMap<>();
         message.setCreateTime(new Date());
         message.setStatus(1);
+        message.setReceiverStatus(0);
         int insert = messageMapper.insert(message);
         if (insert > 0){
             res.put(StaticPool.SUCCESS,"成功");

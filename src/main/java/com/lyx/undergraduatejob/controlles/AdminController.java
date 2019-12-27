@@ -39,6 +39,10 @@ public class AdminController {
     @Autowired
     AutCompanyServiceImpl autCompanyService;
 
+    @RequestMapping("add")
+    public String add(){
+        return "/admin/add";
+    }
     @Autowired
     AutStudentServiceImpl autStudnetService;
 
@@ -143,7 +147,7 @@ public class AdminController {
      */
     @RequestMapping("manager-advertising")
     public String manager_advertising() {
-        return "/admin/manager-advertising";
+        return "forward:/admin/advertising";
     }
     /**
      * 评论管理
@@ -151,7 +155,7 @@ public class AdminController {
      */
     @RequestMapping("manager-comment")
     public String manager_comment() {
-        return "/admin/manager-comment";
+        return "forward:/admin/comment";
     }
     /**
      * 投诉管理
@@ -159,7 +163,7 @@ public class AdminController {
      */
     @RequestMapping("manager-complaint")
     public String manager_complaint() {
-        return "/admin/manager-complaint";
+        return "forward:/admin/complaint";
     }
 
     @RequestMapping("auth-404")

@@ -40,4 +40,11 @@ public interface IAdvertisingService {
      * @return
      */
     Map<String,Object> deleteAdvertising(Advertising advertising);
+
+    /**
+     *
+     * @param ids
+     * @return
+     */
+    boolean deleteAdvertising(Integer[] ids);
 }

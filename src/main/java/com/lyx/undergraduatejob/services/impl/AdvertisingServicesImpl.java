@@ -14,10 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @ClassName AdvertisingServicesImpl
@@ -76,10 +73,10 @@ public class AdvertisingServicesImpl implements IAdvertisingService {
         advertising.setCreateTime(new Date());
         int insert = advertisingMapper.insert(advertising);
         if (insert > 0){
-            res.put(StaticPool.SUCCESS,"成功");
+            res.put(StaticPool.SUCCESS,"添加成功");
         }else {
             logger.warn("insert error "+advertising);
-            res.put(StaticPool.ERROR,"失败");
+            res.put(StaticPool.ERROR,"添加失败");
         }
         return res;
     }
@@ -90,9 +87,6 @@ public class AdvertisingServicesImpl implements IAdvertisingService {
         if (advertising.getId() != null){
             example.createCriteria().andIdEqualTo(advertising.getId());
         }
-        advertising.setStatus(Byte.valueOf("1"));
-        advertising.setCreateTime(new Date());
-        int i = advertisingMapper.updateByPrimaryKey(advertising);
         Advertising adv = advertisingMapper.selectByPrimaryKey(advertising.getId());
         if (adv != null){
             return adv;
@@ -102,10 +96,25 @@ public class AdvertisingServicesImpl implements IAdvertisingService {
         }
     }
 
+    public Map<String,Object> update(Advertising advertising){
+        Map<String,Object> res = new HashMap<>();
+        advertising.setStatus(Byte.valueOf("1"));
+        advertising.setCreateTime(new Date());
+        int i = advertisingMapper.updateByPrimaryKey(advertising);
+        if (i > 0){
+            res.put(StaticPool.SUCCESS,"成功");
+        }else{
+            logger.warn("服务繁忙 "+advertising);
+            res.put(StaticPool.ERROR,"失败");
+        }
+        return res;
+    }
+
     @Override
     public Map<String,Object> deleteAdvertising(Advertising advertising) {
         Map<String,Object> res = new HashMap<>();
         advertising.setStatus(Byte.valueOf("0"));
+        advertising.setEndTime(new Date());
         int i = advertisingMapper.updateByPrimaryKeySelective(advertising);
         if (i > 0){
             res.put(StaticPool.SUCCESS,"成功");
@@ -114,5 +123,15 @@ public class AdvertisingServicesImpl implements IAdvertisingService {
             res.put(StaticPool.ERROR,"失败");
         }
         return res;
+    }
+
+    @Override
+    public boolean deleteAdvertising(Integer[] ids) {
+        for (int i=0; i<ids.length; i++){
+            Advertising advertising = new Advertising();
+            advertising.setId(ids[i]);
+            Map<String, Object> res = deleteAdvertising(advertising);
+        }
+        return true;
     }
 }
