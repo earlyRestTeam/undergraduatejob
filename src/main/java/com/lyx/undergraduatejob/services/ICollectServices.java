@@ -6,6 +6,7 @@ import com.lyx.undergraduatejob.pojo.Company;
 import com.lyx.undergraduatejob.pojo.Job;
 import com.lyx.undergraduatejob.pojo.Resume;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -103,5 +104,13 @@ public interface ICollectServices {
      */
     Map<String,String> deleteUserCollectConpany(Integer companyId, Integer userId);
 
-
+    /**
+     * 查询 收藏的 状态
+     * @param ids   要查询的 收藏的 id集合
+     * @param collectionType    收藏的类型
+     * @param userId  用户id
+     * @param userType  用户类型
+     * @return
+     */
+    List<Integer> queryCollectStatus(List<Integer> ids, int collectionType, int userId, int userType);
 }

@@ -1,7 +1,10 @@
 package com.lyx.undergraduatejob.services;
 
 import com.github.pagehelper.PageInfo;
+import com.lyx.undergraduatejob.pojo.Collect;
 import com.lyx.undergraduatejob.pojo.Job;
+
+import java.util.List;
 
 /**
  * 收藏工作
@@ -30,4 +33,8 @@ public interface ICollectJobServices {
      * @return
      */
     boolean deleteCollect(int jobId, int userId);
+
+
+
+
 }

@@ -2,13 +2,17 @@ package com.lyx.undergraduatejob.services.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.lyx.undergraduatejob.mapper.CollectMapper;
 import com.lyx.undergraduatejob.mapper.CompanyMapper;
 import com.lyx.undergraduatejob.mapper.JobMapper;
 import com.lyx.undergraduatejob.mapper.ReceiveResumeMapper;
 import com.lyx.undergraduatejob.pojo.*;
 import com.lyx.undergraduatejob.search.entity.JobSearchEntity;
 import com.lyx.undergraduatejob.search.entity.RentValueBlock;
+import com.lyx.undergraduatejob.services.ICollectServices;
 import com.lyx.undergraduatejob.services.IJobServices;
+import com.lyx.undergraduatejob.services.security.LoginEntityHelper;
+import com.lyx.undergraduatejob.services.security.OnlineEntity;
 import com.lyx.undergraduatejob.utils.MyPage;
 import com.lyx.undergraduatejob.utils.RedisKeyUtil;
 import com.lyx.undergraduatejob.utils.StaticPool;
@@ -39,7 +43,12 @@ public class JobServicesImpl implements IJobServices {
     @Autowired
     CompanyMapper companyMapper;
     @Autowired
+    ICollectServices collectServices;
+    @Autowired
     StringRedisTemplate stringRedisTemplate;   //操作k-v都是字符串的
+
+    @Autowired
+    LoginEntityHelper loginEntityHelper;
     /**
      * 添加招聘职位
      * @param job
@@ -402,8 +411,27 @@ public class JobServicesImpl implements IJobServices {
         List<Job> jl = pageInfo.getList();
 //        List<Integer> ids = new ArrayList<>();
 //        jl.forEach(j->ids.add(j.getCompanyId()));
+
         List<Company> cs = null;
+        List<Integer> status = null;
         if( !jl.isEmpty()){
+            //获取关注状态
+            OnlineEntity onlineEntity = loginEntityHelper.getEntityByClass(OnlineEntity.class);
+            if(onlineEntity != null){
+                List<Integer> ids = jl.stream().map(Job::getId).collect(Collectors.toList());
+                Integer id = onlineEntity.getId();
+                Integer type = 1;
+                Integer collectionType = 2;
+                status = collectServices.queryCollectStatus(ids, collectionType, id, type);
+            }else {
+                status = new ArrayList<>(jl.size());
+                for (int i = 0; i < jl.size(); i++) {
+                    status.add(0);
+                }
+            }
+
+
+
             List<Integer> ids = jl.stream().map(Job::getCompanyId).collect(Collectors.toList());
 
             CompanyExample example1 = new CompanyExample();
@@ -421,6 +449,7 @@ public class JobServicesImpl implements IJobServices {
 
         map.put("jobs", jl);
         map.put("companys", cs);
+        map.put("status", status);
         return map;
     }
 

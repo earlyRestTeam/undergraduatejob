@@ -71,10 +71,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
 //                .antMatchers("/**")//测试时全部运行访问
 //                .permitAll()
-                .antMatchers("/user/**")// 除上面外的所有请求全部需要鉴权认证
-                .hasAnyRole("user","admin","company")
-                .antMatchers("/admin/**")// 除上面外的所有请求全部需要鉴权认证
-                .hasAnyRole("admin")
+//                .antMatchers("/user/**")// 除上面外的所有请求全部需要鉴权认证
+//                .hasAnyRole("user","admin","company")
+//                .antMatchers("/admin/**")// 除上面外的所有请求全部需要鉴权认证
+//                .hasAnyRole("admin")
                 .anyRequest()
                 .permitAll();
         // 禁用缓存

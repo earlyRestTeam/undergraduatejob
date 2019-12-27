@@ -1147,6 +1147,7 @@
     jobs:[],
     totalPage:1,
     companies:[],
+    status:[],
     searchEntity:{
      start:1,
      size:12,
@@ -1209,7 +1210,7 @@
        console.log(result);
        that.jobs = result.data.data.map.jobs;
        that.start = result.data.data.pageNum;
-
+       that.status = result.data.data.map.status;
        that.totalPage = result.data.data.pages;
        that.companies = result.data.data.map.companys;
       } else {

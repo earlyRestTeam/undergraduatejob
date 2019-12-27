@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 public class ICollectServicesImpl implements ICollectServices {
@@ -369,5 +370,37 @@ public class ICollectServicesImpl implements ICollectServices {
         }
 
         return res;
+    }
+
+    /**
+     * 查询 收藏的 状态
+     *
+     * @param ids            要查询的 收藏的 id集合
+     * @param collectionType 收藏的类型
+     * @param userId         用户id
+     * @param userType       用户类型
+     * @return
+     */
+    @Override
+    public List<Integer> queryCollectStatus(List<Integer> ids, int collectionType, int userId, int userType) {
+
+        CollectExample example = new CollectExample();
+        example.createCriteria().andCollectionIdIn(ids)
+                .andCollectionTypeEqualTo(collectionType)
+                .andCollectorIdEqualTo(userId)
+                .andCollectorTypeEqualTo(userType);
+
+        List<Collect> collects = collectMapper.selectByExample(example);
+
+        //加入 map
+        Map<Integer, Collect> cs = collects.stream()
+                .collect(Collectors.toMap(Collect::getCollectionId, collect -> collect, (key1, key2) -> key1));
+
+        List<Integer> res = new ArrayList<>(ids.size());
+
+        ids.forEach(id->{
+            res.add(cs.get(id) == null ? 0 : 1);
+        });
+        return ids;
     }
 }
