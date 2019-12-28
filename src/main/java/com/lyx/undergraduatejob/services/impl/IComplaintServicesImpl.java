@@ -126,6 +126,11 @@ public class IComplaintServicesImpl implements IComplaintServices {
         return info;
     }
 
+    /**
+     * 前台查询
+     * @param complaint
+     * @return
+     */
     @Override
     public List<Complaint> queryCommplaint(Complaint complaint) {
         ComplaintExample example = new ComplaintExample();
@@ -140,6 +145,27 @@ public class IComplaintServicesImpl implements IComplaintServices {
         return complaints;
     }
 
+    /**
+     * 后台
+     * @param complaintId
+     * @return
+     */
+    public Complaint queryCommplaint(Integer complaintId) {
+        ComplaintExample example = new ComplaintExample();
+        ComplaintExample.Criteria criteria = example.createCriteria();
+        if (complaintId != null){
+            criteria.andComplaintIdGreaterThanOrEqualTo(complaintId);
+        }
+        Complaint complaint = complaintMapper.selectByPrimaryKey(complaintId);
+        return complaint;
+    }
+
+    /**
+     * 分页
+     * @param indexpage
+     * @param complaint
+     * @return
+     */
     @Override
     public PageInfo queryCommplaint(Integer indexpage,Complaint complaint) {
         ComplaintExample example = new ComplaintExample();
@@ -175,6 +201,5 @@ public class IComplaintServicesImpl implements IComplaintServices {
         }
         return res;
     }
-
 
 }

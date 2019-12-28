@@ -53,34 +53,36 @@ public class ComplaintController {
 
     @RequestMapping("/update_complaints")
     public String updateComplaints(Complaint complaint) {
-        Company company = new Company();
         Message message = new Message();
         Admin admin = new Admin();
         admin.setId(1);
-        List<Complaint> complaints = services.queryCommplaint(complaint);
-        message.setReceiverId(complaints.get(0).getUserId());
+        Company company = new Company();
+        Job job = new Job();
+
+        Complaint complaint1 = services.queryCommplaint(complaint.getId());
+        message.setReceiverId(complaint1.getUserId());
         message.setReceiverType(1);
         message.setSenderId(admin.getId());
         message.setSenderType(1);
         message.setSenderStatus(0);
         message.setMessageTitle("您的投诉信息已受理！");
-        message.setMessageContent("您的投诉以被处理，用户id为"+complaints.get(0).getComplaintId()+"的用户已被冻结，感谢您对本平台的贡献！");
+        message.setMessageContent("您的投诉已被处理，受您举报的用户"+complaint1.getComplaintId()+"已被冻结，感谢您对本平台做出的贡献！");
 
-        if (complaints.get(0).getComplaintType() == 1){
-            company.setId(complaints.get(0).getComplaintId());
+        if (complaint1.getComplaintType() == 1){
+            company.setId(complaint1.getComplaintId());
+            company.setStatus(0);
+            Map<String, String> stringStringMap = service.updateCompanyInfobyAdmin(company);
         }
-        Job job = new Job();
-        if (complaints.get(0).getComplaintType() == 2){
-            job.setId(complaints.get(0).getComplaintId());
+        if (complaint1.getComplaintType() == 2){
+            job.setId(complaint1.getComplaintId());
+            job.setStatus(0);
+            Map<String, String> stringStringMap1 = jobServices.updateJob(job);
         }
 
         Map<String, Object> stringObjectMap1 = messageServices.addMessage(message);
         Map<String, Object> stringObjectMap = services.updateCommplaint(complaint);
-        company.setStatus(0);
-        Map<String, String> stringStringMap = service.updateCompanyInfobyAdmin(company);
-        job.setStatus(0);
-        Map<String, String> stringStringMap1 = jobServices.updateJob(job);
-        return "/admin/manager-complaint";
+
+        return "redirect:/admin/complaint";
     }
 
     @RequestMapping("/update_complaint")
@@ -98,7 +100,7 @@ public class ComplaintController {
         message.setMessageContent("您的投诉经过审核并未通过，感谢您对本平台的贡献！");
         Map<String, Object> stringObjectMap1 = messageServices.addMessage(message);
         Map<String, Object> stringObjectMap = services.updateCommplaint(complaint);
-        return "/admin/manager-complaint";
+        return "redirect:/admin/complaint";
     }
 }
 
