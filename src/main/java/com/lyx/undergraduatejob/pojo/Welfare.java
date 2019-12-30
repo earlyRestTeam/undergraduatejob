@@ -14,6 +14,13 @@ public class Welfare implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+//    public Welfare(Integer id, Integer wid, Integer type) {
+//
+//    }
+//
+//    public Welfare() {
+//    }
+
     public Integer getId() {
         return id;
     }

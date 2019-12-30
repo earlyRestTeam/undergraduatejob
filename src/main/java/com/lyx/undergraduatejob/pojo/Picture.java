@@ -20,6 +20,17 @@ public class Picture implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    public Picture(Integer ownerId,String src, Integer owner_type, Integer picture_type) {
+        this.ownerId = ownerId;
+        pictureUrl = src;
+        ownerType = owner_type;
+        pictureType = picture_type;
+        createTime = new Date();
+    }
+
+    public Picture() {
+    }
+
     public Integer getId() {
         return id;
     }

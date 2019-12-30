@@ -367,9 +367,10 @@
               <div class="jp_job_post_right_btn_wrapper jb_cover">
                <ul>
                 <li>
-                 <div class="job_adds_right">
-                  <a href="#!"><i class="far fa-heart"></i></a>
-                 </div></li>
+                 <div :class="{'change22':status[index]==1,'change':status[index]==1}" class="job_adds_right">
+                  <a @click="changeStatus(index,$event)" ><i class="far fa-heart"></i></a>
+                 </div>
+                </li>
                 <li><a v-bind:href="['/job_single?jobid='+resume.id]" >{{resume.partFull == 1 ? '兼职' : '全职' }}</a></li>
                 <li><a data-toggle="modal" data-target="#myModal01">应聘</a></li>
                </ul>
@@ -1160,6 +1161,7 @@
     salaryArea:[],
     industries:[],
     totalPage:1,
+    status:[],
     searchEntity:{
      start:1,
      size:12,
@@ -1209,6 +1211,21 @@
       alert("操作失败");
      })
     },
+    changeStatus:function(index,e){
+     var value = 1- this.status[index];
+
+     var that = this;
+     axios.get("/user/collectResume?resumeId="+that.resumes[index].id).then(function(res){
+      console.log(res.data);
+      if(res.data.result){
+       Vue.set(vue1.status, index, value);
+      }else {
+       alert(res.data.message);
+      }
+     }).catch(function(){
+      alert("操作失败");
+     });
+    },
     getResumes:function(value) {
      if(value <= 0){
        value = 1;
@@ -1227,7 +1244,8 @@
        that.start = result.data.data.pageNum;
 
        that.totalPage = result.data.data.pages;
-       that.resumes = result.data.data.list;
+       that.resumes = result.data.data.map.list;
+       that.status = result.data.data.map.status;
       } else {
        alert(result.data.message);
       }
