@@ -1,6 +1,8 @@
 package com.lyx.undergraduatejob.controlles;
 
 import com.lyx.undergraduatejob.services.impl.MessageServicesImpl;
+import com.lyx.undergraduatejob.services.security.LoginEntityHelper;
+import com.lyx.undergraduatejob.services.security.OnlineEntity;
 import com.lyx.undergraduatejob.utils.APIResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -42,6 +44,10 @@ public class MessageController {
         int sum = autCompanies.size() + autStudents.size() + jobs.size() + resumes.size() + complaints.size();
 
         model.addAttribute("sum",sum);
+
+        LoginEntityHelper loginEntityHelper = new LoginEntityHelper();
+        OnlineEntity onlineEntity = loginEntityHelper.getOnlineEntity();
+        model.addAttribute("admin",onlineEntity);
 
         return APIResult.genSuccessApiResponse(model);
     }

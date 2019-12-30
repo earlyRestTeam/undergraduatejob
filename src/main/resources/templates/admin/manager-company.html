@@ -84,15 +84,15 @@
             <li class="dropdown notification-list">
                 <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                     <img src="/admin/images/users/avatar-1.jpg" alt="user-image" class="rounded-circle">
-                    <span class="pro-user-name ml-1">
-                        Devid <i class="mdi mdi-chevron-down"></i>
+                    <span id="admin" class="pro-user-name ml-1">
+                        <i class="mdi mdi-chevron-down"></i>
                     </span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
                     <!-- item-->
                     <div class="dropdown-item noti-title">
                         <h6 class="m-0">
-                            Hello, Devid !
+                            Hello !
                         </h6>
                     </div>
 
@@ -152,7 +152,7 @@
                                 <a href="javascript:void(0);" class="user-edit"><i class="mdi mdi-pencil"></i></a>
                             </div>
 
-                            <h5><a href="javascript: void(0);">Devid Stanberry</a> </h5>
+                            <h5><a id="adminNick" href="javascript: void(0);"></a> </h5>
                             <p class="text-muted mb-0"><small>Main Admin</small></p>
                         </div>
                     </div>
@@ -330,26 +330,6 @@
                                 </div>
                             </div>
 
-                            <div id="myModal" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h4 class="modal-title" id="myModalLabel">VIP</h4>
-                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <h5>VIP生效时间</h5>
-                                            <hr>
-                                            <p id="time"></p>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-primary waves-effect waves-light" data-dismiss="modal">确定</button>
-                                            <!--<button type="button" class="btn btn-light waves-effect"></button>-->
-                                        </div>
-                                    </div><!-- /.modal-content -->
-                                </div><!-- /.modal-dialog -->
-                            </div>
-
                             <div class="table-responsive" th:fragment="table" id="table">
                                 <table class="table table-centered table-hover mb-0">
                                     <thead>
@@ -389,7 +369,25 @@
                                             <a th:if="${company.status eq 1}" th:onclick="'article_shenhe('+${company.id}+','+${company.status}+','+${company.userId}+')'" class="badge-danger btn-sm mg-y-5" data-toggle="tooltip" data-placement="top" title="" data-original-title="冻结"><i class="mdi mdi-trash-can"></i></a>
                                         </td>
                                     </tr>
+                                    <tr>
+                                        <td colspan="12">
+                                            <ul class="pagination" style="float: right">
 
+                                                <li class="page-item">
+                                                    <span class="page-link" th:onclick="'query(1)'">首页</span>
+                                                </li>
+                                                <li class="page-item"><span class="page-link">...</span></li>
+                                                <span  th:each="p:${pages.navigatepageNums}" >
+                                                    <li th:value="${pages.pageNum}" th:if="${pages.pageNum == p}" class="page-item active"><span class="page-link" th:onclick="'query('+${p}+')'" th:text="${p}"></span></li>
+                                                    <li th:if="${pages.pageNum != p}" class="page-item"><span class="page-link" th:onclick="'query('+${p}+')'" th:text="${p}"></span></li>
+                                                </span>
+                                                <li class="page-item"><span class="page-link">...</span></li>
+                                                <li class="page-item">
+                                                    <span class="page-link" th:onclick="'query('+${pages.pages}+')'">尾页</span>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -407,7 +405,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12 text-center">
-                        2019 © Dashboard Theme By <a href="#">Dashoon</a>
+                        2019 © 版权所有 ：<a href="#">优先</a>
                     </div>
                 </div>
             </div>
@@ -473,6 +471,11 @@
             $('#jobs').text('您有'+result.data.jobs+'条职位审核信息未处理');
             $('#resumes').text('您有'+result.data.resumes+'条简历审核信息未处理');
             $('#complaints').text('您有'+result.data.complaints+'条投诉信息未处理');
+
+            var admin = result.data.admin;
+            var name = admin == null ? "大苹果" : admin.nickName == null ? admin.entityName : admin.nickName;
+            $('#admin').text(name);
+            $('#adminNick').text(name);
         })
     }
 
@@ -517,15 +520,28 @@
 
     }
 
-    //显示vip开始时间-结束时间
-    function showVIPTime(startTime,endTime){
-        $("#time").html(startTime+"-"+endTime);
-        $("#myModal").modal('show');
-    }
+    // //显示vip开始时间-结束时间
+    // function showVIPTime(startTime,endTime){
+    //     $("#time").html(startTime+"-"+endTime);
+    //     $("#myModal").modal('show');
+    // }
     //确认更改状态
-    function article_shenhe(id,status,userId){
+    function article_shenhe(id,status,userId) {
         if (confirm("确认更改状态?")) {
-            self.location = "/managerUser/update_company_status?id="+id+"&status="+status+"&userId="+userId;
+            $.ajax({
+                url: "/managerUser/update_company_status",
+                type: "POST",
+                data: {
+                    "id": id,
+                    "status": status,
+                    "userId": userId
+                },
+                success: function (result) {
+                    alert(result.message);
+                    var indexpage = $(".page-item.active").val();
+                    query(indexpage);
+                }
+            });
         }
     }
 </script>
