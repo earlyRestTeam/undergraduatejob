@@ -33,46 +33,46 @@
             <li class="dropdown notification-list">
                 <a class="nav-link dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                     <i class="dripicons-bell noti-icon"></i>
-                    <span class="badge badge-danger noti-icon-badge">35</span>
+                    <span class="badge badge-danger noti-icon-badge" name="sum" id="sum" th:text="${sum}"></span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right dropdown-lg">
 
                     <div class="slimscroll noti-scroll">
 
                         <!-- item-->
-                        <a href="/admin/audit-job" class="dropdown-item notify-item">
-                            <div class="notify-icon bg-warning">
-                                <i class="mdi mdi-alert-outline"></i>
-                            </div>
-                            <p class="notify-details">您有20条职位审核信息未处理</p>
-                        </a>
-
-                        <a href="/admin/audit-resume" class="dropdown-item notify-item active">
-                            <div class="notify-icon bg-warning">
-                                <i class="mdi mdi-alert-outline"></i>
-                            </div>
-                            <p class="notify-details">您有20条简历审核信息未处理</p>
-                        </a>
-
                         <a href="/admin/authentication-company" class="dropdown-item notify-item">
                             <div class="notify-icon bg-warning">
                                 <i class="mdi mdi-alert-outline"></i>
                             </div>
-                            <p class="notify-details">您有20条企业认证信息未处理</p>
+                            <span class="notify-details" name="autCompanies" id="autCompanies" th:text="${autCompanies}"></span>
                         </a>
 
-                        <a href="/admin/authentication-student" class="dropdown-item notify-item">
+                        <a href="/admin/authentication-student" class="dropdown-item notify-item active">
                             <div class="notify-icon bg-warning">
                                 <i class="mdi mdi-alert-outline"></i>
                             </div>
-                            <p class="notify-details">您有20条学生认证信息未处理</p>
+                            <span class="notify-details" name="autStudents" id="autStudents" th:text="${autStudents}"></span>
+                        </a>
+
+                        <a href="/admin/audit-job" class="dropdown-item notify-item">
+                            <div class="notify-icon bg-warning">
+                                <i class="mdi mdi-alert-outline"></i>
+                            </div>
+                            <span class="notify-details" name="jobs" id="jobs" th:text="${jobs}"></span>
+                        </a>
+
+                        <a href="/admin/audit-resume" class="dropdown-item notify-item">
+                            <div class="notify-icon bg-warning">
+                                <i class="mdi mdi-alert-outline"></i>
+                            </div>
+                            <span class="notify-details" name="resumes" id="resumes" th:text="${resumes}"></span>
                         </a>
 
                         <a href="/admin/complaint" class="dropdown-item notify-item">
                             <div class="notify-icon bg-warning">
                                 <i class="mdi mdi-alert-outline"></i>
                             </div>
-                            <p class="notify-details">您有20条投诉信息未处理</p>
+                            <span class="notify-details" name="complaints" id="complaints" th:text="${complaints}"></span>
                         </a>
 
                     </div>
@@ -424,6 +424,22 @@
 <!-- App js -->
 <script src="../admin/js/app.min.js"></script>
 <script type="text/javascript">
+    $(document).ready(function(){
+        console.log("页面加载完毕后运行");
+        messages();
+    });
+
+    function messages() {
+        $.post("/admin/message",function(result){
+            console.log(result.data);
+            $('#sum').text(result.data.sum);
+            $('#autCompanies').text('您有'+result.data.autCompanies+'条企业认证信息未处理');
+            $('#autStudents').text('您有'+result.data.autStudents+'条学生认证信息未处理');
+            $('#jobs').text('您有'+result.data.jobs+'条职位审核信息未处理');
+            $('#resumes').text('您有'+result.data.resumes+'条简历审核信息未处理');
+            $('#complaints').text('您有'+result.data.complaints+'条投诉信息未处理');
+        })
+    }
 
     function comment_delete(id){
         if (window.confirm("确定要删除吗？")){

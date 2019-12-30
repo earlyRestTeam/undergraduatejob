@@ -41,7 +41,6 @@ public class MessageController {
         model.addAttribute("complaints",complaints.size());
         int sum = autCompanies.size() + autStudents.size() + jobs.size() + resumes.size() + complaints.size();
 
-        System.out.println(sum);
         model.addAttribute("sum",sum);
 
         return APIResult.genSuccessApiResponse(model);

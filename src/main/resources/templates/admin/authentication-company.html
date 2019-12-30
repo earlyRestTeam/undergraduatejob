@@ -25,114 +25,114 @@
         <!-- Begin page -->
         <div id="wrapper">
 
-                <!-- Topbar Start -->
-                <div class="navbar-custom">
-                    <ul class="list-unstyled topnav-menu float-right mb-0">
-                        <!--显示未处理消息数...，选做-->
+            <!-- Topbar Start -->
+            <div class="navbar-custom">
+                <ul class="list-unstyled topnav-menu float-right mb-0">
+                    <!--显示未处理消息数...，选做-->
 
-                        <li class="dropdown notification-list">
-                            <a class="nav-link dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                                <i class="dripicons-bell noti-icon"></i>
-                                <span class="badge badge-danger noti-icon-badge">35</span>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right dropdown-lg">
+                    <li class="dropdown notification-list">
+                        <a class="nav-link dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                            <i class="dripicons-bell noti-icon"></i>
+                            <span class="badge badge-danger noti-icon-badge" name="sum" id="sum" th:text="${sum}"></span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-lg">
 
-                                <div class="slimscroll noti-scroll">
-
-                                    <!-- item-->
-                                    <a href="/admin/audit-job" class="dropdown-item notify-item">
-                                        <div class="notify-icon bg-warning">
-                                            <i class="mdi mdi-alert-outline"></i>
-                                        </div>
-                                        <p class="notify-details">您有20条职位审核信息未处理</p>
-                                    </a>
-
-                                    <a href="/admin/audit-resume" class="dropdown-item notify-item active">
-                                        <div class="notify-icon bg-warning">
-                                            <i class="mdi mdi-alert-outline"></i>
-                                        </div>
-                                        <p class="notify-details">您有20条简历审核信息未处理</p>
-                                    </a>
-
-                                    <a href="/admin/authentication-company" class="dropdown-item notify-item">
-                                        <div class="notify-icon bg-warning">
-                                            <i class="mdi mdi-alert-outline"></i>
-                                        </div>
-                                        <p class="notify-details">您有20条企业认证信息未处理</p>
-                                    </a>
-
-                                    <a href="/admin/authentication-student" class="dropdown-item notify-item">
-                                        <div class="notify-icon bg-warning">
-                                            <i class="mdi mdi-alert-outline"></i>
-                                        </div>
-                                        <p class="notify-details">您有20条学生认证信息未处理</p>
-                                    </a>
-
-                                    <a href="/admin/complaint" class="dropdown-item notify-item">
-                                        <div class="notify-icon bg-warning">
-                                            <i class="mdi mdi-alert-outline"></i>
-                                        </div>
-                                        <p class="notify-details">您有20条投诉信息未处理</p>
-                                    </a>
-
-                                </div>
-
-                            </div>
-                        </li>
-                        <!--显示未处理消息数...，选做-->
-                        <!--头像...-->
-                        <li class="dropdown notification-list">
-                            <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                                <img src="/admin/images/users/avatar-1.jpg" alt="user-image" class="rounded-circle">
-                                <span class="pro-user-name ml-1">
-                        Devid <i class="mdi mdi-chevron-down"></i>
-                    </span>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
-                                <!-- item-->
-                                <div class="dropdown-item noti-title">
-                                    <h6 class="m-0">
-                                        Hello, Devid !
-                                    </h6>
-                                </div>
-
-                                <div class="dropdown-divider"></div>
+                            <div class="slimscroll noti-scroll">
 
                                 <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <i class="dripicons-power"></i>
-                                    <span>Logout</span>
+                                <a href="/admin/authentication-company" class="dropdown-item notify-item">
+                                    <div class="notify-icon bg-warning">
+                                        <i class="mdi mdi-alert-outline"></i>
+                                    </div>
+                                    <span class="notify-details" name="autCompanies" id="autCompanies" th:text="${autCompanies}"></span>
+                                </a>
+
+                                <a href="/admin/authentication-student" class="dropdown-item notify-item active">
+                                    <div class="notify-icon bg-warning">
+                                        <i class="mdi mdi-alert-outline"></i>
+                                    </div>
+                                    <span class="notify-details" name="autStudents" id="autStudents" th:text="${autStudents}"></span>
+                                </a>
+
+                                <a href="/admin/audit-job" class="dropdown-item notify-item">
+                                    <div class="notify-icon bg-warning">
+                                        <i class="mdi mdi-alert-outline"></i>
+                                    </div>
+                                    <span class="notify-details" name="jobs" id="jobs" th:text="${jobs}"></span>
+                                </a>
+
+                                <a href="/admin/audit-resume" class="dropdown-item notify-item">
+                                    <div class="notify-icon bg-warning">
+                                        <i class="mdi mdi-alert-outline"></i>
+                                    </div>
+                                    <span class="notify-details" name="resumes" id="resumes" th:text="${resumes}"></span>
+                                </a>
+
+                                <a href="/admin/complaint" class="dropdown-item notify-item">
+                                    <div class="notify-icon bg-warning">
+                                        <i class="mdi mdi-alert-outline"></i>
+                                    </div>
+                                    <span class="notify-details" name="complaints" id="complaints" th:text="${complaints}"></span>
                                 </a>
 
                             </div>
-                        </li>
-                        <!--头像...-->
-                    </ul>
 
-                    <ul class="list-unstyled menu-left mb-0">
-                        <li class="float-left">
-                            <a href="index" class="logo">
+                        </div>
+                    </li>
+                    <!--显示未处理消息数...，选做-->
+                    <!--头像...-->
+                    <li class="dropdown notification-list">
+                        <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                            <img src="/admin/images/users/avatar-1.jpg" alt="user-image" class="rounded-circle">
+                            <span class="pro-user-name ml-1">
+                        Devid <i class="mdi mdi-chevron-down"></i>
+                    </span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
+                            <!-- item-->
+                            <div class="dropdown-item noti-title">
+                                <h6 class="m-0">
+                                    Hello, Devid !
+                                </h6>
+                            </div>
+
+                            <div class="dropdown-divider"></div>
+
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <i class="dripicons-power"></i>
+                                <span>Logout</span>
+                            </a>
+
+                        </div>
+                    </li>
+                    <!--头像...-->
+                </ul>
+
+                <ul class="list-unstyled menu-left mb-0">
+                    <li class="float-left">
+                        <a href="index" class="logo">
                             <span class="logo-lg">
                                 <img src="/admin/images/logo.png" alt="" height="25">
                             </span>
-                                <span class="logo-sm">
+                            <span class="logo-sm">
                                 <img src="/admin/images/logo-sm.png" alt="" height="24">
                             </span>
-                            </a>
-                        </li>
-                        <li class="float-left">
-                            <a class="button-menu-mobile navbar-toggle">
-                                <div class="lines">
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                </div>
-                            </a>
-                        </li>
+                        </a>
+                    </li>
+                    <li class="float-left">
+                        <a class="button-menu-mobile navbar-toggle">
+                            <div class="lines">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </a>
+                    </li>
 
-                    </ul>
-                </div>
-                <!-- end Topbar -->
+                </ul>
+            </div>
+            <!-- end Topbar -->
 
             <!-- ========== Left Sidebar Start ========== -->
             <div class="left-side-menu">
@@ -296,10 +296,10 @@
 
                                     <h4 class="header-title mb-4">公司认证表</h4>
                                     <div >
-                                        <div class="form-inline" style="float: right">
-                                            <input th:value="${proposerName}" type="text" class="form-control" placeholder="申请人姓名" id="proposerName">
-                                            <input th:value="${companyId}" type="text" class="form-control" placeholder="公司ID" id="companyId">
-                                            <select th:value="${status}" type="text" class="form-control" style="width:188px" placeholder="状态" id="status" name="status">
+                                        <form class="form-inline" style="float: right" action="/aut/query_aut_company" method="post">
+                                            <input th:value="${proposerName}" type="text" class="form-control" placeholder="申请人姓名" name="proposerName">
+                                            <input th:value="${companyId}" type="text" class="form-control" placeholder="公司ID" name="companyId">
+                                            <select onchange="fn()" th:value="${status}" type="text" class="form-control" style="width:188px" placeholder="状态" id="status" name="status">
                                                 <option value="" th:selected="${status eq 0}">全部</option>
                                                 <option value="0" th:selected="${status eq 0}">不通过</option>
                                                 <option value="1" th:selected="${status eq 1}">通过</option>
@@ -333,8 +333,8 @@
                                         </div><!-- /.modal-dialog -->
                                     </div>
 
-                                    <div class="table-responsive" th:fragment="table" id="table">
-                                        <table class="table table-centered table-hover mb-0">
+                                    <div class="table-responsive">
+                                        <table class="table table-centered table-hover mb-0" id="datatable">
                                             <thead>
                                                 <tr>
                                                     <th class="border-top-0">ID</th>
@@ -350,7 +350,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr th:each="aut,adStas:${pages.list}">
+                                                <tr th:each="aut,adStas:${list}">
                                                     <td th:text="${aut.id}"></td>
                                                     <td th:text="${aut.companyId}"></td>
                                                     <td th:text="${aut.proposerName}"></td>
@@ -369,25 +369,7 @@
                                                         <a th:onclick="'unadopt_shenhe('+${aut.id}+','+${aut.status}+','+${aut.companyId}+')'" class="badge-danger btn-sm mg-y-5" data-toggle="tooltip" data-placement="top" title="" data-original-title="不通过"><i class="mdi dripicons-cross"></i></a>
                                                     </td>
                                                 </tr>
-                                                <tr>
-                                                    <td colspan="12">
-                                                        <ul class="pagination" style="float: right">
 
-                                                            <li class="page-item">
-                                                                <span class="page-link" th:onclick="'query(1)'">首页</span>
-                                                            </li>
-                                                            <li class="page-item"><span class="page-link">...</span></li>
-                                                            <span  th:each="p:${pages.navigatepageNums}">
-                                                            <li th:value="${pages.pageNum}" th:if="${pages.pageNum == p}" class="page-item active"><span class="page-link" th:onclick="'query('+${p}+')'" th:text="${p}"></span></li>
-                                                            <li th:if="${pages.pageNum != p}" class="page-item"><span class="page-link" th:onclick="'query('+${p}+')'" th:text="${p}"></span></li>
-                                                            </span>
-                                                            <li class="page-item"><span class="page-link">...</span></li>
-                                                            <li class="page-item">
-                                                                <span class="page-link" th:onclick="'query('+${pages.pages}+')'">尾页</span>
-                                                            </li>
-                                                        </ul>
-                                                    </td>
-                                                </tr>
                                             </tbody>
                                         </table>
                                     </div>
@@ -455,52 +437,40 @@
         <!-- App js -->
         <script src="/admin/js/app.min.js"></script>
         <script>
-            //查询
-            function query(indexpage) {
-                var proposerName = $("#proposerName").val();
-                var companyId = $("#companyId").val();
-                var status = $("#status").val();
 
-                $.ajax({
-                    url:"/aut/query_aut_company",
-                    type:"POST",
-                    data:{
-                        "proposerName":proposerName,
-                        "companyId":companyId,
-                        "status":status,
-                        "indexpage":indexpage
-                    },
-                    success: function (data) {
-                        $("#table").html(data);
-                    }
-                });
+            $(document).ready(function(){
+                console.log("页面加载完毕后运行");
+                messages();
+            })
 
-            }
-            function update(id,status,companyId) {
-                $.ajax({
-                    url:"/aut/update_aut_company_status",
-                    type:"POST",
-                    data:{
-                        "id":id,
-                        "status":status,
-                        "companyId":companyId
-                    },
-                    success:function (result) {
-                        alert(result.message);
-                        var indexpage = $(".page-item.active").val();
-                        query(indexpage);
-                    }
+            function messages() {
+                $.post("/admin/message",function(result){
+                    console.log(result.data);
+                    $('#sum').text(result.data.sum);
+                    $('#autCompanies').text('您有'+result.data.autCompanies+'条企业认证信息未处理');
+                    $('#autStudents').text('您有'+result.data.autStudents+'条学生认证信息未处理');
+                    $('#jobs').text('您有'+result.data.jobs+'条职位审核信息未处理');
+                    $('#resumes').text('您有'+result.data.resumes+'条简历审核信息未处理');
+                    $('#complaints').text('您有'+result.data.complaints+'条投诉信息未处理');
                 })
+            }
+
+            /*选择状态*/
+            function  fn(){
+                //var     name=$("#item1").find("option:selected").text(); //获取文本值
+                var     name=$("#item1").find("option:selected").val();  //获取value值
+                if(name !==null){
+                    version=name;
+                }
             }
             //确认不通过认证
             function unadopt_shenhe(id,status,companyId){
 
-                if (status != 2){
+                if (status != 2){console.log(id+"-----"+status);
                     alert("只能操作未审核的认证!")
-                } else {
+                } else {console.log(id+"-----"+status);
                     if (confirm("确认不通过？")) {
-                        //self.location = "/aut/update_aut_company_status?id="+id+"&status=0&companyId="+companyId;
-                       update(id,0,companyId);
+                        self.location = "/aut/update_aut_company_status?id="+id+"&status=0&companyId="+companyId;
                     }
                 }
 
@@ -508,12 +478,11 @@
             //确认通过认证
             function adopt_shenhe(id,status,companyId){
 
-                if (status != 2){
+                if (status != 2){console.log(id+"-----"+status);
                     alert("只能操作未审核的认证!")
                 } else {
-                    if (confirm("确认通过？")) {
-                        //self.location = "/aut/update_aut_company_status?id="+id+"&status=1&companyId="+companyId;
-                        update(id,1,companyId);
+                    if (confirm("确认通过？")) {console.log(id+"-----"+status);
+                        self.location = "/aut/update_aut_company_status?id="+id+"&status=1&companyId="+companyId;
                     }
                 }
 
@@ -528,17 +497,20 @@
                         "id":id
                     },
                     success:function(data){
-                        var list = data.data;
+                        var list = data.data
                         console.log(list);
                         while ($("#picture").length > 0) {
                             $("#picture").remove();
+
                         }
                         for (var i = 0; i < list.length; i++) {
+                            console.log(list[i]);
                             $("#picList").append("<li id='picture'><img src=\""+list[i].pictureUrl+"\"></li>");
                         }
                         $("#myModal").modal('show');
                     }
                 });
+
             }
         </script>
 
