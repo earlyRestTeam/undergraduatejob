@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -39,6 +40,8 @@ public class DashboardController {
     IndustriesListServices industriesListServices;
     @Autowired
     TbAreaServiceImpl tbAreaService;
+    @Autowired
+    JobListServiceImpl jobListService;
     @RequestMapping("candidate_applied_job")
     public String candidate_applied_job(){
 
@@ -166,7 +169,12 @@ public class DashboardController {
             resumePageInfo = receiveResumeServices.queryReceiveResume(1, 6,null, company.getId(), null);
             welfares = relationWelafareService.queryWelfarebyOwnerIdAndOwnerType(company.getId(), 2);
             if (resumePageInfo!=null){
-                resumes = resumePageInfo.getList().subList(0,6);
+                resumes = resumePageInfo.getList();
+                if (resumes.size()>=6){
+                    resumes =resumes.subList(0,6);
+                }else {
+                    resumes = resumes.subList(0,resumes.size());
+                }
             }
         }
         request.setAttribute("resumes",resumes);
@@ -194,10 +202,82 @@ public class DashboardController {
         return APIResult.genSuccessApiResponse(result.get(StaticPool.SUCCESS));
     }
 
+    /**
+     * 进入修改公司信息界面加载原有信息
+     * @param request
+     * @return
+     */
     @RequestMapping("comp_employer_edit_profile")
-    public String comp_employer_edit_profile(){
+    public String comp_employer_edit_profile(HttpServletRequest request){
+        Integer companyId = 1;
+        Company company = companyInfoServices.queryCompanyByUserId(1);
+        request.setAttribute("company",company);
+        List<TbArea> tbAreas = tbAreaService.queryTbAreabyParentId(100000);
+        request.setAttribute("province",tbAreas);
+        List<Picture> pictures = pictuerService.queryPicturebyOwnerid(companyId, 2, 4);
+        if (!pictures.isEmpty()){
+            request.setAttribute("picture",pictures.get(0));
+        }else {
+            request.setAttribute("picture",new Picture());
+        }
+        List<Picture> pictures1 = pictuerService.queryPicturebyOwnerid(companyId, 2, 3);
+        if (pictures1.isEmpty()){
+            pictures1 = new ArrayList<>();
+        }
+        request.setAttribute("pictures",pictures1);
 
-        return "dashboard/comp_employer_edit_profile";
+        return "/dashboard/comp_employer_edit_profile";
+    }
+
+    /**
+     * 修改公司信息
+     * @param company
+     * @return
+     */
+    @PostMapping("updateCompanyinfo")
+    @ResponseBody
+    public APIResult updateCompanyinfo(Company company){
+        company.setId(1);
+        company.setUserId(1);
+        Map<String, String> stringStringMap = companyInfoServices.updateCompanyInfo(company);
+        if (stringStringMap.get(StaticPool.SUCCESS)!=null){
+            return APIResult.genSuccessApiResponse(stringStringMap.get(StaticPool.SUCCESS));
+        }
+        return APIResult.genFailApiResponse500(stringStringMap.get(StaticPool.ERROR));
+    }
+
+    /**
+     * 进入修改职位信息界面
+     * @param model
+     * @param jobid
+     * @return
+     */
+    @RequestMapping("comp_edit_job")
+    public String comp_edit_job(Model model,Integer jobid){
+        Map<String, Object> stringObjectMap = jobServices.selectJobById(jobid);
+        model.addAttribute("job",stringObjectMap.get("job"));
+        List<Map<String, Object>> list = industriesListServices.queryALLWithJobList();
+        model.addAttribute("list",list);
+        List<TbArea> tbAreas = tbAreaService.queryTbAreabyParentId(100000);
+        model.addAttribute("province",tbAreas);
+        return "/dashboard/comp_edit_job";
+    }
+
+    /**
+     * 发布/取消发布职业
+     * @param job
+     * @return
+     */
+    @PostMapping("updateJobPushStatus")
+    @ResponseBody
+    public APIResult updateJobPushStatus(Job job){
+        Integer companyId = 1;
+
+        Map<String, String> stringStringMap = jobServices.updateJob(job,companyId);
+        if (stringStringMap.get(StaticPool.SUCCESS)!=null){
+            return APIResult.genSuccessApiResponse(stringStringMap.get(StaticPool.SUCCESS));
+        }
+        return APIResult.genFailApiResponse500(stringStringMap.get(StaticPool.ERROR));
     }
 
     /**
@@ -209,7 +289,7 @@ public class DashboardController {
     public String comp_employer_manage_jobs(HttpServletRequest request){
         Integer indexpage = 1;
         Integer companyId = 1 ;
-        Integer pagesize = 10;
+        Integer pagesize = 5;
         JobSearchEntity jobSearchEntity = new JobSearchEntity();
         jobSearchEntity.setCompanyId(companyId);
         jobSearchEntity.setStatus(1);
@@ -217,6 +297,24 @@ public class DashboardController {
         PageInfo<Job> jobPageInfo = jobServices.selectJobByJobSearchEntityWithOutCompany(indexpage, pagesize, jobSearchEntity);
         request.setAttribute("pages",jobPageInfo);
         return "dashboard/comp_employer_manage_jobs";
+    }
+
+    /**
+     * 分页公司的职位信息局部刷新
+     * @param request
+     * @return
+     */
+    @RequestMapping("comp_employer_manage_jobs_pages")
+    public String comp_employer_manage_jobs_pages(HttpServletRequest request,Integer indexpage){
+        Integer companyId = 1 ;
+        Integer pagesize = 5;
+        JobSearchEntity jobSearchEntity = new JobSearchEntity();
+        jobSearchEntity.setCompanyId(companyId);
+        jobSearchEntity.setStatus(1);
+        jobSearchEntity.setAulStatus(null);
+        PageInfo<Job> jobPageInfo = jobServices.selectJobByJobSearchEntityWithOutCompany(indexpage, pagesize, jobSearchEntity);
+        request.setAttribute("pages",jobPageInfo);
+        return "dashboard/comp_employer_manage_jobs::joblistdiv";
     }
 
     /**
@@ -232,9 +330,21 @@ public class DashboardController {
         request.setAttribute("province",tbAreas);
         return "dashboard/comp_post_new_job";
     }
+
+    /**
+     * 公司发布新职位
+     * @param job
+     * @return
+     */
     @RequestMapping("addNewJob")
     @ResponseBody
     public APIResult addNewJob(Job job){
+        Integer companyId = 1;
+        job.setCompanyId(companyId);
+        Company company = companyInfoServices.queryCompanyById(companyId);
+        job.setCompanyLogo(company.getLogo());
+        job.setCompanyName(company.getCompanyName());
+        job.setCreateTime(new Date());
         Map<String, String> stringStringMap = jobServices.addJob(job);
         if (stringStringMap.get(StaticPool.SUCCESS)!=null){
             return APIResult.genSuccessApiResponse(stringStringMap.get(StaticPool.SUCCESS));
