@@ -167,7 +167,7 @@ public class JobServicesImpl implements IJobServices {
 
         int res = jobMapper.updateByPrimaryKeySelective(job);
         if(res > 0){
-            result.put(StaticPool.SUCCESS,"取消成功！");
+            result.put(StaticPool.SUCCESS,"修改成功！");
         }else {
             logger.warn("服务 繁忙！" + job);
             result.put(StaticPool.ERROR,"系统繁忙");

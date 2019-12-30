@@ -604,7 +604,7 @@ inelevated the..</a></h3>
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="job_main_overflow jb_cover">
-                                <div class="latest_job_overlow jb_cover">
+                                <div th:fragment="joblistdiv" id="joblistdiv" class="latest_job_overlow jb_cover">
                                     <div class="manage_jobs_wrapper jb_cover">
                                         <div class="job_list_next mange_list">
 
@@ -639,7 +639,7 @@ inelevated the..</a></h3>
                                             <p><a th:text="${job.receiveNum}" href="#">06 Applications</a></p>
 
                                         </div>
-                                        <div th:switch="${job.pushStatus}" class="job_list_next">
+                                        <div id="pushStatus" th:switch="${job.pushStatus}" class="job_list_next">
                                             <p th:case="1" class="gn">已发布</p>
                                             <p th:case="0" class="ex">未发布</p>
                                         </div>
@@ -650,9 +650,11 @@ inelevated the..</a></h3>
                                         </div>
                                         <div class="job_list_next">
                                             <ul>
-                                                <li><a href="#"><i class="fas fa-eye"></i></a></li>
-                                                <li><a href="#"><i class="fas fa-edit"></i></a></li>
-                                                <li><a href="#" th:onclick="'deleteJob('+${job.id}+')'"><i class="fas fa-trash-alt"></i></a></li>
+                                                <li><a th:href="'/job_single?jobid='+${job.id}">查看<i class="fas fa-eye"></i></a></li>
+                                                <li><a th:href="'comp_edit_job?jobid='+${job.id}">编辑<i class="fas fa-edit"></i></a></li>
+                                                <li><a href="#" th:onclick="'deleteJob('+${job.id}+')'">删除<i class="fas fa-trash-alt"></i></a></li>
+                                                <li th:if="${job.pushStatus == 0}"><a href="javascript:void(0)" th:onclick="'updatePushStatus(this,'+${job.id}+','+${job.pushStatus}+','+${job.aulStatus}+')'">发布</a></li>
+                                                <li th:if="${job.pushStatus == 1}"><a href="javascript:void(0)" th:onclick="'updatePushStatus(this,'+${job.id}+','+${job.pushStatus}+','+${job.aulStatus}+')'">取消发布</a></li>
                                             </ul>
 
                                         </div>
@@ -661,22 +663,22 @@ inelevated the..</a></h3>
                                     <div class="blog_pagination_section jb_cover">
                                         <ul>
                                             <li>
-                                                <a href="javascript:void(0);" th:onclick="'selectbyJobId('+${pages.prePage}+')'" class="prev"> <i class="flaticon-left-arrow"></i> </a>
+                                                <a href="javascript:void(0);" th:onclick="'serchJobPages('+${pages.prePage}+')'" class="prev"> <i class="flaticon-left-arrow"></i> </a>
                                             </li>
-                                            <li><a href="javascript:void(0);" onclick="selectbyJobId(1)">首页</a></li>
+                                            <li><a href="javascript:void(0);" onclick="serchJobPages(1)">首页</a></li>
                                             <!--<li class="third_pagger"><a href="#">2</a>-->
                                             <!--</li>-->
                                             <span  th:each="p:${pages.navigatepageNums}" >
                                             <li  th:if="${pages.pageNum == p}"  class="third_pagger">
-                                                <a th:text="${p}" th:onclick="'selectbyJobId('+${p}+')'"  href="javascript:void(0);">3</a>
+                                                <a th:text="${p}" th:onclick="'serchJobPages('+${p}+')'"  href="javascript:void(0);">3</a>
                                             </li>
                                             <li  th:if="${pages.pageNum != p}"  class="d-block d-sm-block d-md-block d-lg-block">
-                                                <a th:text="${p}" th:onclick="'selectbyJobId('+${p}+')'"  href="javascript:void(0);">3</a>
+                                                <a th:text="${p}" th:onclick="'serchJobPages('+${p}+')'"  href="javascript:void(0);">3</a>
                                             </li>
                                             </span>
-                                            <li><a href="javascript:void(0);" th:onclick="'selectbyJobId('+${pages.pages}+')'">尾页</a></li>
+                                            <li><a href="javascript:void(0);" th:onclick="'serchJobPages('+${pages.pages}+')'">尾页</a></li>
                                             <li>
-                                                <a href="javascript:void(0);" th:onclick="'selectbyJobId('+${pages.nextPage}+')'" class="next"> <i class="flaticon-right-arrow"></i> </a>
+                                                <a href="javascript:void(0);" th:onclick="'serchJobPages('+${pages.nextPage}+')'" class="next"> <i class="flaticon-right-arrow"></i> </a>
                                             </li>
 
                                         </ul>
@@ -869,6 +871,61 @@ inelevated the..</a></h3>
                 })
             }
 
+        }
+        function updatePushStatus(obj,id,pushStatus,aulStatus) {
+            if (aulStatus == 2){
+                var boolean;
+                if (pushStatus == 0){
+                    boolean  =  confirm("发布职位？")
+                    pushStatus =1;
+                }else {
+                    boolean  = confirm("取消发布职位？")
+                    pushStatus =0;
+                }
+                if (boolean){
+                    $.ajax({
+                        url:"updateJobPushStatus",
+                        type:"post",
+                        dataType:"json",
+                        data:{"pushStatus":pushStatus,"id":id},
+                        success:function (APIResult) {
+                            var a =$("#pushStatus").find("p");
+                            alert(APIResult.message)
+                            if (APIResult.code == 200){
+                                if (pushStatus == 0){
+                                    $(obj).text("发布");
+                                    $(obj).attr("onclick","updatePushStatus(this,"+id+","+pushStatus+")");
+                                    a.text("未发布")
+                                    a.removeClass("gn")
+                                    a.addClass("ex")
+                                } else {
+                                    $(obj).text("取消发布");
+                                    $(obj).attr("onclick","updatePushStatus(this,"+id+","+pushStatus+")");
+                                    a.text("已发布")
+                                    a.removeClass("ex")
+                                    a.addClass("gn")
+                                }
+                            }
+                        }
+                    })
+                }
+            } else {
+                alert("只有通过审核的职业才能发布")
+            }
+
+
+        }
+    </script>
+    <script>
+        function serchJobPages(indexpage) {
+            $.ajax({
+                url:"comp_employer_manage_jobs_pages",
+                type:"POST",
+                data:{"indexpage":indexpage,},
+                success: function (data) {
+                    $("#joblistdiv").html(data);
+                }
+            })
         }
     </script>
     <script src="/dashboard/js/jquery-3.3.1.min.js"></script>
