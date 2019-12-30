@@ -11,6 +11,7 @@ import com.lyx.undergraduatejob.utils.StaticPool;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -59,5 +60,12 @@ public class ManagerUserServices implements IManagerUserServices {
             result.put(StaticPool.ERROR,"系统繁忙");
         }
         return result;
+    }
+
+    public Map<String,Object> queryUserNum(Date year){
+        Map<String,Object> map = new HashMap<>();
+        UsersExample example = new UsersExample();
+        //example.or().andCreateTimeBetween();
+        return map;
     }
 }

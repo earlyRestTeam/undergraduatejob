@@ -25,117 +25,223 @@
         <!-- Begin page -->
         <div id="wrapper">
 
-            <!-- Begin page -->
-            <div id="wrapper">
+            <!-- Topbar Start -->
+            <div class="navbar-custom">
+                <ul class="list-unstyled topnav-menu float-right mb-0">
+                    <!--显示未处理消息数...，选做-->
+                    <li class="dropdown notification-list">
+                        <a class="nav-link dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                            <i class="dripicons-inbox mail-icon"></i>
+                            <span class="badge badge-info noti-icon-badge">20</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-lg">
 
-                <!-- Topbar Start -->
-                <div class="navbar-custom">
-                    <ul class="list-unstyled topnav-menu float-right mb-0">
-                        <!--显示未处理消息数...，选做-->
-
-                        <li class="dropdown notification-list">
-                            <a class="nav-link dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                                <i class="dripicons-bell noti-icon"></i>
-                                <span class="badge badge-danger noti-icon-badge">35</span>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right dropdown-lg">
-
-                                <div class="slimscroll noti-scroll">
-
-                                    <!-- item-->
-                                    <a href="/admin/audit-job" class="dropdown-item notify-item">
-                                        <div class="notify-icon bg-warning">
-                                            <i class="mdi mdi-alert-outline"></i>
-                                        </div>
-                                        <p class="notify-details">您有20条职位审核信息未处理</p>
-                                    </a>
-
-                                    <a href="/admin/audit-resume" class="dropdown-item notify-item active">
-                                        <div class="notify-icon bg-warning">
-                                            <i class="mdi mdi-alert-outline"></i>
-                                        </div>
-                                        <p class="notify-details">您有20条简历审核信息未处理</p>
-                                    </a>
-
-                                    <a href="/admin/authentication-company" class="dropdown-item notify-item">
-                                        <div class="notify-icon bg-warning">
-                                            <i class="mdi mdi-alert-outline"></i>
-                                        </div>
-                                        <p class="notify-details">您有20条企业认证信息未处理</p>
-                                    </a>
-
-                                    <a href="/admin/authentication-student" class="dropdown-item notify-item">
-                                        <div class="notify-icon bg-warning">
-                                            <i class="mdi mdi-alert-outline"></i>
-                                        </div>
-                                        <p class="notify-details">您有20条学生认证信息未处理</p>
-                                    </a>
-
-                                    <a href="/admin/complaint" class="dropdown-item notify-item">
-                                        <div class="notify-icon bg-warning">
-                                            <i class="mdi mdi-alert-outline"></i>
-                                        </div>
-                                        <p class="notify-details">您有20条投诉信息未处理</p>
-                                    </a>
-
-                                </div>
-
+                            <!-- item-->
+                            <div class="dropdown-item noti-title">
+                                <h5 class="m-0">
+                                    <span class="float-right">
+                                        <a href="" class="text-dark">
+                                            <small>Clear All</small>
+                                        </a>
+                                    </span>20 New Messages
+                                </h5>
                             </div>
-                        </li>
-                        <!--显示未处理消息数...，选做-->
-                        <!--头像...-->
-                        <li class="dropdown notification-list">
-                            <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                                <img src="/admin/images/users/avatar-1.jpg" alt="user-image" class="rounded-circle">
-                                <span class="pro-user-name ml-1">
-                        Devid <i class="mdi mdi-chevron-down"></i>
-                    </span>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
-                                <!-- item-->
-                                <div class="dropdown-item noti-title">
-                                    <h6 class="m-0">
-                                        Hello, Devid !
-                                    </h6>
-                                </div>
 
-                                <div class="dropdown-divider"></div>
+                            <div class="slimscroll noti-scroll">
+
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item active">
+                                    <div class="notify-icon"><img src="/admin/images/users/avatar-1.jpg" class="img-fluid rounded-circle" alt="" /> </div>
+                                    <p class="notify-details">Sandra Smith<small class="text-muted">Hey ! I'm working on your project</small></p>
+                                </a>
 
                                 <!-- item-->
                                 <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <i class="dripicons-power"></i>
-                                    <span>Logout</span>
+                                    <div class="notify-icon"><img src="/admin/images/users/avatar-2.jpg" class="img-fluid rounded-circle" alt="" /></div>
+                                    <p class="notify-details">Amily Lee<small class="text-muted">Hi, How are you? What about our next meeting?</small></p>
                                 </a>
 
-                            </div>
-                        </li>
-                        <!--头像...-->
-                    </ul>
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                    <div class="notify-icon">
+                                        <img src="/admin/images/users/avatar-3.jpg" class="img-fluid rounded-circle" alt="" /> </div>
+                                    <p class="notify-details">David Boos</p>
+                                    <p class="text-muted mb-0 user-msg">
+                                        <small>What about our next meeting</small>
+                                    </p>
+                                </a>
 
-                    <ul class="list-unstyled menu-left mb-0">
-                        <li class="float-left">
-                            <a href="index" class="logo">
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                    <div class="notify-icon"><img src="/admin/images/users/avatar-4.jpg" class="img-fluid rounded-circle" alt="" /> </div>
+                                    <p class="notify-details">Christopher Palmer<small class="text-muted">Waiting for your Response...</small></p>
+                                </a>
+
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                    <div class="notify-icon">
+                                        <img src="/admin/images/users/avatar-5.jpg" class="img-fluid rounded-circle" alt="" /> </div>
+                                    <p class="notify-details">Malika Roy</p>
+                                    <p class="text-muted mb-0 user-msg">
+                                        <small>Wow that's great</small>
+                                    </p>
+                                </a>
+                            </div>
+
+                            <!-- All-->
+                            <a href="javascript:void(0);" class="dropdown-item text-center text-primary notify-item notify-all">
+                                View all
+                                <i class="fi-arrow-right"></i>
+                            </a>
+
+                        </div>
+                    </li>
+
+                    <li class="dropdown notification-list">
+                        <a class="nav-link dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                            <i class="dripicons-bell noti-icon"></i>
+                            <span class="badge badge-danger noti-icon-badge">35</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-lg">
+
+                            <!-- item-->
+                            <div class="dropdown-item noti-title">
+                                <h5 class="m-0">
+                                    <span class="float-right">
+                                        <a href="" class="text-dark">
+                                            <small>Clear All</small>
+                                        </a>
+                                    </span>Notification
+                                </h5>
+                            </div>
+
+                            <div class="slimscroll noti-scroll">
+
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                    <div class="notify-icon bg-info"><i class="mdi mdi-cloud-upload-outline"></i></div>
+                                    <p class="notify-details">Your upload has been approved<small class="text-muted">5 hours ago</small></p>
+                                </a>
+
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item active">
+                                    <div class="notify-icon bg-success"><i class="mdi mdi-map-marker-check"></i> </div>
+                                    <p class="notify-details">You added your Location<small class="text-muted">Just Now</small></p>
+                                </a>
+
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                    <div class="notify-icon bg-primary"><i class="mdi mdi-layers-remove"></i></div>
+                                    <p class="notify-details">Your item is shipped<small class="text-muted">It is a long established fact that a reader will</small></p>
+                                </a>
+
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                    <div class="notify-icon bg-purple"><i class="mdi mdi-check-bold"></i></div>
+                                    <p class="notify-details">Your order is placed<small class="text-muted">Dummy text of the printing and typesetting industry.</small></p>
+                                </a>
+
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                    <div class="notify-icon bg-warning">
+                                        <i class="mdi mdi-alert-outline"></i>
+                                    </div>
+                                    <p class="notify-details">Your Subscription Expired
+                                        <small class="text-muted">1 days ago</small>
+                                    </p>
+                                </a>
+
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                    <div class="notify-icon bg-danger">
+                                        <i class="mdi mdi-settings"></i>
+                                    </div>
+                                    <p class="notify-details"><b>Devid</b>, You changed your Settings
+                                        <small class="text-muted">5 days ago</small>
+                                    </p>
+                                </a>
+                            </div>
+
+                            <!-- All-->
+                            <a href="javascript:void(0);" class="dropdown-item text-center text-primary notify-item notify-all">
+                                View all
+                                <i class="fi-arrow-right"></i>
+                            </a>
+
+                        </div>
+                    </li>
+                    <!--显示未处理消息数...，选做-->
+                    <!--头像...-->
+                    <li class="dropdown notification-list">
+                        <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                            <img src="/admin/images/users/avatar-1.jpg" alt="user-image" class="rounded-circle">
+                            <span class="pro-user-name ml-1">
+                                Devid <i class="mdi mdi-chevron-down"></i> 
+                            </span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
+                            <!-- item-->
+                            <div class="dropdown-item noti-title">
+                                <h6 class="m-0">
+                                    Hello, Devid !
+                                </h6>
+                            </div>
+
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <i class="dripicons-user"></i>
+                                <span>My Profile</span>
+                            </a>
+
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <i class="dripicons-card"></i>
+                                <span>My Wallet</span>
+                            </a>
+
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <i class="dripicons-gear"></i>
+                                <span>Settings</span>
+                            </a>
+
+                            <div class="dropdown-divider"></div>
+
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <i class="dripicons-power"></i>
+                                <span>Logout</span>
+                            </a>
+
+                        </div>
+                    </li>
+                    <!--头像...-->
+                </ul>
+
+                <ul class="list-unstyled menu-left mb-0">
+                    <li class="float-left">
+                        <a href="index" class="logo">
                             <span class="logo-lg">
                                 <img src="/admin/images/logo.png" alt="" height="25">
                             </span>
-                                <span class="logo-sm">
+                            <span class="logo-sm">
                                 <img src="/admin/images/logo-sm.png" alt="" height="24">
                             </span>
-                            </a>
-                        </li>
-                        <li class="float-left">
-                            <a class="button-menu-mobile navbar-toggle">
-                                <div class="lines">
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                </div>
-                            </a>
-                        </li>
+                        </a>
+                    </li>
+                    <li class="float-left">
+                        <a class="button-menu-mobile navbar-toggle">
+                            <div class="lines">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </a>
+                    </li>
 
-                    </ul>
-                </div>
-                <!-- end Topbar -->
+                </ul>
+            </div>
+            <!-- end Topbar -->
 
             <!-- ========== Left Sidebar Start ========== -->
             <div class="left-side-menu">
@@ -299,17 +405,17 @@
 
                                     <h4 class="header-title mb-4">公司认证表</h4>
                                     <div >
-                                        <form class="form-inline" style="float: right" action="/aut/query_aut_company" method="post">
-                                            <input th:value="${proposerName}" type="text" class="form-control" placeholder="申请人姓名" name="proposerName">
-                                            <input th:value="${companyId}" type="text" class="form-control" placeholder="公司ID" name="companyId">
-                                            <select onchange="fn()" th:value="${status}" type="text" class="form-control" style="width:188px" placeholder="状态" id="status" name="status">
+                                        <div class="form-inline" style="float: right">
+                                            <input th:value="${proposerName}" type="text" class="form-control" placeholder="申请人姓名" id="proposerName">
+                                            <input th:value="${companyId}" type="text" class="form-control" placeholder="公司ID" id="companyId">
+                                            <select th:value="${status}" type="text" class="form-control" style="width:188px" placeholder="状态" id="status" name="status">
                                                 <option value="" th:selected="${status eq 0}">全部</option>
                                                 <option value="0" th:selected="${status eq 0}">不通过</option>
                                                 <option value="1" th:selected="${status eq 1}">通过</option>
                                                 <option value="2" th:selected="${status eq 2}">未审核</option>
                                             </select>
-                                            <button style="background-color: lightskyblue;height: 38px;width: 38px;border: lightskyblue;" class="" type="submit"><i class="fa fa-search"></i></button>
-                                        </form>
+                                            <button style="background-color: lightskyblue;height: 38px;width: 38px;border: lightskyblue;" class="" th:onclick="query(1)"><i class="fa fa-search"></i></button>
+                                        </div>
 
                                     </div>
 
@@ -336,8 +442,8 @@
                                         </div><!-- /.modal-dialog -->
                                     </div>
 
-                                    <div class="table-responsive">
-                                        <table class="table table-centered table-hover mb-0" id="datatable">
+                                    <div class="table-responsive" th:fragment="table" id="table">
+                                        <table class="table table-centered table-hover mb-0">
                                             <thead>
                                                 <tr>
                                                     <th class="border-top-0">ID</th>
@@ -353,7 +459,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr th:each="aut,adStas:${list}">
+                                                <tr th:each="aut,adStas:${pages.list}">
                                                     <td th:text="${aut.id}"></td>
                                                     <td th:text="${aut.companyId}"></td>
                                                     <td th:text="${aut.proposerName}"></td>
@@ -372,7 +478,25 @@
                                                         <a th:onclick="'unadopt_shenhe('+${aut.id}+','+${aut.status}+','+${aut.companyId}+')'" class="badge-danger btn-sm mg-y-5" data-toggle="tooltip" data-placement="top" title="" data-original-title="不通过"><i class="mdi dripicons-cross"></i></a>
                                                     </td>
                                                 </tr>
+                                                <tr>
+                                                    <td colspan="12">
+                                                        <ul class="pagination" style="float: right">
 
+                                                            <li class="page-item">
+                                                                <span class="page-link" th:onclick="'query(1)'">首页</span>
+                                                            </li>
+                                                            <li class="page-item"><span class="page-link">...</span></li>
+                                                            <span  th:each="p:${pages.navigatepageNums}">
+                                                            <li th:value="${pages.pageNum}" th:if="${pages.pageNum == p}" class="page-item active"><span class="page-link" th:onclick="'query('+${p}+')'" th:text="${p}"></span></li>
+                                                            <li th:if="${pages.pageNum != p}" class="page-item"><span class="page-link" th:onclick="'query('+${p}+')'" th:text="${p}"></span></li>
+                                                            </span>
+                                                            <li class="page-item"><span class="page-link">...</span></li>
+                                                            <li class="page-item">
+                                                                <span class="page-link" th:onclick="'query('+${pages.pages}+')'">尾页</span>
+                                                            </li>
+                                                        </ul>
+                                                    </td>
+                                                </tr>
                                             </tbody>
                                         </table>
                                     </div>
@@ -440,22 +564,52 @@
         <!-- App js -->
         <script src="/admin/js/app.min.js"></script>
         <script>
-            /*选择状态*/
-            function  fn(){
-                //var     name=$("#item1").find("option:selected").text(); //获取文本值
-                var     name=$("#item1").find("option:selected").val();  //获取value值
-                if(name !==null){
-                    version=name;
-                }
+            //查询
+            function query(indexpage) {
+                var proposerName = $("#proposerName").val();
+                var companyId = $("#companyId").val();
+                var status = $("#status").val();
+
+                $.ajax({
+                    url:"/aut/query_aut_company",
+                    type:"POST",
+                    data:{
+                        "proposerName":proposerName,
+                        "companyId":companyId,
+                        "status":status,
+                        "indexpage":indexpage
+                    },
+                    success: function (data) {
+                        $("#table").html(data);
+                    }
+                });
+
+            }
+            function update(id,status,companyId) {
+                $.ajax({
+                    url:"/aut/update_aut_company_status",
+                    type:"POST",
+                    data:{
+                        "id":id,
+                        "status":status,
+                        "companyId":companyId
+                    },
+                    success:function (result) {
+                        alert(result.message);
+                        var indexpage = $(".page-item.active").val();
+                        query(indexpage);
+                    }
+                })
             }
             //确认不通过认证
             function unadopt_shenhe(id,status,companyId){
 
-                if (status != 2){console.log(id+"-----"+status);
+                if (status != 2){
                     alert("只能操作未审核的认证!")
-                } else {console.log(id+"-----"+status);
+                } else {
                     if (confirm("确认不通过？")) {
-                        self.location = "/aut/update_aut_company_status?id="+id+"&status=0&companyId="+companyId;
+                        //self.location = "/aut/update_aut_company_status?id="+id+"&status=0&companyId="+companyId;
+                       update(id,0,companyId);
                     }
                 }
 
@@ -463,11 +617,12 @@
             //确认通过认证
             function adopt_shenhe(id,status,companyId){
 
-                if (status != 2){console.log(id+"-----"+status);
+                if (status != 2){
                     alert("只能操作未审核的认证!")
                 } else {
-                    if (confirm("确认通过？")) {console.log(id+"-----"+status);
-                        self.location = "/aut/update_aut_company_status?id="+id+"&status=1&companyId="+companyId;
+                    if (confirm("确认通过？")) {
+                        //self.location = "/aut/update_aut_company_status?id="+id+"&status=1&companyId="+companyId;
+                        update(id,1,companyId);
                     }
                 }
 
@@ -482,20 +637,17 @@
                         "id":id
                     },
                     success:function(data){
-                        var list = data.data
+                        var list = data.data;
                         console.log(list);
                         while ($("#picture").length > 0) {
                             $("#picture").remove();
-
                         }
                         for (var i = 0; i < list.length; i++) {
-                            console.log(list[i]);
                             $("#picList").append("<li id='picture'><img src=\""+list[i].pictureUrl+"\"></li>");
                         }
                         $("#myModal").modal('show');
                     }
                 });
-
             }
         </script>
 

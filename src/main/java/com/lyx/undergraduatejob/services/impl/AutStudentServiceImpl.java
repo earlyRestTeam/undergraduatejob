@@ -96,7 +96,7 @@ public class AutStudentServiceImpl implements IAutStudentService {
 
         PageHelper.startPage(indexpage,10);
         List<AutStudent> autStudents = autStudentMapper.selectByExample(example);
-        PageInfo<AutStudent> info = new PageInfo<>(autStudents,10);
+        PageInfo<AutStudent> info = new PageInfo<>(autStudents,5);
 
         return info;
     }
@@ -107,7 +107,7 @@ public class AutStudentServiceImpl implements IAutStudentService {
      * @return
      */
     @Override
-    public List<AutStudent> queryAutStudentBack(AutStudent autStudent) {
+    public PageInfo<AutStudent> queryAutStudentBack(Integer indexpage,AutStudent autStudent) {
         AutStudentExample example = new AutStudentExample();
         AutStudentExample.Criteria criteria = example.createCriteria();
         if (autStudent.getId() != null){
@@ -146,10 +146,11 @@ public class AutStudentServiceImpl implements IAutStudentService {
         if (autStudent.getRelatedPicture() != null){
             criteria.andRelatedPictureEqualTo(autStudent.getRelatedPicture());
         }
-
+        PageHelper.startPage(indexpage,10);
         List<AutStudent> autStudents = autStudentMapper.selectByExample(example);
+        PageInfo<AutStudent> info = new PageInfo<>(autStudents,5);
 
-        return autStudents;
+        return info;
     }
 
     /**

@@ -90,7 +90,7 @@ public class AutCompanyServiceImpl implements IAutCompanyService {
         }
         PageHelper.startPage(indexpage,10);
         List<AutCompany> autCompanies = autCompanyMapper.selectByExample(example);
-        PageInfo<AutCompany> info = new PageInfo<>(autCompanies,10);
+        PageInfo<AutCompany> info = new PageInfo<>(autCompanies,5);
 
         return info;
     }
@@ -101,7 +101,7 @@ public class AutCompanyServiceImpl implements IAutCompanyService {
      * @return
      */
     @Override
-    public List<AutCompany> queryAutCompanyBack(AutCompany autCompany) {
+    public PageInfo<AutCompany> queryAutCompanyBack(Integer indexpage,AutCompany autCompany) {
         AutCompanyExample example = new AutCompanyExample();
         AutCompanyExample.Criteria criteria = example.createCriteria();
         if (autCompany.getId() != null){
@@ -131,10 +131,11 @@ public class AutCompanyServiceImpl implements IAutCompanyService {
         if (autCompany.getStatus() != null){
             criteria.andStatusEqualTo(autCompany.getStatus());
         }
-
+        PageHelper.startPage(indexpage,10);
         List<AutCompany> autCompanies = autCompanyMapper.selectByExample(example);
+        PageInfo<AutCompany> info = new PageInfo<>(autCompanies,5);
 
-        return autCompanies;
+        return info;
     }
 
     @Override

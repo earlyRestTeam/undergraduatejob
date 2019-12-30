@@ -18,7 +18,7 @@ public interface IAutStudentService {
 
     boolean isAddAutStudent(Integer userid);
 
-    List<AutStudent> queryAutStudentBack(AutStudent autStudent);
+    PageInfo<AutStudent> queryAutStudentBack(Integer indexpage,AutStudent autStudent);
 
     Map<String, String> updateAutStudentBack(AutStudent autStudent);
 }
