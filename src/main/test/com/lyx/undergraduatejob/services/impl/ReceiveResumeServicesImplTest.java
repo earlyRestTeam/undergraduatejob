@@ -19,8 +19,7 @@ class ReceiveResumeServicesImplTest {
     ReceiveResumeServicesImpl receiveResumeServices;
     @Test
     void queryReceiveResume() {
-        PageInfo<Resume> pageInfo = receiveResumeServices.queryReceiveResume(null, 3, 2, 0);
-        System.out.println(pageInfo);
+
     }
 
     @Test

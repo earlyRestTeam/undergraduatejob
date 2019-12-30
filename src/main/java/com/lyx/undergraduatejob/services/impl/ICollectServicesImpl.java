@@ -222,13 +222,16 @@ public class ICollectServicesImpl implements ICollectServices {
             Job job = new Job();
             job.setJobName(jobList.get(i).getJobName());
             job.setJobTitle(jobList.get(i).getJobTitle());
+            job.setCompanyName(jobList.get(i).getCompanyName());
+            job.setSalary(jobList.get(i).getSalary());
+            job.setWorkAddress(jobList.get(i).getWorkAddress());
             if(jobList.get(i).getStatus() == 1){
                 job.setId(jobList.get(i).getId());
             }
             newjobList.add(job);
         }
 
-        PageInfo<Job> info = new PageInfo(newjobList,3);
+        PageInfo<Job> info = new PageInfo(jobList,3);
 
         return info;
     }

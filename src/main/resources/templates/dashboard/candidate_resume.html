@@ -635,12 +635,12 @@ Author:
                                         <div class="job_list_next" th:switch="${resume.partFull}">
                                             <p th:case="1"><a href="#">兼职</a></p>
                                             <p th:case="2"><a href="#">全职</a></p>
-                                            <p th:case="2"><a href="#">全职</a></p>
 
                                         </div>
                                         <div th:switch="${resume.pushStatus}" class="job_list_next">
-                                            <p th:case="1" class="gn">已发布</p>
-                                            <p th:case="0" class="ex">未发布</p>
+                                            <input th:id="'pushStatus'+ ${resume.id}" type="hidden" th:value="${resume.pushStatus}">
+                                            <p th:case="1" class="gn pushStatus">已发布</p>
+                                            <p th:case="0" class="ex pushStatus">未发布</p>
                                         </div>
                                         <div th:switch="${resume.aulStatus}" class="job_list_next">
                                             <p th:case="2" class="gn">通过</p>
@@ -649,9 +649,11 @@ Author:
                                         </div>
                                         <div class="job_list_next">
                                             <ul>
-                                                <li><a href="javascript:">预览<i class="fas fa-eye"></i></a></li>
+                                                <li><a href="javascript:" th:onclick="|javascript:visit(${resume.id})|">预览<i class="fas fa-eye"></i></a></li>
                                                 <li><a href="javascript:" th:onclick="|javascript:update(${resume.id})|">修改<i class="fas fa-edit"></i></a></li>
                                                 <li><a href="javascript:" th:onclick="|javascript:del(${resume.id})|">删除<i class="fas fa-trash-alt"></i></a></li>
+                                                <li th:if="${resume.pushStatus == 0}"><a href="javascript:" th:onclick="|javascript:push(${resume.id})|" class="noPushStatus">发布</a></li>
+                                                <li th:if="${resume.pushStatus == 1}"><a href="javascript:" th:onclick="|javascript:push(${resume.id})|" class="noPushStatus">取消发布</a></li>
                                             </ul>
 
                                         </div>
@@ -1021,6 +1023,12 @@ Author:
     </script>
 
     <script>
+
+        //预览简历
+        function visit(id) {
+            console.log("预览简历id:"+id);
+            window.open("/user/visitResume?resumeId=" + id);
+        }
         //修改简历
         function update(id) {
             console.log("修改简历id:"+id);
@@ -1045,6 +1053,54 @@ Author:
                         if (result.code == 200) {
                             alert(result.message);
                             $("#resume"+id).remove();
+                        } else {
+                            alert(result.message);
+                        }
+                    },
+                    error:function(e){
+                        alert("服务器繁忙，稍后再试。");
+                    }
+                });
+            }
+
+        }
+
+        //发布、取消发布
+        function push(id) {
+            console.log("发布简历id:"+id);
+            var con = confirm("你确定要发布吗？");
+            if(con){
+
+                var pushStatus = $("#pushStatus" +id).val();
+                console.log("发布简历pushStatus:"+pushStatus);
+                var url = "/user/pushResume?resumeId=" + id + "&pushStatus=" + pushStatus;
+                var data = {"resumeId":id, "pushStatus":pushStatus};
+                $.ajax({
+                    url:url,
+                    type:"post",
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify(data),
+                    dataType: "json",
+                    success:function(result){
+                        console.log(result);//打印服务端返回的数据
+                        if (result.code == 200) {
+
+                            if(pushStatus == 0){
+                                console.log("发布简历pushStatus:"+pushStatus);
+                                $("#pushStatus" +id).val(1);
+                                $("#resume"+ id +" .pushStatus").replaceWith("<p class=\"gn pushStatus\">已发布</p>");
+                                $("#resume"+ id +" .noPushStatus").text("取消发布");
+                            }else if(pushStatus == 1){
+                                console.log("发布简历pushStatus:"+pushStatus);
+                                $("#pushStatus" +id).val(0);
+                                $("#resume"+ id +" .pushStatus").replaceWith("<p class=\"ex pushStatus\">未发布</p>");
+                                $("#resume"+ id +" .noPushStatus").text("发布");
+
+                            }
+
+                            alert(result.message);
+
+
                         } else {
                             alert(result.message);
                         }

@@ -227,5 +227,29 @@ public class CandidateController {
 
         return result;
     }
+    //用户发布/取消发布简历
+    @RequestMapping("/user/pushResume")
+    @ResponseBody
+    public APIResult pushResume(Integer resumeId, Integer pushStatus){
+        APIResult result = null;
+
+        Integer userId = 1;
+        System.out.println("pushStatus:"+pushStatus);
+        Map<String, String> re = null;
+        if(pushStatus == 1){
+            re = resumeServicesImp.updatePushResume(resumeId,userId);
+        }
+        if(pushStatus == 0){
+            re = resumeServicesImp.updateDisPushResume(resumeId,userId);
+        }
+
+        if(re.get(StaticPool.SUCCESS) != null){
+            result = APIResult.genSuccessApiResponse("操作成功");
+        }else {
+            result = APIResult.genFailApiResponse500(re.get(StaticPool.ERROR));
+        }
+
+        return result;
+    }
 
 }
