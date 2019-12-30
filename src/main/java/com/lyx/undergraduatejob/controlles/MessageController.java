@@ -40,6 +40,7 @@ public class MessageController {
         List complaints = (List) map.get("complaints");
         model.addAttribute("complaints",complaints.size());
         int sum = autCompanies.size() + autStudents.size() + jobs.size() + resumes.size() + complaints.size();
+
         System.out.println(sum);
         model.addAttribute("sum",sum);
 
