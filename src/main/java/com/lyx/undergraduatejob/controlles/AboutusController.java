@@ -116,7 +116,7 @@ public class AboutusController {
         List<Integer> status = new ArrayList<>();
         List<Integer> companystatus = new ArrayList<>();
         List<Job> list = (List<Job>) page.getMap().get("jobs");
-        if(entity != null){
+        if(entity != null && list.size() > 0 && list!=null){
             List<Integer> jobids = new ArrayList<>();
             for (int i = 0; i < list.size(); i++) {
                 jobids.add(list.get(i).getId());
