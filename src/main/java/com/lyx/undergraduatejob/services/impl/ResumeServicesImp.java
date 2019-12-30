@@ -8,16 +8,22 @@ import com.lyx.undergraduatejob.pojo.Resume;
 import com.lyx.undergraduatejob.pojo.ResumeExample;
 import com.lyx.undergraduatejob.search.entity.RentValueBlock;
 import com.lyx.undergraduatejob.search.entity.ResumeSearchEntity;
+import com.lyx.undergraduatejob.services.ICollectServices;
 import com.lyx.undergraduatejob.services.IResumeServices;
+import com.lyx.undergraduatejob.services.security.LoginEntityHelper;
+import com.lyx.undergraduatejob.services.security.OnlineEntity;
+import com.lyx.undergraduatejob.utils.MyPage;
 import com.lyx.undergraduatejob.utils.StaticPool;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 public class ResumeServicesImp implements IResumeServices {
@@ -27,6 +33,11 @@ public class ResumeServicesImp implements IResumeServices {
     @Autowired
     ResumeMapper resumeMapper;
 
+    @Autowired
+    ICollectServices collectServices;
+
+    @Autowired
+    LoginEntityHelper loginEntityHelper;
 
     /**
      * 搜索栏搜索招聘信息
@@ -37,7 +48,7 @@ public class ResumeServicesImp implements IResumeServices {
      * @return
      */
     @Override
-    public PageInfo<Resume> queryResumeByKey(Integer indexPage, int pageSize, ResumeSearchEntity resumeSearchEntity) {
+    public MyPage queryResumeByKey(Integer indexPage, int pageSize, ResumeSearchEntity resumeSearchEntity) {
         indexPage = (indexPage != null) ? indexPage : 1;
         PageHelper.startPage(indexPage,pageSize);
 
@@ -88,7 +99,28 @@ public class ResumeServicesImp implements IResumeServices {
 
         List<Resume> resumeList = resumeMapper.selectByExample(example);
         PageInfo<Resume> pageInfo = new PageInfo<>(resumeList,5);
-        return pageInfo;
+        MyPage res = new MyPage(pageInfo);
+
+        List<Resume> resumes = pageInfo.getList();
+
+        List<Integer> ids = resumes.stream().map(Resume::getId).collect(Collectors.toList());
+        OnlineEntity onlineEntity = loginEntityHelper.getOnlineEntity();
+        List<Integer> status;
+        if(onlineEntity.getCompanyId() != null){
+            status = collectServices.queryCollectStatus(ids, 3, onlineEntity.getCompanyId(), 2);
+        }else{
+            status = new ArrayList<>(ids.size());
+            for (int i = 0; i < ids.size(); i++) {
+                status.add(0);
+            }
+        }
+
+        Map<String,Object> map = new HashMap<>();
+
+        map.put("status",status);
+        map.put("list",resumeList);
+        res.setMap(map);
+        return res;
     }
 
     /**
@@ -136,19 +168,18 @@ public class ResumeServicesImp implements IResumeServices {
      * @return
      */
     @Override
-    public Resume queryResumeByUserId(int userId) {
+    public List<Resume> queryResumeByUserId(int userId) {
         ResumeExample example = new ResumeExample();
         ResumeExample.Criteria criteria = example.createCriteria();
         criteria.andUserIdEqualTo(userId);
-        criteria.andStatusEqualTo(StaticPool.RESUME_OK);
+        criteria.andStatusEqualTo(1);
 
         List<Resume> resumes = resumeMapper.selectByExample(example);
-
-        if(resumes == null || resumes.size() != 1){
-            logger.warn("服务器繁忙"+resumes);
-            return null;
-        }
-        return resumes.get(0);
+//        if(resumes == null || resumes.size() != 1){
+//            logger.warn("服务器繁忙"+resumes);
+//            return null;
+//        }
+        return resumes;
     }
 
     /**
@@ -166,19 +197,20 @@ public class ResumeServicesImp implements IResumeServices {
             return result;
         }
 
-        if(r.getUserId() != userId){
-            logger.error("非法访问！！！用户id："+userId);
-            result.put(StaticPool.ERROR,"简历修改失败");
-            return result;
-        }
-        if(queryResumeByUserId(userId) != null){
-            logger.error("非法访问！！！用户id："+userId);
-            result.put(StaticPool.ERROR,"简历修改失败");
+//        //
+//        if(r.getUserId() != userId){
+//            logger.error("非法访问！！！用户id："+userId);
+//            result.put(StaticPool.ERROR,"简历修改失败");
+//            return result;
+//        }
+        if(queryResumeByUserId(userId).size() == 6){
+            logger.warn("简历添加失败，已超过6个简历。！！！用户id："+userId);
+            result.put(StaticPool.ERROR,"简历添加失败，已超过6个简历。");
             return result;
         }
         //设置id我空，防止非法操作
         r.setId(null);
-        int insert = resumeMapper.insert(r);
+        int insert = resumeMapper.insertSelective(r);
         if(insert > 0){
             result.put(StaticPool.SUCCESS,"简历添加成功");
         }else {
@@ -215,7 +247,7 @@ public class ResumeServicesImp implements IResumeServices {
                 result.put(StaticPool.ERROR,"简历修改失败");
             }
         }else {
-            logger.error("简历和访问用户不匹配非法访问！！！用户id："+userId);
+            logger.error("简历和访问用户ID不匹配非法访问！！！用户id："+userId);
             result.put(StaticPool.ERROR,"服务器繁忙，简历修改失败");
         }
 

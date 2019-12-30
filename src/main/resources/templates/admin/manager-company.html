@@ -404,60 +404,43 @@
                         <div class="card-box">
 
                             <h4 class="header-title mb-4">公司表</h4>
-                            <div ><!--action="/managerUser/query_company method="post""-->
-                                <!--<form class="form-inline" style="float: right" >-->
-                                    <!--<input th:value="${companyName}" type="text" class="form-control" placeholder="公司名称" name="companyName">-->
-                                    <!--<input th:value="${companyType}" type="text" class="form-control" placeholder="公司类型" name="companyType">-->
-                                    <!--<select onchange="fn()" th:value="${companyVip}" type="text" class="form-control" style="width:188px" placeholder="VIP服务" id="" name="companyVip">-->
-                                        <!--<option value="" th:selected="${companyVip eq 0}">全部用户</option>-->
-                                        <!--<option value="0" th:selected="${companyVip eq 0}">普通用户</option>-->
-                                        <!--<option value="1" th:selected="${companyVip eq 1}">VIP用户</option>-->
-                                    <!--</select>-->
-                                    <!--<select onchange="fn()" th:value="${status}" type="text" class="form-control" style="width:188px" placeholder="状态" id="" name="status">-->
-                                        <!--<option value="" th:selected="${status eq 0}">全部</option>-->
-                                        <!--<option value="0" th:selected="${status eq 0}">冻结</option>-->
-                                        <!--<option value="1" th:selected="${status eq 1}">启用</option>-->
-                                    <!--</select>-->
-                                    <!--<button th:onclick="'query('')'" style="background-color: lightskyblue;height: 38px;width: 38px;border: lightskyblue;" class="" type="submit"><i class="fa fa-search"></i></button>-->
-                                <!--</form>-->
-                                <!--<form class="form-inline" style="float: right" >-->
+                            <div>
                                 <div  class="form-inline" style="float: right">
                                     <input id="name" type="text" class="form-control" placeholder="公司名称" name="companyName">
                                     <input id="type" type="text" class="form-control" placeholder="公司类型" name="companyType">
-                                    <select onchange="fn()" type="text" class="form-control" style="width:188px" placeholder="VIP服务" id="vip" name="companyVip">
+                                    <select type="text" class="form-control" style="width:188px" placeholder="VIP服务" id="vip" name="companyVip">
                                         <option value="" th:selected="${companyVip eq 0}">全部用户</option>
                                         <option value="0" th:selected="${companyVip eq 0}">普通用户</option>
                                         <option value="1" th:selected="${companyVip eq 1}">VIP用户</option>
                                     </select>
-                                    <select onchange="fn()" type="text" class="form-control" style="width:188px" placeholder="状态" id="status" name="status">
+                                    <select type="text" class="form-control" style="width:188px" placeholder="状态" id="status" name="status">
                                         <option value="" th:selected="${status eq 0}">全部</option>
                                         <option value="0" th:selected="${status eq 0}">冻结</option>
                                         <option value="1" th:selected="${status eq 1}">启用</option>
                                     </select>
                                     <button id="btn1" th:onclick="'query(1)'" style="background-color: lightskyblue;height: 38px;width: 38px;border: lightskyblue;" class=""><i class="fa fa-search"></i></button>
-                                <!--</form>-->
                                 </div>
                             </div>
 
-                            <div id="myModal" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h4 class="modal-title" id="myModalLabel">VIP</h4>
-                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <h5>VIP生效时间</h5>
-                                            <hr>
-                                            <p id="time"></p>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-primary waves-effect waves-light" data-dismiss="modal">确定</button>
-                                            <!--<button type="button" class="btn btn-light waves-effect"></button>-->
-                                        </div>
-                                    </div><!-- /.modal-content -->
-                                </div><!-- /.modal-dialog -->
-                            </div>
+                            <!--<div id="myModal" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">-->
+                                <!--<div class="modal-dialog">-->
+                                    <!--<div class="modal-content">-->
+                                        <!--<div class="modal-header">-->
+                                            <!--<h4 class="modal-title" id="myModalLabel">VIP</h4>-->
+                                            <!--<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>-->
+                                        <!--</div>-->
+                                        <!--<div class="modal-body">-->
+                                            <!--<h5>VIP生效时间</h5>-->
+                                            <!--<hr>-->
+                                            <!--<p id="time"></p>-->
+                                        <!--</div>-->
+                                        <!--<div class="modal-footer">-->
+                                            <!--<button type="button" class="btn btn-primary waves-effect waves-light" data-dismiss="modal">确定</button>-->
+                                            <!--&lt;!&ndash;<button type="button" class="btn btn-light waves-effect"></button>&ndash;&gt;-->
+                                        <!--</div>-->
+                                    <!--</div>&lt;!&ndash; /.modal-content &ndash;&gt;-->
+                                <!--</div>&lt;!&ndash; /.modal-dialog &ndash;&gt;-->
+                            <!--</div>-->
 
                             <div class="table-responsive" th:fragment="table" id="table">
                                 <table class="table table-centered table-hover mb-0">
@@ -498,7 +481,25 @@
                                             <a th:if="${company.status eq 1}" th:onclick="'article_shenhe('+${company.id}+','+${company.status}+','+${company.userId}+')'" class="badge-danger btn-sm mg-y-5" data-toggle="tooltip" data-placement="top" title="" data-original-title="冻结"><i class="mdi mdi-trash-can"></i></a>
                                         </td>
                                     </tr>
+                                    <tr>
+                                        <td colspan="12">
+                                            <ul class="pagination" style="float: right">
 
+                                                <li class="page-item">
+                                                    <span class="page-link" th:onclick="'query(1)'">首页</span>
+                                                </li>
+                                                <li class="page-item"><span class="page-link">...</span></li>
+                                                <span  th:each="p:${pages.navigatepageNums}" >
+                                                    <li th:value="${pages.pageNum}" th:if="${pages.pageNum == p}" class="page-item active"><span class="page-link" th:onclick="'query('+${p}+')'" th:text="${p}"></span></li>
+                                                    <li th:if="${pages.pageNum != p}" class="page-item"><span class="page-link" th:onclick="'query('+${p}+')'" th:text="${p}"></span></li>
+                                                </span>
+                                                <li class="page-item"><span class="page-link">...</span></li>
+                                                <li class="page-item">
+                                                    <span class="page-link" th:onclick="'query('+${pages.pages}+')'">尾页</span>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -567,15 +568,7 @@
 <script src="/admin/js/app.min.js"></script>
 <script src="/js/axios.js"></script>
 <script>
-    /*选择状态*/
-    function  fn(){
-        //var     name=$("#item1").find("option:selected").text(); //获取文本值
-        var     name=$("#item1").find("option:selected").val();  //获取value值
-        if(name !==null){
-            version=name;
-        }
-    }
-
+    //查询
     function query(indexpage) {
         var companyName = $("#name").val();
         var companyType = $("#type").val();
@@ -607,16 +600,29 @@
         });
 
     }
-
-    //显示vip开始时间-结束时间
-    function showVIPTime(startTime,endTime){
-        $("#time").html(startTime+"-"+endTime);
-        $("#myModal").modal('show');
-    }
+    // //显示vip开始时间-结束时间
+    // function showVIPTime(startTime,endTime){
+    //     $("#time").html(startTime+"-"+endTime);
+    //     $("#myModal").modal('show');
+    // }
     //确认更改状态
     function article_shenhe(id,status,userId){
         if (confirm("确认更改状态?")) {
-            self.location = "/managerUser/update_company_status?id="+id+"&status="+status+"&userId="+userId;
+            $.ajax({
+                url:"/managerUser/update_company_status",
+                type:"POST",
+                data:{
+                    "id":id,
+                    "status":status,
+                    "userId":userId
+                },
+                success:function (result){
+                    alert(result.message);
+                    var indexpage = $(".page-item.active").val();
+                    query(indexpage);
+                }
+            });
+
         }
     }
 </script>

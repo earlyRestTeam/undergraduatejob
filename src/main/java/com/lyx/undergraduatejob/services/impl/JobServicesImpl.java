@@ -175,6 +175,19 @@ public class JobServicesImpl implements IJobServices {
         return result;
     }
 
+    public Map<String, String> updateJob(Job job) {
+        Map<String,String> res = new HashMap<>();
+
+        int i = jobMapper.updateByPrimaryKeySelective(job);
+        if(i > 0){
+            res.put(StaticPool.SUCCESS,"取消成功！");
+        }else {
+            logger.warn("服务 繁忙！" + job);
+            res.put(StaticPool.ERROR,"系统繁忙");
+        }
+        return res;
+    }
+
     @Override
     public Map<String, String> deleteIssueJob(Integer jobId, int companyId) {
         Map<String,String> result = new HashMap<>();
@@ -378,8 +391,9 @@ public class JobServicesImpl implements IJobServices {
     public Map<String, Object> selectJobById(Integer id) {
         Map<String,Object> map = new HashMap();
         Job job = jobMapper.selectByPrimaryKey(id);
-        if(job == null)
+        if(job == null){
             throw new RuntimeException(" 该工作 不存在！");
+        }
         Company company = companyMapper.selectByPrimaryKey(job.getCompanyId());
         map.put("job",job);
         map.put("company",company);

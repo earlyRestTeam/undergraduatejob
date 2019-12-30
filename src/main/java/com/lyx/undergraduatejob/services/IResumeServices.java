@@ -4,7 +4,9 @@ import com.github.pagehelper.PageInfo;
 
 import com.lyx.undergraduatejob.pojo.Resume;
 import com.lyx.undergraduatejob.search.entity.ResumeSearchEntity;
+import com.lyx.undergraduatejob.utils.MyPage;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -20,7 +22,7 @@ public interface IResumeServices {
      * @param resumeSearchEntity
      * @return
      */
-    PageInfo<Resume> queryResumeByKey(Integer indexPage, int pageSize, ResumeSearchEntity resumeSearchEntity);
+    MyPage queryResumeByKey(Integer indexPage, int pageSize, ResumeSearchEntity resumeSearchEntity);
 
 
     /**
@@ -45,7 +47,7 @@ public interface IResumeServices {
      * @param userId
      * @return
      */
-    Resume queryResumeByUserId(int userId);
+    List<Resume> queryResumeByUserId(int userId);
 
     /**
      * 添加个人简历

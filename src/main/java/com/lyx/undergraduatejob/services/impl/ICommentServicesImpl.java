@@ -108,15 +108,29 @@ public class ICommentServicesImpl implements ICommentServices {
 
         indexpage = indexpage == null ? 1 : indexpage;
 
-        PageHelper.startPage(indexpage,5);
+        PageHelper.startPage(indexpage,10);
 
         List<Comment> commentList = commentMapper.selectByExample(commentExample);
         if(commentList == null)
             return null;
 
-        PageInfo<Comment> info = new PageInfo(commentList,3);
+        PageInfo<Comment> info = new PageInfo(commentList,5);
 
         return info;
+    }
+
+    @Override
+    public List<Comment> queryComment(Comment comment){
+        CommentExample example = new CommentExample();
+        CommentExample.Criteria criteria = example.createCriteria();
+        if (comment.getUserId() != null){
+            criteria.andUserIdEqualTo(comment.getUserId());
+        }
+        List<Comment> comments = commentMapper.selectByExample(example);
+        if (comments == null){
+            return null;
+        }
+        return comments;
     }
 
     /**
@@ -138,9 +152,34 @@ public class ICommentServicesImpl implements ICommentServices {
         if(result > 0){
             res.put(StaticPool.SUCCESS,"删除成功");
         }else{
-            logger.error("delete erro" +commentId);
+            logger.error("delete error" +commentId);
             res.put(StaticPool.ERROR,"删除成功");
         }
         return res;
     }
+
+    @Override
+    public Map<String, Object> deleteComment(Comment comment) {
+        Map<String,Object> res = new HashMap<>();
+        int i = commentMapper.deleteByPrimaryKey(comment.getId());
+        if (i > 0){
+            res.put(StaticPool.SUCCESS,"删除成功");
+        }else {
+            logger.error("delete error" +comment);
+            res.put(StaticPool.ERROR,"删除失败");
+        }
+        return res;
+    }
+
+    @Override
+    public boolean deleteComments(Integer[] ids) {
+        for (int i=0; i<ids.length; i++){
+            Comment comment = new Comment();
+            comment.setId(ids[i]);
+            Map<String, Object> res = deleteComment(comment);
+        }
+        return true;
+    }
+
+
 }

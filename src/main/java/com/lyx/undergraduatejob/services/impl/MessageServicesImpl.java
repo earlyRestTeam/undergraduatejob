@@ -2,9 +2,8 @@ package com.lyx.undergraduatejob.services.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.lyx.undergraduatejob.mapper.MessageMapper;
-import com.lyx.undergraduatejob.pojo.Message;
-import com.lyx.undergraduatejob.pojo.MessageExample;
+import com.lyx.undergraduatejob.mapper.*;
+import com.lyx.undergraduatejob.pojo.*;
 import com.lyx.undergraduatejob.services.IJobServices;
 import com.lyx.undergraduatejob.services.IMessageServices;
 import com.lyx.undergraduatejob.utils.StaticPool;
@@ -31,6 +30,21 @@ public class MessageServicesImpl implements IMessageServices {
 
     @Autowired
     MessageMapper messageMapper;
+
+    @Autowired
+    AutCompanyMapper companyMapper;
+
+    @Autowired
+    AutStudentMapper studentMapper;
+
+    @Autowired
+    JobMapper jobMapper;
+
+    @Autowired
+    ResumeMapper resumeMapper;
+
+    @Autowired
+    ComplaintMapper complaintMapper;
 
     @Override
     public PageInfo queryMessage(Integer indexpage,Message message,@RequestParam(required = false)String keyword) {
@@ -68,6 +82,7 @@ public class MessageServicesImpl implements IMessageServices {
         Map<String,Object> res = new HashMap<>();
         message.setCreateTime(new Date());
         message.setStatus(1);
+        message.setReceiverStatus(0);
         int insert = messageMapper.insert(message);
         if (insert > 0){
             res.put(StaticPool.SUCCESS,"成功");
@@ -90,6 +105,43 @@ public class MessageServicesImpl implements IMessageServices {
             res.put(StaticPool.ERROR,"失败");
         }
         return res;
+    }
+
+    @Override
+    public Map<String, Object> showMessage() {
+        Map<String,Object> map = new HashMap<>();
+        AutCompanyExample autCompanyExample = new AutCompanyExample();
+        AutCompanyExample.Criteria criteria = autCompanyExample.createCriteria();
+        criteria.andStatusEqualTo(2);
+        List<AutCompany> autCompanies = companyMapper.selectByExample(autCompanyExample);
+
+        AutStudentExample autStudentExample = new AutStudentExample();
+        AutStudentExample.Criteria criteria1 = autStudentExample.createCriteria();
+        criteria1.andStatusEqualTo(2);
+        List<AutStudent> autStudents = studentMapper.selectByExample(autStudentExample);
+
+        JobExample jobExample = new JobExample();
+        JobExample.Criteria criteria2 = jobExample.createCriteria();
+        criteria2.andAulStatusEqualTo(0);
+        List<Job> jobs = jobMapper.selectByExample(jobExample);
+
+        ResumeExample resumeExample = new ResumeExample();
+        ResumeExample.Criteria criteria3 = resumeExample.createCriteria();
+        criteria3.andAulStatusEqualTo(0);
+        List<Resume> resumes = resumeMapper.selectByExample(resumeExample);
+
+        ComplaintExample example = new ComplaintExample();
+        ComplaintExample.Criteria criteria4 = example.createCriteria();
+        criteria4.andDealStatusEqualTo(0);
+        List<Complaint> complaints = complaintMapper.selectByExample(example);
+
+        map.put("autCompanies",autCompanies);
+        map.put("autStudents",autStudents);
+        map.put("jobs",jobs);
+        map.put("resumes",resumes);
+        map.put("complaints",complaints);
+
+        return map;
     }
 
 

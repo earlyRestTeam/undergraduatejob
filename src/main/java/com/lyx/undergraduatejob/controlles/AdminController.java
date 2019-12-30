@@ -1,13 +1,15 @@
 package com.lyx.undergraduatejob.controlles;
 
 import com.github.pagehelper.PageInfo;
-import com.lyx.undergraduatejob.pojo.AutCompany;
-import com.lyx.undergraduatejob.pojo.AutStudent;
-import com.lyx.undergraduatejob.pojo.Company;
-import com.lyx.undergraduatejob.pojo.Users;
+import com.lyx.undergraduatejob.pojo.*;
 import com.lyx.undergraduatejob.search.entity.CompanySerchEntity;
+import com.lyx.undergraduatejob.search.entity.JobSearchEntity;
 import com.lyx.undergraduatejob.search.entity.LoginEntity;
 import com.lyx.undergraduatejob.search.entity.UsersSearchEntity;
+import com.lyx.undergraduatejob.services.impl.*;
+import com.lyx.undergraduatejob.services.security.LoginEntityHelper;
+import com.lyx.undergraduatejob.services.security.OnlineEntity;
+import com.lyx.undergraduatejob.utils.MyPage;
 import com.lyx.undergraduatejob.services.IAdminServices;
 import com.lyx.undergraduatejob.services.impl.AutCompanyServiceImpl;
 import com.lyx.undergraduatejob.services.impl.AutStudentServiceImpl;
@@ -47,17 +49,35 @@ public class AdminController {
 
     @Autowired
     UserServicesImpl userServices;
+
     @Autowired
     IAdminServices adminServices;
+
     @Value("${jwt.tokenHead}")
     String tokenHead;
 
+    @Autowired
+    ResumeServicesImp resumeServices;
+
+    @Autowired
+    JobServicesImpl jobServices;
+
+    @RequestMapping("add")
+    public String add(){
+        return "/admin/add";
+    }
     /**
      * 职位审核管理
      * @return
      */
     @RequestMapping("audit-job")
-    public String audit_job() {
+    public String audit_job(HttpServletRequest request) {
+        JobSearchEntity entity = new JobSearchEntity();
+        entity.setStatus(null);
+        entity.setAulStatus(null);
+        PageInfo<Job> info = jobServices.selectJobByJobSearchEntityWithOutCompany(1, 10, entity);
+        request.setAttribute("pages",info);
+        request.setAttribute("job",new Job());
         return "/admin/audit-job";
     }
     /**
@@ -65,7 +85,10 @@ public class AdminController {
      * @return
      */
     @RequestMapping("audit-resume")
-    public String audit_resume() {
+    public String audit_resume(HttpServletRequest request) {
+        PageInfo<Resume> info = resumeServices.queryResumeByAdminExample(1, 10, null, null);
+        request.setAttribute("pages",info);
+        request.setAttribute("resume",new Resume());
         return "/admin/audit-resume";
     }
     /**
@@ -109,7 +132,6 @@ public class AdminController {
      */
     @RequestMapping("manager-company")
     public String manager_company(HttpServletRequest request) {
-        System.out.println("!!！！！！");
         CompanySerchEntity companySerchEntity = new CompanySerchEntity();
         PageInfo info = companyInfoServices.queryCompanyListByAdmin(1, companySerchEntity);
         request.setAttribute("pages",info);
@@ -122,8 +144,8 @@ public class AdminController {
     @RequestMapping("authentication-student")
     public String authentication_student(HttpServletRequest request) {
         AutStudent autStudnet = new AutStudent();
-        List<AutStudent> autStudentList = autStudnetService.queryAutStudentBack(autStudnet);
-        request.setAttribute("list",autStudentList);
+        PageInfo<AutStudent> info = autStudnetService.queryAutStudentBack(1,autStudnet);
+        request.setAttribute("pages",info);
         return "/admin/authentication-student";
     }
     /**
@@ -133,8 +155,8 @@ public class AdminController {
     @RequestMapping("authentication-company")
     public String authentication_company(HttpServletRequest request) {
         AutCompany autCompany = new AutCompany();
-        List<AutCompany> autCompanyList = autCompanyService.queryAutCompanyBack(autCompany);
-        request.setAttribute("list",autCompanyList);
+        PageInfo<AutCompany> info = autCompanyService.queryAutCompanyBack(1,autCompany);
+        request.setAttribute("pages",info);
         return "/admin/authentication-company";
     }
     /**
@@ -143,7 +165,7 @@ public class AdminController {
      */
     @RequestMapping("manager-advertising")
     public String manager_advertising() {
-        return "/admin/manager-advertising";
+        return "forward:/admin/advertising";
     }
     /**
      * 评论管理
@@ -151,7 +173,7 @@ public class AdminController {
      */
     @RequestMapping("manager-comment")
     public String manager_comment() {
-        return "/admin/manager-comment";
+        return "forward:/admin/comment";
     }
     /**
      * 投诉管理
@@ -159,7 +181,7 @@ public class AdminController {
      */
     @RequestMapping("manager-complaint")
     public String manager_complaint() {
-        return "/admin/manager-complaint";
+        return "forward:/admin/complaint";
     }
 
     @RequestMapping("auth-404")
@@ -307,7 +329,12 @@ public class AdminController {
 
 
     @RequestMapping("index")
-    public String index(){
+    public String index(HttpServletRequest request){
+        LoginEntityHelper loginEntityHelper = new LoginEntityHelper();
+        //OnlineEntity onlineEntity = loginEntityHelper.getOnlineEntity();
+        OnlineEntity onlineEntity = new OnlineEntity(1,null,"1","1","1","大苹果");
+        request.setAttribute("admin",onlineEntity);
+
         return "/admin/index";
     }
 

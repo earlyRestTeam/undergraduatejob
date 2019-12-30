@@ -23,7 +23,7 @@ public interface IAutCompanyService {
 
     boolean isAddAutCompany(Integer userid);
 
-    List<AutCompany> queryAutCompanyBack(AutCompany autCompany);
+    PageInfo<AutCompany> queryAutCompanyBack(Integer indexpage,AutCompany autCompany);
 
 //    public Map<String, String> updateAutCompany(AutCompany autCompany,Integer companyid);
 }

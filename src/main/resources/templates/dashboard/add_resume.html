@@ -1,0 +1,2561 @@
+
+<!DOCTYPE html>
+<!-- 
+Template Name: JB desks
+Version: 1.0.0
+Author: 
+
+-->
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="zxx" xmlns:th="http://www.thymeleaf.org">
+<!--[endif]-->
+
+<head>
+    <meta charset="utf-8" />
+    <title>创建简历</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta name="description" content="JB desks,job portal,job" />
+    <meta name="keywords" content="JB desks,job portal,job" />
+    <meta name="author" content="" />
+    <meta name="MobileOptimized" content="320" />
+    <!--Template style -->
+    <link rel="stylesheet" type="text/css" href="/dashboard/css/animate.css" />
+    <link rel="stylesheet" type="text/css" href="/dashboard/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/dashboard/css/fonts.css" />
+    <link rel="stylesheet" type="text/css" href="/dashboard/css/flaticon.css" />
+    <link rel="stylesheet" type="text/css" href="/dashboard/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="/dashboard/css/owl.carousel.css">
+    <link rel="stylesheet" type="text/css" href="/dashboard/css/owl.theme.default.css">
+    <link rel="stylesheet" type="text/css" href="/dashboard/css/magnific-popup.css" />
+    <link rel="stylesheet" type="text/css" href="/dashboard/css/dropify.min.css" />
+    <link rel="stylesheet" type="text/css" href="/dashboard/css/nice-select.css" />
+    <link rel="stylesheet" type="text/css" href="/dashboard/css/jquery-ui.min.css">
+    <link rel="stylesheet" type="text/css" href="/dashboard/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="/dashboard/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="/dashboard/css/responsive.css" />
+    <!--favicon-->
+    <link rel="shortcut icon" type="image/png" href="/dashboard/images/favicon.png" />
+</head>
+
+<body>
+    <!-- preloader Start -->
+    <!-- preloader Start -->
+    <div class="jb_preloader">
+        <div class="spinner_wrap">
+            <div class="spinner"></div>
+        </div>
+    </div>
+    <div class="cursor"></div>
+    <!-- Top Scroll Start --><a href="javascript:" id="return-to-top"><i class="fas fa-angle-double-up"></i></a>
+    <!-- Top Scroll End -->
+    <!-- cp navi wrapper Start -->
+    <nav class="cd-dropdown  d-block d-sm-block d-md-block d-lg-none d-xl-none">
+        <h2><a href="index"> <span><img src="/dashboard/images/logo.png" alt="img"></span></a></h2>
+        <a href="#0" class="cd-close">Close</a>
+      <ul class="cd-dropdown-content">
+            <li>
+                <form class="cd-search">
+                    <input type="search" placeholder="Search...">
+                </form>
+            </li>
+            <li class="has-children">
+                <a href="/index">主页</a>
+                <ul class="cd-secondary-dropdown icon_menu is-hidden">
+                    <li class="go-back"><a href="#0">Menu</a></li>
+                    <li><a href="/index">主页 I</a></li>
+                    <li><a href="/index_III">主页 II</a></li>
+
+                </ul>
+            </li>
+            <li class="has-children">
+                <a href="/job_listing_grid_left_filter">职位</a>
+                <ul class="cd-secondary-dropdown icon_menu is-hidden">
+                    <li class="go-back"><a href="#0">Menu</a></li>
+                    <li><a href="/job_listing_grid_left_filter">平铺</a></li>
+                    <li><a href="/job_listing_list_left_filter">列表</a></li>
+                    <li><a href="/job_single">job single</a></li>
+                </ul>
+            </li>
+            <!-- .has-children -->
+            <li class="has-children">
+                <a href="#">pages</a>
+                <ul class="cd-secondary-dropdown icon_menu is-hidden">
+                    <li class="go-back"><a href="#0">Menu</a></li>
+                    <li><a href="/about_us">关于我们</a></li>
+                    <li><a href="/companies">companies</a></li>
+                    <li><a href="/company_single">company single</a></li>
+                    <li><a href="/error_page">error page</a></li>
+                    <li><a href="/login">登录</a></li>
+                    <li><a href="/pricing_table">平台服务</a></li>
+                    <li><a href="/sign_up">注册</a></li>
+                </ul>
+            </li>
+            <li class="has-children">
+                <a href="#">企业资料</a>
+                <ul class="cd-secondary-dropdown is-hidden">
+                    <li class="go-back"><a href="#0">Menu</a>
+                    </li>
+                    <li class="has-children"> <a href="#">用户中心</a>
+                        <ul class="cd-secondary-dropdown is-hidden">
+                            <li class="go-back"><a href="#0">Menu</a>
+                            </li>
+                            <li>
+                                <a href="candidate_applied_job">找工作</a>
+                            </li>
+                            <li>
+                                <a href="candidate_dashboard">企业资料</a>
+                            </li>
+                            <li>
+                                <a href="candidate_edit_profile"> edit profile</a>
+                            </li>
+                            <li>
+                                <a href="candidate_favourite_job">我的收藏</a>
+                            </li>
+                            <li>
+                                <a href="candidate_resume"> resume</a>
+                            </li>
+                            <li>
+                                <a href="message"> message</a>
+                            </li>
+                            <li>
+                                <a href="pricing_plans">VIP</a>
+                            </li>
+                        </ul>
+                        <!-- .cd-secondary-dropdown -->
+                    </li>
+                    <!-- .has-children -->
+                    <li class="has-children"> <a href="#">企业中心</a>
+                        <ul class="cd-secondary-dropdown is-hidden">
+                            <li class="go-back"><a href="#0">Menu</a>
+                            </li>
+                            <li>
+                                <a href="comp_applications"> applications </a>
+                            </li>
+                            <li>
+                                <a href="comp_company_page">公司主页</a>
+                            </li>
+                            <li>
+                                <a href="comp_employer_dashboard">个人资料</a>
+                            </li>
+                            <li>
+                                <a href="comp_employer_edit_profile">编辑个人资料</a>
+                            </li>
+                            <li>
+                                <a href="comp_employer_manage_jobs"> manage jobs</a>
+                            </li>
+                            <li>
+                                <a href="comp_post_new_job"> post new job</a>
+                            </li>
+                            <li>
+                                <a href="message">消息</a>
+                            </li>
+                            <li>
+                                <a href="pricing_plans">VIP</a>
+                            </li>
+                        </ul>
+                        <!-- .cd-secondary-dropdown -->
+                    </li>
+                </ul>
+                <!-- .cd-secondary-dropdown -->
+            </li>
+            <li class="has-children">
+                <a href="#">博客</a>
+                <ul class="cd-secondary-dropdown icon_menu is-hidden">
+                    <li class="go-back"><a href="#0">Menu</a></li>
+                    <li><a href="/blog_single">blog single</a></li>
+                    <li><a href="/blog_category_right_sidebar">blog category</a></li>
+                </ul>
+            </li>
+            <li><a href="/contact_us">contact us </a></li>
+            <li><a href="/login">登录</a></li>
+        </ul>
+        <!-- .cd-dropdown-content -->
+    </nav>
+   <div class="cp_navi_main_wrapper jb_cover">
+        <div class="container-fluid">
+            <div class="cp_logo_wrapper">
+                <a href="/index">
+                    <img src="/dashboard/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <!-- mobile menu area start -->
+            <header class="mobail_menu d-block d-sm-block d-md-block d-lg-none d-xl-none">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="cd-dropdown-wrapper">
+                                <a class="house_toggle" href="#0">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 31.177 31.177" style="enable-background:new 0 0 31.177 31.177;" xml:space="preserve" width="25px" height="25px">
+                                        <g>
+                                            <g>
+                                                <path class="menubar" d="M30.23,1.775H0.946c-0.489,0-0.887-0.398-0.887-0.888S0.457,0,0.946,0H30.23    c0.49,0,0.888,0.398,0.888,0.888S30.72,1.775,30.23,1.775z" fill="#004165" />
+                                            </g>
+                                            <g>
+                                                <path class="menubar" d="M30.23,9.126H12.069c-0.49,0-0.888-0.398-0.888-0.888c0-0.49,0.398-0.888,0.888-0.888H30.23    c0.49,0,0.888,0.397,0.888,0.888C31.118,8.729,30.72,9.126,30.23,9.126z" fill="#004165" />
+                                            </g>
+                                            <g>
+                                                <path class="menubar" d="M30.23,16.477H0.946c-0.489,0-0.887-0.398-0.887-0.888c0-0.49,0.398-0.888,0.887-0.888H30.23    c0.49,0,0.888,0.397,0.888,0.888C31.118,16.079,30.72,16.477,30.23,16.477z" fill="#004165" />
+                                            </g>
+                                            <g>
+                                                <path class="menubar" d="M30.23,23.826H12.069c-0.49,0-0.888-0.396-0.888-0.887c0-0.49,0.398-0.888,0.888-0.888H30.23    c0.49,0,0.888,0.397,0.888,0.888C31.118,23.43,30.72,23.826,30.23,23.826z" fill="#004165" />
+                                            </g>
+                                            <g>
+                                                <path class="menubar" d="M30.23,31.177H0.946c-0.489,0-0.887-0.396-0.887-0.887c0-0.49,0.398-0.888,0.887-0.888H30.23    c0.49,0,0.888,0.398,0.888,0.888C31.118,30.78,30.72,31.177,30.23,31.177z" fill="#004165" />
+                                            </g>
+                                        </g>
+                                    </svg>
+                                </a>
+                                <!-- .cd-dropdown -->
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- .cd-dropdown-wrapper -->
+            </header>
+            <div class="menu_btn_box jb_cover">
+               <div class="jb_profile_box">
+                   <div class="nice-select" tabindex="0"> <span class="current">
+				   <img src="/dashboard/images/pf.png" alt="img">
+				   <div class="luca_profile_wrapper"><h1><a href="#">Luca Wallace</a></h1>
+				   <p><a href="#">luca@example.com</a></p>
+				   </div></span>
+                      <ul class="list">
+							<li><a href="#"><i class="fas fa-user-edit"></i>account</a>
+							</li>					
+							<li><a href="#"><i class="fas fa-cog"></i>Setting</a>
+							</li>				
+							<li><a href="#"><i class="fas fa-sign-in-alt"></i>logout</a>
+							</li>
+					</ul>
+                   </div>
+                </div>
+            </div>
+
+            <div class="jb_navigation_wrapper">
+                <div class="mainmenu d-xl-block d-lg-block d-md-none d-sm-none d-none">
+                    <ul class="main_nav_ul">
+                        <li class="has-mega gc_main_navigation"><a href="#" class="gc_main_navigation">主页</a>
+                            <ul class="navi_2_dropdown">
+                                <li class="parent">
+                                    <a href="/index"><i class="fas fa-square"></i>主页 I </a>
+                                </li>
+                                <li class="parent">
+                                    <a href="/index_III"><i class="fas fa-square"></i>主页 II</a>
+                                </li>
+
+
+                            </ul>
+                        </li>
+                        <li class="has-mega gc_main_navigation"><a href="/job_listing_grid_left_filter" class="gc_main_navigation">职位</a>
+
+                        </li>
+                        <li class="has-mega gc_main_navigation kv_sub_menu">
+                            <a href="#" class="gc_main_navigation">  candidates</a>
+                            <!-- mega menu start -->
+                            <ul class="kv_mega_menu">
+
+                                <li class="kv_mega_menu_width">
+                                    <div class="container">
+
+                                        <div class="jn_menu_partion_div">
+
+                                            <div class="candidate_width">
+                                                <div class="jen_tabs_conent_list jb_cover">
+                                                    <h1>job skills</h1>
+                                                    <ul>
+                                                        <li>
+                                                            <a href="#"><i class="fas fa-square"></i>HTML5 & CSS3</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#"><i class="fas fa-square"></i>wordpress</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#"><i class="fas fa-square"></i>javascript</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#"><i class="fas fa-square"></i>photoshop</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#"><i class="fas fa-square"></i>designer</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#"><i class="fas fa-square"></i>construction</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="candidate_width">
+                                                <div class="jen_tabs_conent_list jb_cover">
+                                                    <h1>categories</h1>
+                                                    <ul>
+                                                        <li>
+                                                            <a href="#"><i class="fas fa-square"></i>graphic design</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#"><i class="fas fa-square"></i>engineering jobs</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#"><i class="fas fa-square"></i>mainframe jobs</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#"><i class="fas fa-square"></i>PSU jobs</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#"><i class="fas fa-square"></i>goverment jobs</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#"><i class="fas fa-square"></i>IT company</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="candidate_width">
+                                                <div class="jen_tabs_conent_list   jb_cover">
+                                                    <h1>job location</h1>
+                                                    <ul>
+                                                        <li>
+                                                            <a href="#"><i class="fas fa-square"></i>india</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#"><i class="fas fa-square"></i>united state</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#"><i class="fas fa-square"></i>japan</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#"><i class="fas fa-square"></i>dubai</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#"><i class="fas fa-square"></i>south africa</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#"><i class="fas fa-square"></i>china</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="candidate_width">
+                                                <div class="jen_tabs_conent_list   jb_cover">
+                                                    <h1>open jobs</h1>
+                                                    <div class="open_jobs_wrapper">
+                                                        <div class="open_jobs_wrapper_1 jb_cover">
+                                                            <img src="/dashboard/images/job1.jpg" alt="img">
+                                                            <div class="open_job_text">
+                                                                <h3><a href="#">Some designers inelevated the..</a></h3>
+                                                                <p>5 hour ago</p>
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="open_jobs_wrapper_1 jb_cover">
+                                                            <img src="/dashboard/images/job1.jpg" alt="img">
+                                                            <div class="open_job_text">
+                                                                <h3><a href="#">Some designers inelevated the..</a></h3>
+                                                                <p>12 hour ago</p>
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="view_all_job jb_cover"><a href="#">view all jobs</a></div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li class="has-mega gc_main_navigation"><a href="#" class="gc_main_navigation">pages</a>
+                            <ul class="navi_2_dropdown">
+                                <li class="parent">
+                                    <a href="/about_us"> <i class="fas fa-square"></i>关于我们</a>
+                                </li>
+                                <li class="parent">
+                                    <a href="/companies"> <i class="fas fa-square"></i>companies</a>
+                                </li>
+                                <li class="parent">
+                                    <a href="/company_single"> <i class="fas fa-square"></i>company single</a>
+                                </li>
+                                <li class="parent">
+                                    <a href="/error_page"><i class="fas fa-square"></i>error page</a>
+                                </li>
+                                <li class="parent">
+                                    <a href="/login"><i class="fas fa-square"></i>登录</a>
+                                </li>
+                                <li class="parent">
+                                    <a href="/pricing_table"><i class="fas fa-square"></i>平台服务</a>
+                                </li>
+                                <li class="parent">
+                                    <a href="/sign_up"><i class="fas fa-square"></i>注册</a>
+                                </li>
+
+                            </ul>
+                        </li>
+						<li class="has-mega gc_main_navigation"><a href="#" class="gc_main_navigation active_class">企业资料</a>
+                            <ul class="navi_2_dropdown">
+                                <li class="parent">
+                                    <a href="#"><i class="fas fa-square"></i>用户中心<span><i class="fas fa-chevron-right"></i>
+									</span></a>
+                                    <ul class="dropdown-menu-right">
+                                        <li>
+                                            <a href="candidate_applied_job"> <i class="fas fa-square"></i>找工作</a>
+                                        </li>
+                                        <li>
+                                            <a href="/user/candidate_dashboard"> <i class="fas fa-square"></i>个人资料</a>
+                                        </li>
+                                        <li>
+                                            <a href="candidate_edit_profile"> <i class="fas fa-square"></i>编辑个人资料</a>
+                                        </li>
+                                        <li>
+                                            <a href="candidate_favourite_job"> <i class="fas fa-square"></i>我的收藏</a>
+                                        </li>
+                                        <li>
+                                            <a href="candidate_resume"> <i class="fas fa-square"></i>我的简历</a>
+                                        </li>
+                                        <li>
+                                            <a href="message"> <i class="fas fa-square"></i>个人信息</a>
+                                        </li>
+                                        <li>
+                                            <a href="pricing_plans"> <i class="fas fa-square"></i>VIP</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="parent">
+                                    <a href="#"><i class="fas fa-square"></i>企业中心<span><i class="fas fa-chevron-right"></i>
+									</span></a>
+                                    <ul class="dropdown-menu-right">
+                                        <li>
+                                            <a href="comp_applications"> <i class="fas fa-square"></i>收到的简历</a>
+                                        </li>
+                                        <li>
+                                            <a href="comp_company_page"> <i class="fas fa-square"></i>公司主页</a>
+                                        </li>
+                                        <li>
+                                            <a href="comp_employer_dashboard"> <i class="fas fa-square"></i>企业资料</a>
+                                        </li>
+                                        <li>
+                                            <a href="comp_employer_edit_profile"> <i class="fas fa-square"></i>编辑企业资料</a>
+                                        </li>
+                                        <li>
+                                            <a href="comp_employer_manage_jobs"> <i class="fas fa-square"></i>管理职位</a>
+                                        </li>
+                                        <li>
+                                            <a href="comp_post_new_job"> <i class="fas fa-square"></i>发布职位</a>
+                                        </li>
+                                        <li>
+                                            <a href="message"> <i class="fas fa-square"></i>公司信息</a>
+                                        </li>
+                                        <li>
+                                            <a href="pricing_plans"> <i class="fas fa-square"></i>VIP</a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li class="has-mega gc_main_navigation"><a href="#" class="gc_main_navigation">博客</a>
+                            <ul class="navi_2_dropdown">
+                                <li class="parent">
+                                    <a href="/blog_single"> <i class="fas fa-square"></i>blog single</a>
+                                </li>
+                                <li class="parent">
+                                    <a href="/blog_category_right_sidebar"> <i class="fas fa-square"></i>blog category</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a href="/contact_us" class="gc_main_navigation">联系我们</a></li>
+
+                    </ul>
+                </div>
+                <!-- mainmenu end -->
+                <div class="jb_search_btn_wrapper d-none d-sm-none d-md-none d-lg-block d-xl-block">
+                    <!-- extra nav -->
+                    <div class="extra-nav">
+                        <div class="extra-cell">
+                            <button id="quik-search-btn" type="button" class="site-button radius-xl"><i class="fas fa-search"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Quik search -->
+                    <div class="dez-quik-search bg-primary-dark">
+                        <form action="#">
+                            <input name="search" value="" type="text" class="form-control" placeholder="Type to search...">
+                            <span id="quik-search-remove"><i class="fas fa-times"></i></span>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- navi wrapper End -->
+    <!-- top header wrapper start -->
+    <div class="page_title_section">
+
+        <div class="page_header">
+            <div class="container">
+                <div class="row">
+                    <!-- section_heading start -->
+                    <div class="col-xl-9 col-lg-7 col-md-7 col-12 col-sm-12">
+
+                        <h1>添加简历</h1>
+                    </div>
+                    <div class="col-xl-3 col-lg-5 col-md-5 col-12 col-sm-12">
+                        <div class="sub_title_section">
+                            <ul class="sub_title">
+                                <li> <a href="#">主页</a>&nbsp; / &nbsp; </li>
+                                <li>我的简历</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- top header wrapper end -->
+    <!--employee dashboard wrapper start-->
+    <div class="candidate_dashboard_wrapper jb_cover">
+        <div class="container">
+            <div class="row">
+
+                <!-- 模态框 -->
+                <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="job_filter_category_sidebar company_wrapper jb_cover">
+                        <!--  基本信息模态框 -->
+                        <div class="modal fade delete_popup company_popup" id="myModal1" role="dialog">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+
+                                            <div class="delett_cntn jb_cover">
+                                                <h1><i class="fas fa-edit"></i>基本信息</h1>
+
+                                                <div class="category_wrapper jb_cover">
+                                                    <div class="row">
+                                                        <div class="col-lg-3 col-md-3 col-sm-12 col-12">
+                                                            <div class="category_lavel jb_cover">
+                                                                <p>姓名 :</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-9 col-md-9 col-sm-12 col-12">
+                                                            <div class="delete_jb_form">
+
+                                                                <input type="text" id="update_name" name="name" th:value="${resume.name}"/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="category_wrapper jb_cover">
+                                                    <div class="row">
+                                                        <div class="col-lg-3 col-md-3 col-sm-12 col-12">
+                                                            <div class="category_lavel jb_cover">
+                                                                <p>年龄 :</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-9 col-md-9 col-sm-12 col-12">
+                                                            <div class="updateete_jb_form">
+
+                                                                <input type="number" id="update_age"  th:value="${resume.age}">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="category_wrapper jb_cover">
+                                                    <div class="row">
+                                                        <div class="col-lg-3 col-md-3 col-sm-12 col-12">
+                                                            <div class="category_lavel jb_cover">
+                                                                <p>性别:</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-9 col-md-9 col-sm-12 col-12">
+                                                            <div class="delete_jb_form">
+                                                                 <div class="nice-select" tabindex="0">
+                                                                     <span th:if="${resume.gender == null}" class="update_gender current">女</span>
+                                                                     <span th:if="${resume.gender == 1}" class="update_gender current">女</span>
+                                                                     <span th:if="${resume.gender == 2}" class="update_gender current">男</span>
+                                                                     <ul class="list">
+                                                                         <li class="option focus">男</li>
+                                                                         <li class="option selected">女</li>
+                                                                     </ul>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="category_wrapper jb_cover">
+                                                    <div class="row">
+                                                        <div class="col-lg-3 col-md-3 col-sm-12 col-12">
+                                                            <div class="category_lavel jb_cover">
+                                                                <p>籍贯：</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-9 col-md-9 col-sm-12 col-12">
+                                                            <div class="delete_jb_form">
+                                                                <input type="text" id="update_nativePlace" name="nativePlace" th:value="${resume.nativePlace}">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="category_wrapper jb_cover">
+                                                    <div class="row">
+                                                        <div class="col-lg-3 col-md-3 col-sm-12 col-12">
+                                                            <div class="category_lavel jb_cover">
+                                                                <p>毕业学校：</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-9 col-md-9 col-sm-12 col-12">
+                                                            <div class="delete_jb_form">
+                                                                <input type="text" id="update_graduateSchool"   th:value="${resume.graduateSchool}"/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="category_wrapper jb_cover">
+                                                    <div class="row">
+                                                        <div class="col-lg-3 col-md-3 col-sm-12 col-12">
+                                                            <div class="category_lavel jb_cover">
+                                                                <p>专业：</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-9 col-md-9 col-sm-12 col-12">
+                                                            <div class="delete_jb_form">
+                                                                <input type="text" id="update_specialty"  th:value="${resume.specialty}">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="category_wrapper jb_cover">
+                                                    <div class="row">
+                                                        <div class="col-lg-3 col-md-3 col-sm-12 col-12">
+                                                            <div class="category_lavel jb_cover">
+                                                                <p>学历：</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-9 col-md-9 col-sm-12 col-12">
+                                                            <div class="delete_jb_form">
+                                                                <input type="text" id="update_education"  th:value="${resume.education}">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="padder_top jb_cover"></div>
+                                                <div class="header_btn search_btn applt_pop_btn">
+
+                                                    <a href="" onclick="update1()" data-dismiss="modal">保存修改</a>
+
+                                                </div>
+                                                <div class="cancel_wrapper">
+                                                    <a href="" data-dismiss="modal">取消</a>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--  联系方式模态框 -->
+                        <div class="modal fade delete_popup company_popup" id="myModal9" role="dialog">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+
+                                            <div class="delett_cntn jb_cover">
+                                                <h1><i class="fas fa-edit"></i>联系方式</h1>
+
+                                                <div class="category_wrapper jb_cover">
+                                                    <div class="row">
+                                                        <div class="col-lg-3 col-md-3 col-sm-12 col-12">
+                                                            <div class="category_lavel jb_cover">
+                                                                <p>联系电话 :</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-9 col-md-9 col-sm-12 col-12">
+                                                            <div class="delete_jb_form">
+
+                                                                <input type="tel" id="update_phone" th:value="${resume.phone}">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="category_wrapper jb_cover">
+                                                    <div class="row">
+                                                        <div class="col-lg-3 col-md-3 col-sm-12 col-12">
+                                                            <div class="category_lavel jb_cover">
+                                                                <p>邮箱 :</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-9 col-md-9 col-sm-12 col-12">
+                                                            <div class="delete_jb_form">
+
+                                                                <input type="email" id="update_email" th:value="${resume.email}">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="category_wrapper jb_cover">
+                                                    <div class="row">
+                                                        <div class="col-lg-3 col-md-3 col-sm-12 col-12">
+                                                            <div class="category_lavel jb_cover">
+                                                                <p>QQ号 :</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-9 col-md-9 col-sm-12 col-12">
+                                                            <div class="delete_jb_form">
+
+                                                                <input type="tel" id="update_qq" th:value="${resume.qq}">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="category_wrapper jb_cover">
+                                                    <div class="row">
+                                                        <div class="col-lg-3 col-md-3 col-sm-12 col-12">
+                                                            <div class="category_lavel jb_cover">
+                                                                <p>微信 :</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-9 col-md-9 col-sm-12 col-12">
+                                                            <div class="delete_jb_form">
+
+                                                                <input type="email" id="update_weiXin" th:value="${resume.weiXin}">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="padder_top jb_cover"></div>
+                                                <div class="header_btn search_btn applt_pop_btn">
+
+                                                    <a href="" onclick="update2()" data-dismiss="modal">保存修改</a>
+
+                                                </div>
+                                                <div class="cancel_wrapper">
+                                                    <a href="" data-dismiss="modal">取消</a>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--  求职意向模态框 -->
+                        <div class="modal fade delete_popup company_popup" id="myModal8" role="dialog">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+
+                                            <div class="delett_cntn jb_cover">
+                                                <h1><i class="fas fa-edit"></i>求职意向</h1>
+
+                                                <div class="category_wrapper jb_cover">
+                                                    <div class="row">
+                                                        <div class="col-lg-3 col-md-3 col-sm-12 col-12">
+                                                            <div class="category_lavel jb_cover">
+                                                                <p>职位/职能 :</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-9 col-md-9 col-sm-12 col-12">
+                                                            <div class="delete_jb_form">
+
+                                                                <input type="text" id="update_job" th:value="${resume.job}"/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="category_wrapper jb_cover">
+                                                    <div class="row">
+                                                        <div class="col-lg-3 col-md-3 col-sm-12 col-12">
+                                                            <div class="category_lavel jb_cover">
+                                                                <p>行业 :</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-9 col-md-9 col-sm-12 col-12">
+                                                            <div class="delete_jb_form">
+                                                                <input type="text" id="update_jobType" th:value="${resume.jobType}"/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="category_wrapper jb_cover">
+                                                    <div class="row">
+                                                        <div class="col-lg-3 col-md-3 col-sm-12 col-12">
+                                                            <div class="category_lavel jb_cover">
+                                                                <p>薪资 :</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-9 col-md-9 col-sm-12 col-12">
+                                                            <div class="delete_jb_form">
+                                                                <input type="number" id="update_salary" th:value="${resume.salary}"/>
+<!--                                                                <div class="nice-select" tabindex="0">-->
+<!--                                                                    <span id="update_salary" class="current" th:value="${}">2000以下</span>-->
+<!--                                                                    <ul class="list">-->
+<!--                                                                        <li data-value="2000以下" class="option selected">2000以下</li>-->
+<!--                                                                        <li data-value="2000-3000" class="option">2000-3000</li>-->
+<!--                                                                        <li data-value="3000-4000" class="option">3000-4000</li>-->
+<!--                                                                        <li data-value="4000-5000" class="option">4000-5000</li>-->
+<!--                                                                        <li data-value="5000以上" class="option">5000以上</li>-->
+<!--                                                                        <li data-value="面议" class="option focus">面议</li>-->
+<!--                                                                    </ul>-->
+<!--                                                                </div>-->
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="category_wrapper jb_cover">
+                                                    <div class="row">
+                                                        <div class="col-lg-3 col-md-3 col-sm-12 col-12">
+                                                            <div class="category_lavel jb_cover">
+                                                                <p>求职地区 :</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-9 col-md-9 col-sm-12 col-12">
+                                                            <div class="delete_jb_form">
+                                                                <div class="nice-select" tabindex="0">
+                                                                    <span id="update_jobAddress" class="current" th:value="${resume.jobAddress}">北京</span>
+                                                                    <ul class="list">
+                                                                        <li data-value="北京" class="option selected focus">北京</li>
+                                                                        <li data-value="上海" class="option">上海</li>
+                                                                        <li class="option">广州</li>
+                                                                        <li class="option">深圳</li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+<!--                                                <div class="category_wrapper jb_cover">-->
+<!--                                                    <div class="row">-->
+<!--                                                        <div class="col-lg-3 col-md-3 col-sm-12 col-12">-->
+<!--                                                            <div class="category_lavel jb_cover">-->
+<!--                                                                <p>工作类型</p>-->
+<!--                                                            </div>-->
+<!--                                                        </div>-->
+<!--                                                        <div class="col-lg-9 col-md-9 col-sm-12 col-12">-->
+<!--                                                            <div class="delete_jb_form">-->
+<!--                                                                <div class="nice-select" tabindex="0">-->
+<!--                                                                    <span th:if="${resume.partFull == null}" class="update_partFull current">全职</span>-->
+<!--                                                                    <span th:if="${resume.partFull == 1}" class="update_partFull current">兼职</span>-->
+<!--                                                                    <span th:if="${resume.partFull == 2}" class="update_partFull current">全职</span>-->
+<!--                                                                    <ul class="list">-->
+<!--                                                                        <li data-value="全职" class="option selected focus">全职</li>-->
+<!--                                                                        <li data-value="兼职" class="option">兼职</li>-->
+<!--                                                                    </ul>-->
+<!--                                                                </div>-->
+
+<!--                                                            </div>-->
+<!--                                                        </div>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
+
+                                                <div class="padder_top jb_cover"></div>
+                                                <div class="header_btn search_btn applt_pop_btn">
+
+                                                    <a href="" onclick="update3()" data-dismiss="modal">保存修改</a>
+
+                                                </div>
+                                                <div class="cancel_wrapper">
+                                                    <a href="" data-dismiss="modal">取消</a>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--  自我介绍模态框 -->
+                        <div class="modal fade delete_popup company_popup" id="myModal2" role="dialog">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+
+                                            <div class="delett_cntn jb_cover">
+                                                <h1><i class="fas fa-edit"></i>自我介绍</h1>
+
+                                                <div class="category_wrapper jb_cover">
+                                                    <div class="row">
+                                                        <div class="col-lg-3 col-md-3 col-sm-12 col-12">
+                                                            <div class="category_lavel jb_cover">
+                                                                <p>自我介绍:</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-9 col-md-9 col-sm-12 col-12">
+                                                            <div class="delete_jb_form">
+
+                                                                <textarea id="update_selfIntroduction" class="require" name="message" rows="5" th:text="${resume.selfIntroduction}"></textarea>
+                                                                <div class="cancel_wrapper">
+                                                                    <a onclick="clear($('#update_selfIntroduction').empty())" >清空</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="padder_top jb_cover"></div>
+                                                <div class="header_btn search_btn applt_pop_btn">
+
+                                                    <a href="" onclick="update4()" data-dismiss="modal">保存修改</a>
+
+                                                </div>
+                                                <div class="cancel_wrapper">
+                                                    <a href="" data-dismiss="modal">取消</a>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--  教育背景模态框 -->
+                        <div class="modal fade delete_popup company_popup" id="myModal4" role="dialog">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+
+                                            <div class="delett_cntn jb_cover">
+                                                <h1><i class="fas fa-edit"></i>education</h1>
+
+                                                <div class="category_wrapper jb_cover">
+                                                    <div class="row">
+                                                        <div class="col-lg-3 col-md-3 col-sm-12 col-12">
+                                                            <div class="category_lavel jb_cover">
+                                                                <p>education 01 :</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-9 col-md-9 col-sm-12 col-12">
+                                                            <div class="delete_jb_form gallery_link">
+                                                                <input type="text"  placeholder="Title">
+                                                            </div>
+                                                            <div class="delete_jb_form gallery_link">
+                                                                <input type="text"  placeholder="Institude">
+                                                            </div>
+                                                            <div class="delete_jb_form gallery_link">
+                                                                <input type="text"  placeholder="Period">
+                                                            </div>
+                                                            <div class="delete_jb_form gallery_link">
+
+                                                                <textarea name="message" rows="2" placeholder="Description"></textarea>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="category_wrapper gallery_browse jb_cover">
+                                                    <div class="row">
+                                                        <div class="col-lg-3 col-md-3 col-sm-12 col-12">
+                                                            <div class="category_lavel jb_cover">
+                                                                <p>education 02 :</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-9 col-md-9 col-sm-12 col-12">
+                                                            <div class="delete_jb_form gallery_link">
+                                                                <input type="text"  placeholder="Title">
+                                                            </div>
+                                                            <div class="delete_jb_form gallery_link">
+                                                                <input type="text"  placeholder="Institude">
+                                                            </div>
+                                                            <div class="delete_jb_form gallery_link">
+                                                                <input type="text"  placeholder="Period">
+                                                            </div>
+                                                            <div class="delete_jb_form gallery_link">
+
+                                                                <textarea name="message" rows="2" placeholder="Description"></textarea>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="header_btn search_btn applt_pop_btn">
+
+                                                    <a href="" onclick="update5()" data-dismiss="modal">保存修改</a>
+
+                                                </div>
+                                                <div class="cancel_wrapper">
+                                                    <a href="" data-dismiss="modal">取消</a>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--  工作经验模态框 -->
+                        <div class="modal fade delete_popup company_popup" id="myModal6" role="dialog">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+
+                                            <div id="workEx" class="delett_cntn jb_cover">
+                                                <h1><i class="fas fa-edit"></i>工作经验</h1>
+
+                                                <div class="category_wrapper jb_cover">
+                                                    <div class="row">
+                                                        <div class="col-lg-3 col-md-3 col-sm-12 col-12">
+                                                            <div class="category_lavel jb_cover">
+                                                                <p>工作经验 1 :</p>
+                                                                <div class="cancel_wrapper"  style="float: right">
+                                                                    <a href="#" style="width: 50px;height: 50px">删除</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-9 col-md-9 col-sm-12 col-12">
+                                                            <div class="delete_jb_form gallery_link">
+                                                                <input type="text"  placeholder="工作期间">
+                                                            </div>
+                                                            <div class="delete_jb_form gallery_link">
+                                                                <input type="text"  placeholder="所属公司">
+                                                            </div>
+                                                            <div class="delete_jb_form gallery_link">
+                                                                <input type="text"  placeholder="担任职位">
+                                                            </div>
+                                                            <div class="delete_jb_form gallery_link">
+
+                                                                <textarea name="message" rows="2" placeholder="详细描述"></textarea>
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+
+
+                                                <div class="category_wrapper gallery_browse jb_cover">
+                                                    <div class="row">
+                                                        <div class="col-lg-3 col-md-3 col-sm-12 col-12">
+                                                            <div class="category_lavel jb_cover">
+                                                                <p>experience 2 :</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-9 col-md-9 col-sm-12 col-12">
+                                                            <div class="delete_jb_form gallery_link">
+                                                                <input type="text"  placeholder="Title">
+                                                            </div>
+                                                            <div class="delete_jb_form gallery_link">
+                                                                <input type="text"  placeholder="Company">
+                                                            </div>
+                                                            <div class="delete_jb_form gallery_link">
+                                                                <input type="text"  placeholder="Period">
+                                                            </div>
+                                                            <div class="delete_jb_form gallery_link">
+
+                                                                <textarea name="message" rows="2" placeholder="Description"></textarea>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="header_btn search_btn applt_pop_btn" style="float: right;">
+                                                <a href="#" style="width: 50px;height: 50px">添加</a>
+                                            </div>
+
+                                            <div class="header_btn search_btn applt_pop_btn">
+                                                <a href="" onclick="update6()" data-dismiss="modal">保存修改</a>
+                                            </div>
+                                            <div class="cancel_wrapper">
+                                                <a href="" data-dismiss="modal">取消</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--  专业技能模态框 -->
+                        <div class="modal fade delete_popup company_popup" id="myModal7" role="dialog">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+
+                                            <div class="delett_cntn jb_cover">
+                                                <h1><i class="fas fa-edit"></i>专业技能</h1>
+
+                                                <div class="category_wrapper gallery_browse jb_cover">
+                                                    <div class="row">
+                                                        <div class="col-lg-3 col-md-3 col-sm-12 col-12">
+                                                            <div class="category_lavel jb_cover">
+                                                                <p class="gallery_link" style="margin-bottom: 20px">1:</p>
+                                                                <p class="gallery_link" style="margin-bottom: 20px">2:</p>
+                                                                <p class="gallery_link" style="margin-bottom: 20px">3:</p>
+                                                                <p class="gallery_link" style="margin-bottom: 20px">4:</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-9 col-md-9 col-sm-12 col-12">
+                                                            <div class="delete_jb_form gallery_link">
+                                                                <input type="text" id="update_skill1" th:value="${resume.skill1}">
+                                                            </div>
+                                                            <div class="delete_jb_form gallery_link">
+                                                                <input type="text" id="update_skill2" th:value="${resume.skill2}">
+                                                            </div>
+                                                            <div class="delete_jb_form gallery_link">
+                                                                <input type="text" id="update_skill3" th:value="${resume.skill3}">
+                                                            </div>
+                                                            <div class="delete_jb_form gallery_link">
+                                                                <input type="text" id="update_skill4" th:value="${resume.skill4}">
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="header_btn search_btn applt_pop_btn">
+
+                                                    <a href="" onclick="update7()" data-dismiss="modal">保存修改</a>
+
+                                                </div>
+                                                <div class="cancel_wrapper">
+                                                    <a href="" data-dismiss="modal">取消</a>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+<!--                <div class="col-lg-3 col-md-12 col-sm-12 col-12">-->
+<!--                    <div class="emp_dashboard_sidebar jb_cover">-->
+<!--                        <img src="/dashboard/images/profile.jpg" class="img-responsive" alt="post_img" />-->
+<!--                        <div class="emp_web_profile candidate_web_profile jb_cover">-->
+
+<!--                            <h4>luca wallace</h4>-->
+<!--                            <p>@username</p>-->
+<!--                            <div class="skills jb_cover">-->
+<!--                                <div class="skill-item jb_cover">-->
+<!--                                    <h6>profile<span>70%</span></h6>-->
+<!--                                    <div class="skills-progress"><span data-value="70%"></span>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="emp_follow_link jb_cover">-->
+<!--                             <ul class="feedlist">-->
+<!--                                <li><a href="/user/candidate_dashboard"><i class="fas fa-tachometer-alt"></i> 个人资料 </a></li>-->
+<!--                                <li><a href="/user/candidate_resume" class="link_active"><i class="fas fa-file"></i>我的简历</a></li>-->
+<!--                                <li><a href="candidate_favourite_job"><i class="fas fa-heart"></i>我的收藏</a></li>-->
+<!--                                <li><a href="candidate_applied_job"><i class="fas fa-check-square"></i>找工作</a></li>-->
+<!--                                <li><a href="message"><i class="fas fa-envelope"></i>消息</a></li>-->
+
+<!--                                <li><a href="pricing_plans"><i class="fas fa-tag"></i>VIP</a></li>-->
+<!--                            </ul>-->
+<!--                            <ul class="feedlist logout_link jb_cover">-->
+<!--                                <li><a href="#"><i class="fas fa-power-off"></i>退出登录</a></li>-->
+<!--                                <li>-->
+<!--                                    <a href="#" data-toggle="modal" data-target="#myModal"><i class="fas fa-trash-alt"></i>删除账户-->
+<!--                                </a>-->
+<!--                                </li>-->
+
+<!--                            </ul>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="modal fade delete_popup" id="myModal" role="dialog">-->
+<!--                        <div class="modal-dialog">-->
+<!--                            <div class="modal-content">-->
+<!--                                <button type="button" class="close" data-dismiss="modal">&times;</button>-->
+<!--                                <div class="row">-->
+<!--                                    <div class="col-lg-12 col-md-12 col-sm-12 col-12">-->
+
+<!--                                        <div class="delett_cntn jb_cover">-->
+<!--                                            <h1><i class="fas fa-trash-alt"></i> delete account</h1>-->
+<!--                                            <p>Are you sure! You want to delete your profile. This-->
+<!--                                                <br> can't be undone!</p>-->
+
+<!--                                            <div class="delete_jb_form">-->
+
+<!--                                                <input type="password" name="password" placeholder="Enter Password">-->
+<!--                                            </div>-->
+<!--                                            <div class="header_btn search_btn applt_pop_btn">-->
+
+<!--                                                <a onclick="del8()"data-dismiss="modal">保存修改</a>-->
+
+<!--                                            </div>-->
+<!--                                            <div class="cancel_wrapper">-->
+<!--                                                <a href="#" class="" data-dismiss="modal">取消</a>-->
+<!--                                            </div>-->
+<!--                                            <div class="login_remember_box jb_cover">-->
+<!--                                                <label class="control control&#45;&#45;checkbox">You accepts our <a href="#">Terms and Conditions </a> and <a href="#">Privacy Policy</a>-->
+<!--                                                    <input type="checkbox">-->
+<!--                                                    <span class="control__indicator"></span>-->
+<!--                                                </label>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+                
+                <input id="id" type="hidden" th:value="${resume.id}">
+
+                <!--个人简历 start-->
+                <div id="resume" class="col-lg-9 col-md-12 col-sm-12 col-12" th:fragment="myResume">
+                    <div class="row">
+
+<!--                        <div th:if="${resume.id == null}" id="noResume" class="col-lg-12 col-md-12 col-sm-12 col-12">-->
+<!--                            <div class="job_filter_category_sidebar company_wrapper jb_cover">-->
+<!--                                <div class="job_filter_sidebar_heading jb_cover">-->
+<!--                                    <h1> 您还没有简历，请在下方填写简历信息-->
+<!--&lt;!&ndash;                                        <span><a href="javascript:" ><i class="fas fa-edit"></i></a></span>&ndash;&gt;-->
+<!--                                    </h1>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    <input type="hidden" name="id" th:value="${resume.id}">-->
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="job_filter_category_sidebar company_wrapper jb_cover">
+                                <div class="job_filter_sidebar_heading jb_cover">
+                                    <h1> 基本信息 <span><a href="#" data-toggle="modal" data-target="#myModal1"><i class="fas fa-edit"></i></a></span></h1>
+                                </div>
+                                <!--                                &lt;!&ndash;  基本信息模态框 &ndash;&gt;-->
+                                <!--                                <div class="modal fade delete_popup company_popup" id="myModal1" role="dialog">-->
+                                <!--                                    <div class="modal-dialog">-->
+                                <!--                                        <div class="modal-content">-->
+                                <!--                                            <button type="button" class="close" data-dismiss="modal">&times;</button>-->
+                                <!--                                            <div class="row">-->
+                                <!--                                                <div class="col-lg-12 col-md-12 col-sm-12 col-12">-->
+
+                                <!--                                                    <div class="delett_cntn jb_cover">-->
+                                <!--                                                        <h1><i class="fas fa-edit"></i>基本信息</h1>-->
+
+                                <!--                                                        <div class="category_wrapper jb_cover">-->
+                                <!--                                                            <div class="row">-->
+                                <!--                                                                <div class="col-lg-3 col-md-3 col-sm-12 col-12">-->
+                                <!--                                                                    <div class="category_lavel jb_cover">-->
+                                <!--                                                                        <p>姓名 :</p>-->
+                                <!--                                                                    </div>-->
+                                <!--                                                                </div>-->
+                                <!--                                                                <div class="col-lg-9 col-md-9 col-sm-12 col-12">-->
+                                <!--                                                                    <div class="delete_jb_form">-->
+
+                                <!--                                                                        <input type="text" id="update_name" name="name" th:value="${resume.name}"/>-->
+                                <!--                                                                    </div>-->
+                                <!--                                                                </div>-->
+                                <!--                                                            </div>-->
+                                <!--                                                        </div>-->
+                                <!--                                                        <div class="category_wrapper jb_cover">-->
+                                <!--                                                            <div class="row">-->
+                                <!--                                                                <div class="col-lg-3 col-md-3 col-sm-12 col-12">-->
+                                <!--                                                                    <div class="category_lavel jb_cover">-->
+                                <!--                                                                        <p>年龄 :</p>-->
+                                <!--                                                                    </div>-->
+                                <!--                                                                </div>-->
+                                <!--                                                                <div class="col-lg-9 col-md-9 col-sm-12 col-12">-->
+                                <!--                                                                    <div class="delete_jb_form">-->
+
+                                <!--                                                                        <input type="number" id="update_age" name="age" th:value="${resume.age}">-->
+                                <!--                                                                    </div>-->
+                                <!--                                                                </div>-->
+                                <!--                                                            </div>-->
+                                <!--                                                        </div>-->
+                                <!--                                                        <div class="category_wrapper jb_cover">-->
+                                <!--                                                            <div class="row">-->
+                                <!--                                                                <div class="col-lg-3 col-md-3 col-sm-12 col-12">-->
+                                <!--                                                                    <div class="category_lavel jb_cover">-->
+                                <!--                                                                        <p>性别:</p>-->
+                                <!--                                                                    </div>-->
+                                <!--                                                                </div>-->
+                                <!--                                                                <div class="col-lg-9 col-md-9 col-sm-12 col-12">-->
+                                <!--                                                                    <div class="delete_jb_form">-->
+                                <!--&lt;!&ndash;                                                                        <input type="radio" name="name"/>男&ndash;&gt;-->
+                                <!--&lt;!&ndash;                                                                        <input type="radio" name="name"/>女&ndash;&gt;-->
+
+                                <!--                                                                        <div class="nice-select" tabindex="0">-->
+                                <!--                                                                            <span id="update_gender" class="current">女</span>-->
+                                <!--                                                                            <ul class="list">-->
+                                <!--                                                                                <li data-value="男" class="option focus">男</li>-->
+                                <!--                                                                                <li data-value="女" class="option selected">女</li>-->
+                                <!--                                                                            </ul>-->
+                                <!--                                                                        </div>-->
+                                <!--&lt;!&ndash;                                                                        <select id="update_gender" name="gender"  >&ndash;&gt;-->
+                                <!--&lt;!&ndash;                                                                            <option>男</option>&ndash;&gt;-->
+                                <!--&lt;!&ndash;                                                                            <option>女</option>&ndash;&gt;-->
+                                <!--&lt;!&ndash;                                                                        </select>&ndash;&gt;-->
+                                <!--                                                                    </div>-->
+                                <!--                                                                </div>-->
+                                <!--                                                            </div>-->
+                                <!--                                                        </div>-->
+
+                                <!--                                                        <div class="category_wrapper jb_cover">-->
+                                <!--                                                            <div class="row">-->
+                                <!--                                                                <div class="col-lg-3 col-md-3 col-sm-12 col-12">-->
+                                <!--                                                                    <div class="category_lavel jb_cover">-->
+                                <!--                                                                        <p>籍贯：</p>-->
+                                <!--                                                                    </div>-->
+                                <!--                                                                </div>-->
+                                <!--                                                                <div class="col-lg-9 col-md-9 col-sm-12 col-12">-->
+                                <!--                                                                    <div class="delete_jb_form">-->
+                                <!--                                                                        <input type="text" id="update_nativePlace" name="nativePlace" th:value="${resume.nativePlace}">-->
+                                <!--                                                                    </div>-->
+                                <!--                                                                </div>-->
+                                <!--                                                            </div>-->
+                                <!--                                                        </div>-->
+
+                                <!--                                                        <div class="category_wrapper jb_cover">-->
+                                <!--                                                            <div class="row">-->
+                                <!--                                                                <div class="col-lg-3 col-md-3 col-sm-12 col-12">-->
+                                <!--                                                                    <div class="category_lavel jb_cover">-->
+                                <!--                                                                        <p>毕业学校：</p>-->
+                                <!--                                                                    </div>-->
+                                <!--                                                                </div>-->
+                                <!--                                                                <div class="col-lg-9 col-md-9 col-sm-12 col-12">-->
+                                <!--                                                                    <div class="delete_jb_form">-->
+                                <!--                                                                        <input type="text" id="update_graduateSchool" name="name"  th:value="${resume.graduateSchool}"/>-->
+                                <!--                                                                    </div>-->
+                                <!--                                                                </div>-->
+                                <!--                                                            </div>-->
+                                <!--                                                        </div>-->
+
+                                <!--                                                        <div class="category_wrapper jb_cover">-->
+                                <!--                                                            <div class="row">-->
+                                <!--                                                                <div class="col-lg-3 col-md-3 col-sm-12 col-12">-->
+                                <!--                                                                    <div class="category_lavel jb_cover">-->
+                                <!--                                                                        <p>专业：</p>-->
+                                <!--                                                                    </div>-->
+                                <!--                                                                </div>-->
+                                <!--                                                                <div class="col-lg-9 col-md-9 col-sm-12 col-12">-->
+                                <!--                                                                    <div class="delete_jb_form">-->
+                                <!--                                                                        <input type="text" id="update_specialty" name="name" th:value="${resume.specialty}">-->
+                                <!--                                                                    </div>-->
+                                <!--                                                                </div>-->
+                                <!--                                                            </div>-->
+                                <!--                                                        </div>-->
+
+                                <!--                                                        <div class="category_wrapper jb_cover">-->
+                                <!--                                                            <div class="row">-->
+                                <!--                                                                <div class="col-lg-3 col-md-3 col-sm-12 col-12">-->
+                                <!--                                                                    <div class="category_lavel jb_cover">-->
+                                <!--                                                                        <p>学历：</p>-->
+                                <!--                                                                    </div>-->
+                                <!--                                                                </div>-->
+                                <!--                                                                <div class="col-lg-9 col-md-9 col-sm-12 col-12">-->
+                                <!--                                                                    <div class="delete_jb_form">-->
+                                <!--                                                                        <input type="text" id="update_education" name="name" th:value="${resume.education}">-->
+                                <!--                                                                    </div>-->
+                                <!--                                                                </div>-->
+                                <!--                                                            </div>-->
+                                <!--                                                        </div>-->
+
+                                <!--                                                        <div class="padder_top jb_cover"></div>-->
+                                <!--                                                        <div class="header_btn search_btn applt_pop_btn">-->
+
+                                <!--                                                            <a onclick="del1()"data-dismiss="modal">保存修改</a>-->
+
+                                <!--                                                        </div>-->
+                                <!--                                                        <div class="cancel_wrapper">-->
+                                <!--                                                            <a data-dismiss="modal">取消</a>-->
+                                <!--                                                        </div>-->
+
+                                <!--                                                    </div>-->
+
+                                <!--                                                </div>-->
+                                <!--                                            </div>-->
+                                <!--                                        </div>-->
+                                <!--                                    </div>-->
+                                <!--                                </div>-->
+
+                                <div class="job_overview_header jb_cover">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-12 col-sm-12 col-12">
+    <!--                                        <input type="hidden" id="id" th:value="${resume.id}">-->
+                                            <div class="jp_listing_overview_list_main_wrapper jb_cover">
+                                                <div class="jp_listing_list_icon">
+                                                    <i class="far fa-calendar"></i>
+                                                </div>
+                                                <div class="jp_listing_list_icon_cont_wrapper">
+                                                    <ul>
+                                                        <li>姓名:<p id="name" name="name" style="display: inline-block" th:text="${resume.name}"></p></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                            <div class="jp_listing_overview_list_main_wrapper jb_cover">
+                                                <div class="jp_listing_list_icon">
+                                                    <i class="far fa-calendar"></i>
+                                                </div>
+                                                <div class="jp_listing_list_icon_cont_wrapper">
+                                                    <ul>
+                                                        <li>年龄:<p id="age" name="age"  style="display: inline-block" th:text="${resume.age}"></p></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                            <div class="jp_listing_overview_list_main_wrapper jb_cover">
+                                                <div class="jp_listing_list_icon">
+                                                    <i class="far fa-calendar"></i>
+                                                </div>
+                                                <div class="jp_listing_list_icon_cont_wrapper">
+                                                    <input id="gender" name="gender" type="hidden" th:value="${resume.gender}">
+                                                    <ul>
+                                                        <li>性别:
+                                                            <p th:if="${resume.gender == null}" class="gender" style="display: inline-block"></p>
+                                                            <p th:if="${resume.gender == 1}" class="gender" style="display: inline-block">女</p>
+                                                            <p th:if="${resume.gender == 2}" class="gender" style="display: inline-block">男</p>
+                                                        </li>
+
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                            <div class="jp_listing_overview_list_main_wrapper jb_cover">
+                                                <div class="jp_listing_list_icon">
+                                                    <i class="far fa-calendar"></i>
+                                                </div>
+                                                <div class="jp_listing_list_icon_cont_wrapper">
+                                                    <ul>
+                                                        <li >籍贯:<p id="nativePlace" name="nativePlace" style="display: inline-block" th:text="${resume.nativePlace}"></p></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="col-lg-6 col-md-12 col-sm-12 col-12">
+
+
+
+                                            <div class="jp_listing_overview_list_main_wrapper jb_cover">
+                                                <div class="jp_listing_list_icon">
+                                                    <i class="far fa-calendar"></i>
+                                                </div>
+                                                <div class="jp_listing_list_icon_cont_wrapper">
+                                                    <ul>
+                                                        <li>毕业学校:<p id="graduateSchool" name="graduateSchool"  style="display: inline-block" th:text="${resume.graduateSchool}"></p></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                            <div class="jp_listing_overview_list_main_wrapper jb_cover">
+                                                <div class="jp_listing_list_icon">
+                                                    <i class="far fa-calendar"></i>
+                                                </div>
+                                                <div class="jp_listing_list_icon_cont_wrapper">
+                                                    <ul>
+                                                        <li >专业:<p id="specialty" name="specialty" style="display: inline-block" th:text="${resume.specialty}"></p></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                            <div class="jp_listing_overview_list_main_wrapper jb_cover">
+                                                <div class="jp_listing_list_icon">
+                                                    <i class="far fa-calendar"></i>
+                                                </div>
+                                                <div class="jp_listing_list_icon_cont_wrapper">
+                                                    <ul>
+                                                        <li>学历:<p id="education" name="education" style="display: inline-block" th:text="${resume.education}"></p></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+
+
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="job_filter_category_sidebar company_wrapper jb_cover">
+                                <div class="job_filter_sidebar_heading jb_cover">
+                                    <h1> 联系方式 <span><a href="#" data-toggle="modal" data-target="#myModal9"><i class="fas fa-edit"></i></a></span></h1>
+                                </div>
+                                <!--  联系方式模态框 -->
+
+                                <div class="job_overview_header jb_cover">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-12 col-sm-12 col-12">
+
+                                            <div class="jp_listing_overview_list_main_wrapper jb_cover">
+                                                <div class="jp_listing_list_icon">
+                                                    <i class="far fa-calendar"></i>
+                                                </div>
+                                                <div class="jp_listing_list_icon_cont_wrapper">
+                                                    <ul>
+                                                        <li>联系电话:<p id="phone" name="phone" style="display: inline-block" th:text="${resume.phone}"></p></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                            <div class="jp_listing_overview_list_main_wrapper jb_cover">
+                                                <div class="jp_listing_list_icon">
+                                                    <i class="far fa-calendar"></i>
+                                                </div>
+                                                <div class="jp_listing_list_icon_cont_wrapper">
+                                                    <ul>
+                                                        <li>QQ  号:<p id="qq" name="qq" style="display: inline-block" th:text="${resume.qq}"></p></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+
+
+                                        </div>
+
+                                        <div class="col-lg-6 col-md-12 col-sm-12 col-12">
+
+                                            <div class="jp_listing_overview_list_main_wrapper jb_cover">
+                                                <div class="jp_listing_list_icon">
+                                                    <i class="fas fa-map-marker-alt"></i>
+                                                </div>
+                                                <div class="jp_listing_list_icon_cont_wrapper">
+                                                    <ul>
+                                                        <li>邮箱:<p id="email" name="email" style="display: inline-block" th:text="${resume.email}"></p></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                            <div class="jp_listing_overview_list_main_wrapper jb_cover">
+                                                <div class="jp_listing_list_icon">
+                                                    <i class="fa fa-info-circle"></i>
+                                                </div>
+                                                <div class="jp_listing_list_icon_cont_wrapper">
+                                                    <ul>
+                                                        <li>微信:<p id="weiXin" name="weiXin" style="display: inline-block" th:text="${resume.weiXin}"></p></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="job_filter_category_sidebar company_wrapper jb_cover">
+                                <div class="job_filter_sidebar_heading jb_cover">
+                                    <h1> 求职意向 <span><a href="#" data-toggle="modal" data-target="#myModal8"><i class="fas fa-edit"></i></a></span></h1>
+                                </div>
+                                <!--                                &lt;!&ndash;  求职意向模态框 &ndash;&gt;-->
+                                <!--                                <div class="modal fade delete_popup company_popup" id="myModal8" role="dialog">-->
+                                <!--                                    <div class="modal-dialog">-->
+                                <!--                                        <div class="modal-content">-->
+                                <!--                                            <button type="button" class="close" data-dismiss="modal">&times;</button>-->
+                                <!--                                            <div class="row">-->
+                                <!--                                                <div class="col-lg-12 col-md-12 col-sm-12 col-12">-->
+
+                                <!--                                                    <div class="delett_cntn jb_cover">-->
+                                <!--                                                        <h1><i class="fas fa-edit"></i>求职意向</h1>-->
+
+                                <!--                                                        <div class="category_wrapper jb_cover">-->
+                                <!--                                                            <div class="row">-->
+                                <!--                                                                <div class="col-lg-3 col-md-3 col-sm-12 col-12">-->
+                                <!--                                                                    <div class="category_lavel jb_cover">-->
+                                <!--                                                                        <p>职位/职能 :</p>-->
+                                <!--                                                                    </div>-->
+                                <!--                                                                </div>-->
+                                <!--                                                                <div class="col-lg-9 col-md-9 col-sm-12 col-12">-->
+                                <!--                                                                    <div class="delete_jb_form">-->
+
+                                <!--                                                                        <input type="text" name="job" th:value="${resume.job}"/>-->
+                                <!--                                                                    </div>-->
+                                <!--                                                                </div>-->
+                                <!--                                                            </div>-->
+                                <!--                                                        </div>-->
+                                <!--                                                        <div class="category_wrapper jb_cover">-->
+                                <!--                                                            <div class="row">-->
+                                <!--                                                                <div class="col-lg-3 col-md-3 col-sm-12 col-12">-->
+                                <!--                                                                    <div class="category_lavel jb_cover">-->
+                                <!--                                                                        <p>行业 :</p>-->
+                                <!--                                                                    </div>-->
+                                <!--                                                                </div>-->
+                                <!--                                                                <div class="col-lg-9 col-md-9 col-sm-12 col-12">-->
+                                <!--                                                                    <div class="delete_jb_form">-->
+                                <!--                                                                        <input type="text" name="jobType" th:value="${resume.jobType}"/>-->
+                                <!--                                                                    </div>-->
+                                <!--                                                                </div>-->
+                                <!--                                                            </div>-->
+                                <!--                                                        </div>-->
+                                <!--                                                        <div class="category_wrapper jb_cover">-->
+                                <!--                                                            <div class="row">-->
+                                <!--                                                                <div class="col-lg-3 col-md-3 col-sm-12 col-12">-->
+                                <!--                                                                    <div class="category_lavel jb_cover">-->
+                                <!--                                                                        <p>薪资 :</p>-->
+                                <!--                                                                    </div>-->
+                                <!--                                                                </div>-->
+                                <!--                                                                <div class="col-lg-9 col-md-9 col-sm-12 col-12">-->
+                                <!--                                                                    <div class="delete_jb_form">-->
+                                <!--                                                                        <select>-->
+                                <!--                                                                            <option>2000以下</option>-->
+                                <!--                                                                            <option>2000-3000</option>-->
+                                <!--                                                                            <option>3000-4000</option>-->
+                                <!--                                                                            <option>4000-5000</option>-->
+                                <!--                                                                            <option>5000以上</option>-->
+                                <!--                                                                            <option>面议</option>-->
+                                <!--                                                                        </select>-->
+
+                                <!--                                                                    </div>-->
+                                <!--                                                                </div>-->
+                                <!--                                                            </div>-->
+                                <!--                                                        </div>-->
+                                <!--                                                        <div class="category_wrapper jb_cover">-->
+                                <!--                                                            <div class="row">-->
+                                <!--                                                                <div class="col-lg-3 col-md-3 col-sm-12 col-12">-->
+                                <!--                                                                    <div class="category_lavel jb_cover">-->
+                                <!--                                                                        <p>求职地区 :</p>-->
+                                <!--                                                                    </div>-->
+                                <!--                                                                </div>-->
+                                <!--                                                                <div class="col-lg-9 col-md-9 col-sm-12 col-12">-->
+                                <!--                                                                    <div class="delete_jb_form">-->
+                                <!--                                                                        <select value="所有">-->
+                                <!--                                                                            <option>全职</option>-->
+                                <!--                                                                            <option>兼职</option>-->
+                                <!--                                                                        </select>-->
+                                <!--&lt;!&ndash;                                                                        <input type="text" name="jobAddress" th:value="${resume.jobAddress}">&ndash;&gt;-->
+                                <!--                                                                    </div>-->
+                                <!--                                                                </div>-->
+                                <!--                                                            </div>-->
+                                <!--                                                        </div>-->
+                                <!--                                                        <div class="category_wrapper jb_cover">-->
+                                <!--                                                            <div class="row">-->
+                                <!--                                                                <div class="col-lg-3 col-md-3 col-sm-12 col-12">-->
+                                <!--                                                                    <div class="category_lavel jb_cover">-->
+                                <!--                                                                        <p>工作类型</p>-->
+                                <!--                                                                    </div>-->
+                                <!--                                                                </div>-->
+                                <!--                                                                <div class="col-lg-9 col-md-9 col-sm-12 col-12">-->
+                                <!--                                                                    <div class="delete_jb_form">-->
+
+                                <!--                                                                        <input type="text" name="partFull" th:value="${resume.partFull}">-->
+                                <!--                                                                    </div>-->
+                                <!--                                                                </div>-->
+                                <!--                                                            </div>-->
+                                <!--                                                        </div>-->
+
+                                <!--                                                        <div class="padder_top jb_cover"></div>-->
+                                <!--                                                        <div class="header_btn search_btn applt_pop_btn">-->
+
+                                <!--                                                            <a href="#"data-dismiss="modal">保存修改</a>-->
+
+                                <!--                                                        </div>-->
+                                <!--                                                        <div class="cancel_wrapper">-->
+                                <!--                                                            <a data-dismiss="modal">取消</a>-->
+                                <!--                                                        </div>-->
+
+                                <!--                                                    </div>-->
+
+                                <!--                                                </div>-->
+                                <!--                                            </div>-->
+                                <!--                                        </div>-->
+                                <!--                                    </div>-->
+                                <!--                                </div>-->
+
+                                <div class="job_overview_header jb_cover">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-12 col-sm-12 col-12">
+
+                                            <div class="jp_listing_overview_list_main_wrapper jb_cover">
+                                                <div class="jp_listing_list_icon">
+                                                    <i class="far fa-calendar"></i>
+                                                </div>
+                                                <div class="jp_listing_list_icon_cont_wrapper">
+                                                    <ul>
+                                                        <li>职位/职能:<p id="job" name="job" style="display: inline-block" th:text="${resume.job}"></p></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                            <div class="jp_listing_overview_list_main_wrapper jb_cover">
+                                                <div class="jp_listing_list_icon">
+                                                    <i class="far fa-calendar"></i>
+                                                </div>
+                                                <div class="jp_listing_list_icon_cont_wrapper">
+                                                    <ul>
+                                                        <li>薪资  :<p id="salary" name="salary" style="display: inline-block" th:text="${resume.salary}"></p></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+<!--                                            <div class="jp_listing_overview_list_main_wrapper jb_cover">-->
+<!--                                                <div class="jp_listing_list_icon">-->
+<!--                                                    <i class="far fa-calendar"></i>-->
+<!--                                                </div>-->
+<!--                                                <div class="jp_listing_list_icon_cont_wrapper">-->
+<!--                                                    <input type="hidden" id="partFull" name="partFull" th:value="${resume.partFull}">-->
+<!--                                                    <ul>-->
+<!--                                                        <li>工作类型:-->
+<!--                                                            <p th:if="${resume.partFull == null}" class="partFull"  style="display: inline-block"></p>-->
+<!--                                                            <p th:if="${resume.partFull == 1}" class="partFull"  style="display: inline-block">兼职</p>-->
+<!--                                                            <p th:if="${resume.partFull == 2}" class="partFull"  style="display: inline-block">全职</p>-->
+<!--                                                        </li>-->
+<!--                                                    </ul>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+
+
+                                        </div>
+
+                                        <div class="col-lg-6 col-md-12 col-sm-12 col-12">
+
+                                            <div class="jp_listing_overview_list_main_wrapper jb_cover">
+                                                <div class="jp_listing_list_icon">
+                                                    <i class="fas fa-envelope"></i>
+                                                </div>
+                                                <div class="jp_listing_list_icon_cont_wrapper">
+                                                    <ul>
+                                                        <li>行业  :<p id="jobType" name="jobType" style="display: inline-block" th:text="${resume.jobType}"></p></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                            <div class="jp_listing_overview_list_main_wrapper jb_cover">
+                                                <div class="jp_listing_list_icon">
+                                                    <i class="far fa-calendar"></i>
+                                                </div>
+                                                <div class="jp_listing_list_icon_cont_wrapper">
+                                                    <ul>
+                                                        <li>地点：<p id="jobAddress" name="jobAddress" style="display: inline-block" th:text="${resume.jobAddress}"></p></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="job_filter_category_sidebar company_wrapper jb_cover">
+                                <div class="job_filter_sidebar_heading jb_cover">
+                                    <h1> 自我介绍 <span><a href="#" data-toggle="modal" data-target="#myModal2"><i class="fas fa-edit"></i></a></span></h1>
+                                    <!--                                    &lt;!&ndash;  自我介绍模态框 &ndash;&gt;-->
+                                    <!--                                    <div class="modal fade delete_popup company_popup" id="myModal2" role="dialog">-->
+                                    <!--                                        <div class="modal-dialog">-->
+                                    <!--                                            <div class="modal-content">-->
+                                    <!--                                                <button type="button" class="close" data-dismiss="modal">&times;</button>-->
+                                    <!--                                                <div class="row">-->
+                                    <!--                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-12">-->
+
+                                    <!--                                                        <div class="delett_cntn jb_cover">-->
+                                    <!--                                                            <h1><i class="fas fa-edit"></i>自我介绍</h1>-->
+
+                                    <!--                                                            <div class="category_wrapper jb_cover">-->
+                                    <!--                                                                <div class="row">-->
+                                    <!--                                                                    <div class="col-lg-3 col-md-3 col-sm-12 col-12">-->
+                                    <!--                                                                        <div class="category_lavel jb_cover">-->
+                                    <!--                                                                            <p>自我介绍:</p>-->
+                                    <!--                                                                        </div>-->
+                                    <!--                                                                    </div>-->
+                                    <!--                                                                    <div class="col-lg-9 col-md-9 col-sm-12 col-12">-->
+                                    <!--                                                                        <div class="delete_jb_form">-->
+
+                                    <!--                                                                            <textarea class="require" name="message" rows="5" th:value="${resume.selfIntroduction}"></textarea>-->
+                                    <!--                                                                            <div class="cancel_wrapper">-->
+                                    <!--                                                                                <a href="#" >清空</a>-->
+                                    <!--                                                                            </div>-->
+                                    <!--                                                                        </div>-->
+                                    <!--                                                                    </div>-->
+                                    <!--                                                                </div>-->
+                                    <!--                                                            </div>-->
+
+                                    <!--                                                            <div class="padder_top jb_cover"></div>-->
+                                    <!--                                                            <div class="header_btn search_btn applt_pop_btn">-->
+
+                                    <!--                                                                <a href="#"data-dismiss="modal">保存修改</a>-->
+
+                                    <!--                                                            </div>-->
+                                    <!--                                                            <div class="cancel_wrapper">-->
+                                    <!--                                                                <a data-dismiss="modal">取消</a>-->
+                                    <!--                                                            </div>-->
+
+                                    <!--                                                        </div>-->
+
+                                    <!--                                                    </div>-->
+                                    <!--                                                </div>-->
+                                    <!--                                            </div>-->
+                                    <!--                                        </div>-->
+                                    <!--                                    </div>-->
+                                </div>
+                                <div class="job_overview_header pdd jb_cover">
+                                    <p id="selfIntroduction" th:text="${resume.selfIntroduction}"></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="job_filter_category_sidebar company_wrapper jb_cover">
+                                <div class="job_filter_sidebar_heading jb_cover">
+                                    <h1> 教育背景<span><a href="#" data-toggle="modal" data-target="#myModal4"><i class="fas fa-edit"></i></a></span></h1>
+                                </div>
+                                <!--                                &lt;!&ndash;  教育背景模态框 &ndash;&gt;-->
+                                <!--                                <div class="modal fade delete_popup company_popup" id="myModal4" role="dialog">-->
+                                <!--                                    <div class="modal-dialog">-->
+                                <!--                                        <div class="modal-content">-->
+                                <!--                                            <button type="button" class="close" data-dismiss="modal">&times;</button>-->
+                                <!--                                            <div class="row">-->
+                                <!--                                                <div class="col-lg-12 col-md-12 col-sm-12 col-12">-->
+
+                                <!--                                                    <div class="delett_cntn jb_cover">-->
+                                <!--                                                        <h1><i class="fas fa-edit"></i>education</h1>-->
+
+                                <!--                                                        <div class="category_wrapper jb_cover">-->
+                                <!--                                                            <div class="row">-->
+                                <!--                                                                <div class="col-lg-3 col-md-3 col-sm-12 col-12">-->
+                                <!--                                                                    <div class="category_lavel jb_cover">-->
+                                <!--                                                                        <p>education 01 :</p>-->
+                                <!--                                                                    </div>-->
+                                <!--                                                                </div>-->
+                                <!--                                                                <div class="col-lg-9 col-md-9 col-sm-12 col-12">-->
+                                <!--                                                                    <div class="delete_jb_form gallery_link">-->
+                                <!--                                                                        <input type="text" name="name" placeholder="Title">-->
+                                <!--                                                                    </div>-->
+                                <!--                                                                    <div class="delete_jb_form gallery_link">-->
+                                <!--                                                                        <input type="text" name="name" placeholder="Institude">-->
+                                <!--                                                                    </div>-->
+                                <!--                                                                    <div class="delete_jb_form gallery_link">-->
+                                <!--                                                                        <input type="text" name="name" placeholder="Period">-->
+                                <!--                                                                    </div>-->
+                                <!--                                                                    <div class="delete_jb_form gallery_link">-->
+
+                                <!--                                                                        <textarea name="message" rows="2" placeholder="Description"></textarea>-->
+                                <!--                                                                    </div>-->
+
+                                <!--                                                                </div>-->
+                                <!--                                                            </div>-->
+                                <!--                                                        </div>-->
+                                <!--                                                        <div class="category_wrapper gallery_browse jb_cover">-->
+                                <!--                                                            <div class="row">-->
+                                <!--                                                                <div class="col-lg-3 col-md-3 col-sm-12 col-12">-->
+                                <!--                                                                    <div class="category_lavel jb_cover">-->
+                                <!--                                                                        <p>education 02 :</p>-->
+                                <!--                                                                    </div>-->
+                                <!--                                                                </div>-->
+                                <!--                                                                <div class="col-lg-9 col-md-9 col-sm-12 col-12">-->
+                                <!--                                                                    <div class="delete_jb_form gallery_link">-->
+                                <!--                                                                        <input type="text" name="name" placeholder="Title">-->
+                                <!--                                                                    </div>-->
+                                <!--                                                                    <div class="delete_jb_form gallery_link">-->
+                                <!--                                                                        <input type="text" name="name" placeholder="Institude">-->
+                                <!--                                                                    </div>-->
+                                <!--                                                                    <div class="delete_jb_form gallery_link">-->
+                                <!--                                                                        <input type="text" name="name" placeholder="Period">-->
+                                <!--                                                                    </div>-->
+                                <!--                                                                    <div class="delete_jb_form gallery_link">-->
+
+                                <!--                                                                        <textarea name="message" rows="2" placeholder="Description"></textarea>-->
+                                <!--                                                                    </div>-->
+
+                                <!--                                                                </div>-->
+                                <!--                                                            </div>-->
+                                <!--                                                        </div>-->
+
+                                <!--                                                        <div class="header_btn search_btn applt_pop_btn">-->
+
+                                <!--                                                            <a href="#"data-dismiss="modal">保存修改</a>-->
+
+                                <!--                                                        </div>-->
+                                <!--                                                        <div class="cancel_wrapper">-->
+                                <!--                                                            <a data-dismiss="modal">取消</a>-->
+                                <!--                                                        </div>-->
+
+                                <!--                                                    </div>-->
+
+                                <!--                                                </div>-->
+                                <!--                                            </div>-->
+                                <!--                                        </div>-->
+                                <!--                                    </div>-->
+                                <!--                                </div>-->
+
+                                <div class="job_overview_header jb_cover">
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                                            <div class="jp_listing_overview_list_main_wrapper education_board jb_cover">
+                                                <div class="jp_listing_list_icon">
+                                                    <i class="fas fa-graduation-cap"></i>
+                                                </div>
+                                                <div class="jp_listing_list_icon_cont_wrapper">
+                                                    <ul>
+                                                        <li>2018 - 至今</li>
+                                                        <li>博士 <a href="#">清华大学 </a></li>
+                                                    </ul>
+                                                    <p>Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage</p>
+                                                </div>
+                                            </div>
+                                            <div class="jp_listing_overview_list_main_wrapper education_board jb_cover">
+                                                <div class="jp_listing_list_icon">
+                                                    <i class="fas fa-graduation-cap"></i>
+                                                </div>
+                                                <div class="jp_listing_list_icon_cont_wrapper">
+                                                    <ul>
+                                                        <li>2014 - 2018</li>
+                                                        <li>研究生 <a href="#">北京大学</a></li>
+                                                    </ul>
+                                                    <p>Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage</p>
+                                                </div>
+                                            </div>
+                                            <div class="jp_listing_overview_list_main_wrapper education_board jb_cover">
+                                                <div class="jp_listing_list_icon">
+                                                    <i class="fas fa-graduation-cap"></i>
+                                                </div>
+                                                <div class="jp_listing_list_icon_cont_wrapper">
+                                                    <ul>
+                                                        <li>2014 - 2014</li>
+                                                        <li>高中生 <a href="#">衡水中学</a></li>
+                                                    </ul>
+                                                    <p>Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="job_filter_category_sidebar company_wrapper jb_cover">
+                                <div class="job_filter_sidebar_heading jb_cover">
+                                    <h1>工作经验 <span><a href="#" data-toggle="modal" data-target="#myModal6"><i class="fas fa-edit"></i></a></span></h1>
+                                </div>
+                                <!--                                &lt;!&ndash;  工作经验模态框 &ndash;&gt;-->
+                                <!--                                <div class="modal fade delete_popup company_popup" id="myModal6" role="dialog">-->
+                                <!--                                    <div class="modal-dialog">-->
+                                <!--                                        <div class="modal-content">-->
+                                <!--                                            <button type="button" class="close" data-dismiss="modal">&times;</button>-->
+                                <!--                                            <div class="row">-->
+                                <!--                                                <div class="col-lg-12 col-md-12 col-sm-12 col-12">-->
+
+                                <!--                                                    <div id="workEx" class="delett_cntn jb_cover">-->
+                                <!--                                                        <h1><i class="fas fa-edit"></i>工作经验</h1>-->
+
+                                <!--                                                        <div class="category_wrapper jb_cover">-->
+                                <!--                                                            <div class="row">-->
+                                <!--                                                                <div class="col-lg-3 col-md-3 col-sm-12 col-12">-->
+                                <!--                                                                    <div class="category_lavel jb_cover">-->
+                                <!--                                                                        <p>工作经验 1 :</p>-->
+                                <!--                                                                        <div class="cancel_wrapper"  style="float: right">-->
+                                <!--                                                                            <a href="#" style="width: 50px;height: 50px">删除</a>-->
+                                <!--                                                                        </div>-->
+                                <!--                                                                    </div>-->
+                                <!--                                                                </div>-->
+                                <!--                                                                <div class="col-lg-9 col-md-9 col-sm-12 col-12">-->
+                                <!--                                                                    <div class="delete_jb_form gallery_link">-->
+                                <!--                                                                        <input type="text" name="name" placeholder="工作期间">-->
+                                <!--                                                                    </div>-->
+                                <!--                                                                    <div class="delete_jb_form gallery_link">-->
+                                <!--                                                                        <input type="text" name="name" placeholder="所属公司">-->
+                                <!--                                                                    </div>-->
+                                <!--                                                                    <div class="delete_jb_form gallery_link">-->
+                                <!--                                                                        <input type="text" name="name" placeholder="担任职位">-->
+                                <!--                                                                    </div>-->
+                                <!--                                                                    <div class="delete_jb_form gallery_link">-->
+
+                                <!--                                                                        <textarea name="message" rows="2" placeholder="详细描述"></textarea>-->
+                                <!--                                                                    </div>-->
+
+                                <!--                                                                </div>-->
+
+                                <!--                                                            </div>-->
+                                <!--                                                        </div>-->
+
+
+
+                                <!--                                                        <div class="category_wrapper gallery_browse jb_cover">-->
+                                <!--                                                            <div class="row">-->
+                                <!--                                                                <div class="col-lg-3 col-md-3 col-sm-12 col-12">-->
+                                <!--                                                                    <div class="category_lavel jb_cover">-->
+                                <!--                                                                        <p>experience 2 :</p>-->
+                                <!--                                                                    </div>-->
+                                <!--                                                                </div>-->
+                                <!--                                                                <div class="col-lg-9 col-md-9 col-sm-12 col-12">-->
+                                <!--                                                                    <div class="delete_jb_form gallery_link">-->
+                                <!--                                                                        <input type="text" name="name" placeholder="Title">-->
+                                <!--                                                                    </div>-->
+                                <!--                                                                    <div class="delete_jb_form gallery_link">-->
+                                <!--                                                                        <input type="text" name="name" placeholder="Company">-->
+                                <!--                                                                    </div>-->
+                                <!--                                                                    <div class="delete_jb_form gallery_link">-->
+                                <!--                                                                        <input type="text" name="name" placeholder="Period">-->
+                                <!--                                                                    </div>-->
+                                <!--                                                                    <div class="delete_jb_form gallery_link">-->
+
+                                <!--                                                                        <textarea name="message" rows="2" placeholder="Description"></textarea>-->
+                                <!--                                                                    </div>-->
+
+                                <!--                                                                </div>-->
+                                <!--                                                            </div>-->
+                                <!--                                                        </div>-->
+                                <!--                                                        -->
+                                <!--                                                    </div>-->
+
+                                <!--                                                    <div class="header_btn search_btn applt_pop_btn" style="float: right;">-->
+                                <!--                                                        <a href="#" style="width: 50px;height: 50px">添加</a>-->
+                                <!--                                                    </div>-->
+
+                                <!--                                                    <div class="header_btn search_btn applt_pop_btn">-->
+                                <!--                                                        <a href="#"data-dismiss="modal">保存修改</a>-->
+                                <!--                                                    </div>-->
+                                <!--                                                    <div class="cancel_wrapper">-->
+                                <!--                                                        <a data-dismiss="modal">取消</a>-->
+                                <!--                                                    </div>-->
+                                <!--                                                </div>-->
+                                <!--                                            </div>-->
+                                <!--                                        </div>-->
+                                <!--                                    </div>-->
+                                <!--                                </div>-->
+
+
+                                <div class="job_overview_header jb_cover">
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-12" th:each="workExperience:${workExperienceList}">
+
+                                            <div class="jp_listing_overview_list_main_wrapper education_board jb_cover">
+                                                <div class="jp_listing_list_icon">
+                                                    <i class="fas fa-suitcase"></i>
+                                                </div>
+                                                <div class="jp_listing_list_icon_cont_wrapper">
+                                                    <ul>
+                                                        <li th:text="${workExperience.workTime}">2018 - Present</li>
+                                                        <li>所属公司：
+                                                            <p th:text="${workExperience.workCompany}" style="display: inline-block"></p>
+                                                        </li>
+                                                        <li>担任职位：
+                                                            <p th:text="${workExperience.job}" style="display: inline-block"></p>
+                                                        </li>
+                                                        <li>详细描述：</li>
+                                                    </ul>
+                                                    <p th:text="${workExperience.experienceDesc}">As a UI/UX Designer, i have a strong background of work closely with Developers and associate with Design Research to enhance design suggestions. Manage design wireframes, mockups and navigation maps. My job was to make sure that my Designs are unique.Develop clean well executed design concepts. Coordinate with team on design and prototype of new interfaces.</p>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="job_filter_category_sidebar company_wrapper jb_cover">
+                                <div class="job_filter_sidebar_heading jb_cover">
+                                    <h1> 专业技能 <span><a href="#" data-toggle="modal" data-target="#myModal7"><i class="fas fa-edit"></i></a></span></h1>
+                                </div>
+                                <!--                                &lt;!&ndash;  专业技能模态框 &ndash;&gt;-->
+                                <!--                                <div class="modal fade delete_popup company_popup" id="myModal7" role="dialog">-->
+                                <!--                                    <div class="modal-dialog">-->
+                                <!--                                        <div class="modal-content">-->
+                                <!--                                            <button type="button" class="close" data-dismiss="modal">&times;</button>-->
+                                <!--                                            <div class="row">-->
+                                <!--                                                <div class="col-lg-12 col-md-12 col-sm-12 col-12">-->
+
+                                <!--                                                    <div class="delett_cntn jb_cover">-->
+                                <!--                                                        <h1><i class="fas fa-edit"></i>qualification</h1>-->
+
+                                <!--                                                        <div class="category_wrapper gallery_browse jb_cover">-->
+                                <!--                                                            <div class="row">-->
+                                <!--                                                                <div class="col-lg-3 col-md-3 col-sm-12 col-12">-->
+                                <!--                                                                    <div class="category_lavel jb_cover">-->
+                                <!--                                                                        <p>type here:</p>-->
+                                <!--                                                                    </div>-->
+                                <!--                                                                </div>-->
+                                <!--                                                                <div class="col-lg-9 col-md-9 col-sm-12 col-12">-->
+                                <!--                                                                    <div class="delete_jb_form gallery_link">-->
+                                <!--                                                                        <input type="text" name="name" placeholder="01">-->
+                                <!--                                                                    </div>-->
+                                <!--                                                                    <div class="delete_jb_form gallery_link">-->
+                                <!--                                                                        <input type="text" name="name" placeholder="02">-->
+                                <!--                                                                    </div>-->
+                                <!--                                                                    <div class="delete_jb_form gallery_link">-->
+                                <!--                                                                        <input type="text" name="name" placeholder="03">-->
+                                <!--                                                                    </div>-->
+                                <!--                                                                    <div class="delete_jb_form gallery_link">-->
+                                <!--                                                                        <input type="text" name="name" placeholder="04">-->
+                                <!--                                                                    </div>-->
+
+                                <!--                                                                </div>-->
+                                <!--                                                            </div>-->
+                                <!--                                                        </div>-->
+
+                                <!--                                                        <div class="header_btn search_btn applt_pop_btn">-->
+
+                                <!--                                                            <a href="#"data-dismiss="modal">保存修改</a>-->
+
+                                <!--                                                        </div>-->
+                                <!--                                                        <div class="cancel_wrapper">-->
+                                <!--                                                            <a data-dismiss="modal">取消</a>-->
+                                <!--                                                        </div>-->
+
+                                <!--                                                    </div>-->
+
+                                <!--                                                </div>-->
+                                <!--                                            </div>-->
+                                <!--                                        </div>-->
+                                <!--                                    </div>-->
+                                <!--                                </div>-->
+
+                                <div class="job_overview_header jb_cover">
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+
+                                            <ul class="speical_qualification_wrapper">
+                                                <li>
+                                                    <i class="fas fa-check-square"></i>
+                                                    <p id="skill1" name="skill1" th:text="${resume.skill1}" style="display: inline-block"></p>
+                                                </li>
+                                                <li>
+                                                    <i class="fas fa-check-square"></i>
+                                                    <p id="skill2" name="skill2" th:text="${resume.skill2}" style="display: inline-block"></p>
+                                                </li>
+                                                <li>
+                                                    <i class="fas fa-check-square"></i>
+                                                    <p id="skill3" name="skill3" th:text="${resume.skill3}" style="display: inline-block"></p>
+                                                </li>
+                                                <li>
+                                                    <i class="fas fa-check-square"></i>
+                                                    <p id="skill4" name="skill4" th:text="${resume.skill4}" style="display: inline-block"></p>
+                                                </li>
+
+                                            </ul>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="header_btn search_btn jb_cover" >
+                                <a href="javascript:" id="saveUpdate">保存</a>
+                                <a href="javascript:" onclick="downloadword()" style="padding-left: 40px">上传本地简历</a>
+<!--                                <a href="javascript:" onclick="downloadword()" style="padding-left: 40px">下载简历</a>-->
+                            </div>
+                        </div>
+                </div>
+                </div>
+                <!--个人简历 end-->
+
+            </div>
+        </div>
+    </div>
+    <!--employee dashboard wrapper end-->
+    <!-- newsletter wrapper start -->
+    <div class="jb_cover">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="job_newsletter_wrapper jb_cover">
+                        <div class="jb_newslwtteter_left">
+                            <h2> Looking For A Job</h2>
+                            <p>Your next level Product developemnt company assetsYour next level Product </p>
+                        </div>
+                        <div class="jb_newslwtteter_button">
+                            <div class="header_btn search_btn news_btn jb_cover">
+
+                                <a href="#">submit</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- newsletter wrapper end -->
+    <!-- footer Wrapper Start -->
+    <div class="footer jb_cover">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-sm-6 col-12">
+                    <div class="footerNav jb_cover">
+                        <a href="#"><img src="/dashboard/images/logo2.png" alt="img"></a>
+                        <ul class="footer_first_contact">
+                            <li><i class="flaticon-location-pointer"></i>
+                                <p>123 City Avenue, Floor 10,
+                                    <br> malbourne, Australia.
+                                </p>
+                            </li>
+                            <li><i class="flaticon-telephone"></i>
+                                <p>1 -234 -456 -7890
+                                    <br> 1 -234 -456 -7890</p>
+                            </li>
+                            <li><i class="flaticon-envelope"></i><a href="#">info@Jbdesks.com </a>
+                                <br>
+                                <a href="#">support@Jbdesks.com</a>
+                            </li>
+
+                        </ul>
+
+                        <ul class="icon_list_news jb_cover">
+                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                            <li>
+                                <a href="#"><i class="fab fa-twitter"></i>
+                                    </a>
+                            </li>
+                            <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                            <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 col-12">
+                    <div class="footerNav jb_cover footer_border_displ">
+                        <h5>features</h5>
+                        <ul class="nav-widget">
+                            <li><a href="#"><i class="fa fa-square"></i>Job Management & Billing</a></li>
+
+                            <li><a href="#"><i class="fa fa-square"></i>Time & Materials Tracking</a></li>
+
+                            <li><a href="#"><i class="fa fa-square"></i>Standards Compliance</a></li>
+
+                            <li><a href="#"><i class="fa fa-square"></i>Real Time GPS Tracking</a></li>
+
+                            <li><a href="#"><i class="fa fa-square"></i>Client Portal</a></li>
+
+                            <li><a href="#"><i class="fa fa-square"></i> Powerful Workflow</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 col-12">
+                    <div class="footerNav jb_cover footer_border_displ">
+                        <h5>browse</h5>
+                        <ul class="nav-widget">
+
+                            <li><a href="#"><i class="fa fa-square"></i>Freelancers by Category</a></li>
+
+                            <li><a href="#"><i class="fa fa-square"></i> Freelancers in USA </a></li>
+
+                            <li><a href="#"><i class="fa fa-square"></i> Freelancers in UK</a></li>
+
+                            <li><a href="#"><i class="fa fa-square"></i> Freelancers in Canada</a></li>
+                            <li><a href="#"><i class="fa fa-square"></i> Freelancers in india</a></li>
+                            <li><a href="#"><i class="fa fa-square"></i> find jobs</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 col-12">
+                    <div class="footerNav jb_cover footer_border_displ">
+                        <h5>app & integration</h5>
+                        <ul class="nav-widget">
+                            <li>
+                                <a href="#"><img src="/dashboard/images/ft1.png" alt="img">Xero
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#"><img src="/dashboard/images/ft2.png" alt="img">Reckon
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#"><img src="/dashboard/images/ft3.png" alt="img">Flexidocs
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#"><img src="/dashboard/images/ft4.png" alt="img">Microsoft Exchange</a>
+                            </li>
+                            <li>
+                                <a href="#"><img src="/dashboard/images/ft5.png" alt="img"> Mailchimp
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#"><img src="/dashboard/images/ft6.png" alt="img"> MYOB
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="copyright_left"><i class="fa fa-copyright"></i> 2019 <a href="#">  JB desks.  </a> All Rights Reserved.
+                </div>
+
+                <div class="clearfix"></div>
+            </div>
+            <!--/.row-->
+        </div>
+        <!--/.container-->
+        <div class="waveWrapper waveAnimation">
+            <div class="waveWrapperInner bgTop gradient-color">
+                <div class="wave waveTop"></div>
+            </div>
+            <div class="waveWrapperInner bgMiddle">
+                <div class="wave waveMiddle"></div>
+            </div>
+            <div class="waveWrapperInner bgBottom">
+                <div class="wave waveBottom"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- footer Wrapper End -->
+	 <!-- chat box Wrapper start -->
+	<div id="chat-circle" class="btn btn-raised"> 
+		<i class="fas fa-comment-alt"></i>
+	</div>
+    <div class="chat-box">
+    <div class="chat-box-header">
+      ChatBot
+      <span class="chat-box-toggle"><i class="fas fa-times"></i></span>
+    </div>
+    <div class="chat-box-body">
+      <div class="chat-box-overlay">   
+      </div>
+      <div class="chat-logs">
+       
+      </div><!--chat-log -->
+    </div>
+    <div class="chat-input">      
+      <form>
+        <input type="text" id="chat-input" placeholder="Send a message..."/>
+      <button type="submit" class="chat-submit" id="chat-submit"><i class="fas fa-paper-plane"></i></button>
+      </form>      
+    </div>
+  </div>
+  <!-- chat box Wrapper end -->
+    <!--custom js files-->
+    <script src="/dashboard/js/jquery-3.3.1.min.js"></script>
+    <script src="/dashboard/js/bootstrap.min.js"></script>
+    <script src="/dashboard/js/modernizr.js"></script>
+    <script src="/dashboard/js/jquery.menu-aim.js"></script>
+    <script src="/dashboard/js/plugin.js"></script>
+    <script src="/dashboard/js/owl.carousel.js"></script>
+    <script src="/dashboard/js/jquery.countTo.js"></script>
+    <script src="/dashboard/js/dropify.min.js"></script>
+    <script src="/dashboard/js/jquery-ui.js"></script>
+    <script src="/dashboard/js/Chart.bundle.js"></script>
+    <script src="/dashboard/js/jquery.inview.min.js"></script>
+    <script src="/dashboard/js/jquery.magnific-popup.js"></script>
+    <script src="/dashboard/js/jquery.nice-select.min.js"></script>
+    <script src="/dashboard/js/imagesloaded.pkgd.min.js"></script>
+    <script src="/dashboard/js/isotope.pkgd.min.js"></script>
+    <script src="/dashboard/js/custom.js"></script>
+    <!-- custom js-->
+    <script  src="/dashboard/js/fileSaver.js"></script>
+    <script  src="/dashboard/js/wordexport.js"></script>
+
+    
+    <script>
+        function downloadword() {
+            var papername = "个人简历";
+            $("#resume").wordExport(papername);  //papername为导出的word文件的命名,paperque为要导出的html内容容器
+            html2canvas(document.getElementById("paperque"), {
+                onrendered: function (canvas) {
+                    //通过html2canvas将html渲染成canvas，然后获取图片数据
+                    var imgData = canvas.toDataURL('image/jpeg');
+                    //初始化pdf，设置相应格式
+                    var doc = new jsPDF("p", "mm", "a4");
+                    doc.setFillColor(0, 0, 0);
+                    //这里设置的是a4纸张尺寸
+                    doc.addImage(imgData, 'JPEG', 0, 0, 210, 297);
+                    //输出保存命名为content的pdf
+                    doc.save(papername + '.word');
+                }
+            });
+        }
+    </script>
+
+    <!--    添加工作经验    -->
+    <script>
+        function addWorkEx() {
+            
+        }
+    </script>
+
+    
+
+    <script>
+        // //页面加载完毕后运行
+        // $(document).ready(function (){
+        //     var id = $('#id').val();
+        //     //有简历，显示
+        //     if(id !== null){
+        //         $('#resume').css({"display":""})
+        //     }
+        // });
+        
+        
+        <!--    修改基本信息    -->
+        function update1() {
+            $("#name").text($("#update_name").val());
+            $("#age").text($("#update_age").val());
+            var gender = $(".update_gender").text();
+            $(".gender").text(gender);
+            if(gender === ("男")){
+                $("#gender").attr("value",2);
+            }else {
+                $("#gender").attr("value",1);
+            }
+            console.log("性别:" + gender);
+            console.log("性别:" + $(".update_gender").text());
+            console.log("性别:" + $("#gender").val());
+
+            $("#nativePlace").text($("#update_nativePlace").val());
+            $("#graduateSchool").text($("#update_graduateSchool").val());
+            $("#specialty").text($("#update_specialty").val());
+            $("#education").text($("#update_education").val());
+
+
+        }
+        <!--    修改联系方式    -->
+        function update2() {
+            $("#phone").text($("#update_phone").val());
+            $("#email").text($("#update_email").val());
+            $("#qq").text($("#update_qq").val());
+            $("#weiXin").text($("#update_weiXin").val());
+
+
+        }
+        <!--    修改求职意向    -->
+        function update3() {
+            $("#job").text($("#update_job").val());
+            $("#jobType").text($("#update_jobType").val());
+            $("#salary").text($("#update_salary").val());
+            $("#jobAddress").text($("#update_jobAddress").text());
+            // var partFull = $(".update_partFull").text()
+            // $(".partFull").text();
+            // if(partFull === ("兼职")){
+            //     $("#partFull").attr("value",1);
+            // }else {
+            //     $("#partFull").attr("value",2);
+            // }
+            $("#partFull").attr("value",2);
+
+        }
+        <!--    修改自我介绍    -->
+        function update4() {
+            $("#selfIntroduction").text($("#update_selfIntroduction").val());
+
+
+        }
+        <!--    修改教育背景    -->
+        function update5() {
+
+
+        }
+
+        <!--    修改工作经验    -->
+        function update6() {
+
+            // $('.close').click();
+
+        }
+
+        <!--    修改专业技能    -->
+        function update7() {
+
+            $("#skill1").text($("#update_skill1").val());
+            $("#skill2").text($("#update_skill2").val());
+            $("#skill3").text($("#update_skill3").val());
+            $("#skill4").text($("#update_skill4").val());
+
+
+        }
+
+        <!--    保存修改    -->
+        $("#saveUpdate").click(function() {
+            var id = $('#id').val();
+            var name = $('#name').text();
+            var age = $("#age").text();
+            var gender = $("#gender").val();
+            var nativePlace = $("#nativePlace").text();
+            var graduateSchool = $("#graduateSchool").text();
+            var specialty = $("#specialty").text();
+            var education = $("#education").text();
+            var phone = $("#phone").text();
+            var email = $("#email").text();
+            var qq = $("#qq").text();
+            var weiXin = $("#weiXin").text();
+            var job = $("#job").text();
+            var jobType = $("#jobType").text();
+            var salary = $("#salary").text();
+            var jobAddress = $("#jobAddress").text();
+            var partFull = $("#partFull").val();
+            var selfIntroduction = $("#selfIntroduction").text();
+            var skill1 = $("#skill1").text();
+            var skill2 = $("#skill2").text();
+            var skill3 = $("#skill3").text();
+            var skill4 = $("#skill4").text();
+            var resume = {"id": id, "name": name, "age": age, "gender": gender, "nativePlace": nativePlace,
+                "graduateSchool": graduateSchool, "specialty": specialty, "education": education, "phone": phone,
+                "email": email, "qq": qq, "weiXin": weiXin, "job": job, "jobType": jobType, "salary": salary,
+                "jobAddress": jobAddress, "partFull": 2, "selfIntroduction": selfIntroduction,
+                "skill1": skill1, "skill2": skill2, "skill3": skill3, "skill4": skill4
+
+            };
+
+            var url = null
+            var id = $('#id').val();
+            //有简历，显示
+            if(id !== ""){
+                url ="/user/update_resume"
+            }else
+                url ="/user/add_resume"
+
+            $.ajax({
+                url:url,
+                type:"post",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(resume),
+                dataType: "json",
+                success:function(result){
+                    console.log(result);//打印服务端返回的数据
+                    if (result.code == 200) {
+                        alert(result.message);
+                        window.location.href="/user/candidate_resume";
+                    } else {
+                        alert(result.message);
+                    }
+                },
+                error:function(e){
+                    alert("服务器繁忙，稍后再试。");
+                }
+            });
+        });
+
+
+    </script>
+</body>
+
+</html>

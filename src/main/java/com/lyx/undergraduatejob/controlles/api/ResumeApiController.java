@@ -6,6 +6,7 @@ import com.lyx.undergraduatejob.search.entity.RentValueBlock;
 import com.lyx.undergraduatejob.search.entity.ResumeSearchEntity;
 import com.lyx.undergraduatejob.services.IResumeServices;
 import com.lyx.undergraduatejob.utils.APIResult;
+import com.lyx.undergraduatejob.utils.MyPage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,9 +28,10 @@ public class ResumeApiController {
                                 @RequestBody ResumeSearchEntity entity){
         if(start <= 0)
             start = 1;
-        PageInfo<Resume> resumePageInfo = resumeServices.queryResumeByKey(start, pageSize, entity);
+        MyPage resumePageInfo = resumeServices.queryResumeByKey(start, pageSize, entity);
         return APIResult.genSuccessApiResponse(resumePageInfo);
     }
+
 
 
 }

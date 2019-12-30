@@ -52,6 +52,23 @@ public class Company implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    public Company(String logo, String companyName, String companyDesc, String companyType, String closeUser, String address, String welfares) {
+        this.logo = logo;
+        this.companyName = companyName;
+        this.companyType = companyType;
+        this.contacts = closeUser;
+        this.companyAddress = address;
+        this.welfare = welfares;
+        this.status = 1;
+        this.aulStatus = 1;
+        this.companyVip = 0;
+        this.jobNum = 0;
+    }
+
+
+    public Company() {
+    }
+
     public Integer getId() {
         return id;
     }

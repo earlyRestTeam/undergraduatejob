@@ -10,12 +10,14 @@ import com.lyx.undergraduatejob.services.impl.ICompanyInfoServicesImpl;
 import com.lyx.undergraduatejob.services.impl.ManagerUserServices;
 import com.lyx.undergraduatejob.services.impl.MessageServicesImpl;
 import com.lyx.undergraduatejob.services.impl.UserServicesImpl;
+import com.lyx.undergraduatejob.utils.APIResult;
 import com.lyx.undergraduatejob.utils.StaticPool;
 import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
@@ -52,31 +54,35 @@ public class ManagerUserController {
     }
 
     @RequestMapping("update_company_status")
-    public String updateCompanyStatus(HttpServletRequest request,Integer id,Integer status,Integer userId){
+    @ResponseBody
+    public APIResult updateCompanyStatus(@RequestParam Integer id,@RequestParam Integer status,@RequestParam Integer userId){
         status = (status+1)%2;
         Company company = new Company();
         company.setId(id);
         company.setStatus(status);
         Map<String, String> map = companyInfoServices.updateCompanyInfobyAdmin(company);
-
-        if (map.get(StaticPool.SUCCESS) != null){
-            Message message = new Message();
-            message.setReceiverId(userId);
-            message.setReceiverType(1);
-            if (status == 0){
-                message.setMessageTitle("公司账号冻结");
-                message.setMessageContent("您的公司账号已冻结，要解冻请联系客服。");
-            } else {
-                message.setMessageTitle("公司账号启用");
-                message.setMessageContent("您的公司账号已启用，完成认证后就可以发布招聘信息了！");
-            }
-            Map<String, Object> addMessage = messageServices.addMessage(message);
-            request.setAttribute("result",addMessage);
-        } else {
-            request.setAttribute("result",map);
+        if (map.get(StaticPool.ERROR) != null){
+            return APIResult.genSuccessApiResponse(map.get(StaticPool.ERROR));
         }
 
-        return "redirect:/admin/manager-company";///managerUser/query_company
+        Message message = new Message();
+        message.setReceiverId(userId);
+        message.setReceiverType(1);
+        //message.setSenderId();
+        message.setSenderType(1);
+        if (status == 0){
+            message.setMessageTitle("公司账号冻结");
+            message.setMessageContent("您的公司账号已冻结，要解冻请联系客服。");
+        } else {
+            message.setMessageTitle("公司账号启用");
+            message.setMessageContent("您的公司账号已启用，完成认证后就可以发布招聘信息了！");
+        }
+        Map<String, Object> map1 = messageServices.addMessage(message);
+        if (map1.get(StaticPool.ERROR) != null){
+            return APIResult.genSuccessApiResponse(map1.get(StaticPool.ERROR));
+        }
+
+        return APIResult.genSuccessApiResponse("状态更改成功！");
     }
 
     @RequestMapping("query_student")
@@ -94,14 +100,17 @@ public class ManagerUserController {
     }
 
     @RequestMapping("update_student_status")
-    public String updateUserStatus(HttpServletRequest request,Integer id,Integer status){
+    @ResponseBody
+    public APIResult updateUserStatus(@RequestParam Integer id,@RequestParam Integer status){
         status = (status+1)%2;
         Users student = new Users();
         student.setId(id);
         student.setStatus(status);
         Map<String, String> map = userServices.updateStatus(student);
-        request.setAttribute("result",map);
+        if (map.get(StaticPool.ERROR) != null){
+            return APIResult.genSuccessApiResponse(map.get(StaticPool.ERROR));
+        }
 
-        return "redirect:/admin/manager-student";
+        return APIResult.genSuccessApiResponse("状态更改成功！");
     }
 }

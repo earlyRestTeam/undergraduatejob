@@ -40,6 +40,7 @@ public class CandidateController {
     }
 
 
+    //显示个人信息
     @RequestMapping("/user/candidate_dashboard")
     public String candidate_dashboard(HttpServletRequest request){
         Integer userId = 1;
@@ -62,9 +63,10 @@ public class CandidateController {
 //        return "dashboard/candidate_index";
 //    }
 
-    @RequestMapping("/user/delMyInfo")
+    //修改账号信息
+    @RequestMapping("/user/updateMyInfo")
     @ResponseBody
-    public APIResult delMyInfo(@RequestBody Users users, HttpServletRequest request){
+    public APIResult updateMyInfo(@RequestBody Users users, HttpServletRequest request){
         Integer userId = 1;
         System.out.println("传回来的JSON："+users);
         users.setId(userId);
@@ -77,6 +79,7 @@ public class CandidateController {
 
     }
 
+    //修改密码
     @RequestMapping("/user/changeUserPwd")
     @ResponseBody
     public APIResult changeUserPwd(@RequestBody JSONObject jsonObject){
@@ -113,12 +116,14 @@ public class CandidateController {
         return "dashboard/candidate_edit_profile";
     }
 
+
     @RequestMapping("/user/candidate_favourite_job")
     public String candidate_favourite_job(){
 
         return "dashboard/candidate_favourite_job";
     }
 
+    //显示简历
     @RequestMapping("/user/candidate_resume")
     public String candidate_resume(HttpServletRequest request){
         Integer userId = 1;
@@ -126,21 +131,101 @@ public class CandidateController {
         System.out.println(users);
         request.setAttribute("users",users);
 
-        Resume resume = resumeServicesImp.queryResumeByUserId(userId);
-        System.out.println("我的简历：" + resume);
-        if(resume == null){
-            logger.warn("服务器繁忙，未找到数据");
-            throw new RuntimeException("error");
-        }
-        request.setAttribute("resume",resume);
+        List<Resume> resumeList = resumeServicesImp.queryResumeByUserId(userId);
+
+        System.out.println("我的简历：" + resumeList);
+
+        request.setAttribute("resumeList",resumeList);
 
 
         List<WorkExperience> workExperienceList = workExperienceServices.selectWorkExByUserId(userId);
-        if(workExperienceList != null && workExperienceList.size() > 0){
-            request.setAttribute("workExperienceList",workExperienceList);
-        }
+        request.setAttribute("workExperienceList",workExperienceList);
+//        if(workExperienceList != null && workExperienceList.size() > 0){
+//            request.setAttribute("workExperienceList",workExperienceList);
+//        }
 
 
         return "/dashboard/candidate_resume";
     }
+
+
+    @RequestMapping("/user/addResume")
+    public String addResume(HttpServletRequest request){
+
+        Resume resume = new Resume();
+        request.setAttribute("resume",resume);
+
+        return "dashboard/add_resume";
+    }
+
+    //添加简历
+    @RequestMapping("/user/add_resume")
+    @ResponseBody
+    public APIResult add_resume(@RequestBody Resume resume){
+        System.out.println("添加简历:" + resume);
+        Integer userId = 1;
+        resume.setUserId(userId);
+        APIResult result = null;
+        Map<String, String> res = resumeServicesImp.addResume(resume,userId);
+        if(res.get(StaticPool.SUCCESS) != null){
+            result = APIResult.genSuccessApiResponse("简历添加成功");
+        }else {
+            result = APIResult.genFailApiResponse500(res.get(StaticPool.ERROR));
+        }
+
+        return result;
+    }
+
+    //跳转到预览简历的页面
+    @RequestMapping("/user/visitResume")
+    public String visitResume(Integer resumeId,HttpServletRequest request){
+
+        Resume resume = resumeServicesImp.queryResumeById(resumeId);
+        request.setAttribute("resume",resume);
+
+        return "dashboard/visit_resume";
+    }
+    //跳转到修改简历的页面
+    @RequestMapping("/user/updateResume")
+    public String updateResume(Integer resumeId,HttpServletRequest request){
+
+        Resume resume = resumeServicesImp.queryResumeById(resumeId);
+        request.setAttribute("resume",resume);
+
+        return "dashboard/update_resume";
+    }
+    //修改简历
+    @RequestMapping("/user/update_resume")
+    @ResponseBody
+    public APIResult update_resume(@RequestBody Resume resume){
+        System.out.println("修改简历:" + resume);
+        Integer userId = 1;
+        APIResult result = null;
+        Map<String, String> res = resumeServicesImp.updateResumeByUser(resume, userId);
+        if(res.get(StaticPool.SUCCESS) != null){
+            result = APIResult.genSuccessApiResponse("简历修改成功");
+        }else {
+            result = APIResult.genFailApiResponse500("服务器繁忙，修改失败");
+        }
+
+        return result;
+    }
+
+    //用户删除简历
+    @RequestMapping("/user/delResume")
+    @ResponseBody
+    public APIResult delResume(Integer resumeId){
+        APIResult result = null;
+
+        Integer userId = 1;
+        Map<String, String> re = resumeServicesImp.updateDelResume(resumeId, userId);
+        if(re.get(StaticPool.SUCCESS) != null){
+            result = APIResult.genSuccessApiResponse("删除成功");
+        }else {
+            result = APIResult.genFailApiResponse500(re.get(StaticPool.ERROR));
+        }
+
+        return result;
+    }
+
 }

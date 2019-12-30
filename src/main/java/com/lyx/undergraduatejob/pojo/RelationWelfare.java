@@ -16,6 +16,16 @@ public class RelationWelfare implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    public RelationWelfare(Integer ownerId, Integer wid, Integer type) {
+        this.ownerId = ownerId;
+        this.welfareId = wid;
+        this.ownerType = type;
+        createTime = new Date();
+    }
+
+    public RelationWelfare() {
+    }
+
     public Integer getId() {
         return id;
     }

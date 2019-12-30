@@ -125,4 +125,81 @@ public class IComplaintServicesImpl implements IComplaintServices {
 
         return info;
     }
+
+    /**
+     * 前台查询
+     * @param complaint
+     * @return
+     */
+    @Override
+    public List<Complaint> queryCommplaint(Complaint complaint) {
+        ComplaintExample example = new ComplaintExample();
+        ComplaintExample.Criteria criteria = example.createCriteria();
+        if (complaint.getUserId() != null){
+            criteria.andUserIdEqualTo(complaint.getUserId());
+        }
+        if (complaint.getComplaintId() != null){
+            criteria.andComplaintIdEqualTo(complaint.getComplaintId());
+        }
+        List<Complaint> complaints = complaintMapper.selectByExample(example);
+        return complaints;
+    }
+
+    /**
+     * 后台
+     * @param complaintId
+     * @return
+     */
+    public Complaint queryCommplaint(Integer complaintId) {
+        ComplaintExample example = new ComplaintExample();
+        ComplaintExample.Criteria criteria = example.createCriteria();
+        if (complaintId != null){
+            criteria.andComplaintIdGreaterThanOrEqualTo(complaintId);
+        }
+        Complaint complaint = complaintMapper.selectByPrimaryKey(complaintId);
+        return complaint;
+    }
+
+    /**
+     * 分页
+     * @param indexpage
+     * @param complaint
+     * @return
+     */
+    @Override
+    public PageInfo queryCommplaint(Integer indexpage,Complaint complaint) {
+        ComplaintExample example = new ComplaintExample();
+        ComplaintExample.Criteria criteria = example.createCriteria();
+        if (indexpage == null){
+            indexpage = 1;
+        }
+        if (complaint.getUserId() != null){
+            criteria.andUserIdEqualTo(complaint.getUserId());
+        }
+        if (complaint.getDealStatus() != null){
+            criteria.andDealStatusEqualTo(complaint.getDealStatus());
+        }
+        if (complaint.getComplaintId() != null){
+            criteria.andComplaintIdEqualTo(complaint.getComplaintId());
+        }
+        PageHelper.startPage(indexpage,10);
+        List<Complaint> complaints = complaintMapper.selectByExample(example);
+        PageInfo info = new PageInfo(complaints,5);
+        return info;
+    }
+
+    @Override
+    public Map<String, Object> updateCommplaint(Complaint complaint) {
+        Map<String,Object> res = new HashMap<>();
+        complaint.setDealStatus(1);
+        int i = complaintMapper.updateByPrimaryKeySelective(complaint);
+        if (i > 0){
+            res.put(StaticPool.SUCCESS,"成功");
+        }else{
+            logger.warn("update error"+complaint);
+            res.put(StaticPool.ERROR,"失败");
+        }
+        return res;
+    }
+
 }
