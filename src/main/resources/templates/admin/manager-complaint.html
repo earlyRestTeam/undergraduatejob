@@ -29,155 +29,64 @@
     <div class="navbar-custom">
         <ul class="list-unstyled topnav-menu float-right mb-0">
             <!--显示未处理消息数...，选做-->
-            <li class="dropdown notification-list">
-                <a class="nav-link dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                    <i class="dripicons-inbox mail-icon"></i>
-                    <span class="badge badge-info noti-icon-badge">20</span>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right dropdown-lg">
-
-                    <!-- item-->
-                    <div class="dropdown-item noti-title">
-                        <h5 class="m-0">
-                                    <span class="float-right">
-                                        <a href="" class="text-dark">
-                                            <small>Clear All</small>
-                                        </a>
-                                    </span>20 New Messages
-                        </h5>
-                    </div>
-
-                    <div class="slimscroll noti-scroll">
-
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item active">
-                                    <div class="notify-icon"><img src="/admin/images/users/avatar-1.jpg" class="img-fluid rounded-circle" alt="" /> </div>
-                                    <p class="notify-details">Sandra Smith<small class="text-muted">Hey ! I'm working on your project</small></p>
-                                </a>
-
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <div class="notify-icon"><img src="/admin/images/users/avatar-2.jpg" class="img-fluid rounded-circle" alt="" /></div>
-                                    <p class="notify-details">Amily Lee<small class="text-muted">Hi, How are you? What about our next meeting?</small></p>
-                                </a>
-
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <div class="notify-icon">
-                                        <img src="/admin/images/users/avatar-3.jpg" class="img-fluid rounded-circle" alt="" /> </div>
-                                    <p class="notify-details">David Boos</p>
-                                    <p class="text-muted mb-0 user-msg">
-                                        <small>What about our next meeting</small>
-                                    </p>
-                                </a>
-
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <div class="notify-icon"><img src="/admin/images/users/avatar-4.jpg" class="img-fluid rounded-circle" alt="" /> </div>
-                                    <p class="notify-details">Christopher Palmer<small class="text-muted">Waiting for your Response...</small></p>
-                                </a>
-
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <div class="notify-icon">
-                                        <img src="/admin/images/users/avatar-5.jpg" class="img-fluid rounded-circle" alt="" /> </div>
-                                    <p class="notify-details">Malika Roy</p>
-                                    <p class="text-muted mb-0 user-msg">
-                                        <small>Wow that's great</small>
-                                    </p>
-                                </a>
-                            </div>
-
-                    <!-- All-->
-                    <a href="javascript:void(0);" class="dropdown-item text-center text-primary notify-item notify-all">
-                        View all
-                        <i class="fi-arrow-right"></i>
-                    </a>
-
-                </div>
-            </li>
 
             <li class="dropdown notification-list">
                 <a class="nav-link dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                     <i class="dripicons-bell noti-icon"></i>
-                    <span class="badge badge-danger noti-icon-badge">35</span>
+                    <span class="badge badge-danger noti-icon-badge"><a name="sum" id="sum" th:text="${sum != 0 ? sum : 0}"></a></span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right dropdown-lg">
-
-                    <!-- item-->
-                    <div class="dropdown-item noti-title">
-                        <h5 class="m-0">
-                                    <span class="float-right">
-                                        <a href="" class="text-dark">
-                                            <small>Clear All</small>
-                                        </a>
-                                    </span>Notification
-                        </h5>
-                    </div>
 
                     <div class="slimscroll noti-scroll">
 
                         <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            <div class="notify-icon bg-info"><i class="mdi mdi-cloud-upload-outline"></i></div>
-                            <p class="notify-details">Your upload has been approved<small class="text-muted">5 hours ago</small></p>
-                        </a>
-
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item active">
-                            <div class="notify-icon bg-success"><i class="mdi mdi-map-marker-check"></i> </div>
-                            <p class="notify-details">You added your Location<small class="text-muted">Just Now</small></p>
-                        </a>
-
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            <div class="notify-icon bg-primary"><i class="mdi mdi-layers-remove"></i></div>
-                            <p class="notify-details">Your item is shipped<small class="text-muted">It is a long established fact that a reader will</small></p>
-                        </a>
-
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            <div class="notify-icon bg-purple"><i class="mdi mdi-check-bold"></i></div>
-                            <p class="notify-details">Your order is placed<small class="text-muted">Dummy text of the printing and typesetting industry.</small></p>
-                        </a>
-
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                        <a href="/admin/audit-job" class="dropdown-item notify-item">
                             <div class="notify-icon bg-warning">
                                 <i class="mdi mdi-alert-outline"></i>
                             </div>
-                            <p class="notify-details">Your Subscription Expired
-                                <small class="text-muted">1 days ago</small>
-                            </p>
+                            <p class="notify-details">您有<a name="autCompanies" id="autCompanies" th:text="${autCompanies != 0 ? autCompanies : 0}"></a>条职位审核信息未处理</p>
                         </a>
 
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            <div class="notify-icon bg-danger">
-                                <i class="mdi mdi-settings"></i>
+                        <a href="/admin/audit-resume" class="dropdown-item notify-item active">
+                            <div class="notify-icon bg-warning">
+                                <i class="mdi mdi-alert-outline"></i>
                             </div>
-                            <p class="notify-details"><b>Devid</b>, You changed your Settings
-                                <small class="text-muted">5 days ago</small>
-                            </p>
+                            <p class="notify-details">您有<a name="autStudents" id="autStudents" th:text="${autStudents != 0 ? autStudents : 0}"></a>条简历审核信息未处理</p>
                         </a>
+
+                        <a href="/admin/authentication-company" class="dropdown-item notify-item">
+                            <div class="notify-icon bg-warning">
+                                <i class="mdi mdi-alert-outline"></i>
+                            </div>
+                            <p class="notify-details">您有<a name="jobs" id="jobs" th:text="${jobs != 0 ? jobs : 0}"></a>条企业认证信息未处理</p>
+                        </a>
+
+                        <a href="/admin/authentication-student" class="dropdown-item notify-item">
+                            <div class="notify-icon bg-warning">
+                                <i class="mdi mdi-alert-outline"></i>
+                            </div>
+                            <p class="notify-details">您有<a name="resumes" id="resumes" th:text="${resumes != 0 ? resumes : 0}"></a>条学生认证信息未处理</p>
+                        </a>
+
+                        <a href="/admin/complaint" class="dropdown-item notify-item">
+                            <div class="notify-icon bg-warning">
+                                <i class="mdi mdi-alert-outline"></i>
+                            </div>
+                            <p class="notify-details">您有<a name="complaints" id="complaints" th:text="${complaints != 0 ? complaints : 0}"></a>条投诉信息未处理</p>
+                        </a>
+
                     </div>
 
-                    <!-- All-->
-                    <a href="javascript:void(0);" class="dropdown-item text-center text-primary notify-item notify-all">
-                        View all
-                        <i class="fi-arrow-right"></i>
-                    </a>
-
-                        </div>
-                    </li>
-                    <!--显示未处理消息数...，选做-->
-                    <!--头像...-->
-                    <li class="dropdown notification-list">
-                        <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                            <img src="/admin/images/users/avatar-1.jpg" alt="user-image" class="rounded-circle">
-                            <span class="pro-user-name ml-1">
-                                Devid <i class="mdi mdi-chevron-down"></i> 
-                            </span>
+                </div>
+            </li>
+            <!--显示未处理消息数...，选做-->
+            <!--头像...-->
+            <li class="dropdown notification-list">
+                <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                    <img src="/admin/images/users/avatar-1.jpg" alt="user-image" class="rounded-circle">
+                    <span class="pro-user-name ml-1">
+                        Devid <i class="mdi mdi-chevron-down"></i>
+                    </span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
                     <!-- item-->
@@ -186,24 +95,6 @@
                             Hello, Devid !
                         </h6>
                     </div>
-
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <i class="dripicons-user"></i>
-                        <span>My Profile</span>
-                    </a>
-
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <i class="dripicons-card"></i>
-                        <span>My Wallet</span>
-                    </a>
-
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <i class="dripicons-gear"></i>
-                        <span>Settings</span>
-                    </a>
 
                     <div class="dropdown-divider"></div>
 
@@ -224,7 +115,7 @@
                             <span class="logo-lg">
                                 <img src="/admin/images/logo.png" alt="" height="25">
                             </span>
-                            <span class="logo-sm">
+                    <span class="logo-sm">
                                 <img src="/admin/images/logo-sm.png" alt="" height="24">
                             </span>
                 </a>
@@ -555,6 +446,23 @@
 <!-- App js -->
 <script src="/admin/js/app.min.js"></script>
 <script type="text/javascript">
+    $(document).ready(function(){
+        console.log("页面加载完毕后运行");
+        messages();
+    });
+
+    function messages() {
+        $.post("/admin/message",function(result){
+            console.log(result.data);
+            $('#sum').val(result.data.sum);
+            $('#autCompanies').val(result.data.autCompanies);
+            $('#autStudents').val(result.data.autStudents);
+            $('#jobs').val(result.data.jobs);
+            $('#resumes').val(result.data.resumes);
+            $('#complaints').val(result.data.complaints);
+        })
+    }
+
     //审核投诉
     function complaint_update(id){
             $.post("/admin/update_complaints",{id:id},function (result) {
@@ -575,6 +483,10 @@
             $("#wrapper").html(result);
         })
     }
+
+
+
+
 </script>
 </body>
 </html>

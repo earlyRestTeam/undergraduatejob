@@ -34,5 +34,5 @@ public interface IMessageServices {
      */
     Map<String,Object> deleteInfo(Message message);
 
-
+    Map<String,Object> showMessage();
 }
