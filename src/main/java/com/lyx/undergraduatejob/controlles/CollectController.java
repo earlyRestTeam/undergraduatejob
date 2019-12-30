@@ -88,7 +88,6 @@ public class CollectController {
         return apiResult;
     }
 
-
     //用户收藏职位
     @RequestMapping("collectJob")
     @ResponseBody
@@ -106,7 +105,6 @@ public class CollectController {
 
         if (iCollectServices.queryjobIdByjobIdAndUserId(jobId, userid)) {
             int flag = 2;
-            apiResult.setCode(200);
             apiResult.setData(flag);
             Map<String, String> map = iCollectServices.deleteUserCollectJob(jobId, userid);
             if (map.get(StaticPool.SUCCESS) != null) {
