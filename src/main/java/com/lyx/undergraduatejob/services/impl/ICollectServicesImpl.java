@@ -197,7 +197,7 @@ public class ICollectServicesImpl implements ICollectServices {
         List<Integer> jobsIdList = new ArrayList<>();
 
         for (int i = 0; i < collectList.size(); i++) {
-            jobsIdList.add(collectList.get(i).getCollectionId());
+            jobsIdList.add(collectList.get(0).getCollectionId());
         }
 
         if(jobsIdList == null)
