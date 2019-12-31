@@ -1,7 +1,9 @@
 package com.lyx.undergraduatejob.controlles;
 
+import com.github.pagehelper.PageInfo;
 import com.lyx.undergraduatejob.pojo.Collect;
 import com.lyx.undergraduatejob.pojo.Company;
+import com.lyx.undergraduatejob.pojo.Job;
 import com.lyx.undergraduatejob.pojo.Users;
 import com.lyx.undergraduatejob.services.ICollectServices;
 import com.lyx.undergraduatejob.services.ICompanyInfoServices;
@@ -193,6 +195,24 @@ public class CollectController {
             }
         }
         return apiResult;
+    }
+
+    //用户查看收藏的职位
+    @RequestMapping("/visit_job")
+    @ResponseBody
+    public APIResult add_resume(Integer indexpage){
+        System.out.println("访问到了");
+        Integer userId = 1;
+
+        PageInfo<Job> jobPageInfo = iCollectServices.queryUserCollectJob(indexpage, userId);
+        System.out.println("jobPageInfo:" + jobPageInfo);
+        APIResult result = APIResult.genSuccessApiResponse(jobPageInfo);
+
+        if(jobPageInfo.getList().size() == 0)
+            result = APIResult.genSuccessApiResponse("无收藏");
+        System.out.println("result=====:" + result.getData());
+
+        return result;
     }
 
 

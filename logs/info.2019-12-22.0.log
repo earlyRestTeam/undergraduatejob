@@ -1,0 +1,724 @@
+2019-12-22 22:46:02,714 INFO (StartupInfoLogger.java:55)- Starting RunningApplication on DESKTOP-OTO9O1T with PID 9516 (started by hp in D:\学习资源\大学生兼职平台\undergraduatejob)
+2019-12-22 22:46:02,714 INFO (SpringApplication.java:651)- No active profile set, falling back to default profiles: default
+2019-12-22 22:46:02,761 INFO (DeferredLog.java:225)- Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-12-22 22:46:02,761 INFO (DeferredLog.java:225)- For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-12-22 22:46:05,526 INFO (RepositoryConfigurationDelegate.java:249)- Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-12-22 22:46:05,526 INFO (RepositoryConfigurationDelegate.java:127)- Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2019-12-22 22:46:05,666 INFO (RepositoryConfigurationDelegate.java:187)- Finished Spring Data repository scanning in 104ms. Found 0 Redis repository interfaces.
+2019-12-22 22:46:06,119 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration' of type [org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 22:46:06,119 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'objectPostProcessor' of type [org.springframework.security.config.annotation.configuration.AutowireBeanFactoryObjectPostProcessor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 22:46:06,119 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@1c6c2c05' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 22:46:06,135 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration' of type [org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 22:46:06,135 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 22:46:06,135 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration$DataSourceTransactionManagerConfiguration' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration$DataSourceTransactionManagerConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 22:46:06,151 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'druidConfig' of type [com.lyx.undergraduatejob.config.DruidConfig$$EnhancerBySpringCGLIB$$98a0d504] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 22:46:06,213 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'druid' of type [com.alibaba.druid.pool.DruidDataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 22:46:06,244 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'spring.datasource-org.springframework.boot.autoconfigure.jdbc.DataSourceProperties' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 22:46:06,260 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 22:46:06,260 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration' of type [org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 22:46:06,260 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'spring.transaction-org.springframework.boot.autoconfigure.transaction.TransactionProperties' of type [org.springframework.boot.autoconfigure.transaction.TransactionProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 22:46:06,260 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'platformTransactionManagerCustomizers' of type [org.springframework.boot.autoconfigure.transaction.TransactionManagerCustomizers] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 22:46:06,276 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'transactionManager' of type [org.springframework.jdbc.datasource.DataSourceTransactionManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 22:46:06,276 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'transactionConfig' of type [com.lyx.undergraduatejob.config.TransactionConfig$$EnhancerBySpringCGLIB$$d20a6b60] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 22:46:06,291 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'txAdvice' of type [org.springframework.transaction.interceptor.TransactionInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 22:46:06,291 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'txAdviceAdvisor' of type [org.springframework.aop.support.DefaultPointcutAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 22:46:06,291 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'redisConfig' of type [com.lyx.undergraduatejob.config.RedisConfig$$EnhancerBySpringCGLIB$$8ec8f8dd] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 22:46:06,463 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 22:46:06,994 INFO (TomcatWebServer.java:92)- Tomcat initialized with port(s): 8080 (http)
+2019-12-22 22:46:06,994 INFO (DirectJDKLog.java:173)- Initializing ProtocolHandler ["http-nio-8080"]
+2019-12-22 22:46:06,994 INFO (DirectJDKLog.java:173)- Starting service [Tomcat]
+2019-12-22 22:46:06,994 INFO (DirectJDKLog.java:173)- Starting Servlet engine: [Apache Tomcat/9.0.29]
+2019-12-22 22:46:07,150 INFO (DirectJDKLog.java:173)- Initializing Spring embedded WebApplicationContext
+2019-12-22 22:46:07,150 INFO (ServletWebServerApplicationContext.java:284)- Root WebApplicationContext: initialization completed in 4389 ms
+2019-12-22 22:46:07,713 INFO (DynamicRegistrationBean.java:110)- Filter webStatFilter was not registered (possibly already registered?)
+2019-12-22 22:46:07,713 INFO (DynamicRegistrationBean.java:110)- Servlet statViewServlet was not registered (possibly already registered?)
+2019-12-22 22:46:08,838 INFO (UserDetailsServiceAutoConfiguration.java:86)- 
+
+Using generated security password: cf6df81e-134b-4a63-bd7d-766067fee0ea
+
+2019-12-22 22:46:08,963 INFO (DefaultSecurityFilterChain.java:43)- Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@394d216b, org.springframework.security.web.context.SecurityContextPersistenceFilter@5e1bb525, org.springframework.security.web.header.HeaderWriterFilter@5a29c0b3, org.springframework.security.web.authentication.logout.LogoutFilter@5d768dcb, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@7db3ba09, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@45829df2, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@65e2585f, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@249c78df, org.springframework.security.web.session.SessionManagementFilter@7afcc196, org.springframework.security.web.access.ExceptionTranslationFilter@5e25413, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@7c863f5b]
+2019-12-22 22:46:09,212 INFO (ExecutorConfigurationSupport.java:171)- Initializing ExecutorService 'applicationTaskExecutor'
+2019-12-22 22:46:09,322 INFO (WelcomePageHandlerMapping.java:58)- Adding welcome page template: index
+2019-12-22 22:46:10,462 INFO (OptionalLiveReloadServer.java:58)- LiveReload server is running on port 35729
+2019-12-22 22:46:10,462 INFO (EndpointLinksResolver.java:58)- Exposing 2 endpoint(s) beneath base path '/actuator'
+2019-12-22 22:46:10,540 INFO (DirectJDKLog.java:173)- Starting ProtocolHandler ["http-nio-8080"]
+2019-12-22 22:46:10,572 INFO (TomcatWebServer.java:204)- Tomcat started on port(s): 8080 (http) with context path ''
+2019-12-22 22:46:10,572 INFO (StartupInfoLogger.java:61)- Started RunningApplication in 8.936 seconds (JVM running for 10.587)
+2019-12-22 22:46:11,399 INFO (DirectJDKLog.java:173)- Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-12-22 22:46:11,399 INFO (FrameworkServlet.java:525)- Initializing Servlet 'dispatcherServlet'
+2019-12-22 22:46:11,415 INFO (FrameworkServlet.java:547)- Completed initialization in 16 ms
+2019-12-22 22:46:11,899 INFO (DruidDataSource.java:930)- {dataSource-1} inited
+2019-12-22 22:46:16,789 INFO (EpollProvider.java:68)- Starting without optional epoll library
+2019-12-22 22:46:16,789 INFO (KqueueProvider.java:70)- Starting without optional kqueue library
+2019-12-22 22:47:09,535 ERROR (TemplateEngine.java:1136)- [THYMELEAF][http-nio-8080-exec-3] Exception processing template "dashboard/candidate_dashboard": An error happened during template parsing (template: "class path resource [templates/dashboard/candidate_dashboard.html]")
+org.thymeleaf.exceptions.TemplateInputException: An error happened during template parsing (template: "class path resource [templates/dashboard/candidate_dashboard.html]")
+	at org.thymeleaf.templateparser.markup.AbstractMarkupTemplateParser.parse(AbstractMarkupTemplateParser.java:241)
+	at org.thymeleaf.templateparser.markup.AbstractMarkupTemplateParser.parseStandalone(AbstractMarkupTemplateParser.java:100)
+	at org.thymeleaf.engine.TemplateManager.parseAndProcess(TemplateManager.java:666)
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1098)
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1072)
+	at org.thymeleaf.spring5.view.ThymeleafView.renderFragment(ThymeleafView.java:362)
+	at org.thymeleaf.spring5.view.ThymeleafView.render(ThymeleafView.java:189)
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1373)
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1118)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1057)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:634)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at com.alibaba.druid.support.http.WebStatFilter.doFilter(WebStatFilter.java:123)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:320)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:126)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:90)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:118)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:137)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:111)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:158)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:200)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:92)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:77)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:105)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:56)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:215)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:178)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:358)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:271)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:108)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:526)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:367)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:860)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1591)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: org.attoparser.ParseException: Exception evaluating SpringEL expression: "users.avatar == null" (template: "dashboard/candidate_dashboard" - line 483, col 31)
+	at org.attoparser.MarkupParser.parseDocument(MarkupParser.java:393)
+	at org.attoparser.MarkupParser.parse(MarkupParser.java:257)
+	at org.thymeleaf.templateparser.markup.AbstractMarkupTemplateParser.parse(AbstractMarkupTemplateParser.java:230)
+	... 88 common frames omitted
+Caused by: org.thymeleaf.exceptions.TemplateProcessingException: Exception evaluating SpringEL expression: "users.avatar == null" (template: "dashboard/candidate_dashboard" - line 483, col 31)
+	at org.thymeleaf.spring5.expression.SPELVariableExpressionEvaluator.evaluate(SPELVariableExpressionEvaluator.java:290)
+	at org.thymeleaf.standard.expression.VariableExpression.executeVariableExpression(VariableExpression.java:166)
+	at org.thymeleaf.standard.expression.SimpleExpression.executeSimple(SimpleExpression.java:66)
+	at org.thymeleaf.standard.expression.Expression.execute(Expression.java:109)
+	at org.thymeleaf.standard.expression.Expression.execute(Expression.java:138)
+	at org.thymeleaf.standard.expression.Expression.execute(Expression.java:125)
+	at org.thymeleaf.standard.processor.StandardIfTagProcessor.isVisible(StandardIfTagProcessor.java:59)
+	at org.thymeleaf.standard.processor.AbstractStandardConditionalVisibilityTagProcessor.doProcess(AbstractStandardConditionalVisibilityTagProcessor.java:61)
+	at org.thymeleaf.processor.element.AbstractAttributeTagProcessor.doProcess(AbstractAttributeTagProcessor.java:74)
+	at org.thymeleaf.processor.element.AbstractElementTagProcessor.process(AbstractElementTagProcessor.java:95)
+	at org.thymeleaf.util.ProcessorConfigurationUtils$ElementTagProcessorWrapper.process(ProcessorConfigurationUtils.java:633)
+	at org.thymeleaf.engine.ProcessorTemplateHandler.handleStandaloneElement(ProcessorTemplateHandler.java:918)
+	at org.thymeleaf.engine.TemplateHandlerAdapterMarkupHandler.handleStandaloneElementEnd(TemplateHandlerAdapterMarkupHandler.java:260)
+	at org.thymeleaf.templateparser.markup.InlinedOutputExpressionMarkupHandler$InlineMarkupAdapterPreProcessorHandler.handleStandaloneElementEnd(InlinedOutputExpressionMarkupHandler.java:256)
+	at org.thymeleaf.standard.inline.OutputExpressionInlinePreProcessorHandler.handleStandaloneElementEnd(OutputExpressionInlinePreProcessorHandler.java:169)
+	at org.thymeleaf.templateparser.markup.InlinedOutputExpressionMarkupHandler.handleStandaloneElementEnd(InlinedOutputExpressionMarkupHandler.java:104)
+	at org.attoparser.HtmlElement.handleStandaloneElementEnd(HtmlElement.java:79)
+	at org.attoparser.HtmlMarkupHandler.handleStandaloneElementEnd(HtmlMarkupHandler.java:241)
+	at org.attoparser.MarkupEventProcessorHandler.handleStandaloneElementEnd(MarkupEventProcessorHandler.java:327)
+	at org.attoparser.ParsingElementMarkupUtil.parseStandaloneElement(ParsingElementMarkupUtil.java:96)
+	at org.attoparser.MarkupParser.parseBuffer(MarkupParser.java:706)
+	at org.attoparser.MarkupParser.parseDocument(MarkupParser.java:301)
+	... 90 common frames omitted
+Caused by: org.springframework.expression.spel.SpelEvaluationException: EL1007E: Property or field 'avatar' cannot be found on null
+	at org.springframework.expression.spel.ast.PropertyOrFieldReference.readProperty(PropertyOrFieldReference.java:213)
+	at org.springframework.expression.spel.ast.PropertyOrFieldReference.getValueInternal(PropertyOrFieldReference.java:104)
+	at org.springframework.expression.spel.ast.PropertyOrFieldReference.access$000(PropertyOrFieldReference.java:51)
+	at org.springframework.expression.spel.ast.PropertyOrFieldReference$AccessorLValue.getValue(PropertyOrFieldReference.java:406)
+	at org.springframework.expression.spel.ast.CompoundExpression.getValueInternal(CompoundExpression.java:92)
+	at org.springframework.expression.spel.ast.OpEQ.getValueInternal(OpEQ.java:42)
+	at org.springframework.expression.spel.ast.OpEQ.getValueInternal(OpEQ.java:32)
+	at org.springframework.expression.spel.ast.SpelNodeImpl.getValue(SpelNodeImpl.java:112)
+	at org.springframework.expression.spel.standard.SpelExpression.getValue(SpelExpression.java:330)
+	at org.thymeleaf.spring5.expression.SPELVariableExpressionEvaluator.evaluate(SPELVariableExpressionEvaluator.java:263)
+	... 111 common frames omitted
+2019-12-22 22:47:09,548 ERROR (DirectJDKLog.java:175)- Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.thymeleaf.exceptions.TemplateInputException: An error happened during template parsing (template: "class path resource [templates/dashboard/candidate_dashboard.html]")] with root cause
+org.springframework.expression.spel.SpelEvaluationException: EL1007E: Property or field 'avatar' cannot be found on null
+	at org.springframework.expression.spel.ast.PropertyOrFieldReference.readProperty(PropertyOrFieldReference.java:213)
+	at org.springframework.expression.spel.ast.PropertyOrFieldReference.getValueInternal(PropertyOrFieldReference.java:104)
+	at org.springframework.expression.spel.ast.PropertyOrFieldReference.access$000(PropertyOrFieldReference.java:51)
+	at org.springframework.expression.spel.ast.PropertyOrFieldReference$AccessorLValue.getValue(PropertyOrFieldReference.java:406)
+	at org.springframework.expression.spel.ast.CompoundExpression.getValueInternal(CompoundExpression.java:92)
+	at org.springframework.expression.spel.ast.OpEQ.getValueInternal(OpEQ.java:42)
+	at org.springframework.expression.spel.ast.OpEQ.getValueInternal(OpEQ.java:32)
+	at org.springframework.expression.spel.ast.SpelNodeImpl.getValue(SpelNodeImpl.java:112)
+	at org.springframework.expression.spel.standard.SpelExpression.getValue(SpelExpression.java:330)
+	at org.thymeleaf.spring5.expression.SPELVariableExpressionEvaluator.evaluate(SPELVariableExpressionEvaluator.java:263)
+	at org.thymeleaf.standard.expression.VariableExpression.executeVariableExpression(VariableExpression.java:166)
+	at org.thymeleaf.standard.expression.SimpleExpression.executeSimple(SimpleExpression.java:66)
+	at org.thymeleaf.standard.expression.Expression.execute(Expression.java:109)
+	at org.thymeleaf.standard.expression.Expression.execute(Expression.java:138)
+	at org.thymeleaf.standard.expression.Expression.execute(Expression.java:125)
+	at org.thymeleaf.standard.processor.StandardIfTagProcessor.isVisible(StandardIfTagProcessor.java:59)
+	at org.thymeleaf.standard.processor.AbstractStandardConditionalVisibilityTagProcessor.doProcess(AbstractStandardConditionalVisibilityTagProcessor.java:61)
+	at org.thymeleaf.processor.element.AbstractAttributeTagProcessor.doProcess(AbstractAttributeTagProcessor.java:74)
+	at org.thymeleaf.processor.element.AbstractElementTagProcessor.process(AbstractElementTagProcessor.java:95)
+	at org.thymeleaf.util.ProcessorConfigurationUtils$ElementTagProcessorWrapper.process(ProcessorConfigurationUtils.java:633)
+	at org.thymeleaf.engine.ProcessorTemplateHandler.handleStandaloneElement(ProcessorTemplateHandler.java:918)
+	at org.thymeleaf.engine.TemplateHandlerAdapterMarkupHandler.handleStandaloneElementEnd(TemplateHandlerAdapterMarkupHandler.java:260)
+	at org.thymeleaf.templateparser.markup.InlinedOutputExpressionMarkupHandler$InlineMarkupAdapterPreProcessorHandler.handleStandaloneElementEnd(InlinedOutputExpressionMarkupHandler.java:256)
+	at org.thymeleaf.standard.inline.OutputExpressionInlinePreProcessorHandler.handleStandaloneElementEnd(OutputExpressionInlinePreProcessorHandler.java:169)
+	at org.thymeleaf.templateparser.markup.InlinedOutputExpressionMarkupHandler.handleStandaloneElementEnd(InlinedOutputExpressionMarkupHandler.java:104)
+	at org.attoparser.HtmlElement.handleStandaloneElementEnd(HtmlElement.java:79)
+	at org.attoparser.HtmlMarkupHandler.handleStandaloneElementEnd(HtmlMarkupHandler.java:241)
+	at org.attoparser.MarkupEventProcessorHandler.handleStandaloneElementEnd(MarkupEventProcessorHandler.java:327)
+	at org.attoparser.ParsingElementMarkupUtil.parseStandaloneElement(ParsingElementMarkupUtil.java:96)
+	at org.attoparser.MarkupParser.parseBuffer(MarkupParser.java:706)
+	at org.attoparser.MarkupParser.parseDocument(MarkupParser.java:301)
+	at org.attoparser.MarkupParser.parse(MarkupParser.java:257)
+	at org.thymeleaf.templateparser.markup.AbstractMarkupTemplateParser.parse(AbstractMarkupTemplateParser.java:230)
+	at org.thymeleaf.templateparser.markup.AbstractMarkupTemplateParser.parseStandalone(AbstractMarkupTemplateParser.java:100)
+	at org.thymeleaf.engine.TemplateManager.parseAndProcess(TemplateManager.java:666)
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1098)
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1072)
+	at org.thymeleaf.spring5.view.ThymeleafView.renderFragment(ThymeleafView.java:362)
+	at org.thymeleaf.spring5.view.ThymeleafView.render(ThymeleafView.java:189)
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1373)
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1118)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1057)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:634)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at com.alibaba.druid.support.http.WebStatFilter.doFilter(WebStatFilter.java:123)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:320)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:126)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:90)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:118)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:137)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:111)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:158)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:200)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:92)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:77)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:105)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:56)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:215)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:178)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:358)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:271)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:108)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:526)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:367)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:860)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1591)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+2019-12-22 22:47:09,564 ERROR (ErrorMvcAutoConfiguration.java:204)- Cannot render error page for request [/dashboard/candidate_dashboard] and exception [An error happened during template parsing (template: "class path resource [templates/dashboard/candidate_dashboard.html]")] as the response has already been committed. As a result, the response may have the wrong status code.
+2019-12-22 23:15:31,032 INFO (StartupInfoLogger.java:55)- Starting RunningApplication on DESKTOP-OTO9O1T with PID 1224 (started by hp in D:\学习资源\大学生兼职平台\undergraduatejob)
+2019-12-22 23:15:31,036 INFO (SpringApplication.java:651)- No active profile set, falling back to default profiles: default
+2019-12-22 23:15:31,116 INFO (DeferredLog.java:225)- Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-12-22 23:15:31,118 INFO (DeferredLog.java:225)- For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-12-22 23:15:33,048 INFO (RepositoryConfigurationDelegate.java:249)- Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-12-22 23:15:33,050 INFO (RepositoryConfigurationDelegate.java:127)- Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2019-12-22 23:15:33,211 INFO (RepositoryConfigurationDelegate.java:187)- Finished Spring Data repository scanning in 137ms. Found 0 Redis repository interfaces.
+2019-12-22 23:15:33,764 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration' of type [org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:15:33,767 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'objectPostProcessor' of type [org.springframework.security.config.annotation.configuration.AutowireBeanFactoryObjectPostProcessor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:15:33,774 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@6eeeca04' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:15:33,779 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration' of type [org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:15:33,783 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:15:33,800 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration$DataSourceTransactionManagerConfiguration' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration$DataSourceTransactionManagerConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:15:33,806 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'druidConfig' of type [com.lyx.undergraduatejob.config.DruidConfig$$EnhancerBySpringCGLIB$$1a13de6d] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:15:33,893 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'druid' of type [com.alibaba.druid.pool.DruidDataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:15:33,943 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'spring.datasource-org.springframework.boot.autoconfigure.jdbc.DataSourceProperties' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:15:33,950 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:15:33,959 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration' of type [org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:15:33,965 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'spring.transaction-org.springframework.boot.autoconfigure.transaction.TransactionProperties' of type [org.springframework.boot.autoconfigure.transaction.TransactionProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:15:33,967 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'platformTransactionManagerCustomizers' of type [org.springframework.boot.autoconfigure.transaction.TransactionManagerCustomizers] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:15:33,978 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'transactionManager' of type [org.springframework.jdbc.datasource.DataSourceTransactionManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:15:33,982 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'transactionConfig' of type [com.lyx.undergraduatejob.config.TransactionConfig$$EnhancerBySpringCGLIB$$537d74c9] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:15:34,007 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'txAdvice' of type [org.springframework.transaction.interceptor.TransactionInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:15:34,010 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'txAdviceAdvisor' of type [org.springframework.aop.support.DefaultPointcutAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:15:34,021 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'redisConfig' of type [com.lyx.undergraduatejob.config.RedisConfig$$EnhancerBySpringCGLIB$$103c0246] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:15:34,167 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:15:34,792 INFO (TomcatWebServer.java:92)- Tomcat initialized with port(s): 8080 (http)
+2019-12-22 23:15:34,805 INFO (DirectJDKLog.java:173)- Initializing ProtocolHandler ["http-nio-8080"]
+2019-12-22 23:15:34,806 INFO (DirectJDKLog.java:173)- Starting service [Tomcat]
+2019-12-22 23:15:34,806 INFO (DirectJDKLog.java:173)- Starting Servlet engine: [Apache Tomcat/9.0.29]
+2019-12-22 23:15:35,016 INFO (DirectJDKLog.java:173)- Initializing Spring embedded WebApplicationContext
+2019-12-22 23:15:35,016 INFO (ServletWebServerApplicationContext.java:284)- Root WebApplicationContext: initialization completed in 3889 ms
+2019-12-22 23:15:35,859 INFO (DynamicRegistrationBean.java:110)- Filter webStatFilter was not registered (possibly already registered?)
+2019-12-22 23:15:35,862 INFO (DynamicRegistrationBean.java:110)- Servlet statViewServlet was not registered (possibly already registered?)
+2019-12-22 23:15:37,205 INFO (UserDetailsServiceAutoConfiguration.java:86)- 
+
+Using generated security password: 5eea4f52-8394-4f55-92fa-1c2a3744b924
+
+2019-12-22 23:15:37,396 INFO (DefaultSecurityFilterChain.java:43)- Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@63f024a4, org.springframework.security.web.context.SecurityContextPersistenceFilter@701fbee, org.springframework.security.web.header.HeaderWriterFilter@70886b91, org.springframework.security.web.authentication.logout.LogoutFilter@4c96ec9, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@2f6f4333, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2feb77b5, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@50afdeab, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4a5b2d01, org.springframework.security.web.session.SessionManagementFilter@88c4a50, org.springframework.security.web.access.ExceptionTranslationFilter@4d2b9e94, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@323cc672]
+2019-12-22 23:15:37,713 INFO (ExecutorConfigurationSupport.java:171)- Initializing ExecutorService 'applicationTaskExecutor'
+2019-12-22 23:15:37,864 INFO (WelcomePageHandlerMapping.java:58)- Adding welcome page template: index
+2019-12-22 23:15:39,384 INFO (OptionalLiveReloadServer.java:58)- LiveReload server is running on port 35729
+2019-12-22 23:15:39,395 INFO (EndpointLinksResolver.java:58)- Exposing 2 endpoint(s) beneath base path '/actuator'
+2019-12-22 23:15:39,513 INFO (DirectJDKLog.java:173)- Starting ProtocolHandler ["http-nio-8080"]
+2019-12-22 23:15:39,556 INFO (TomcatWebServer.java:204)- Tomcat started on port(s): 8080 (http) with context path ''
+2019-12-22 23:15:39,563 INFO (StartupInfoLogger.java:61)- Started RunningApplication in 9.647 seconds (JVM running for 11.329)
+2019-12-22 23:15:41,021 INFO (DirectJDKLog.java:173)- Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-12-22 23:15:41,025 INFO (FrameworkServlet.java:525)- Initializing Servlet 'dispatcherServlet'
+2019-12-22 23:15:41,057 INFO (FrameworkServlet.java:547)- Completed initialization in 31 ms
+2019-12-22 23:15:41,942 INFO (DruidDataSource.java:930)- {dataSource-1} inited
+2019-12-22 23:15:44,347 INFO (EpollProvider.java:68)- Starting without optional epoll library
+2019-12-22 23:15:44,349 INFO (KqueueProvider.java:70)- Starting without optional kqueue library
+2019-12-22 23:20:35,695 INFO (StartupInfoLogger.java:55)- Starting RunningApplication on DESKTOP-OTO9O1T with PID 2912 (started by hp in D:\学习资源\大学生兼职平台\undergraduatejob)
+2019-12-22 23:20:35,699 INFO (SpringApplication.java:651)- No active profile set, falling back to default profiles: default
+2019-12-22 23:20:35,764 INFO (DeferredLog.java:225)- Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-12-22 23:20:35,764 INFO (DeferredLog.java:225)- For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-12-22 23:20:37,168 INFO (RepositoryConfigurationDelegate.java:249)- Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-12-22 23:20:37,171 INFO (RepositoryConfigurationDelegate.java:127)- Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2019-12-22 23:20:37,292 INFO (RepositoryConfigurationDelegate.java:187)- Finished Spring Data repository scanning in 107ms. Found 0 Redis repository interfaces.
+2019-12-22 23:20:37,731 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration' of type [org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:20:37,734 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'objectPostProcessor' of type [org.springframework.security.config.annotation.configuration.AutowireBeanFactoryObjectPostProcessor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:20:37,738 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@1fc6e88f' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:20:37,742 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration' of type [org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:20:37,747 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:20:37,756 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration$DataSourceTransactionManagerConfiguration' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration$DataSourceTransactionManagerConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:20:37,761 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'druidConfig' of type [com.lyx.undergraduatejob.config.DruidConfig$$EnhancerBySpringCGLIB$$4a4860f1] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:20:37,822 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'druid' of type [com.alibaba.druid.pool.DruidDataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:20:37,861 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'spring.datasource-org.springframework.boot.autoconfigure.jdbc.DataSourceProperties' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:20:37,868 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:20:37,873 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration' of type [org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:20:37,879 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'spring.transaction-org.springframework.boot.autoconfigure.transaction.TransactionProperties' of type [org.springframework.boot.autoconfigure.transaction.TransactionProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:20:37,882 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'platformTransactionManagerCustomizers' of type [org.springframework.boot.autoconfigure.transaction.TransactionManagerCustomizers] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:20:37,890 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'transactionManager' of type [org.springframework.jdbc.datasource.DataSourceTransactionManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:20:37,893 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'transactionConfig' of type [com.lyx.undergraduatejob.config.TransactionConfig$$EnhancerBySpringCGLIB$$83b1f74d] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:20:37,910 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'txAdvice' of type [org.springframework.transaction.interceptor.TransactionInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:20:37,911 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'txAdviceAdvisor' of type [org.springframework.aop.support.DefaultPointcutAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:20:37,920 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'redisConfig' of type [com.lyx.undergraduatejob.config.RedisConfig$$EnhancerBySpringCGLIB$$407084ca] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:20:38,037 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:20:38,557 INFO (TomcatWebServer.java:92)- Tomcat initialized with port(s): 8080 (http)
+2019-12-22 23:20:38,566 INFO (DirectJDKLog.java:173)- Initializing ProtocolHandler ["http-nio-8080"]
+2019-12-22 23:20:38,567 INFO (DirectJDKLog.java:173)- Starting service [Tomcat]
+2019-12-22 23:20:38,567 INFO (DirectJDKLog.java:173)- Starting Servlet engine: [Apache Tomcat/9.0.29]
+2019-12-22 23:20:38,710 INFO (DirectJDKLog.java:173)- Initializing Spring embedded WebApplicationContext
+2019-12-22 23:20:38,711 INFO (ServletWebServerApplicationContext.java:284)- Root WebApplicationContext: initialization completed in 2946 ms
+2019-12-22 23:20:39,304 INFO (DynamicRegistrationBean.java:110)- Filter webStatFilter was not registered (possibly already registered?)
+2019-12-22 23:20:39,306 INFO (DynamicRegistrationBean.java:110)- Servlet statViewServlet was not registered (possibly already registered?)
+2019-12-22 23:20:40,311 INFO (UserDetailsServiceAutoConfiguration.java:86)- 
+
+Using generated security password: d11e8abd-1605-4d74-8f89-6793a2430f5f
+
+2019-12-22 23:20:40,441 INFO (DefaultSecurityFilterChain.java:43)- Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@41c6c0b6, org.springframework.security.web.context.SecurityContextPersistenceFilter@78a8204, org.springframework.security.web.header.HeaderWriterFilter@4eaff32f, org.springframework.security.web.authentication.logout.LogoutFilter@77be317d, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@33b80004, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@545f6ab6, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4ce12383, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@67dcc095, org.springframework.security.web.session.SessionManagementFilter@38ee55b6, org.springframework.security.web.access.ExceptionTranslationFilter@71bb8801, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@54fa7b79]
+2019-12-22 23:20:40,660 INFO (ExecutorConfigurationSupport.java:171)- Initializing ExecutorService 'applicationTaskExecutor'
+2019-12-22 23:20:40,781 INFO (WelcomePageHandlerMapping.java:58)- Adding welcome page template: index
+2019-12-22 23:20:41,859 INFO (OptionalLiveReloadServer.java:58)- LiveReload server is running on port 35729
+2019-12-22 23:20:41,865 INFO (EndpointLinksResolver.java:58)- Exposing 2 endpoint(s) beneath base path '/actuator'
+2019-12-22 23:20:41,945 INFO (DirectJDKLog.java:173)- Starting ProtocolHandler ["http-nio-8080"]
+2019-12-22 23:20:41,971 INFO (TomcatWebServer.java:204)- Tomcat started on port(s): 8080 (http) with context path ''
+2019-12-22 23:20:41,974 INFO (StartupInfoLogger.java:61)- Started RunningApplication in 7.011 seconds (JVM running for 8.5)
+2019-12-22 23:20:42,632 INFO (DirectJDKLog.java:173)- Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-12-22 23:20:42,633 INFO (FrameworkServlet.java:525)- Initializing Servlet 'dispatcherServlet'
+2019-12-22 23:20:42,676 INFO (FrameworkServlet.java:547)- Completed initialization in 43 ms
+2019-12-22 23:20:42,920 INFO (DruidDataSource.java:930)- {dataSource-1} inited
+2019-12-22 23:20:46,431 INFO (EpollProvider.java:68)- Starting without optional epoll library
+2019-12-22 23:20:46,432 INFO (KqueueProvider.java:70)- Starting without optional kqueue library
+2019-12-22 23:23:58,317 INFO (StartupInfoLogger.java:55)- Starting RunningApplication on DESKTOP-OTO9O1T with PID 3780 (started by hp in D:\学习资源\大学生兼职平台\undergraduatejob)
+2019-12-22 23:23:58,323 INFO (SpringApplication.java:651)- No active profile set, falling back to default profiles: default
+2019-12-22 23:23:58,401 INFO (DeferredLog.java:225)- Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-12-22 23:23:58,401 INFO (DeferredLog.java:225)- For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-12-22 23:23:59,716 INFO (RepositoryConfigurationDelegate.java:249)- Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-12-22 23:23:59,719 INFO (RepositoryConfigurationDelegate.java:127)- Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2019-12-22 23:23:59,834 INFO (RepositoryConfigurationDelegate.java:187)- Finished Spring Data repository scanning in 86ms. Found 0 Redis repository interfaces.
+2019-12-22 23:24:00,203 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration' of type [org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:24:00,206 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'objectPostProcessor' of type [org.springframework.security.config.annotation.configuration.AutowireBeanFactoryObjectPostProcessor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:24:00,209 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@1aa93b86' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:24:00,212 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration' of type [org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:24:00,216 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:24:00,225 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration$DataSourceTransactionManagerConfiguration' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration$DataSourceTransactionManagerConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:24:00,228 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'druidConfig' of type [com.lyx.undergraduatejob.config.DruidConfig$$EnhancerBySpringCGLIB$$eee0544a] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:24:00,288 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'druid' of type [com.alibaba.druid.pool.DruidDataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:24:00,325 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'spring.datasource-org.springframework.boot.autoconfigure.jdbc.DataSourceProperties' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:24:00,330 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:24:00,335 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration' of type [org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:24:00,339 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'spring.transaction-org.springframework.boot.autoconfigure.transaction.TransactionProperties' of type [org.springframework.boot.autoconfigure.transaction.TransactionProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:24:00,341 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'platformTransactionManagerCustomizers' of type [org.springframework.boot.autoconfigure.transaction.TransactionManagerCustomizers] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:24:00,346 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'transactionManager' of type [org.springframework.jdbc.datasource.DataSourceTransactionManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:24:00,350 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'transactionConfig' of type [com.lyx.undergraduatejob.config.TransactionConfig$$EnhancerBySpringCGLIB$$2849eaa6] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:24:00,368 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'txAdvice' of type [org.springframework.transaction.interceptor.TransactionInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:24:00,369 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'txAdviceAdvisor' of type [org.springframework.aop.support.DefaultPointcutAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:24:00,376 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'redisConfig' of type [com.lyx.undergraduatejob.config.RedisConfig$$EnhancerBySpringCGLIB$$e5087823] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:24:00,490 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:24:00,948 INFO (TomcatWebServer.java:92)- Tomcat initialized with port(s): 8080 (http)
+2019-12-22 23:24:00,957 INFO (DirectJDKLog.java:173)- Initializing ProtocolHandler ["http-nio-8080"]
+2019-12-22 23:24:00,958 INFO (DirectJDKLog.java:173)- Starting service [Tomcat]
+2019-12-22 23:24:00,958 INFO (DirectJDKLog.java:173)- Starting Servlet engine: [Apache Tomcat/9.0.29]
+2019-12-22 23:24:01,090 INFO (DirectJDKLog.java:173)- Initializing Spring embedded WebApplicationContext
+2019-12-22 23:24:01,090 INFO (ServletWebServerApplicationContext.java:284)- Root WebApplicationContext: initialization completed in 2688 ms
+2019-12-22 23:24:01,634 INFO (DynamicRegistrationBean.java:110)- Filter webStatFilter was not registered (possibly already registered?)
+2019-12-22 23:24:01,635 INFO (DynamicRegistrationBean.java:110)- Servlet statViewServlet was not registered (possibly already registered?)
+2019-12-22 23:24:02,543 INFO (UserDetailsServiceAutoConfiguration.java:86)- 
+
+Using generated security password: 59638a49-aa24-44d4-8c1f-4c9b0a4f7517
+
+2019-12-22 23:24:02,649 INFO (DefaultSecurityFilterChain.java:43)- Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@ca5a4ce, org.springframework.security.web.context.SecurityContextPersistenceFilter@1f5b6e4b, org.springframework.security.web.header.HeaderWriterFilter@16ddeeda, org.springframework.security.web.authentication.logout.LogoutFilter@7218a46f, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@b2ba7df, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@ba9d346, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@838b27e, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3c7e4c6e, org.springframework.security.web.session.SessionManagementFilter@730221af, org.springframework.security.web.access.ExceptionTranslationFilter@7d6b4722, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@c10db4]
+2019-12-22 23:24:02,884 INFO (ExecutorConfigurationSupport.java:171)- Initializing ExecutorService 'applicationTaskExecutor'
+2019-12-22 23:24:03,004 INFO (WelcomePageHandlerMapping.java:58)- Adding welcome page template: index
+2019-12-22 23:24:04,086 INFO (OptionalLiveReloadServer.java:58)- LiveReload server is running on port 35729
+2019-12-22 23:24:04,093 INFO (EndpointLinksResolver.java:58)- Exposing 2 endpoint(s) beneath base path '/actuator'
+2019-12-22 23:24:04,177 INFO (DirectJDKLog.java:173)- Starting ProtocolHandler ["http-nio-8080"]
+2019-12-22 23:24:04,226 INFO (TomcatWebServer.java:204)- Tomcat started on port(s): 8080 (http) with context path ''
+2019-12-22 23:24:04,230 INFO (StartupInfoLogger.java:61)- Started RunningApplication in 6.657 seconds (JVM running for 7.749)
+2019-12-22 23:24:04,595 INFO (DirectJDKLog.java:173)- Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-12-22 23:24:04,596 INFO (FrameworkServlet.java:525)- Initializing Servlet 'dispatcherServlet'
+2019-12-22 23:24:04,609 INFO (FrameworkServlet.java:547)- Completed initialization in 13 ms
+2019-12-22 23:24:04,915 INFO (DruidDataSource.java:930)- {dataSource-1} inited
+2019-12-22 23:24:06,314 INFO (EpollProvider.java:68)- Starting without optional epoll library
+2019-12-22 23:24:06,316 INFO (KqueueProvider.java:70)- Starting without optional kqueue library
+2019-12-22 23:27:28,492 INFO (StartupInfoLogger.java:55)- Starting RunningApplication on DESKTOP-OTO9O1T with PID 896 (started by hp in D:\学习资源\大学生兼职平台\undergraduatejob)
+2019-12-22 23:27:28,504 INFO (SpringApplication.java:651)- No active profile set, falling back to default profiles: default
+2019-12-22 23:27:28,604 INFO (DeferredLog.java:225)- Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-12-22 23:27:28,604 INFO (DeferredLog.java:225)- For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-12-22 23:27:30,540 INFO (RepositoryConfigurationDelegate.java:249)- Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-12-22 23:27:30,542 INFO (RepositoryConfigurationDelegate.java:127)- Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2019-12-22 23:27:30,674 INFO (RepositoryConfigurationDelegate.java:187)- Finished Spring Data repository scanning in 113ms. Found 0 Redis repository interfaces.
+2019-12-22 23:27:31,184 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration' of type [org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:27:31,188 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'objectPostProcessor' of type [org.springframework.security.config.annotation.configuration.AutowireBeanFactoryObjectPostProcessor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:27:31,191 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@62b5e605' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:27:31,192 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration' of type [org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:27:31,201 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:27:31,210 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration$DataSourceTransactionManagerConfiguration' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration$DataSourceTransactionManagerConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:27:31,218 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'druidConfig' of type [com.lyx.undergraduatejob.config.DruidConfig$$EnhancerBySpringCGLIB$$c829f4b] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:27:31,296 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'druid' of type [com.alibaba.druid.pool.DruidDataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:27:31,342 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'spring.datasource-org.springframework.boot.autoconfigure.jdbc.DataSourceProperties' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:27:31,352 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:27:31,356 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration' of type [org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:27:31,363 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'spring.transaction-org.springframework.boot.autoconfigure.transaction.TransactionProperties' of type [org.springframework.boot.autoconfigure.transaction.TransactionProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:27:31,366 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'platformTransactionManagerCustomizers' of type [org.springframework.boot.autoconfigure.transaction.TransactionManagerCustomizers] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:27:31,373 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'transactionManager' of type [org.springframework.jdbc.datasource.DataSourceTransactionManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:27:31,375 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'transactionConfig' of type [com.lyx.undergraduatejob.config.TransactionConfig$$EnhancerBySpringCGLIB$$45ec35a7] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:27:31,403 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'txAdvice' of type [org.springframework.transaction.interceptor.TransactionInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:27:31,404 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'txAdviceAdvisor' of type [org.springframework.aop.support.DefaultPointcutAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:27:31,417 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'redisConfig' of type [com.lyx.undergraduatejob.config.RedisConfig$$EnhancerBySpringCGLIB$$2aac324] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:27:31,572 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:27:32,155 INFO (TomcatWebServer.java:92)- Tomcat initialized with port(s): 8080 (http)
+2019-12-22 23:27:32,165 INFO (DirectJDKLog.java:173)- Initializing ProtocolHandler ["http-nio-8080"]
+2019-12-22 23:27:32,166 INFO (DirectJDKLog.java:173)- Starting service [Tomcat]
+2019-12-22 23:27:32,168 INFO (DirectJDKLog.java:173)- Starting Servlet engine: [Apache Tomcat/9.0.29]
+2019-12-22 23:27:32,349 INFO (DirectJDKLog.java:173)- Initializing Spring embedded WebApplicationContext
+2019-12-22 23:27:32,351 INFO (ServletWebServerApplicationContext.java:284)- Root WebApplicationContext: initialization completed in 3747 ms
+2019-12-22 23:27:33,139 INFO (DynamicRegistrationBean.java:110)- Filter webStatFilter was not registered (possibly already registered?)
+2019-12-22 23:27:33,140 INFO (DynamicRegistrationBean.java:110)- Servlet statViewServlet was not registered (possibly already registered?)
+2019-12-22 23:27:34,381 INFO (UserDetailsServiceAutoConfiguration.java:86)- 
+
+Using generated security password: bae6825d-4272-4f7e-a498-7853a54ac985
+
+2019-12-22 23:27:34,535 INFO (DefaultSecurityFilterChain.java:43)- Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@76ba958b, org.springframework.security.web.context.SecurityContextPersistenceFilter@7df4c664, org.springframework.security.web.header.HeaderWriterFilter@541d2489, org.springframework.security.web.authentication.logout.LogoutFilter@40ec44a4, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@20b6c6fa, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@47110701, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@cfe1a87, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@197fdff8, org.springframework.security.web.session.SessionManagementFilter@44416666, org.springframework.security.web.access.ExceptionTranslationFilter@2d5bcca8, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@63f1615d]
+2019-12-22 23:27:34,850 INFO (ExecutorConfigurationSupport.java:171)- Initializing ExecutorService 'applicationTaskExecutor'
+2019-12-22 23:27:35,017 INFO (WelcomePageHandlerMapping.java:58)- Adding welcome page template: index
+2019-12-22 23:27:36,532 INFO (OptionalLiveReloadServer.java:58)- LiveReload server is running on port 35729
+2019-12-22 23:27:36,541 INFO (EndpointLinksResolver.java:58)- Exposing 2 endpoint(s) beneath base path '/actuator'
+2019-12-22 23:27:36,641 INFO (DirectJDKLog.java:173)- Starting ProtocolHandler ["http-nio-8080"]
+2019-12-22 23:27:36,673 INFO (TomcatWebServer.java:204)- Tomcat started on port(s): 8080 (http) with context path ''
+2019-12-22 23:27:36,677 INFO (StartupInfoLogger.java:61)- Started RunningApplication in 9.19 seconds (JVM running for 10.718)
+2019-12-22 23:27:36,957 INFO (DirectJDKLog.java:173)- Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-12-22 23:27:36,958 INFO (FrameworkServlet.java:525)- Initializing Servlet 'dispatcherServlet'
+2019-12-22 23:27:36,985 INFO (FrameworkServlet.java:547)- Completed initialization in 27 ms
+2019-12-22 23:27:37,506 INFO (DruidDataSource.java:930)- {dataSource-1} inited
+2019-12-22 23:27:39,322 INFO (EpollProvider.java:68)- Starting without optional epoll library
+2019-12-22 23:27:39,324 INFO (KqueueProvider.java:70)- Starting without optional kqueue library
+2019-12-22 23:30:43,314 INFO (StartupInfoLogger.java:55)- Starting RunningApplication on DESKTOP-OTO9O1T with PID 7548 (started by hp in D:\学习资源\大学生兼职平台\undergraduatejob)
+2019-12-22 23:30:43,320 INFO (SpringApplication.java:651)- No active profile set, falling back to default profiles: default
+2019-12-22 23:30:43,448 INFO (DeferredLog.java:225)- Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-12-22 23:30:43,449 INFO (DeferredLog.java:225)- For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-12-22 23:30:45,488 INFO (RepositoryConfigurationDelegate.java:249)- Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-12-22 23:30:45,495 INFO (RepositoryConfigurationDelegate.java:127)- Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2019-12-22 23:30:45,666 INFO (RepositoryConfigurationDelegate.java:187)- Finished Spring Data repository scanning in 144ms. Found 0 Redis repository interfaces.
+2019-12-22 23:30:46,656 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration' of type [org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:30:46,662 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'objectPostProcessor' of type [org.springframework.security.config.annotation.configuration.AutowireBeanFactoryObjectPostProcessor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:30:46,665 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@4c8eed11' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:30:46,669 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration' of type [org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:30:46,676 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:30:46,687 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration$DataSourceTransactionManagerConfiguration' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration$DataSourceTransactionManagerConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:30:46,693 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'druidConfig' of type [com.lyx.undergraduatejob.config.DruidConfig$$EnhancerBySpringCGLIB$$c47c3f69] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:30:46,774 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'druid' of type [com.alibaba.druid.pool.DruidDataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:30:46,822 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'spring.datasource-org.springframework.boot.autoconfigure.jdbc.DataSourceProperties' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:30:46,830 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:30:46,836 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration' of type [org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:30:46,866 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'spring.transaction-org.springframework.boot.autoconfigure.transaction.TransactionProperties' of type [org.springframework.boot.autoconfigure.transaction.TransactionProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:30:46,892 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'platformTransactionManagerCustomizers' of type [org.springframework.boot.autoconfigure.transaction.TransactionManagerCustomizers] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:30:46,913 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'transactionManager' of type [org.springframework.jdbc.datasource.DataSourceTransactionManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:30:46,917 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'transactionConfig' of type [com.lyx.undergraduatejob.config.TransactionConfig$$EnhancerBySpringCGLIB$$fde5d5c5] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:30:47,033 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'txAdvice' of type [org.springframework.transaction.interceptor.TransactionInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:30:47,034 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'txAdviceAdvisor' of type [org.springframework.aop.support.DefaultPointcutAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:30:47,048 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'redisConfig' of type [com.lyx.undergraduatejob.config.RedisConfig$$EnhancerBySpringCGLIB$$baa46342] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:30:47,203 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:30:48,614 INFO (TomcatWebServer.java:92)- Tomcat initialized with port(s): 8080 (http)
+2019-12-22 23:30:48,654 INFO (DirectJDKLog.java:173)- Initializing ProtocolHandler ["http-nio-8080"]
+2019-12-22 23:30:48,659 INFO (DirectJDKLog.java:173)- Starting service [Tomcat]
+2019-12-22 23:30:48,661 INFO (DirectJDKLog.java:173)- Starting Servlet engine: [Apache Tomcat/9.0.29]
+2019-12-22 23:30:51,021 INFO (DirectJDKLog.java:173)- Initializing Spring embedded WebApplicationContext
+2019-12-22 23:30:51,030 INFO (ServletWebServerApplicationContext.java:284)- Root WebApplicationContext: initialization completed in 7580 ms
+2019-12-22 23:30:52,099 INFO (DynamicRegistrationBean.java:110)- Filter webStatFilter was not registered (possibly already registered?)
+2019-12-22 23:30:52,100 INFO (DynamicRegistrationBean.java:110)- Servlet statViewServlet was not registered (possibly already registered?)
+2019-12-22 23:30:53,243 INFO (UserDetailsServiceAutoConfiguration.java:86)- 
+
+Using generated security password: ec089433-8ddd-4b81-bf41-46d68fd23c78
+
+2019-12-22 23:30:53,400 INFO (DefaultSecurityFilterChain.java:43)- Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1c5da600, org.springframework.security.web.context.SecurityContextPersistenceFilter@2ff33758, org.springframework.security.web.header.HeaderWriterFilter@4a2302e8, org.springframework.security.web.authentication.logout.LogoutFilter@6ce0e7ef, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@63a993e2, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@10820392, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7e7663dc, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1ec8bbff, org.springframework.security.web.session.SessionManagementFilter@e120975, org.springframework.security.web.access.ExceptionTranslationFilter@3043bdb9, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@5b8b0714]
+2019-12-22 23:30:53,681 INFO (ExecutorConfigurationSupport.java:171)- Initializing ExecutorService 'applicationTaskExecutor'
+2019-12-22 23:30:53,814 INFO (WelcomePageHandlerMapping.java:58)- Adding welcome page template: index
+2019-12-22 23:30:55,103 INFO (OptionalLiveReloadServer.java:58)- LiveReload server is running on port 35729
+2019-12-22 23:30:55,115 INFO (EndpointLinksResolver.java:58)- Exposing 2 endpoint(s) beneath base path '/actuator'
+2019-12-22 23:30:55,213 INFO (DirectJDKLog.java:173)- Starting ProtocolHandler ["http-nio-8080"]
+2019-12-22 23:30:55,243 INFO (TomcatWebServer.java:204)- Tomcat started on port(s): 8080 (http) with context path ''
+2019-12-22 23:30:55,247 INFO (StartupInfoLogger.java:61)- Started RunningApplication in 13.351 seconds (JVM running for 15.261)
+2019-12-22 23:30:55,623 INFO (DirectJDKLog.java:173)- Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-12-22 23:30:55,624 INFO (FrameworkServlet.java:525)- Initializing Servlet 'dispatcherServlet'
+2019-12-22 23:30:55,640 INFO (FrameworkServlet.java:547)- Completed initialization in 15 ms
+2019-12-22 23:30:56,389 INFO (DruidDataSource.java:930)- {dataSource-1} inited
+2019-12-22 23:31:00,135 INFO (EpollProvider.java:68)- Starting without optional epoll library
+2019-12-22 23:31:00,141 INFO (KqueueProvider.java:70)- Starting without optional kqueue library
+2019-12-22 23:36:30,601 INFO (StartupInfoLogger.java:55)- Starting RunningApplication on DESKTOP-OTO9O1T with PID 2032 (started by hp in D:\学习资源\大学生兼职平台\undergraduatejob)
+2019-12-22 23:36:30,607 INFO (SpringApplication.java:651)- No active profile set, falling back to default profiles: default
+2019-12-22 23:36:30,867 INFO (DeferredLog.java:225)- Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-12-22 23:36:30,868 INFO (DeferredLog.java:225)- For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-12-22 23:36:33,275 INFO (RepositoryConfigurationDelegate.java:249)- Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-12-22 23:36:33,281 INFO (RepositoryConfigurationDelegate.java:127)- Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2019-12-22 23:36:33,463 INFO (RepositoryConfigurationDelegate.java:187)- Finished Spring Data repository scanning in 142ms. Found 0 Redis repository interfaces.
+2019-12-22 23:36:34,060 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration' of type [org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:36:34,065 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'objectPostProcessor' of type [org.springframework.security.config.annotation.configuration.AutowireBeanFactoryObjectPostProcessor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:36:34,068 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@60d3e348' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:36:34,070 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration' of type [org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:36:34,080 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:36:34,093 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration$DataSourceTransactionManagerConfiguration' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration$DataSourceTransactionManagerConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:36:34,098 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'druidConfig' of type [com.lyx.undergraduatejob.config.DruidConfig$$EnhancerBySpringCGLIB$$1ea66d8f] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:36:34,213 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'druid' of type [com.alibaba.druid.pool.DruidDataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:36:34,269 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'spring.datasource-org.springframework.boot.autoconfigure.jdbc.DataSourceProperties' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:36:34,281 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:36:34,289 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration' of type [org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:36:34,299 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'spring.transaction-org.springframework.boot.autoconfigure.transaction.TransactionProperties' of type [org.springframework.boot.autoconfigure.transaction.TransactionProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:36:34,301 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'platformTransactionManagerCustomizers' of type [org.springframework.boot.autoconfigure.transaction.TransactionManagerCustomizers] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:36:34,316 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'transactionManager' of type [org.springframework.jdbc.datasource.DataSourceTransactionManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:36:34,323 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'transactionConfig' of type [com.lyx.undergraduatejob.config.TransactionConfig$$EnhancerBySpringCGLIB$$581003eb] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:36:34,360 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'txAdvice' of type [org.springframework.transaction.interceptor.TransactionInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:36:34,361 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'txAdviceAdvisor' of type [org.springframework.aop.support.DefaultPointcutAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:36:34,372 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'redisConfig' of type [com.lyx.undergraduatejob.config.RedisConfig$$EnhancerBySpringCGLIB$$14ce9168] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:36:34,539 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:36:35,249 INFO (TomcatWebServer.java:92)- Tomcat initialized with port(s): 8080 (http)
+2019-12-22 23:36:35,265 INFO (DirectJDKLog.java:173)- Initializing ProtocolHandler ["http-nio-8080"]
+2019-12-22 23:36:35,266 INFO (DirectJDKLog.java:173)- Starting service [Tomcat]
+2019-12-22 23:36:35,267 INFO (DirectJDKLog.java:173)- Starting Servlet engine: [Apache Tomcat/9.0.29]
+2019-12-22 23:36:35,497 INFO (DirectJDKLog.java:173)- Initializing Spring embedded WebApplicationContext
+2019-12-22 23:36:35,497 INFO (ServletWebServerApplicationContext.java:284)- Root WebApplicationContext: initialization completed in 4629 ms
+2019-12-22 23:36:36,415 INFO (DynamicRegistrationBean.java:110)- Filter webStatFilter was not registered (possibly already registered?)
+2019-12-22 23:36:36,417 INFO (DynamicRegistrationBean.java:110)- Servlet statViewServlet was not registered (possibly already registered?)
+2019-12-22 23:36:37,882 INFO (UserDetailsServiceAutoConfiguration.java:86)- 
+
+Using generated security password: 20a8fc00-261e-4cc3-980a-00e393f815bf
+
+2019-12-22 23:36:38,065 INFO (DefaultSecurityFilterChain.java:43)- Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7ed94502, org.springframework.security.web.context.SecurityContextPersistenceFilter@110a6806, org.springframework.security.web.header.HeaderWriterFilter@5619fe49, org.springframework.security.web.authentication.logout.LogoutFilter@3cf3bf54, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@1899ab60, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6f2e2f0c, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@14f69d83, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@483779a3, org.springframework.security.web.session.SessionManagementFilter@52327ea0, org.springframework.security.web.access.ExceptionTranslationFilter@54dc9dcc, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@155d012a]
+2019-12-22 23:36:38,376 INFO (ExecutorConfigurationSupport.java:171)- Initializing ExecutorService 'applicationTaskExecutor'
+2019-12-22 23:36:38,530 INFO (WelcomePageHandlerMapping.java:58)- Adding welcome page template: index
+2019-12-22 23:36:40,050 INFO (OptionalLiveReloadServer.java:58)- LiveReload server is running on port 35729
+2019-12-22 23:36:40,061 INFO (EndpointLinksResolver.java:58)- Exposing 2 endpoint(s) beneath base path '/actuator'
+2019-12-22 23:36:40,167 INFO (DirectJDKLog.java:173)- Starting ProtocolHandler ["http-nio-8080"]
+2019-12-22 23:36:40,200 INFO (TomcatWebServer.java:204)- Tomcat started on port(s): 8080 (http) with context path ''
+2019-12-22 23:36:40,205 INFO (StartupInfoLogger.java:61)- Started RunningApplication in 10.691 seconds (JVM running for 12.305)
+2019-12-22 23:36:40,611 INFO (DirectJDKLog.java:173)- Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-12-22 23:36:40,612 INFO (FrameworkServlet.java:525)- Initializing Servlet 'dispatcherServlet'
+2019-12-22 23:36:40,633 INFO (FrameworkServlet.java:547)- Completed initialization in 20 ms
+2019-12-22 23:36:41,031 INFO (DruidDataSource.java:930)- {dataSource-1} inited
+2019-12-22 23:36:45,982 INFO (EpollProvider.java:68)- Starting without optional epoll library
+2019-12-22 23:36:45,990 INFO (KqueueProvider.java:70)- Starting without optional kqueue library
+2019-12-22 23:40:16,681 INFO (StartupInfoLogger.java:55)- Starting RunningApplication on DESKTOP-OTO9O1T with PID 10816 (started by hp in D:\学习资源\大学生兼职平台\undergraduatejob)
+2019-12-22 23:40:16,688 INFO (SpringApplication.java:651)- No active profile set, falling back to default profiles: default
+2019-12-22 23:40:16,829 INFO (DeferredLog.java:225)- Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-12-22 23:40:16,833 INFO (DeferredLog.java:225)- For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-12-22 23:40:22,667 INFO (RepositoryConfigurationDelegate.java:249)- Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-12-22 23:40:22,670 INFO (RepositoryConfigurationDelegate.java:127)- Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2019-12-22 23:40:22,854 INFO (RepositoryConfigurationDelegate.java:187)- Finished Spring Data repository scanning in 137ms. Found 0 Redis repository interfaces.
+2019-12-22 23:40:23,669 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration' of type [org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:40:23,679 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'objectPostProcessor' of type [org.springframework.security.config.annotation.configuration.AutowireBeanFactoryObjectPostProcessor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:40:23,689 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@76d9fddd' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:40:23,693 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration' of type [org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:40:23,702 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:40:23,728 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration$DataSourceTransactionManagerConfiguration' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration$DataSourceTransactionManagerConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:40:23,738 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'druidConfig' of type [com.lyx.undergraduatejob.config.DruidConfig$$EnhancerBySpringCGLIB$$a1637732] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:40:23,870 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'druid' of type [com.alibaba.druid.pool.DruidDataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:40:23,963 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'spring.datasource-org.springframework.boot.autoconfigure.jdbc.DataSourceProperties' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:40:23,978 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:40:23,988 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration' of type [org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:40:24,001 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'spring.transaction-org.springframework.boot.autoconfigure.transaction.TransactionProperties' of type [org.springframework.boot.autoconfigure.transaction.TransactionProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:40:24,003 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'platformTransactionManagerCustomizers' of type [org.springframework.boot.autoconfigure.transaction.TransactionManagerCustomizers] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:40:24,017 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'transactionManager' of type [org.springframework.jdbc.datasource.DataSourceTransactionManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:40:24,020 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'transactionConfig' of type [com.lyx.undergraduatejob.config.TransactionConfig$$EnhancerBySpringCGLIB$$dacd0d8e] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:40:24,051 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'txAdvice' of type [org.springframework.transaction.interceptor.TransactionInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:40:24,052 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'txAdviceAdvisor' of type [org.springframework.aop.support.DefaultPointcutAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:40:24,067 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'redisConfig' of type [com.lyx.undergraduatejob.config.RedisConfig$$EnhancerBySpringCGLIB$$978b9b0b] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:40:24,321 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:40:25,145 INFO (TomcatWebServer.java:92)- Tomcat initialized with port(s): 8080 (http)
+2019-12-22 23:40:25,161 INFO (DirectJDKLog.java:173)- Initializing ProtocolHandler ["http-nio-8080"]
+2019-12-22 23:40:25,164 INFO (DirectJDKLog.java:173)- Starting service [Tomcat]
+2019-12-22 23:40:25,165 INFO (DirectJDKLog.java:173)- Starting Servlet engine: [Apache Tomcat/9.0.29]
+2019-12-22 23:40:25,444 INFO (DirectJDKLog.java:173)- Initializing Spring embedded WebApplicationContext
+2019-12-22 23:40:25,445 INFO (ServletWebServerApplicationContext.java:284)- Root WebApplicationContext: initialization completed in 8610 ms
+2019-12-22 23:40:26,686 INFO (DynamicRegistrationBean.java:110)- Filter webStatFilter was not registered (possibly already registered?)
+2019-12-22 23:40:26,688 INFO (DynamicRegistrationBean.java:110)- Servlet statViewServlet was not registered (possibly already registered?)
+2019-12-22 23:40:28,898 INFO (UserDetailsServiceAutoConfiguration.java:86)- 
+
+Using generated security password: af0e48b0-48a0-401b-8501-456047cb5846
+
+2019-12-22 23:40:29,162 INFO (DefaultSecurityFilterChain.java:43)- Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@d9254d2, org.springframework.security.web.context.SecurityContextPersistenceFilter@757280e0, org.springframework.security.web.header.HeaderWriterFilter@20ba35b6, org.springframework.security.web.authentication.logout.LogoutFilter@64730d0e, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@c1b83d, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3d4459b9, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@31ec6566, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@58213b48, org.springframework.security.web.session.SessionManagementFilter@797e2e7e, org.springframework.security.web.access.ExceptionTranslationFilter@52bd3413, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@2383b42a]
+2019-12-22 23:40:29,568 INFO (ExecutorConfigurationSupport.java:171)- Initializing ExecutorService 'applicationTaskExecutor'
+2019-12-22 23:40:29,798 INFO (WelcomePageHandlerMapping.java:58)- Adding welcome page template: index
+2019-12-22 23:40:31,519 INFO (OptionalLiveReloadServer.java:58)- LiveReload server is running on port 35729
+2019-12-22 23:40:31,532 INFO (EndpointLinksResolver.java:58)- Exposing 2 endpoint(s) beneath base path '/actuator'
+2019-12-22 23:40:31,649 INFO (DirectJDKLog.java:173)- Starting ProtocolHandler ["http-nio-8080"]
+2019-12-22 23:40:31,688 INFO (TomcatWebServer.java:204)- Tomcat started on port(s): 8080 (http) with context path ''
+2019-12-22 23:40:31,695 INFO (StartupInfoLogger.java:61)- Started RunningApplication in 16.912 seconds (JVM running for 19.442)
+2019-12-22 23:40:31,794 INFO (DirectJDKLog.java:173)- Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-12-22 23:40:31,796 INFO (FrameworkServlet.java:525)- Initializing Servlet 'dispatcherServlet'
+2019-12-22 23:40:31,833 INFO (FrameworkServlet.java:547)- Completed initialization in 35 ms
+2019-12-22 23:40:32,779 INFO (DruidDataSource.java:930)- {dataSource-1} inited
+2019-12-22 23:40:38,568 INFO (EpollProvider.java:68)- Starting without optional epoll library
+2019-12-22 23:40:38,570 INFO (KqueueProvider.java:70)- Starting without optional kqueue library
+2019-12-22 23:47:02,211 INFO (StartupInfoLogger.java:55)- Starting RunningApplication on DESKTOP-OTO9O1T with PID 10872 (started by hp in D:\学习资源\大学生兼职平台\undergraduatejob)
+2019-12-22 23:47:02,223 INFO (SpringApplication.java:651)- No active profile set, falling back to default profiles: default
+2019-12-22 23:47:02,371 INFO (DeferredLog.java:225)- Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-12-22 23:47:02,372 INFO (DeferredLog.java:225)- For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-12-22 23:47:09,787 INFO (RepositoryConfigurationDelegate.java:249)- Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-12-22 23:47:09,850 INFO (RepositoryConfigurationDelegate.java:127)- Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2019-12-22 23:47:10,138 INFO (RepositoryConfigurationDelegate.java:187)- Finished Spring Data repository scanning in 249ms. Found 0 Redis repository interfaces.
+2019-12-22 23:47:10,655 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration' of type [org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:47:10,659 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'objectPostProcessor' of type [org.springframework.security.config.annotation.configuration.AutowireBeanFactoryObjectPostProcessor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:47:10,663 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@41ef772c' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:47:10,668 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration' of type [org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:47:10,673 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:47:10,684 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration$DataSourceTransactionManagerConfiguration' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration$DataSourceTransactionManagerConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:47:10,689 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'druidConfig' of type [com.lyx.undergraduatejob.config.DruidConfig$$EnhancerBySpringCGLIB$$c2542414] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:47:10,766 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'druid' of type [com.alibaba.druid.pool.DruidDataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:47:10,822 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'spring.datasource-org.springframework.boot.autoconfigure.jdbc.DataSourceProperties' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:47:10,828 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:47:10,837 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration' of type [org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:47:10,843 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'spring.transaction-org.springframework.boot.autoconfigure.transaction.TransactionProperties' of type [org.springframework.boot.autoconfigure.transaction.TransactionProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:47:10,845 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'platformTransactionManagerCustomizers' of type [org.springframework.boot.autoconfigure.transaction.TransactionManagerCustomizers] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:47:10,855 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'transactionManager' of type [org.springframework.jdbc.datasource.DataSourceTransactionManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:47:10,858 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'transactionConfig' of type [com.lyx.undergraduatejob.config.TransactionConfig$$EnhancerBySpringCGLIB$$fbbdba70] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:47:10,882 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'txAdvice' of type [org.springframework.transaction.interceptor.TransactionInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:47:10,883 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'txAdviceAdvisor' of type [org.springframework.aop.support.DefaultPointcutAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:47:10,893 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'redisConfig' of type [com.lyx.undergraduatejob.config.RedisConfig$$EnhancerBySpringCGLIB$$b87c47ed] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:47:11,046 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 23:47:11,640 INFO (TomcatWebServer.java:92)- Tomcat initialized with port(s): 8080 (http)
+2019-12-22 23:47:11,653 INFO (DirectJDKLog.java:173)- Initializing ProtocolHandler ["http-nio-8080"]
+2019-12-22 23:47:11,654 INFO (DirectJDKLog.java:173)- Starting service [Tomcat]
+2019-12-22 23:47:11,654 INFO (DirectJDKLog.java:173)- Starting Servlet engine: [Apache Tomcat/9.0.29]
+2019-12-22 23:47:11,841 INFO (DirectJDKLog.java:173)- Initializing Spring embedded WebApplicationContext
+2019-12-22 23:47:11,842 INFO (ServletWebServerApplicationContext.java:284)- Root WebApplicationContext: initialization completed in 9469 ms
+2019-12-22 23:47:12,705 INFO (DynamicRegistrationBean.java:110)- Filter webStatFilter was not registered (possibly already registered?)
+2019-12-22 23:47:12,707 INFO (DynamicRegistrationBean.java:110)- Servlet statViewServlet was not registered (possibly already registered?)
+2019-12-22 23:47:14,596 INFO (UserDetailsServiceAutoConfiguration.java:86)- 
+
+Using generated security password: 7addf80f-86db-4397-a5a4-12d6285f7797
+
+2019-12-22 23:47:14,819 INFO (DefaultSecurityFilterChain.java:43)- Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@45c031da, org.springframework.security.web.context.SecurityContextPersistenceFilter@26b20fa7, org.springframework.security.web.header.HeaderWriterFilter@47557f8b, org.springframework.security.web.authentication.logout.LogoutFilter@986fd27, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@4fdd4803, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@47748587, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@54dabffd, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@452ec261, org.springframework.security.web.session.SessionManagementFilter@87e7e17, org.springframework.security.web.access.ExceptionTranslationFilter@434fab6a, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@5e49fae8]
+2019-12-22 23:47:15,160 INFO (ExecutorConfigurationSupport.java:171)- Initializing ExecutorService 'applicationTaskExecutor'
+2019-12-22 23:47:15,318 INFO (WelcomePageHandlerMapping.java:58)- Adding welcome page template: index
+2019-12-22 23:47:16,829 INFO (OptionalLiveReloadServer.java:58)- LiveReload server is running on port 35729
+2019-12-22 23:47:16,835 INFO (EndpointLinksResolver.java:58)- Exposing 2 endpoint(s) beneath base path '/actuator'
+2019-12-22 23:47:16,918 INFO (DirectJDKLog.java:173)- Starting ProtocolHandler ["http-nio-8080"]
+2019-12-22 23:47:16,944 INFO (TomcatWebServer.java:204)- Tomcat started on port(s): 8080 (http) with context path ''
+2019-12-22 23:47:16,948 INFO (StartupInfoLogger.java:61)- Started RunningApplication in 15.974 seconds (JVM running for 17.726)
+2019-12-22 23:47:17,664 INFO (DruidDataSource.java:930)- {dataSource-1} inited
+2019-12-22 23:47:17,671 INFO (DirectJDKLog.java:173)- Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-12-22 23:47:17,672 INFO (FrameworkServlet.java:525)- Initializing Servlet 'dispatcherServlet'
+2019-12-22 23:47:17,684 INFO (FrameworkServlet.java:547)- Completed initialization in 12 ms
+2019-12-22 23:47:25,132 INFO (EpollProvider.java:68)- Starting without optional epoll library
+2019-12-22 23:47:25,134 INFO (KqueueProvider.java:70)- Starting without optional kqueue library

@@ -4,8 +4,8 @@ server:
 spring:
     datasource:
         url: jdbc:mysql://localhost:3306/undergraduatejob?useUnicode=true
-        username: root
-        password: 110412
+        username: lyx
+        password: 123
     mail:
         host: smtp.163.com
         username: 18216308307@163.com
@@ -49,20 +49,38 @@ mail:
     routing:
         key:
             name: local.mail.routing.key
+elasticSearch:
+    host: 127.0.0.1
+    port: 9200
+    client:
+        connectNum: 10
+        connectPerRoute: 50
+#reptile:
+#    queue:
+#        image-name: local.image.queue
+#        job-name: local.job.queue
+#        welfare-name: local.welfare.queue
+#    exchange:
+#        image-name: local.image.exchange
+#        job-name: local.job.exchange
+#        welfare-name: local.welfare.exchange
+#    routing:
+#        key:
+#            image-name: local.image.routing.key
+#            job-name: local.job.routing.key
+#            welfare-name: local.welfare.routing.key
 
 
 want:
     mail:
-        senderName: 59同城
+        senderName: 59tongChneg
 mybatis:
-    # spring boot集成mybatis的方式打印sql
+
     configuration:
         log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
-
-# 自定义jwt key
 jwt:
-    tokenHeader: Authorization #JWT存储的请求头
-    secret: mySecret #JWT加解密使用的密钥
-    expiration: 604800 #JWT的超期限时间(60*60*24)
-    tokenHead: Bearer  #JWT负载中拿到开头
+    tokenHeader: Authorization
+    secret: mySecret
+    expiration: 604800
+    tokenHead: Bearer

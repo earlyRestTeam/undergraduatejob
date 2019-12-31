@@ -297,7 +297,7 @@ public class ResumeServicesImp implements IResumeServices {
     public Map<String, String> updateDisPushResume(Integer resumeId, Integer userId) {
         Resume r = new Resume();
         r.setId(resumeId);
-        r.setUserId(resumeId);
+        r.setUserId(userId);
         r.setPushStatus(0);
 
         return updateResumeByUser(r, userId);

@@ -86,8 +86,7 @@ class HttpRequestTest {
     public void test() throws IOException, InterruptedException, URISyntaxException {
 //        request.start("https://cs.58.com/job.shtml?PGTID=0d202408-0019-ee54-29b2-0ff9b8a1cfc3&ClickID=1");
 
-        request.toMingQiPage("https://cs.58.com/loucjl/?utm_source=" +
-                "market&spm=u-2d2yxv86y3v43nkddh1.BDPCPZ_BT&PGTID=0d000000-0000-0c23-4ad2-96eacdc24031&ClickID=1");
+        request.toMingQiPage("https://sz.58.com/cantfwy/?PGTID=0d202408-0000-4311-4aeb-0908300a68d9&ClickID=1");
 
 //        ExecutorService executorService = Executors.newFixedThreadPool(5);
 //        executorService.execute(request.consumeJob);
@@ -103,7 +102,7 @@ class HttpRequestTest {
     public void test2() throws IOException {
         request.start("https://cs.58.com/job.shtml?utm_source=market&spm=u-2d2yxv86y3v43nkddh1.BDPCPZ_BT&PGTID=0d100000-0019-ed7f-22da-0eb0a9e78896&ClickID=4");
         //redisTemplate.opsForList().leftPush("jobKey","v1");
-        Object key = redisTemplate.opsForList().rightPop("jobKey", 5000, TimeUnit.SECONDS);
-        System.out.println("key = " + key);
+//        Object key = redisTemplate.opsForList().rightPop("jobKey", 5000, TimeUnit.SECONDS);
+//        System.out.println("key = " + key);
     }
 }

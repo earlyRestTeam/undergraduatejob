@@ -197,7 +197,7 @@ public class ICollectServicesImpl implements ICollectServices {
         List<Integer> jobsIdList = new ArrayList<>();
 
         for (int i = 0; i < collectList.size(); i++) {
-            jobsIdList.add(collectList.get(0).getCollectionId());
+            jobsIdList.add(collectList.get(i).getCollectionId());
         }
 
         if(jobsIdList == null)
@@ -213,22 +213,25 @@ public class ICollectServicesImpl implements ICollectServices {
 
         List<Job> jobList = jobMapper.selectByExample(jobExample);
 
-        if(jobList == null)
-            return null;
+//        if(jobList == null)
+//            return null;
 
-        List<Job> newjobList = new ArrayList<>();
+//        List<Job> newjobList = new ArrayList<>();
 
-        for (int i = 0; i < jobList.size(); i++) {
-            Job job = new Job();
-            job.setJobName(jobList.get(i).getJobName());
-            job.setJobTitle(jobList.get(i).getJobTitle());
-            if(jobList.get(i).getStatus() == 1){
-                job.setId(jobList.get(i).getId());
-            }
-            newjobList.add(job);
-        }
+//        for (int i = 0; i < jobList.size(); i++) {
+//            Job job = new Job();
+//            job.setJobName(jobList.get(i).getJobName());
+//            job.setJobTitle(jobList.get(i).getJobTitle());
+//            job.setCompanyName(jobList.get(i).getCompanyName());
+//            job.setSalary(jobList.get(i).getSalary());
+//            job.setWorkAddress(jobList.get(i).getWorkAddress());
+//            if(jobList.get(i).getStatus() == 1){
+//                job.setId(jobList.get(i).getId());
+//            }
+//            newjobList.add(job);
+//        }
 
-        PageInfo<Job> info = new PageInfo(newjobList,3);
+        PageInfo<Job> info = new PageInfo(jobList,3);
 
         return info;
     }

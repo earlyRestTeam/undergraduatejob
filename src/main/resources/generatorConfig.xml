@@ -38,8 +38,11 @@
         <javaClientGenerator type="XMLMAPPER" targetPackage="com.lyx.undergraduatejob.mapper"
                              targetProject="src\main\java"/>
         <!--生成全部表tableName设为%-->
-        <table tableName="%">
+        <table tableName="advertising">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+            <!--    Mybatis自动生成插件对数据库类型为text的处理     -->
+            <!--    修改generatorConfig.xml配置文件，其中column为你需要覆盖的数据库字段        -->
+            <!--  <columnOverride column="self_introduction" jdbcType="VARCHAR" />-->
         </table>
     </context>
 </generatorConfiguration>

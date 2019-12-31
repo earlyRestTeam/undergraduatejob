@@ -45,4 +45,11 @@ public interface IReceiveResumeServices {
      * @return
      */
     Map<String, String> updateReceiveResume(Integer receiveResumeId, Integer companyId,Integer type);
+
+    /**
+     * 用户提交简历
+     * @param receiveResume
+     * @return
+     */
+    Map<String, String> addReceiveResume(ReceiveResume receiveResume, Integer userId);
 }

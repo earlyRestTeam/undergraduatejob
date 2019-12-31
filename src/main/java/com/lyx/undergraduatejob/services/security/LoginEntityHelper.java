@@ -13,7 +13,9 @@ public class LoginEntityHelper {
 
     public Object getEntity(){
         //return entityThreadLocal.get();
-        return SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if(SecurityContextHolder.getContext().getAuthentication() != null)
+            return SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return null;
     }
 
     /**

@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8" />
-    <title>Dashoon - Responsive Bootstrap 4 Admin Dashboard</title>
+    <title>大学生兼职平台后台管理</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -29,144 +29,53 @@
     <div class="navbar-custom">
         <ul class="list-unstyled topnav-menu float-right mb-0">
             <!--显示未处理消息数...，选做-->
-            <li class="dropdown notification-list">
-                <a class="nav-link dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                    <i class="dripicons-inbox mail-icon"></i>
-                    <span class="badge badge-info noti-icon-badge">20</span>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right dropdown-lg">
-
-                    <!-- item-->
-                    <div class="dropdown-item noti-title">
-                        <h5 class="m-0">
-                                    <span class="float-right">
-                                        <a href="" class="text-dark">
-                                            <small>Clear All</small>
-                                        </a>
-                                    </span>20 New Messages
-                        </h5>
-                    </div>
-
-                    <div class="slimscroll noti-scroll">
-
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item active">
-                            <div class="notify-icon"><img src="/admin/images/users/avatar-1.jpg" class="img-fluid rounded-circle" alt="" /> </div>
-                            <p class="notify-details">Sandra Smith<small class="text-muted">Hey ! I'm working on your project</small></p>
-                        </a>
-
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            <div class="notify-icon"><img src="/admin/images/users/avatar-2.jpg" class="img-fluid rounded-circle" alt="" /></div>
-                            <p class="notify-details">Amily Lee<small class="text-muted">Hi, How are you? What about our next meeting?</small></p>
-                        </a>
-
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            <div class="notify-icon">
-                                <img src="/admin/images/users/avatar-3.jpg" class="img-fluid rounded-circle" alt="" /> </div>
-                            <p class="notify-details">David Boos</p>
-                            <p class="text-muted mb-0 user-msg">
-                                <small>What about our next meeting</small>
-                            </p>
-                        </a>
-
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            <div class="notify-icon"><img src="/admin/images/users/avatar-4.jpg" class="img-fluid rounded-circle" alt="" /> </div>
-                            <p class="notify-details">Christopher Palmer<small class="text-muted">Waiting for your Response...</small></p>
-                        </a>
-
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            <div class="notify-icon">
-                                <img src="/admin/images/users/avatar-5.jpg" class="img-fluid rounded-circle" alt="" /> </div>
-                            <p class="notify-details">Malika Roy</p>
-                            <p class="text-muted mb-0 user-msg">
-                                <small>Wow that's great</small>
-                            </p>
-                        </a>
-                    </div>
-
-                    <!-- All-->
-                    <a href="javascript:void(0);" class="dropdown-item text-center text-primary notify-item notify-all">
-                        View all
-                        <i class="fi-arrow-right"></i>
-                    </a>
-
-                </div>
-            </li>
 
             <li class="dropdown notification-list">
                 <a class="nav-link dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                     <i class="dripicons-bell noti-icon"></i>
-                    <span class="badge badge-danger noti-icon-badge">35</span>
+                    <span class="badge badge-danger noti-icon-badge" name="sum" id="sum" th:text="${sum}"></span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right dropdown-lg">
-
-                    <!-- item-->
-                    <div class="dropdown-item noti-title">
-                        <h5 class="m-0">
-                                    <span class="float-right">
-                                        <a href="" class="text-dark">
-                                            <small>Clear All</small>
-                                        </a>
-                                    </span>Notification
-                        </h5>
-                    </div>
 
                     <div class="slimscroll noti-scroll">
 
                         <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            <div class="notify-icon bg-info"><i class="mdi mdi-cloud-upload-outline"></i></div>
-                            <p class="notify-details">Your upload has been approved<small class="text-muted">5 hours ago</small></p>
-                        </a>
-
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item active">
-                            <div class="notify-icon bg-success"><i class="mdi mdi-map-marker-check"></i> </div>
-                            <p class="notify-details">You added your Location<small class="text-muted">Just Now</small></p>
-                        </a>
-
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            <div class="notify-icon bg-primary"><i class="mdi mdi-layers-remove"></i></div>
-                            <p class="notify-details">Your item is shipped<small class="text-muted">It is a long established fact that a reader will</small></p>
-                        </a>
-
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            <div class="notify-icon bg-purple"><i class="mdi mdi-check-bold"></i></div>
-                            <p class="notify-details">Your order is placed<small class="text-muted">Dummy text of the printing and typesetting industry.</small></p>
-                        </a>
-
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                        <a href="/admin/authentication-company" class="dropdown-item notify-item">
                             <div class="notify-icon bg-warning">
                                 <i class="mdi mdi-alert-outline"></i>
                             </div>
-                            <p class="notify-details">Your Subscription Expired
-                                <small class="text-muted">1 days ago</small>
-                            </p>
+                            <span name="autCompanies" id="autCompanies" th:text="${autCompanies}"></span>
                         </a>
 
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            <div class="notify-icon bg-danger">
-                                <i class="mdi mdi-settings"></i>
+                        <a href="/admin/authentication-student" class="dropdown-item notify-item active">
+                            <div class="notify-icon bg-warning">
+                                <i class="mdi mdi-alert-outline"></i>
                             </div>
-                            <p class="notify-details"><b>Devid</b>, You changed your Settings
-                                <small class="text-muted">5 days ago</small>
-                            </p>
+                            <span name="autStudents" id="autStudents" th:text="${autStudents}"></span>
                         </a>
-                    </div>
 
-                    <!-- All-->
-                    <a href="javascript:void(0);" class="dropdown-item text-center text-primary notify-item notify-all">
-                        View all
-                        <i class="fi-arrow-right"></i>
-                    </a>
+                        <a href="/admin/audit-job" class="dropdown-item notify-item">
+                            <div class="notify-icon bg-warning">
+                                <i class="mdi mdi-alert-outline"></i>
+                            </div>
+                            <span name="jobs" id="jobs" th:text="${jobs}"></span>
+                        </a>
+
+                        <a href="/admin/audit-resume" class="dropdown-item notify-item">
+                            <div class="notify-icon bg-warning">
+                                <i class="mdi mdi-alert-outline"></i>
+                            </div>
+                            <span name="resumes" id="resumes" th:text="${resumes}"></span>
+                        </a>
+
+                        <a href="/admin/complaint" class="dropdown-item notify-item">
+                            <div class="notify-icon bg-warning">
+                                <i class="mdi mdi-alert-outline"></i>
+                            </div>
+                            <span name="complaints" id="complaints" th:text="${complaints}"></span>
+                        </a>
+
+                    </div>
 
                 </div>
             </li>
@@ -175,35 +84,17 @@
             <li class="dropdown notification-list">
                 <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                     <img src="/admin/images/users/avatar-1.jpg" alt="user-image" class="rounded-circle">
-                    <span class="pro-user-name ml-1">
-                                Devid <i class="mdi mdi-chevron-down"></i>
-                            </span>
+                    <span id="admin" class="pro-user-name ml-1">
+                        <i class="mdi mdi-chevron-down"></i>
+                    </span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
                     <!-- item-->
                     <div class="dropdown-item noti-title">
                         <h6 class="m-0">
-                            Hello, Devid !
+                            Hello !
                         </h6>
                     </div>
-
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <i class="dripicons-user"></i>
-                        <span>My Profile</span>
-                    </a>
-
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <i class="dripicons-card"></i>
-                        <span>My Wallet</span>
-                    </a>
-
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <i class="dripicons-gear"></i>
-                        <span>Settings</span>
-                    </a>
 
                     <div class="dropdown-divider"></div>
 
@@ -243,7 +134,7 @@
     </div>
     <!-- end Topbar -->
 
-    <!-- ========== Left Sidebar Start ========== -->
+
     <div class="left-side-menu">
 
         <div class="slimscroll-menu">
@@ -261,7 +152,7 @@
                                 <a href="javascript:void(0);" class="user-edit"><i class="mdi mdi-pencil"></i></a>
                             </div>
 
-                            <h5><a href="javascript: void(0);">Devid Stanberry</a> </h5>
+                            <h5><a id="adminNick" href="javascript: void(0);"></a> </h5>
                             <p class="text-muted mb-0"><small>Main Admin</small></p>
                         </div>
                     </div>
@@ -408,12 +299,12 @@
                                 <div  class="form-inline" style="float: right">
                                     <input id="name" type="text" class="form-control" placeholder="用户名" name="username">
                                     <input id="type" type="text" class="form-control" placeholder="昵称" name="nickName">
-                                    <select type="text" class="form-control" style="width:188px" placeholder="VIP服务" id="vip" name="userVip">
+                                    <select onchange="fn()" type="text" class="form-control" style="width:188px" placeholder="VIP服务" id="vip" name="userVip">
                                         <option value="" th:selected="${userVip eq 0}">全部用户</option>
                                         <option value="0" th:selected="${userVip eq 0}">普通用户</option>
                                         <option value="1" th:selected="${userVip eq 1}">VIP用户</option>
                                     </select>
-                                    <select type="text" class="form-control" style="width:188px" placeholder="状态" id="status" name="status">
+                                    <select onchange="fn()" type="text" class="form-control" style="width:188px" placeholder="状态" id="status" name="status">
                                         <option value="" th:selected="${status eq 0}">全部</option>
                                         <option value="0" th:selected="${status eq 0}">冻结</option>
                                         <option value="1" th:selected="${status eq 1}">启用</option>
@@ -462,7 +353,7 @@
                                     <tbody>
                                     <tr th:id="${user.id}" th:each="user,adStas:${pages.list}">
                                         <td th:text="${user.id}"></td>
-                                        <td th:src="${user.avatar}"></td>
+                                        <td th:text="${user.avatar}"></td>
                                         <td th:text="${user.username}"></td>
                                         <td th:text="${user.nickName}"></td>
                                         <td th:text="${user.email}"></td>
@@ -514,7 +405,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12 text-center">
-                        2019 © Dashboard Theme By <a href="#">Dashoon</a>
+                        2019 © 版权所有 ：<a href="#">优先</a>
                     </div>
                 </div>
             </div>
@@ -565,7 +456,28 @@
 <script src="/admin/js/app.min.js"></script>
 <script src="/js/axios.js"></script>
 <script>
-    //查询
+    $(document).ready(function(){
+        console.log("页面加载完毕后运行");
+        messages();
+    })
+
+    function messages() {
+        $.post("/admin/message",function(result){
+            console.log(result.data);
+            $('#sum').text(result.data.sum);
+            $('#autCompanies').text('您有'+result.data.autCompanies+'条企业认证信息未处理');
+            $('#autStudents').text('您有'+result.data.autStudents+'条学生认证信息未处理');
+            $('#jobs').text('您有'+result.data.jobs+'条职位审核信息未处理');
+            $('#resumes').text('您有'+result.data.resumes+'条简历审核信息未处理');
+            $('#complaints').text('您有'+result.data.complaints+'条投诉信息未处理');
+
+            var admin = result.data.admin;
+            var name = admin == null ? "大苹果" : admin.nickName == null ? admin.entityName : admin.nickName;
+            $('#admin').text(name);
+            $('#adminNick').text(name);
+        })
+    }
+
     function query(indexpage) {
         var username = $("#name").val();
         var nickName = $("#type").val();
@@ -588,11 +500,12 @@
         });
 
     }
-    // //显示vip开始时间-结束时间
-    // function showVIPTime(startTime,endTime){
-    //     $("#time").html(startTime+"-"+endTime);
-    //     $("#myModal").modal('show');
-    // }
+
+    //显示vip开始时间-结束时间
+    function showVIPTime(startTime,endTime){
+        $("#time").html(startTime+"-"+endTime);
+        $("#myModal").modal('show');
+    }
     //确认更改状态
     function article_shenhe(id,status){
         if (confirm("确认更改状态?")) {

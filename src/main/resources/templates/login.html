@@ -51,7 +51,7 @@
    <ul th:replace="public::public_cd-dropdown-content"></ul>
    <!-- .cd-dropdown-content -->
   </nav>
-  <div class="cp_navi_main_wrapper jb_cover">
+  <div class="cp_navi_main_wrapper jb_cover" th:replace="public::cp_navi_main_wrapper-jb_cover">
    <div class="container-fluid">
     <div class="cp_logo_wrapper">
      <a href="index"><img src="/picture/logo.png" alt="logo" /></a>
@@ -292,7 +292,7 @@
         </div>
         <div class="login_remember_box">
          <label class="control control--checkbox">记住密码<input type="checkbox" /><span class="control__indicator"></span></label>
-         <a href="#" class="forget_password"> 找回密码</a>
+         <a href="/forgetPassword" class="forget_password"> 找回密码</a>
         </div>
         <div class="header_btn search_btn login_btn jb_cover">
          <a @click="login()">登录</a>
