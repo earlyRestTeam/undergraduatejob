@@ -1,12 +1,16 @@
 package com.lyx.undergraduatejob.controlles;
 
 import com.alibaba.fastjson.JSONObject;
+import com.lyx.undergraduatejob.pojo.ReceiveResume;
 import com.lyx.undergraduatejob.pojo.Resume;
 import com.lyx.undergraduatejob.pojo.Users;
 import com.lyx.undergraduatejob.pojo.WorkExperience;
+import com.lyx.undergraduatejob.services.impl.ReceiveResumeServicesImpl;
 import com.lyx.undergraduatejob.services.impl.ResumeServicesImp;
 import com.lyx.undergraduatejob.services.impl.UserServicesImpl;
 import com.lyx.undergraduatejob.services.impl.WorkExperienceServicesImpl;
+import com.lyx.undergraduatejob.services.security.LoginEntityHelper;
+import com.lyx.undergraduatejob.services.security.OnlineEntity;
 import com.lyx.undergraduatejob.utils.APIResult;
 import com.lyx.undergraduatejob.utils.StaticPool;
 import org.slf4j.Logger;
@@ -32,6 +36,10 @@ public class CandidateController {
     ResumeServicesImp resumeServicesImp;
     @Autowired
     WorkExperienceServicesImpl workExperienceServices;
+    @Autowired
+    ReceiveResumeServicesImpl receiveResumeServices;
+    @Autowired
+    LoginEntityHelper loginEntityHelper;
 
     @RequestMapping("/user/candidate_applied_job")
     public String candidate_applied_job(){
@@ -39,11 +47,14 @@ public class CandidateController {
         return "dashboard/candidate_applied_job";
     }
 
-
     //显示个人信息
     @RequestMapping("/user/candidate_dashboard")
     public String candidate_dashboard(HttpServletRequest request){
-        Integer userId = 1;
+        OnlineEntity user = loginEntityHelper.getOnlineEntity();
+        if(user == null){
+            throw new RuntimeException("error");
+        }
+        Integer userId = user.getId();
         Users users = userServices.queryUserById(userId);
         System.out.println(users);
         request.setAttribute("users",users);
@@ -67,7 +78,11 @@ public class CandidateController {
     @RequestMapping("/user/updateMyInfo")
     @ResponseBody
     public APIResult updateMyInfo(@RequestBody Users users, HttpServletRequest request){
-        Integer userId = 1;
+        OnlineEntity user = loginEntityHelper.getOnlineEntity();
+        if(user == null){
+            throw new RuntimeException("error");
+        }
+        Integer userId = user.getId();
         System.out.println("传回来的JSON："+users);
         users.setId(userId);
         Map<String, String> result = userServices.updateInfo(users);
@@ -84,7 +99,11 @@ public class CandidateController {
     @ResponseBody
     public APIResult changeUserPwd(@RequestBody JSONObject jsonObject){
 
-        Integer userId = 1;
+        OnlineEntity user = loginEntityHelper.getOnlineEntity();
+        if(user == null){
+            throw new RuntimeException("error");
+        }
+        Integer userId = user.getId();
 
         APIResult result = null;
 
@@ -126,7 +145,11 @@ public class CandidateController {
     //显示简历
     @RequestMapping("/user/candidate_resume")
     public String candidate_resume(HttpServletRequest request){
-        Integer userId = 1;
+        OnlineEntity user = loginEntityHelper.getOnlineEntity();
+        if(user == null){
+            throw new RuntimeException("error");
+        }
+        Integer userId = user.getId();
         Users users = userServices.queryUserById(1);
         System.out.println(users);
         request.setAttribute("users",users);
@@ -148,6 +171,25 @@ public class CandidateController {
         return "/dashboard/candidate_resume";
     }
 
+    //申请职位时，获取简历信息
+    @RequestMapping("/user/applyJob_resume")
+    @ResponseBody
+    public APIResult applyJob_resume(){
+        APIResult result = null;
+        OnlineEntity user = loginEntityHelper.getOnlineEntity();
+        if(user == null){
+            throw new RuntimeException("error");
+        }
+        Integer userId = user.getId();
+
+        List<Resume> resumeList = resumeServicesImp.queryResumeByUserId(userId);
+        System.out.println("我的简历：" + resumeList);
+        if( resumeList == null || resumeList.size() == 0){
+            return APIResult.genSuccessApiResponse("你没有简历");
+        }
+        return APIResult.genSuccessApiResponse(resumeList);
+
+    }
 
     @RequestMapping("/user/addResume")
     public String addResume(HttpServletRequest request){
@@ -198,9 +240,13 @@ public class CandidateController {
     @RequestMapping("/user/update_resume")
     @ResponseBody
     public APIResult update_resume(@RequestBody Resume resume){
-        System.out.println("修改简历:" + resume);
-        Integer userId = 1;
         APIResult result = null;
+        System.out.println("修改简历:" + resume);
+        OnlineEntity user = loginEntityHelper.getOnlineEntity();
+        if(user == null){
+            return APIResult.genFailApiResponse500("请先登录");
+        }
+        Integer userId = user.getId();
         Map<String, String> res = resumeServicesImp.updateResumeByUser(resume, userId);
         if(res.get(StaticPool.SUCCESS) != null){
             result = APIResult.genSuccessApiResponse("简历修改成功");
@@ -217,7 +263,11 @@ public class CandidateController {
     public APIResult delResume(Integer resumeId){
         APIResult result = null;
 
-        Integer userId = 1;
+        OnlineEntity user = loginEntityHelper.getOnlineEntity();
+        if(user == null){
+            return APIResult.genFailApiResponse500("请先登录");
+        }
+        Integer userId = user.getId();
         Map<String, String> re = resumeServicesImp.updateDelResume(resumeId, userId);
         if(re.get(StaticPool.SUCCESS) != null){
             result = APIResult.genSuccessApiResponse("删除成功");
@@ -233,7 +283,11 @@ public class CandidateController {
     public APIResult pushResume(Integer resumeId, Integer pushStatus){
         APIResult result = null;
 
-        Integer userId = 1;
+        OnlineEntity user = loginEntityHelper.getOnlineEntity();
+        if(user == null){
+            return APIResult.genFailApiResponse500("请先登录");
+        }
+        Integer userId = user.getId();
         System.out.println("pushStatus:"+pushStatus);
         Map<String, String> re = null;
         if(pushStatus == 1){
@@ -245,6 +299,29 @@ public class CandidateController {
 
         if(re.get(StaticPool.SUCCESS) != null){
             result = APIResult.genSuccessApiResponse("操作成功");
+        }else {
+            result = APIResult.genFailApiResponse500(re.get(StaticPool.ERROR));
+        }
+
+        return result;
+    }
+
+    //提交简历
+    @RequestMapping("/user/submit_resume")
+    @ResponseBody
+    public APIResult submit_resume(@RequestBody ReceiveResume receiveResume){
+        APIResult result = null;
+
+        OnlineEntity user = loginEntityHelper.getOnlineEntity();
+        if(user == null){
+            return APIResult.genFailApiResponse500("请先登录");
+        }
+        Integer userId = user.getId();
+        System.out.println("receiveResume:------------:" + receiveResume);
+        Map<String, String> re = receiveResumeServices.addReceiveResume(receiveResume,userId);
+
+        if(re.get(StaticPool.SUCCESS) != null){
+            result = APIResult.genSuccessApiResponse(re.get(StaticPool.SUCCESS));
         }else {
             result = APIResult.genFailApiResponse500(re.get(StaticPool.ERROR));
         }

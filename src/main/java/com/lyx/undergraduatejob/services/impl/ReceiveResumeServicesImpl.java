@@ -16,10 +16,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class ReceiveResumeServicesImpl implements IReceiveResumeServices {
@@ -130,8 +127,42 @@ public class ReceiveResumeServicesImpl implements IReceiveResumeServices {
         if(i > 0){
             result.put(StaticPool.SUCCESS,"操作成功");
         }else {
-            logger.warn("服务器繁忙，简操作失败！"+receiveResume);
+            logger.warn("服务器繁忙，简历操作失败！"+receiveResume);
             result.put(StaticPool.ERROR,"操作失败");
+        }
+
+        return result;
+    }
+
+    /**
+     * 用户提交简历
+     *
+     * @param receiveResume
+     * @return
+     */
+    @Override
+    public Map<String, String> addReceiveResume(ReceiveResume receiveResume, Integer userId) {
+        Map<String,String> result = new HashMap<>();
+        //先查一下是否已申请该职位
+        ReceiveResumeExample example = new ReceiveResumeExample();
+        ReceiveResumeExample.Criteria criteria = example.createCriteria();
+        criteria.andUserIdEqualTo(userId);
+        criteria.andCompanyIdEqualTo(receiveResume.getCompanyId());
+        criteria.andResumeIdEqualTo(receiveResume.getResumeId());
+        criteria.andJobIdEqualTo(receiveResume.getJobId());
+        List<ReceiveResume> receiveResumeList = receiveResumeMapper.selectByExample(example);
+        if(receiveResumeList == null || receiveResumeList.size() == 0){
+            receiveResume.setUserId(userId);
+            receiveResume.setCreateTime(new Date());
+            receiveResume.setReceiveTime(new Date());
+            int insert = receiveResumeMapper.insertSelective(receiveResume);
+            if(insert == 0){
+                logger.warn("服务器繁忙，添加失败！"+receiveResume);
+                result.put(StaticPool.ERROR,"提交失败");
+            }
+            result.put(StaticPool.SUCCESS,"申请成功");
+        }else {
+            result.put(StaticPool.ERROR,"您已申请此职位");
         }
 
         return result;
@@ -183,6 +214,7 @@ public class ReceiveResumeServicesImpl implements IReceiveResumeServices {
 //        return result;
 //
 //    }
+
 
 
 

@@ -208,6 +208,8 @@ public class CollectController {
         System.out.println("jobPageInfo:" + jobPageInfo);
         APIResult result = APIResult.genSuccessApiResponse(jobPageInfo);
 
+        if(jobPageInfo.getList().size() == 0)
+            result = APIResult.genSuccessApiResponse("无收藏");
         System.out.println("result=====:" + result.getData());
 
         return result;

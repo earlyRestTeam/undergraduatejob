@@ -557,6 +557,8 @@ inelevated the..</a></h3>
 
 
                 <div class="col-lg-9 col-md-12 col-sm-12 col-12">
+
+                    <!-- //模态框-->
                     <div class="row">
                         <!-- //模态框-->
                         <div class="modal fade apply_job_popup" id="myModal6" role="dialog">
@@ -567,33 +569,47 @@ inelevated the..</a></h3>
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-12">
 
                                             <div class="apply_job jb_cover">
-                                                <h1>apply for this job :</h1>
+                                                <h1>应聘这个职位 :</h1>
+                                                <input id="jobId" type="hidden"><!-- 职位id   -->
+                                                <input id="companyId" type="hidden"><!-- 公司id   -->
                                                 <div class="search_alert_box jb_cover">
 
                                                     <div class="apply_job_form">
-
-                                                        <input type="text" name="name" placeholder="full name">
+                                                        <span type="text" >请选择要提交的简历：</span>
                                                     </div>
                                                     <div class="apply_job_form">
-
-                                                        <input type="text" name="Email" placeholder="Enter Your Email">
-                                                    </div>
-                                                    <div class="apply_job_form">
-                                                        <textarea class="form-control" name="message" placeholder="Message"></textarea>
-                                                    </div>
-
-                                                    <div class="resume_optional jb_cover">
-                                                        <p>resume (optional)</p>
-                                                        <div class="width_50">
-                                                            <input type="file" id="input-file-now-custom-6" class="dropify" data-height="90" /><span class="post_photo">upload resume</span>
+<!--                                                        <input type="text" name="name" placeholder="full name">-->
+                                                        <div class="nice-select" tabindex="0">
+                                                            <span id="apply_resumeId" class="current"></span>
+                                                            <ul id="resume_list" class="list">
+                                                                <li class="option" value=""></li>
+                                                            </ul>
                                                         </div>
-                                                        <p class="word_file"> microsoft word or pdf file only (5mb)</p>
                                                     </div>
+
+<!--                                                    <div class="apply_job_form">-->
+<!--                                                        <textarea class="form-control" name="message" placeholder="Message"></textarea>-->
+<!--                                                    </div>-->
+
+<!--                                                    <div class="resume_optional jb_cover">-->
+<!--                                                        <p>resume (optional)</p>-->
+<!--                                                        <div class="width_50">-->
+<!--                                                            <input type="file" id="input-file-now-custom-6" class="dropify" data-height="90" /><span class="post_photo">upload resume</span>-->
+<!--                                                        </div>-->
+<!--                                                        <p class="word_file"> microsoft word or pdf file only (5mb)</p>-->
+<!--                                                    </div>-->
+
+
+                                                </div>
+
+                                                <div class="header_btn search_btn applt_pop_btn jb_cover ajt">
+
+                                                    <a href="javascript:" onclick="window.open('/user/addResume')">新建简历</a>
 
                                                 </div>
                                                 <div class="header_btn search_btn applt_pop_btn jb_cover ajt">
 
-                                                    <a href="#">apply now</a>
+                                                    <a href="javascript:" onclick="submit_resume()">提交简历</a>
 
                                                 </div>
                                             </div>
@@ -857,6 +873,7 @@ inelevated the..</a></h3>
     <script src="/dashboard/js/isotope.pkgd.min.js"></script>
     <script src="/dashboard/js/custom.js"></script>
     <!-- custom js-->
+    <!-- 局部刷新-->
     <script type="text/javascript">
         //页面加载完毕后运行
         $(document).ready(function (){
@@ -879,47 +896,49 @@ inelevated the..</a></h3>
                         var str1 = "";
                         //清空
                         $("#collect_jobs").html("");
+                        if(result.data.list != null && result.data.list.length > 0){
+                            for(var i = 0;i<result.data.list.length;i++){
+                                console.log("收藏的job名字：" + result.data.list[i].jobName);//打印服务端返回的数据
+                                console.log("收藏的job公司：" + result.data.list[i].companyName);//打印服务端返回的数据
+                                var collectJobId = result.data.list[i].id;
+                                var collectCompanyId = result.data.list[i].companyId;
+                                str1 = "<div class=\"col-lg-12 col-md-12 col-sm-12 col-12\">\n" +
+                                    "                                <input type='hidden' value='" +result.data.list[i].id + "'>\n" +
+                                    "                            <div class=\"jb_listing_left_fullwidth mt-0 jb_cover\">\n" +
+                                    "                                <div class=\"row\">\n" +
+                                    "                                    <div class=\"col-lg-9 col-md-9 col-sm-12 col-12\">\n" +
+                                    "                                        <div class=\"jb_job_post_side_img\">\n" +
+                                    "                                            <img src=\"/dashboard/images/lt1.png\" alt=\"post_img\" />\n" +
+                                    "                                            <br> <span>" + result.data.list[i].companyName+"</span>\n" +
+                                    "                                        </div>\n" +
+                                    "                                        <div class=\"jb_job_post_right_cont\">\n" +
+                                    "                                            <h4><a href=\"#\">"+ result.data.list[i].jobName +"</a></h4>\n" +
+                                    "\n" +
+                                    "                                            <ul>\n" +
+                                    "                                                <li><i class=\"flaticon-cash\"></i>"+ result.data.list[i].salary +"</li>\n" +
+                                    "                                                <li><i class=\"flaticon-location-pointer\"></i>"+ result.data.list[i].workAddress +"</li>\n" +
+                                    "                                            </ul>\n" +
+                                    "                                        </div>\n" +
+                                    "                                    </div>\n" +
+                                    "                                    <div class=\"col-lg-3 col-md-3 col-sm-12 col-12\">\n" +
+                                    "                                        <div class=\"jb_job_post_right_btn_wrapper\">\n" +
+                                    "                                            <ul>\n" +
+                                    "                                                <li>\n" +
+                                    "                                                    <div class=\"job_adds_right\">\n" +
+                                    "                                                        <a id='job" + collectJobId + "' href=\"javascript:\" onclick='collectJob(" + collectJobId + ")'><i class=\"far fa-heart\"></i></a>\n" +
+                                    "                                                    </div>\n" +
+                                    "                                                </li>\n" +
+                                    "                                                <li><a href=\"#\">Part Time</a></li>\n" +
+                                    "                                                <li> <a href=\"#\" data-toggle=\"modal\" data-target=\"#myModal6\" onclick=\"apply_job(" + collectJobId + "," + collectCompanyId +")\">应聘</a></li>\n" +
+                                    "                                            </ul>\n" +
+                                    "                                        </div>\n" +
+                                    "                                    </div>\n" +
+                                    "                                </div>\n" +
+                                    "                            </div>\n" +
+                                    "                        </input>";
 
-                        for(var i = 0;i<result.data.list.length;i++){
-                            console.log("收藏的job名字：" + result.data.list[i].jobName);//打印服务端返回的数据
-                            console.log("收藏的job公司：" + result.data.list[i].companyName);//打印服务端返回的数据
-                            var collectJobId = result.data.list[i].id;
-                            str1 = "<div class=\"col-lg-12 col-md-12 col-sm-12 col-12\">\n" +
-                                "                                <input type='hidden' value='" +result.data.list[i].id + "'>\n" +
-                                "                            <div class=\"jb_listing_left_fullwidth mt-0 jb_cover\">\n" +
-                                "                                <div class=\"row\">\n" +
-                                "                                    <div class=\"col-lg-9 col-md-9 col-sm-12 col-12\">\n" +
-                                "                                        <div class=\"jb_job_post_side_img\">\n" +
-                                "                                            <img src=\"/dashboard/images/lt1.png\" alt=\"post_img\" />\n" +
-                                "                                            <br> <span>" + result.data.list[i].companyName+"</span>\n" +
-                                "                                        </div>\n" +
-                                "                                        <div class=\"jb_job_post_right_cont\">\n" +
-                                "                                            <h4><a href=\"#\">"+ result.data.list[i].jobName +"</a></h4>\n" +
-                                "\n" +
-                                "                                            <ul>\n" +
-                                "                                                <li><i class=\"flaticon-cash\"></i>"+ result.data.list[i].salary +"</li>\n" +
-                                "                                                <li><i class=\"flaticon-location-pointer\"></i>"+ result.data.list[i].workAddress +"</li>\n" +
-                                "                                            </ul>\n" +
-                                "                                        </div>\n" +
-                                "                                    </div>\n" +
-                                "                                    <div class=\"col-lg-3 col-md-3 col-sm-12 col-12\">\n" +
-                                "                                        <div class=\"jb_job_post_right_btn_wrapper\">\n" +
-                                "                                            <ul>\n" +
-                                "                                                <li>\n" +
-                                "                                                    <div id='collectJob" + collectJobId + "' class=\"job_adds_right\">\n" +
-                                "                                                        <a href=\"javascript:\" onclick='delete_collect_job(" + collectJobId +")'><i class=\"far fa-heart\"></i></a>\n" +
-                                "                                                    </div>\n" +
-                                "                                                </li>\n" +
-                                "                                                <li><a href=\"#\">Part Time</a></li>\n" +
-                                "                                                <li> <a href=\"#\" data-toggle=\"modal\" data-target=\"#myModal6\">apply</a></li>\n" +
-                                "                                            </ul>\n" +
-                                "                                        </div>\n" +
-                                "                                    </div>\n" +
-                                "                                </div>\n" +
-                                "                            </div>\n" +
-                                "                        </input>";
-
-                            $("#collect_jobs").append(str1);
+                                $("#collect_jobs").append(str1);
+                            }
                         }
 
                     } else {
@@ -927,44 +946,16 @@ inelevated the..</a></h3>
                     }
                 },
                 error:function(e){
-                    alert("111服务器繁忙，稍后再试。");
+                    $("#collect_jobs").html("");
+                    // alert("111服务器繁忙，稍后再试。");
                 }
             });
 
         }
 
-       function delete_collect_job(id){
-           var con = confirm("你确定要取消收藏吗？");
-           if(con){
-               var url = "/user/collectJob?jobId=" + id;
-               $.ajax({
-                   url:url,
-                   type:"post",
-                   contentType: "application/json; charset=utf-8",
-                   // data: JSON.stringify(resume),
-                   dataType: "json",
-                   success:function(result){
-                       console.log(result);//打印服务端返回的数据
-                       if (result.code == 200) {
-                           alert(result.message);
-
-                           $("#collectJob" + id).click();
-                           $("#collectJob" + id).attr("class","job_adds_right change22 change");
-                       } else {
-                           alert(result.message);
-                       }
-                   },
-                   error:function(e){
-                       alert("服务器繁忙，稍后再试。");
-                   }
-               });
-
-           }
-       }
-        
     </script>
-
-    <script>
+    <!-- 取消/收藏-->
+    <script type="text/javascript">
         function initMap() {
             var uluru = {
                 lat: -36.742775,
@@ -981,6 +972,7 @@ inelevated the..</a></h3>
             });
         }
 
+        //收藏公司
         function collectCompany(companyId) {
             $.ajax({
                 url:"/user/collectCompany",
@@ -1005,6 +997,7 @@ inelevated the..</a></h3>
 
         }
 
+        //收藏职位
         function collectJob(jobId){
             $.ajax({
                 url:"/user/collectJob",
@@ -1016,14 +1009,20 @@ inelevated the..</a></h3>
                     console.log(a);
                     if (result.data == 1){
                         if (result.result){
-                            $(a).attr("class","job_adds_right change change22");
+                            // $(a).attr("class","job_adds_right change change22");
+                            $(a).css({"background-color":"#ff3366"});
+                            $(a).css({"color":"#fff"});
+                            alert(result.message)
                         }
-                        alert(result.message)
+
                     }else{
                         if (result.result){
-                            $(a).attr("class","job_adds_right");
+                            // $(a).attr("class","job_adds_right");
+                            $(a).css({"background-color":"#fff"});
+                            $(a).css({"color":"#ff3366"});
+                            alert(result.message)
                         }
-                        alert(result.message)
+
                     }
                 }
             })
@@ -1034,6 +1033,84 @@ inelevated the..</a></h3>
                alert("sssssssssssssssssssssssssssss");
             })*/
     </script>
+    <!-- 应聘职位-->
+    <script type="text/javascript">
+        
+        function apply_job(jobId,companyId) {
+            var data ={"jobId":jobId};
+            $.ajax({
+                url:"/user/applyJob_resume",
+                type:"post",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(data),
+                dataType: "json",
+                success:function(result){
+                    console.log("打印服务端返回的数据" + result);//打印服务端返回的数据
+                    if (result.code == 200) {
+                        var str1 = "";
+                        //清空
+                        $("#resume_list").html("");
+                        if(result.data != null && result.data.length > 0){
+                            for(var i = 0;i<result.data.length;i++){
+                                console.log("简历标题：" + result.data[i].job);//打印服务端返回的数据
+                                console.log("简历id：" + result.data[i].id);//打印服务端返回的数据
+                                var resumeId = result.data[i].id;
+                                str1 = "<li class=\"option\" value=\"" + resumeId + "\">" + result.data[i].job + "</li>";
+
+                                $("#resume_list").append(str1);
+                            }
+                        }
+                        $("#jobId").val(jobId);
+                        $("#companyId").val(companyId);
+                        $("#apply_resumeId").text("选择简历");
+
+                    } else {
+                        alert(result.message);
+                    }
+                },
+                error:function(e){
+
+                    alert("服务器繁忙，稍后再试。");
+                }
+            });
+        }
+        
+        <!-- 提交简历-->
+        function submit_resume() {
+            var jobId = $("#jobId").val();
+            var companyId = $("#companyId").val();
+            var resumeId = $(".selected").val();
+            if(resumeId == undefined || resumeId == null){
+                alert("请选择简历");
+                return;
+            }
+            var receiveResume ={"resumeId":resumeId, "jobId":jobId, "companyId":companyId};
+            $.ajax({
+                url:"/user/submit_resume",
+                type:"post",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(receiveResume),
+                dataType: "json",
+                success:function(result){
+                    console.log("打印服务端返回的数据" + result);//打印服务端返回的数据
+                    if (result.code == 200) {
+                        alert(result.message);
+                        $("#myModal6").modal("hide");
+                    } else {
+                        alert(result.message);
+                        $("#myModal6").modal("hide");
+                    }
+                },
+                error:function(e){
+                    alert("服务器繁忙，稍后再试。");
+                }
+            });
+
+        }
+    </script>
+    
+    
+
 </body>
 
 </html>
