@@ -256,11 +256,10 @@ public class DashboardController {
      */
     @PostMapping("updateCompanyinfo")
     @ResponseBody
-    public APIResult updateCompanyinfo(Company company,Picture picture){
+    public APIResult updateCompanyinfo(Company company){
         company.setId(loginEntityHelper.getOnlineEntity().getCompanyId());
         company.setUserId(loginEntityHelper.getOnlineEntity().getId());
         Map<String, String> stringStringMap = companyInfoServices.updateCompanyInfo(company);
-        pictuerService.updatePictuer(picture);
         if (stringStringMap.get(StaticPool.SUCCESS)!=null){
             return APIResult.genSuccessApiResponse(stringStringMap.get(StaticPool.SUCCESS));
         }
@@ -393,6 +392,43 @@ public class DashboardController {
     public APIResult Area_list(Integer parentId){
         List<TbArea> tbAreas = tbAreaService.queryTbAreabyParentId(parentId);
         return APIResult.genSuccessApiResponse(tbAreas);
+    }
+
+    /**
+     * 公司添加图片
+     * @param picture
+     * @return
+     */
+    @RequestMapping("comp_pictures_add")
+    @ResponseBody
+    public APIResult comp_pictures_add(Picture picture){
+        picture.setStatus(1);
+        picture.setCreateTime(new Date());
+        Integer userid = loginEntityHelper.getOnlineEntity().getId();
+        Integer companyid = loginEntityHelper.getOnlineEntity().getCompanyId();
+        picture.setOwnerId(companyid);
+        Map<String, String> stringStringMap = pictuerService.addPicture(picture, userid, companyid);
+        if (stringStringMap.get(StaticPool.SUCCESS)!=null){
+            return APIResult.genSuccessApiResponse(stringStringMap.get(StaticPool.SUCCESS));
+        }
+        return APIResult.genSuccessApiResponse(stringStringMap.get(StaticPool.ERROR));
+    }
+
+    /**
+     * 公司修改图片
+     * @param picture
+     * @return
+     */
+    @RequestMapping("comp_pictures_update")
+    @ResponseBody
+    public APIResult comp_pictures_update(Picture picture){
+        Integer companyid = loginEntityHelper.getOnlineEntity().getCompanyId();
+        picture.setOwnerId(companyid);
+        Map<String, String> result = pictuerService.updatePictuer(picture);
+        if (result.get(StaticPool.SUCCESS)!=null){
+            return APIResult.genSuccessApiResponse(result.get(StaticPool.SUCCESS));
+        }
+        return APIResult.genSuccessApiResponse(result.get(StaticPool.ERROR));
     }
 
     @RequestMapping("message")

@@ -1176,8 +1176,8 @@ inelevated the..</a></h3>
     <script>
         function saveUpdate() {
             if (confirm("确认修改吗？")) {
+
                 var logo = $("#logo").attr("src");
-                var biglogo = $("#biglogo").attr("src");
                 var companyName = $("input[name='companyName']").val();
                 var companyEmail = $("input[name='companyEmail']").val();
                 var contactsPhone = $("input[name='contactsPhone']").val();
@@ -1199,19 +1199,20 @@ inelevated the..</a></h3>
                         data: {"logo": logo, "companyName": companyName, "companyEmail": companyEmail,
                             "contactsPhone": contactsPhone, "companyType": companyType, "contacts": contacts,
                             "companyAddress": companyAddress, "detailedAddress": detailedAddress, "companyDesc": companyDesc,
-                            "biglog":biglogo
                         },
                         success:function (APIResult) {
                             if (APIResult.code == 200){
                               alert(APIResult.message);
-                                window.location.href = "/dashboard/comp_employer_dashboard";
+                                window.location.href = "/dashboard/comp_employer_edit_profile";
                             } else {
                                 alert(APIResult.message)
                             }
                         }
                     })
                 }
+                uploadPictures();
             }
+
 
         }
     </script>
@@ -1264,14 +1265,10 @@ inelevated the..</a></h3>
           $(".image_gallery.jb_cover").append(li);
       }
       function confirmPictures() {
-          var num = 0;
-          $(".image_gallery.jb_cover").find("li").each(function () {
-              var a = $(this)
+              var a = $(".image_gallery.jb_cover").find("li:last-child")
               if (a.find("img").attr("value")==0&&a.find("a").attr("value")==1){
                   var formData = new FormData();
-                  var file = document.getElementById("picuppp").files[num];
-                  num++;
-                  alert(num);
+                  var file = document.getElementById("picuppp").files[0];
                   formData.append("file", file);
                   alert(file)
                   $.ajax({
@@ -1293,6 +1290,44 @@ inelevated the..</a></h3>
                       }
                   });
               }
+      }
+      function uploadPictures() {
+          var biglogo = $("#biglogo").attr("src");
+          var id = $("#biglogo").attr("value");
+          if (id == ""){
+              $.ajax({
+                  url: "comp_pictures_add",
+                  type: "POST",
+                  dataType: "json",
+                  data: {"ownerType": 2,"pictureType": 4,"pictureUrl": biglogo},
+              });
+          } else {
+              $.ajax({
+                  url: "comp_pictures_update",
+                  type: "POST",
+                  dataType: "json",
+                  data: {"id": id,"ownerType": 2,"pictureType": 4,"pictureUrl": biglogo},
+              });
+          }
+
+          $(".image_gallery.jb_cover").find("li").each(function () {
+             var li =  $(this)
+              var imgsrc = li.find("img").attr("src")
+             if (li.find("img").attr("value")==0&&li.find("a").attr("value")==1){
+                 $.ajax({
+                     url: "comp_pictures_add",
+                     type: "POST",
+                     dataType: "json",
+                     data: {"ownerType": 2,"pictureType": 3,"pictureUrl": imgsrc},
+                 });
+             } else if(li.find("img").attr("value")!=0&&li.find("a").attr("value")==-1){
+                 $.ajax({
+                     url: "comp_pictures_update",
+                     type: "POST",
+                     dataType: "json",
+                     data: {"id": li.find("img").attr("value"),"ownerType": 2,"pictureType": 3,"pictureUrl": imgsrc,"status": 0},
+                 });
+             }
           })
       }
     </script>
