@@ -627,8 +627,8 @@ inelevated the..</a></h3>
                             <div class="browse_img_banner jb_cover">
 
                                 <div class="jp_job_post_side_img">
-                                    <img id="biglogo" style="width: 300px;height: 100px"  th:if="${picture.pictureUrl}==null" src="/dashboard/images/banner.png" >
-                                    <img id="biglogo" style="width: 300px;height: 100px"  th:if="${picture.pictureUrl}!=null" th:src="${picture.pictureUrl}">
+                                    <img id="biglogo" th:value="${picture.id}" style="width: 300px;height: 100px"  th:if="${picture.pictureUrl}==null" src="/dashboard/images/banner.png" >
+                                    <img id="biglogo" th:value="${picture.id}" style="width: 300px;height: 100px"  th:if="${picture.pictureUrl}!=null" th:src="${picture.pictureUrl}">
                                 </div>
 
                                 <div class="jp_job_post_right_cont edit_profile_wrapper">
@@ -660,7 +660,7 @@ inelevated the..</a></h3>
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12">
                                         <div class="contect_form3">
                                             <label>电话</label>
-                                            <input th:value="${company.contactsPhone}" type="number" name="contactsPhone" placeholder="+91 9098085819">
+                                            <input th:value="${company.contactsPhone}" type="text" name="contactsPhone" placeholder="+91 9098085819">
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12">
@@ -778,65 +778,18 @@ inelevated the..</a></h3>
                                     <div class="job_filter_category_sidebar company_wrapper jb_cover">
                                         <div class="job_filter_sidebar_heading jb_cover">
                                             <h1>公司 相册</h1>
-                                            <div class="modal fade delete_popup company_popup" id="myModal5" role="dialog">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content">
-                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                        <div class="row">
-                                                            <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-
-                                                                <div class="delett_cntn jb_cover">
-                                                                    <h1><i class="fas fa-edit"></i>修改图片</h1>
-                                                                    <div class="category_wrapper gallery_browse jb_cover">
-                                                                        <div class="row">
-                                                                            <div class="col-lg-3 col-md-3 col-sm-12 col-12">
-                                                                                <div class="category_lavel jb_cover">
-                                                                                    <p>gallery 02 :</p>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-lg-9 col-md-9 col-sm-12 col-12">
-                                                                                <div class="delete_jb_form gallery_link">
-                                                                                    <input type="text" name="name" placeholder="Title">
-                                                                                </div>
-                                                                                <div class="delete_jb_form gallery_link">
-                                                                                    <input type="text" name="name" placeholder="Link">
-                                                                                </div>
-                                                                                <div class="width_50 gallery_link">
-                                                                                    <label>Image </label>
-                                                                                    <input type="file" id="input-file-now-custom-231" class="dropify" data-height="90" /><span class="post_photo">browse image</span>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="padder_top jb_cover"></div>
-                                                                    <div class="header_btn search_btn applt_pop_btn">
-
-                                                                        <a href="#">保存修改</a>
-
-                                                                    </div>
-                                                                    <div class="cancel_wrapper">
-                                                                        <a href="#" data-dismiss="modal">取消</a>
-                                                                    </div>
-
-                                                                </div>
-
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
                                         </div>
                                         <div class="job_overview_header pdd jb_cover">
                                             <ul class="image_gallery jb_cover">
+                                                <input id="picuppp" style="display: none" type="file"/>
                                                 <li th:each="pic:${pictures}">
-                                                    <img th:src="${pic.pictureUrl}" src="/dashboard/images/gallery1.jpg" alt="img"><br>
-                                                    <span><a href="#" data-toggle="modal" data-target="#myModal5"><i class="fas fa-edit"></i></a></span>
-                                                    <a href="#"><i style="color: #ff3366" class="fas fa-trash-alt"></i></a>
+                                                    <img style="width: 150px;height: 150px" th:value="${pic.id}" th:src="${pic.pictureUrl}" src="/dashboard/images/gallery1.jpg" alt="img"><br>
+                                                    <a value="0" href="javascript:void(0)" onclick="deletePicture(this)"><i style="color: #ff3366" class="fas fa-trash-alt"></i></a>
                                                 </li>
                                             </ul>
-                                            <div class="header_btn search_btn jb_cover">
-
-                                                <a href="#">添加 图片</a>
+                                            <div style="float: left" class="header_btn search_btn jb_cover">
+                                                <a href="javascript:void(0)" onclick="addPictures()">添加图片</a>
+                                                <a style="margin-left: 30px" href="javascript:void(0)" onclick="confirmPictures()">确认图片</a>
                                             </div>
                                         </div>
                                     </div>
@@ -1245,7 +1198,8 @@ inelevated the..</a></h3>
                         dataType: "json",
                         data: {"logo": logo, "companyName": companyName, "companyEmail": companyEmail,
                             "contactsPhone": contactsPhone, "companyType": companyType, "contacts": contacts,
-                            "companyAddress": companyAddress, "detailedAddress": detailedAddress, "companyDesc": companyDesc
+                            "companyAddress": companyAddress, "detailedAddress": detailedAddress, "companyDesc": companyDesc,
+                            "biglog":biglogo
                         },
                         success:function (APIResult) {
                             if (APIResult.code == 200){
@@ -1260,6 +1214,87 @@ inelevated the..</a></h3>
             }
 
         }
+    </script>
+    <script>
+      function  deletePicture(obj){
+          if (confirm("确认删除？")){
+              $(obj).parent().css({"display":"none"});
+              $(obj).parent().find("a").attr("value","-1")
+          }
+      }
+      function addPictures() {
+          $(".image_gallery.jb_cover").find("input").click()
+      }
+
+      $(".image_gallery.jb_cover").find("input").change(function () {
+          var _URL = window.URL || window.webkitURL;
+          var file, img;
+          if ((file = this.files[0])) {
+              img = new Image();
+              img.onload = function() {
+                  addElement(this.src);
+              };
+              img.src = _URL.createObjectURL(file);
+          }
+          alert("图片符合要求");
+      });
+
+      function addElement(src,file) {
+          var br = document.createElement("br");
+          var img = document.createElement("img");
+          $(img).attr("src",src);
+          $(img).css({"height":"150px","width":"150px"});
+          $(img).attr("value","0");
+         var li = document.createElement("li");
+         var a = document.createElement("a");
+          $(a).attr("value","1");
+          $(a).attr("href","javascript:void(0)");
+          $(a).attr("onclick","deletePicture(this)");
+          var i = document.createElement("i");
+          $(i).addClass("fas fa-trash-alt");
+          $(i).css({"color":"#ff3366"});
+          // var input = document.createElement("input");
+          // $(input).css({"display":"none"})
+          // $(input).attr("type","file")
+          // $(input).attr("files",file)
+          $(a).append(i);
+          $(li).append(img);
+          $(li).append(br);
+          $(li).append(a);
+          $(".image_gallery.jb_cover").append(li);
+      }
+      function confirmPictures() {
+          var num = 0;
+          $(".image_gallery.jb_cover").find("li").each(function () {
+              var a = $(this)
+              if (a.find("img").attr("value")==0&&a.find("a").attr("value")==1){
+                  var formData = new FormData();
+                  var file = document.getElementById("picuppp").files[num];
+                  num++;
+                  alert(num);
+                  formData.append("file", file);
+                  alert(file)
+                  $.ajax({
+                      url:"/upload",
+                      type:"POST",
+                      data:formData,
+                      processData : false,
+                      contentType : false,
+                      dataType : 'json',
+                      async : false,
+                      success : function (result) {
+                          console.log(result);
+                          if (result.code == 200) {
+                              a.find("img").attr("src", result.message);
+                              alert("图片上传成功")
+                          } else {
+                              alert("error!");
+                          }
+                      }
+                  });
+              }
+          })
+      }
     </script>
     <!-- custom js-->
 </body>

@@ -1063,6 +1063,9 @@ inelevated the..</a></h3>
                       },
                       success:function (APIResult) {
                           alert(APIResult.message)
+                          if (APIResult.code==200){
+                              $(location).attr('href','comp_employer_manage_jobs');
+                          }
                       }
                   })
               }

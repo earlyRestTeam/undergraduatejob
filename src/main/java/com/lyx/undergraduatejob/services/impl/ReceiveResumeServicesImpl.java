@@ -43,7 +43,7 @@ public class ReceiveResumeServicesImpl implements IReceiveResumeServices {
     @Override
     public PageInfo<Resume> queryReceiveResume(Integer indexPage, Integer pageSize,Integer jobId, Integer companyId, Integer status) {
         indexPage = indexPage == null ? 1 : indexPage;
-        PageHelper.startPage(indexPage,pageSize);
+
 
         ReceiveResumeExample receiveResumeExample = new ReceiveResumeExample();
         ReceiveResumeExample.Criteria criteria = receiveResumeExample.createCriteria();
@@ -70,7 +70,7 @@ public class ReceiveResumeServicesImpl implements IReceiveResumeServices {
         criteria1.andIdIn(resumeIdList);
         criteria1.andStatusEqualTo(1);
         criteria1.andAulStatusEqualTo(2);
-
+        PageHelper.startPage(indexPage,pageSize);
         List<Resume> resumeList = resumeMapper.selectByExample(resumeExample);
 
         if(resumeList == null || resumeList.size() < 1)

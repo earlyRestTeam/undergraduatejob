@@ -159,7 +159,7 @@ public class JobServicesImpl implements IJobServices {
         Map<String,String> result = new HashMap<>();
 
         Job j = jobMapper.selectByPrimaryKey(job.getId());
-        if(j.getId() != companyId){
+        if(j.getCompanyId() != companyId){
             logger.error("非法操作！" + companyId);
             result.put(StaticPool.ERROR,"系统繁忙");
             return result;

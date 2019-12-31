@@ -134,7 +134,7 @@ Author:
                                 <a href="comp_applications"> applications </a>
                             </li>
                             <li>
-                                <a href="comp_company_page">公司主页</a>
+                                <a href="/aut/aut_company">公司主页</a>
                             </li>
                             <li>
                                 <a href="comp_employer_dashboard">个人资料</a>
@@ -433,7 +433,7 @@ inelevated the..</a></h3>
                                             <a href="comp_applications"> <i class="fas fa-square"></i>收到的简历</a>
                                         </li>
                                         <li>
-                                            <a href="comp_company_page"> <i class="fas fa-square"></i>公司主页</a>
+                                            <a href="/aut/aut_company"> <i class="fas fa-square"></i>公司主页</a>
                                         </li>
                                         <li>
                                             <a href="comp_employer_dashboard"> <i class="fas fa-square"></i>企业资料</a>
@@ -543,7 +543,7 @@ inelevated the..</a></h3>
                                     <a href="comp_employer_edit_profile"> <i class="fas fa-edit"></i>编辑资料
                                     </a>
                                 </li>
-                                <li><a href="comp_company_page"><i class="fas fa-file"></i>公司主页 </a></li>
+                                <li><a href="/aut/aut_company"><i class="fas fa-file"></i>公司主页 </a></li>
                                 <li><a href="comp_employer_manage_jobs"><i class="fas fa-suitcase"></i>管理职位</a></li>
                                 <li><a href="comp_applications" class="link_active"><i class="fas fa-mobile"></i>收到的简历</a></li>
                                 <li><a href="comp_post_new_job"><i class="fas fa-user-plus"></i>发布职位</a></li>
@@ -642,14 +642,14 @@ inelevated the..</a></h3>
                                         </div>
                                     </div>
                                     <div  th:fragment="joblistdiv" id="joblistdiv">
-                                    <div th:each="r:${pages.list}"   class="latest_job_box jb_cover">
+                                    <div th:each="r:${pages.list}" th:id="${r.id}"  class="latest_job_box jb_cover">
                                         <div   class="job_list recent_app_1">
                                             <div class="recent_img">
                                                 <img th:if="${r.avatar==null}" src="/dashboard/images/rs1.jpg" alt="post_img">
                                                 <img th:if="${r.avatar!=null}" th:src="${r.avatar}" alt="post_img">
                                             </div>
                                             <div class="recent_cntnt">
-                                                <h6><a href="#" th:text="${r.name}">luca wallace</a></h6>
+                                                <h6><a th:href="'/user/visitResume?resumeId='+${r.id}" th:text="${r.name}">luca wallace</a></h6>
                                                 <ul>
                                                     <li ><i class="fas fa-calendar"></i>&nbsp;&nbsp;<p style="display: inline-block" th:text="${r.graduateSchool}"></p></li>
                                                     <li ><i class="fas fa-calendar"></i>&nbsp;&nbsp;<p style="display: inline-block" th:text="${r.salary}+'元'"></p></li>
@@ -666,7 +666,7 @@ inelevated the..</a></h3>
                                                         <a href="#" style="width: 110px"><i class="fas fa-file-download"></i>下载简历</a>
                                                     </li>
                                                     <li>
-                                                        <a href="javascript:void(0);" th:onclick="'deleteResume('+${r.userId}+')'"> <i class="fas fa-envelope"></i>删除</a>
+                                                        <a href="javascript:void(0);" th:onclick="'deleteResume('+${r.id}+')'"> <i class="fas fa-envelope"></i>删除</a>
                                                     </li>
 
                                                 </ul>
@@ -948,7 +948,21 @@ inelevated the..</a></h3>
             selectbyJobId(indexpage)
         }
         function deleteResume(id) {
-
+            var conf= confirm("确认删除？");
+            if (conf){
+                $.ajax({
+                    url:"updateResumebyId",
+                    type:"post",
+                    dataType:"json",
+                    data:{"id":id},
+                    success:function (APIResult) {
+                        alert(APIResult.message);
+                        if (200 == APIResult.code){
+                            $("#"+id).attr("style","display:none;")
+                        }
+                    }
+                })
+            }
         }
 
     </script>

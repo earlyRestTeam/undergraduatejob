@@ -8,6 +8,7 @@ import com.lyx.undergraduatejob.pojo.*;
 import com.lyx.undergraduatejob.search.entity.JobSearchEntity;
 import com.lyx.undergraduatejob.search.entity.LoginEntity;
 import com.lyx.undergraduatejob.services.impl.*;
+import com.lyx.undergraduatejob.services.security.LoginEntityHelper;
 import com.lyx.undergraduatejob.utils.APIResult;
 import com.lyx.undergraduatejob.utils.StaticPool;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +43,8 @@ public class DashboardController {
     TbAreaServiceImpl tbAreaService;
     @Autowired
     JobListServiceImpl jobListService;
+    @Autowired
+    LoginEntityHelper loginEntityHelper;
     @RequestMapping("candidate_applied_job")
     public String candidate_applied_job(){
 
@@ -82,7 +85,10 @@ public class DashboardController {
      */
     @RequestMapping("comp_applications")
     public String comp_applications(HttpServletRequest request,Integer jobid){
-        Integer companyid = 1;
+        Integer companyid = loginEntityHelper.getOnlineEntity().getCompanyId();
+        if (companyid == null){
+            companyid =0;
+        }
         PageInfo<Resume> resumePageInfo = receiveResumeServices.queryReceiveResume(1, 5, jobid, companyid, 0);
         if (resumePageInfo == null){
             resumePageInfo = new PageInfo<>();
@@ -94,15 +100,22 @@ public class DashboardController {
     }
 
     /**
-     * 删除或者已读公司收到的简历
-     * @param request
-     * @param jobid
+     * 删除公司收到的简历
+     * @param id
      * @return
      */
     @RequestMapping("updateResumebyId")
-    public String updateResumebyId(HttpServletRequest request,Integer jobid){
-        Integer companyid = 1;
-        return "dashboard/comp_applications";
+    @ResponseBody
+    public APIResult updateResumebyId(Integer id){
+        Integer companyid = loginEntityHelper.getOnlineEntity().getCompanyId();
+        if (companyid == null){
+            companyid =0;
+        }
+        Map<String, String> result = receiveResumeServices.updateReceiveResume(id, companyid, 3);
+        if (result.get(StaticPool.ERROR)!=null){
+            return APIResult.genFailApiResponse500(result.get(StaticPool.ERROR));
+        }
+        return APIResult.genSuccessApiResponse(result.get(StaticPool.SUCCESS));
     }
 
     /**
@@ -113,7 +126,11 @@ public class DashboardController {
      */
     @RequestMapping("comp_applications_serch")
     public String comp_applications_serch(Model model, Integer indexpage, Integer jobid,Integer status){
-        Integer companyid = 1;
+
+        Integer companyid = loginEntityHelper.getOnlineEntity().getCompanyId();
+        if (companyid == null){
+            companyid =0;
+        }
         if (jobid == 0){
             jobid =null;
         }
@@ -159,7 +176,7 @@ public class DashboardController {
      */
     @RequestMapping("comp_employer_dashboard")
     public String comp_employer_dashboard(HttpServletRequest request){
-        Integer userid=1;
+        Integer userid=loginEntityHelper.getOnlineEntity().getId();
         Company company = companyInfoServices.queryCompanyByUserId(userid);
         request.setAttribute("company",company);
         List<Resume> resumes = null;
@@ -209,18 +226,21 @@ public class DashboardController {
      */
     @RequestMapping("comp_employer_edit_profile")
     public String comp_employer_edit_profile(HttpServletRequest request){
-        Integer companyId = 1;
+        Integer companyid = loginEntityHelper.getOnlineEntity().getCompanyId();
+        if (companyid == null){
+            companyid =0;
+        }
         Company company = companyInfoServices.queryCompanyByUserId(1);
         request.setAttribute("company",company);
         List<TbArea> tbAreas = tbAreaService.queryTbAreabyParentId(100000);
         request.setAttribute("province",tbAreas);
-        List<Picture> pictures = pictuerService.queryPicturebyOwnerid(companyId, 2, 4);
+        List<Picture> pictures = pictuerService.queryPicturebyOwnerid(companyid, 2, 4);
         if (!pictures.isEmpty()){
             request.setAttribute("picture",pictures.get(0));
         }else {
             request.setAttribute("picture",new Picture());
         }
-        List<Picture> pictures1 = pictuerService.queryPicturebyOwnerid(companyId, 2, 3);
+        List<Picture> pictures1 = pictuerService.queryPicturebyOwnerid(companyid, 2, 3);
         if (pictures1.isEmpty()){
             pictures1 = new ArrayList<>();
         }
@@ -236,10 +256,11 @@ public class DashboardController {
      */
     @PostMapping("updateCompanyinfo")
     @ResponseBody
-    public APIResult updateCompanyinfo(Company company){
-        company.setId(1);
-        company.setUserId(1);
+    public APIResult updateCompanyinfo(Company company,Picture picture){
+        company.setId(loginEntityHelper.getOnlineEntity().getCompanyId());
+        company.setUserId(loginEntityHelper.getOnlineEntity().getId());
         Map<String, String> stringStringMap = companyInfoServices.updateCompanyInfo(company);
+        pictuerService.updatePictuer(picture);
         if (stringStringMap.get(StaticPool.SUCCESS)!=null){
             return APIResult.genSuccessApiResponse(stringStringMap.get(StaticPool.SUCCESS));
         }
@@ -264,16 +285,18 @@ public class DashboardController {
     }
 
     /**
-     * 发布/取消发布职业
+     * 发布/取消发布或者修改职业信息
      * @param job
      * @return
      */
     @PostMapping("updateJobPushStatus")
     @ResponseBody
     public APIResult updateJobPushStatus(Job job){
-        Integer companyId = 1;
-
-        Map<String, String> stringStringMap = jobServices.updateJob(job,companyId);
+        Integer companyid = loginEntityHelper.getOnlineEntity().getCompanyId();
+        if (companyid == null){
+            companyid =0;
+        }
+        Map<String, String> stringStringMap = jobServices.updateJob(job,companyid);
         if (stringStringMap.get(StaticPool.SUCCESS)!=null){
             return APIResult.genSuccessApiResponse(stringStringMap.get(StaticPool.SUCCESS));
         }
@@ -288,10 +311,13 @@ public class DashboardController {
     @RequestMapping("comp_employer_manage_jobs")
     public String comp_employer_manage_jobs(HttpServletRequest request){
         Integer indexpage = 1;
-        Integer companyId = 1 ;
+        Integer companyid = loginEntityHelper.getOnlineEntity().getCompanyId();
+        if (companyid == null){
+            companyid =0;
+        }
         Integer pagesize = 5;
         JobSearchEntity jobSearchEntity = new JobSearchEntity();
-        jobSearchEntity.setCompanyId(companyId);
+        jobSearchEntity.setCompanyId(companyid);
         jobSearchEntity.setStatus(1);
         jobSearchEntity.setAulStatus(null);
         PageInfo<Job> jobPageInfo = jobServices.selectJobByJobSearchEntityWithOutCompany(indexpage, pagesize, jobSearchEntity);
@@ -306,10 +332,13 @@ public class DashboardController {
      */
     @RequestMapping("comp_employer_manage_jobs_pages")
     public String comp_employer_manage_jobs_pages(HttpServletRequest request,Integer indexpage){
-        Integer companyId = 1 ;
+        Integer companyid = loginEntityHelper.getOnlineEntity().getCompanyId();
+        if (companyid == null){
+            companyid =0;
+        }
         Integer pagesize = 5;
         JobSearchEntity jobSearchEntity = new JobSearchEntity();
-        jobSearchEntity.setCompanyId(companyId);
+        jobSearchEntity.setCompanyId(companyid);
         jobSearchEntity.setStatus(1);
         jobSearchEntity.setAulStatus(null);
         PageInfo<Job> jobPageInfo = jobServices.selectJobByJobSearchEntityWithOutCompany(indexpage, pagesize, jobSearchEntity);
@@ -339,9 +368,12 @@ public class DashboardController {
     @RequestMapping("addNewJob")
     @ResponseBody
     public APIResult addNewJob(Job job){
-        Integer companyId = 1;
-        job.setCompanyId(companyId);
-        Company company = companyInfoServices.queryCompanyById(companyId);
+        Integer companyid = loginEntityHelper.getOnlineEntity().getCompanyId();
+        if (companyid == null){
+            companyid =0;
+        }
+        job.setCompanyId(companyid);
+        Company company = companyInfoServices.queryCompanyById(companyid);
         job.setCompanyLogo(company.getLogo());
         job.setCompanyName(company.getCompanyName());
         job.setCreateTime(new Date());

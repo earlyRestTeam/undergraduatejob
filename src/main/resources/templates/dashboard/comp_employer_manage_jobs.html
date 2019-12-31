@@ -636,7 +636,7 @@ inelevated the..</a></h3>
 
                                         </div>
                                         <div class="job_list_next">
-                                            <p><a th:text="${job.receiveNum}" href="#">06 Applications</a></p>
+                                            <p><a th:text="${job.receiveNum}" href="javascript:void(0)">06 Applications</a></p>
 
                                         </div>
                                         <div id="pushStatus" th:switch="${job.pushStatus}" class="job_list_next">
@@ -894,13 +894,13 @@ inelevated the..</a></h3>
                             if (APIResult.code == 200){
                                 if (pushStatus == 0){
                                     $(obj).text("发布");
-                                    $(obj).attr("onclick","updatePushStatus(this,"+id+","+pushStatus+")");
+                                    $(obj).attr("onclick","updatePushStatus(this,"+id+","+pushStatus+","+aulStatus+")");
                                     a.text("未发布")
                                     a.removeClass("gn")
                                     a.addClass("ex")
                                 } else {
                                     $(obj).text("取消发布");
-                                    $(obj).attr("onclick","updatePushStatus(this,"+id+","+pushStatus+")");
+                                    $(obj).attr("onclick","updatePushStatus(this,"+id+","+pushStatus+","+aulStatus+")");
                                     a.text("已发布")
                                     a.removeClass("ex")
                                     a.addClass("gn")

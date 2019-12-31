@@ -680,7 +680,7 @@ Author:
                                         <option value="Tahoma">Tahoma</option>
                                         <option value="Arial">Verdana</option>
                                     </select>
-                                    <iframe name="jobDesc"  th:utext="${job.detailedAddress}"  id="editor"></iframe>
+                                    <iframe name="jobDesc"  th:utext="${job.jobDesc}"  id="editor"></iframe>
                                 </div>
 
                             </div>
@@ -932,6 +932,7 @@ Author:
 </div>
 <!-- chat box Wrapper end -->
 <!--custom js files-->
+
 <script src="/dashboard/js/jquery-3.3.1.min.js"></script>
 <script src="/dashboard/js/bootstrap.min.js"></script>
 <script src="/dashboard/js/modernizr.js"></script>
@@ -950,8 +951,15 @@ Author:
 <script src="/dashboard/js/custom.js"></script>
 <!-- custom js-->
 <script>
+    $(function () {
+        var a = [[${job.jobDesc}]]
+        $("iframe[name='jobDesc']").contents().find("body").html(a);
+    })
+</script>
+<script>
     function addNewJob() {
-        var boolean =  confirm("确认发布？");
+        var id = [[${job.id}]]
+        var boolean =  confirm("确认修改？");
         if (boolean){
             var jobTitle = $("input[name='jobTitle']").val();
             var partFull = $("select[name='partFull']").parent().find(".option.selected").attr("data-value");
@@ -976,10 +984,10 @@ Author:
                 alert("请将所有项填写完")
             }else {
                 $.ajax({
-                    url: "addNewJob",
+                    url: "updateJobPushStatus",
                     type: "POST",
                     dataType: "json",
-                    data: {"jobTitle": jobTitle, "partFull": partFull, "closeType": closeType,
+                    data: {"id": id,"jobTitle": jobTitle, "partFull": partFull, "closeType": closeType,
                         "education": education, "jobType": jobType, "jobName": jobName,
                         "salary": salary, "workYears": workYears, "needNum": needNum, "jobDesc": jobDesc,
                         "workAddress": workAddress, "detailedAddress": detailedAddress, "contacts": contacts,
@@ -987,6 +995,10 @@ Author:
                     },
                     success:function (APIResult) {
                         alert(APIResult.message)
+                        if (APIResult.code==200){
+                            $(location).attr('href','comp_employer_manage_jobs');
+                        }
+
                     }
                 })
             }
