@@ -201,8 +201,11 @@ public class CollectController {
     @RequestMapping("/visit_job")
     @ResponseBody
     public APIResult add_resume(Integer indexpage){
-        System.out.println("访问到了");
-        Integer userId = 1;
+
+        OnlineEntity entity = loginEntityHelper.getOnlineEntity();
+        if (entity == null)
+            return APIResult.genFailApiResponse500("必须要登录才能收藏");
+        Integer userId = entity.getId();
 
         PageInfo<Job> jobPageInfo = iCollectServices.queryUserCollectJob(indexpage, userId);
         System.out.println("jobPageInfo:" + jobPageInfo);
