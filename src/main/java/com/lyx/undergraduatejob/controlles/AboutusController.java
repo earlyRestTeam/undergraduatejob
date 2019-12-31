@@ -17,6 +17,7 @@ import com.lyx.undergraduatejob.utils.Jobs;
 import com.lyx.undergraduatejob.utils.MyPage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -138,5 +139,10 @@ public class AboutusController {
         request.setAttribute("pages",page);
         return "/company_single";
 
+    }
+    //我的 人才库
+    @GetMapping("/dashboard/candidate_favourite_resume")
+    public String candidate_favourite_resume(){
+        return "/dashboard/candidate_favourite_resume";
     }
 }
