@@ -67,6 +67,9 @@ public class Job implements Serializable {
     private Date vipStartTime;
 
     private String welfares;
+
+    private static final long serialVersionUID = 1L;
+
     public Job(Integer id, String companyName, String logo, String jobType
             , String jobName, int rNum, int educationNum, int workYearsNum
             , String jobAddress, String jobAddressDetal, int salary, int maxSalary, String welfares, String jobDesc) {
@@ -89,8 +92,6 @@ public class Job implements Serializable {
 
     public Job() {
     }
-
-    private static final long serialVersionUID = 1L;
 
     public Integer getId() {
         return id;
@@ -346,14 +347,6 @@ public class Job implements Serializable {
 
     public void setWelfares(String welfares) {
         this.welfares = welfares;
-    }
-
-    public String getType(){
-        if(partFull == 1){
-            return "兼职";
-        }else {
-            return "全职";
-        }
     }
 
     @Override

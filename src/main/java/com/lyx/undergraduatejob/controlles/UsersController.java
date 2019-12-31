@@ -77,7 +77,7 @@ public class UsersController {
     }
     @PostMapping("/user/login")
     @ResponseBody
-    public APIResult result(@RequestBody LoginEntity entity, HttpServletRequest request, HttpServletResponse response){
+    public APIResult result(@RequestBody LoginEntity entity){
         String username = entity.getUsername();
         String password = entity.getPassword();
         String token = null;
@@ -90,8 +90,8 @@ public class UsersController {
         token = res.get(StaticPool.SUCCESS);
         if(token == null)
             return APIResult.genFailApiResponse401(res.get(StaticPool.ERROR) == null ? "服务繁忙" : res.get(StaticPool.ERROR));
-        response.addHeader(tokenHead,token);
-        response.addCookie(new Cookie(tokenHead,token));
+//        response.addHeader(tokenHead,token);
+//        response.addCookie(new Cookie(tokenHead,token));
         Map<String,String> map = new HashMap<>();
         map.put("header",tokenHead);
         map.put("token",token);

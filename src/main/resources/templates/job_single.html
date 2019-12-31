@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+﻿﻿﻿<!DOCTYPE html>
 <!-- Template Name: JB desksVersion: 1.0.0Author: -->
 <!--[if IE 8]><html lang="en" class="ie8 no-js"><![endif]-->
 <!--[if IE 9]><html lang="en" class="ie9 no-js"><![endif]-->
@@ -51,7 +51,7 @@
    <ul th:replace="public::public_cd-dropdown-content"></ul>
    <!-- .cd-dropdown-content -->
   </nav>
-  <div class="cp_navi_main_wrapper jb_cover">
+  <div class="cp_navi_main_wrapper jb_cover" th:replace="public::cp_navi_main_wrapper-jb_cover">
    <div class="container-fluid">
     <div class="cp_logo_wrapper">
      <a href="index"><img src="/picture/logo.png" alt="logo" /></a>
@@ -269,22 +269,22 @@
      <div class="col-lg-4 col-md-12 col-sm-12 col-12">
       <div class="job_filter_category_sidebar jb_cover">
        <div class="job_filter_sidebar_heading jb_cover">
-        <h1>jobs overview</h1>
+        <h1>工作概述</h1>
        </div>
        <div class="job_overview_header jb_cover">
         <div class="jb_job_overview_img">
-         <img th:src="@{${res.company.logo}}" alt="post_img" />
+         <img th:src="@{${res.company.logo}}" alt="post_img" style="width: 70px;height: 70px;"/>
          <h4 th:text="${res.job.jobTitle}">HTML Developer (1 - 2 Yrs Exp.)</h4>
          <p th:text="${res.company.companyName}" >Webstrot Technology Pvt. Ltd.</p>
 <!--         th:text="${res.company.companyName}"-->
          <ul class="job_single_lists">
           <li>
-           <div class="job_adds_right">
+           <div class="job_adds_right" th:onclick="|javascript:love(${res.job.id})|">
             <a href="#!"><i class="far fa-heart"></i></a>
            </div></li>
           <li>
            <div class="header_btn search_btn part_time_btn jb_cover">
-            <a href="#">part time</a>
+            <a th:text="${res.job.partFull==1 ? '全职' :'兼职'  }"></a>
            </div></li>
          </ul>
         </div>
@@ -444,10 +444,10 @@
        <div class="jp_job_res jb_cover minimum_cover">
         <h2 class="job_description_heading">最低学历</h2>
         <ul>
-         <li><i class="fa fa-caret-right" th:text="${res.job.partFull}== 1 ? '高中以上' : '全日制本科毕业'"></i>&nbsp;&nbsp; Build next-generation web applications with a focus on the client side.</li>
-         <li><i class="fa fa-caret-right"></i>&nbsp;&nbsp; Redesign UI's, implement new UI's, and pick up Java as necessary.</li>
-         <li><i class="fa fa-caret-right"></i>&nbsp;&nbsp; Explore and design dynamic and compelling consumer experiences.</li>
-         <li><i class="fa fa-caret-right"></i>&nbsp;&nbsp; Design and build scalable framework for web applications.</li>
+         <li th:text="${res.job.education}== 1 ? '高中以上' : '全日制本科毕业'"><i class="fa fa-caret-right"></i>&nbsp;&nbsp; Build next-generation web applications with a focus on the client side.</li>
+         <li><i class="fa fa-caret-right"></i>&nbsp;&nbsp; 工作认真扎实，具有较强的沟通协调能力和团队协作意识，有责任心;专业、男女均不限，学生会或班干部优先录取；</li>
+         <li><i class="fa fa-caret-right"></i>&nbsp;&nbsp; 男女不限，有上岗证、技术职称证；</li>
+         <li><i class="fa fa-caret-right"></i>&nbsp;&nbsp; 有客户资源或管理经验者优先考虑；</li>
         </ul>
        </div>
        <div class="jp_job_res jb_cover">
@@ -481,7 +481,7 @@
            <div class="row">
             <div class="col-lg-9 col-md-9 col-sm-12 col-12">
              <div class="jp_job_post_side_img">
-              <img th:src="@{${job.companyLogo}}" src="/picture/lt2.png" alt="post_img" />
+              <img th:src="@{${job.companyLogo}}" src="/picture/lt2.png" alt="post_img" style="width: 120px;height: 120px;"/>
               <br />
               <span th:text="${job.companyName}">google</span>
              </div>
@@ -497,11 +497,11 @@
              <div class="jp_job_post_right_btn_wrapper">
               <ul>
                <li>
-                <div class="job_adds_right">
-                 <a href="#!"><i class="far fa-heart"></i></a>
+                <div class="job_adds_right" th:onclick="|javascript:love(${job.id})|">
+                 <a ><i class="far fa-heart"></i></a>
                 </div></li>
-               <li><a th:text="${job.partFull}== 1 ? '兼职' : '全职'"></a></li>
-               <li><a href="#">申请</a></li>
+               <li><a th:href="@{'/job_single?jobid='+${job.id}}" th:text="${job.partFull}== 1 ? '兼职' : '全职'"></a></li>
+               <li><a th:href="@{'/job_single?jobid='+${job.id}}">申请</a></li>
               </ul>
              </div>
             </div>
@@ -513,7 +513,7 @@
            <div class="row">
             <div class="col-lg-9 col-md-9 col-sm-12 col-12">
              <div class="jp_job_post_side_img">
-              <img th:src="@{${job.companyLogo}}" src="/picture/lt2.png" alt="post_img" />
+              <img th:src="@{${job.companyLogo}}" src="/picture/lt2.png" alt="post_img" style="width: 70px;height: 70px;"/>
               <br />
               <span th:text="${job.companyName}">google</span>
              </div>
@@ -529,8 +529,8 @@
              <div class="jp_job_post_right_btn_wrapper">
               <ul>
                <li>
-                <div class="job_adds_right">
-                 <a href="#!"><i class="far fa-heart"></i></a>
+                <div class="job_adds_right" th:onclick="|javascript:love(${job.id})|">
+                 <a ><i class="far fa-heart"></i></a>
                 </div></li>
                <li><a th:text="${job.partFull}== 1 ? '兼职' : '全职'"></a></li>
                <li><a href="#">申请</a></li>
@@ -610,6 +610,7 @@
   <script src="/js/imagesloaded.pkgd.min.js"></script>
   <script src="/js/isotope.pkgd.min.js"></script>
   <script src="/js/custom.js"></script>
+   <script src="/js/axios.js"></script>
   <!-- custom js-->
   <script>
 	  function initMap() {
@@ -628,6 +629,11 @@
 		});
 	}
   </script>
+   <script>
+     function love(jid){
+      axios.get('/user/collectJob?jobId='+jid);
+     }
+   </script>
   <script async="" defer="" src="/js/9ab6a2e020ce47d1a7933c9b3886b8b7.js"></script>
  </body>
 </html>

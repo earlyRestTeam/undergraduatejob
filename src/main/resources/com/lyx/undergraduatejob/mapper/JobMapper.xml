@@ -8,8 +8,6 @@
     <result column="aul_status" jdbcType="INTEGER" property="aulStatus" />
     <result column="job_title" jdbcType="VARCHAR" property="jobTitle" />
     <result column="company_id" jdbcType="INTEGER" property="companyId" />
-    <result column="company_name" jdbcType="VARCHAR" property="companyName" />
-    <result column="company_logo" jdbcType="VARCHAR" property="companyLogo" />
     <result column="job_name" jdbcType="VARCHAR" property="jobName" />
     <result column="job_desc" jdbcType="VARCHAR" property="jobDesc" />
     <result column="job_type" jdbcType="VARCHAR" property="jobType" />
@@ -18,6 +16,7 @@
     <result column="email" jdbcType="VARCHAR" property="email" />
     <result column="need_num" jdbcType="INTEGER" property="needNum" />
     <result column="part_full" jdbcType="INTEGER" property="partFull" />
+    <result column="max_salary" jdbcType="INTEGER" property="maxSalary" />
     <result column="salary" jdbcType="INTEGER" property="salary" />
     <result column="close_type" jdbcType="INTEGER" property="closeType" />
     <result column="education" jdbcType="INTEGER" property="education" />
@@ -28,10 +27,13 @@
     <result column="collect_num" jdbcType="INTEGER" property="collectNum" />
     <result column="visit_num" jdbcType="INTEGER" property="visitNum" />
     <result column="job_vip" jdbcType="INTEGER" property="jobVip" />
-    <result column="vip_start_time" jdbcType="TIMESTAMP" property="vipStartTime" />
     <result column="vip_end_time" jdbcType="TIMESTAMP" property="vipEndTime" />
     <result column="push_time" jdbcType="TIMESTAMP" property="pushTime" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="company_name" jdbcType="VARCHAR" property="companyName" />
+    <result column="company_logo" jdbcType="VARCHAR" property="companyLogo" />
+    <result column="vip_start_time" jdbcType="TIMESTAMP" property="vipStartTime" />
+    <result column="welfares" jdbcType="VARCHAR" property="welfares" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -92,10 +94,11 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, status, push_status, aul_status, job_title, company_id, company_name, company_logo, 
-    job_name, job_desc, job_type, contacts, contacts_phone, email, need_num, part_full, 
-    salary, close_type, education, work_years, work_address, detailed_address, receive_num, 
-    collect_num, visit_num, job_vip, vip_start_time, vip_end_time, push_time, create_time
+    id, status, push_status, aul_status, job_title, company_id, job_name, job_desc, job_type, 
+    contacts, contacts_phone, email, need_num, part_full, max_salary, salary, close_type, 
+    education, work_years, work_address, detailed_address, receive_num, collect_num, 
+    visit_num, job_vip, vip_end_time, push_time, create_time, company_name, company_logo, 
+    vip_start_time, welfares
   </sql>
   <select id="selectByExample" parameterType="com.lyx.undergraduatejob.pojo.JobExample" resultMap="BaseResultMap">
     select
@@ -132,25 +135,27 @@
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into job (status, push_status, aul_status, 
-      job_title, company_id, company_name, 
-      company_logo, job_name, job_desc, 
-      job_type, contacts, contacts_phone, 
-      email, need_num, part_full, 
-      salary, close_type, education, 
-      work_years, work_address, detailed_address, 
-      receive_num, collect_num, visit_num, 
-      job_vip, vip_start_time, vip_end_time, 
-      push_time, create_time)
+      job_title, company_id, job_name, 
+      job_desc, job_type, contacts, 
+      contacts_phone, email, need_num, 
+      part_full, max_salary, salary, 
+      close_type, education, work_years, 
+      work_address, detailed_address, receive_num, 
+      collect_num, visit_num, job_vip, 
+      vip_end_time, push_time, create_time, 
+      company_name, company_logo, vip_start_time, 
+      welfares)
     values (#{status,jdbcType=INTEGER}, #{pushStatus,jdbcType=INTEGER}, #{aulStatus,jdbcType=INTEGER}, 
-      #{jobTitle,jdbcType=VARCHAR}, #{companyId,jdbcType=INTEGER}, #{companyName,jdbcType=VARCHAR}, 
-      #{companyLogo,jdbcType=VARCHAR}, #{jobName,jdbcType=VARCHAR}, #{jobDesc,jdbcType=VARCHAR}, 
-      #{jobType,jdbcType=VARCHAR}, #{contacts,jdbcType=VARCHAR}, #{contactsPhone,jdbcType=VARCHAR}, 
-      #{email,jdbcType=VARCHAR}, #{needNum,jdbcType=INTEGER}, #{partFull,jdbcType=INTEGER}, 
-      #{salary,jdbcType=INTEGER}, #{closeType,jdbcType=INTEGER}, #{education,jdbcType=INTEGER}, 
-      #{workYears,jdbcType=INTEGER}, #{workAddress,jdbcType=VARCHAR}, #{detailedAddress,jdbcType=VARCHAR}, 
-      #{receiveNum,jdbcType=INTEGER}, #{collectNum,jdbcType=INTEGER}, #{visitNum,jdbcType=INTEGER}, 
-      #{jobVip,jdbcType=INTEGER}, #{vipStartTime,jdbcType=TIMESTAMP}, #{vipEndTime,jdbcType=TIMESTAMP}, 
-      #{pushTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP})
+      #{jobTitle,jdbcType=VARCHAR}, #{companyId,jdbcType=INTEGER}, #{jobName,jdbcType=VARCHAR}, 
+      #{jobDesc,jdbcType=VARCHAR}, #{jobType,jdbcType=VARCHAR}, #{contacts,jdbcType=VARCHAR}, 
+      #{contactsPhone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{needNum,jdbcType=INTEGER}, 
+      #{partFull,jdbcType=INTEGER}, #{maxSalary,jdbcType=INTEGER}, #{salary,jdbcType=INTEGER}, 
+      #{closeType,jdbcType=INTEGER}, #{education,jdbcType=INTEGER}, #{workYears,jdbcType=INTEGER}, 
+      #{workAddress,jdbcType=VARCHAR}, #{detailedAddress,jdbcType=VARCHAR}, #{receiveNum,jdbcType=INTEGER}, 
+      #{collectNum,jdbcType=INTEGER}, #{visitNum,jdbcType=INTEGER}, #{jobVip,jdbcType=INTEGER}, 
+      #{vipEndTime,jdbcType=TIMESTAMP}, #{pushTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{companyName,jdbcType=VARCHAR}, #{companyLogo,jdbcType=VARCHAR}, #{vipStartTime,jdbcType=TIMESTAMP}, 
+      #{welfares,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.lyx.undergraduatejob.pojo.Job">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
@@ -172,12 +177,6 @@
       </if>
       <if test="companyId != null">
         company_id,
-      </if>
-      <if test="companyName != null">
-        company_name,
-      </if>
-      <if test="companyLogo != null">
-        company_logo,
       </if>
       <if test="jobName != null">
         job_name,
@@ -202,6 +201,9 @@
       </if>
       <if test="partFull != null">
         part_full,
+      </if>
+      <if test="maxSalary != null">
+        max_salary,
       </if>
       <if test="salary != null">
         salary,
@@ -233,9 +235,6 @@
       <if test="jobVip != null">
         job_vip,
       </if>
-      <if test="vipStartTime != null">
-        vip_start_time,
-      </if>
       <if test="vipEndTime != null">
         vip_end_time,
       </if>
@@ -244,6 +243,18 @@
       </if>
       <if test="createTime != null">
         create_time,
+      </if>
+      <if test="companyName != null">
+        company_name,
+      </if>
+      <if test="companyLogo != null">
+        company_logo,
+      </if>
+      <if test="vipStartTime != null">
+        vip_start_time,
+      </if>
+      <if test="welfares != null">
+        welfares,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -261,12 +272,6 @@
       </if>
       <if test="companyId != null">
         #{companyId,jdbcType=INTEGER},
-      </if>
-      <if test="companyName != null">
-        #{companyName,jdbcType=VARCHAR},
-      </if>
-      <if test="companyLogo != null">
-        #{companyLogo,jdbcType=VARCHAR},
       </if>
       <if test="jobName != null">
         #{jobName,jdbcType=VARCHAR},
@@ -291,6 +296,9 @@
       </if>
       <if test="partFull != null">
         #{partFull,jdbcType=INTEGER},
+      </if>
+      <if test="maxSalary != null">
+        #{maxSalary,jdbcType=INTEGER},
       </if>
       <if test="salary != null">
         #{salary,jdbcType=INTEGER},
@@ -322,9 +330,6 @@
       <if test="jobVip != null">
         #{jobVip,jdbcType=INTEGER},
       </if>
-      <if test="vipStartTime != null">
-        #{vipStartTime,jdbcType=TIMESTAMP},
-      </if>
       <if test="vipEndTime != null">
         #{vipEndTime,jdbcType=TIMESTAMP},
       </if>
@@ -333,6 +338,18 @@
       </if>
       <if test="createTime != null">
         #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="companyName != null">
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyLogo != null">
+        #{companyLogo,jdbcType=VARCHAR},
+      </if>
+      <if test="vipStartTime != null">
+        #{vipStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="welfares != null">
+        #{welfares,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -363,12 +380,6 @@
       <if test="record.companyId != null">
         company_id = #{record.companyId,jdbcType=INTEGER},
       </if>
-      <if test="record.companyName != null">
-        company_name = #{record.companyName,jdbcType=VARCHAR},
-      </if>
-      <if test="record.companyLogo != null">
-        company_logo = #{record.companyLogo,jdbcType=VARCHAR},
-      </if>
       <if test="record.jobName != null">
         job_name = #{record.jobName,jdbcType=VARCHAR},
       </if>
@@ -392,6 +403,9 @@
       </if>
       <if test="record.partFull != null">
         part_full = #{record.partFull,jdbcType=INTEGER},
+      </if>
+      <if test="record.maxSalary != null">
+        max_salary = #{record.maxSalary,jdbcType=INTEGER},
       </if>
       <if test="record.salary != null">
         salary = #{record.salary,jdbcType=INTEGER},
@@ -423,9 +437,6 @@
       <if test="record.jobVip != null">
         job_vip = #{record.jobVip,jdbcType=INTEGER},
       </if>
-      <if test="record.vipStartTime != null">
-        vip_start_time = #{record.vipStartTime,jdbcType=TIMESTAMP},
-      </if>
       <if test="record.vipEndTime != null">
         vip_end_time = #{record.vipEndTime,jdbcType=TIMESTAMP},
       </if>
@@ -434,6 +445,18 @@
       </if>
       <if test="record.createTime != null">
         create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.companyName != null">
+        company_name = #{record.companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.companyLogo != null">
+        company_logo = #{record.companyLogo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.vipStartTime != null">
+        vip_start_time = #{record.vipStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.welfares != null">
+        welfares = #{record.welfares,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -448,8 +471,6 @@
       aul_status = #{record.aulStatus,jdbcType=INTEGER},
       job_title = #{record.jobTitle,jdbcType=VARCHAR},
       company_id = #{record.companyId,jdbcType=INTEGER},
-      company_name = #{record.companyName,jdbcType=VARCHAR},
-      company_logo = #{record.companyLogo,jdbcType=VARCHAR},
       job_name = #{record.jobName,jdbcType=VARCHAR},
       job_desc = #{record.jobDesc,jdbcType=VARCHAR},
       job_type = #{record.jobType,jdbcType=VARCHAR},
@@ -458,6 +479,7 @@
       email = #{record.email,jdbcType=VARCHAR},
       need_num = #{record.needNum,jdbcType=INTEGER},
       part_full = #{record.partFull,jdbcType=INTEGER},
+      max_salary = #{record.maxSalary,jdbcType=INTEGER},
       salary = #{record.salary,jdbcType=INTEGER},
       close_type = #{record.closeType,jdbcType=INTEGER},
       education = #{record.education,jdbcType=INTEGER},
@@ -468,10 +490,13 @@
       collect_num = #{record.collectNum,jdbcType=INTEGER},
       visit_num = #{record.visitNum,jdbcType=INTEGER},
       job_vip = #{record.jobVip,jdbcType=INTEGER},
-      vip_start_time = #{record.vipStartTime,jdbcType=TIMESTAMP},
       vip_end_time = #{record.vipEndTime,jdbcType=TIMESTAMP},
       push_time = #{record.pushTime,jdbcType=TIMESTAMP},
-      create_time = #{record.createTime,jdbcType=TIMESTAMP}
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      company_name = #{record.companyName,jdbcType=VARCHAR},
+      company_logo = #{record.companyLogo,jdbcType=VARCHAR},
+      vip_start_time = #{record.vipStartTime,jdbcType=TIMESTAMP},
+      welfares = #{record.welfares,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -493,12 +518,6 @@
       </if>
       <if test="companyId != null">
         company_id = #{companyId,jdbcType=INTEGER},
-      </if>
-      <if test="companyName != null">
-        company_name = #{companyName,jdbcType=VARCHAR},
-      </if>
-      <if test="companyLogo != null">
-        company_logo = #{companyLogo,jdbcType=VARCHAR},
       </if>
       <if test="jobName != null">
         job_name = #{jobName,jdbcType=VARCHAR},
@@ -523,6 +542,9 @@
       </if>
       <if test="partFull != null">
         part_full = #{partFull,jdbcType=INTEGER},
+      </if>
+      <if test="maxSalary != null">
+        max_salary = #{maxSalary,jdbcType=INTEGER},
       </if>
       <if test="salary != null">
         salary = #{salary,jdbcType=INTEGER},
@@ -554,9 +576,6 @@
       <if test="jobVip != null">
         job_vip = #{jobVip,jdbcType=INTEGER},
       </if>
-      <if test="vipStartTime != null">
-        vip_start_time = #{vipStartTime,jdbcType=TIMESTAMP},
-      </if>
       <if test="vipEndTime != null">
         vip_end_time = #{vipEndTime,jdbcType=TIMESTAMP},
       </if>
@@ -565,6 +584,18 @@
       </if>
       <if test="createTime != null">
         create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="companyName != null">
+        company_name = #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyLogo != null">
+        company_logo = #{companyLogo,jdbcType=VARCHAR},
+      </if>
+      <if test="vipStartTime != null">
+        vip_start_time = #{vipStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="welfares != null">
+        welfares = #{welfares,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -576,8 +607,6 @@
       aul_status = #{aulStatus,jdbcType=INTEGER},
       job_title = #{jobTitle,jdbcType=VARCHAR},
       company_id = #{companyId,jdbcType=INTEGER},
-      company_name = #{companyName,jdbcType=VARCHAR},
-      company_logo = #{companyLogo,jdbcType=VARCHAR},
       job_name = #{jobName,jdbcType=VARCHAR},
       job_desc = #{jobDesc,jdbcType=VARCHAR},
       job_type = #{jobType,jdbcType=VARCHAR},
@@ -586,6 +615,7 @@
       email = #{email,jdbcType=VARCHAR},
       need_num = #{needNum,jdbcType=INTEGER},
       part_full = #{partFull,jdbcType=INTEGER},
+      max_salary = #{maxSalary,jdbcType=INTEGER},
       salary = #{salary,jdbcType=INTEGER},
       close_type = #{closeType,jdbcType=INTEGER},
       education = #{education,jdbcType=INTEGER},
@@ -596,10 +626,13 @@
       collect_num = #{collectNum,jdbcType=INTEGER},
       visit_num = #{visitNum,jdbcType=INTEGER},
       job_vip = #{jobVip,jdbcType=INTEGER},
-      vip_start_time = #{vipStartTime,jdbcType=TIMESTAMP},
       vip_end_time = #{vipEndTime,jdbcType=TIMESTAMP},
       push_time = #{pushTime,jdbcType=TIMESTAMP},
-      create_time = #{createTime,jdbcType=TIMESTAMP}
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      company_name = #{companyName,jdbcType=VARCHAR},
+      company_logo = #{companyLogo,jdbcType=VARCHAR},
+      vip_start_time = #{vipStartTime,jdbcType=TIMESTAMP},
+      welfares = #{welfares,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>
