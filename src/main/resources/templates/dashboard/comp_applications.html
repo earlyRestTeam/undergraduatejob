@@ -611,7 +611,7 @@ inelevated the..</a></h3>
                                     <div style="float: left;margin-top: 6px" class="col-lg-4 col-md-6 col-sm-12 col-12">
                                         <div class="select_box">
                                             <label> 行 业 </label>
-                                            <select style="width: 160px;height: 40px" id="industries">
+                                            <select  style="width: 160px;height: 40px;" id="industries">
                                                 <option  value="-1">所有</option>
                                                 <option th:each="i,index:${list}" th:value="${index.index}" th:text="${i['industries'].industriesName}">full time</option>
                                             </select>
@@ -620,7 +620,7 @@ inelevated the..</a></h3>
                                     <div  style="float: left;margin-top: 6px" class="col-lg-4 col-md-6 col-sm-12 col-12">
                                         <div  class="select_box">
                                             <label> 职 位 名</label>
-                                            <select style="width: 160px;height: 40px" id="jobaaa">
+                                            <select  style="width: 160px;height: 40px; " id="jobaaa">
                                                 <option value="0">所有</option>
                                             </select>
                                         </div>
@@ -652,7 +652,9 @@ inelevated the..</a></h3>
                                                 <h6><a href="#" th:text="${r.name}">luca wallace</a></h6>
                                                 <ul>
                                                     <li ><i class="fas fa-calendar"></i>&nbsp;&nbsp;<p style="display: inline-block" th:text="${r.graduateSchool}"></p></li>
-                                                    <li ><i class="fas fa-calendar"></i>&nbsp;&nbsp;<p style="display: inline-block" th:text="${r.salary}"></p></li>
+                                                    <li ><i class="fas fa-calendar"></i>&nbsp;&nbsp;<p style="display: inline-block" th:text="${r.salary}+'元'"></p></li>
+                                                    <li ><i class="fas fa-calendar"></i>&nbsp;&nbsp;<p style="display: inline-block" th:text="${r.job}"></p></li>
+                                                    <li ><i class="fas fa-calendar"></i>&nbsp;&nbsp;<p style="display: inline-block" th:text="${r.workExperience}+'年'"></p></li>
                                                 </ul>
                                             </div>
                                         </div>

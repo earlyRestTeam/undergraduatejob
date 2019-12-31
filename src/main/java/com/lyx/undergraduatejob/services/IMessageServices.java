@@ -11,6 +11,7 @@ import java.util.Map;
  * 消息通知
  */
 public interface IMessageServices {
+
     /**
      * 查看通知
      * @param indexpage
@@ -34,5 +35,5 @@ public interface IMessageServices {
      */
     Map<String,Object> deleteInfo(Message message);
 
-
+    Map<String,Object> showMessage();
 }

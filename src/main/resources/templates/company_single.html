@@ -286,11 +286,22 @@
          <div class="jp_job_post_right_btn_wrapper web_single_btn">
           <ul>
            <li>
+
+            <div th:if="${pages.map.flag} eq 1">
+             <div class="job_adds_right change change22" id="collectCompany">
+              <a th:onclick="collectCompany([[${pages.map.company.id}]])">
+               <i class="far fa-heart"></i></a>
+             </div>
+            </div>
+
+            <div th:if="${pages.map.flag} eq 0">
             <div class="job_adds_right" id="collectCompany">
               <a th:onclick="collectCompany([[${pages.map.company.id}]])">
               <i class="far fa-heart"></i>
              </a>
-            </div></li>
+            </div>
+            </div>
+           </li>
            <li><a href="job_single" th:text="${pages.totals} + '个空缺职位'"></a></li>
           </ul>
          </div>
@@ -336,7 +347,7 @@
        <div class="related_product_job cmpny_related_jobs jb_cover">
         <div class="owl-carousel owl-theme">
          <div class="item">
-          <div class="job_listing_left_fullwidth cmpny_single_slidr jb_cover" th:each="job:${pages.map.jobs}">
+          <div class="job_listing_left_fullwidth cmpny_single_slidr jb_cover" th:each="job,jobStat:${pages.map.jobs}">
            <div class="row">
             <div class="col-lg-9 col-md-9 col-sm-12 col-12">
              <div class="jp_job_post_side_img">
@@ -356,10 +367,20 @@
              <div class="jp_job_post_right_btn_wrapper">
               <ul>
                <li>
-                <div class="job_adds_right">
-                 <a href="#!">
-                  <i class="far fa-heart"></i></a>
-                </div></li>
+                <div th:if="${pages.map.status[__${jobStat.index}__]} eq 0">
+                 <div class="job_adds_right" th:id="'job' + ${job.id}">
+                  <a th:onclick="collectJob([[${job.id}]])">
+                   <i class="far fa-heart"></i></a>
+                 </div>
+                </div>
+
+                <div th:if="${pages.map.status[__${jobStat.index}__]} eq 1">
+                 <div class="job_adds_right change change22" th:id="'job' + ${job.id}">
+                  <a th:onclick="collectJob([[${job.id}]])">
+                   <i class="far fa-heart"></i></a>
+                 </div>
+                </div>
+               </li>
                <li><a href="job_single" th:text="${job.type}"></a></li>
                <li><a href="#">申请</a></li>
               </ul>
@@ -583,9 +604,33 @@
     }
 
     function collectJob(jobId){
+     $.ajax({
+      url:"/user/collectJob",
+      data:{"jobId":jobId},
+      type:"post",
+      dataType:"json",
+      success:function (result){
+       var a = '#job' + jobId;
+       console.log(a);
+       if (result.data == 1){
+        if (result.result){
+         $(a).attr("class","job_adds_right change change22");
+        }
+        alert(result.message)
+       }else{
+        if (result.result){
+         $(a).attr("class","job_adds_right");
+        }
+        alert(result.message)
+       }
+      }
+     })
+  }
 
-     }
-
+/*    $(".owl-prev").click(function () {
+       console.log("ssssssssssssss")
+       alert("sssssssssssssssssssssssssssss");
+    })*/
   </script>
   <script async="" defer="" src="/js/9ab6a2e020ce47d1a7933c9b3886b8b7.js"></script>
  </body>

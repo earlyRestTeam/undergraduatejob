@@ -9,7 +9,6 @@ import com.lyx.undergraduatejob.services.security.LoginEntityHelper;
 import com.lyx.undergraduatejob.services.security.OnlineEntity;
 import com.lyx.undergraduatejob.utils.APIResult;
 import com.lyx.undergraduatejob.utils.StaticPool;
-import com.sun.org.apache.bcel.internal.generic.NEW;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,7 +37,7 @@ public class CollectController {
     LoginEntityHelper loginEntityHelper;
 
 
-    //用户收藏公司
+    //用户收藏公司操作
     @RequestMapping("collectCompany")
     @ResponseBody
     public APIResult collectCompany(Integer companyId){
@@ -88,8 +87,7 @@ public class CollectController {
         return apiResult;
     }
 
-
-    //用户收藏职位
+    //用户收藏职位操作
     @RequestMapping("collectJob")
     @ResponseBody
     public APIResult collectJob(Integer jobId) {
@@ -106,7 +104,6 @@ public class CollectController {
 
         if (iCollectServices.queryjobIdByjobIdAndUserId(jobId, userid)) {
             int flag = 2;
-            apiResult.setCode(200);
             apiResult.setData(flag);
             Map<String, String> map = iCollectServices.deleteUserCollectJob(jobId, userid);
             if (map.get(StaticPool.SUCCESS) != null) {
@@ -142,6 +139,8 @@ public class CollectController {
         return apiResult;
     }
 
+
+    //公司收藏简历操作
     @RequestMapping("collectResume")
     @ResponseBody
     public APIResult collectResume(Integer resumeId) {

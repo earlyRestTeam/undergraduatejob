@@ -39,11 +39,12 @@ public class RelationWelafareServiceImpl implements RelationWealfareServices {
             for (int i = 0; i <relationWelfares.size() ; i++) {
                 welfaresidlist.add(relationWelfares.get(i).getWelfareId());
             }
+            WelfareExample example1 = new WelfareExample();
+            example1.or().andIdIn(welfaresidlist);
+            return welfareMapper.selectByExample(example1);
+        }else {
+            return new ArrayList<>();
         }
-
-        WelfareExample example1 = new WelfareExample();
-        example1.or().andIdIn(welfaresidlist);
-        return welfareMapper.selectByExample(example1);
     }
 
     /**

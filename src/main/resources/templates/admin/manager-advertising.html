@@ -29,181 +29,72 @@
     <div class="navbar-custom">
         <ul class="list-unstyled topnav-menu float-right mb-0">
             <!--显示未处理消息数...，选做-->
-            <li class="dropdown notification-list">
-                <a class="nav-link dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                    <i class="dripicons-inbox mail-icon"></i>
-                    <span class="badge badge-info noti-icon-badge">20</span>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right dropdown-lg">
-
-                    <!-- item-->
-                    <div class="dropdown-item noti-title">
-                        <h5 class="m-0">
-                                    <span class="float-right">
-                                        <a href="" class="text-dark">
-                                            <small>Clear All</small>
-                                        </a>
-                                    </span>20 New Messages
-                        </h5>
-                    </div>
-
-                    <div class="slimscroll noti-scroll">
-
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item active">
-                                    <div class="notify-icon"><img src="/admin/images/users/avatar-1.jpg" class="img-fluid rounded-circle" alt="" /> </div>
-                                    <p class="notify-details">Sandra Smith<small class="text-muted">Hey ! I'm working on your project</small></p>
-                                </a>
-
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <div class="notify-icon"><img src="/admin/images/users/avatar-2.jpg" class="img-fluid rounded-circle" alt="" /></div>
-                                    <p class="notify-details">Amily Lee<small class="text-muted">Hi, How are you? What about our next meeting?</small></p>
-                                </a>
-
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <div class="notify-icon">
-                                        <img src="/admin/images/users/avatar-3.jpg" class="img-fluid rounded-circle" alt="" /> </div>
-                                    <p class="notify-details">David Boos</p>
-                                    <p class="text-muted mb-0 user-msg">
-                                        <small>What about our next meeting</small>
-                                    </p>
-                                </a>
-
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <div class="notify-icon"><img src="/admin/images/users/avatar-4.jpg" class="img-fluid rounded-circle" alt="" /> </div>
-                                    <p class="notify-details">Christopher Palmer<small class="text-muted">Waiting for your Response...</small></p>
-                                </a>
-
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <div class="notify-icon">
-                                        <img src="/admin/images/users/avatar-5.jpg" class="img-fluid rounded-circle" alt="" /> </div>
-                                    <p class="notify-details">Malika Roy</p>
-                                    <p class="text-muted mb-0 user-msg">
-                                        <small>Wow that's great</small>
-                                    </p>
-                                </a>
-                            </div>
-
-                    <!-- All-->
-                    <a href="javascript:void(0);" class="dropdown-item text-center text-primary notify-item notify-all">
-                        View all
-                        <i class="fi-arrow-right"></i>
-                    </a>
-
-                </div>
-            </li>
 
             <li class="dropdown notification-list">
                 <a class="nav-link dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                     <i class="dripicons-bell noti-icon"></i>
-                    <span class="badge badge-danger noti-icon-badge">35</span>
+                    <span class="badge badge-danger noti-icon-badge" name="sum" id="sum" th:text="${sum}"></span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right dropdown-lg">
-
-                    <!-- item-->
-                    <div class="dropdown-item noti-title">
-                        <h5 class="m-0">
-                                    <span class="float-right">
-                                        <a href="" class="text-dark">
-                                            <small>Clear All</small>
-                                        </a>
-                                    </span>Notification
-                        </h5>
-                    </div>
 
                     <div class="slimscroll noti-scroll">
 
                         <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            <div class="notify-icon bg-info"><i class="mdi mdi-cloud-upload-outline"></i></div>
-                            <p class="notify-details">Your upload has been approved<small class="text-muted">5 hours ago</small></p>
-                        </a>
-
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item active">
-                            <div class="notify-icon bg-success"><i class="mdi mdi-map-marker-check"></i> </div>
-                            <p class="notify-details">You added your Location<small class="text-muted">Just Now</small></p>
-                        </a>
-
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            <div class="notify-icon bg-primary"><i class="mdi mdi-layers-remove"></i></div>
-                            <p class="notify-details">Your item is shipped<small class="text-muted">It is a long established fact that a reader will</small></p>
-                        </a>
-
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            <div class="notify-icon bg-purple"><i class="mdi mdi-check-bold"></i></div>
-                            <p class="notify-details">Your order is placed<small class="text-muted">Dummy text of the printing and typesetting industry.</small></p>
-                        </a>
-
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                        <a href="/admin/authentication-company" class="dropdown-item notify-item">
                             <div class="notify-icon bg-warning">
                                 <i class="mdi mdi-alert-outline"></i>
                             </div>
-                            <p class="notify-details">Your Subscription Expired
-                                <small class="text-muted">1 days ago</small>
-                            </p>
+                            <span class="notify-details" name="autCompanies" id="autCompanies" th:text="${autCompanies}"></span>
                         </a>
 
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            <div class="notify-icon bg-danger">
-                                <i class="mdi mdi-settings"></i>
+                        <a href="/admin/authentication-student" class="dropdown-item notify-item active">
+                            <div class="notify-icon bg-warning">
+                                <i class="mdi mdi-alert-outline"></i>
                             </div>
-                            <p class="notify-details"><b>Devid</b>, You changed your Settings
-                                <small class="text-muted">5 days ago</small>
-                            </p>
+                            <span class="notify-details" name="autStudents" id="autStudents" th:text="${autStudents}"></span>
                         </a>
+
+                        <a href="/admin/audit-job" class="dropdown-item notify-item">
+                            <div class="notify-icon bg-warning">
+                                <i class="mdi mdi-alert-outline"></i>
+                            </div>
+                            <span class="notify-details" name="jobs" id="jobs" th:text="${jobs}"></span>
+                        </a>
+
+                        <a href="/admin/audit-resume" class="dropdown-item notify-item">
+                            <div class="notify-icon bg-warning">
+                                <i class="mdi mdi-alert-outline"></i>
+                            </div>
+                            <span class="notify-details" name="resumes" id="resumes" th:text="${resumes}"></span>
+                        </a>
+
+                        <a href="/admin/complaint" class="dropdown-item notify-item">
+                            <div class="notify-icon bg-warning">
+                                <i class="mdi mdi-alert-outline"></i>
+                            </div>
+                            <span class="notify-details" name="complaints" id="complaints" th:text="${complaints}"></span>
+                        </a>
+
                     </div>
 
-                    <!-- All-->
-                    <a href="javascript:void(0);" class="dropdown-item text-center text-primary notify-item notify-all">
-                        View all
-                        <i class="fi-arrow-right"></i>
-                    </a>
-
-                        </div>
-                    </li>
-                    <!--显示未处理消息数...，选做-->
-                    <!--头像...-->
-                    <li class="dropdown notification-list">
-                        <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                            <img src="/admin/images/users/avatar-1.jpg" alt="user-image" class="rounded-circle">
-                            <span class="pro-user-name ml-1">
-                                Devid <i class="mdi mdi-chevron-down"></i> 
-                            </span>
+                </div>
+            </li>
+            <!--显示未处理消息数...，选做-->
+            <!--头像...-->
+            <li class="dropdown notification-list">
+                <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                    <img src="/admin/images/users/avatar-1.jpg" alt="user-image" class="rounded-circle">
+                    <span id="admin" class="pro-user-name ml-1">
+                        <i class="mdi mdi-chevron-down"></i>
+                    </span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
                     <!-- item-->
                     <div class="dropdown-item noti-title">
                         <h6 class="m-0">
-                            Hello, Devid !
+                            Hello !
                         </h6>
                     </div>
-
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <i class="dripicons-user"></i>
-                        <span>My Profile</span>
-                    </a>
-
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <i class="dripicons-card"></i>
-                        <span>My Wallet</span>
-                    </a>
-
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <i class="dripicons-gear"></i>
-                        <span>Settings</span>
-                    </a>
 
                     <div class="dropdown-divider"></div>
 
@@ -224,7 +115,7 @@
                             <span class="logo-lg">
                                 <img src="/admin/images/logo.png" alt="" height="25">
                             </span>
-                            <span class="logo-sm">
+                    <span class="logo-sm">
                                 <img src="/admin/images/logo-sm.png" alt="" height="24">
                             </span>
                 </a>
@@ -261,7 +152,7 @@
                                         <a href="javascript:void(0);" class="user-edit"><i class="mdi mdi-pencil"></i></a>
                                     </div>
                         
-                                    <h5><a href="javascript: void(0);">Devid Stanberry</a> </h5>
+                                    <h5><a id="adminNick" href="javascript: void(0);"></a> </h5>
                                     <p class="text-muted mb-0"><small>Main Admin</small></p>
                                 </div>
                             </div>
@@ -562,6 +453,75 @@
             </div>
         </footer>
 
+        <!--模态框-->
+        <div id="myModals" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="ModalLabel">修改广告</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card-box">
+                                    <form class="form-horizontal" action="/admin/manager-advertising" method="post">
+
+                                        <div class="form-group row" style="display: none">
+                                            <label class="col-sm-2 col-form-label" for="example-placeholder">ID</label>
+                                            <div class="col-sm-10">
+                                                <input type="text"  class="form-control" name="id" id="id">
+                                            </div>
+                                        </div>
+
+                                        <div style="align-content: center"><img src="" id="img"></div>
+
+                                        <div class="form-group row">
+                                            <label class="col-sm-2 col-form-label" for="example-fileinput">图片</label>
+                                            <div class="col-sm-10">
+                                                <input type="file" class="form-control" name="pic" id="pic" >
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label class="col-sm-2 col-form-label" for="example-placeholder">标题</label>
+                                            <div class="col-sm-10">
+                                                <input name="title" id="title" th:value="${adver != null ? adver.title : ''}" type="text" class="form-control"  placeholder="请输入标题">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-2 col-form-label" for="example-textarea">内容</label>
+                                            <div class="col-sm-10">
+                                                <textarea name="content" id="content" th:value="${adver != null ? adver.content : ''}" class="form-control" rows="5"></textarea>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label class="col-sm-2 col-form-label" for="example-constituency">赞助商</label>
+                                            <div class="col-sm-10">
+                                                <input name="constituency" id="constituency" th:value="${adver != null ? adver.constituency : ''}" class="form-control" type="constituency" >
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label class="col-sm-2 col-form-label">URL</label>
+                                            <div class="col-sm-10">
+                                                <input class="form-control" type="url" name="url" id="url" th:value="${adver != null ? adver.url : ''}">
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-light waves-effect" data-dismiss="modal">取消</button>
+                                            <button type="submit" class="btn btn-primary waves-effect waves-light" th:onClick="'advertising_update()'">确定</button>
+                                        </div>
+                                    </form>
+                                </div> <!-- end card-box -->
+                            </div><!-- end col -->
+                        </div>
+                    </div>
+
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!--end-->
 
     </div>
 
@@ -593,6 +553,138 @@
 
         <!-- App js -->
         <script src="../admin/js/app.min.js"></script>
+<script>
 
+    $(document).ready(function(){
+        console.log("页面加载完毕后运行");
+        messages();
+    })
+
+    function messages() {
+        $.post("/admin/message",function(result){
+            console.log(result.data);
+            $('#sum').text(result.data.sum);
+            $('#autCompanies').text('您有'+result.data.autCompanies+'条企业认证信息未处理');
+            $('#autStudents').text('您有'+result.data.autStudents+'条学生认证信息未处理');
+            $('#jobs').text('您有'+result.data.jobs+'条职位审核信息未处理');
+            $('#resumes').text('您有'+result.data.resumes+'条简历审核信息未处理');
+            $('#complaints').text('您有'+result.data.complaints+'条投诉信息未处理');
+
+            var admin = result.data.admin;
+            var name = admin == null ? "大苹果" : admin.nickName == null ? admin.entityName : admin.nickName;
+            $('#admin').text(name);
+            $('#adminNick').text(name);
+        })
+    }
+
+    //更换图片
+    $('#pic').change(function(e) {
+        var _URL = window.URL || window.webkitURL;
+        var file, img;
+        if ((file = this.files[0])) {
+            img = new Image();
+            img.onload = function() {
+                $('#img').attr('src', this.src);
+            };
+            img.src = _URL.createObjectURL(file);
+        }
+    });
+
+    //打开模态框
+    function edit(id) {
+        //拿到数据 。。。
+        //装入 模态框
+        $('#id').val(id);
+        $.post("/admin/adv_update",{id:id},function (result) {
+            console.log(result.data);
+            $('#img').attr('src',result.data.pic);
+            $('#title').val(result.data.title);
+            $('#content').val(result.data.content);
+            $('#constituency').val(result.data.constituency);
+            $('#url').val(result.data.url);
+        })
+        $('#myModals').modal('show');
+
+    }
+</script>
+        <script type="text/javascript">
+
+            function query(indexpage) {
+                var keyword = $('#keyword').val();
+                var id1 = $('#id1').val();
+                var status = $('#status').val();
+                $.post("/admin/advertising",{"indexpage":indexpage,"id1":id1,"status":status,"keyword":keyword},function (result) {
+                    $("#wrapper").html(result);
+                })
+            }
+            //删除广告
+            function advertising_delete(id){
+                if (window.confirm("确定要删除吗？")){
+                    $.post("/admin/adv_delete",{id:id},function (result) {
+                        window.location.reload();
+                    })
+                }else {
+                    return;
+                }
+            }
+
+            //添加广告
+            function advertising_add( pic,title,content,constituency,url) {
+                    $.post("/admin/adv_add",{"pic":pic,"title":title,"content":content,"constituency":constituency,"url":url},function (result) {
+                        window.location.reload();
+                    })
+            }
+
+            //修改广告
+            function advertising_update() {
+                var pic = $('#img').attr('src');
+                var title = $('#title').val();
+                var content = $('#content').val();
+                var constituency = $('#constituency').val();
+                var url = $('#url').val();
+                var id = $('#id').val();
+                if (window.confirm("确定要修改吗？")){
+
+                    $.post("/admin/adver_update",{"id":id,"pic":pic,"title":title,"content":content,"constituency":constituency,"url":url},function (result) {
+                        //window.location.reload();
+                    })
+                }else {
+                    return;
+                }
+            }
+
+            //批量删除
+            function DelSelect() {
+                var Checkbox = false;
+                $("input[name='id[]']").each(function() {
+                    if (this.checked == true) {
+                        Checkbox = true;
+                    }
+                });
+                if (Checkbox) {
+                    var t = confirm("您确认要删除选中的内容吗？");
+                    if (t == false) {
+                        return false;
+                    } else {
+                        var checkedID=[];
+                        $("input[name='id[]']").each(function() {
+                            if (this.checked == true) {
+                                checkedID.splice(0,0,this.value);
+
+                            }
+                        });
+                        window.location.replace("/admin/batch_delete?ids="+checkedID);
+                    }
+                } else {
+                    alert("请选择您要删除的内容!");
+                    return false;
+                }
+            }
+
+            // function fn(){
+            //     var name=$("#status").find("option:selected").val();  //获取value值
+            // }
+
+        </script>
     </body>
 </html>

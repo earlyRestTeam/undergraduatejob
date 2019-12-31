@@ -348,6 +348,14 @@ public class Job implements Serializable {
         this.welfares = welfares;
     }
 
+    public String getType(){
+        if(partFull == 1){
+            return "兼职";
+        }else {
+            return "全职";
+        }
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
