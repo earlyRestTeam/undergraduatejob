@@ -655,7 +655,7 @@ inelevated the..</a></h3>
                                                 <label>所属 行业</label>
                                                 <div class="nice-select" tabindex="0">
                                                     <span id="industries" class="current" >请选择</span>
-                                                    <ul class="list">
+                                                    <ul style="height:300px;overflow-y:scroll;" class="list">
                                                         <li value="-1" class="option selected">其他</li>
                                                         <li class="option" th:each="i,index:${list}" th:value="${index.index}" th:text="${i['industries'].industriesName}">上海</li>
                                                     </ul>
@@ -667,7 +667,7 @@ inelevated the..</a></h3>
                                                 <label>职业 名称</label>
                                                 <div id="jobaa" class="nice-select" tabindex="0">
                                                     <span id="jobaaa" class="current"  >请选择</span>
-                                                    <ul class="list">
+                                                    <ul style="height:300px;overflow-y:scroll;" class="list">
                                                         <li value="0" class="option selected ">请选择</li>
                                                     </ul>
                                                 </div>
@@ -1048,7 +1048,7 @@ inelevated the..</a></h3>
               var contactsPhone = $("input[name='contactsPhone']").val();
               var email = $("input[name='email']").val();
               if(jobTitle==""||partFull==""||closeType==""||education==""||jobType=="请选择"||jobName=="请选择"||jobName==""||salary==""||workYears==""||
-                  needNum==""||jobDesc==""||workAddress=="请选择"||detailedAddress==""||contacts==""||contactsPhone==""||email==""){
+                  needNum==""||jobDesc==""||workAddress=="请选择请选择请选择"||detailedAddress==""||contacts==""||contactsPhone==""||email==""){
                   alert("请将所有项填写完")
               }else {
                   $.ajax({

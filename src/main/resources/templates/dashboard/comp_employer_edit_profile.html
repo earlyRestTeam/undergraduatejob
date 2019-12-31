@@ -607,14 +607,17 @@ inelevated the..</a></h3>
                                 <div class="row">
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                                         <div class="jp_job_post_side_img">
-                                            <img src="/dashboard/images/ws.png" alt="post_img">
-
+                                            <img id="logo" style="width: 100px;height: 100px" th:if="${company.logo}==null" src="/dashboard/images/ws.png" alt="post_img">
+                                            <img id="logo" style="width: 100px;height: 100px"  th:if="${company.logo}!=null" th:src="${company.logo}">
                                         </div>
                                         <div class="jp_job_post_right_cont edit_profile_wrapper">
                                             <h4>JPEG or PNG 500x500px 的公司logo</h4>
 
                                             <div class="width_50">
-                                                <input type="file" id="input-file-now-custom-233" class="dropify" data-height="90" /><span class="post_photo">browse image</span>
+                                                <input type="hidden" id="save_image" name="srcimage" onclick="upload(1)" style="display:none;"/>
+                                                <a href="#" onclick="saveImage(1);return false;">确认图片</a>
+                                                <input type="file" id="file" name="srcfile"  style="display:none;"/>
+                                                <a style="float: right" href="#" onclick="addImage(1);return false;">上传图片</a>
                                             </div>
                                         </div>
                                     </div>
@@ -624,15 +627,18 @@ inelevated the..</a></h3>
                             <div class="browse_img_banner jb_cover">
 
                                 <div class="jp_job_post_side_img">
-                                    <img src="/dashboard/images/banner.png" alt="post_img">
-
+                                    <img id="biglogo" style="width: 300px;height: 100px"  th:if="${picture.pictureUrl}==null" src="/dashboard/images/banner.png" >
+                                    <img id="biglogo" style="width: 300px;height: 100px"  th:if="${picture.pictureUrl}!=null" th:src="${picture.pictureUrl}">
                                 </div>
 
                                 <div class="jp_job_post_right_cont edit_profile_wrapper">
                                     <h4>JPEG or PNG 1920x300px 的公司主页图片</h4>
 
                                     <div class="width_50">
-                                        <input type="file" id="input-file-now-custom-2" class="dropify" data-height="90" /><span class="post_photo">browse image</span>
+                                        <input type="hidden" id="save_image1" name="srcimage1" onclick="upload(2)" style="display:none;"/>
+                                        <a href="#" onclick="saveImage(2);return false;">确认图片</a>
+                                        <input type="file" id="file1" name="srcfile1"  style="display:none;"/>
+                                        <a style="float: right" href="#" onclick="addImage(2);return false;">上传图片</a>
                                     </div>
                                 </div>
 
@@ -642,74 +648,73 @@ inelevated the..</a></h3>
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12">
                                         <div class="contect_form3">
                                             <label>公司名称</label>
-                                            <input type="text" name="name" placeholder="Webstrot">
+                                            <input th:value="${company.companyName}" type="text" name="companyName" placeholder="Webstrot">
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12">
                                         <div class="contect_form3">
                                             <label>邮箱</label>
-                                            <input type="email" name="email" placeholder="webstrot@example.com">
+                                            <input th:value="${company.companyEmail}" type="email" name="companyEmail" placeholder="webstrot@example.com">
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12">
                                         <div class="contect_form3">
                                             <label>电话</label>
-                                            <input type="number" name="number" placeholder="+91 9098085819">
+                                            <input th:value="${company.contactsPhone}" type="number" name="contactsPhone" placeholder="+91 9098085819">
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12">
                                         <div class="contect_form3">
                                             <label>公司类型</label>
-                                            <input type="email" name="email" placeholder="www.webstrot.com">
+                                            <input th:value="${company.companyType}" type="email" name="companyType" placeholder="www.webstrot.com">
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12">
                                         <div class="contect_form3">
                                             <label>联系人</label>
-                                            <input type="text" name="contacts" placeholder="联系人">
+                                            <input th:value="${company.contacts}" type="text" name="contacts" placeholder="联系人">
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12">
                                     </div>
-                                    <div  class="col-lg-4 col-md-4 col-sm-12 col-4">
+                                    <div class="col-lg-4 col-md-4 col-sm-12 col-12">
                                         <div class="select_box">
                                             <label>省</label>
-                                            <select>
-                                                <option>1-500</option>
-                                                <option>1-200</option>
-                                                <option>1-100</option>
-                                                <option>1-50</option>
-
-                                            </select>
+                                            <div class="nice-select" tabindex="0">
+                                                <span id="province" class="current" >请选择</span>
+                                                <ul style="height:300px;overflow-y:scroll;" class="list">
+                                                    <li  value="-1" class="option selected">请选择</li>
+                                                    <li class="option" th:each="p:${province}" th:value="${p.id}" th:text="${p.name}">请选择</li>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div  class="col-lg-4 col-md-4 col-sm-12 col-4">
+                                    <div class="col-lg-4 col-md-4 col-sm-12 col-12">
                                         <div class="select_box">
                                             <label>市</label>
-                                            <select>
-                                                <option>1-500</option>
-                                                <option>1-200</option>
-                                                <option>1-100</option>
-                                                <option>1-50</option>
-                                            </select>
+                                            <div class="nice-select" tabindex="0">
+                                                <span id="city" class="current" >请选择</span>
+                                                <ul style="height:300px;overflow-y:scroll;" class="list">
+                                                    <li  value="-1" class="option selected">请选择</li>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-4 col-md-4 col-sm-12 col-4">
+                                    <div class="col-lg-4 col-md-4 col-sm-12 col-12">
                                         <div class="select_box">
                                             <label>县/区</label>
-                                            <select>
-                                                <option>1-500</option>
-                                                <option>1-200</option>
-                                                <option>1-100</option>
-                                                <option>1-50</option>
-                                            </select>
+                                            <div class="nice-select" tabindex="0">
+                                                <span id="district" class="current" >请选择</span>
+                                                <ul style="height:300px;overflow-y:scroll;" class="list">
+                                                    <li  value="-1" class="option selected">请选择</li>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
-
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                                         <div class="contect_form3">
-                                            <label>详细地址</label>
-                                            <input type="text" name="detailedAddress" placeholder="详细地址">
+                                            <label>详 细 地 址</label>
+                                            <input th:value="${company.detailedAddress}" type="text" name="detailedAddress" placeholder="所在街道/门牌号">
                                         </div>
                                     </div>
                                 </div>
@@ -762,7 +767,7 @@ inelevated the..</a></h3>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div id="aboutusMessage" class="job_overview_header pdd jb_cover">
+                                        <div th:utext="${company.companyDesc}" id="aboutusMessage" class="job_overview_header pdd jb_cover">
                                             <p>Google is and always will be an engineering company. We hire people with a broad set of icalskills who are ready to tackle some of technology's greatest challenges and make an impact on milions, if not billions, of users. At Google, engineers not only revolutionize search, they routinely work on massive scalability and storage solutions,
                                                 <br>
                                                 <br> large-scale applications and rely new platforms for developers around the world. From AdWords to rome, Android to Ye, Social to Local, Google engineers are changing the world. From AdWords to Chrome, Aoid to Ye, Social to.</p>
@@ -823,21 +828,10 @@ inelevated the..</a></h3>
                                         </div>
                                         <div class="job_overview_header pdd jb_cover">
                                             <ul class="image_gallery jb_cover">
-                                                <li>
-                                                    <img src="../dashboard/images/gallery1.jpg" alt="img"><br>
+                                                <li th:each="pic:${pictures}">
+                                                    <img th:src="${pic.pictureUrl}" src="/dashboard/images/gallery1.jpg" alt="img"><br>
                                                     <span><a href="#" data-toggle="modal" data-target="#myModal5"><i class="fas fa-edit"></i></a></span>
-                                                </li>
-                                                <li>
-                                                    <img src="../dashboard/images/gallery2.jpg" alt="img"><br>
-                                                    <span><a href="#" data-toggle="modal" data-target="#myModal5"><i class="fas fa-edit"></i></a></span>
-                                                </li>
-                                                <li>
-                                                    <img src="../dashboard/images/gallery1.jpg" alt="img"><br>
-                                                    <span><a href="#" data-toggle="modal" data-target="#myModal5"><i class="fas fa-edit"></i></a></span>
-                                                </li>
-                                                <li>
-                                                    <img src="../dashboard/images/gallery1.jpg" alt="img"><br>
-                                                    <span><a href="#" data-toggle="modal" data-target="#myModal5"><i class="fas fa-edit"></i></a></span>
+                                                    <a href="#"><i style="color: #ff3366" class="fas fa-trash-alt"></i></a>
                                                 </li>
                                             </ul>
                                             <div class="header_btn search_btn jb_cover">
@@ -852,7 +846,7 @@ inelevated the..</a></h3>
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                                     <div class="login_remember_box jb_cover">
                                         <div class="header_btn search_btn jb_cover">
-                                            <a href="#">保存 修改</a>
+                                            <a href="javascript:void(0);" onclick="saveUpdate()">保存 修改</a>
                                         </div>
                                     </div>
                                 </div>
@@ -1050,6 +1044,223 @@ inelevated the..</a></h3>
     <script src="/dashboard/js/imagesloaded.pkgd.min.js"></script>
     <script src="/dashboard/js/isotope.pkgd.min.js"></script>
     <script src="/dashboard/js/custom.js"></script>
+    <script>
+        $("#province").bind("DOMNodeInserted",function () {
+            var parentId= $("#province").parent().find(".option.selected").val();
+            if (parentId !=-1){
+                $.ajax({
+                    url: "Area_list",
+                    type: "POST",
+                    dataType: "json",
+                    data: {"parentId": parentId},
+                    success:function (APIResult) {
+                        if (APIResult.data==null){
+                            $("#city").parent().find("ul").empty();
+                            $("#city").text("")
+                            $("#district").parent().find("ul").empty();
+                            $("#district").text("")
+                        }else {
+                            var city = $("#city")
+                            city.parent().find("ul").empty();
+                            for (var i = 0; i <APIResult.data.length ; i++) {
+                                var li = document.createElement("li");
+                                if ( i == 0){
+                                    $(li).addClass("option selected")
+                                }else {
+                                    $(li).addClass("option")
+                                }
+                                $(li).val(APIResult.data[i].id);
+                                $(li).text(APIResult.data[i].name);
+                                city.parent().find("ul").append(li);
+                            }
+                            city.text(APIResult.data[0].name)
+                        }
+
+                    }
+                })
+            }else {
+                $("#city").parent().find("ul").empty();
+                var li = document.createElement("li");
+                $(li).addClass("option selected")
+                $(li).val(-1);
+                $(li).text("请选择");
+                $("#city").parent().find("ul").append(li);
+                $("#city").text("请选择")
+            }
+        })
+        $("#city").bind("DOMNodeInserted",function () {
+            var parentId= $("#city").parent().find(".option.selected").val();
+            if (parentId !=-1){
+                $.ajax({
+                    url: "Area_list",
+                    type: "POST",
+                    dataType: "json",
+                    data: {"parentId": parentId},
+                    success:function (APIResult) {
+                        var district = $("#district")
+                        district.text(APIResult.data[0].name)
+                        district.parent().find("ul").empty();
+                        for (var i = 0; i <APIResult.data.length ; i++) {
+                            var li = document.createElement("li");
+                            if ( i == 0){
+                                $(li).addClass("option selected")
+                            }else {
+                                $(li).addClass("option")
+                            }
+                            $(li).val(APIResult.data[i].id);
+                            $(li).text(APIResult.data[i].name);
+                            district.parent().find("ul").append(li);
+                        }
+
+                    }
+                })
+            }else {
+                $("#district").parent().find("ul").empty();
+                var li = document.createElement("li");
+                $(li).addClass("option selected")
+                $(li).val(-1);
+                $(li).text("请选择");
+                $("#district").parent().find("ul").append(li)
+                $("#district").text("请选择")
+            }
+        })
+    </script>
+    <script type="text/javascript">
+
+        //选择图片
+        function addImage(i){
+            if (i==1){
+                $("#file").click();
+            } else {
+                $("#file1").click();
+            }
+        }
+
+        //选择图片
+        function saveImage(i){
+            if (i==1){
+                $("#save_image").click();
+            } else {
+                $("#save_image1").click();
+            }
+        }
+
+        //上传图片，获取服务器图片路由
+        function upload(i) {
+            if (i==1){
+                var formData = new FormData();
+                var file = document.getElementById("file").files[0];
+                formData.append("file", file);
+                $.ajax({
+                    url:"/upload",
+                    type:"POST",
+                    data:formData,
+                    processData : false,
+                    contentType : false,
+                    dataType : 'json',
+                    async : false,
+                    success : function (result) {
+                        console.log(result);
+                        if (result.code == 200) {
+                            $('#file').parent().parent().parent().find("img").attr("src", result.message);
+                            alert("图片上传成功")
+                        } else {
+                            alert("error!");
+                        }
+                    }
+                  });
+            }else {
+                var formData = new FormData();
+                var file = document.getElementById("file1").files[0];
+                formData.append("file", file);
+                $.ajax({
+                    url:"/upload",
+                    type:"POST",
+                    data:formData,
+                    processData : false,
+                    contentType : false,
+                    dataType : 'json',
+                    async : false,
+                    success : function (result) {
+                        console.log(result);
+                        if (result.code == 200) {
+                            $('#file1').parent().parent().parent().find("img").attr("src", result.message);
+                            alert("图片上传成功")
+                        } else {
+                            alert("error!");
+                        }
+                    }
+                });
+            }
+        }
+
+        $('#file').change(function(e) {
+            var _URL = window.URL || window.webkitURL;
+            var file, img;
+            if ((file = this.files[0])) {
+                img = new Image();
+                img.onload = function() {
+                    $('#file').parent().parent().parent().find("img").attr("src",this.src);
+                };
+                img.src = _URL.createObjectURL(file);
+            }
+            alert("图片符合要求");
+        });
+        $('#file1').change(function(e) {
+            var _URL = window.URL || window.webkitURL;
+            var file, img;
+            if ((file = this.files[0])) {
+                img = new Image();
+                img.onload = function() {
+                    $('#file1').parent().parent().parent().find("img").attr("src",this.src);
+                };
+                img.src = _URL.createObjectURL(file);
+            }
+            alert("图片符合要求");
+        })
+
+    </script>
+    <script>
+        function saveUpdate() {
+            if (confirm("确认修改吗？")) {
+                var logo = $("#logo").attr("src");
+                var biglogo = $("#biglogo").attr("src");
+                var companyName = $("input[name='companyName']").val();
+                var companyEmail = $("input[name='companyEmail']").val();
+                var contactsPhone = $("input[name='contactsPhone']").val();
+                var companyType = $("input[name='companyType']").val();
+                var contacts = $("input[name='contacts']").val();
+                var companyAddress =$("#province").text()+$("#city").text()+ $("#district").text();
+                var detailedAddress = $("input[name='detailedAddress']").val();
+                var companyDesc = $("#aboutusMessage").html();
+
+                if(logo==""||biglogo==""||companyName==""||companyEmail==""||contactsPhone==""
+                    ||companyType==""||contacts==""||companyAddress=="请选择请选择请选择"||companyAddress==""
+                    ||companyDesc==""){
+                    alert("请将所有项填写完")
+                }else {
+                    $.ajax({
+                        url: "updateCompanyinfo",
+                        type: "POST",
+                        dataType: "json",
+                        data: {"logo": logo, "companyName": companyName, "companyEmail": companyEmail,
+                            "contactsPhone": contactsPhone, "companyType": companyType, "contacts": contacts,
+                            "companyAddress": companyAddress, "detailedAddress": detailedAddress, "companyDesc": companyDesc
+                        },
+                        success:function (APIResult) {
+                            if (APIResult.code == 200){
+                              alert(APIResult.message);
+                                window.location.href = "/dashboard/comp_employer_dashboard";
+                            } else {
+                                alert(APIResult.message)
+                            }
+                        }
+                    })
+                }
+            }
+
+        }
+    </script>
     <!-- custom js-->
 </body>
 

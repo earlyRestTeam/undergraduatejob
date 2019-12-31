@@ -6,15 +6,10 @@ import com.lyx.undergraduatejob.search.entity.CompanySerchEntity;
 import com.lyx.undergraduatejob.search.entity.JobSearchEntity;
 import com.lyx.undergraduatejob.search.entity.LoginEntity;
 import com.lyx.undergraduatejob.search.entity.UsersSearchEntity;
+import com.lyx.undergraduatejob.services.IAdminServices;
 import com.lyx.undergraduatejob.services.impl.*;
 import com.lyx.undergraduatejob.services.security.LoginEntityHelper;
 import com.lyx.undergraduatejob.services.security.OnlineEntity;
-import com.lyx.undergraduatejob.utils.MyPage;
-import com.lyx.undergraduatejob.services.IAdminServices;
-import com.lyx.undergraduatejob.services.impl.AutCompanyServiceImpl;
-import com.lyx.undergraduatejob.services.impl.AutStudentServiceImpl;
-import com.lyx.undergraduatejob.services.impl.ICompanyInfoServicesImpl;
-import com.lyx.undergraduatejob.services.impl.UserServicesImpl;
 import com.lyx.undergraduatejob.utils.APIResult;
 import com.lyx.undergraduatejob.utils.StaticPool;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -102,6 +97,7 @@ public class AdminController {
         request.setAttribute("pages",info);
         return "/admin/manager-student";
     }
+
     @PostMapping("login")
     @ResponseBody
     public APIResult login(@RequestBody LoginEntity loginEntity, HttpServletResponse response) {
@@ -193,7 +189,6 @@ public class AdminController {
     public String auth500(){
         return "/admin/auth-500";
     }
-
 
     @RequestMapping("auth-lock-screen")
     public String authLockScreen(){
@@ -329,12 +324,7 @@ public class AdminController {
 
 
     @RequestMapping("index")
-    public String index(HttpServletRequest request){
-        LoginEntityHelper loginEntityHelper = new LoginEntityHelper();
-        //OnlineEntity onlineEntity = loginEntityHelper.getOnlineEntity();
-        OnlineEntity onlineEntity = new OnlineEntity(1,null,"1","1","1","大苹果");
-        request.setAttribute("admin",onlineEntity);
-
+    public String index(){
         return "/admin/index";
     }
 
