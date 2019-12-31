@@ -49,6 +49,26 @@ mail:
     routing:
         key:
             name: local.mail.routing.key
+elasticSearch:
+    host: 127.0.0.1
+    port: 9200
+    client:
+        connectNum: 10
+        connectPerRoute: 50
+#reptile:
+#    queue:
+#        image-name: local.image.queue
+#        job-name: local.job.queue
+#        welfare-name: local.welfare.queue
+#    exchange:
+#        image-name: local.image.exchange
+#        job-name: local.job.exchange
+#        welfare-name: local.welfare.exchange
+#    routing:
+#        key:
+#            image-name: local.image.routing.key
+#            job-name: local.job.routing.key
+#            welfare-name: local.welfare.routing.key
 
 
 want:

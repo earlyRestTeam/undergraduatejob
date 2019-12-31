@@ -38,8 +38,9 @@
         <javaClientGenerator type="XMLMAPPER" targetPackage="com.lyx.undergraduatejob.mapper"
                              targetProject="src\main\java"/>
         <!--生成全部表tableName设为%-->
-        <table tableName="%">
+        <table tableName="job">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+            <columnOverride column="job_desc" jdbcType="VARCHAR" />
         </table>
     </context>
 </generatorConfiguration>

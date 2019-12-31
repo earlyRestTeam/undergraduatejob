@@ -317,6 +317,7 @@ public class HttpRequest implements InitializingBean {
         for (Element e : address){
             sb.append(e.text()).append("-");
         }
+
         if(sb.length() > 0 )
             sb.deleteCharAt(sb.length()-1);
         String jobAddress = sb.toString();
@@ -452,6 +453,7 @@ public class HttpRequest implements InitializingBean {
         String html = getHTMLContent(url);
         Document document = Jsoup.parse(html);
         Elements headEle = document.select("div.head_info");
+
         // bug
         String logo = "https:"+headEle.select("span.head_info_img img").attr("src");
         String companyName = document.select("div.intro_middle>h3").text();
