@@ -54,7 +54,7 @@ public class IndustriesListServices implements Industries_listServices, Initiali
     @Cacheable(key="'indexIndustries'")
     public List<IndustriesList> queryIndexIndustries() {
         IndustriesListExample example = new IndustriesListExample();
-        example.setOrderByClause("create_time desc");
+        example.setOrderByClause("create_time asc");
         PageHelper.startPage(1,7);
         List<IndustriesList> lists = mapper.selectByExample(example);
         PageInfo<IndustriesList> info = PageInfo.of(lists);

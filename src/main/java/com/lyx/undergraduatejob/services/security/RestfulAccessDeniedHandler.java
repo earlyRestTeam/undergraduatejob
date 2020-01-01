@@ -25,6 +25,8 @@ public class RestfulAccessDeniedHandler implements AccessDeniedHandler {
         if(requestType == null){
             String baseUrl = request.getRequestURI().replace(request.getContextPath(),"");
             String fatherUrl = baseUrl.substring(0,baseUrl.indexOf("/",1));
+            if(!"/admin".equals(fatherUrl))
+                fatherUrl = "/user";
             response.sendRedirect(fatherUrl+"/403");
             return;
         }

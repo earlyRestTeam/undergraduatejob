@@ -69,6 +69,25 @@ public class Company implements Serializable {
     public Company() {
     }
 
+    public Company(String logo, String companyName, String type, String companyDesc) {
+        this.logo = logo;
+        this.companyName = companyName;
+        this.companyType = type;
+        this.companyDesc = companyDesc;
+        this.status = 1;
+        this.aulStatus = 1;
+        this.companyVip = 0;
+        this.jobNum = 0;
+    }
+
+    public Company(String logo, String companyName, String desc, String address, String colseUser) {
+        this.logo = logo;
+        this.companyName = companyName;
+        this.companyDesc = desc;
+        this.companyAddress = address;
+        this.contacts = colseUser;
+    }
+
     public Integer getId() {
         return id;
     }

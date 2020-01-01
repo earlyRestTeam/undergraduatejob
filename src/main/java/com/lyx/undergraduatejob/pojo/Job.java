@@ -72,7 +72,7 @@ public class Job implements Serializable {
 
     public Job(Integer id, String companyName, String logo, String jobType
             , String jobName, int rNum, int educationNum, int workYearsNum
-            , String jobAddress, String jobAddressDetal, int salary, int maxSalary, String welfares, String jobDesc) {
+            , String jobAddress, String jobAddressDetal, int salary, int maxSalary, String welfares, String jobDesc,int partFull) {
 
         this.companyName = companyName;
         companyId = id;
@@ -84,7 +84,7 @@ public class Job implements Serializable {
         this.workAddress = jobAddress+jobAddressDetal;
         this.salary = salary;
         this.maxSalary = maxSalary;
-        this.partFull = 1;
+        this.partFull = partFull;
         this.welfares = welfares;
         this.needNum = rNum;
         this.workYears = workYearsNum;

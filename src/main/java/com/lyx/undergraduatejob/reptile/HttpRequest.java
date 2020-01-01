@@ -61,6 +61,7 @@ public class HttpRequest implements InitializingBean {
     @Autowired
     PictureMapper pictureMapper;
 
+
     private CountDownLatch countDownLatch = new CountDownLatch(5);
 
     private final HashMap<String,Integer> welIDMap = new HashMap<>();
@@ -274,6 +275,100 @@ public class HttpRequest implements InitializingBean {
         }
     };
 
+    //http://www.hr0752.com/search/offer_106100000_101600.html
+    public void startJobs(String url,String type) throws IOException, URISyntaxException, InterruptedException {
+        String html = getHTMLContent(url);
+        Document document = Jsoup.parse(html);
+        Elements links = document.select("div[id=ListView]>div.V1Item.clearfix");
+        for (Element ele : links){
+            Elements select = ele.select("div.JobName.l.clearfix>a");
+            String colseUser = ele.select("span.contact_people_text").text();
+            String href = select.attr("href");
+            if(!href.startsWith("/"))
+                continue;
+            String jobName = ele.select("div.jobName_style").text();
+                    href = "http://www.hr0752.com"+href;
+            Thread.currentThread().sleep(500);
+
+            pJob(href,type,colseUser);
+        }
+    }
+
+    public void pJob(String url,String jobType,String colseUser) throws IOException, InterruptedException {
+        Thread.currentThread().sleep(500);
+        String html = getHTMLContent(url);
+        Document document = Jsoup.parse(html);
+
+        String href = document.select("a[id=ctl00_ContentPlaceHolder1_hlEntName1]").attr("href");
+        if(!href.startsWith("/"))
+            return;;
+        href = "http://www.hr0752.com"+href;
+        Company company = pCompany(href, colseUser);
+        int flag = companyMapper.insertSelective(company);
+        if(flag == 0)
+            return;
+        String jobName = "";
+        Elements select = document.select("div.info-main-left.fl>h2>span");
+        if(select.size() > 0){
+            jobName = select.get(0).text();
+        }
+        int needNum = (int)(Math.random()*20)+1;
+        int partFull = (int)(Math.random()*2)+1;
+        int workEx = (int)(Math.random()*5)+1;
+        int education = (int)(Math.random()*5)+1;
+        int salary = (int)(Math.random()*8000);
+        int maxSalary = salary+(int)(Math.random()*5000);
+
+        String address = "";
+        Elements select1 = document.select("div.content-row>ul.content-info.BasicInfo>li");
+        if(select1.size() > 0){
+            address = select1.first().select("p").first().ownText();
+        }
+        String desc = document.select("div[id=ctl00_ContentPlaceHolder1_requirement]").text();
+        Elements select2 = document.select("div[id=ctl00_ContentPlaceHolder1_plEntContact]>ul>li");
+        String addressDetal = "";
+        if(select2.size() > 0)
+            addressDetal = select2.last().ownText();
+
+
+
+        Job job = new Job(company.getId()
+                , company.getCompanyName(), company.getLogo(),
+                jobType, jobName, needNum, education, workEx, address
+                , addressDetal, salary, maxSalary, "", desc,partFull);
+        jobMapper.insertSelective(job);
+    }
+    public Company pCompany(String url,String colseUser) throws IOException, InterruptedException {
+        Thread.currentThread().sleep(500);
+        String html = getHTMLContent(url);
+        Document document = Jsoup.parse(html);
+        String src = document.select("img[class=logo]").attr("src");
+        if(colseUser.indexOf(" | ") > 0)
+            colseUser = colseUser.substring(0,colseUser.indexOf(" | "));
+        String logo = "";
+        if(!StringUtils.isEmpty(src))
+            logo = "http:"+src;
+        String name = document.select("a[id=ctl00_ContentPlaceHolder1_V3ucenttop_new_hlEntName]").text();
+        CompanyExample example = new CompanyExample();
+        example.createCriteria().andCompanyNameEqualTo(name);
+        List<Company> companies = companyMapper.selectByExample(example);
+        if(companies !=null && companies.size() > 0)
+            return companies.get(0);
+        String text = document.select("div[id=EntIntro]>div.content").text();
+        Elements select = document.select("div.content-row>ul.content-info>li");
+        String address = "";
+        if(select.size() > 0){
+            address = select.last().text();
+        }
+        return  new Company(logo, name, text,address,colseUser);
+    }
+
+
+
+
+
+
+
     /**
      * 拼接 href
      * @param href
@@ -354,7 +449,7 @@ public class HttpRequest implements InitializingBean {
         String jobDesc = "";
         if(document.select("div.posDes>div.des").size() > 0)
             jobDesc = document.select("div.posDes>div.des").first().text();
-        Job job = new Job(id,companyName,logo,JobType,jobName,rNum,educationNum,workYearsNum,jobAddress,jobAddressDetal,salary,maxSalary,welfares,jobDesc);
+        Job job = new Job(id,companyName,logo,JobType,jobName,rNum,educationNum,workYearsNum,jobAddress,jobAddressDetal,salary,maxSalary,welfares,jobDesc,1);
         jobMapper.insertSelective(job);
 
         Integer jobId = job.getId();
@@ -629,6 +724,115 @@ public class HttpRequest implements InitializingBean {
     public void latchWait() throws InterruptedException {
         this.countDownLatch.await();
     }
+
+    /**
+     * 从名企业 开始
+     * @param url
+     * @throws IOException
+     * @throws InterruptedException
+     */
+    public void start51(String url) throws IOException, InterruptedException, URISyntaxException {
+        String html = getRawHtml(url);
+        html = new String(html.getBytes("gbk"),"utf8");
+        Document document = Jsoup.parse(html);
+        Elements links = document.select("div.dj_mq>div[id=indList]>a");
+        for (Element element : links){
+            String href = element.attr("href");
+            href = "https:"+href;
+            String companyHtml = getRawHtml(href);
+            companyHtml = new String(companyHtml.getBytes("gbk"),"utf8");
+            Document companyDocument = Jsoup.parse(companyHtml);
+            String companyDesc = companyDocument
+                    .select("div.m_describe" +
+                            ">div.m_title>div.deb>div.dc.nk").text();
+            Elements companyInfo = companyDocument.select("div.m_logo>div.m_msg" +
+                    ">div.msnbox1>div.msn");
+            String logo = companyInfo.select("img").attr("src");
+            String companyName = companyInfo.select("h1>span.at").text();
+            String type = companyInfo.select("span.typ").text();
+
+            Elements jobs = companyDocument.select("div.m_tablist" +
+                    ">div.e>strong.at>a");
+            Company company = new Company(logo, companyName, type, companyDesc);
+            int flag = companyMapper.insertSelective(company);
+            if(flag < 1)
+                return;
+            for (Element job : jobs) {
+                String jobHref = job.attr("href");
+                parseJob(jobHref,company);
+            }
+        }
+    }
+
+
+    public void parseJob(String url,Company company) throws InterruptedException, IOException, URISyntaxException {
+        Thread.currentThread().sleep(5000);
+        String html = getRawHtml(url);
+        html = new String(html.getBytes("gbk"),"utf8");
+        Document document = Jsoup.parse(html);
+        Elements head = document.select("div.tHeader.tHjob>div.in>div.cn");
+        String jobName = head.select("h1").first().ownText();
+
+        int salary = (int)Math.random()*8000;
+        int maxSalary = salary+(int)Math.random()*5000;
+        String text = head.select("strong").text();
+        if(text.length() > 0 && text.indexOf("-") > 0){
+            int index = text.indexOf("-");
+            String s1 = text.substring(0,index);
+            String s2 = text.substring(index,index+1);
+            salary = ((Double) (Double.parseDouble(s1) * 1000)).intValue();
+            maxSalary = Integer.parseInt(s2)*1000;
+        }
+        String title = head.select("p.msg.ltype").attr("title");
+        String[] strs = title.split("|");
+        String adress = strs[0];
+        int workEx = Integer.parseInt(strs[1].substring(0,1));
+        int eduction = (int)(Math.random()*5);
+
+        int needNum = (int)(Math.random()*20)+1;
+        String needNumStr = strs[3].substring(1,strs[3].length()-1);
+        if(!"若干".equals(needNumStr)){
+            needNum = Integer.parseInt(needNumStr);
+        }
+        String jobDesc = document.select("div.bmsg.job_msg inbox").text();
+        String jobType = document.select("div.mt10>p.fp>a").first().text();
+        Elements wels = document.select("div.jtag>div.t1>span");
+        StringBuilder sb = new StringBuilder();
+        List<Integer> ids = new ArrayList<>(wels.size());
+        for (Element ele : wels){
+            String welName = ele.text();
+            if(!welIDMap.containsKey(welName)){
+                Welfare welfare = new Welfare();
+                welfare.setWelfareName(welName);
+                welfareMapper.insertSelective(welfare);
+                welIDMap.put(welName,welfare.getId());
+            }
+            ids.add(welIDMap.get(welName));
+            sb.append(welName).append(",");
+        }
+        if(sb.length() > 0 )
+            sb.deleteCharAt(sb.length()-1);
+
+        Job job = new Job(company.getId()
+                , company.getCompanyName(), company.getLogo(),
+                jobType, jobName, needNum, eduction, workEx, adress
+                , "", salary, maxSalary, sb.toString(), jobDesc,1);
+
+        int flag = jobMapper.insertSelective(job);
+
+        if(flag > 0){
+            ids.stream().forEach(id->{
+                RelationWelfare relationWelfare = new RelationWelfare();
+                relationWelfare.setWelfareId(id);
+                relationWelfare.setOwnerId(job.getId());
+                relationWelfare.setOwnerType(1);
+                relationWelfareMapper.insertSelective(relationWelfare);
+            });
+        }
+
+    }
+
+
 }
 
 

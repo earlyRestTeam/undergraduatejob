@@ -14,7 +14,6 @@
     <result column="company_desc" jdbcType="VARCHAR" property="companyDesc" />
     <result column="aul_status" jdbcType="INTEGER" property="aulStatus" />
     <result column="company_vip" jdbcType="INTEGER" property="companyVip" />
-    <result column="vip_start_time" jdbcType="TIMESTAMP" property="vipStartTime" />
     <result column="vip_end_time" jdbcType="TIMESTAMP" property="vipEndTime" />
     <result column="welfare" jdbcType="VARCHAR" property="welfare" />
     <result column="phone_album" jdbcType="INTEGER" property="phoneAlbum" />
@@ -25,6 +24,7 @@
     <result column="company_address" jdbcType="VARCHAR" property="companyAddress" />
     <result column="detailed_address" jdbcType="VARCHAR" property="detailedAddress" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="vip_start_time" jdbcType="TIMESTAMP" property="vipStartTime" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -86,8 +86,9 @@
   </sql>
   <sql id="Base_Column_List">
     id, status, user_id, company_name, logo, company_type, company_email, contacts, contacts_phone, 
-    company_desc, aul_status, company_vip, vip_start_time, vip_end_time, welfare, phone_album, 
-    job_num, collect_num, visit_num, apply_num, company_address, detailed_address, create_time
+    company_desc, aul_status, company_vip, vip_end_time, welfare, phone_album, job_num, 
+    collect_num, visit_num, apply_num, company_address, detailed_address, create_time, 
+    vip_start_time
   </sql>
   <select id="selectByExample" parameterType="com.lyx.undergraduatejob.pojo.CompanyExample" resultMap="BaseResultMap">
     select
@@ -126,19 +127,19 @@
     insert into company (status, user_id, company_name, 
       logo, company_type, company_email, 
       contacts, contacts_phone, company_desc, 
-      aul_status, company_vip, vip_start_time, 
-      vip_end_time, welfare, phone_album, 
-      job_num, collect_num, visit_num, 
-      apply_num, company_address, detailed_address, 
-      create_time)
+      aul_status, company_vip, vip_end_time, 
+      welfare, phone_album, job_num, 
+      collect_num, visit_num, apply_num, 
+      company_address, detailed_address, create_time, 
+      vip_start_time)
     values (#{status,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{companyName,jdbcType=VARCHAR}, 
       #{logo,jdbcType=VARCHAR}, #{companyType,jdbcType=VARCHAR}, #{companyEmail,jdbcType=VARCHAR}, 
       #{contacts,jdbcType=VARCHAR}, #{contactsPhone,jdbcType=VARCHAR}, #{companyDesc,jdbcType=VARCHAR}, 
-      #{aulStatus,jdbcType=INTEGER}, #{companyVip,jdbcType=INTEGER}, #{vipStartTime,jdbcType=TIMESTAMP}, 
-      #{vipEndTime,jdbcType=TIMESTAMP}, #{welfare,jdbcType=VARCHAR}, #{phoneAlbum,jdbcType=INTEGER}, 
-      #{jobNum,jdbcType=INTEGER}, #{collectNum,jdbcType=INTEGER}, #{visitNum,jdbcType=INTEGER}, 
-      #{applyNum,jdbcType=INTEGER}, #{companyAddress,jdbcType=VARCHAR}, #{detailedAddress,jdbcType=VARCHAR}, 
-      #{createTime,jdbcType=TIMESTAMP})
+      #{aulStatus,jdbcType=INTEGER}, #{companyVip,jdbcType=INTEGER}, #{vipEndTime,jdbcType=TIMESTAMP}, 
+      #{welfare,jdbcType=VARCHAR}, #{phoneAlbum,jdbcType=INTEGER}, #{jobNum,jdbcType=INTEGER}, 
+      #{collectNum,jdbcType=INTEGER}, #{visitNum,jdbcType=INTEGER}, #{applyNum,jdbcType=INTEGER}, 
+      #{companyAddress,jdbcType=VARCHAR}, #{detailedAddress,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{vipStartTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.lyx.undergraduatejob.pojo.Company">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
@@ -179,9 +180,6 @@
       <if test="companyVip != null">
         company_vip,
       </if>
-      <if test="vipStartTime != null">
-        vip_start_time,
-      </if>
       <if test="vipEndTime != null">
         vip_end_time,
       </if>
@@ -211,6 +209,9 @@
       </if>
       <if test="createTime != null">
         create_time,
+      </if>
+      <if test="vipStartTime != null">
+        vip_start_time,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -247,9 +248,6 @@
       <if test="companyVip != null">
         #{companyVip,jdbcType=INTEGER},
       </if>
-      <if test="vipStartTime != null">
-        #{vipStartTime,jdbcType=TIMESTAMP},
-      </if>
       <if test="vipEndTime != null">
         #{vipEndTime,jdbcType=TIMESTAMP},
       </if>
@@ -279,6 +277,9 @@
       </if>
       <if test="createTime != null">
         #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="vipStartTime != null">
+        #{vipStartTime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -327,9 +328,6 @@
       <if test="record.companyVip != null">
         company_vip = #{record.companyVip,jdbcType=INTEGER},
       </if>
-      <if test="record.vipStartTime != null">
-        vip_start_time = #{record.vipStartTime,jdbcType=TIMESTAMP},
-      </if>
       <if test="record.vipEndTime != null">
         vip_end_time = #{record.vipEndTime,jdbcType=TIMESTAMP},
       </if>
@@ -360,6 +358,9 @@
       <if test="record.createTime != null">
         create_time = #{record.createTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="record.vipStartTime != null">
+        vip_start_time = #{record.vipStartTime,jdbcType=TIMESTAMP},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -379,7 +380,6 @@
       company_desc = #{record.companyDesc,jdbcType=VARCHAR},
       aul_status = #{record.aulStatus,jdbcType=INTEGER},
       company_vip = #{record.companyVip,jdbcType=INTEGER},
-      vip_start_time = #{record.vipStartTime,jdbcType=TIMESTAMP},
       vip_end_time = #{record.vipEndTime,jdbcType=TIMESTAMP},
       welfare = #{record.welfare,jdbcType=VARCHAR},
       phone_album = #{record.phoneAlbum,jdbcType=INTEGER},
@@ -389,7 +389,8 @@
       apply_num = #{record.applyNum,jdbcType=INTEGER},
       company_address = #{record.companyAddress,jdbcType=VARCHAR},
       detailed_address = #{record.detailedAddress,jdbcType=VARCHAR},
-      create_time = #{record.createTime,jdbcType=TIMESTAMP}
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      vip_start_time = #{record.vipStartTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -430,9 +431,6 @@
       <if test="companyVip != null">
         company_vip = #{companyVip,jdbcType=INTEGER},
       </if>
-      <if test="vipStartTime != null">
-        vip_start_time = #{vipStartTime,jdbcType=TIMESTAMP},
-      </if>
       <if test="vipEndTime != null">
         vip_end_time = #{vipEndTime,jdbcType=TIMESTAMP},
       </if>
@@ -463,6 +461,9 @@
       <if test="createTime != null">
         create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="vipStartTime != null">
+        vip_start_time = #{vipStartTime,jdbcType=TIMESTAMP},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -479,7 +480,6 @@
       company_desc = #{companyDesc,jdbcType=VARCHAR},
       aul_status = #{aulStatus,jdbcType=INTEGER},
       company_vip = #{companyVip,jdbcType=INTEGER},
-      vip_start_time = #{vipStartTime,jdbcType=TIMESTAMP},
       vip_end_time = #{vipEndTime,jdbcType=TIMESTAMP},
       welfare = #{welfare,jdbcType=VARCHAR},
       phone_album = #{phoneAlbum,jdbcType=INTEGER},
@@ -489,7 +489,8 @@
       apply_num = #{applyNum,jdbcType=INTEGER},
       company_address = #{companyAddress,jdbcType=VARCHAR},
       detailed_address = #{detailedAddress,jdbcType=VARCHAR},
-      create_time = #{createTime,jdbcType=TIMESTAMP}
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      vip_start_time = #{vipStartTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

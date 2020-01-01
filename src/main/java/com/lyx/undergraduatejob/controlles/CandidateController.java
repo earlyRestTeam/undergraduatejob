@@ -41,14 +41,14 @@ public class CandidateController {
     @Autowired
     LoginEntityHelper loginEntityHelper;
 
-    @RequestMapping("/user/candidate_applied_job")
+    @RequestMapping("/dashboard/candidate_applied_job")
     public String candidate_applied_job(){
 
         return "dashboard/candidate_applied_job";
     }
 
     //显示个人信息
-    @RequestMapping("/user/candidate_dashboard")
+    @RequestMapping("/dashboard/candidate_dashboard")
     public String candidate_dashboard(HttpServletRequest request){
         OnlineEntity user = loginEntityHelper.getOnlineEntity();
         if(user == null){
@@ -129,21 +129,22 @@ public class CandidateController {
 
 
 
-    @RequestMapping("/user/candidate_edit_profile")
-    public String candidate_edit_profile(){
+//    @RequestMapping("/user/candidate_edit_profile")
+//    public String candidate_edit_profile(){
+//
+//        return "dashboard/candidate_edit_profile";
+//    }
 
-        return "dashboard/candidate_edit_profile";
-    }
 
-
-    @RequestMapping("/user/candidate_favourite_job")
+    //我的收藏
+    @RequestMapping("/dashboard/candidate_favourite_job")
     public String candidate_favourite_job(){
 
         return "dashboard/candidate_favourite_job";
     }
 
     //显示简历
-    @RequestMapping("/user/candidate_resume")
+    @RequestMapping("/dashboard/candidate_resume")
     public String candidate_resume(HttpServletRequest request){
         OnlineEntity user = loginEntityHelper.getOnlineEntity();
         if(user == null){
@@ -328,5 +329,6 @@ public class CandidateController {
 
         return result;
     }
+
 
 }

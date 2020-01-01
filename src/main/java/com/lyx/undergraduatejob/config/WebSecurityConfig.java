@@ -65,16 +65,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/**/*.js"
                 )
                 .permitAll()
-                .antMatchers("/user/loginPage","/user/login", "/user/register","/admin/login","/admin/loginPage")// 对登录注册要允许匿名访问
+                .antMatchers("/user/findBack","/user/loginPage","/user/login", "/user/register","/admin/login","/admin/loginPage")// 对登录注册要允许匿名访问
                 .permitAll()
                 .antMatchers(HttpMethod.OPTIONS)//跨域请求会先进行一次options请求
                 .permitAll()
 //                .antMatchers("/**")//测试时全部运行访问
 //                .permitAll()
-//                .antMatchers("/user/**")// 除上面外的所有请求全部需要鉴权认证
-//                .hasAnyRole("user","admin","company")
-//                .antMatchers("/admin/**")// 除上面外的所有请求全部需要鉴权认证
-//                .hasAnyRole("admin")
+                .antMatchers("/user/**","/dashboard/**")// 除上面外的所有请求全部需要鉴权认证
+                .hasAnyRole("user","admin","company")
+                .antMatchers("/admin/**")// 除上面外的所有请求全部需要鉴权认证
+                .hasAnyRole("admin")
                 .anyRequest()
                 .permitAll();
         // 禁用缓存
@@ -104,7 +104,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
     public PasswordEncoder passwordEncoder() {
-        return NoOpPasswordEncoder.getInstance();
+        return new BCryptPasswordEncoder();
     }
 
     @Bean

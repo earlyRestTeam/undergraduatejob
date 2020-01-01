@@ -101,16 +101,18 @@
      <div class="mainmenu d-xl-block d-lg-block d-md-none d-sm-none d-none">
       <ul class="main_nav_ul">
        <li class="has-mega gc_main_navigation"><a href="#" class="gc_main_navigation">主页</a>
-        <ul class="navi_2_dropdown">
+        <ul class="navi_2_dropdown" th:replace="/public::navi_2_dropdown_1">
          <li class="parent"><a href="index"><i class="fas fa-square"></i>主页 I</a></li>
          <li class="parent"><a href="index_III"><i class="fas fa-square"></i>主页 II</a></li>
 
         </ul></li>
        <li class="has-mega gc_main_navigation"><a href="#" class="gc_main_navigation active_class">职位</a>
+           <ul class="navi_2_dropdown" th:replace="/public::navi_2_dropdown_2">
+           </ul>
         </li>
        <li class="has-mega gc_main_navigation kv_sub_menu"><a href="#" class="gc_main_navigation">candidates</a>
         <!-- mega menu start -->
-        <ul class="kv_mega_menu">
+        <ul class="kv_mega_menu" th:replace="/public::navi_2_dropdown_3">
          <li class="kv_mega_menu_width">
           <div class="container">
            <div class="jn_menu_partion_div">
@@ -181,7 +183,7 @@
           </div></li>
         </ul></li>
        <li class="has-mega gc_main_navigation"><a href="#" class="gc_main_navigation">pages</a>
-        <ul class="navi_2_dropdown">
+        <ul class="navi_2_dropdown" th:replace="/public::navi_2_dropdown_4">
          <li class="parent"><a href="about_us"><i class="fas fa-square"></i>关于我们</a></li>
          <li class="parent"><a href="companies"><i class="fas fa-square"></i>companies</a></li>
          <li class="parent"><a href="company_single"><i class="fas fa-square"></i>company single</a></li>
@@ -191,7 +193,7 @@
          <li class="parent"><a href="sign_up"><i class="fas fa-square"></i>注册</a></li>
         </ul></li>
        <li class="has-mega gc_main_navigation"><a href="#" class="gc_main_navigation">用户中心</a>
-        <ul class="navi_2_dropdown">
+        <ul class="navi_2_dropdown" th:replace="/public::navi_2_dropdown_5">
          <li class="parent"><a href="#"><i class="fas fa-square"></i>用户中心<span><i class="fas fa-chevron-right"></i></span></a>
           <ul class="dropdown-menu-right">
            <li><a href="dashboard/candidate_applied_job"><i class="fas fa-square"></i>找工作</a></li>
@@ -215,7 +217,7 @@
           </ul></li>
         </ul></li>
        <li class="has-mega gc_main_navigation"><a href="#" class="gc_main_navigation">博客</a>
-        <ul class="navi_2_dropdown">
+        <ul class="navi_2_dropdown" th:replace="/public::navi_2_dropdown_6">
          <li class="parent"><a href="blog_single"><i class="fas fa-square"></i>blog single</a></li>
          <li class="parent"><a href="blog_category_right_sidebar"><i class="fas fa-square"></i>blog category</a></li>
         </ul></li>
@@ -303,8 +305,8 @@
 <!--        工作类型-->
         <select style="width: 200px;height: 40px;font-size: 14px;float: left;text-align: center" v-model="searchEntity.partFull"  >
          <option value="-1">选择工作类型</option>
-         <option value="1">全职</option>
-         <option value="2">兼职</option>
+         <option value="1">兼职</option>
+         <option value="2">全职</option>
         </select>
         <select v-model="searchEntity.salaryArea" style="width: 200px;height: 40px;font-size: 14px;float: left;text-align: center">
          <option value="*">选择薪水区间</option>
@@ -419,7 +421,7 @@
                <span>{{companies[index].companyName}}</span>
               </div>
               <div class="jp_job_post_right_cont">
-               <h4><a  v-bind:href="['/job_single?jobid='+job.id]">{{ job.jobName }}</a></h4>
+               <h4><a  v-bind:href="['/job_single?jobid='+job.id]">{{ job.jobName }}-- 招{{job.needNum}}人</a></h4>
                <ul>
                 <li><i class="flaticon-cash"></i>{{job.salary}} - {{job.maxSalary}}</li>
                 <li><i class="flaticon-location-pointer"></i>&nbsp; {{job.workAddress}}</li>
@@ -433,7 +435,7 @@
                  <div :class="{'change22':status[index]==1,'change':status[index]==1}" class="job_adds_right">
                   <a @click="changeStatus(index,$event)"><i class="far fa-heart"></i></a>
                  </div></li>
-                <li><a v-bind:href="['/job_single?jobid='+job.id]">{{job.partFull == 1 ? '兼职' : '全职' }}</a></li>
+                <li><a v-bind:href="['/job_single?jobid='+job.id]">{{job.partFull == 2 ? '兼职' : '全职' }}</a></li>
                 <li><a  data-toggle="modal" data-target="#myModal2">应聘</a></li>
                </ul>
               </div>
@@ -752,7 +754,7 @@
        that.jobs = result.data.data.map.jobs;
        that.start = result.data.data.pageNum;
        that.status = result.data.data.map.status;
-       that.totalPage = result.data.data.pages;
+       that.totalPage = result.data.data.pages > 1 ? result.data.data.pages : 1;
        that.companies = result.data.data.map.companys;
       } else {
        alert(result.data.message);

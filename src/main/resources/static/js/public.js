@@ -118,6 +118,6 @@ function checkResultCode(code) {
 }
 function logout() {
     delCookie("Bearer");
-    window.location.href = "/logout";
+    window.location.href = "/";
 }
 <!-- cookie操作 end-->
