@@ -105,7 +105,7 @@ public class UserServicesImpl implements IUserServices {
         try{
             UserDetails details = userDetailsService.loadUserByUsername(username);
 
-            boolean b = encoder.matches(details.getPassword(), password);
+            boolean b = encoder.matches(password,details.getPassword());
             if(!b){
                 logger.warn("password not true : "+username);
                 throw new BadCredentialsException("用户名或密码不正确");
@@ -143,6 +143,7 @@ public class UserServicesImpl implements IUserServices {
         }
         //设置 默认状态
         //增加 创建时间
+        u.setPassword(encoder.encode(u.getPassword()));
         u.setStatus(0);
         u.setCreateTime(new Date());
         int res = usersMapper.insert(u);

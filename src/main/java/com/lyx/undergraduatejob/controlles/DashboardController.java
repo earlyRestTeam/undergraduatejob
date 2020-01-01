@@ -45,37 +45,37 @@ public class DashboardController {
     JobListServiceImpl jobListService;
     @Autowired
     LoginEntityHelper loginEntityHelper;
-    @RequestMapping("candidate_applied_job")
-    public String candidate_applied_job(){
-
-        return "dashboard/candidate_applied_job";
-    }
-
-
-    @RequestMapping("candidate_dashboard")
-    public String candidate_dashboard(){
-
-        return "dashboard/candidate_dashboard";
-    }
-
-
-    @RequestMapping("candidate_edit_profile")
-    public String candidate_edit_profile(){
-
-        return "dashboard/candidate_edit_profile";
-    }
-
-    @RequestMapping("candidate_favourite_job")
-    public String candidate_favourite_job(){
-
-        return "dashboard/candidate_favourite_job";
-    }
-
-    @RequestMapping("candidate_resume")
-    public String candidate_resume(){
-
-        return "dashboard/candidate_resume";
-    }
+//    @RequestMapping("candidate_applied_job")
+//    public String candidate_applied_job(){
+//
+//        return "dashboard/candidate_applied_job";
+//    }
+//
+//
+//    @RequestMapping("candidate_dashboard")
+//    public String candidate_dashboard(){
+//
+//        return "dashboard/candidate_dashboard";
+//    }
+//
+//
+//    @RequestMapping("candidate_edit_profile")
+//    public String candidate_edit_profile(){
+//
+//        return "dashboard/candidate_edit_profile";
+//    }
+//
+//    @RequestMapping("candidate_favourite_job")
+//    public String candidate_favourite_job(){
+//
+//        return "dashboard/candidate_favourite_job";
+//    }
+//
+//    @RequestMapping("candidate_resume")
+//    public String candidate_resume(){
+//
+//        return "dashboard/candidate_resume";
+//    }
 
     /**
      * 首次进入公司的收到简历页面加载数据

@@ -99,16 +99,18 @@
      <div class="mainmenu d-xl-block d-lg-block d-md-none d-sm-none d-none">
       <ul class="main_nav_ul">
        <li class="has-mega gc_main_navigation"><a href="#" class="gc_main_navigation">主页</a>
-        <ul class="navi_2_dropdown">
+        <ul class="navi_2_dropdown" th:replace="/public::navi_2_dropdown_1">
          <li class="parent"><a href="index"><i class="fas fa-square"></i>主页 I</a></li>
          <li class="parent"><a href="index_III"><i class="fas fa-square"></i>主页 II</a></li>
 
         </ul></li>
        <li class="has-mega gc_main_navigation"><a href="job_listing_grid_left_filter" class="gc_main_navigation">职位</a>
+           <ul class="navi_2_dropdown" th:replace="/public::navi_2_dropdown_2">
+           </ul>
         </li>
        <li class="has-mega gc_main_navigation kv_sub_menu"><a href="#" class="gc_main_navigation">candidates</a>
         <!-- mega menu start -->
-        <ul class="kv_mega_menu">
+        <ul class="kv_mega_menu" th:replace="/public::navi_2_dropdown_3">
          <li class="kv_mega_menu_width">
           <div class="container">
            <div class="jn_menu_partion_div">
@@ -179,7 +181,7 @@
           </div></li>
         </ul></li>
        <li class="has-mega gc_main_navigation"><a href="#" class="gc_main_navigation">pages</a>
-        <ul class="navi_2_dropdown">
+        <ul class="navi_2_dropdown" th:replace="/public::navi_2_dropdown_4">
          <li class="parent"><a href="about_us"><i class="fas fa-square"></i>关于我们</a></li>
          <li class="parent"><a href="companies"><i class="fas fa-square"></i>companies</a></li>
          <li class="parent"><a href="company_single"><i class="fas fa-square"></i>company single</a></li>
@@ -189,7 +191,7 @@
          <li class="parent"><a href="sign_up"><i class="fas fa-square"></i>注册</a></li>
         </ul></li>
        <li class="has-mega gc_main_navigation"><a href="#" class="gc_main_navigation">用户中心</a>
-        <ul class="navi_2_dropdown">
+        <ul class="navi_2_dropdown" th:replace="/public::navi_2_dropdown_5">
          <li class="parent"><a href="#"><i class="fas fa-square"></i>用户中心<span><i class="fas fa-chevron-right"></i></span></a>
           <ul class="dropdown-menu-right">
            <li><a href="dashboard/candidate_applied_job"><i class="fas fa-square"></i>找工作</a></li>
@@ -213,7 +215,7 @@
           </ul></li>
         </ul></li>
        <li class="has-mega gc_main_navigation"><a href="#" class="gc_main_navigation">博客</a>
-        <ul class="navi_2_dropdown">
+        <ul class="navi_2_dropdown" th:replace="/public::navi_2_dropdown_6">
          <li class="parent"><a href="blog_single"><i class="fas fa-square"></i>blog single</a></li>
          <li class="parent"><a href="blog_category_right_sidebar"><i class="fas fa-square"></i>blog category</a></li>
         </ul></li>
