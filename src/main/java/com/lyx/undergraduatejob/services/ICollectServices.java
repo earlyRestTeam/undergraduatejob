@@ -5,6 +5,7 @@ import com.lyx.undergraduatejob.pojo.Collect;
 import com.lyx.undergraduatejob.pojo.Company;
 import com.lyx.undergraduatejob.pojo.Job;
 import com.lyx.undergraduatejob.pojo.Resume;
+import com.lyx.undergraduatejob.utils.MyPage;
 
 import java.util.List;
 import java.util.Map;
@@ -136,4 +137,12 @@ public interface ICollectServices {
      * @return
      */
     List<Integer> queryCollectStatus(List<Integer> ids, int collectionType, int userId, int userType);
+
+    /**
+     * 查看公司收藏的 简历
+     * @param indexpage
+     * @param companyId
+     * @return
+     */
+    MyPage queryCompanyCollectResume(Integer indexpage, Integer companyId);
 }

@@ -9,6 +9,7 @@ import com.lyx.undergraduatejob.mapper.ResumeMapper;
 import com.lyx.undergraduatejob.pojo.*;
 import com.lyx.undergraduatejob.services.ICollectServices;
 import com.lyx.undergraduatejob.services.ICommentServices;
+import com.lyx.undergraduatejob.utils.MyPage;
 import com.lyx.undergraduatejob.utils.StaticPool;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -456,5 +457,39 @@ public class ICollectServicesImpl implements ICollectServices {
             res.add(cs.get(id) == null ? 0 : 1);
         });
         return res;
+    }
+    /**
+     * 查看公司收藏的 简历
+     * @param indexpage
+     * @param companyId
+     * @return
+     */
+    @Override
+    public MyPage queryCompanyCollectResume(Integer indexpage, Integer companyId) {
+        CollectExample example = new CollectExample();
+        example.createCriteria().andCollectorTypeEqualTo(2)
+                .andCollectorIdEqualTo(companyId)
+                .andCollectionTypeEqualTo(3);
+        PageHelper.startPage(indexpage,5);
+        List<Collect> collects = collectMapper.selectByExample(example);
+        PageInfo<Collect> collectPageInfo = PageInfo.of(collects);
+        List<Integer> ids = collectPageInfo.getList().stream().map(collect -> collect.getCollectionId()).collect(Collectors.toList());
+
+        if(ids.isEmpty())
+            return null;
+        MyPage myPage = new MyPage(collectPageInfo);
+
+        ResumeExample resumeExample = new ResumeExample();
+        resumeExample.createCriteria().andIdIn(ids);
+        List<Resume> resumes = resumeMapper.selectByExample(resumeExample);
+        PageHelper.startPage(indexpage,5);
+        PageInfo<Resume> resumePageInfo = PageInfo.of(resumes);
+        int[] status = new int[resumePageInfo.getList().size()];
+        for (int i = 0; i < status.length; i++) {
+            status[i] = 1;
+        }
+        myPage.putObject("resumes",resumePageInfo.getList());
+        myPage.putObject("status",status);
+        return myPage;
     }
 }

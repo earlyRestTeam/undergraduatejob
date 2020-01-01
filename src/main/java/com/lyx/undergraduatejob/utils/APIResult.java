@@ -66,7 +66,7 @@ public class APIResult implements java.io.Serializable {
     }
 
     public static APIResult genFailApiResponse500(String message,Object data){
-        return new APIResult(message,true,500,data);
+        return new APIResult(message,false,500,data);
     }
 
     //失败400

@@ -1,15 +1,13 @@
 package com.lyx.undergraduatejob.controlles;
 
 import com.github.pagehelper.PageInfo;
-import com.lyx.undergraduatejob.pojo.Collect;
-import com.lyx.undergraduatejob.pojo.Company;
-import com.lyx.undergraduatejob.pojo.Job;
-import com.lyx.undergraduatejob.pojo.Users;
+import com.lyx.undergraduatejob.pojo.*;
 import com.lyx.undergraduatejob.services.ICollectServices;
 import com.lyx.undergraduatejob.services.ICompanyInfoServices;
 import com.lyx.undergraduatejob.services.security.LoginEntityHelper;
 import com.lyx.undergraduatejob.services.security.OnlineEntity;
 import com.lyx.undergraduatejob.utils.APIResult;
+import com.lyx.undergraduatejob.utils.MyPage;
 import com.lyx.undergraduatejob.utils.StaticPool;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -160,7 +158,7 @@ public class CollectController {
         list.add(resumeId);
 
         List<Integer> list1 = iCollectServices.queryCollectStatus(list, 3, companyId, 2);
-        if (list1.size() > 0 && list1 != null) {
+        if (list1 != null && list1.size() > 0 && list1.get(0) == 1) {
             int flag = 2;
             apiResult.setData(flag);
             Map<String, String> map = iCollectServices.deleteCollectResume(resumeId, companyId);
@@ -218,5 +216,28 @@ public class CollectController {
         return result;
     }
 
+    //公司 查看收藏的简历
+    @RequestMapping("/visit_resume")
+    @ResponseBody
+    public APIResult get_resume(Integer indexpage){
 
+        OnlineEntity entity = loginEntityHelper.getOnlineEntity();
+        if (entity == null)
+            return APIResult.genFailApiResponse500("必须要登录才能收藏");
+        if (entity.getCompanyId() == null)
+            return APIResult.genFailApiResponse500("无收藏");
+        Integer companyId = entity.getCompanyId();
+
+        MyPage jobPageInfo = iCollectServices.queryCompanyCollectResume(indexpage, companyId);
+        if(jobPageInfo == null)
+            return APIResult.genFailApiResponse500("无收藏");
+        System.out.println("jobPageInfo:" + jobPageInfo);
+        APIResult result = APIResult.genSuccessApiResponse(jobPageInfo);
+
+        if( ((List<Resume>)jobPageInfo.getMap().get("resumes") ).size() == 0)
+            result = APIResult.genFailApiResponse500("无收藏");
+        //System.out.println("result=====:" + result.getData());
+
+        return result;
+    }
 }

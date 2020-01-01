@@ -106,7 +106,7 @@ public class ResumeServicesImp implements IResumeServices {
         List<Integer> ids = resumes.stream().map(Resume::getId).collect(Collectors.toList());
         OnlineEntity onlineEntity = loginEntityHelper.getOnlineEntity();
         List<Integer> status;
-        if(onlineEntity.getCompanyId() != null){
+        if(onlineEntity != null && onlineEntity.getCompanyId() != null){
             status = collectServices.queryCollectStatus(ids, 3, onlineEntity.getCompanyId(), 2);
         }else{
             status = new ArrayList<>(ids.size());
