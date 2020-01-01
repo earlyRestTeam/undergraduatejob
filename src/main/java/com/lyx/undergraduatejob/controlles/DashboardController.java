@@ -86,6 +86,8 @@ public class DashboardController {
     @RequestMapping("comp_applications")
     public String comp_applications(HttpServletRequest request,Integer jobid){
         Integer companyid = loginEntityHelper.getOnlineEntity().getCompanyId();
+        Company company = companyInfoServices.queryCompanyById(companyid);
+        request.setAttribute("company",company);
         if (companyid == null){
             companyid =0;
         }
@@ -131,9 +133,12 @@ public class DashboardController {
         if (companyid == null){
             companyid =0;
         }
-        if (jobid == 0){
-            jobid =null;
+        if (jobid!=null){
+            if (jobid == 0){
+                jobid =null;
+            }
         }
+
         PageInfo<Resume> resumePageInfo = receiveResumeServices.queryReceiveResume(indexpage, 5, jobid, companyid, status);
         if (resumePageInfo == null){
             resumePageInfo = new PageInfo<>();
@@ -311,6 +316,8 @@ public class DashboardController {
     public String comp_employer_manage_jobs(HttpServletRequest request){
         Integer indexpage = 1;
         Integer companyid = loginEntityHelper.getOnlineEntity().getCompanyId();
+        Company company = companyInfoServices.queryCompanyById(companyid);
+        request.setAttribute("company",company);
         if (companyid == null){
             companyid =0;
         }
@@ -352,6 +359,8 @@ public class DashboardController {
      */
     @RequestMapping("comp_post_new_job")
     public String comp_post_new_job(HttpServletRequest request){
+        Company company = companyInfoServices.queryCompanyById(loginEntityHelper.getOnlineEntity().getCompanyId());
+        request.setAttribute("company",company);
         List<Map<String, Object>> list = industriesListServices.queryALLWithJobList();
         request.setAttribute("list",list);
         List<TbArea> tbAreas = tbAreaService.queryTbAreabyParentId(100000);

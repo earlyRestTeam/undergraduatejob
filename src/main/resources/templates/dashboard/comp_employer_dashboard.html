@@ -526,15 +526,16 @@ inelevated the..</a></h3>
             <div class="row">
                 <div class="col-lg-3 col-md-12 col-sm-12 col-12">
                     <div class="emp_dashboard_sidebar jb_cover">
-                        <div class="emp_web_profile jb_cover">
+                        <div  class="emp_web_profile jb_cover" th:fragment="logodiv">
                             <img style="width:115px;height: 145px; "  th:if="${company.logo==null}" src="/dashboard/images/web.png" alt="post_img">
                             <img style="width:115px;height: 145px; " th:if="${company.logo!=null}" th:src="@{${company.logo}}" alt="post_img">
                             <h4 th:text="${company.companyName}">Webstrot Technology</h4>
+                            <p th:text="${company.companyEmail}">@Webstrot</p>
                             <div class="skills jb_cover">
                                 <div class="skill-item jb_cover">
+                                    <h6>profile<span>70%</span></h6>
                                     <div class="skills-progress"><span data-value="70%"></span>
                                     </div>
-                                    <div class=></div>
                                 </div>
                             </div>
                         </div>
@@ -545,7 +546,9 @@ inelevated the..</a></h3>
                                     <a href="comp_employer_edit_profile"> <i class="fas fa-edit"></i>编辑资料
                                     </a>
                                 </li>
-                                <li><a href="comp_company_page"><i class="fas fa-file"></i>公司主页 </a></li>
+                                <li><a th:href="'/tocompanysingle?companyId='+${company.id}"><i class="fas fa-file"></i>公司主页 </a></li>
+                                <li><a target="_blank" href="/aut/aut_company"><i class="fas fa-file"></i>企业资格认证 </a></li>
+                                <li><a href="candidate_favourite_resume"><i class="fas fa-file"></i>我的人才库 </a></li>
                                 <li><a href="comp_employer_manage_jobs"><i class="fas fa-suitcase"></i>管理职位</a></li>
                                 <li><a href="comp_applications"><i class="fas fa-mobile"></i>收到的简历</a></li>
                                 <li><a href="comp_post_new_job"><i class="fas fa-user-plus"></i>发布职位</a></li>
@@ -553,11 +556,11 @@ inelevated the..</a></h3>
                                 <li><a href="pricing_plans"><i class="fas fa-tag"></i>VIP</a></li>
                             </ul>
                             <ul class="feedlist logout_link jb_cover">
-                                <li><a href="#"><i class="fas fa-power-off"></i>退出登录</a></li>
-                                <li>
-                                    <a href="#" data-toggle="modal" data-target="#myModal"><i class="fas fa-trash-alt"></i>删除账户
-                                </a>
-                                </li>
+                                <li><a href="javascript:void(0)" onclick="logout()"><i class="fas fa-power-off"></i>退出登录</a></li>
+                                <!--<li>-->
+                                    <!--<a href="#" data-toggle="modal" data-target="#myModal"><i class="fas fa-trash-alt"></i>删除账户-->
+                                <!--</a>-->
+                                <!--</li>-->
 
                             </ul>
                         </div>
