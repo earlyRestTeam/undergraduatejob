@@ -280,7 +280,7 @@
          <ul class="job_single_lists">
           <li>
            <div class="job_adds_right" th:onclick="|javascript:love(${res.job.id})|">
-            <a href="#!"><i class="far fa-heart"></i></a>
+            <a ><i class="far fa-heart"></i></a>
            </div></li>
           <li>
            <div class="header_btn search_btn part_time_btn jb_cover">
@@ -306,7 +306,7 @@
          <div class="jp_listing_list_icon_cont_wrapper">
           <ul>
            <li>地址:</li>
-           <li th:text="res.job.workAddress">Los Angeles Califonia PO, 455001</li>
+           <li th:text="${res.job.workAddress}">Los Angeles Califonia PO, 455001</li>
           </ul>
          </div>
         </div>
@@ -481,14 +481,14 @@
            <div class="row">
             <div class="col-lg-9 col-md-9 col-sm-12 col-12">
              <div class="jp_job_post_side_img">
-              <img th:src="@{${job.companyLogo}}" src="/picture/lt2.png" alt="post_img" style="width: 120px;height: 120px;"/>
+              <img th:src="@{${job.companyLogo}}" src="/picture/lt2.png" alt="post_img" style="width: 70px;height: 70px;"/>
               <br />
               <span th:text="${job.companyName}">google</span>
              </div>
              <div class="jp_job_post_right_cont">
               <h4><a th:href="@{'/job_single?jobid='+@{job.id}}" th:text="${job.jobName}">Trainee Web Designer, (Fresher)</a></h4>
               <ul>
-               <li th:text="${job.salary}"><i class="flaticon-cash"></i>&nbsp; $12K - 15k P.A.</li>
+               <li th:text="${job.salary}+'~'+${job.maxSalary}"><i class="flaticon-cash"></i>&nbsp; $12K - 15k P.A.</li>
                <li th:text="${job.detailedAddress}"><i class="flaticon-location-pointer"></i>&nbsp; Los Angeles, Califonia PO, 455001</li>
               </ul>
              </div>

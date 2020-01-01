@@ -895,66 +895,6 @@ public class CompanyExample {
             return (Criteria) this;
         }
 
-        public Criteria andVipStartTimeIsNull() {
-            addCriterion("vip_start_time is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andVipStartTimeIsNotNull() {
-            addCriterion("vip_start_time is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andVipStartTimeEqualTo(Date value) {
-            addCriterion("vip_start_time =", value, "vipStartTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andVipStartTimeNotEqualTo(Date value) {
-            addCriterion("vip_start_time <>", value, "vipStartTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andVipStartTimeGreaterThan(Date value) {
-            addCriterion("vip_start_time >", value, "vipStartTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andVipStartTimeGreaterThanOrEqualTo(Date value) {
-            addCriterion("vip_start_time >=", value, "vipStartTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andVipStartTimeLessThan(Date value) {
-            addCriterion("vip_start_time <", value, "vipStartTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andVipStartTimeLessThanOrEqualTo(Date value) {
-            addCriterion("vip_start_time <=", value, "vipStartTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andVipStartTimeIn(List<Date> values) {
-            addCriterion("vip_start_time in", values, "vipStartTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andVipStartTimeNotIn(List<Date> values) {
-            addCriterion("vip_start_time not in", values, "vipStartTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andVipStartTimeBetween(Date value1, Date value2) {
-            addCriterion("vip_start_time between", value1, value2, "vipStartTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andVipStartTimeNotBetween(Date value1, Date value2) {
-            addCriterion("vip_start_time not between", value1, value2, "vipStartTime");
-            return (Criteria) this;
-        }
-
         public Criteria andVipEndTimeIsNull() {
             addCriterion("vip_end_time is null");
             return (Criteria) this;
@@ -1582,6 +1522,66 @@ public class CompanyExample {
 
         public Criteria andCreateTimeNotBetween(Date value1, Date value2) {
             addCriterion("create_time not between", value1, value2, "createTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andVipStartTimeIsNull() {
+            addCriterion("vip_start_time is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andVipStartTimeIsNotNull() {
+            addCriterion("vip_start_time is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andVipStartTimeEqualTo(Date value) {
+            addCriterion("vip_start_time =", value, "vipStartTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andVipStartTimeNotEqualTo(Date value) {
+            addCriterion("vip_start_time <>", value, "vipStartTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andVipStartTimeGreaterThan(Date value) {
+            addCriterion("vip_start_time >", value, "vipStartTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andVipStartTimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("vip_start_time >=", value, "vipStartTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andVipStartTimeLessThan(Date value) {
+            addCriterion("vip_start_time <", value, "vipStartTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andVipStartTimeLessThanOrEqualTo(Date value) {
+            addCriterion("vip_start_time <=", value, "vipStartTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andVipStartTimeIn(List<Date> values) {
+            addCriterion("vip_start_time in", values, "vipStartTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andVipStartTimeNotIn(List<Date> values) {
+            addCriterion("vip_start_time not in", values, "vipStartTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andVipStartTimeBetween(Date value1, Date value2) {
+            addCriterion("vip_start_time between", value1, value2, "vipStartTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andVipStartTimeNotBetween(Date value1, Date value2) {
+            addCriterion("vip_start_time not between", value1, value2, "vipStartTime");
             return (Criteria) this;
         }
     }

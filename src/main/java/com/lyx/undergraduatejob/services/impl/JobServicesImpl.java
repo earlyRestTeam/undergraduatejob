@@ -354,7 +354,7 @@ public class JobServicesImpl implements IJobServices {
         }
         String key;
         if( !StringUtils.isEmpty( (key = jobSearchEntity.getKeyWord() ) ))
-            criteria.andJobTitleLike(key+"%");
+            criteria.andJobNameLike(key+"%");
         String workArea;
         if( !StringUtils.isEmpty((workArea = jobSearchEntity.getWorkArea() ) ) )
             criteria.andWorkAddressEqualTo(workArea);
@@ -366,7 +366,7 @@ public class JobServicesImpl implements IJobServices {
             criteria.andCloseTypeEqualTo(closeAnAccount);
         //兼职 全职
         if( jobSearchEntity.getPartFull() != null && jobSearchEntity.getPartFull() > 0)
-            criteria.andCloseTypeEqualTo(jobSearchEntity.getPartFull());
+            criteria.andPartFullEqualTo(jobSearchEntity.getPartFull());
         //公司id
         if(jobSearchEntity.getCompanyId() != null && jobSearchEntity.getCompanyId() > 0)
             criteria.andCompanyIdEqualTo(jobSearchEntity.getCompanyId());

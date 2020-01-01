@@ -13,6 +13,14 @@ public class JobList implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    public JobList(Integer id, String jlName) {
+        industriesId = id;
+        jobName = jlName;
+    }
+
+    public JobList() {
+    }
+
     public Integer getId() {
         return id;
     }

@@ -14,6 +14,14 @@ public class IndustriesList implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    public IndustriesList(String inName) {
+        industriesName = inName;
+        createTime = new Date();
+    }
+
+    public IndustriesList() {
+    }
+
     public Integer getId() {
         return id;
     }

@@ -303,8 +303,8 @@
 <!--        工作类型-->
         <select style="width: 200px;height: 40px;font-size: 14px;float: left;text-align: center" v-model="searchEntity.partFull"  >
          <option value="-1">选择工作类型</option>
-         <option value="1">全职</option>
-         <option value="2">兼职</option>
+         <option value="1">兼职</option>
+         <option value="2">全职</option>
         </select>
         <select v-model="searchEntity.salaryArea" style="width: 200px;height: 40px;font-size: 14px;float: left;text-align: center">
          <option value="*">选择薪水区间</option>
@@ -419,7 +419,7 @@
                <span>{{companies[index].companyName}}</span>
               </div>
               <div class="jp_job_post_right_cont">
-               <h4><a  v-bind:href="['/job_single?jobid='+job.id]">{{ job.jobName }}</a></h4>
+               <h4><a  v-bind:href="['/job_single?jobid='+job.id]">{{ job.jobName }}-- 招{{job.needNum}}人</a></h4>
                <ul>
                 <li><i class="flaticon-cash"></i>{{job.salary}} - {{job.maxSalary}}</li>
                 <li><i class="flaticon-location-pointer"></i>&nbsp; {{job.workAddress}}</li>
@@ -433,7 +433,7 @@
                  <div :class="{'change22':status[index]==1,'change':status[index]==1}" class="job_adds_right">
                   <a @click="changeStatus(index,$event)"><i class="far fa-heart"></i></a>
                  </div></li>
-                <li><a v-bind:href="['/job_single?jobid='+job.id]">{{job.partFull == 1 ? '兼职' : '全职' }}</a></li>
+                <li><a v-bind:href="['/job_single?jobid='+job.id]">{{job.partFull == 2 ? '兼职' : '全职' }}</a></li>
                 <li><a  data-toggle="modal" data-target="#myModal2">应聘</a></li>
                </ul>
               </div>
@@ -752,7 +752,7 @@
        that.jobs = result.data.data.map.jobs;
        that.start = result.data.data.pageNum;
        that.status = result.data.data.map.status;
-       that.totalPage = result.data.data.pages;
+       that.totalPage = result.data.data.pages > 1 ? result.data.data.pages : 1;
        that.companies = result.data.data.map.companys;
       } else {
        alert(result.data.message);

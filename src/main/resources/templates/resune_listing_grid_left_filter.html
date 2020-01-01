@@ -371,7 +371,7 @@
                   <a @click="changeStatus(index,$event)" ><i class="far fa-heart"></i></a>
                  </div>
                 </li>
-                <li><a v-bind:href="['/job_single?jobid='+resume.id]" >{{resume.partFull == 1 ? '兼职' : '全职' }}</a></li>
+                <li><a v-bind:href="['/job_single?jobid='+resume.id]" >{{resume.partFull == 2 ? '兼职' : '全职' }}</a></li>
                 <li><a data-toggle="modal" data-target="#myModal01">应聘</a></li>
                </ul>
               </div>
@@ -1243,7 +1243,7 @@
 
        that.start = result.data.data.pageNum;
 
-       that.totalPage = result.data.data.pages;
+       that.totalPage = result.data.data.pages > 1 ? result.data.data.pages : 1;
        that.resumes = result.data.data.map.list;
        that.status = result.data.data.map.status;
       } else {
