@@ -95,6 +95,23 @@ public class UserServicesImpl implements IUserServices {
     }
 
     /**
+     * 刷新 token
+     *
+     * @param username
+     * @return
+     */
+    @Override
+    public String reFereshToken(String username) {
+        UserDetails userDetails = userDetailsService.loadUserByUsername(username);
+        UsernamePasswordAuthenticationToken uToken = new UsernamePasswordAuthenticationToken(userDetails,userDetails.getUsername(),userDetails.getAuthorities());
+        SecurityContextHolder.getContext().setAuthentication(uToken);
+
+        String token = jwtTokenUtil.generateToken(userDetails);
+        return token;
+    }
+
+
+    /**
      * 通过用户名加载 用户
      * @param username
      * @return

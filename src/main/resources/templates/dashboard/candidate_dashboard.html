@@ -1102,6 +1102,7 @@ Author:
                     $(".nickName").text(update_nickName);
                     $("#phone").text(update_phone);
                     $('#close').click();
+                    setCookie(result.data.header,result.data.token);
                     alert("修改成功!");
                 } else {
                     $('#close').click();

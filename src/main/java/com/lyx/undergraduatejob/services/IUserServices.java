@@ -31,6 +31,12 @@ public interface IUserServices{
     Users loadUserByName(String username);
 
     /**
+     * 刷新 token
+     * @param username
+     * @return
+     */
+    String reFereshToken(String username);
+    /**
      * 登录
      * @param userName
      * @param password

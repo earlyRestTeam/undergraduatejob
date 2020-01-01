@@ -117,7 +117,8 @@ public class ICompanyInfoServicesImpl implements ICompanyInfoServices {
      * @return
      */
     @Override
-    public Map<String,String> addCompanyInfo(Company c,Integer userid) {
+    public Map<String,String>
+    addCompanyInfo(Company c,Integer userid) {
         Map<String,String> result = new HashMap<>();
         CompanyExample example = new CompanyExample();
         example.or().andUserIdEqualTo(userid);
@@ -126,10 +127,6 @@ public class ICompanyInfoServicesImpl implements ICompanyInfoServices {
         if (!companies.isEmpty()&&companies.size()>0){
             result.put(StaticPool.ERROR,"非法访问！用户"+userid+"已经创建过公司");
             logger.error("非法访问！用户"+userid+"已经创建过公司");
-            return result;
-        }else if (!userid.equals(c.getUserId())){
-            result.put(StaticPool.ERROR,"非法访问！用户"+userid+"不能给别人创建公司");
-            logger.error("非法访问！用户"+userid+"不能给别人创建公司");
             return result;
         }
         int res = companyMapper.insert(c);

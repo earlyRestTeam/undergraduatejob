@@ -125,8 +125,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             Users users = userServices.loadUserByName(username);
             if (users != null) {
                 Company company = companyInfoServices.queryCompanyByUserId(users.getId());
-                if(company.getStatus() != null && company.getStatus()==1
-                        && company.getAulStatus() != null && company.getAulStatus() == 1)
+                if(company.getStatus() != null && company.getStatus()==1 )
+                    //&& company.getAulStatus() != null && company.getAulStatus() == 1
                     users.setCompany(company);
                 return users;
             }

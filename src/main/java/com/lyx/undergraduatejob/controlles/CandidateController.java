@@ -1,6 +1,7 @@
 package com.lyx.undergraduatejob.controlles;
 
 import com.alibaba.fastjson.JSONObject;
+import com.lyx.undergraduatejob.common.JwtTokenUtil;
 import com.lyx.undergraduatejob.pojo.ReceiveResume;
 import com.lyx.undergraduatejob.pojo.Resume;
 import com.lyx.undergraduatejob.pojo.Users;
@@ -16,6 +17,11 @@ import com.lyx.undergraduatejob.utils.StaticPool;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,6 +29,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -40,6 +47,12 @@ public class CandidateController {
     ReceiveResumeServicesImpl receiveResumeServices;
     @Autowired
     LoginEntityHelper loginEntityHelper;
+    @Autowired
+    UserDetailsService userDetailsService;
+    @Autowired
+    JwtTokenUtil jwtTokenUtil;
+    @Value("${jwt.tokenHead}")
+    String tokenHead;
 
     @RequestMapping("/dashboard/candidate_applied_job")
     public String candidate_applied_job(){
@@ -84,10 +97,18 @@ public class CandidateController {
         }
         Integer userId = user.getId();
         System.out.println("传回来的JSON："+users);
+        //Users users1 = userServices.loadUserByName(user.getUsername());
+        String token = userServices.reFereshToken(user.getUsername());
+//        res.put(StaticPool.SUCCESS,token);
         users.setId(userId);
         Map<String, String> result = userServices.updateInfo(users);
         if(result.get(StaticPool.SUCCESS) != null){
-            return APIResult.genSuccessApiResponse("修改成功");
+            APIResult res = APIResult.genSuccessApiResponse("修改成功");
+            Map<String,String> map = new HashMap<>();
+            map.put("header",tokenHead);
+            map.put("token",token);
+            res.setData(map);
+            return res;
         }else {
             return APIResult.genSuccessApiResponse("修改失败");
         }

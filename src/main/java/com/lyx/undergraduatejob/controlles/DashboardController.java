@@ -7,20 +7,19 @@ import com.lyx.undergraduatejob.mapper.JobMapper;
 import com.lyx.undergraduatejob.pojo.*;
 import com.lyx.undergraduatejob.search.entity.JobSearchEntity;
 import com.lyx.undergraduatejob.search.entity.LoginEntity;
+import com.lyx.undergraduatejob.services.IUserServices;
 import com.lyx.undergraduatejob.services.impl.*;
 import com.lyx.undergraduatejob.services.security.LoginEntityHelper;
 import com.lyx.undergraduatejob.utils.APIResult;
 import com.lyx.undergraduatejob.utils.StaticPool;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Controller
 @RequestMapping("/dashboard")
@@ -45,6 +44,10 @@ public class DashboardController {
     JobListServiceImpl jobListService;
     @Autowired
     LoginEntityHelper loginEntityHelper;
+    @Autowired
+    IUserServices userServices;
+    @Value("${jwt.tokenHead}")
+    String tokenHead;
 //    @RequestMapping("candidate_applied_job")
 //    public String candidate_applied_job(){
 //
@@ -235,7 +238,7 @@ public class DashboardController {
         if (companyid == null){
             companyid =0;
         }
-        Company company = companyInfoServices.queryCompanyByUserId(1);
+        Company company = companyInfoServices.queryCompanyByUserId(loginEntityHelper.getOnlineEntity().getId());
         request.setAttribute("company",company);
         List<TbArea> tbAreas = tbAreaService.queryTbAreabyParentId(100000);
         request.setAttribute("province",tbAreas);
@@ -267,6 +270,45 @@ public class DashboardController {
         Map<String, String> stringStringMap = companyInfoServices.updateCompanyInfo(company);
         if (stringStringMap.get(StaticPool.SUCCESS)!=null){
             return APIResult.genSuccessApiResponse(stringStringMap.get(StaticPool.SUCCESS));
+        }
+        return APIResult.genFailApiResponse500(stringStringMap.get(StaticPool.ERROR));
+    }
+
+    @RequestMapping("comp_employer_add")
+    public String comp_employer_add(HttpServletRequest request){
+        request.setAttribute("company",new Company());
+        List<TbArea> tbAreas = tbAreaService.queryTbAreabyParentId(100000);
+        request.setAttribute("province",tbAreas);
+        request.setAttribute("picture",new Picture());
+        request.setAttribute("pictures",new ArrayList<>());
+        return "/dashboard/comp_employer_add";
+    }
+
+    /**
+     * 添加公司
+     * @param company
+     * @return
+     */
+    @RequestMapping("addCompanyinfo")
+    @ResponseBody
+    public APIResult addCompanyinfo(Company company){
+        Integer userid = loginEntityHelper.getOnlineEntity().getId();
+        company.setUserId(userid);
+        company.setCompanyVip(0);
+        company.setCreateTime(new Date());
+        company.setAulStatus(0);
+        company.setStatus(1);
+        Map<String, String> stringStringMap = companyInfoServices.addCompanyInfo(company, userid);
+        if (stringStringMap.get(StaticPool.SUCCESS)!=null){
+            String token = userServices.reFereshToken(loginEntityHelper.getOnlineEntity().getUsername());
+//            loginEntityHelper.getOnlineEntity()
+//                    .setCompanyId(companyInfoServices.queryCompanyByUserId(userid).getId());
+            APIResult result = APIResult.genSuccessApiResponse(stringStringMap.get(StaticPool.SUCCESS));
+            Map<String,String> map = new HashMap<>();
+            map.put("header",tokenHead);
+            map.put("token",token);
+            result.setData(map);
+            return result;
         }
         return APIResult.genFailApiResponse500(stringStringMap.get(StaticPool.ERROR));
     }

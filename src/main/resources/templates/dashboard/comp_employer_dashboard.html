@@ -540,13 +540,11 @@ inelevated the..</a></h3>
                                 </div>
                             </div>
                         </div>
-                        <div class="emp_follow_link jb_cover">
+                        <div class="emp_follow_link jb_cover" th:fragment="navdiv">
                             <ul class="feedlist">
                                 <li><a href="/dashboard/comp_employer_dashboard" class="link_active"><i class="fas fa-tachometer-alt"></i> 企业资料 </a></li>
-                                <li>
-                                    <a href="/dashboard/comp_employer_edit_profile"> <i class="fas fa-edit"></i>编辑资料
-                                    </a>
-                                </li>
+                                <li><a href="/dashboard/comp_employer_edit_profile"> <i class="fas fa-edit"></i>编辑资料</a></li>
+                                <li><a href="/dashboard/comp_employer_add"> <i class="fas fa-edit"></i>添加企业</a></li>
                                 <li><a th:href="'/tocompanysingle?companyId='+${company.id}"><i class="fas fa-file"></i>公司主页 </a></li>
                                 <li><a target="_blank" href="/aut/aut_company"><i class="fas fa-file"></i>企业资格认证 </a></li>
                                 <li><a href="/dashboard/candidate_favourite_resume"><i class="fas fa-file"></i>我的人才库 </a></li>

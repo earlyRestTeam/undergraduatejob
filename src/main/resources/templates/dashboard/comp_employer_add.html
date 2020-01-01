@@ -14,7 +14,7 @@ Author:
 
 <head>
     <meta charset="utf-8" />
-    <title>收到的简历</title>
+    <title>Edit Employer Profile</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta name="description" content="JB desks,job portal,job" />
     <meta name="keywords" content="JB desks,job portal,job" />
@@ -54,7 +54,7 @@ Author:
     <nav class="cd-dropdown  d-block d-sm-block d-md-block d-lg-none d-xl-none">
         <h2><a href="index"> <span><img src="/dashboard/images/logo.png" alt="img"></span></a></h2>
         <a href="#0" class="cd-close">Close</a>
-       <ul class="cd-dropdown-content">
+        <ul class="cd-dropdown-content">
             <li>
                 <form class="cd-search">
                     <input type="search" placeholder="Search...">
@@ -134,7 +134,7 @@ Author:
                                 <a href="comp_applications"> applications </a>
                             </li>
                             <li>
-                                <a href="/aut/aut_company">公司主页</a>
+                                <a href="comp_company_page">公司主页</a>
                             </li>
                             <li>
                                 <a href="comp_employer_dashboard">个人资料</a>
@@ -245,6 +245,7 @@ Author:
                                 <li class="parent">
                                     <a href="/index_III"><i class="fas fa-square"></i>主页 II</a>
                                 </li>
+
 
                             </ul>
                         </li>
@@ -434,7 +435,7 @@ inelevated the..</a></h3>
                                             <a href="comp_applications"> <i class="fas fa-square"></i>收到的简历</a>
                                         </li>
                                         <li>
-                                            <a href="/aut/aut_company"> <i class="fas fa-square"></i>公司主页</a>
+                                            <a href="comp_company_page"> <i class="fas fa-square"></i>公司主页</a>
                                         </li>
                                         <li>
                                             <a href="comp_employer_dashboard"> <i class="fas fa-square"></i>企业资料</a>
@@ -503,13 +504,13 @@ inelevated the..</a></h3>
                     <!-- section_heading start -->
                     <div class="col-xl-9 col-lg-7 col-md-7 col-12 col-sm-12">
 
-                        <h1>收到的简历</h1>
+                        <h1> 创 建 公 司</h1>
                     </div>
                     <div class="col-xl-3 col-lg-5 col-md-5 col-12 col-sm-12">
                         <div class="sub_title_section">
                             <ul class="sub_title">
                                 <li> <a href="#">主页</a>&nbsp; / &nbsp; </li>
-                                <li>收到的简历</li>
+                                <li>创建公司</li>
                             </ul>
                         </div>
                     </div>
@@ -537,33 +538,34 @@ inelevated the..</a></h3>
                                 </div>
                             </div>
                         </div>
-                        <div class="emp_follow_link jb_cover" th:replace="/dashboard/comp_employer_dashboard::navdiv" >
-                            <ul class="feedlist">
-                                <li><a href="/dashboard/comp_employer_dashboard" class="link_active"><i class="fas fa-tachometer-alt"></i> 企业资料 </a></li>
-                                <li>
-                                    <a href="/dashboard/comp_employer_edit_profile"> <i class="fas fa-edit"></i>编辑资料
-                                    </a>
-                                </li>
-                                <li><a th:href="'/tocompanysingle?companyId='+${company.id}"><i class="fas fa-file"></i>公司主页 </a></li>
-                                <li><a target="_blank" href="/aut/aut_company"><i class="fas fa-file"></i>企业资格认证 </a></li>
-                                <li><a href="/dashboard/candidate_favourite_resume"><i class="fas fa-file"></i>我的人才库 </a></li>
-                                <li><a href="/dashboard/comp_employer_manage_jobs"><i class="fas fa-suitcase"></i>管理职位</a></li>
-                                <li><a href="/dashboard/comp_applications"><i class="fas fa-mobile"></i>收到的简历</a></li>
-                                <li><a href="/dashboard/comp_post_new_job"><i class="fas fa-user-plus"></i>发布职位</a></li>
-                                <li><a href="/dashboard/message"><i class="fas fa-envelope"></i>消息</a></li>
-                                <li><a href="/dashboard/pricing_plans"><i class="fas fa-tag"></i>VIP</a></li>
+                        <div class="emp_follow_link jb_cover" th:replace="/dashboard/comp_employer_dashboard::navdiv">
+                           <ul class="feedlist">
+                               <li><a href="/dashboard/comp_employer_dashboard" class="link_active"><i class="fas fa-tachometer-alt"></i> 企业资料 </a></li>
+                               <li>
+                                   <a href="/dashboard/comp_employer_edit_profile"> <i class="fas fa-edit"></i>编辑资料
+                                   </a>
+                               </li>
+                               <li><a th:href="'/tocompanysingle?companyId='+${company.id}"><i class="fas fa-file"></i>公司主页 </a></li>
+                               <li><a target="_blank" href="/aut/aut_company"><i class="fas fa-file"></i>企业资格认证 </a></li>
+                               <li><a href="/dashboard/candidate_favourite_resume"><i class="fas fa-file"></i>我的人才库 </a></li>
+                               <li><a href="/dashboard/comp_employer_manage_jobs"><i class="fas fa-suitcase"></i>管理职位</a></li>
+                               <li><a href="/dashboard/comp_applications"><i class="fas fa-mobile"></i>收到的简历</a></li>
+                               <li><a href="/dashboard/comp_post_new_job"><i class="fas fa-user-plus"></i>发布职位</a></li>
+                               <li><a href="/dashboard/message"><i class="fas fa-envelope"></i>消息</a></li>
+                               <li><a href="/dashboard/pricing_plans"><i class="fas fa-tag"></i>VIP</a></li>
                             </ul>
                             <ul class="feedlist logout_link jb_cover">
                                 <li><a href="javascript:void(0)" onclick="logout()"><i class="fas fa-power-off"></i>退出登录</a></li>
-                                <!--<li>-->
+                               <!--<li>-->
                                     <!--<a href="#" data-toggle="modal" data-target="#myModal"><i class="fas fa-trash-alt"></i>删除账户-->
                                 <!--</a>-->
                                 <!--</li>-->
 
+
                             </ul>
                         </div>
                     </div>
-                    <div class="modal fade delete_popup" id="myModal" role="dialog">
+					<div class="modal fade delete_popup" id="myModal" role="dialog">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -585,7 +587,7 @@ inelevated the..</a></h3>
 
                                             </div>
                                             <div class="cancel_wrapper">
-                                                <a href="#" class="" data-dismiss="modal">cancel</a>
+                                                <a href="#" data-dismiss="modal">cancel</a>
                                             </div>
                                             <div class="login_remember_box jb_cover">
                                                 <label class="control control--checkbox">You accepts our <a href="#">Terms and Conditions </a> and <a href="#">Privacy Policy</a>
@@ -604,103 +606,204 @@ inelevated the..</a></h3>
                 <div class="col-lg-9 col-md-12 col-sm-12 col-12">
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                            <div class="job_main_overflow jb_cover">
-                                <div class="latest_job_overlow jb_cover">
-                                    <div class="manage_jobs_wrapper jb_cover">
-                                        <div class="job_list mange_list applications_recent">
-                                            <h6>收 到 的 简 历</h6>
+                            <div class="job_listing_left_fullwidth jb_cover">
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                                        <div class="jp_job_post_side_img">
+                                            <img id="logo" style="width: 100px;height: 100px" th:if="${company.logo}==null" src="/dashboard/images/ws.png" alt="post_img">
+                                            <img id="logo" style="width: 100px;height: 100px"  th:if="${company.logo}!=null" th:src="${company.logo}">
+                                        </div>
+                                        <div class="jp_job_post_right_cont edit_profile_wrapper">
+                                            <h4>JPEG or PNG 500x500px 的公司logo</h4>
+
+                                            <div class="width_50">
+                                                <input type="hidden" id="save_image" name="srcimage" onclick="upload(1)" style="display:none;"/>
+                                                <a href="#" onclick="saveImage(1);return false;">确认图片</a>
+                                                <input type="file" id="file" name="srcfile"  style="display:none;"/>
+                                                <a style="float: right" href="#" onclick="addImage(1);return false;">上传图片</a>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div style="float: left;margin-top: 6px" class="col-lg-4 col-md-6 col-sm-12 col-12">
+
+                                </div>
+                            </div>
+                            <div class="browse_img_banner jb_cover">
+
+                                <div class="jp_job_post_side_img">
+                                    <img id="biglogo" th:value="${picture.id}" style="width: 300px;height: 100px"  th:if="${picture.pictureUrl}==null" src="/dashboard/images/banner.png" >
+                                    <img id="biglogo" th:value="${picture.id}" style="width: 300px;height: 100px"  th:if="${picture.pictureUrl}!=null" th:src="${picture.pictureUrl}">
+                                </div>
+
+                                <div class="jp_job_post_right_cont edit_profile_wrapper">
+                                    <h4>JPEG or PNG 1920x300px 的公司主页图片</h4>
+
+                                    <div class="width_50">
+                                        <input type="hidden" id="save_image1" name="srcimage1" onclick="upload(2)" style="display:none;"/>
+                                        <a href="#" onclick="saveImage(2);return false;">确认图片</a>
+                                        <input type="file" id="file1" name="srcfile1"  style="display:none;"/>
+                                        <a style="float: right" href="#" onclick="addImage(2);return false;">上传图片</a>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="browse_img_banner jb_cover">
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                        <div class="contect_form3">
+                                            <label>公司名称</label>
+                                            <input th:value="${company.companyName}" type="text" name="companyName" placeholder="Webstrot">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                        <div class="contect_form3">
+                                            <label>邮箱</label>
+                                            <input th:value="${company.companyEmail}" type="email" name="companyEmail" placeholder="webstrot@example.com">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                        <div class="contect_form3">
+                                            <label>电话</label>
+                                            <input th:value="${company.contactsPhone}" type="text" name="contactsPhone" placeholder="+91 9098085819">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                        <div class="contect_form3">
+                                            <label>公司类型</label>
+                                            <input th:value="${company.companyType}" type="email" name="companyType" placeholder="www.webstrot.com">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                        <div class="contect_form3">
+                                            <label>联系人</label>
+                                            <input th:value="${company.contacts}" type="text" name="contacts" placeholder="联系人">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-12 col-12">
                                         <div class="select_box">
-                                            <label> 行 业 </label>
-                                            <select  style="width: 160px;height: 40px;" id="industries">
-                                                <option  value="-1">所有</option>
-                                                <option th:each="i,index:${list}" th:value="${index.index}" th:text="${i['industries'].industriesName}">full time</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div  style="float: left;margin-top: 6px" class="col-lg-4 col-md-6 col-sm-12 col-12">
-                                        <div  class="select_box">
-                                            <label> 职 位 名</label>
-                                            <select  style="width: 160px;height: 40px; " id="jobaaa">
-                                                <option value="0">所有</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div style="float: left" class="col-lg-4 col-md-6 col-sm-12 col-12">
-                                        <div style="margin-bottom: 20px;margin-left: 35px;" class="header_btn search_btn jb_cover">
-                                            <a   href="javascript:void(0);" onclick="selectbyJobId()"> 查 找 </a>
-                                        </div>
-                                    </div>
-                                    <div  style="float: left" class="col-lg-2 col-md-2 col-sm-12 col-12">
-                                        <div id="unread" style="margin-bottom: 20px;margin-left: 10px;" class="header_btn search_btn jb_cover">
-                                            <li style="display: none" value="0"></li>
-                                            <a style="width: 100px;" href="javascript:void(0);" onclick="changeStatus(0)" > 未 读 </a>
-                                        </div>
-                                    </div>
-                                    <div  style="float: left" class="col-lg-2 col-md-2 col-sm-12 col-12">
-                                        <div id="read" style="margin-bottom: 20px;margin-left: 10px;" class="header_btn search_btn jb_cover">
-                                            <a style="width: 100px;background:transparent;color: #ff3366;"  href="javascript:void(0);" onclick="changeStatus(1)"> 已 读 </a>
-                                        </div>
-                                    </div>
-                                    <div  th:fragment="joblistdiv" id="joblistdiv">
-                                    <div th:each="r:${pages.list}" th:id="${r.id}"  class="latest_job_box jb_cover">
-                                        <div   class="job_list recent_app_1">
-                                            <div class="recent_img">
-                                                <img th:if="${r.avatar==null}" src="/dashboard/images/rs1.jpg" alt="post_img">
-                                                <img th:if="${r.avatar!=null}" th:src="${r.avatar}" alt="post_img">
-                                            </div>
-                                            <div class="recent_cntnt">
-                                                <h6><a th:href="'/user/visitResume?resumeId='+${r.id}" th:text="${r.name}">luca wallace</a></h6>
-                                                <ul>
-                                                    <li ><i class="fas fa-calendar"></i>&nbsp;&nbsp;<p style="display: inline-block" th:text="${r.graduateSchool}"></p></li>
-                                                    <li ><i class="fas fa-calendar"></i>&nbsp;&nbsp;<p style="display: inline-block" th:text="${r.salary}+'元'"></p></li>
-                                                    <li ><i class="fas fa-calendar"></i>&nbsp;&nbsp;<p style="display: inline-block" th:text="${r.job}"></p></li>
-                                                    <li ><i class="fas fa-calendar"></i>&nbsp;&nbsp;<p style="display: inline-block" th:text="${r.workExperience}+'年'"></p></li>
+                                            <label>省</label>
+                                            <div class="nice-select" tabindex="0">
+                                                <span id="province" class="current" >请选择</span>
+                                                <ul style="height:300px;overflow-y:scroll;" class="list">
+                                                    <li  value="-1" class="option selected">请选择</li>
+                                                    <li class="option" th:each="p:${province}" th:value="${p.id}" th:text="${p.name}">请选择</li>
                                                 </ul>
                                             </div>
                                         </div>
-
-                                        <div class="job_list_next recent_app_1">
-                                            <div class="header_btn download_btn_wrapper jb_cover">
-                                                <ul>
-                                                    <li>
-                                                        <a href="#" style="width: 110px"><i class="fas fa-file-download"></i>下载简历</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0);" th:onclick="'deleteResume('+${r.id}+')'"> <i class="fas fa-envelope"></i>删除</a>
-                                                    </li>
-
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-12 col-12">
+                                        <div class="select_box">
+                                            <label>市</label>
+                                            <div class="nice-select" tabindex="0">
+                                                <span id="city" class="current" >请选择</span>
+                                                <ul style="height:300px;overflow-y:scroll;" class="list">
+                                                    <li  value="-1" class="option selected">请选择</li>
                                                 </ul>
                                             </div>
-
                                         </div>
-
                                     </div>
-                                    <div class="blog_pagination_section jb_cover">
-                                        <ul>
-                                            <li>
-                                                <a href="javascript:void(0);" th:onclick="'selectbyJobId('+${pages.prePage}+')'" class="prev"> <i class="flaticon-left-arrow"></i> </a>
-                                            </li>
-                                            <li><a href="javascript:void(0);" onclick="selectbyJobId(1)">首页</a></li>
-                                            <!--<li class="third_pagger"><a href="#">2</a>-->
-                                            <!--</li>-->
-                                            <span  th:each="p:${pages.navigatepageNums}" >
-                                            <li  th:if="${pages.pageNum == p}"  class="third_pagger">
-                                                <a th:text="${p}" th:onclick="'selectbyJobId('+${p}+')'"  href="javascript:void(0);">3</a>
-                                            </li>
-                                            <li  th:if="${pages.pageNum != p}"  class="d-block d-sm-block d-md-block d-lg-block">
-                                                <a th:text="${p}" th:onclick="'selectbyJobId('+${p}+')'"  href="javascript:void(0);">3</a>
-                                            </li>
-                                            </span>
-                                            <li><a href="javascript:void(0);" th:onclick="'selectbyJobId('+${pages.pages}+')'">尾页</a></li>
-                                            <li>
-                                            <a href="javascript:void(0);" th:onclick="'selectbyJobId('+${pages.nextPage}+')'" class="next"> <i class="flaticon-right-arrow"></i> </a>
-                                            </li>
-
-                                        </ul>
+                                    <div class="col-lg-4 col-md-4 col-sm-12 col-12">
+                                        <div class="select_box">
+                                            <label>县/区</label>
+                                            <div class="nice-select" tabindex="0">
+                                                <span id="district" class="current" >请选择</span>
+                                                <ul style="height:300px;overflow-y:scroll;" class="list">
+                                                    <li  value="-1" class="option selected">请选择</li>
+                                                </ul>
+                                            </div>
+                                        </div>
                                     </div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                                        <div class="contect_form3">
+                                            <label>详 细 地 址</label>
+                                            <input th:value="${company.detailedAddress}" type="text" name="detailedAddress" placeholder="所在街道/门牌号">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <div class="job_filter_category_sidebar company_wrapper jb_cover">
+                                        <div class="job_filter_sidebar_heading jb_cover">
+                                            <h1>about us <span><a href="#" data-toggle="modal" data-target="#myModal2"><i class="fas fa-edit"></i></a></span></h1>
+                                            <div class="modal fade delete_popup company_popup" id="myModal2" role="dialog">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                        <div class="row">
+                                                            <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+
+                                                                <div class="delett_cntn jb_cover">
+                                                                    <h1><i class="fas fa-edit"></i>关于我们</h1>
+
+                                                                    <div class="category_wrapper jb_cover">
+                                                                        <div class="row">
+                                                                            <div class="col-lg-3 col-md-3 col-sm-12 col-12">
+                                                                                <div class="category_lavel jb_cover">
+                                                                                    <p>write yourself:</p>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-9 col-md-9 col-sm-12 col-12">
+                                                                                <div class="delete_jb_form">
+                                                                                    <textarea class="require" id="aboutus" name="message" rows="5" placeholder="Write Yourself"></textarea>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="padder_top jb_cover"></div>
+                                                                    <div class="header_btn search_btn applt_pop_btn">
+
+                                                                        <a onclick="savemessage()" data-dismiss="modal" href="#">保存</a>
+
+                                                                    </div>
+                                                                    <div class="cancel_wrapper">
+                                                                        <a href="#" data-dismiss="modal">取消</a>
+                                                                    </div>
+
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div th:utext="${company.companyDesc}" id="aboutusMessage" class="job_overview_header pdd jb_cover">
+                                            <p>Google is and always will be an engineering company. We hire people with a broad set of icalskills who are ready to tackle some of technology's greatest challenges and make an impact on milions, if not billions, of users. At Google, engineers not only revolutionize search, they routinely work on massive scalability and storage solutions,
+                                                <br>
+                                                <br> large-scale applications and rely new platforms for developers around the world. From AdWords to rome, Android to Ye, Social to Local, Google engineers are changing the world. From AdWords to Chrome, Aoid to Ye, Social to.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <div class="job_filter_category_sidebar company_wrapper jb_cover">
+                                        <div class="job_filter_sidebar_heading jb_cover">
+                                            <h1>公司 相册</h1>
+                                        </div>
+                                        <div class="job_overview_header pdd jb_cover">
+                                            <ul class="image_gallery jb_cover">
+                                                <input id="picuppp" style="display: none" type="file"/>
+                                                <li th:each="pic:${pictures}">
+                                                    <img style="width: 150px;height: 150px" th:value="${pic.id}" th:src="${pic.pictureUrl}" src="/dashboard/images/gallery1.jpg" alt="img"><br>
+                                                    <a value="0" href="javascript:void(0)" onclick="deletePicture(this)"><i style="color: #ff3366" class="fas fa-trash-alt"></i></a>
+                                                </li>
+                                            </ul>
+                                            <div style="float: left" class="header_btn search_btn jb_cover">
+                                                <a href="javascript:void(0)" onclick="addPictures()">添加图片</a>
+                                                <a style="margin-left: 30px" href="javascript:void(0)" onclick="confirmPictures()">确认图片</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 20px" class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <div class="login_remember_box jb_cover">
+                                        <div class="header_btn search_btn jb_cover">
+                                            <a href="javascript:void(0);" onclick="saveUpdate()"> 创 建 企 业</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -847,7 +950,7 @@ inelevated the..</a></h3>
     </div>
 
     <!-- footer Wrapper End -->
-    <!-- chat box Wrapper start -->
+	 <!-- chat box Wrapper start -->
 	<div id="chat-circle" class="btn btn-raised"> 
 		<i class="fas fa-comment-alt"></i>
 	</div>
@@ -872,7 +975,15 @@ inelevated the..</a></h3>
   </div>
   <!-- chat box Wrapper end -->
     <!--custom js files-->
-
+    <script>
+        function savemessage() {
+           var message =  $("#aboutus").val()
+            message = message.replace(/\r\n/g,"<br>")
+            message = message.replace(/\n/g,"<br>");
+            message = message.replace(/\s/g,"&nbsp;");
+            $("#aboutusMessage").html(message)
+        }
+    </script>
     <script src="/dashboard/js/jquery-3.3.1.min.js"></script>
     <script src="/dashboard/js/bootstrap.min.js"></script>
     <script src="/dashboard/js/modernizr.js"></script>
@@ -885,91 +996,346 @@ inelevated the..</a></h3>
     <script src="/dashboard/js/Chart.bundle.js"></script>
     <script src="/dashboard/js/jquery.inview.min.js"></script>
     <script src="/dashboard/js/jquery.magnific-popup.js"></script>
-    <!--<script src="/dashboard/js/jquery.nice-select.min.js"></script>-->
+    <script src="/dashboard/js/jquery.nice-select.min.js"></script>
     <script src="/dashboard/js/imagesloaded.pkgd.min.js"></script>
     <script src="/dashboard/js/isotope.pkgd.min.js"></script>
     <script src="/dashboard/js/custom.js"></script>
 
     <script src="/js/public.js"></script>
     <script>
-        $("#industries").change(function () {
-            var index= $("#industries").val();
-            var  a = $("#jobaaa");
-            if (index!=-1){
+        $("#province").bind("DOMNodeInserted",function () {
+            var parentId= $("#province").parent().find(".option.selected").val();
+            if (parentId !=-1){
                 $.ajax({
-                    url:"comp_applicationsAPIResult",
-                    type:"POST",
-                    dataType:"json",
-                    data:{"index":index},
+                    url: "Area_list",
+                    type: "POST",
+                    dataType: "json",
+                    data: {"parentId": parentId},
                     success:function (APIResult) {
-                        if (200 == APIResult.code){
-                            a.children().remove();
+                        if (APIResult.data==null){
+                            $("#city").parent().find("ul").empty();
+                            $("#city").text("")
+                            $("#district").parent().find("ul").empty();
+                            $("#district").text("")
+                        }else {
+                            var city = $("#city")
+                            city.parent().find("ul").empty();
                             for (var i = 0; i <APIResult.data.length ; i++) {
-                                var jobid = APIResult.data[i].id;
-                                var jobname = APIResult.data[i].jobName;
-                                var option = document.createElement("option");
-                                $(option).val(jobid);
-                                $(option).text(jobname);
-                                a.append(option);
+                                var li = document.createElement("li");
+                                if ( i == 0){
+                                    $(li).addClass("option selected")
+                                }else {
+                                    $(li).addClass("option")
+                                }
+                                $(li).val(APIResult.data[i].id);
+                                $(li).text(APIResult.data[i].name);
+                                city.parent().find("ul").append(li);
                             }
+                            city.text(APIResult.data[0].name)
                         }
+
                     }
                 })
             }else {
-                a.children().remove();
-                var option = document.createElement("option");
-                $(option).val(0);
-                $(option).text("所有");
-                a.append(option);
+                $("#city").parent().find("ul").empty();
+                var li = document.createElement("li");
+                $(li).addClass("option selected")
+                $(li).val(-1);
+                $(li).text("请选择");
+                $("#city").parent().find("ul").append(li);
+                $("#city").text("请选择")
             }
         })
-
-        function selectbyJobId(indexpage) {
-            var jobid= $("#jobaaa").val();
-            var a = $("#joblist");
-            var status = $("#unread").find("li").val();
-            $.ajax({
-                url:"comp_applications_serch",
-                type:"POST",
-                data:{"jobid":jobid,
-                      "indexpage":indexpage,
-                      "status":status},
-                success: function (data) {
-                    $("#joblistdiv").html(data)
-                }
-            })
-        }
-        function changeStatus(status) {
-            var indexpage = $("#third_pagger").children().text();
-            if (status == 0){
-                $("#read").children().css({"background":"transparent","color":"#ff3366"});
-                $("#unread").find("li").attr("value","0") ;
-                $("#unread").children().css({"background":"","color":""});
-            } else {
-                $("#unread").find("li").attr("value","1");
-                $("#unread").children().css({"background":"transparent","color":"#ff3366"});
-                $("#read").children().css({"background":"","color":""});
-            }
-            selectbyJobId(indexpage)
-        }
-        function deleteResume(id) {
-            var conf= confirm("确认删除？");
-            if (conf){
+        $("#city").bind("DOMNodeInserted",function () {
+            var parentId= $("#city").parent().find(".option.selected").val();
+            if (parentId !=-1){
                 $.ajax({
-                    url:"updateResumebyId",
-                    type:"post",
-                    dataType:"json",
-                    data:{"id":id},
+                    url: "Area_list",
+                    type: "POST",
+                    dataType: "json",
+                    data: {"parentId": parentId},
                     success:function (APIResult) {
-                        alert(APIResult.message);
-                        if (200 == APIResult.code){
-                            $("#"+id).attr("style","display:none;")
+                        var district = $("#district")
+                        district.text(APIResult.data[0].name)
+                        district.parent().find("ul").empty();
+                        for (var i = 0; i <APIResult.data.length ; i++) {
+                            var li = document.createElement("li");
+                            if ( i == 0){
+                                $(li).addClass("option selected")
+                            }else {
+                                $(li).addClass("option")
+                            }
+                            $(li).val(APIResult.data[i].id);
+                            $(li).text(APIResult.data[i].name);
+                            district.parent().find("ul").append(li);
                         }
+
                     }
                 })
+            }else {
+                $("#district").parent().find("ul").empty();
+                var li = document.createElement("li");
+                $(li).addClass("option selected")
+                $(li).val(-1);
+                $(li).text("请选择");
+                $("#district").parent().find("ul").append(li)
+                $("#district").text("请选择")
+            }
+        })
+    </script>
+    <script type="text/javascript">
+
+        //选择图片
+        function addImage(i){
+            if (i==1){
+                $("#file").click();
+            } else {
+                $("#file1").click();
             }
         }
 
+        //选择图片
+        function saveImage(i){
+            if (i==1){
+                $("#save_image").click();
+            } else {
+                $("#save_image1").click();
+            }
+        }
+
+        //上传图片，获取服务器图片路由
+        function upload(i) {
+            if (i==1){
+                var formData = new FormData();
+                var file = document.getElementById("file").files[0];
+                formData.append("file", file);
+                $.ajax({
+                    url:"/upload",
+                    type:"POST",
+                    data:formData,
+                    processData : false,
+                    contentType : false,
+                    dataType : 'json',
+                    async : false,
+                    success : function (result) {
+                        console.log(result);
+                        if (result.code == 200) {
+                            $('#file').parent().parent().parent().find("img").attr("src", result.message);
+                            alert("图片上传成功")
+                        } else {
+                            alert("error!");
+                        }
+                    }
+                  });
+            }else {
+                var formData = new FormData();
+                var file = document.getElementById("file1").files[0];
+                formData.append("file", file);
+                $.ajax({
+                    url:"/upload",
+                    type:"POST",
+                    data:formData,
+                    processData : false,
+                    contentType : false,
+                    dataType : 'json',
+                    async : false,
+                    success : function (result) {
+                        console.log(result);
+                        if (result.code == 200) {
+                            $('#file1').parent().parent().parent().find("img").attr("src", result.message);
+                            alert("图片上传成功")
+                        } else {
+                            alert("error!");
+                        }
+                    }
+                });
+            }
+        }
+
+        $('#file').change(function(e) {
+            var _URL = window.URL || window.webkitURL;
+            var file, img;
+            if ((file = this.files[0])) {
+                img = new Image();
+                img.onload = function() {
+                    $('#file').parent().parent().parent().find("img").attr("src",this.src);
+                };
+                img.src = _URL.createObjectURL(file);
+            }
+            alert("图片符合要求");
+        });
+        $('#file1').change(function(e) {
+            var _URL = window.URL || window.webkitURL;
+            var file, img;
+            if ((file = this.files[0])) {
+                img = new Image();
+                img.onload = function() {
+                    $('#file1').parent().parent().parent().find("img").attr("src",this.src);
+                };
+                img.src = _URL.createObjectURL(file);
+            }
+            alert("图片符合要求");
+        })
+
+    </script>
+    <script>
+        function saveUpdate() {
+            if (confirm("确认申请吗？")) {
+
+                var logo = $("#logo").attr("src");
+                var companyName = $("input[name='companyName']").val();
+                var companyEmail = $("input[name='companyEmail']").val();
+                var contactsPhone = $("input[name='contactsPhone']").val();
+                var companyType = $("input[name='companyType']").val();
+                var contacts = $("input[name='contacts']").val();
+                var companyAddress =$("#province").text()+$("#city").text()+ $("#district").text();
+                var detailedAddress = $("input[name='detailedAddress']").val();
+                var companyDesc = $("#aboutusMessage").html();
+
+                if(logo==""||biglogo==""||companyName==""||companyEmail==""||contactsPhone==""
+                    ||companyType==""||contacts==""||companyAddress=="请选择请选择请选择"||companyAddress==""
+                    ||companyDesc==""){
+                    alert("请将所有项填写完")
+                }else {
+                    $.ajax({
+                        url: "addCompanyinfo",
+                        type: "POST",
+                        dataType: "json",
+                        data: {"logo": logo, "companyName": companyName, "companyEmail": companyEmail,
+                            "contactsPhone": contactsPhone, "companyType": companyType, "contacts": contacts,
+                            "companyAddress": companyAddress, "detailedAddress": detailedAddress, "companyDesc": companyDesc,
+                        },
+                        success:function (APIResult) {
+                            if (APIResult.code == 200){
+                              alert(APIResult.message);
+                                setCookie(APIResult.data.header,APIResult.data.token);
+                                window.location.href = "/dashboard/comp_employer_dashboard";
+                                uploadPictures();
+                            } else {
+                                alert(APIResult.message)
+                            }
+                        }
+                    })
+                }
+
+            }
+
+
+        }
+    </script>
+    <script>
+      function  deletePicture(obj){
+          if (confirm("确认删除？")){
+              $(obj).parent().css({"display":"none"});
+              $(obj).parent().find("a").attr("value","-1")
+          }
+      }
+      function addPictures() {
+          $(".image_gallery.jb_cover").find("input").click()
+      }
+
+      $(".image_gallery.jb_cover").find("input").change(function () {
+          var _URL = window.URL || window.webkitURL;
+          var file, img;
+          if ((file = this.files[0])) {
+              img = new Image();
+              img.onload = function() {
+                  addElement(this.src);
+              };
+              img.src = _URL.createObjectURL(file);
+          }
+          alert("图片符合要求");
+      });
+
+      function addElement(src,file) {
+          var br = document.createElement("br");
+          var img = document.createElement("img");
+          $(img).attr("src",src);
+          $(img).css({"height":"150px","width":"150px"});
+          $(img).attr("value","0");
+         var li = document.createElement("li");
+         var a = document.createElement("a");
+          $(a).attr("value","1");
+          $(a).attr("href","javascript:void(0)");
+          $(a).attr("onclick","deletePicture(this)");
+          var i = document.createElement("i");
+          $(i).addClass("fas fa-trash-alt");
+          $(i).css({"color":"#ff3366"});
+          // var input = document.createElement("input");
+          // $(input).css({"display":"none"})
+          // $(input).attr("type","file")
+          // $(input).attr("files",file)
+          $(a).append(i);
+          $(li).append(img);
+          $(li).append(br);
+          $(li).append(a);
+          $(".image_gallery.jb_cover").append(li);
+      }
+      function confirmPictures() {
+              var a = $(".image_gallery.jb_cover").find("li:last-child")
+              if (a.find("img").attr("value")==0&&a.find("a").attr("value")==1){
+                  var formData = new FormData();
+                  var file = document.getElementById("picuppp").files[0];
+                  formData.append("file", file);
+                  $.ajax({
+                      url:"/upload",
+                      type:"POST",
+                      data:formData,
+                      processData : false,
+                      contentType : false,
+                      dataType : 'json',
+                      async : false,
+                      success : function (result) {
+                          console.log(result);
+                          if (result.code == 200) {
+                              a.find("img").attr("src", result.message);
+                              alert("图片上传成功")
+                          } else {
+                              alert("error!");
+                          }
+                      }
+                  });
+              }
+      }
+      function uploadPictures() {
+          var biglogo = $("#biglogo").attr("src");
+          var id = $("#biglogo").attr("value");
+          if (id == ""){
+              $.ajax({
+                  url: "comp_pictures_add",
+                  type: "POST",
+                  dataType: "json",
+                  data: {"ownerType": 2,"pictureType": 4,"pictureUrl": biglogo},
+              });
+          } else {
+              $.ajax({
+                  url: "comp_pictures_update",
+                  type: "POST",
+                  dataType: "json",
+                  data: {"id": id,"ownerType": 2,"pictureType": 4,"pictureUrl": biglogo},
+              });
+          }
+
+          $(".image_gallery.jb_cover").find("li").each(function () {
+             var li =  $(this)
+              var imgsrc = li.find("img").attr("src")
+             if (li.find("img").attr("value")==0&&li.find("a").attr("value")==1){
+                 $.ajax({
+                     url: "comp_pictures_add",
+                     type: "POST",
+                     dataType: "json",
+                     data: {"ownerType": 2,"pictureType": 3,"pictureUrl": imgsrc},
+                 });
+             } else if(li.find("img").attr("value")!=0&&li.find("a").attr("value")==-1){
+                 $.ajax({
+                     url: "comp_pictures_update",
+                     type: "POST",
+                     dataType: "json",
+                     data: {"id": li.find("img").attr("value"),"ownerType": 2,"pictureType": 3,"pictureUrl": imgsrc,"status": 0},
+                 });
+             }
+          })
+      }
     </script>
     <!-- custom js-->
 </body>
