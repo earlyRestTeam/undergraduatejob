@@ -290,7 +290,7 @@ public class ICompanyInfoServicesImpl implements ICompanyInfoServices {
             criteria.andAulStatusEqualTo(aulStatus);
         }
         example.setOrderByClause(companySerchEntity.getOrderExample()+companySerchEntity.getOrder());
-        PageHelper.startPage(indexpage,2);
+        PageHelper.startPage(indexpage,20);
         List<Company> companies = companyMapper.selectByExample(example);
         PageInfo pageInfo = new PageInfo(companies,5);
         return pageInfo;

@@ -70,7 +70,7 @@ public class AdminServiceImpl implements IAdminServices {
         try{
             UserDetails details = adminDetailsService.loadUserByUsername(username);
 
-            boolean b = encoder.matches(details.getPassword(), password);
+            boolean b = encoder.matches(password, details.getPassword());
             if(!b){
                 logger.warn("password not true : "+username);
                 throw new BadCredentialsException("用户名或密码不正确");
