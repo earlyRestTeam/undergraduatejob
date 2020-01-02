@@ -277,10 +277,10 @@
           <img th:src="@{${pages.map.company.logo}}" alt="post_img" style="width: 102px;height:102px;"/>
          </div>
          <div class="jp_job_post_right_cont web_text">
-          <h4 th:text="${pages.map.company.companyType}"></h4>
+          <h4 th:text="${pages.map.company.companyName}"></h4>
           <ul>
            <li><i class="flaticon-location-pointer" th:text="${pages.map.company.companyAddress}"></i></li>
-           <li><i class="fa fa-th-large" th:text="${pages.map.company.companyType}"></i></li>
+<!--           <li><i class="fa fa-th-large" th:text="${pages.map.company.companyType}"></i></li>-->
           </ul>
          </div>
         </div>
@@ -383,7 +383,7 @@
                  </div>
                 </div>
                </li>
-               <li><a href="job_single" th:text="${job.type}"></a></li>
+               <li><a href="job_single" th:text="${job.jobType}"></a></li>
                <li><a href="#">申请</a></li>
               </ul>
              </div>

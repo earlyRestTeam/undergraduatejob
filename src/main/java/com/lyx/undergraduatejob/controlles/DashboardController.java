@@ -368,6 +368,7 @@ public class DashboardController {
         jobSearchEntity.setCompanyId(companyid);
         jobSearchEntity.setStatus(1);
         jobSearchEntity.setAulStatus(null);
+
         PageInfo<Job> jobPageInfo = jobServices.selectJobByJobSearchEntityWithOutCompany(indexpage, pagesize, jobSearchEntity);
         request.setAttribute("pages",jobPageInfo);
         return "dashboard/comp_employer_manage_jobs";
@@ -420,7 +421,7 @@ public class DashboardController {
     public APIResult addNewJob(Job job){
         Integer companyid = loginEntityHelper.getOnlineEntity().getCompanyId();
         if (companyid == null){
-            companyid =0;
+            return APIResult.genFailApiResponse500("穷逼没有公司，请先注册公司");
         }
         job.setCompanyId(companyid);
         Company company = companyInfoServices.queryCompanyById(companyid);

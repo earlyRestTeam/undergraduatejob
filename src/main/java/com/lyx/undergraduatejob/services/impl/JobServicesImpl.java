@@ -368,7 +368,7 @@ public class JobServicesImpl implements IJobServices {
         if( jobSearchEntity.getPartFull() != null && jobSearchEntity.getPartFull() > 0)
             criteria.andPartFullEqualTo(jobSearchEntity.getPartFull());
         //公司id
-        if(jobSearchEntity.getCompanyId() != null && jobSearchEntity.getCompanyId() > 0)
+        if(jobSearchEntity.getCompanyId() != null && jobSearchEntity.getCompanyId() >= 0)
             criteria.andCompanyIdEqualTo(jobSearchEntity.getCompanyId());
         RentValueBlock rentValueBlock = RentValueBlock.getRentValueBlock(jobSearchEntity.getSalaryArea());
 

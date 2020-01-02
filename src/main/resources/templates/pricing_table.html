@@ -449,12 +449,12 @@
  <script>
   function CompanyVIP(flag) {
    $.ajax({
-    url:"/iscompany",
+    url:"/user/iscompany",
     type:"post",
     dataType:"json",
     success:function(result){
       if(result.result){
-         window.location.href = "/topay?flag=1";
+         window.location.href = "/user/topay?flag=1";
       }else{
         window.confirm(result.message);
       }

@@ -363,7 +363,7 @@
                   <a @click="changeStatus(index,$event)" ><i class="far fa-heart"></i></a>
                  </div></li>
                 <li><a v-bind:href="['/job_single?jobid='+job.id]" >{{job.partFull == 1 ? '兼职' : '全职' }}</a></li>
-                <li><a data-toggle="modal" data-target="#myModal01">应聘</a></li>
+                <li><a data-toggle="modal" data-target="#myModal6" @click="apply_job(job.id,job.companyId)">应聘</a></li>
                </ul>
               </div>
               <div class="modal fade apply_job_popup" id="myModal01" role="dialog">
@@ -411,6 +411,65 @@
 
         <div id="list" class="tab-pane fade">
          <div class="row">
+          <!-- //模态框-->
+          <div class="modal fade apply_job_popup" id="myModal6" role="dialog">
+           <div class="modal-dialog">
+            <div class="modal-content">
+             <button type="button" class="close" data-dismiss="modal">&times;</button>
+             <div class="row">
+              <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+
+               <div class="apply_job jb_cover">
+                <h1>应聘这个职位 :</h1>
+                <input id="jobId" type="hidden"><!-- 职位id   -->
+                <input id="companyId" type="hidden"><!-- 公司id   -->
+                <div class="search_alert_box jb_cover">
+
+                 <div class="apply_job_form">
+                  <span type="text">请选择要提交的简历：</span>
+                 </div>
+                 <div class="apply_job_form">
+                  <!--                                                        <input type="text" name="name" placeholder="full name">-->
+                  <div class="nice-select" tabindex="0">
+                   <span id="apply_resumeId" class="current"></span>
+                   <ul id="resume_list" class="list">
+                    <li class="option" value=""></li>
+                   </ul>
+                  </div>
+                 </div>
+
+                 <!--                                                    <div class="apply_job_form">-->
+                 <!--                                                        <textarea class="form-control" name="message" placeholder="Message"></textarea>-->
+                 <!--                                                    </div>-->
+
+                 <!--                                                    <div class="resume_optional jb_cover">-->
+                 <!--                                                        <p>resume (optional)</p>-->
+                 <!--                                                        <div class="width_50">-->
+                 <!--                                                            <input type="file" id="input-file-now-custom-6" class="dropify" data-height="90" /><span class="post_photo">upload resume</span>-->
+                 <!--                                                        </div>-->
+                 <!--                                                        <p class="word_file"> microsoft word or pdf file only (5mb)</p>-->
+                 <!--                                                    </div>-->
+
+
+                </div>
+
+                <div class="header_btn search_btn applt_pop_btn jb_cover ajt">
+
+                 <a href="javascript:" onclick="window.open('/user/addResume')">新建简历</a>
+
+                </div>
+                <div class="header_btn search_btn applt_pop_btn jb_cover ajt">
+
+                 <a href="javascript:" onclick="submit_resume()">提交简历</a>
+
+                </div>
+               </div>
+              </div>
+             </div>
+            </div>
+           </div>
+          </div>
+
           <div v-for="(job,index) in jobs" class="col-lg-12 col-md-12 col-sm-12 col-12">
            <div class="job_listing_left_fullwidth jb_cover">
             <div class="row">
@@ -436,45 +495,45 @@
                   <a @click="changeStatus(index,$event)"><i class="far fa-heart"></i></a>
                  </div></li>
                 <li><a v-bind:href="['/job_single?jobid='+job.id]">{{job.partFull == 2 ? '兼职' : '全职' }}</a></li>
-                <li><a  data-toggle="modal" data-target="#myModal2">应聘</a></li>
+                <li><a  data-toggle="modal" data-target="#myModal6" @click="apply_job(job.id,job.companyId)">应聘</a></li>
                </ul>
               </div>
-              <div class="modal fade apply_job_popup" id="myModal2" role="dialog">
-               <div class="modal-dialog">
-                <div class="modal-content">
-                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                 <div class="row">
-                  <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                   <div class="apply_job jb_cover">
-                    <h1>apply for this job :</h1>
-                    <div class="search_alert_box jb_cover">
-                     <div class="apply_job_form">
-                      <input type="text" name="name" placeholder="full name" />
-                     </div>
-                     <div class="apply_job_form">
-                      <input type="text" name="Email" placeholder="Enter Your Email" />
-                     </div>
-                     <div class="apply_job_form">
-                      <textarea class="form-control" name="message" placeholder="Message"></textarea>
-                     </div>
-                     <div class="resume_optional jb_cover">
-                      <p>resume (optional)</p>
-                      <div class="width_50">
-                       <input type="file" id="input-file-now-custom-2" class="dropify" data-height="90" />
-                       <span class="post_photo">upload resume</span>
-                      </div>
-                      <p class="word_file">microsoft word or pdf file only (5mb)</p>
-                     </div>
-                    </div>
-                    <div class="header_btn search_btn applt_pop_btn jb_cover">
-                     <a href="#">apply now</a>
-                    </div>
-                   </div>
-                  </div>
-                 </div>
-                </div>
-               </div>
-              </div>
+<!--              <div class="modal fade apply_job_popup" id="myModal2" role="dialog">-->
+<!--               <div class="modal-dialog">-->
+<!--                <div class="modal-content">-->
+<!--                 <button type="button" class="close" data-dismiss="modal">&times;</button>-->
+<!--                 <div class="row">-->
+<!--                  <div class="col-lg-12 col-md-12 col-sm-12 col-12">-->
+<!--                   <div class="apply_job jb_cover">-->
+<!--                    <h1>apply for this job :</h1>-->
+<!--                    <div class="search_alert_box jb_cover">-->
+<!--                     <div class="apply_job_form">-->
+<!--                      <input type="text" name="name" placeholder="full name" />-->
+<!--                     </div>-->
+<!--                     <div class="apply_job_form">-->
+<!--                      <input type="text" name="Email" placeholder="Enter Your Email" />-->
+<!--                     </div>-->
+<!--                     <div class="apply_job_form">-->
+<!--                      <textarea class="form-control" name="message" placeholder="Message"></textarea>-->
+<!--                     </div>-->
+<!--                     <div class="resume_optional jb_cover">-->
+<!--                      <p>resume (optional)</p>-->
+<!--                      <div class="width_50">-->
+<!--                       <input type="file" id="input-file-now-custom-2" class="dropify" data-height="90" />-->
+<!--                       <span class="post_photo">upload resume</span>-->
+<!--                      </div>-->
+<!--                      <p class="word_file">microsoft word or pdf file only (5mb)</p>-->
+<!--                     </div>-->
+<!--                    </div>-->
+<!--                    <div class="header_btn search_btn applt_pop_btn jb_cover">-->
+<!--                     <a href="#">apply now</a>-->
+<!--                    </div>-->
+<!--                   </div>-->
+<!--                  </div>-->
+<!--                 </div>-->
+<!--                </div>-->
+<!--               </div>-->
+<!--              </div>-->
              </div>
             </div>
            </div>
@@ -771,6 +830,45 @@
             console.log(conpanyId);
            window.location.href = "/tocompanysingle?companyId="+conpanyId;
        },
+    apply_job:function(jobId, companyId){
+     $("#myModal6").modal("show");
+      var data = {"jobId": jobId};
+      $.ajax({
+       url: "/user/applyJob_resume",
+       type: "post",
+       contentType: "application/json; charset=utf-8",
+       data: JSON.stringify(data),
+       dataType: "json",
+       success: function (result) {
+        console.log("打印服务端返回的数据" + result);//打印服务端返回的数据
+        if (result.code == 200) {
+         var str1 = "";
+         //清空
+         $("#resume_list").html("");
+         if (result.data != null && result.data.length > 0) {
+          for (var i = 0; i < result.data.length; i++) {
+           console.log("简历标题：" + result.data[i].job);//打印服务端返回的数据
+           console.log("简历id：" + result.data[i].id);//打印服务端返回的数据
+           var resumeId = result.data[i].id;
+           str1 = "<li class=\"option\" value=\"" + resumeId + "\">" + result.data[i].job + "</li>";
+
+           $("#resume_list").append(str1);
+          }
+         }
+         $("#jobId").val(jobId);
+         $("#companyId").val(companyId);
+         $("#apply_resumeId").text("选择简历");
+
+        } else {
+         alert(result.message);
+        }
+       },
+       error: function (e) {
+
+        alert("服务器繁忙，稍后再试。");
+       }
+      });
+    },
    },
    computed:{
 
@@ -779,6 +877,43 @@
  </script>
 
   <!-- custom js-->
-  <script></script>
+ <!-- 应聘职位-->
+ <script type="text/javascript">
+
+  // function
+
+  <!-- 提交简历-->
+  function submit_resume() {
+   var jobId = $("#jobId").val();
+   var companyId = $("#companyId").val();
+   var resumeId = $(".selected").val();
+   if (resumeId == undefined || resumeId == null) {
+    alert("请选择简历");
+    return;
+   }
+   var receiveResume = {"resumeId": resumeId, "jobId": jobId, "companyId": companyId};
+   $.ajax({
+    url: "/user/submit_resume",
+    type: "post",
+    contentType: "application/json; charset=utf-8",
+    data: JSON.stringify(receiveResume),
+    dataType: "json",
+    success: function (result) {
+     console.log("打印服务端返回的数据" + result);//打印服务端返回的数据
+     if (result.code == 200) {
+      alert(result.message);
+      $("#myModal6").modal("hide");
+     } else {
+      alert(result.message);
+      $("#myModal6").modal("hide");
+     }
+    },
+    error: function (e) {
+     alert("服务器繁忙，稍后再试。");
+    }
+   });
+
+  }
+ </script>
  </body>
 </html>

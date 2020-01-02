@@ -50,7 +50,7 @@ public class PayController {
     @Autowired
     UsersMapper usersMapper;
 
-    @RequestMapping("topay")
+    @RequestMapping("/user/topay")
     public void sumbitOrder(Integer flag, HttpServletResponse httpResponse) throws IOException {
         String amount = null;
         String orderno = null;
@@ -211,7 +211,7 @@ public class PayController {
             }
     }
 
-    @RequestMapping("iscompany")
+    @RequestMapping("/user/iscompany")
     @ResponseBody
     public APIResult iscompany(){
         APIResult apiResult = new APIResult();
