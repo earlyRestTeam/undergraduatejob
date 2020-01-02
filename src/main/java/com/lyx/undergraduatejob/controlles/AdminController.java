@@ -323,7 +323,7 @@ public class AdminController {
     }
 
 
-    @RequestMapping("index")
+    @RequestMapping({"/","index"})
     public String index(){
         return "/admin/index";
     }
