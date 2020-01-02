@@ -46,6 +46,8 @@ public class DashboardController {
     LoginEntityHelper loginEntityHelper;
     @Autowired
     IUserServices userServices;
+    @Autowired
+    ResumeServicesImp resumeServicesImp;
     @Value("${jwt.tokenHead}")
     String tokenHead;
 //    @RequestMapping("candidate_applied_job")
@@ -152,6 +154,19 @@ public class DashboardController {
         return "dashboard/comp_applications::joblistdiv";
     }
 
+    /**
+     * 公司已读简历，并且跳转简历页面
+     * @param resumeId
+     * @param request
+     * @return
+     */
+    @RequestMapping("visitResumecomp")
+    public String visitResumecomp(Integer resumeId,HttpServletRequest request){
+        Resume resume = resumeServicesImp.queryResumeById(resumeId);
+        receiveResumeServices.updateReceiveResumebyResumeId(resume.getId(),loginEntityHelper.getOnlineEntity().getCompanyId());
+        request.setAttribute("resume",resume);
+        return "dashboard/visit_resume";
+    }
     /**
      * 级联行业和职业的下拉框
      * @param index
@@ -338,13 +353,14 @@ public class DashboardController {
     @PostMapping("updateJobPushStatus")
     @ResponseBody
     public APIResult updateJobPushStatus(Job job){
+        job.setPushTime(new Date());
         Integer companyid = loginEntityHelper.getOnlineEntity().getCompanyId();
         if (companyid == null){
             companyid =0;
         }
         Map<String, String> stringStringMap = jobServices.updateJob(job,companyid);
         if (stringStringMap.get(StaticPool.SUCCESS)!=null){
-            return APIResult.genSuccessApiResponse(stringStringMap.get(StaticPool.SUCCESS));
+            return APIResult.genSuccessApiResponse(stringStringMap.get(StaticPool.SUCCESS),job.getPushTime());
         }
         return APIResult.genFailApiResponse500(stringStringMap.get(StaticPool.ERROR));
     }

@@ -652,7 +652,7 @@ inelevated the..</a></h3>
                                                 <img th:if="${r.avatar!=null}" th:src="${r.avatar}" alt="post_img">
                                             </div>
                                             <div class="recent_cntnt">
-                                                <h6><a th:href="'/user/visitResume?resumeId='+${r.id}" th:text="${r.name}">luca wallace</a></h6>
+                                                <h6><a target="_blank" th:href="'visitResumecomp?resumeId='+${r.id}" th:text="${r.name}">luca wallace</a></h6>
                                                 <ul>
                                                     <li ><i class="fas fa-calendar"></i>&nbsp;&nbsp;<p style="display: inline-block" th:text="${r.graduateSchool}"></p></li>
                                                     <li ><i class="fas fa-calendar"></i>&nbsp;&nbsp;<p style="display: inline-block" th:text="${r.salary}+'元'"></p></li>

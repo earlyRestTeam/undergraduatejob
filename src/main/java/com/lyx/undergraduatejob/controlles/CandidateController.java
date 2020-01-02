@@ -6,10 +6,7 @@ import com.lyx.undergraduatejob.pojo.ReceiveResume;
 import com.lyx.undergraduatejob.pojo.Resume;
 import com.lyx.undergraduatejob.pojo.Users;
 import com.lyx.undergraduatejob.pojo.WorkExperience;
-import com.lyx.undergraduatejob.services.impl.ReceiveResumeServicesImpl;
-import com.lyx.undergraduatejob.services.impl.ResumeServicesImp;
-import com.lyx.undergraduatejob.services.impl.UserServicesImpl;
-import com.lyx.undergraduatejob.services.impl.WorkExperienceServicesImpl;
+import com.lyx.undergraduatejob.services.impl.*;
 import com.lyx.undergraduatejob.services.security.LoginEntityHelper;
 import com.lyx.undergraduatejob.services.security.OnlineEntity;
 import com.lyx.undergraduatejob.utils.APIResult;
@@ -37,6 +34,9 @@ import java.util.Map;
 public class CandidateController {
     Logger logger = LoggerFactory.getLogger(CandidateController.class);
 
+
+    @Autowired
+    JobServicesImpl jobServices;
     @Autowired
     UserServicesImpl userServices;
     @Autowired
@@ -243,7 +243,6 @@ public class CandidateController {
     //跳转到预览简历的页面
     @RequestMapping("/user/visitResume")
     public String visitResume(Integer resumeId,HttpServletRequest request){
-
         Resume resume = resumeServicesImp.queryResumeById(resumeId);
         request.setAttribute("resume",resume);
 
@@ -341,7 +340,7 @@ public class CandidateController {
         Integer userId = user.getId();
         System.out.println("receiveResume:------------:" + receiveResume);
         Map<String, String> re = receiveResumeServices.addReceiveResume(receiveResume,userId);
-
+        jobServices.updateIncrReceiveNum(receiveResume.getJobId(),1);
         if(re.get(StaticPool.SUCCESS) != null){
             result = APIResult.genSuccessApiResponse(re.get(StaticPool.SUCCESS));
         }else {

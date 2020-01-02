@@ -106,6 +106,7 @@ public class ReceiveResumeServicesImpl implements IReceiveResumeServices {
         }
 
         if(receiveResume.getCompanyId() != companyId){
+
             logger.error("非法访问！！！公司id："+companyId);
             result.put(StaticPool.ERROR,"服务器繁忙，删除失败");
             return result;
@@ -134,6 +135,16 @@ public class ReceiveResumeServicesImpl implements IReceiveResumeServices {
         return result;
     }
 
+    public Map<String, String> updateReceiveResumebyResumeId(Integer ResumeId, Integer companyId) {
+        Map<String,String> result = new HashMap<>();
+        ReceiveResumeExample example = new ReceiveResumeExample();
+        example.or().andResumeIdEqualTo(ResumeId).andCompanyIdEqualTo(companyId);
+        List<ReceiveResume> receiveResumes = receiveResumeMapper.selectByExample(example);
+        receiveResumes.get(0).setStatus(1);
+        receiveResumes.get(0).setId(null);
+        int i = receiveResumeMapper.updateByExampleSelective(receiveResumes.get(0), example);
+        return result;
+    }
     /**
      * 用户提交简历
      *
