@@ -283,15 +283,19 @@
                 <div class="apply_job_form">
                  <span type="text">请选择要提交的简历：</span>
                 </div>
-                <div class="apply_job_form">
-                 <!--                                                        <input type="text" name="name" placeholder="full name">-->
-                 <div class="nice-select" tabindex="0">
-                  <span id="apply_resumeId" class="current"></span>
-                  <ul id="resume_list" class="list">
-                   <li class="option" value=""></li>
-                  </ul>
-                 </div>
-                </div>
+                <select id="resume_list" style="width: 200px;height: 40px;font-size: 14px;float: left;text-align: center">
+
+                </select>
+<!--                <div class="apply_job_form">-->
+<!--                 <input type="text" name="name" placeholder="full name">-->
+<!--&lt;!&ndash;                 <div class="nice-select" tabindex="0">&ndash;&gt;-->
+<!--&lt;!&ndash;                  <span id="apply_resumeId" class="current"></span>&ndash;&gt;-->
+<!--&lt;!&ndash;                  <ul id="resume_list" class="list">&ndash;&gt;-->
+<!--&lt;!&ndash;                   <li class="option" value=""></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                  </ul>&ndash;&gt;-->
+<!--&lt;!&ndash;                 </div>&ndash;&gt;-->
+<!--                 -->
+<!--                </div>-->
 
                 <!--                                                    <div class="apply_job_form">-->
                 <!--                                                        <textarea class="form-control" name="message" placeholder="Message"></textarea>-->
@@ -796,8 +800,8 @@
            console.log("简历标题：" + result.data[i].job);//打印服务端返回的数据
            console.log("简历id：" + result.data[i].id);//打印服务端返回的数据
            var resumeId = result.data[i].id;
-           str1 = "<li class=\"option\" value=\"" + resumeId + "\">" + result.data[i].job + "</li>";
-
+           // str1 = "<li class=\"option\" value=\"" + resumeId + "\">" + result.data[i].job + "</li>";
+           str1 = "<option value=\"" + resumeId + "\">" + result.data[i].job + "</option>";
            $("#resume_list").append(str1);
           }
          }
@@ -832,8 +836,8 @@
   function submit_resume() {
    var jobId = $("#jobId").val();
    var companyId = $("#companyId").val();
-   var resumeId = $(".selected").val();
-   console.log("resumeId--------"+resumeId)
+   var resumeId = $("#resume_list").val();
+   console.log("resumeId--------"+resumeId);
    if (resumeId == undefined || resumeId == null) {
     alert("请选择简历");
     return;
@@ -850,11 +854,11 @@
      if (result.code == 200) {
       alert(result.message);
       $("#myModal6").modal("hide");
-      window.location.reload();
+      // window.location.reload();
      } else {
       alert(result.message);
       $("#myModal6").modal("hide");
-      window.location.reload();
+      // window.location.reload();
      }
     },
     error: function (e) {
@@ -865,22 +869,5 @@
   }
  </script>
 
-
- <script src="/dashboard/js/jquery-3.3.1.min.js"></script>
- <script src="/dashboard/js/bootstrap.min.js"></script>
- <script src="/dashboard/js/modernizr.js"></script>
- <script src="/dashboard/js/jquery.menu-aim.js"></script>
- <script src="/dashboard/js/plugin.js"></script>
- <script src="/dashboard/js/owl.carousel.js"></script>
- <script src="/dashboard/js/jquery.countTo.js"></script>
- <script src="/dashboard/js/dropify.min.js"></script>
- <script src="/dashboard/js/jquery-ui.js"></script>
- <script src="/dashboard/js/Chart.bundle.js"></script>
- <script src="/dashboard/js/jquery.inview.min.js"></script>
- <script src="/dashboard/js/jquery.magnific-popup.js"></script>
- <script src="/dashboard/js/jquery.nice-select.min.js"></script>
- <script src="/dashboard/js/imagesloaded.pkgd.min.js"></script>
- <script src="/dashboard/js/isotope.pkgd.min.js"></script>
- <script src="/dashboard/js/custom.js"></script>
  </body>
 </html>
