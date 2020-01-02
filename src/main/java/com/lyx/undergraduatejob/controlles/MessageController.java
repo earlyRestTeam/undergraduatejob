@@ -51,4 +51,13 @@ public class MessageController {
 
         return APIResult.genSuccessApiResponse(model);
     }
+
+    @RequestMapping("/data")
+    @ResponseBody
+    public APIResult showData(Model model){
+        Map<String, Object> map = services.querydata(2019);
+        model.addAttribute("data",map);
+
+        return APIResult.genSuccessApiResponse(model);
+    }
 }

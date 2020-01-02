@@ -13,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -45,6 +47,12 @@ public class MessageServicesImpl implements IMessageServices {
 
     @Autowired
     ComplaintMapper complaintMapper;
+
+    @Autowired
+    UsersMapper usersMapper;
+
+    @Autowired
+    CompanyMapper ccompanyMapper;
 
     @Override
     public PageInfo queryMessage(Integer indexpage,Message message,@RequestParam(required = false)String keyword) {
@@ -144,5 +152,73 @@ public class MessageServicesImpl implements IMessageServices {
         return map;
     }
 
+    //获取后台主页所需信息
+    public Map<String,Object> querydata(Integer year){
+        Map<String,Object> map = new HashMap<>();
+
+        Map<String,Long> userMap = new HashMap<>();
+        Map<String,Long> companyMap = new HashMap<>();
+        Map<String,Long> jobMap = new HashMap<>();
+        Map<String,Long> resumeMap = new HashMap<>();
+        Map<String,Long> uvipMap = new HashMap<>();
+        Map<String,Long> cvipMap = new HashMap<>();
+
+
+        SimpleDateFormat format = new SimpleDateFormat("yyyyMM");
+
+        try {
+            for (int i = 2; i <= 13; i++) {
+                Date time = format.parse(String.valueOf(year)+String.valueOf(i));
+                if (i == 13){
+                    time = format.parse(String.valueOf(year+1)+"1");
+                }
+                if (time.compareTo(new Date()) >= 0 ){
+                    time = new Date();
+                }
+                UsersExample usersExample = new UsersExample();
+                usersExample.or().andCreateTimeLessThanOrEqualTo(time);
+                long userNum = usersMapper.countByExample(usersExample);
+
+                usersExample = new UsersExample();
+                usersExample.or().andCreateTimeLessThanOrEqualTo(time).andUserVipEqualTo(1);
+                long uvipNum = usersMapper.countByExample(usersExample);
+
+                CompanyExample companyExample = new CompanyExample();
+                companyExample.or().andCreateTimeLessThanOrEqualTo(time);
+                long companyNum = ccompanyMapper.countByExample(companyExample);
+
+                companyExample = new CompanyExample();
+                companyExample.or().andCreateTimeLessThanOrEqualTo(time).andCompanyVipEqualTo(1);
+                long cvipNum = ccompanyMapper.countByExample(companyExample);
+
+                JobExample jobExample = new JobExample();
+                jobExample.or().andCreateTimeLessThanOrEqualTo(time);
+                long jobNum = jobMapper.countByExample(jobExample);
+
+                ResumeExample resumeExample = new ResumeExample();
+                resumeExample.or().andCreateTimeLessThanOrEqualTo(time);
+                long resumeNum = resumeMapper.countByExample(resumeExample);
+
+                String key = String.valueOf(i-1) + '月';
+                userMap.put(key,userNum);
+                uvipMap.put(key,uvipNum);
+                companyMap.put(key,companyNum);
+                cvipMap.put(key,cvipNum);
+                jobMap.put(key,jobNum);
+                resumeMap.put(key,resumeNum);
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        map.put("user",userMap);
+        map.put("uvip",uvipMap);
+        map.put("company",companyMap);
+        map.put("cvip",cvipMap);
+        map.put("job",jobMap);
+        map.put("resume",resumeMap);
+
+        return map;
+    }
 
 }
