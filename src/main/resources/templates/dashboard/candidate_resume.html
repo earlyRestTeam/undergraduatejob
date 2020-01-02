@@ -681,10 +681,10 @@ Author:
                                             <li><a href="javascript:" th:onclick="|javascript:del(${resume.id})|">删除<i
                                                     class="fas fa-trash-alt"></i></a></li>
                                             <li th:if="${resume.pushStatus == 0}"><a href="javascript:"
-                                                                                     th:onclick="|javascript:push(${resume.id})|"
+                                                                                     th:onclick="|javascript:push(${resume.id},${resume.aulStatus})|"
                                                                                      class="noPushStatus">发布</a></li>
                                             <li th:if="${resume.pushStatus == 1}"><a href="javascript:"
-                                                                                     th:onclick="|javascript:push(${resume.id})|"
+                                                                                     th:onclick="|javascript:push(${resume.id},${resume.aulStatus})|"
                                                                                      class="noPushStatus">取消发布</a></li>
                                         </ul>
 
@@ -974,11 +974,14 @@ Author:
     }
 
     //发布、取消发布
-    function push(id) {
+    function push(id,aut) {
         console.log("发布简历id:" + id);
         var con = confirm("你确定要发布吗？");
         if (con) {
-
+            if(aut !== 2){
+                alert("未通过审核");
+                return;
+            }
             var pushStatus = $("#pushStatus" + id).val();
             console.log("发布简历pushStatus:" + pushStatus);
             var url = "/user/pushResume?resumeId=" + id + "&pushStatus=" + pushStatus;
