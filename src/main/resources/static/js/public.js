@@ -121,3 +121,21 @@ function logout() {
     window.location.href = "/";
 }
 <!-- cookie操作 end-->
+
+function downloadword() {
+    var papername = "个人简历";
+    $("#resume").wordExport(papername);  //papername为导出的word文件的命名,paperque为要导出的html内容容器
+    html2canvas(document.getElementById("paperque"), {
+        onrendered: function (canvas) {
+            //通过html2canvas将html渲染成canvas，然后获取图片数据
+            var imgData = canvas.toDataURL('image/jpeg');
+            //初始化pdf，设置相应格式
+            var doc = new jsPDF("p", "mm", "a4");
+            doc.setFillColor(0, 0, 0);
+            //这里设置的是a4纸张尺寸
+            doc.addImage(imgData, 'JPEG', 0, 0, 210, 297);
+            //输出保存命名为content的pdf
+            doc.save(papername + '.word');
+        }
+    });
+}
