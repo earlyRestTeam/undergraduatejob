@@ -18,7 +18,7 @@ import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 
 /**
- * @author 王志坚
+ * @author
  * @createTime 2019.11.25.20:13
  */
 @Configuration

@@ -5,7 +5,7 @@ import com.lyx.undergraduatejob.pojo.UsersExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
-public interface UsersMapper {
+public interface  UsersMapper {
     long countByExample(UsersExample example);
 
     int deleteByExample(UsersExample example);

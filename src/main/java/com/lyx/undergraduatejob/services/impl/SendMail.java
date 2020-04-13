@@ -43,10 +43,11 @@ public class SendMail implements ISendMail {
             System.out.println("templatePath = " + templatePath);
             String result = templateEngine.process(templatePath, context);
 
-            mimeMessageHelper.setTo(acceptUser);
-            mimeMessageHelper.setFrom(from);
-            mimeMessageHelper.setSubject(title);
-            mimeMessageHelper.setText(result);
+            mimeMessageHelper.setTo(acceptUser);//设置接收者邮箱
+            mimeMessageHelper.setFrom(from);//设置发送者邮箱
+            mimeMessageHelper.setCc(from);//设置抄送人，抄送给发件人
+            mimeMessageHelper.setSubject(title);//设置邮件标题
+            mimeMessageHelper.setText(result);//设置邮件内容
 
             mailSender.send(mimeMessage);
 

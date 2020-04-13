@@ -546,24 +546,6 @@ Author:
                                             </div>
                                             <div class="jp_listing_list_icon_cont_wrapper">
                                                 <ul class="ul_crosswise">
-                                                    <li>基本情况:</li>
-                                                    <li th:text="${resume.education}"></li>
-                                                    <li>|</li>
-                                                    <li>应届生</li>
-                                                    <li>|</li>
-                                                    <li>现居长沙岳麓区</li>
-                                                    <li>|</li>
-                                                    <li>郴州人</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-
-                                        <div class="jp_listing_overview_list_main_wrapper jb_cover">
-                                            <div class="jp_listing_list_icon">
-                                                <i class="far fa-calendar"></i>
-                                            </div>
-                                            <div class="jp_listing_list_icon_cont_wrapper">
-                                                <ul class="ul_crosswise">
                                                     <li>求职意向:</li>
                                                     <li th:text="'求职' + ${resume.job}"></li>
                                                     <li>|</li>
@@ -574,41 +556,50 @@ Author:
                                             </div>
                                         </div>
 
-                                        <div class="jp_listing_overview_list_main_wrapper jb_cover" style="padding: 0">
+                                        <div class="jp_listing_overview_list_main_wrapper jb_cover">
                                             <div class="jp_listing_list_icon">
                                                 <i class="far fa-calendar"></i>
                                             </div>
                                             <div class="jp_listing_list_icon_cont_wrapper">
                                                 <ul class="ul_crosswise">
-                                                    <li>自我介绍:</li>
+                                                    <li>基本情况:</li>
+                                                    <li th:text="${resume.education}"></li>
+                                                    <li>|</li>
+                                                    <li>应届生</li>
+                                                    <li>|</li>
+                                                    <li>现居长沙岳麓区</li>
+                                                    <li>|</li>
+                                                    <li th:text="${resume.nativePlace}">郴州人</li>
                                                 </ul>
                                             </div>
-                                            <div class="job_overview_header pdd jb_cover" style="padding-top: 0">
-                                                <p id="selfIntroduction" th:text="${resume.selfIntroduction}"></p>
-                                            </div>
                                         </div>
 
-                                        <div class="job_overview_header jb_cover">
-                                            <ul class="speical_qualification_wrapper ul_crosswise">
-                                                <li th:if="${resume.skill1 != null}">
-                                                    <i class="fas fa-check-square"></i>
-                                                    <p id="skill1" name="skill1" th:text="${resume.skill1}" style="display: inline-block"></p>
-                                                </li>
-                                                <li  th:if="${resume.skill2 != null && resume.skill2 != ''}">
-                                                    <i class="fas fa-check-square"></i>
-                                                    <p id="skill2" name="skill2" th:text="${resume.skill2}" style="display: inline-block"></p>
-                                                </li>
-                                                <li  th:if="${resume.skill3 != null && resume.skill3 != ''}">
-                                                    <i class="fas fa-check-square"></i>
-                                                    <p id="skill3" name="skill3" th:text="${resume.skill3}" style="display: inline-block"></p>
-                                                </li>
-                                                <li  th:if="${resume.skill4 != null && resume.skill4 != ''}">
-                                                    <i class="fas fa-check-square"></i>
-                                                    <p id="skill4" name="skill4" th:text="${resume.skill4}" style="display: inline-block"></p>
-                                                </li>
 
-                                            </ul>
-                                        </div>
+
+
+
+                                        <!--  专业技能                                      -->
+<!--                                        <div class="job_overview_header jb_cover">-->
+<!--                                            <ul class="speical_qualification_wrapper ul_crosswise">-->
+<!--                                                <li th:if="${resume.skill1 != null}">-->
+<!--                                                    <i class="fas fa-check-square"></i>-->
+<!--                                                    <p id="skill1" name="skill1" th:text="${resume.skill1}" style="display: inline-block"></p>-->
+<!--                                                </li>-->
+<!--                                                <li  th:if="${resume.skill2 != null && resume.skill2 != ''}">-->
+<!--                                                    <i class="fas fa-check-square"></i>-->
+<!--                                                    <p id="skill2" name="skill2" th:text="${resume.skill2}" style="display: inline-block"></p>-->
+<!--                                                </li>-->
+<!--                                                <li  th:if="${resume.skill3 != null && resume.skill3 != ''}">-->
+<!--                                                    <i class="fas fa-check-square"></i>-->
+<!--                                                    <p id="skill3" name="skill3" th:text="${resume.skill3}" style="display: inline-block"></p>-->
+<!--                                                </li>-->
+<!--                                                <li  th:if="${resume.skill4 != null && resume.skill4 != ''}">-->
+<!--                                                    <i class="fas fa-check-square"></i>-->
+<!--                                                    <p id="skill4" name="skill4" th:text="${resume.skill4}" style="display: inline-block"></p>-->
+<!--                                                </li>-->
+
+<!--                                            </ul>-->
+<!--                                        </div>-->
 
                                         <div class="jp_listing_overview_list_main_wrapper jb_cover">
                                             <div class="jp_listing_list_icon">
@@ -630,21 +621,37 @@ Author:
                                     <!--                                                -->
                                     <!--                                            </div>-->
 
-                                    <div class="jp_listing_overview_list_main_wrapper jb_cover">
-                                        <div class="jp_listing_list_icon">
-                                            <i class="far fa-calendar"></i>
-                                        </div>
-                                        <div class="jp_listing_list_icon_cont_wrapper">
-                                            <ul>
-                                                <li >籍贯:<p id="nativePlace" name="nativePlace" style="display: inline-block" th:text="${resume.nativePlace}"></p></li>
-                                            </ul>
-                                        </div>
-                                    </div>
+
 
                                 </div>
                             </div>
                         </div>
                     </div>
+
+<!--                    自我介绍-->
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="job_filter_category_sidebar company_wrapper jb_cover">
+                            <div class="job_filter_sidebar_heading jb_cover">
+                                <h1>自我介绍
+                                    <!--                                        <span><a href="#" data-toggle="modal" data-target="#myModal6"><i class="fas fa-edit"></i></a></span>-->
+                                </h1>
+                            </div>
+
+                            <div class="job_overview_header jb_cover">
+                                <div class="row">
+                                    <div class="job_overview_header pdd jb_cover" style="padding-top: 0">
+                                        <p id="selfIntroduction" th:text="${resume.selfIntroduction}"></p>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+                    </div>
+
                     <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="job_filter_category_sidebar company_wrapper jb_cover">
                             <div class="job_filter_sidebar_heading jb_cover">
@@ -684,6 +691,8 @@ Author:
 
                         </div>
                     </div>
+
+
                     <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="job_filter_category_sidebar company_wrapper jb_cover">
                             <div class="job_filter_sidebar_heading jb_cover">
@@ -992,7 +1001,7 @@ Author:
                     console.log(result);//打印服务端返回的数据
                     if (result.code == 200) {
                         alert(result.message);
-                        window.location.href="/user/candidate_resume";
+                        window.location.href="/dashboard/candidate_resume";
                     } else {
                         alert(result.message);
                     }

@@ -901,6 +901,7 @@ Author:
 <script src="/dashboard/js/wordexport.js"></script>
 <script src="/js/public.js"></script>
 
+<!--下载简历-->
 <script>
     function downloadword() {
         var papername = "个人简历";
@@ -915,7 +916,7 @@ Author:
                 //这里设置的是a4纸张尺寸
                 doc.addImage(imgData, 'JPEG', 0, 0, 210, 297);
                 //输出保存命名为content的pdf
-                doc.save(papername + '.word');
+                doc.save(papername + '.pdf');
             }
         });
     }
@@ -975,13 +976,14 @@ Author:
 
     //发布、取消发布
     function push(id,aut) {
+        if(aut !== 2){
+            alert("未通过审核");
+            return;
+        }
         console.log("发布简历id:" + id);
         var con = confirm("你确定要发布吗？");
         if (con) {
-            if(aut !== 2){
-                alert("未通过审核");
-                return;
-            }
+
             var pushStatus = $("#pushStatus" + id).val();
             console.log("发布简历pushStatus:" + pushStatus);
             var url = "/user/pushResume?resumeId=" + id + "&pushStatus=" + pushStatus;

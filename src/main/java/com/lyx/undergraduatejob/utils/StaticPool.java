@@ -1,7 +1,7 @@
 package com.lyx.undergraduatejob.utils;
 
 /**
- * @author 王志坚
+ * @author
  * @createTime 2019.12.10.21:43
  */
 public interface StaticPool {

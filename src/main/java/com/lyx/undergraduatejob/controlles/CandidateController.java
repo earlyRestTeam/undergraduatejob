@@ -311,10 +311,9 @@ public class CandidateController {
         Integer userId = user.getId();
         System.out.println("pushStatus:"+pushStatus);
         Map<String, String> re = null;
-        if(pushStatus == 1){
-            re = resumeServicesImp.updatePushResume(resumeId,userId);
-        }
         if(pushStatus == 0){
+            re = resumeServicesImp.updatePushResume(resumeId,userId);
+        }else if(pushStatus == 1){
             re = resumeServicesImp.updateDisPushResume(resumeId,userId);
         }
 
