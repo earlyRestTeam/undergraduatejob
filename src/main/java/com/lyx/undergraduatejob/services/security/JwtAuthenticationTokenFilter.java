@@ -64,7 +64,6 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
             String roles = jwtTokenUtil.getRolesForToken(authHeader);
             String headImg = jwtTokenUtil.getHeadImgForToken(authHeader);
             String nickName = jwtTokenUtil.getNickNameForToken(authHeader);
-
             LOGGER.info("checking username:{}", username);
             UserDetails userDetails = new OnlineEntity(id,cid,username,headImg,roles,nickName);
             UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());

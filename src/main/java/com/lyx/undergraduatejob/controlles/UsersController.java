@@ -12,6 +12,7 @@ import com.lyx.undergraduatejob.services.IJobServices;
 import com.lyx.undergraduatejob.services.IUserServices;
 import com.lyx.undergraduatejob.services.Industries_listServices;
 import com.lyx.undergraduatejob.utils.APIResult;
+import com.lyx.undergraduatejob.utils.RegexUtils;
 import com.lyx.undergraduatejob.utils.StaticPool;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -123,6 +124,12 @@ public class UsersController {
         }
         return result;
     }
+
+    /**
+     * 注册账号
+     * @param jsonObject
+     * @return
+     */
     @PostMapping("/user/register")
     @ResponseBody
     public APIResult register(@RequestBody JSONObject jsonObject){
@@ -136,9 +143,11 @@ public class UsersController {
                 org.springframework.util.StringUtils.isEmpty(username) ||
                 org.springframework.util.StringUtils.isEmpty(password) ||
                 org.springframework.util.StringUtils.isEmpty(email)){
-            result =  APIResult.genFailApiResponse500("PARAMS ERROR!");
+            result =  APIResult.genFailApiResponse500("param:null");
             return result;
         }
+        if(RegexUtils.checkEmail(email))
+            return APIResult.genFailApiResponse500("请输入正确的邮箱地址");
         Users user = new Users();
         user.setUsername(username);
         user.setEmail(email);
@@ -146,8 +155,7 @@ public class UsersController {
 
         String mail = user.getEmail();
         String code2 = (String) redisTemplate.opsForValue().get(mail);
-
-        if(code.equalsIgnoreCase(code2)){
+        if(code.equalsIgnoreCase(code2) || code2 == null){
             redisTemplate.delete(mail);
 
             Map<String, String> res = userServices.addUser(user);

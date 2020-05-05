@@ -58,13 +58,13 @@
                 <input type="search" placeholder="Search..."/>
             </form>
         </li>
-        <li class="has-children"><a href="/">主页</a>
-            <ul class="cd-secondary-dropdown icon_menu is-hidden">
-                <li class="go-back"><a href="#0">Menu</a></li>
-                <li><a href="/index">主页 I</a></li>
-                <li><a href="index_III">主页 II</a></li>
-            </ul>
-        </li>
+<!--        <li class="has-children"><a href="/">首页</a>-->
+<!--            <ul class="cd-secondary-dropdown icon_menu is-hidden">-->
+<!--                <li class="go-back"><a href="#0">Menu</a></li>-->
+<!--                <li><a href="/index">主页 I</a></li>-->
+<!--                <li><a href="index_III">主页 II</a></li>-->
+<!--            </ul>-->
+<!--        </li>-->
         <li class="has-children"><a href="job_listing_grid_left_filter">职位</a>
             <ul class="cd-secondary-dropdown icon_menu is-hidden">
                 <li class="go-back"><a href="#0">Menu</a></li>
@@ -109,7 +109,7 @@
                         <li><a href="dashboard/comp_company_page">公司主页</a></li>
                         <li><a href="dashboard/comp_employer_dashboard">企业资料</a></li>
                         <li><a href="dashboard/comp_employer_edit_profile">编辑企业资料</a></li>
-                        <li><a href="dashboard/comp_employer_manage_jobs">管理职位</a></li>
+                        <li><a href="dashboard/comp_employer_manage_jobs">职位管理</a></li>
                         <li><a href="dashboard/comp_post_new_job">发布职位</a></li>
                         <li><a href="dashboard/message">消息</a></li>
                         <li><a href="dashboard/pricing_plans">VIP</a></li>
@@ -200,11 +200,14 @@
 
     <div class="jb_navigation_wrapper index_2_right_menu index_3_right_menu">
 
-        <div th:if="${entity == null}" class="menu_btn_box header_btn jb_cover">
+        <div th:if="${entity == null}" class="menu_btn_box header_btn " style="width: auto">
             <ul >
                 <li><a href="/sign_up"><i class="flaticon-man-user" style="display: inline-block"></i>注册</a></li>
+            </ul>
+            <ul >
                 <li><a href="/user/loginPage"><i class="flaticon-login" style="font-size: 10px; display: inline-block" ></i>登录</a></li>
             </ul>
+
             <!--            <div style="display: inline-block;padding-right: 40px;padding-bottom: 22px">-->
             <!--                <img th:if="${entity != null}"-->
             <!--                     th:src="@{${entity.headImg} == null ? '/dashboard/images/pf.png' : ${entity.headImg}}"-->
@@ -247,27 +250,27 @@
                             </span>
 
                             <ul class="list">
-                                <li><a href="#"><i class="fas fa-user-edit"></i>Profile</a></li>
-                                <li><a href="#"><i class="far fa-calendar-alt"></i>My Calender</a></li>
-                                <li><a href="#"><i class="fas fa-comment"></i>Inbox</a></li>
-                                <li><a href="#"><i class="fas fa-cog"></i>Setting</a></li>
-                                <li><a href="#"><i class="fas fa-question-circle"></i>Help</a></li>
-                                <li><a href="#"><i class="fas fa-lock"></i>Lock Screen</a></li>
-                                <li><a href="#" onclick="logout()"><i class="fas fa-sign-in-alt"></i>logout</a></li>
+                                <li><a href="#"><i class="fas fa-user-edit"></i>个人中心</a></li>
+<!--                                <li><a href="#"><i class="far fa-calendar-alt"></i>My Calender</a></li>-->
+<!--                                <li><a href="#"><i class="fas fa-comment"></i>Inbox</a></li>-->
+                                <li><a href="#"><i class="fas fa-cog"></i>账号设置</a></li>
+<!--                                <li><a href="#"><i class="fas fa-question-circle"></i>Help</a></li>-->
+<!--                                <li><a href="#"><i class="fas fa-lock"></i>Lock Screen</a></li>-->
+                                <li><a href="#" onclick="logout()"><i class="fas fa-sign-in-alt"></i>退出登录</a></li>
                             </ul>
                         </div>
                     </div>
                 </li>
-                <li class="btn_hover"><a style="color: #fff;background:#ff3366;background-image:none" href="dashboard/comp_post_new_job">发布工作</a></li>
+<!--                <li class="btn_hover"><a style="color: #fff;background:#ff3366;background-image:none" href="dashboard/comp_post_new_job">发布工作</a></li>-->
             </ul>
         </div>
 
         <div class="mainmenu d-xl-block d-lg-block d-md-none d-sm-none d-none">
             <ul class="main_nav_ul menu_2_ul">
-                <li class="has-mega gc_main_navigation"><a href="/" class="gc_main_navigation active_class">主页</a>
-                    <ul class="navi_2_dropdown" th:fragment="navi_2_dropdown_1">
-                        <li class="parent"><a href="/index"><i class="fas fa-square"></i>主页 I</a></li>
-                        <li class="parent"><a href="/index_III"><i class="fas fa-square"></i>主页 II</a></li>
+                <li class="has-mega gc_main_navigation"><a href="/index" class="gc_main_navigation active_class">首页</a>
+                    <ul class="navi_2_dropdown" style="display: none" th:fragment="navi_2_dropdown_1">
+<!--                        <li class="parent"><a href="/index"><i class="fas fa-square"></i>主页 I</a></li>-->
+<!--                        <li class="parent"><a href="/index_III"><i class="fas fa-square"></i>主页 II</a></li>-->
 
                     </ul>
                 </li>
@@ -375,37 +378,37 @@
                     <ul class="navi_2_dropdown" th:fragment="navi_2_dropdown_5">
                         <li class="parent">
                             <a href="/dashboard/candidate_dashboard"><i class="fas fa-square"></i>用户中心<span><i class="fas fa-chevron-right"></i></span></a>
-<!--                            <ul class="dropdown-menu-right">-->
+                            <ul class="dropdown-menu-right">
 <!--                                <li><a href="/dashboard/candidate_applied_job"><i class="fas fa-square"></i>找工作</a>-->
 <!--                                </li>-->
-<!--                                <li><a href="/dashboard/candidate_dashboard"><i class="fas fa-square"></i>个人资料</a>-->
-<!--                                </li>-->
+                                <li><a href="/dashboard/candidate_dashboard"><i class="fas fa-square"></i>个人资料</a>
+                                </li>
 
-<!--                                <li><a href="/dashboard/candidate_favourite_job"><i-->
-<!--                                        class="fas fa-square"></i>我的收藏</a></li>-->
-<!--                                <li><a href="/dashboard/candidate_resume"><i class="fas fa-square"></i>我的简历</a></li>-->
-<!--                                <li><a href="/dashboard/message"><i class="fas fa-square"></i>个人消息</a></li>-->
-<!--                                <li><a href="/dashboard/pricing_plans"><i class="fas fa-square"></i>VIP</a></li>-->
-<!--                            </ul>-->
+                                <li><a href="/dashboard/candidate_favourite_job"><i
+                                        class="fas fa-square"></i>我的收藏</a></li>
+                                <li><a href="/dashboard/candidate_resume"><i class="fas fa-square"></i>我的简历</a></li>
+                                <li><a href="/dashboard/message"><i class="fas fa-square"></i>个人消息</a></li>
+                                <li><a href="/dashboard/pricing_plans"><i class="fas fa-square"></i>VIP</a></li>
+                            </ul>
                         </li>
                         <li class="parent"><a href="/dashboard/comp_employer_dashboard"><i class="fas fa-square"></i>企业中心<span><i
                                 class="fas fa-chevron-right"></i></span></a>
-<!--                            <ul class="dropdown-menu-right">-->
-<!--                                <li><a href="/dashboard/comp_applications"><i class="fas fa-square"></i>收到的简历</a>-->
-<!--                                </li>-->
-<!--                                <li><a href="/dashboard/comp_company_page"><i class="fas fa-square"></i>公司主页</a>-->
-<!--                                </li>-->
-<!--                                <li><a href="/dashboard/comp_employer_dashboard"><i-->
-<!--                                        class="fas fa-square"></i>企业资料</a></li>-->
-<!--                                <li><a href="/dashboard/comp_employer_edit_profile"><i class="fas fa-square"></i>编辑企业资料</a>-->
-<!--                                </li>-->
-<!--                                <li><a href="/dashboard/comp_employer_manage_jobs"><i class="fas fa-square"></i>管理职位</a>-->
-<!--                                </li>-->
-<!--                                <li><a href="/dashboard/comp_post_new_job"><i class="fas fa-square"></i>发布职位</a>-->
-<!--                                </li>-->
-<!--                                <li><a href="/dashboard/message"><i class="fas fa-square"></i>公司消息</a></li>-->
-<!--                                <li><a href="/dashboard/pricing_plans"><i class="fas fa-square"></i>VIP</a></li>-->
-<!--                            </ul>-->
+                            <ul class="dropdown-menu-right">
+                                <li><a href="/dashboard/comp_applications"><i class="fas fa-square"></i>收到的简历</a>
+                                </li>
+                                <li><a href="/dashboard/comp_company_page"><i class="fas fa-square"></i>公司主页</a>
+                                </li>
+                                <li><a href="/dashboard/comp_employer_dashboard"><i
+                                        class="fas fa-square"></i>企业资料</a></li>
+                                <li><a href="/dashboard/comp_employer_edit_profile"><i class="fas fa-square"></i>编辑企业资料</a>
+                                </li>
+                                <li><a href="/dashboard/comp_employer_manage_jobs"><i class="fas fa-square"></i>职位管理</a>
+                                </li>
+                                <li><a href="/dashboard/comp_post_new_job"><i class="fas fa-square"></i>发布职位</a>
+                                </li>
+                                <li><a href="/dashboard/message"><i class="fas fa-square"></i>公司消息</a></li>
+                                <li><a href="/dashboard/pricing_plans"><i class="fas fa-square"></i>VIP</a></li>
+                            </ul>
                         </li>
                     </ul>
                 </li>
@@ -3111,7 +3114,7 @@
                         <input type="email" name="name" placeholder="your email"/>
                     </div>
                     <div class="header_btn search_btn submit_btn jb_cover">
-                        <a href="#">submit</a>
+                        <a href="/job_listing_grid_left_filter">马上寻找</a>
                     </div>
                 </div>
             </div>
@@ -3183,12 +3186,12 @@
             <div class="col-lg-12 col-md-12 col-sm-12">
                 <div class="job_newsletter_wrapper jb_cover">
                     <div class="jb_newslwtteter_left">
-                        <h2>Looking For A Job</h2>
-                        <p>Your next level Product developemnt company assetsYour next level Product</p>
+                        <h2>还在等什么？</h2>
+                        <p>寻找一个工作总有一个工作适合您！</p>
                     </div>
                     <div class="jb_newslwtteter_button">
                         <div class="header_btn search_btn news_btn jb_cover">
-                            <a href="#">submit</a>
+                            <a href="/job_listing_grid_left_filter">马上寻找</a>
                         </div>
                     </div>
                 </div>

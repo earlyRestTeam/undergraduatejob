@@ -3,6 +3,8 @@ package com.lyx.undergraduatejob.controlles.api;
 import com.alibaba.fastjson.JSONObject;
 import com.lyx.undergraduatejob.config.RabbitConfig;
 import com.lyx.undergraduatejob.utils.APIResult;
+import com.lyx.undergraduatejob.utils.CodeUtil;
+import com.lyx.undergraduatejob.utils.RegexUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.core.MessageBuilder;
@@ -41,27 +43,32 @@ public class MailController {
     @Autowired
     private RabbitTemplate rabbitTemplate;
 
-
+    /**
+     * 发送注册验证码
+     * @param email
+     * @param type
+     * @return
+     */
     @GetMapping("/getCode")
     public APIResult getCode(String email,String type){
         if(StringUtils.isEmpty(email) || StringUtils.isEmpty(type))
-            return APIResult.genFailApiResponse500("参数错误！");
+            return APIResult.genFailApiResponse500("请输入账号和邮箱");
+        if(!RegexUtils.checkEmail(email))
+            return APIResult.genFailApiResponse500("邮箱地址错误！");
         try{
-//            rabbitTemplate.setExchange(exchange);
-//            rabbitTemplate.setRoutingKey(routingKey);
             String code;
             if( redisTemplate.hasKey(email))
                 code = (String) redisTemplate.opsForValue().get(email);
             else
-                code = UUID.randomUUID().toString().replaceAll("-","").substring(0,6);
-
+                code = CodeUtil.getNumeral();
             Map<String,String> map = new HashMap<>();
             map.put("code",code);
             map.put("mail",email);
             map.put("type",type);
             String res = JSONObject.toJSONString(map);
-            rabbitTemplate.convertAndSend(exchange, routingKey, MessageBuilder.withBody(res.getBytes("UTF8")).build());
-//            rabbitTemplate.convertAndSend(MessageBuilder.withBody(res.getBytes("UTF8")).build());
+            rabbitTemplate.convertAndSend(exchange, routingKey, MessageBuilder
+                            .withBody(res.getBytes("UTF8"))
+                            .build());
         } catch (Exception e) {
             e.printStackTrace();
             return APIResult.genFailApiResponse500("服务繁忙");

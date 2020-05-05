@@ -2,6 +2,35 @@ package com.lyx.undergraduatejob.utils;
 
 public class APIResult implements java.io.Serializable {
 
+//    随便测试
+    public static void main(String[] args) {
+//        int array[] = {31,28,31,30,31,30,31,31,30,31,30,31};
+//        int sum =0;
+//        for (int i = 0; i < array.length; i++) {
+//            if(array[i] % 2 == 0){
+//                sum+=(i+1)*2;
+//            }else {
+//                sum+=(i+1);
+//            }
+//        }
+//        System.out.println(sum);
+        int i = 15;
+        switch(i){
+            default:
+                System.out.println("default");
+                break;
+            case 11:
+                System.out.println("case11");
+
+            case 12:
+                System.out.println("case12");
+                break;
+
+        }
+    }
+
+
+
     private String message;
     private boolean result;
     private int code = 200;

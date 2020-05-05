@@ -60,15 +60,7 @@ Author:
                     <input type="search" placeholder="Search...">
                 </form>
             </li>
-            <li class="has-children">
-                <a href="/index">主页</a>
-                <ul class="cd-secondary-dropdown icon_menu is-hidden">
-                    <li class="go-back"><a href="#0">Menu</a></li>
-                    <li><a href="/index">主页 I</a></li>
-                    <li><a href="/index_III">主页 II</a></li>
 
-                </ul>
-            </li>
             <li class="has-children">
                 <a href="/job_listing_grid_left_filter">职位</a>
                 <ul class="cd-secondary-dropdown icon_menu is-hidden">
@@ -237,7 +229,7 @@ Author:
             <div class="jb_navigation_wrapper">
                 <div class="mainmenu d-xl-block d-lg-block d-md-none d-sm-none d-none">
                     <ul class="main_nav_ul">
-                        <li class="has-mega gc_main_navigation"><a href="#" class="gc_main_navigation">主页</a>
+                        <li class="has-mega gc_main_navigation"><a href="/index" class="gc_main_navigation">首页</a>
         <ul class="navi_2_dropdown" th:replace="/public::navi_2_dropdown_1">
                                 <li class="parent">
                                     <a href="/index"><i class="fas fa-square"></i>主页 I </a>
@@ -328,7 +320,7 @@ Author:
                                             <a href="comp_employer_edit_profile"> <i class="fas fa-square"></i>编辑企业资料</a>
                                         </li>
                                         <li>
-                                            <a href="comp_employer_manage_jobs"> <i class="fas fa-square"></i>管理职位</a>
+                                            <a href="comp_employer_manage_jobs"> <i class="fas fa-square"></i>职位管理</a>
                                         </li>
                                         <li>
                                             <a href="comp_post_new_job"> <i class="fas fa-square"></i>发布职位</a>
@@ -394,7 +386,7 @@ Author:
                     <div class="col-xl-3 col-lg-5 col-md-5 col-12 col-sm-12">
                         <div class="sub_title_section">
                             <ul class="sub_title">
-                                <li> <a href="#">主页</a>&nbsp; / &nbsp; </li>
+                                <li> <a href="#">首页</a>&nbsp; / &nbsp; </li>
                                 <li>company Dashboard</li>
                             </ul>
                         </div>
@@ -417,11 +409,11 @@ Author:
                             <h4 th:text="${company.companyName}">Webstrot Technology</h4>
                             <p th:text="${company.companyEmail}">@Webstrot</p>
                             <div class="skills jb_cover">
-                                <div class="skill-item jb_cover">
-                                    <h6>profile<span>70%</span></h6>
-                                    <div class="skills-progress"><span data-value="70%"></span>
-                                    </div>
-                                </div>
+<!--                                <div class="skill-item jb_cover">-->
+<!--                                    <h6>profile<span>70%</span></h6>-->
+<!--                                    <div class="skills-progress"><span data-value="70%"></span>-->
+<!--                                    </div>-->
+<!--                                </div>-->
                             </div>
                         </div>
                         <div class="emp_follow_link jb_cover" th:fragment="navdiv">
@@ -432,9 +424,9 @@ Author:
                                 <li><a th:href="'/tocompanysingle?companyId='+${company.id}"><i class="fas fa-file"></i>公司主页 </a></li>
                                 <li><a target="_blank" href="/aut/aut_company"><i class="fas fa-file"></i>企业资格认证 </a></li>
                                 <li><a href="/dashboard/candidate_favourite_resume"><i class="fas fa-file"></i>我的人才库 </a></li>
-                                <li><a href="/dashboard/comp_employer_manage_jobs"><i class="fas fa-suitcase"></i>管理职位</a></li>
+                                <li><a href="/dashboard/comp_employer_manage_jobs"><i class="fas fa-suitcase"></i>职位管理</a></li>
                                 <li><a href="/dashboard/comp_applications"><i class="fas fa-mobile"></i>收到的简历</a></li>
-                                <li><a href="/dashboard/comp_post_new_job"><i class="fas fa-user-plus"></i>发布职位</a></li>
+<!--                                <li><a href="/dashboard/comp_post_new_job"><i class="fas fa-user-plus"></i>发布职位</a></li>-->
                                 <li><a href="/dashboard/message"><i class="fas fa-envelope"></i>消息</a></li>
                                 <li><a href="/pricing_table"><i class="fas fa-tag"></i>VIP</a></li>
                             </ul>

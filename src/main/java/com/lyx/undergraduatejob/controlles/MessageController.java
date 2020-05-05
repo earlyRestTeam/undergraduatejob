@@ -55,7 +55,7 @@ public class MessageController {
     @RequestMapping("/data")
     @ResponseBody
     public APIResult showData(Model model){
-        Map<String, Object> map = services.querydata(2019);
+        Map<String, Object> map = services.querydata(2020);
         model.addAttribute("data",map);
 
         return APIResult.genSuccessApiResponse(model);

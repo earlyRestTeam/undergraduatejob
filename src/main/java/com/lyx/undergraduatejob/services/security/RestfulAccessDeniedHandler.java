@@ -23,11 +23,13 @@ public class RestfulAccessDeniedHandler implements AccessDeniedHandler {
                        AccessDeniedException e) throws IOException, ServletException {
         String requestType = request.getHeader("X-Requested-With");
         if(requestType == null){
-            String baseUrl = request.getRequestURI().replace(request.getContextPath(),"");
-            String fatherUrl = baseUrl.substring(0,baseUrl.indexOf("/",1));
-            if(!"/admin".equals(fatherUrl))
-                fatherUrl = "/user";
-            response.sendRedirect(fatherUrl+"/403");
+//            String baseUrl = request.getRequestURI().replace(request.getContextPath(),"");
+//            String fatherUrl = baseUrl.substring(0,baseUrl.indexOf("/",1));
+//
+//            if(!"/admin".equals(fatherUrl))
+//                fatherUrl = "/user";
+//            response.sendRedirect(fatherUrl+"/auth-404");
+            response.sendRedirect("e");
             return;
         }
 

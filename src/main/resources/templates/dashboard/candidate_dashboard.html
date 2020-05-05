@@ -15,7 +15,7 @@ Author:
 
 <head>
     <meta charset="utf-8"/>
-    <title>个人资料</title>
+    <title>账号管理</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <meta name="description" content="JB desks,job portal,job"/>
     <meta name="keywords" content="JB desks,job portal,job"/>
@@ -64,10 +64,10 @@ Author:
             </form>
         </li>
         <li class="has-children">
-            <a href="index">主页</a>
+            <a href="index">首页</a>
             <ul class="cd-secondary-dropdown icon_menu is-hidden">
                 <li class="go-back"><a href="#0">Menu</a></li>
-                <li><a href="index">主页 I</a></li>
+                <li><a href="index">首页 I</a></li>
                 <li><a href="/index_III">主页 II</a></li>
 
             </ul>
@@ -204,11 +204,11 @@ Author:
 				   <p><a href="javascript:" th:text="${entity.entityName}">luca@example.com</a></p>
 				   </div></span>
                     <ul class="list">
-                        <li><a href="#"><i class="fas fa-user-edit"></i>account</a>
+                        <li><a href="#"><i class="fas fa-user-edit"></i>个人中心</a>
                         </li>
-                        <li><a href="#"><i class="fas fa-cog"></i>Setting</a>
+                        <li><a href="#"><i class="fas fa-cog"></i>账号设置</a>
                         </li>
-                        <li><a href="#" onclick="logout()"><i class="fas fa-sign-in-alt"></i>logout</a>
+                        <li><a href="#" onclick="logout()"><i class="fas fa-sign-in-alt"></i>推出登陆</a>
                         </li>
                     </ul>
                 </div>
@@ -218,7 +218,7 @@ Author:
         <div class="jb_navigation_wrapper">
             <div class="mainmenu d-xl-block d-lg-block d-md-none d-sm-none d-none">
                 <ul class="main_nav_ul">
-                    <li class="has-mega gc_main_navigation"><a href="#" class="gc_main_navigation">主页</a>
+                    <li class="has-mega gc_main_navigation"><a href="/index" class="gc_main_navigation">首页</a>
                         <ul class="navi_2_dropdown" th:replace="/public::navi_2_dropdown_1">
                             <li class="parent">
                                 <a href="/index"><i class="fas fa-square"></i>主页 I </a>
@@ -308,7 +308,7 @@ Author:
                                         <a href="comp_employer_edit_profile"> <i class="fas fa-square"></i>编辑企业资料</a>
                                     </li>
                                     <li>
-                                        <a href="comp_employer_manage_jobs"> <i class="fas fa-square"></i>管理职位</a>
+                                        <a href="comp_employer_manage_jobs"> <i class="fas fa-square"></i>职位管理</a>
                                     </li>
                                     <li>
                                         <a href="comp_post_new_job"> <i class="fas fa-square"></i>发布职位</a>
@@ -369,13 +369,13 @@ Author:
                 <!-- section_heading start -->
                 <div class="col-xl-9 col-lg-7 col-md-7 col-12 col-sm-12">
 
-                    <h1>个人资料</h1>
+                    <h1>账号管理</h1>
                 </div>
                 <div class="col-xl-3 col-lg-5 col-md-5 col-12 col-sm-12">
                     <div class="sub_title_section">
                         <ul class="sub_title">
-                            <li><a href="#">主页</a>&nbsp; / &nbsp;</li>
-                            <li>个人资料</li>
+                            <li><a href="#">首页</a>&nbsp; / &nbsp;</li>
+                            <li>账号管理</li>
                         </ul>
                     </div>
                 </div>
@@ -396,30 +396,30 @@ Author:
                     <img th:if="${entity.headImg != null}" th:src="@{${entity.headImg}}" class="avatar" alt="post_img"/>
                     <div class="emp_web_profile candidate_web_profile jb_cover">
 
-                        <h4 class="nickName" th:text="${entity.nickName}">luca wallace</h4>
-                        <p th:text="${entity.entityName}">@username</p>
-                        <div class="skills jb_cover">
-                            <div class="skill-item jb_cover">
-                                <h6>资料完成度<span>70%</span></h6>
-                                <div class="skills-progress"><span data-value="70%"></span>
-                                </div>
-                            </div>
-                        </div>
+                        <h4 class="nickName" th:text="${entity.nickName}"></h4>
+                        <p th:text="${entity.entityName}"></p>
+<!--                        <div class="skills jb_cover">-->
+<!--                            <div class="skill-item jb_cover">-->
+<!--                                <h6>资料完成度<span>70%</span></h6>-->
+<!--                                <div class="skills-progress"><span data-value="70%"></span>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
                     </div>
                     <div class="emp_follow_link jb_cover">
                         <ul class="feedlist">
-                            <li><a href="/dashboard/candidate_dashboard" class="link_active"><i
-                                    class="fas fa-tachometer-alt"></i> 个人资料 </a></li>
-                            <li><a href="/dashboard/candidate_resume"><i class="fas fa-file"></i>我的简历</a></li>
-                            <li><a href="/dashboard/candidate_favourite_job"><i class="fas fa-heart"></i>我的收藏</a></li>
-                            <li><a href="/dashboard/candidate_applied_job"><i class="fas fa-check-square"></i>求职记录</a></li>
-                            <li><a href="message"><i class="fas fa-envelope"></i>消息</a></li>
-                            <li><a href="/pricing_table"><i class="fas fa-tag"></i>VIP</a></li>
+                            <li><a href="/dashboard/candidate_dashboard" class="link_active"><i class="fas fa-tachometer-alt"></i> 账号管理 </a></li>
+                            <li><a href="/dashboard/candidate_resume"><i class="fas fa-file"></i> 我的简历</a></li>
+                            <li><a href="/dashboard/candidate_favourite_job"><i class="fas fa-heart"></i> 我的收藏</a></li>
+                            <li><a href="/dashboard/candidate_applied_job"><i class="fas fa-check-square"></i> 求职记录</a></li>
+                            <li><a href="/aut/aut_company"><i class="fas fa-check-square"></i> 学生认证</a></li>
+                            <li><a href="message"><i class="fas fa-envelope"></i> 消息</a></li>
+                            <li><a href="/pricing_table"><i class="fas fa-tag"></i> VIP</a></li>
                         </ul>
                         <ul class="feedlist logout_link jb_cover">
                             <li><a href="" onclick="logout()"><i class="fas fa-power-off"></i>退出登录</a></li>
                             <li>
-                                <a href="#" data-toggle="modal" data-target="#myModal"><i class="fas fa-trash-alt"></i>删除账户
+                                <a href="#" data-toggle="modal" data-target="#myModal"><i class="fas fa-trash-alt"></i>删除账号
                                 </a>
                             </li>
 
@@ -473,7 +473,7 @@ Author:
                         <div class="job_filter_category_sidebar company_wrapper jb_cover">
 
                             <div class="job_filter_sidebar_heading jb_cover">
-                                <h1> 个人资料 <span><a href="#" data-toggle="modal" data-target="#myModal1"><i
+                                <h1> 账号资料 <span><a href="#" data-toggle="modal" data-target="#myModal1"><i
                                         class="fas fa-edit"></i></a></span></h1>
                             </div>
 
@@ -486,7 +486,7 @@ Author:
                                             <div class="col-lg-12 col-md-12 col-sm-12 col-12">
 
                                                 <div class="delett_cntn jb_cover">
-                                                    <h1><i class="fas fa-edit"></i>修改个人资料</h1>
+                                                    <h1><i class="fas fa-edit"></i>修改账号资料</h1>
                                                     <div class="padder_top jb_cover"></div>
                                                     <div class="job_filter_category_sidebar company_wrapper ">
                                                         <div class="jp_job_post_side_img" style="text-align: center">
@@ -499,9 +499,8 @@ Author:
                                                         </div>
                                                         <div class="jp_job_post_right_btn_wrapper ">
                                                             <div class="header_btn search_btn ">
-
-                                                                <input type="hidden" id="save_image" name="image"
-                                                                       onclick="upload()" style="display:none;"/>
+<!--                                                                <input type="button" id="save_image" name="image"-->
+<!--                                                                       onclick="upload()" style="display:none;"/>-->
                                                                 <a href="#" onclick="saveImage();return false;">确认图片</a>
                                                                 <input type="file" id="file" name="image"
                                                                        style="display:none;"/>
@@ -509,7 +508,7 @@ Author:
                                                                    onclick="addImage();return false;">上传图片</a>
                                                             </div>
                                                         </div>
-
+                                                        <p style="font-size: 6px">图片应小于1M</p>
                                                     </div>
                                                     <div class="padder_top jb_cover"></div>
                                                     <div class="category_wrapper jb_cover">
@@ -610,7 +609,7 @@ Author:
                                             </div>
                                             <div class="jp_listing_list_icon_cont_wrapper">
                                                 <ul>
-                                                    <li>电话 :</li>
+                                                    <li>电话:</li>
                                                     <li id="phone" th:text="${users.phone}"></li>
                                                 </ul>
                                             </div>
@@ -623,9 +622,7 @@ Author:
 
                         </div>
                     </div>
-                </div>
 
-                <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="job_filter_category_sidebar company_wrapper jb_cover">
 
@@ -719,6 +716,7 @@ Author:
                         </div>
                     </div>
                 </div>
+
             </div>
 
         </div>
@@ -733,13 +731,13 @@ Author:
             <div class="col-lg-12 col-md-12 col-sm-12">
                 <div class="job_newsletter_wrapper jb_cover">
                     <div class="jb_newslwtteter_left">
-                        <h2> Looking For A Job</h2>
-                        <p>Your next level Product developemnt company assetsYour next level Product </p>
+                        <h2>还在等什么？</h2>
+                        <p>总有一个工作适合您！</p>
                     </div>
                     <div class="jb_newslwtteter_button">
                         <div class="header_btn search_btn news_btn jb_cover">
 
-                            <a href="#">submit</a>
+                            <a href="/job_listing_grid_left_filter">马上寻找</a>
                         </div>
                     </div>
                 </div>
@@ -833,7 +831,11 @@ Author:
 
 
     //确认修改资料
-    function confirm() {
+    function confirm(){
+        confirm1();
+        // confirm2();
+    }
+    function confirm1() {
         var update_avatar = $('.img-responsive').attr('src');
         var update_nickName = $("#update_nickName").val();
         var update_phone = $("#update_phone").val();
@@ -869,7 +871,42 @@ Author:
         });
 
     }
+    function confirm2() {
+        var update_avatar = $('.avatar').attr('src');
+        var update_nickName = $(".nickName").val();
+        var update_phone = $("#phone").val();
+        var data = {"avatar": update_avatar, "nickName": update_nickName, "phone": update_phone};
 
+        $.ajax({
+            type: 'POST',//方法类型
+            dataType: "json",//预期服务器返回的数据类型
+            url: '/user/updateMyInfo',//url
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify(data),
+            success: function (result) {
+                console.log(result);//打印服务端返回的数据
+                if (result.code == 200) {
+                    $('.avatar').attr("src", update_avatar);
+                    $(".nickName").text(update_nickName);
+                    $("#phone").text(update_phone);
+                    $('#close').click();
+                    setCookie(result.data.header,result.data.token);
+                    alert("修改成功!");
+                } else {
+                    $('#close').click();
+                    alert(result.message);
+                }
+
+            },
+            error: function () {
+
+                //关闭模态框
+                $('#close').click();
+                alert("操作失败");
+            }
+        });
+
+    }
 </script>
 <!-- 图片上传   -->
 <script type="text/javascript">
@@ -877,15 +914,18 @@ Author:
     //选择图片
     function addImage() {
         document.getElementById("file").click();
+        // document.getElementById("save_image").click();
+
     }
 
-    //选择图片
+    //保存图片
     function saveImage() {
-        document.getElementById("save_image").click();
+        // document.getElementById("save_image").click();
+        upload();
     }
 
     //上传图片，获取服务器图片路由
-    function upload() {
+    function  upload() {
         var formData = new FormData();
         var file = document.getElementById("file").files[0];
         formData.append("file", file);
@@ -905,7 +945,11 @@ Author:
                 } else {
                     alert("error!");
                 }
+            },
+            error: function () {
+                alert("上传失败！");
             }
+
         });
     }
 
@@ -920,7 +964,7 @@ Author:
             };
             img.src = _URL.createObjectURL(file);
         }
-        alert("图片符合要求");
+
     })
 
 </script>

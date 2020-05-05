@@ -100,7 +100,7 @@
     <div class="jb_navigation_wrapper">
      <div class="mainmenu d-xl-block d-lg-block d-md-none d-sm-none d-none">
       <ul class="main_nav_ul">
-       <li class="has-mega gc_main_navigation"><a href="#" class="gc_main_navigation">主页</a>
+       <li class="has-mega gc_main_navigation"><a href="/index" class="gc_main_navigation">首页</a>
         <ul class="navi_2_dropdown" th:replace="/public::navi_2_dropdown_1">
          <li class="parent"><a href="index"><i class="fas fa-square"></i>主页 I</a></li>
          <li class="parent"><a href="index_III"><i class="fas fa-square"></i>主页 II</a></li>
@@ -139,7 +139,7 @@
            <li><a href="dashboard/comp_company_page"><i class="fas fa-square"></i>公司主页</a></li>
            <li><a href="dashboard/comp_employer_dashboard"><i class="fas fa-square"></i>企业资料</a></li>
            <li><a href="dashboard/comp_employer_edit_profile"><i class="fas fa-square"></i>编辑企业资料</a></li>
-           <li><a href="dashboard/comp_employer_manage_jobs"><i class="fas fa-square"></i>管理职位</a></li>
+           <li><a href="dashboard/comp_employer_manage_jobs"><i class="fas fa-square"></i>职位管理</a></li>
            <li><a href="dashboard/comp_post_new_job"><i class="fas fa-square"></i>发布职位</a></li>
            <li><a href="dashboard/message"><i class="fas fa-square"></i>公司信息</a></li>
            <li><a href="dashboard/pricing_plans"><i class="fas fa-square"></i>VIP</a></li>
@@ -180,13 +180,13 @@
      <div class="row">
       <!-- section_heading start -->
       <div class="col-lg-9 col-md-9 col-12 col-sm-8">
-       <h1>job listing</h1>
+       <h1>全部职位</h1>
       </div>
       <div class="col-lg-3 col-md-3 col-12 col-sm-4">
        <div class="sub_title_section">
         <ul class="sub_title">
-         <li><a href="index">主页 </a>&nbsp; / &nbsp;</li>
-         <li>job listing</li>
+         <li><a href="index">首页 </a>&nbsp; / &nbsp;</li>
+         <li>全部职位</li>
         </ul>
        </div>
       </div>
@@ -594,12 +594,12 @@
 <!--     <div class="col-lg-12 col-md-12 col-sm-12">-->
 <!--      <div class="job_newsletter_wrapper jb_cover">-->
 <!--       <div class="jb_newslwtteter_left">-->
-<!--        <h2>Looking For A Job</h2>-->
-<!--        <p>Your next level Product developemnt company assetsYour next level Product</p>-->
+<!--        <h2>还在等什么？</h2>-->
+<!--        <p>寻找一个工作总有一个工作适合您！</p>-->
 <!--       </div>-->
 <!--       <div class="jb_newslwtteter_button">-->
 <!--        <div class="header_btn search_btn news_btn jb_cover">-->
-<!--         <a href="#">submit</a>-->
+<!--         <a href="/job_listing_grid_left_filter">马上寻找</a>-->
 <!--        </div>-->
 <!--       </div>-->
 <!--      </div>-->
@@ -653,6 +653,16 @@
   <script src="/js/custom.js"></script>
   <script src="/js/vue.js"></script>
  <script src="/js/axios.js"></script>
+
+
+
+
+
+
+
+
+
+
  <script type="text/javascript">
 
    $(function(){
@@ -736,7 +746,8 @@
          if(res.data.result){
           Vue.set(vue1.status, index, value);
          }else {
-          alert(res.data.message);
+          // alert(res.data.message);
+          alert("请先登录");
          }
         }).catch(function(){
          alert("操作失败");
@@ -781,7 +792,7 @@
            window.location.href = "/tocompanysingle?companyId="+conpanyId;
        },
     apply_job:function(jobId, companyId){
-     $("#myModal6").modal("show");
+
       var data = {"jobId": jobId};
       $.ajax({
        url: "/user/applyJob_resume",
@@ -792,6 +803,7 @@
        success: function (result) {
         console.log("打印服务端返回的数据" + result);//打印服务端返回的数据
         if (result.code == 200) {
+         $("#myModal6").modal("show");
          var str1 = "";
          //清空
          $("#resume_list").html("");
@@ -810,7 +822,8 @@
          $("#apply_resumeId").text("选择简历");
 
         } else {
-         alert(result.message);
+         // alert(result.message);
+         alert("请先登录！");
         }
        },
        error: function (e) {

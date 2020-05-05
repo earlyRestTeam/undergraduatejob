@@ -60,15 +60,7 @@ Author:
                     <input type="search" placeholder="Search...">
                 </form>
             </li>
-            <li class="has-children">
-                <a href="/index">主页</a>
-                <ul class="cd-secondary-dropdown icon_menu is-hidden">
-                    <li class="go-back"><a href="#0">Menu</a></li>
-                    <li><a href="/index">主页 I</a></li>
-                    <li><a href="/index_III">主页 II</a></li>
 
-                </ul>
-            </li>
             <li class="has-children">
                 <a href="/job_listing_grid_left_filter">职位</a>
                 <ul class="cd-secondary-dropdown icon_menu is-hidden">
@@ -237,7 +229,7 @@ Author:
             <div class="jb_navigation_wrapper">
                 <div class="mainmenu d-xl-block d-lg-block d-md-none d-sm-none d-none">
                     <ul class="main_nav_ul">
-                        <li class="has-mega gc_main_navigation"><a href="#" class="gc_main_navigation">主页</a>
+                        <li class="has-mega gc_main_navigation"><a href="/index" class="gc_main_navigation">首页</a>
         <ul class="navi_2_dropdown" th:replace="/public::navi_2_dropdown_1">
                                 <li class="parent">
                                     <a href="/index"><i class="fas fa-square"></i>主页 I </a>
@@ -441,7 +433,7 @@ Author:
                                             <a href="comp_employer_edit_profile"> <i class="fas fa-square"></i>编辑企业资料</a>
                                         </li>
                                         <li>
-                                            <a href="comp_employer_manage_jobs"> <i class="fas fa-square"></i>管理职位</a>
+                                            <a href="comp_employer_manage_jobs"> <i class="fas fa-square"></i>职位管理</a>
                                         </li>
                                         <li>
                                             <a href="comp_post_new_job"> <i class="fas fa-square"></i>发布职位</a>
@@ -506,7 +498,7 @@ Author:
                     <div class="col-xl-3 col-lg-5 col-md-5 col-12 col-sm-12">
                         <div class="sub_title_section">
                             <ul class="sub_title">
-                                <li> <a href="#">主页</a>&nbsp; / &nbsp; </li>
+                                <li> <a href="#">首页</a>&nbsp; / &nbsp; </li>
                                 <li>我的简历</li>
                             </ul>
                         </div>
@@ -768,13 +760,13 @@ Author:
                 <div class="col-lg-12 col-md-12 col-sm-12">
                     <div class="job_newsletter_wrapper jb_cover">
                         <div class="jb_newslwtteter_left">
-                            <h2> Looking For A Job</h2>
-                            <p>Your next level Product developemnt company assetsYour next level Product </p>
+                            <h2>还在等什么？</h2>
+                            <p>总有一个工作适合您！</p>
                         </div>
                         <div class="jb_newslwtteter_button">
                             <div class="header_btn search_btn news_btn jb_cover">
 
-                                <a href="#">submit</a>
+                                <a href="/job_listing_grid_left_filter">马上寻找</a>
                             </div>
                         </div>
                     </div>

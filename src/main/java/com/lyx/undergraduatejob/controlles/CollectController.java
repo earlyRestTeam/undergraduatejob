@@ -93,15 +93,14 @@ public class CollectController {
     public APIResult collectJob(Integer jobId) {
         APIResult apiResult = new APIResult();
         OnlineEntity entity = loginEntityHelper.getOnlineEntity();
-        if(entity == null)
-            return APIResult.genFailApiResponse500("必须要登录才能收藏");
-
-
-        Integer userid = null;
-        if(entity != null){
-            userid = entity.getId();
+        System.out.println("收藏");
+        if(entity == null){
+            apiResult.setResult(false);
+            apiResult.setMessage("必须要登录才能收藏");
+            System.out.println("必须要登录才能收藏");
+            return apiResult;
         }
-
+        Integer userid = entity.getId();
         if (iCollectServices.queryjobIdByjobIdAndUserId(jobId, userid)) {
             int flag = 2;
             apiResult.setData(flag);

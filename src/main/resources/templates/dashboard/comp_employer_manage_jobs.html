@@ -14,7 +14,7 @@ Author:
 
 <head>
     <meta charset="utf-8" />
-    <title> Employer Manage Jobs</title>
+    <title>职位管理</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta name="description" content="JB desks,job portal,job" />
     <meta name="keywords" content="JB desks,job portal,job" />
@@ -60,15 +60,7 @@ Author:
                     <input type="search" placeholder="Search...">
                 </form>
             </li>
-            <li class="has-children">
-                <a href="/index">主页</a>
-                <ul class="cd-secondary-dropdown icon_menu is-hidden">
-                    <li class="go-back"><a href="#0">Menu</a></li>
-                    <li><a href="/index">主页 I</a></li>
-                    <li><a href="/index_III">主页 II</a></li>
 
-                </ul>
-            </li>
             <li class="has-children">
                 <a href="/job_listing_grid_left_filter">职位</a>
                 <ul class="cd-secondary-dropdown icon_menu is-hidden">
@@ -237,7 +229,7 @@ Author:
             <div class="jb_navigation_wrapper" >
                 <div class="mainmenu d-xl-block d-lg-block d-md-none d-sm-none d-none">
                     <ul class="main_nav_ul">
-                        <li class="has-mega gc_main_navigation"><a href="#" class="gc_main_navigation">主页</a>
+                        <li class="has-mega gc_main_navigation"><a href="/index" class="gc_main_navigation">首页</a>
         <ul class="navi_2_dropdown" th:replace="/public::navi_2_dropdown_1">
                                 <li class="parent">
                                     <a href="/index"><i class="fas fa-square"></i>主页 I </a>
@@ -443,7 +435,7 @@ inelevated the..</a></h3>
                                             <a href="comp_employer_edit_profile"> <i class="fas fa-square"></i>编辑企业资料</a>
                                         </li>
                                         <li>
-                                            <a href="comp_employer_manage_jobs"> <i class="fas fa-square"></i>管理职位</a>
+                                            <a href="comp_employer_manage_jobs"> <i class="fas fa-square"></i>职位管理</a>
                                         </li>
                                         <li>
                                             <a href="comp_post_new_job"> <i class="fas fa-square"></i>发布职位</a>
@@ -503,13 +495,13 @@ inelevated the..</a></h3>
                     <!-- section_heading start -->
                     <div class="col-xl-9 col-lg-7 col-md-7 col-12 col-sm-12">
 
-                        <h1> Manage Jobs</h1>
+                        <h1> 职位管理</h1>
                     </div>
                     <div class="col-xl-3 col-lg-5 col-md-5 col-12 col-sm-12">
                         <div class="sub_title_section">
                             <ul class="sub_title">
-                                <li> <a href="#">主页</a>&nbsp; / &nbsp; </li>
-                                <li>管理职位</li>
+                                <li> <a href="#">首页</a>&nbsp; / &nbsp; </li>
+                                <li>职位管理</li>
                             </ul>
                         </div>
                     </div>
@@ -548,7 +540,7 @@ inelevated the..</a></h3>
                                  <li><a th:href="'/tocompanysingle?companyId='+${company.id}"><i class="fas fa-file"></i>公司主页 </a></li>
                                  <li><a target="_blank" href="/aut/aut_company"><i class="fas fa-file"></i>企业资格认证 </a></li>
                                  <li><a href="/dashboard/candidate_favourite_resume"><i class="fas fa-file"></i>我的人才库 </a></li>
-                                 <li><a href="/dashboard/comp_employer_manage_jobs"><i class="fas fa-suitcase"></i>管理职位</a></li>
+                                 <li><a href="/dashboard/comp_employer_manage_jobs"><i class="fas fa-suitcase"></i>职位管理</a></li>
                                  <li><a href="/dashboard/comp_applications"><i class="fas fa-mobile"></i>收到的简历</a></li>
                                  <li><a href="/dashboard/comp_post_new_job"><i class="fas fa-user-plus"></i>发布职位</a></li>
                                  <li><a href="/dashboard/message"><i class="fas fa-envelope"></i>消息</a></li>
@@ -614,7 +606,7 @@ inelevated the..</a></h3>
 
                                         </div>
                                         <div class="job_list_next mange_list">
-                                            <h6>收到的简历</h6>
+                                            <h6>收到简历数量</h6>
 
                                         </div>
                                         <div class="job_list_next mange_list">
@@ -634,14 +626,14 @@ inelevated the..</a></h3>
                                         <div class="job_list_next">
 
                                             <h6 th:text="${job.jobName}"><a href="#">General Ledger Accountant</a></h6>
-                                            <p  th:text="'发布日期 : '+${job.pushTime}"> <i class="far fa-calendar"></i> 02 Oct 2017</p>
+                                            <p th:if="${job.pushTime != null}" th:text="'发布日期 : '+${#dates.format(${job.pushTime}, 'yyyy-MM-dd hh:MM:ss')}"> <i class="far fa-calendar"></i> 02 Oct 2017</p>
 
                                         </div>
                                         <div class="job_list_next">
                                             <p><a th:text="${job.receiveNum}" href="javascript:void(0)">06 Applications</a></p>
 
                                         </div>
-                                        <div id="pushStatus" th:switch="${job.pushStatus}" class="job_list_next">
+                                        <div th:id="'pushStatus'+ ${job.id}" th:switch="${job.pushStatus}" class="job_list_next">
                                             <p th:case="1" class="gn">已发布</p>
                                             <p th:case="0" class="ex">未发布</p>
                                         </div>
@@ -662,6 +654,23 @@ inelevated the..</a></h3>
                                         </div>
 
                                     </div>
+                                    <div class="latest_job_box jb_cover">
+                                        <div class="job_list_next">
+                                            <p><a th:text="'共可创建 6 份职位'" href="#">06 Applications</a></p>
+
+                                        </div>
+                                        <div class="job_list_next">
+                                            <p class="gn" th:text="'您已创建' + ${pages.list.size()} + '份'"></p>
+                                            <!--                                            <p th:case="0" class="ex">未发布</p>-->
+                                        </div>
+                                        <div class="job_list_next">
+                                            <p class="gn"><a href="javascript:" onclick="window.open('/dashboard/comp_post_new_job')">发布新职位</a>
+                                            </p>
+                                        </div>
+
+
+                                    </div>
+
                                     <div class="blog_pagination_section jb_cover">
                                         <ul>
                                             <li>
@@ -762,8 +771,8 @@ inelevated the..</a></h3>
                         dataType:"json",
                         data:{"pushStatus":pushStatus,"id":id},
                         success:function (APIResult) {
-                            var a =$("#pushStatus").find("p");
-                            alert(APIResult.message)
+                            var a =$("#pushStatus"+id).find("p");
+                            // alert(APIResult.message)
                             if (APIResult.code == 200){
                                 if (pushStatus == 0){
                                     $(obj).text("发布");

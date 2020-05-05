@@ -200,7 +200,7 @@ public class CandidateController {
         APIResult result = null;
         OnlineEntity user = loginEntityHelper.getOnlineEntity();
         if(user == null){
-            throw new RuntimeException("error");
+            return APIResult.genSuccessApiResponse("请先登录！");
         }
         Integer userId = user.getId();
 
@@ -227,7 +227,8 @@ public class CandidateController {
     @ResponseBody
     public APIResult add_resume(@RequestBody Resume resume){
         System.out.println("添加简历:" + resume);
-        Integer userId = 1;
+        OnlineEntity user = loginEntityHelper.getOnlineEntity();
+        Integer userId = user.getId();
         resume.setUserId(userId);
         APIResult result = null;
         Map<String, String> res = resumeServicesImp.addResume(resume,userId);
