@@ -1,10 +1,10 @@
 server:
-    port: 8080
+    port: 8083
 
 spring:
     datasource:
         url: jdbc:mysql://localhost:3306/undergraduatejob?useUnicode=true
-        username: lyx
+        username: root
         password: 123
     mail:
         host: smtp.163.com
@@ -27,15 +27,12 @@ spring:
         suffix: .html
         prefix: classpath:/templates/
     redis:
-        host: localhost
+        host: 172.16.5.204
         port: 6379
-        jedis:
-            pool:
-                max-wait: 30000
-                max-active: 100
-                max-idle: 20
-                min-idle: 0
-        timeout: 5000
+        password: peony_redis
+        maxActive: 300
+        maxIdle: 100
+        maxWait: 50000
     rabbitmq:
         host: localhost
         port: 5672
